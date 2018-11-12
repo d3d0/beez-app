@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
 import { DataService, IDataItem } from "../core/data.service";
+import { TabView } from "tns-core-modules/ui/tab-view";
+import { localize } from "nativescript-localize";
 
 @Component({
   selector: 'ns-castings',
@@ -15,6 +17,8 @@ export class CastingsComponent implements OnInit {
 
   ngOnInit(): void {
       this.items = this.itemService.getItems();
+      console.log(localize("LANG"));
+
   }
 
 }

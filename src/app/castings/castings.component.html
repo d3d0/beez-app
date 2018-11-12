@@ -5,33 +5,20 @@
   </StackLayout>
 </ActionBar>
 
-<TabView >
-  <TabViewItem title="{{'ONGOING'|L}}">
-    <GridLayout class="page page-content">
-        <ListView [items]="items" class="list-group">
-            <ng-template let-item="item">
-                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
-            </ng-template>
-        </ListView>
-    </GridLayout>    
- </TabViewItem>
-<TabViewItem title="{{'ATTEND'|L}}">
-    <GridLayout class="page page-content">
-        <ListView [items]="items" class="list-group">
-            <ng-template let-item="item">
-                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
-            </ng-template>
-        </ListView>
-    </GridLayout>
-</TabViewItem>
-<TabViewItem title="{{'CONCLUDED'|L}}">
-    <GridLayout class="page page-content">
-        <ListView [items]="items" class="list-group">
-            <ng-template let-item="item">
-                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
-            </ng-template>
-        </ListView>
-    </GridLayout>    
-</TabViewItem>
-<!-- <ActivityIndicator :busy="isLoading" row="row"></ActivityIndicator> -->
+<TabView id="tabViewContainer">
+    <StackLayout *tabItem="{title: 'First Tab', iconSource: 'res://icon'}">
+        <StackLayout>
+            <Label text="{{'PROFILE.DETAILS' | L}}" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
+        </StackLayout>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'First Tab', iconSource: 'res://icon'}">
+        <StackLayout>
+            <Label text="First Tab" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
+        </StackLayout>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Second Tab', iconSource: 'res://icon'}">
+        <StackLayout>
+            <Label text="Second Tab" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
+        </StackLayout>
+    </StackLayout>
 </TabView>
