@@ -1,0 +1,54 @@
+[
+    {
+        "vid": "3",
+        "name": "BODY_SIZE",
+    },
+    {
+        "vid": "2",
+        "name": "SHOE_SIZE",
+    },
+    {
+        "vid": "11",
+        "name": "PHYSIQUE",
+    },
+    {
+        "vid": "10",
+        "name": "NATIONALITY",
+    },
+    {
+        "vid": "14",
+        "name": "AGE_RANGE",
+    },
+    {
+        "vid": "9",
+        "name": "LANGUAGES",
+    },
+    {
+        "vid": "8",
+        "name": "HAIR_LENGHT",
+    },
+    {
+        "vid": "7",
+        "name": "HAIR_COLOR",
+    },
+    {
+        "vid": "13",
+        "name": "EYES",
+    },
+    {
+        "vid": "15",
+        "name": "ETHNICITY",
+    },
+    {
+        "vid": "12",
+        "name": "DRIVER_LICENCE",
+    },
+    {
+        "vid": "4",
+        "name": "ACTIVITIES",
+    },
+    {
+        "vid": "5",
+        "name": "AGENCY",
+    }
+]

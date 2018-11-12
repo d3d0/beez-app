@@ -1,0 +1,7 @@
+{
+  "ios.info.plist": {
+    "NSLocationWhenInUseUsageDescription": "This will be added to InfoPlist.strings"
+  },
+  "LANG": "IT",
+  "app.name": "BEEZ CASTING"
+}
