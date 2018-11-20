@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="_MESSAGES_ERROR_LOGIN_1uPQ8G">"Unfortunately we could not find your account, wrong Password or Mail."</string>
+  <string name="_MESSAGES_NO_CONNECTION_Z1G6ayt">"Sorry, BEEZ requires an internet connection."</string>
   <string name="_USER_AGENCY_ZQwRSF">"Agency"</string>
   <string name="_USER_PHONE_2hoiDb">"Phone"</string>
   <string name="_USER_WEBSITE_1qkJg8">"Website"</string>
@@ -30,6 +32,16 @@
   <string name="_USER_EMAIL_2gF8Tv">"Email Address"</string>
   <string name="_USER_SURNAME_Z2cTTlv">"Surname"</string>
   <string name="_USER_NAME_Z1oyvAU">"Name"</string>
+  <string name="_PROFILE_INFO_ZTAwTT">"INFO"</string>
+  <string name="_PROFILE_CONTACTS_ChTRd">"CONTACTS"</string>
+  <string name="_PROFILE_MEDIA_2fRdEw">"MEDIA"</string>
+  <string name="_PROFILE_DETAILS_1o2AXX">"DETAILS"</string>
+  <string name="_PROFILE_PROFILE_ZNNot5">"Profile"</string>
+  <string name="_NOTIFICATIONS_NOTIFICATIONS_ZneLv7">"Notifications"</string>
+  <string name="_CASTINGS_ATTEND_1R59MI">"TO ATTEND"</string>
+  <string name="_CASTINGS_CONCLUDED_1RBVcj">"CONCLUDED"</string>
+  <string name="_CASTINGS_ONGOING_1gX41U">"ON GOING"</string>
+  <string name="_CASTINGS_CASTINGS_1BoPqT">"Castings"</string>
   <string name="_SHARE_WHITH_A_FRIEND_ZhQhD8">"SHARE WHITH A FRIEND"</string>
   <string name="_HELP_9JU7">"Need Help?"</string>
   <string name="_SIGNIN_Z2bxEA8">"Sign In"</string>
@@ -49,20 +61,14 @@
   <string name="_LOGIN_REGISTRATION_1GBeY4">"REGISTRATION"</string>
   <string name="_INFORMATION_ZcvWXk">"INFORMATION"</string>
   <string name="_CASTING_DATE_Ztrn7E">"CASTING DATE"</string>
-  <string name="_ATTEND_2ibycF">"TO ATTEND"</string>
-  <string name="_CONCLUDED_2fbjnz">"CONCLUDED"</string>
-  <string name="_ONGOING_ZHmWJp">"ON GOING"</string>
-  <string name="_PROFILE_INFO_ZTAwTT">"INFO"</string>
-  <string name="_PROFILE_CONTACTS_ChTRd">"CONTACTS"</string>
-  <string name="_PROFILE_MEDIA_2fRdEw">"MEDIA"</string>
-  <string name="_PROFILE_DETAILS_1o2AXX">"DETAILS"</string>
-  <string name="_MESSAGES_ERROR_LOGIN_1uPQ8G">"Unfortunately we could not find your account, wrong Password or Mail."</string>
-  <string name="_MESSAGES_NO_CONNECTION_Z1G6ayt">"Sorry, BEEZ requires an internet connection."</string>
-  <string name="_CASTINGS_X6FcW">"Castings"</string>
   <string name="_APP_TITLE_1tl33B">"BEEZ CASTING APP"</string>
   <string name="_app_name_1k3Sbz">"BEEZ CASTING NAME APP"</string>
   <string name="app_name">"BEEZ CASTING NAME APP"</string>
   <string name="title_activity_kimera">"BEEZ CASTING NAME APP"</string>
   <string name="_LANG_afUt">"EN"</string>
   <string name="_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF">"This will be added to InfoPlist.strings"</string>
+  <string name="_ATTEND_2ibycF">"ATTEND"</string>
+  <string name="_CONCLUDED_2fbjnz">"CONCLUDED"</string>
+  <string name="_ONGOING_ZHmWJp">"ONGOING"</string>
+  <string name="_CASTINGS_X6FcW">"CASTINGS"</string>
 </resources>

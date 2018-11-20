@@ -1,24 +1,30 @@
 <ActionBar>
   <StackLayout orientation="horizontal">
     <Image src="~/assets/images/icon.png" height="20"></Image>
-    <Label text="{{'CASTINGS'|L}}"></Label> 
+    <Label text="{{'CASTINGS.CASTINGS'|L}}"></Label> 
   </StackLayout>
 </ActionBar>
 
 <TabView id="tabViewContainer">
-    <StackLayout *tabItem="{title: 'First Tab', iconSource: 'res://icon'}">
-        <StackLayout>
-            <Label text="{{'PROFILE.DETAILS' | L}}" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
-        </StackLayout>
+    <StackLayout *tabItem="{title: 'CASTINGS.ONGOING' | L}">
+        <ListView [items]="items" class="list-group">
+            <ng-template let-item="item">
+                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
+            </ng-template>
+        </ListView>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'First Tab', iconSource: 'res://icon'}">
-        <StackLayout>
-            <Label text="First Tab" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
-        </StackLayout>
+    <StackLayout *tabItem="{title: 'CASTINGS.CONCLUDED' | L}">
+        <ListView [items]="items" class="list-group">
+            <ng-template let-item="item">
+                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
+            </ng-template>
+        </ListView>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Second Tab', iconSource: 'res://icon'}">
-        <StackLayout>
-            <Label text="Second Tab" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
-        </StackLayout>
+    <StackLayout *tabItem="{title: 'CASTINGS.ATTEND' | L}">
+        <ListView [items]="items" class="list-group">
+            <ng-template let-item="item">
+                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
+            </ng-template>
+        </ListView>
     </StackLayout>
 </TabView>

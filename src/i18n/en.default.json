@@ -5,12 +5,6 @@
   "LANG": "EN",
   "app.name": "BEEZ CASTING NAME APP",
   "APP_TITLE": "BEEZ CASTING APP",
-  "CASTINGS": "Castings",
-  "MESSAGES": "Messages",
-  "PROFILE": "Profile",
-  "ONGOING": "ON GOING",
-  "CONCLUDED": "CONCLUDED",
-  "ATTEND": "TO ATTEND",
   "CASTING_DATE": "CASTING DATE",
   "INFORMATION": "INFORMATION",
   "LOGIN": "LOGIN",
@@ -33,7 +27,17 @@
     "MINOR_REGISTRATION_SUBMIT" : "REGISTER of A Minor",
     "LOGIN" : "LOGIN"
   },
+  "CASTINGS": {
+    "CASTINGS": "Castings",
+    "ONGOING": "ON GOING",
+    "CONCLUDED": "CONCLUDED",
+    "ATTEND": "TO ATTEND"
+  },
+  "NOTIFICATIONS": {  
+    "NOTIFICATIONS": "Notifications"
+  },
   "PROFILE": {  
+    "PROFILE": "Profile",
     "DETAILS" : "DETAILS",
     "MEDIA" : "MEDIA",
     "CONTACTS" : "CONTACTS",

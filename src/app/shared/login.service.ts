@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { throwError } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
+import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
 
-import { User } from "./user.model";
+import { User } from "../../model/user.model";
 import { BackendService } from "./backend.service";
 
 @Injectable()
@@ -12,7 +12,7 @@ export class LoginService {
 
   register(user: User) {
     return this.http.post(
-      BackendService.l + "user/" + BackendService.appKey,
+      BackendService.baseUrl + "user/",
       JSON.stringify({
         username: user.email,
         email: user.email,
@@ -34,12 +34,12 @@ export class LoginService {
     )
     .pipe(
       tap((data: any) => {
-        BackendService.token = data._kmd.authtoken;
+        BackendService.XCSFRtoken = data._kmd.authtoken;
       }),
       catchError(this.handleErrors)
     );
   }
-  logout() {
+  logout(user) {
     return this.http.post(
       BackendService.baseUrl + "beez/user/logout",
       JSON.stringify({
@@ -62,7 +62,7 @@ export class LoginService {
 
   resetPassword(email) {
     return this.http.post(
-      BackendService.baseUrl + "rpc/" + BackendService.appKey + "/" + email + "/user-password-reset-initiate",
+      BackendService.baseUrl + "rpc/",
       {},
       { headers: this.getCommonHeaders() }
     ).pipe(catchError(this.handleErrors));
@@ -70,8 +70,7 @@ export class LoginService {
 
   private getCommonHeaders() {
     return new HttpHeaders({
-      "Content-Type": "application/json",
-      "Authorization": BackendService.appUserHeader,
+      "Content-Type": "application/json"
     });
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
-import { DataService, IDataItem } from "../core/data.service";
+import { DataService, IDataItem } from "../shared/data.service";
 import { TabView } from "tns-core-modules/ui/tab-view";
 import { localize } from "nativescript-localize";
 
