@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         // Init your component properties here.
+        console.log('hello from App component')
     }
 
     getIconSource(icon: string): string {

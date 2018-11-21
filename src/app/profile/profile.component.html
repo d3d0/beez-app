@@ -1,7 +1,27 @@
-<ActionBar>
-  <StackLayout orientation="horizontal">
-    <Image src="~/assets/images/icon.png" height="20"></Image>
-    <Label text="{{'PROFILE.PROFILE'|L}}"></Label> 
-  </StackLayout>
-</ActionBar>
-<Button text="profile works!" class="btn btn-primary"></Button>
+    <ActionBar>
+      <StackLayout orientation="horizontal">
+        <Image src="~/assets/images/icon.png" height="20"></Image>
+        <Label text="{{'PROFILE'|L}}"></Label> 
+      </StackLayout>
+      <ActionItem
+      ios.systemIcon="9"
+      ios.position="left"
+      android.systemIcon="ic_menu_preferences" android.position="actionBar"></ActionItem>
+    </ActionBar>
+    <GridLayout rows="1*, 3*" >
+      <Cover :profile="current_profile" row="0"></Cover>
+      <TabView row="1" iosIconRenderingMode="alwaysOriginal">
+        <TabViewItem title="{{'PROFILE.INFO'|L}}" >
+          <Info profile="current_profile"></Info>
+        </TabViewItem>
+        <TabViewItem title="{{'PROFILE.DETAILS'|L}}" >
+          <Detail profile="current_profile"></Detail>
+        </TabViewItem>
+        <TabViewItem title="{{'PROFILE.MEDIA'|L}}" >
+          <Media profile="current_profile" ></Media>
+        </TabViewItem>
+        <TabViewItem title="{{'PROFILE.CONTACTS'|L}}" >
+          <Contacts profile="current_profile"></Contacts>
+        </TabViewItem>
+      </TabView>
+    </GridLayout>

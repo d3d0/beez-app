@@ -2,19 +2,18 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 
-import { CastingsRoutingModule } from "./castings.routing";
-import { CastingsListComponent } from "./castings-list/castings-list.component";
-// import { CastingsService } from "./castings.service";
+import { ProfileComponent } from "./profile.component";
+import { ProfileRoutingModule } from "./profile-routing.module";
 
 @NgModule({
   imports: [
-    CastingsRoutingModule,
+    ProfileRoutingModule,
     NativeScriptCommonModule,
     NativeScriptLocalizeModule
   ],
   declarations: [
-	  CastingsListComponent
+  ProfileComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
-export class CastingsModule { }
+export class ProfileModule { }

@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  	console.log('hello from Profile Component');
   }
 
 }

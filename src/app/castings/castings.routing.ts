@@ -1,13 +1,17 @@
-import { ModuleWithProviders } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { AuthGuard } from "../shared/auth-guard.service";
+import { NgModule } from "@angular/core";
+import { Routes } from "@angular/router";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { CastingsListComponent } from "./castings-list/castings-list.component";
 
-
-import { CastingsComponent } from "./castings.component";
-import { CastingComponent } from "./casting/casting.component";
-
-const CastingsRoutes: Routes = [
-    { path: "castings", component: CastingsComponent, canActivate: [AuthGuard] }
+export const routes: Routes = [
+    {
+        path: "",
+        component: CastingsListComponent
+    }
 ];
 
-export const CastingRouting: ModuleWithProviders = RouterModule.forChild(CastingsRoutes);
+@NgModule({
+    imports: [NativeScriptRouterModule.forChild(routes)],  // set the lazy loaded routes using forChild
+    exports: [NativeScriptRouterModule]
+})
+export class CastingsRoutingModule { }

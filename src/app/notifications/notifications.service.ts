@@ -8,12 +8,12 @@ import { BehaviorSubject, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 
 import { BackendService } from "../shared";
-import { Casting } from "./casting.model";
+import { Notification } from "./notification.model";
 
 @Injectable()
-export class CastingsService {
-  items: BehaviorSubject<Array<Casting>> = new BehaviorSubject([]);
-  private allItems: Array<Casting> = [];
+export class NotificationsService {
+  items: BehaviorSubject<Array<Notification>> = new BehaviorSubject([]);
+  private allItems: Array<Notification> = [];
   baseUrl = BackendService.baseUrl + "appdata/" + BackendService.appKey + "/Groceries";
 
   constructor(private http: HttpClient, private zone: NgZone) { }
@@ -29,11 +29,11 @@ export class CastingsService {
             return a._kmd.lmt > b._kmd.lmt ? -1 : 1;
           })
           .map(
-            casting => new Casting(
-              casting._id,
-              casting.Name,
-              casting.Done || false,
-              casting.Deleted || false
+            notification => new Notification(
+              grocery._id,
+              grocery.Name,
+              grocery.Done || false,
+              grocery.Deleted || false
           )
         );
         this.publishUpdates();
@@ -50,14 +50,14 @@ export class CastingsService {
     )
     .pipe(
       map((data: any) => {
-        this.allItems.unshift(new Casting(data._id, name, false, false));
+        this.allItems.unshift(new Grocery(data._id, name, false, false));
         this.publishUpdates();
       }),
       catchError(this.handleErrors)
     );
   }
 
-  setDeleteFlag(item: Casting) {
+  setDeleteFlag(item: Grocery) {
     item.deleted = true;
     return this.put(item)
       .pipe(
@@ -68,7 +68,7 @@ export class CastingsService {
       );
   }
 
-  unsetDeleteFlag(item: Casting) {
+  unsetDeleteFlag(item: Grocery) {
     item.deleted = false;
     return this.put(item)
       .pipe(
@@ -80,13 +80,13 @@ export class CastingsService {
   }
 
 
-  toggleDoneFlag(item: Casting) {
+  toggleDoneFlag(item: Grocery) {
     item.done = !item.done;
     this.publishUpdates();
     return this.put(item);
   }
 
-  permanentlyDelete(item: Casting) {
+  permanentlyDelete(item: Grocery) {
     return this.http
       .delete(
         this.baseUrl + "/" + item.id,
@@ -102,7 +102,7 @@ export class CastingsService {
       );
   }
 
-  private put(grocery: Casting) {
+  private put(grocery: Grocery) {
     return this.http.put(
       this.baseUrl + "/" + grocery.id,
       JSON.stringify({

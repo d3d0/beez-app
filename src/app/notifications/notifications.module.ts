@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 
 import { NotificationsComponent } from "./notifications.component";
 import { NotificationsRoutingModule } from "./notifications-routing.module";
@@ -10,8 +10,8 @@ import { NotificationsRoutingModule } from "./notifications-routing.module";
   imports: [
     NotificationsRoutingModule,
     NativeScriptCommonModule,
-    NativeScriptModule,
-    NativeScriptLocalizeModule
+    NativeScriptLocalizeModule,
+    NativeScriptUIListViewModule
   ],
   declarations: [
   NotificationsComponent
