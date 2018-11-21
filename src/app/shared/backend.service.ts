@@ -14,7 +14,8 @@ export class BackendService {
   constructor(private http: HttpClient) { }
 
   static isLoggedIn(): boolean {
-    return !!getString("token");
+    return false;
+    // return !!getString("token");
   }
 
   static getCommonHeaders() {

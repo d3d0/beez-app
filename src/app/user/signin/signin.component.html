@@ -1,0 +1,125 @@
+    <ActionBar :title="'LOGIN.REGISTRATION'|L" android:flat="true">
+      <ActionItem @tap="$navigateBack"
+      ios.systemIcon="9"
+      ios.position="left"
+      android.systemIcon="ic_menu_back" android.position="actionBar" />
+    </ActionBar>
+    <TabView :selectedIndex="selectedIndex">
+      <TabViewItem :title="'LOGIN.REGISTRATION'|L">
+<ScrollView ref="mainContainer" class="main-container" >
+      <Label :text="'LOGIN.REGISTRATION_TITLE'|L" fontWeight="bold" />
+      <Label textWrap="true" :text="'LOGIN.REGISTRATION_TEXT'|L"/>
+
+      <Label :text="'USER.NAME'|L"/>
+      <TextField
+        :hint="'USER.NAME'|L"
+        returnKeyType="next"
+        v-model="user.name"
+        autocorrect="false"
+        autocapitalizationType="true"></TextField>
+
+      <Label :text="'USER.SURNAME'|L"/>
+      <TextField
+        :hint="'USER.SURNAME'|L"
+        returnKeyType="next"
+        v-model="user.surname"
+        autocorrect="false"
+        autocapitalizationType="true"></TextField>
+
+      <Label :text="'USER.DATE_OF_BIRTH'|L"/>
+      <DatePicker v-model="selectedDate" />
+
+      <Label :text="'USER.EMAIL'|L"/>
+      <TextField
+        :hint="'USER.EMAIL'|L"
+        keyboardType="email"
+        returnKeyType="next"
+        @returnPress="focusPassword()"
+        v-model="user.email"
+        autocorrect="false"
+        autocapitalizationType="none"></TextField>
+
+      <Label :text="'USER.PASSWORD'|L"/>
+      <TextField ref="password"
+        :hint="'USER.PASSWORD'|L"
+        secure="true"
+        returnKeyType="done"
+        @returnPress="submit()"
+        v-model="user.password"></TextField>
+
+    <Button
+      :text="'LOGIN.REGISTRATION_SUBMIT'|L"
+      :isEnabled="!isAuthenticating"
+      class="submit-button"
+      @tap="submit()"></Button>
+  </ScrollView>
+      </TabViewItem>
+      <TabViewItem :title="'LOGIN.REGISTRATION_MINOR'|L">
+
+  <StackLayout ref="mainContainer" class="main-container" >
+      <Label :text="'LOGIN.REGISTRATION_MINOR_TITLE'|L" fontWeight="bold" />
+      <Label textWrap="true" :text="'LOGIN.REGISTRATION_MINOR_TEXT'|L"/>
+
+      <Label :text="'USER.NAME'|L"/>
+      <TextField
+        :hint="'USER.NAME'|L"
+        returnKeyType="next"
+        v-model="user.name"
+        autocorrect="false"
+        autocapitalizationType="true"></TextField>
+
+      <Label :text="'USER.SURNAME'|L"/>
+      <TextField
+        :hint="'USER.SURNAME'|L"
+        returnKeyType="next"
+        v-model="user.surname"
+        autocorrect="false"
+        autocapitalizationType="true"></TextField>
+
+      <Label :text="'USER.DATE_OF_BIRTH'|L"/>
+      <DatePicker v-model="selectedDate" />
+
+      <Label :text="'USER.EMAIL'|L"/>
+      <TextField
+        :hint="'USER.EMAIL'|L"
+        keyboardType="email"
+        returnKeyType="next"
+        @returnPress="focusPassword()"
+        v-model="user.email"
+        autocorrect="false"
+        autocapitalizationType="none"></TextField>
+
+      <Label :text="'USER.PASSWORD'|L"/>
+      <TextField ref="password"
+        :hint="'USER.PASSWORD'|L"
+        secure="true"
+        returnKeyType="done"
+        @returnPress="submit()"
+        v-model="user.password"></TextField>
+        
+      <Label :text="'USER.MINOR_NAME'|L"/>
+      <TextField
+        :hint="'USER.MINOR_NAME'|L"
+        returnKeyType="next"
+        v-model="user.name"
+        autocorrect="false"
+        autocapitalizationType="true"></TextField>
+
+      <Label :text="'USER.MINOR_SURNAME'|L"/>
+      <TextField
+        :hint="'USER.MINOR_SURNAME'|L"
+        returnKeyType="next"
+        v-model="user.surname"
+        autocorrect="false"
+        autocapitalizationType="true"></TextField>
+
+      <Label :text="'USER.MINOR_DATE_OF_BIRTH'|L"/>
+      <DatePicker v-model="selectedDate" />
+    <Button
+      :text="'LOGIN.MINOR_REGISTRATION_SUBMIT'|L"
+      :isEnabled="!isAuthenticating"
+      class="submit-button"
+      @tap="submit()"></Button>
+
+      </TabViewItem>
+    </TabView>

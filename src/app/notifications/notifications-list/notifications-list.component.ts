@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ns-notifications',
-  templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css'],
+  templateUrl: './notifications-list.component.html',
+  styleUrls: ['./notifications-list.component.css'],
   moduleId: module.id,
 })
-export class NotificationsComponent implements OnInit {
+export class NotificationsListComponent implements OnInit {
 
   constructor() { }
 

@@ -3,7 +3,7 @@ import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 
-import { NotificationsComponent } from "./notifications.component";
+import { NotificationsListComponent } from "./notifications-list/notifications-list.component";
 import { NotificationsRoutingModule } from "./notifications-routing.module";
 
 @NgModule({
@@ -14,7 +14,7 @@ import { NotificationsRoutingModule } from "./notifications-routing.module";
     NativeScriptUIListViewModule
   ],
   declarations: [
-  NotificationsComponent
+  NotificationsListComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
