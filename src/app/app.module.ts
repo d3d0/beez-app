@@ -5,6 +5,7 @@ import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule, authProviders } from "./app.routing";
+import { UserModule } from "./user/user.module";
 
 @NgModule({
     bootstrap: [
@@ -14,6 +15,7 @@ import { AppRoutingModule, authProviders } from "./app.routing";
         authProviders
     ],
     imports: [
+        UserModule, 
         AppRoutingModule,
         NativeScriptModule,
         NativeScriptHttpClientModule,

@@ -6,12 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css'],
   moduleId: module.id,
 })
-export class ProfileComponent implements OnInit {
 
+export class ProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
   	console.log('hello from Profile Component');
   }
-
 }

@@ -2,18 +2,18 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 
-import { loginRouting } from "./login.routing";
-import { LoginComponent } from "./login.component";
+import { userRouting } from "./user.routing";
+import { LoginComponent } from "./login/login.component";
 
 @NgModule({
   imports: [
+    userRouting,
     NativeScriptFormsModule,
-    NativeScriptCommonModule,
-    loginRouting,
+    NativeScriptCommonModule
   ],
   declarations: [
     LoginComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
-export class LoginModule { }
+export class UserModule { }

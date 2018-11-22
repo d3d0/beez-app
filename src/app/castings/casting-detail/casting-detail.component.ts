@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ns-casting',
-  templateUrl: './casting.component.html',
-  styleUrls: ['./casting.component.css'],
+  templateUrl: './casting-detail.component.html',
+  styleUrls: ['./casting-detail.component.css'],
   moduleId: module.id,
 })
-export class CastingComponent implements OnInit {
+export class CastingsDetailComponent implements OnInit {
 
   constructor() { }
 
