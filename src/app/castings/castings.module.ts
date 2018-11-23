@@ -4,6 +4,7 @@ import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 
 import { CastingsRoutingModule } from "./castings.routing";
 import { CastingsListComponent } from "./castings-list/castings-list.component";
+import { CastingDetailComponent } from "./casting-detail/casting-detail.component";
 // import { CastingsService } from "./castings.service";
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CastingsListComponent } from "./castings-list/castings-list.component";
     NativeScriptLocalizeModule
   ],
   declarations: [
-	  CastingsListComponent
+	  CastingsListComponent,
+	  CastingDetailComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

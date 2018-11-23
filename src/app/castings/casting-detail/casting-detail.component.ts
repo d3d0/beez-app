@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./casting-detail.component.css'],
   moduleId: module.id,
 })
-export class CastingsDetailComponent implements OnInit {
+export class CastingDetailComponent implements OnInit {
 
   constructor() { }
 

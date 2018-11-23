@@ -12,12 +12,12 @@ const routes: Routes = [
     { path: "castings", loadChildren: "~/app/castings/castings.module#CastingsModule", outlet: "castingsTab",canActivate: [AuthGuard]},
     { path: "notifications", loadChildren: "~/app/notifications/notifications.module#NotificationsModule", outlet: "notificationsTab",canActivate: [AuthGuard]},
     { path: "profile", loadChildren: "~/app/profile/profile.module#ProfileModule", outlet: "profileTab",canActivate: [AuthGuard]}, 
-    { path: "user", loadChildren: "~/app/user/user.module#UserModule"} 
+    { path: "user", loadChildren: "~/app/user/user.module#UserModule",outlet: "login"} 
 ];
 
 @NgModule({
-    imports: [NativeScriptRouterModule.forRoot(routes)],
-    // imports: [NativeScriptRouterModule.forRoot(routes, { enableTracing: true })],
+    // imports: [NativeScriptRouterModule.forRoot(routes)],
+    imports: [NativeScriptRouterModule.forRoot(routes, { enableTracing: true })],
     exports: [NativeScriptRouterModule]
 })
 export class AppRoutingModule { }
