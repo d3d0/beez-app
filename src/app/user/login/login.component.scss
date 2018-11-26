@@ -1,0 +1,48 @@
+.main-container {
+  margin-left: 30;
+  margin-right: 30;
+}
+
+Image {
+  margin-bottom: 10;
+  height: 320;
+}
+
+Button,
+TextField {
+  margin-left: 16;
+  margin-right: 16;
+}
+
+TextField {
+  color: black;
+  placeholder-color: #ACA6A7;
+}
+
+.submit-button {
+  background-color: #CB1D00;
+  color: white;
+  margin-top: 15;
+}
+
+.platform-ios .login {
+  .main-container {
+    width: 300;
+  }
+
+  TextField {
+    border-width: 1;
+    border-color: #6E595C;
+  }
+
+  .submit-button {
+    height: 40;
+  }
+}
+
+.platform-android .login {
+  .main-container {
+    width: 275;
+    height: 594;
+  }
+}
