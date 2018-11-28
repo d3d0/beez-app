@@ -5,7 +5,8 @@ import { CastingsListComponent } from "./castings-list/castings-list.component";
 import { CastingDetailComponent } from "./casting-detail/casting-detail.component";
 
 export const routes: Routes = [
-    { path: "",component: CastingsListComponent},
+    { path: "", component: CastingsListComponent },
+    { path: "catings",component: CastingsListComponent},
     { path: ":id",component: CastingDetailComponent} 
 ];
 
