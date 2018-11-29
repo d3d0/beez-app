@@ -1,31 +1,36 @@
-<ActionBar>
-  <StackLayout orientation="horizontal">
-    <Image src="~/assets/images/icon.png" height="20"></Image>
-    <Label text="{{'CASTINGS.CASTINGS'|L}}"></Label> 
-  </StackLayout>
-</ActionBar>
+    <Label text="{{'CASTINGS'|L}}"></Label> 
 <!-- 
-<TabView id="tabViewContainer">
-    <StackLayout *tabItem="{title: 'CASTINGS.ONGOING' | L}">
-        <ListView [items]="items" class="list-group">
-            <ng-template let-item="item">
-                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
-            </ng-template>
-        </ListView>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'CASTINGS.CONCLUDED' | L}">
-        <ListView [items]="items" class="list-group">
-            <ng-template let-item="item">
-                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
-            </ng-template>
-        </ListView>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'CASTINGS.ATTEND' | L}">
-        <ListView [items]="items" class="list-group">
-            <ng-template let-item="item">
-                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
-            </ng-template>
-        </ListView>
-    </StackLayout>
-</TabView>
+<ListView
+  [row]="row"
+  [class.visible]="listLoaded"
+  [items]="store.items | async | itemStatus:showDeleted"
+  (itemLoading)="makeBackgroundTransparent($event)" >
+  <ng-template let-item="item">
+    <GridLayout
+      columns="*, auto"
+      class="container"
+      [opacity]="item.done ? '0.8' : '1'">
+      <StackLayout
+        col="0"
+        orientation="horizontal"
+        class="tap-target"
+        (tap)="toggleDone(item)">
+        <Image
+          [src]="imageSource(item)"
+          class="check-box"></Image>
+        <Label
+          [text]="item.name"
+          [class.line-through]="item.done && !item.deleted"></Label>
+      </StackLayout>
+      <GridLayout
+        col="1"
+        class="delete-container"
+        (tap)="delete(item)">
+        <StackLayout>
+          <Image src="res://delete"></Image>
+        </StackLayout>
+      </GridLayout>
+    </GridLayout>
+  </ng-template>
+</ListView>
  -->

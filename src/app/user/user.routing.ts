@@ -4,13 +4,16 @@ import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { LoginComponent } from "./login/login.component";
+import { SigninComponent } from "./signin/signin.component";
 
 const routes: Routes = [
-  { path: "login", component: LoginComponent },
+  { path: "", component: LoginComponent },
+  { path: "signin", component: SigninComponent },
+  { path: "login", component: LoginComponent }
 ];
 
 @NgModule({
-    imports: [NativeScriptRouterModule.forChild(routes)],  // set the lazy loaded routes using forChild
+    imports: [NativeScriptRouterModule.forChild(routes)],
     exports: [NativeScriptRouterModule]
 })
 export class UserRoutingModule { }

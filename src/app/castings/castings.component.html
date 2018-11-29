@@ -1,0 +1,20 @@
+<TabView androidTabsPosition="top">
+<ScrollView *tabItem="{title: ongoingTitle}" name="ongoingTab">
+    <ns-castings-list
+        [type]="ongoing"
+        (loading)="showActivityIndicator()"
+        (loaded)="hideActivityIndicator()"></ns-castings-list>   
+</ScrollView>
+<ScrollView *tabItem="{title: attendTitle}" name="attendTab">
+    <ns-castings-list
+        [type]="attend"
+        (loading)="showActivityIndicator()"
+        (loaded)="hideActivityIndicator()"> </ns-castings-list>   
+</ScrollView>
+<ScrollView *tabItem="{title: concludedTitle}" name="concludedTab">
+    <ns-castings-list
+        [type]="concluded"
+        (loading)="showActivityIndicator()"
+        (loaded)="hideActivityIndicator()"> </ns-castings-list>   
+</ScrollView>
+</TabView>
