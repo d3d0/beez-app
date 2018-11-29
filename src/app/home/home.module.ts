@@ -5,7 +5,6 @@ import { HomeRoutingModule } from "./home.routing";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { HomeComponent } from "./home.component";
-import { CastingDetailComponent } from "../castings/casting-detail/casting-detail.component";
 
 @NgModule({
   imports: [
@@ -15,8 +14,7 @@ import { CastingDetailComponent } from "../castings/casting-detail/casting-detai
     NativeScriptCommonModule
   ],
   declarations: [
-  HomeComponent,
-  CastingDetailComponent
+  HomeComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

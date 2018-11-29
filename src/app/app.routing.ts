@@ -8,8 +8,8 @@ export const authProviders = [
 ];
 
 const routes: Routes = [
-	{ path: "", redirectTo: "/user", pathMatch: 'full' },
-	// { path: "**", redirectTo: "/home", pathMatch: 'full' },
+	{ path: "", redirectTo: "/home/default", pathMatch: 'full' },
+  { path: "home", loadChildren: "~/app/home/home.module#HomeModule", canActivate: [AuthGuard]},
   { path: "user", loadChildren: "~/app/user/user.module#UserModule" }
 ];
 
