@@ -5,11 +5,11 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { ProfileComponent } from "./profile.component";
 
 const routes: Routes = [
-    { path: "", component: ProfileComponent }
+    { path: "", component: ProfileComponent },
 ];
 
 @NgModule({
     imports: [NativeScriptRouterModule.forChild(routes)],
     exports: [NativeScriptRouterModule]
 })
-export class ProfileRoutingModule { }
+export class ProfileRoutingModule {}

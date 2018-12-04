@@ -14,4 +14,12 @@ export class CastingsComponent  {
 	constructor() { 
 		console.log('hello from Castings component');
 	}
+	  hideActivityIndicator() {
+    // this.isLoading = true;
+    console.log('hideActivityIndicator')
+  }
+	  showActivityIndicator() {
+    // this.isLoading = true;
+    console.log('showActivityIndicator')
+  }
 }

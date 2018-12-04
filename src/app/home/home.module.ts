@@ -5,6 +5,7 @@ import { HomeRoutingModule } from "./home.routing";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { HomeComponent } from "./home.component";
+import { SettingsComponent } from "../settings/settings.component";
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { HomeComponent } from "./home.component";
     NativeScriptCommonModule
   ],
   declarations: [
-  HomeComponent
+  HomeComponent,
+  SettingsComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

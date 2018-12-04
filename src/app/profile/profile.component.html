@@ -1,1 +1,31 @@
-    <Label text="{{'PROFILE.PROFILE'|L}}"></Label> 
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" [text]="'PROFILE.PROFILE'|L" horizontalAlignment="center"></Label>
+    <ActionItem ios.position="right"  android.systemIcon="ic_settings" android.position="right" pageTransition="flip" (tap)="goToSettings()">
+    </ActionItem>
+</ActionBar>
+
+<StackLayout orientation="vertical">
+<Image src="~/assets/images/profilo.png" stretch="none"> </Image>
+<TabView androidTabsPosition="top">
+<ScrollView *tabItem="{title: infoTitle}" name="ongoingTab">
+    <ns-info
+        (loading)="showActivityIndicator()"
+        (loaded)="hideActivityIndicator()"></ns-info>   
+</ScrollView>
+<ScrollView *tabItem="{title: detailsTitle}" name="attendTab">
+    <ns-details
+        (loading)="showActivityIndicator()"
+        (loaded)="hideActivityIndicator()"> </ns-details>   
+</ScrollView>
+<ScrollView *tabItem="{title: mediaTitle}" name="concludedTab">
+    <ns-media
+        (loading)="showActivityIndicator()"
+        (loaded)="hideActivityIndicator()"> </ns-media>   
+</ScrollView>
+<ScrollView *tabItem="{title: contactsTitle}" name="concludedTab">
+    <ns-contacts
+        (loading)="showActivityIndicator()"
+        (loaded)="hideActivityIndicator()"> </ns-contacts>   
+</ScrollView>
+</TabView>
+</StackLayout>

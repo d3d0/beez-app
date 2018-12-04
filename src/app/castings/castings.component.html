@@ -1,19 +1,23 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" [text]="'CASTINGS.CASTINGS'|L" horizontalAlignment="center"></Label>
+</ActionBar>
+
 <TabView androidTabsPosition="top">
 <ScrollView *tabItem="{title: ongoingTitle}" name="ongoingTab">
     <ns-castings-list
-        [type]="ongoing"
+        [castingType]="'ongoing'"
         (loading)="showActivityIndicator()"
         (loaded)="hideActivityIndicator()"></ns-castings-list>   
 </ScrollView>
 <ScrollView *tabItem="{title: attendTitle}" name="attendTab">
     <ns-castings-list
-        [type]="attend"
+        [castingType]="'attend'"
         (loading)="showActivityIndicator()"
         (loaded)="hideActivityIndicator()"> </ns-castings-list>   
 </ScrollView>
 <ScrollView *tabItem="{title: concludedTitle}" name="concludedTab">
     <ns-castings-list
-        [type]="concluded"
+        [castingType]="'concluded'"
         (loading)="showActivityIndicator()"
         (loaded)="hideActivityIndicator()"> </ns-castings-list>   
 </ScrollView>

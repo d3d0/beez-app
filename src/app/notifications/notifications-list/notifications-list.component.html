@@ -1,1 +1,14 @@
-    <Label text="{{'NOTIFICATIONS.NOTIFICATIONS'|L}}"></Label> 
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L" horizontalAlignment="center"></Label>
+</ActionBar>
+
+
+<ListView
+  [items]="notifications">
+  <ng-template let-item="item">
+      <StackLayout>
+      <Label  [text]="item.title"></Label>
+      <Label  [text]="item.message"></Label>
+      </StackLayout>
+  </ng-template>
+</ListView>

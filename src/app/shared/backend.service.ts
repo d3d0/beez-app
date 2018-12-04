@@ -1,9 +1,6 @@
 import { Injectable } from "@angular/core";
 import { getString, setString } from "application-settings";
-import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
-
-const localize = require("nativescript-localize");
-const currentLang = localize("LANG");
+// import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
 
 export class BackendService {
   static baseUrl = "https://dev.beez.io/services/";
@@ -11,7 +8,7 @@ export class BackendService {
   static sessid = "sessid";
   static session_name = "session_name";
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   static isLoggedIn(): boolean {
     return true;
@@ -21,22 +18,22 @@ export class BackendService {
   static getCommonHeaders() {
     return {
       "Content-Type": "application/json",
-      "X-CSFR-token":  getString( this.XCSFRtoken) || this.getAnonXCSFRtoken(),
+      // "X-CSFR-token":  getString( this.XCSFRtoken) || this.getAnonXCSFRtoken(),
     }
   }
  
-  static getAnonXCSFRtoken(){ 
-    //  return new Promise((resolve, reject) => {
-    //   this.http.get({
-    //   url: this.baseUrl + "session/token",
-    //   method: "GET"
-    // })
-    // .then(data => {
-    //   console.log(data.content.toString())
-    //   this.XCSFRtoken = data.content.toString()
-    //   })
-    // })
-  }
+  // static getAnonXCSFRtoken(){ 
+  //   //  return new Promise((resolve, reject) => {
+  //   //   this.http.get({
+  //   //   url: this.baseUrl + "session/token",
+  //   //   method: "GET"
+  //   // })
+  //   // .then(data => {
+  //   //   console.log(data.content.toString())
+  //   //   this.XCSFRtoken = data.content.toString()
+  //   //   })
+  //   // })
+  // }
 
   get XCSFRtoken() {
     console.log('GETTING XCSFRtoken: ' + getString(this.XCSFRtoken))

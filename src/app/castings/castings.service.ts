@@ -9,14 +9,46 @@ import { map, catchError } from "rxjs/operators";
 
 import { BackendService } from "../shared";
 import { Casting } from "./casting.model";
+import { Castings } from "./castings.mock";
 
 @Injectable()
 export class CastingsService {
-  items: BehaviorSubject<Array<Casting>> = new BehaviorSubject([]);
-  private allItems: Array<Casting> = [];
+  // items: BehaviorSubject<Array<Casting>> = new BehaviorSubject([]);
   // baseUrl = BackendService.baseUrl + "appdata/" + BackendService.appKey + "/Groceries";
+ 
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient, private zone: NgZone) { }
+   load() {
+    return Castings;
+  }
+
+  //   return this.http.get(this.baseUrl, {
+  //     headers: this.getCommonHeaders()
+  //   })
+  //   .pipe(
+  //     map((data: any[]) => {
+  //       this.allItems = data
+  //         .sort((a, b) => {
+  //           return a._kmd.lmt > b._kmd.lmt ? -1 : 1;
+  //         })
+  //         .map(
+  //           grocery => new Grocery(
+  //             grocery._id,
+  //             grocery.Name,
+  //             grocery.Done || false,
+  //             grocery.Deleted || false
+  //         )
+  //       );
+  //       this.publishUpdates();
+  //     }),
+  //     catchError(this.handleErrors)
+  //   );
+  // }
+
+    // public load() {
+    //     return this.castings;
+    // }
+
 
   // load() {
   //   return this.http.get(this.baseUrl, {

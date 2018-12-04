@@ -6,7 +6,7 @@ import { CastingsRoutingModule } from "./castings.routing";
 import { CastingsComponent } from "./castings.component";
 import { CastingsListComponent } from "./castings-list/castings-list.component";
 import { CastingDetailComponent } from "./casting-detail/casting-detail.component";
-// import { CastingsService } from "./castings.service";
+import { CastingStatusPipe } from "./castings-list/casting-status.pipe";
 
 @NgModule({
   imports: [
@@ -17,7 +17,8 @@ import { CastingDetailComponent } from "./casting-detail/casting-detail.componen
   declarations: [
     CastingsComponent,
 	  CastingsListComponent,
-	  CastingDetailComponent
+	  CastingDetailComponent,
+    CastingStatusPipe
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

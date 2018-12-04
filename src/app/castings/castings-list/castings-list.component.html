@@ -1,36 +1,25 @@
-    <Label text="{{'CASTINGS'|L}}"></Label> 
-<!-- 
-<ListView
+<RadListView
+  pullToRefresh="true" 
   [row]="row"
   [class.visible]="listLoaded"
-  [items]="store.items | async | itemStatus:showDeleted"
-  (itemLoading)="makeBackgroundTransparent($event)" >
+  [items]="castings | castingStatus:castingType">
   <ng-template let-item="item">
-    <GridLayout
-      columns="*, auto"
-      class="container"
-      [opacity]="item.done ? '0.8' : '1'">
-      <StackLayout
-        col="0"
-        orientation="horizontal"
-        class="tap-target"
-        (tap)="toggleDone(item)">
-        <Image
-          [src]="imageSource(item)"
-          class="check-box"></Image>
-        <Label
-          [text]="item.name"
-          [class.line-through]="item.done && !item.deleted"></Label>
+    <!-- <Image src="~/assets/images/logo_login.png"/> -->
+      <StackLayout>
+      <Label  [text]="castingType"></Label>
+      <Label  [text]="item.title"></Label>
+      <Label  [text]="item.subtitle"></Label>
+      <Label textWrap="true">
+        <FormattedString>
+          <!-- <Span [title]="'CASTING_DATE" ></Label> -->
+          <Span text=" • " ></Span>
+          <Span [text]="item.casting_date" ></Span>
+          <Span text=" - " ></Span>
+          <Span [text]="item.start_at" ></Span>
+          <Span text="   ->" ></Span>
+          <Span [text]="item.end_at" ></Span>
+        </FormattedString>
+      </Label>
       </StackLayout>
-      <GridLayout
-        col="1"
-        class="delete-container"
-        (tap)="delete(item)">
-        <StackLayout>
-          <Image src="res://delete"></Image>
-        </StackLayout>
-      </GridLayout>
-    </GridLayout>
   </ng-template>
-</ListView>
- -->
+</RadListView>

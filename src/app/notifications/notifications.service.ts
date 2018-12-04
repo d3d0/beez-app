@@ -10,14 +10,19 @@ import { map, catchError } from "rxjs/operators";
 import { BackendService } from "../shared";
 import { Notification } from "./notification.model";
 
+import { Notifications } from "./notifications.mock";
+
+
 @Injectable()
 export class NotificationsService {
-  items: BehaviorSubject<Array<Notification>> = new BehaviorSubject([]);
-  private allItems: Array<Notification> = [];
-  baseUrl = BackendService.baseUrl;
 
-  constructor(private http: HttpClient, private zone: NgZone) { }
+  constructor(private http: HttpClient) {
+    console.log('not services!')
+   }
 
+  load() {
+    return Notifications
+  }
   // load() {
   //   return this.http.get(this.baseUrl, {
   //     headers: this.getCommonHeaders()

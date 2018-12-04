@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationsService} from "../notifications.service";
+import { Notification} from "../notification.model";
 
 @Component({
   selector: 'ns-notifications',
@@ -8,8 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationsListComponent implements OnInit {
 
-  constructor() { }
+  notifications: Notification[];
 
+  constructor(store: NotificationsService) {
+      this.notifications = store.load();
+  }
   ngOnInit() {
   	console.log('hello from Notifications component');
   }
