@@ -33,10 +33,10 @@
     "CONCLUDED": "CONCLUDED",
     "ATTEND": "TO ATTEND"
   },
-  "NOTIFICATIONS": {  
+  "NOTIFICATIONS": {
     "NOTIFICATIONS": "Notifications"
   },
-  "PROFILE": {  
+  "PROFILE": {
     "PROFILE": "Profile",
     "DETAILS" : "DETAILS",
     "MEDIA" : "MEDIA",
@@ -59,8 +59,8 @@
     "HEIGHT" : "Height",
     "BODY_SIZE" : "Size",
     "SHOE_SIZE" : "Shoes",
-    "ACTIVITIES": "Activities", 
-    "HAIR_COLOR": "Hair color", 
+    "ACTIVITIES": "Activities",
+    "HAIR_COLOR": "Hair color",
     "HAIR_LENGHT": "Hair lenght",
     "PHYSIQUE": "Physique",
     "NATIONALITY" : "Nationality",

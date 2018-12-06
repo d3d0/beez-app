@@ -1,20 +1,21 @@
   export const Notifications: any = [
   {
     id : 2341,
-    title: "notificaiton1",
-    message: "notificaiton test 1"
+    title: "Advertising McDonald’s",
+    subtitle: "Sei stato selezionato per il casting",
+    date: "15 ago",
+    message: "INFORMAZIONI SUL PROGETTO"
   },  {
-    id : 2341,
-    title: "notificaiton2",
-    message: "notificaiton test 2"
+    id : 2342,
+    title: "Advertising Adidas",
+    subtitle: "Sei stato selezionato per il casting",
+    date: "15 ago",
+    message: "INFORMAZIONI SUL PROGETTO"
   },  {
-    id : 2341,
-    title: "notificaiton3",
-    message: "notificaiton test 3"
-  },
-  {
-    id : 2341,
-    title: "notificaiton4",
-    message: "notificaiton test 4"
+    id : 2343,
+    title: "Spot TV Nintendo",
+    subtitle: "Sei stato selezionato per il casting",
+    date: "15 ago",
+    message: "INFORMAZIONI SUL PROGETTO"
   }
   ]

@@ -1,14 +1,16 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L" horizontalAlignment="center"></Label>
+    <Label class="action-bar-title" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L" ></Label>
 </ActionBar>
 
 
-<ListView
-  [items]="notifications">
+<ListView [items]="notifications" class="list-group">
   <ng-template let-item="item">
-      <StackLayout>
-      <Label  [text]="item.title"></Label>
-      <Label  [text]="item.message"></Label>
+      <StackLayout class="list-group-item notifications" >
+        <Image src="~/assets/images/profilo.png" stretch="none"> </Image>
+        <Label  [text]="item.title" class="list-group-item-heading"></Label>
+        <Label  [text]="item.subtitle" class="list-group-item-text"></Label>
+        <Label  [text]="item.date" class="list-group-item-text"></Label>
+        <Label  [text]="item.message" class="list-group-item-text"></Label>
       </StackLayout>
   </ng-template>
 </ListView>

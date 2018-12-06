@@ -1,5 +1,5 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" [text]="'CASTINGS.CASTINGS'|L" horizontalAlignment="center"></Label>
+    <Label class="action-bar-title" [text]="'CASTINGS.CASTINGS'|L" ></Label>
 </ActionBar>
 
 <TabView androidTabsPosition="top">
@@ -7,18 +7,18 @@
     <ns-castings-list
         [castingType]="'ongoing'"
         (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"></ns-castings-list>   
+        (loaded)="hideActivityIndicator()"></ns-castings-list>
 </ScrollView>
 <ScrollView *tabItem="{title: attendTitle}" name="attendTab">
     <ns-castings-list
         [castingType]="'attend'"
         (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"> </ns-castings-list>   
+        (loaded)="hideActivityIndicator()"> </ns-castings-list>
 </ScrollView>
 <ScrollView *tabItem="{title: concludedTitle}" name="concludedTab">
     <ns-castings-list
         [castingType]="'concluded'"
         (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"> </ns-castings-list>   
+        (loaded)="hideActivityIndicator()"> </ns-castings-list>
 </ScrollView>
 </TabView>
