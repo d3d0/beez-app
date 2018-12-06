@@ -1,8 +1,12 @@
-<ActionBar class="action-bar">
-    <NavigationButton icon="res://ic_arrow_back_black_24dp" (tap)="goBack()"></NavigationButton>
+
+<ActionBar title="{N} Login Example">
+    <NavigationButton text="Back" ios.position="left"></NavigationButton>
 </ActionBar>
+
+<StackLayout>
+	<Button text="logout" [nsRouterLink]="['/user/login']" clearHistory="true"></Button>
+</StackLayout>
 
 
 <!-- <Button text="Log out" (tap)="logout()" class="btn btn-primary"></Button><Button text="login" [nsRouterLink]="['/main']" clearHistory="true"></Button> -->
 
-<Button text="logout" [nsRouterLink]="['/user/login']" clearHistory="true"></Button>

@@ -16,13 +16,12 @@ import { Notifications } from "./notifications.mock";
 @Injectable()
 export class NotificationsService {
 
-  constructor(private http: HttpClient) {
-    console.log('not services!')
-   }
+  constructor(private http: HttpClient) {}
 
   load() {
     return Notifications
   }
+  
   // load() {
   //   return this.http.get(this.baseUrl, {
   //     headers: this.getCommonHeaders()

@@ -3,4 +3,5 @@ listone casting filtrati per utente
 
 listone casting attivi - flag moule
 
-
+// exempio di lista
+https://github.com/telerik/nativescript-ui-samples-angular/blob/master/listview/app/examples/dataItem.service.ts

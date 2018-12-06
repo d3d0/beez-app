@@ -17,8 +17,8 @@ export class CastingsService {
   // baseUrl = BackendService.baseUrl + "appdata/" + BackendService.appKey + "/Groceries";
  
   constructor(private http: HttpClient) {}
-
-   load() {
+  
+  load() {
     return Castings;
   }
 
