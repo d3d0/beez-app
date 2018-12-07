@@ -8,7 +8,7 @@ import { Casting } from "../casting.model";
 export class CastingStatusPipe implements PipeTransform {
   value: Array<Casting> = [];
   transform(items: Array<Casting>, castingType: string) {
-    if (items instanceof Array)
+    // if (items instanceof Array)
      {
       switch(castingType) {
           case "ongoing":

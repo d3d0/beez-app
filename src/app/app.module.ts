@@ -8,11 +8,7 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule, authProviders } from "./app.routing";
 import { setStatusBarColors, BackendService } from "./shared";
 
-import { CastingsService} from "./castings/castings.service";
-import { NotificationsService} from "./notifications/notifications.service";
-import { UserService} from "./user/user.service";
-
-// traceEnable();
+traceEnable();
 
 @NgModule({
     bootstrap: [
@@ -20,10 +16,7 @@ import { UserService} from "./user/user.service";
     ],
     providers: [
         authProviders,
-        BackendService,
-        NotificationsService,
-        UserService,
-        CastingsService
+        BackendService
     ],
     imports: [
         AppRoutingModule,
