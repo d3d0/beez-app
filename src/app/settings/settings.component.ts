@@ -16,9 +16,9 @@ export class SettingsComponent implements OnInit {
   }
 
   logout() {
-    // this.loginService.logoff();
     this.router.navigate(["/user/login"]);
   }
+  
   public goBack() {
   	this.routerExtensions.backToPreviousPage();
   }

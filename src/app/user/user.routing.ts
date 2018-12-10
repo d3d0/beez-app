@@ -4,11 +4,12 @@ import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { LoginComponent } from "./login/login.component";
-import { SigninComponent } from "./signin/signin.component";
+import { SignupComponent } from "./signup/signup.component";
 
 const routes: Routes = [
-  { path: "", component: LoginComponent },
-  { path: "signin", component: SigninComponent },
+  // { path: "", component: SignupComponent },
+  { path: "", redirectTo: "signup"},
+  { path: "signup", component: SignupComponent },
   { path: "login", component: LoginComponent }
 ];
 

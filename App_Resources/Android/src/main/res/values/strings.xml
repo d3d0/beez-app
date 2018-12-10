@@ -45,7 +45,7 @@
   <string name="_CASTINGS_CASTINGS_1BoPqT">"Castings"</string>
   <string name="_SHARE_WHITH_A_FRIEND_ZhQhD8">"SHARE WHITH A FRIEND"</string>
   <string name="_HELP_9JU7">"Need Help?"</string>
-  <string name="_SIGNIN_Z2bxEA8">"Sign In"</string>
+  <string name="_SIGNUP_Z2bxEu0">"Sign Up"</string>
   <string name="_PARTECIPATE_ZJsVeC">"PARTECIPATE"</string>
   <string name="_DATE_AND_LOCATION_2ajKni">"DATE AND LOCATION"</string>
   <string name="_FEATURES_zwqMM">"FEATURES"</string>
@@ -68,6 +68,7 @@
   <string name="title_activity_kimera">"BEEZ CASTING NAME APP"</string>
   <string name="_LANG_afUt">"EN"</string>
   <string name="_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF">"This will be added to InfoPlist.strings"</string>
+  <string name="_SIGNIN_Z2bxEA8">"SIGNIN"</string>
   <string name="_ATTEND_2ibycF">"ATTEND"</string>
   <string name="_CONCLUDED_2fbjnz">"CONCLUDED"</string>
   <string name="_ONGOING_ZHmWJp">"ONGOING"</string>

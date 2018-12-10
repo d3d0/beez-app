@@ -6,7 +6,7 @@ import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 
 import { UserRoutingModule} from "./user.routing";
 import { LoginComponent } from "./login/login.component";
-import { SigninComponent } from "./signin/signin.component";
+import { SignupComponent } from "./signup/signup.component";
 
 @NgModule({
   imports: [
@@ -17,7 +17,7 @@ import { SigninComponent } from "./signin/signin.component";
   ],
   declarations: [
     LoginComponent,
-    SigninComponent
+    SignupComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

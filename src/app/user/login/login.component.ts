@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'ns-login',
@@ -8,8 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class LoginComponent implements OnInit {
-  constructor() { }
+
+	isAuthenticating = false;
+  
+  constructor( private router: Router ) { }
+
   ngOnInit() {
   	      console.log('hello from login Component');
   }
+
+  goToSignup(){
+    this.router.navigate(["/user/signup"]);
+  }
+	
 }

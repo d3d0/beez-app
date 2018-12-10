@@ -1,0 +1,96 @@
+<TabView androidTabsPosition="top">
+	<ScrollView *tabItem="TEST">
+		<StackLayout ref="mainContainer" >
+			<Label [text]="'LOGIN.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
+			<Label textWrap="true" [text]="'LOGIN.REGISTRATION_TEXT'|L"></Label>
+
+			<Label [text]="'USER.NAME'|L"></Label>
+			<TextField
+			[hint]="'USER.NAME'|L"
+			returnKeyType="next"
+			autocorrect="false"></TextField>
+
+			<Label [text]="'USER.SURNAME'|L"></Label>
+			<TextField
+			[hint]="'USER.SURNAME'|L"
+			returnKeyType="next"
+			autocorrect="false"></TextField>
+
+			<Label [text]="'USER.DATE_OF_BIRTH'|L"></Label>
+			<DatePicker  ></DatePicker>
+
+			<Label [text]="'USER.EMAIL'|L"></Label>
+			<TextField
+			[hint]="'USER.EMAIL'|L"
+			keyboardType="email"
+			returnKeyType="next"
+			autocorrect="false"></TextField>
+
+			<Label [text]="'USER.PASSWORD'|L"></Label>
+			<TextField ref="password"
+			[hint]="'USER.PASSWORD'|L"
+			secure="true"
+			returnKeyType="done"></TextField>
+
+			<Button
+			[text]="'LOGIN.REGISTRATION_SUBMIT'|L"></Button>
+		</StackLayout>
+	</ScrollView>
+	<ScrollView *tabItem="{title: attendTitle}" name="attendTab">
+		<StackLayout>
+			<Label [text]="'LOGIN.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
+			<Label textWrap="true" [text]="'LOGIN.REGISTRATION_TEXT'|L"></Label>
+
+			<Label [text]="'USER.NAME'|L"></Label>
+			<TextField
+			[hint]="'USER.NAME'|L"
+			returnKeyType="next"
+			autocorrect="false"></TextField>
+
+			<Label [text]="'USER.SURNAME'|L"></Label>
+			<TextField
+			[hint]="'USER.SURNAME'|L"
+			returnKeyType="next"
+			autocorrect="false"></TextField>
+
+			<Label [text]="'USER.DATE_OF_BIRTH'|L"></Label>
+			<DatePicker  ></DatePicker>
+
+			<Label [text]="'USER.EMAIL'|L"></Label>
+			<TextField
+			[hint]="'USER.EMAIL'|L"
+			keyboardType="email"
+			returnKeyType="next"
+			autocorrect="false"></TextField>
+
+			<Label [text]="'USER.PASSWORD'|L"></Label>
+			<TextField ref="password"
+			[hint]="'USER.PASSWORD'|L"
+			secure="true"
+			returnKeyType="done"></TextField>
+
+			<Label [text]="'USER.MINOR_NAME'|L"></Label>
+			<TextField ref="password"
+			[hint]="'USER.MINOR_NAME'|L"
+			secure="true"
+			returnKeyType="done"></TextField>
+
+			<Label [text]="'USER.MINOR_SURNAME'|L"></Label>
+			<TextField ref="password"
+			[hint]="'USER.MINOR_SURNAME'|L"
+			secure="true"
+			returnKeyType="done"></TextField>
+
+			<Label [text]="'USER.MINOR_DATE_OF_BIRTH'|L"></Label>
+			<TextField ref="password"
+			[hint]="'USER.MINOR_SURNAME'|L"
+			secure="true"
+			returnKeyType="done"></TextField>
+
+			<DatePicker></DatePicker>
+
+			<Button [text]="'LOGIN.MINOR_REGISTRATION_SUBMIT'|L"></Button>
+
+		</StackLayout>
+	</ScrollView>
+</TabView>
