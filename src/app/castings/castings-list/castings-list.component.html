@@ -1,13 +1,9 @@
+<ScrollView>
 <RadListView
-  pullToRefresh="true" 
-  (itemTap)="onCarItemTap($event)"
-  [row]="row"
-  [class.visible]="listLoaded"
-  [items]="castings | castingStatus:castingType">
+  [items]="castings | castingStatus:castingType" >
   <ng-template let-item="item" >
     <!-- <Image src="~/assets/images/logo_login.png"/> -->
       <StackLayout>
-      <Label  [text]="castingType"></Label>
       <Label  [text]="item.title"></Label>
       <Label  [text]="item.subtitle"></Label>
       <Label textWrap="true">
@@ -24,3 +20,4 @@
       </StackLayout>
   </ng-template>
 </RadListView>
+</ScrollView>

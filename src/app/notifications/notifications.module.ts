@@ -5,6 +5,8 @@ import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 
 import { NotificationsListComponent } from "./notifications-list/notifications-list.component";
 import { NotificationsRoutingModule } from "./notifications-routing.module";
+import { NotificationsService} from "./notifications.service";
+
 
 @NgModule({
   imports: [
@@ -12,6 +14,9 @@ import { NotificationsRoutingModule } from "./notifications-routing.module";
     NativeScriptCommonModule,
     NativeScriptLocalizeModule,
     NativeScriptUIListViewModule
+  ],
+  providers:[
+  NotificationsService
   ],
   declarations: [
   NotificationsListComponent

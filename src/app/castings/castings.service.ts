@@ -1,25 +1,23 @@
-import { Injectable, NgZone } from "@angular/core";
+import { Injectable } from "@angular/core";
 import {
   HttpClient,
   HttpHeaders,
   HttpErrorResponse,
 } from "@angular/common/http";
-import { BehaviorSubject, throwError } from "rxjs";
-import { map, catchError } from "rxjs/operators";
+// import { BehaviorSubject, throwError } from "rxjs";
+// import { map, catchError } from "rxjs/operators";
 
-import { BackendService } from "../shared";
+// import { BackendService } from "../shared";
 import { Casting } from "./casting.model";
-import { Castings } from "./castings.mock";
+import { CASTINGS } from "./castings.mock";
 
 @Injectable()
 export class CastingsService {
-  // items: BehaviorSubject<Array<Casting>> = new BehaviorSubject([]);
-  // baseUrl = BackendService.baseUrl + "appdata/" + BackendService.appKey + "/Groceries";
  
-  constructor(private http: HttpClient) {}
+  // constructor() {}
   
-  load() {
-    return Castings;
+  getCastings() :Casting[]{
+    return CASTINGS;
   }
 
   //   return this.http.get(this.baseUrl, {
@@ -45,8 +43,9 @@ export class CastingsService {
   //   );
   // }
 
-    // public load() {
-    //     return this.castings;
+    // load() {
+    //     console.log('load')
+    //     return CASTINGS;
     // }
 
 

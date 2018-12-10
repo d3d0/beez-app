@@ -1,4 +1,5 @@
-  export const Castings: any = [
+ import { Casting} from "./casting.model";
+ export const CASTINGS: Casting[] = [
   {
     id : 2341,
     "title": "Titolo primo casting nuovo",

@@ -23,8 +23,7 @@ export class ProfileComponent {
 	}
 
   goToSettings(){
-    console.log('goToSettings');
-    this.routerExtension.navigate(["/home/default/settings"], { clearHistory: true });
+    this.routerExtension.navigate(["/home/settings"], { clearHistory: true });
   }
 	
   hideActivityIndicator() {
