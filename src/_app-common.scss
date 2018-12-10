@@ -74,14 +74,17 @@ font-size: 12;
 // ---------------------------------
 
 .page {
-   background-color: #33cd5f;
+   background-color: $verde;
+   label {
+     color: yellow;
+   }
 }
 ActionBar, .action-bar {
   color: $nero;
   background-color: $bianco;
   .action-bar-title {
       horizontal-align: left;
-      font-size: 30;
+      font-size: 24;
       color: $nero;
   }
 }
@@ -101,16 +104,21 @@ ScrollView, ListView {
 // ---------------------------------
 // ListView
 // ---------------------------------
-.list-group-item {
-  .list-group-item-heading {
-    font-size: 30;
-    color: $verde;
-  }
-  .list-group-item-text {
-    font-size: 15;
-    color: $nero;
-  }
-}
+// .list-group-item {
+//   border-color: $verde;
+//   border-width: 1;
+//   border-radius: 10;
+//   .list-group-item-heading {
+//     font-size: 20;
+//     color: $nero;
+//     margin: 0 15 10 15;
+//   }
+//   .list-group-item-text {
+//     font-size: 14;
+//     color: $nero;
+//     margin: 0 15 15 15;
+//   }
+// }
 
 // ---------------------------------
 // TabView

@@ -7,25 +7,25 @@
 <StackLayout orientation="vertical">
 <Image src="~/assets/images/profilo.png" stretch="none"> </Image>
 <TabView androidTabsPosition="top">
-<ScrollView *tabItem="{title: infoTitle}" name="ongoingTab">
-    <ns-info
-        (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"></ns-info>
-</ScrollView>
-<ScrollView *tabItem="{title: detailsTitle}" name="attendTab">
-    <ns-details
-        (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"> </ns-details>
-</ScrollView>
-<ScrollView *tabItem="{title: mediaTitle}" name="concludedTab">
-    <ns-media
-        (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"> </ns-media>
-</ScrollView>
-<ScrollView *tabItem="{title: contactsTitle}" name="concludedTab">
-    <ns-contacts
-        (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"> </ns-contacts>
-</ScrollView>
+  <ScrollView *tabItem="{title: infoTitle}" name="ongoingTab">
+      <ns-info
+          (loading)="showActivityIndicator()"
+          (loaded)="hideActivityIndicator()"></ns-info>
+  </ScrollView>
+  <ScrollView *tabItem="{title: detailsTitle}" name="attendTab">
+      <ns-details
+          (loading)="showActivityIndicator()"
+          (loaded)="hideActivityIndicator()"> </ns-details>
+  </ScrollView>
+  <ScrollView *tabItem="{title: mediaTitle}" name="concludedTab">
+      <ns-media
+          (loading)="showActivityIndicator()"
+          (loaded)="hideActivityIndicator()"> </ns-media>
+  </ScrollView>
+  <ScrollView *tabItem="{title: contactsTitle}" name="concludedTab">
+      <ns-contacts
+          (loading)="showActivityIndicator()"
+          (loaded)="hideActivityIndicator()"> </ns-contacts>
+  </ScrollView>
 </TabView>
 </StackLayout>
