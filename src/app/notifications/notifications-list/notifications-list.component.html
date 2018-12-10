@@ -1,16 +1,34 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L" ></Label>
-</ActionBar>
+<Page xmlns:Card="nativescript-cardview">
+  <ActionBar class="action-bar">
+      <Label class="action-bar-title" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L" ></Label>
+  </ActionBar>
 
 
-<ListView [items]="notifications" class="list-group">
-  <ng-template let-item="item">
-      <StackLayout class="list-group-item notifications" >
-        <Image src="~/assets/images/profilo.png" stretch="none"> </Image>
-        <Label  [text]="item.title" class="list-group-item-heading"></Label>
-        <Label  [text]="item.subtitle" class="list-group-item-text"></Label>
-        <Label  [text]="item.date" class="list-group-item-text"></Label>
-        <Label  [text]="item.message" class="list-group-item-text"></Label>
-      </StackLayout>
-  </ng-template>
-</ListView>
+  <ListView [items]="notifications" class="card" >
+    <ng-template let-item="item">
+
+          <!-- <StackLayout class="list-group-item">
+            <StackLayout class="notifica" orientation="vertical" clipToBounds="true">
+              <Image  src="~/assets/images/notifica-100.jpg" stretch="fill" class="list-group-item-img"> </Image>
+              <Label  [text]="item.title" class="list-group-item-heading" ></Label>
+              <Label  [text]="item.subtitle" class="list-group-item-text" ></Label>
+              <Label  [text]="item.date" class="list-group-item-text" ></Label>
+              <Label  [text]="item.message" class="list-group-item-text" ></Label>
+              <Label  text="" style="background-size:contain; background-image: url('~/assets/images/notifica-100.jpg'); height:300; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);" ></Label>
+            </StackLayout>
+          </StackLayout> -->
+
+          <StackLayout>
+            <Card:CardView class="cardStyle" margin="50" elevation="40" radius="50">
+                 <grid-layout rows="200, auto, auto" columns="auto, auto, *">
+                     <image src="~/assets/images/notifica-100.jpg" stretch="aspectFill" colSpan="3" row="0" />
+                     <label text="Batman wants to be friends?" class="info" textWrap="true" row="1" colSpan="3" />
+                     <button text="DECLINE" tap="goAway" row="2" col="0" />
+                     <button text="ACCEPT" row="2" col="1" />
+                 </grid-layout>
+             </Card:CardView>
+          </StackLayout>
+
+    </ng-template>
+  </ListView>
+</Page>
