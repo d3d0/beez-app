@@ -3,22 +3,22 @@
 </ActionBar>
 
 <TabView androidTabsPosition="top">
-<ScrollView *tabItem="{title: ongoingTitle}" name="ongoingTab">
-    <ns-castings-list
-        [castingType]="'ongoing'"
-        (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"></ns-castings-list>
-</ScrollView>
-<ScrollView *tabItem="{title: attendTitle}" name="attendTab">
-    <ns-castings-list
-        [castingType]="'attend'"
-        (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"> </ns-castings-list>
-</ScrollView>
-<ScrollView *tabItem="{title: concludedTitle}" name="concludedTab">
-    <ns-castings-list
-        [castingType]="'concluded'"
-        (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"> </ns-castings-list>
-</ScrollView>
+  <ScrollView *tabItem="{title: ongoingTitle}" name="ongoingTab">
+      <ns-castings-list
+          [castingType]="'ongoing'"
+          (loading)="showActivityIndicator()"
+          (loaded)="hideActivityIndicator()"></ns-castings-list>
+  </ScrollView>
+  <ScrollView *tabItem="{title: attendTitle}" name="attendTab">
+      <ns-castings-list
+          [castingType]="'attend'"
+          (loading)="showActivityIndicator()"
+          (loaded)="hideActivityIndicator()"> </ns-castings-list>
+  </ScrollView>
+  <ScrollView *tabItem="{title: concludedTitle}" name="concludedTab">
+      <ns-castings-list
+          [castingType]="'concluded'"
+          (loading)="showActivityIndicator()"
+          (loaded)="hideActivityIndicator()"> </ns-castings-list>
+  </ScrollView>
 </TabView>

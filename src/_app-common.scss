@@ -1,9 +1,10 @@
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
 
-//font-family:'Roboto Regular'
-
 // Font icon class
+* {
+  font-family: "Sofia Pro Regular";
+}
 .fa {
    font-family: "FontAwesome";
 }
@@ -32,25 +33,25 @@
 // TIPOGRAPHY
 // ---------------------------------
 .body {
-font-size: 14;
+  font-size: 14;
 }
 .h1 {
-font-size: 36;
+  font-size: 36;
 }
 .h2 {
-font-size: 30;
+  font-size: 30;
 }
 .h3 {
-font-size: 24;
+  font-size: 24;
 }
 .h4 {
-font-size: 18;
+  font-size: 18;
 }
 .h5 {
-font-size: 14;
+  font-size: 14;
 }
 .h6 {
-font-size: 12;
+  font-size: 12;
 }
 .page label.text-primary, .tab-view label.text-primary {
   color: #33cd5f;
@@ -74,12 +75,11 @@ font-size: 12;
 // 2) View background color
 // 3) Text color
 // ---------------------------------
-
 .page {
-   background-color: $verde;
-   label {
-     color: red;
-   }
+  background-color: $verde;
+  label {
+    color: red;
+  }
 }
 ActionBar, .action-bar {
   color: $nero;
@@ -104,29 +104,122 @@ ScrollView, ListView {
 }
 
 // ---------------------------------
-// ListView
-// ---------------------------------
-// .list-group-item {
-//   border-color: $verde;
-//   border-width: 1;
-//   border-radius: 10;
-//   .list-group-item-heading {
-//     font-size: 20;
-//     color: $nero;
-//     margin: 0 15 10 15;
-//   }
-//   .list-group-item-text {
-//     font-size: 14;
-//     color: $nero;
-//     margin: 0 15 15 15;
-//   }
-// }
-
-// ---------------------------------
 // TabView
 // ---------------------------------
 TabView {
   tab-text-color: $nero;
   selected-tab-text-color: $verde;
   android-selected-tab-highlight-color: $verde;
+}
+
+// ---------------------------------
+// StackLayout, GridLayout, CardView
+// ---------------------------------
+StackLayout {
+}
+GridLayout {
+}
+CardView {
+  margin: 0 20 20 20;
+}
+.list-group-first {
+  margin-top: 20;
+}
+
+// ---------------------------------
+// CardView > list-group-item
+// ---------------------------------
+.list-group-item {
+  background: white; // IMPORTANTE
+  border-radius: 5;  // IMPORTANTE
+  width:100%;
+  color: #000;
+  .list-group-item-img {
+    margin: 0 0 10 0;
+    height: 160;            // IMPORTANTE
+    border-radius: 5 5 0 0; // IMPORTANTE
+  }
+  .list-group-item-heading {
+    font-size: 20;
+    margin: 0 15 10 15;
+  }
+  .list-group-item-text {
+    font-size: 14;
+    color: #8E8E8E;
+    margin: 0 15 15 15;
+  }
+  .list-group-item-date {
+    font-size: 10;
+    margin: 3 15 15 15;
+    text-align: right;
+  }
+  .list-group-item-h-line {
+    height: 1;
+    background-color: #DDD;
+    margin: 0 15 15 15;
+  }
+  .list-group-item-v-line {
+    width: 1;
+    background-color: #DDD;
+    margin: 0 15 15 15;
+  }
+  .list-group-item-icona-casting {
+    font-size: 10;
+    color: #5A82FF;
+    margin: 0 0 15 15; // IMPORTANTE
+  }
+  .list-group-item-icona-photo {
+    margin: 0 15 15 15;
+    width:16;
+    height: 12;
+    display: block;
+    background-image: url("res://photo") no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .list-group-item-info {
+    font-size: 10;
+    margin: 0 0 15 0; // IMPORTANTE
+  }
+  .list-group-item-freccia {
+    margin: 0 15 15 15;
+    width:20;
+    height: 10;
+    display: block;
+    background-image: url("res://arrow_right") no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  .list-group-item-button {
+    margin: 0 15 15 15;
+    width:20;
+    height: 10;
+    display: block;
+    &--freccia {
+      background-image: url("res://arrow_right") no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+  .my-button {
+    font-size: 10;
+    color: #000;
+    margin: 0 15 15 15;
+    width:20;
+    height: 10;
+    display: block;
+    background-image: url("res://arrow_right") no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  .my-button:active {
+    color:white;
+  }
+  .my-button::pressed {
+    color:white;
+  }
+  .my-button::highlighted{
+    color:white;
+  }
 }

@@ -11,7 +11,7 @@ export class CastingsComponent  {
 	ongoingTitle = localize("CASTINGS.ONGOING");
 	attendTitle =localize("CASTINGS.ATTEND");
 	concludedTitle =localize("CASTINGS.CONCLUDED");
-	constructor() { 
+	constructor() {
 		console.log('hello from Castings component');
 	}
 	  hideActivityIndicator() {

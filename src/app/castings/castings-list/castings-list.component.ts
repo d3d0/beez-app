@@ -5,7 +5,6 @@ import { localize } from "nativescript-localize";
 import { ListViewEventData } from "nativescript-ui-listview";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
 
-
 import { Casting} from "../casting.model";
 import { CastingsService} from "../castings.service";
 
