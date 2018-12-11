@@ -1,9 +1,9 @@
 <TabView androidTabsPosition="top">
-	<ScrollView *tabItem="{title: signupTitle}" >
-		<StackLayout ref="mainContainer" >
+	<StackLayout *tabItem="{title: signupTitle}" >
+		<CardView class="cardStyle" margin="200" elevation="40" radius="1" >
+			
 			<Label [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
 			<Label textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
-
 			<Label [text]="'USER.NAME'|L"></Label>
 			<TextField
 			[hint]="'USER.NAME'|L"
@@ -34,8 +34,8 @@
 
 			<Button
 			[text]="'SIGNUP.REGISTRATION_SUBMIT'|L"></Button>
-		</StackLayout>
-	</ScrollView>
+		</CardView>	
+	</StackLayout>
 	<ScrollView *tabItem="{title: 'signupMinorTitle'}" >
 		<StackLayout>
 			<Label [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>

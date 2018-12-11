@@ -2,11 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NotificationsService} from "../notifications.service";
 import { Notification} from "../notification.model";
 
-// material card viwe
-import { registerElement } from "nativescript-angular/element-registry";
-import { CardView } from "nativescript-cardview";
-registerElement("CardView", () => CardView);
-
 @Component({
   selector: 'ns-notifications',
   templateUrl: './notifications-list.component.html',

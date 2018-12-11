@@ -8,6 +8,11 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule, authProviders } from "./app.routing";
 import { setStatusBarColors, BackendService } from "./shared";
 
+// material card viwe
+import { registerElement } from "nativescript-angular/element-registry";
+import { CardView } from "nativescript-cardview";
+registerElement("CardView", () => CardView);
+
 traceEnable();
 
 @NgModule({
