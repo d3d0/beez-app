@@ -1,34 +1,24 @@
-<Page xmlns:Card="nativescript-cardview">
-  <ActionBar class="action-bar">
-      <Label class="action-bar-title" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L" ></Label>
-  </ActionBar>
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L" ></Label>
+</ActionBar>
 
+<ListView [items]="notifications">
+  <ng-template let-item="item">
+    <CardView margin="20" elevation="40" radius="10" ios:shadowRadius="20">
+      <StackLayout class="list-group-item">
+        <GridLayout columns="46, auto, *, 20, 50" rows="auto, auto, auto, auto, auto" >
+          <Image src="~/assets/images/notifica.png" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
+          <Label [text]="item.title" class="list-group-item-heading" textWrap="true" row="1" colSpan="5"></Label>
+          <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" col="0" colSpan="3"></Label>
+          <Label [text]="item.date" class="list-group-item-date" textWrap="true" row="2" col="3" colSpan="2"></Label>
+          <Label text="separatore" class="list-group-item-h-line" textWrap="true" row="3" colSpan="5"></Label>
 
-  <ListView [items]="notifications" class="card" >
-    <ng-template let-item="item">
-
-          <!-- <StackLayout class="list-group-item">
-            <StackLayout class="notifica" orientation="vertical" clipToBounds="true">
-              <Image  src="~/assets/images/notifica-100.jpg" stretch="fill" class="list-group-item-img"> </Image>
-              <Label  [text]="item.title" class="list-group-item-heading" ></Label>
-              <Label  [text]="item.subtitle" class="list-group-item-text" ></Label>
-              <Label  [text]="item.date" class="list-group-item-text" ></Label>
-              <Label  [text]="item.message" class="list-group-item-text" ></Label>
-              <Label  text="" style="background-size:contain; background-image: url('~/assets/images/notifica-100.jpg'); height:300; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);" ></Label>
-            </StackLayout>
-          </StackLayout> -->
-
-          <StackLayout>
-            <Card:CardView class="cardStyle" margin="50" elevation="40" radius="50">
-                 <grid-layout rows="200, auto, auto" columns="auto, auto, *">
-                     <image src="~/assets/images/notifica-100.jpg" stretch="aspectFill" colSpan="3" row="0" />
-                     <label text="Batman wants to be friends?" class="info" textWrap="true" row="1" colSpan="3" />
-                     <button text="DECLINE" tap="goAway" row="2" col="0" />
-                     <button text="ACCEPT" row="2" col="1" />
-                 </grid-layout>
-             </Card:CardView>
-          </StackLayout>
-
-    </ng-template>
-  </ListView>
-</Page>
+          <Button text="prova" class="my-button" tap="" row="4" col="0"></Button>
+          <!-- <Label text="" class="list-group-item-icona-photo" row="4" col="0"></Label> -->
+          <Label text="informazioni sul casting" class="list-group-item-info" row="4" col="1" colSpan="3"></Label>
+          <Label text="" class="list-group-item-freccia" row="4" col="4"></Label>
+        </GridLayout>
+      </StackLayout>
+    </CardView>
+  </ng-template>
+</ListView>
