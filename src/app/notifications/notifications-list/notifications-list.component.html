@@ -2,23 +2,43 @@
     <Label class="action-bar-title" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L" ></Label>
 </ActionBar>
 
-<ListView [items]="notifications">
-  <ng-template let-item="item">
-    <CardView margin="20" elevation="40" radius="10" ios:shadowRadius="20">
-      <StackLayout class="list-group-item">
-        <GridLayout columns="46, auto, *, 20, 50" rows="auto, auto, auto, auto, auto" >
-          <Image src="~/assets/images/notifica.png" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
-          <Label [text]="item.title" class="list-group-item-heading" textWrap="true" row="1" colSpan="5"></Label>
-          <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" col="0" colSpan="3"></Label>
-          <Label [text]="item.date" class="list-group-item-date" textWrap="true" row="2" col="3" colSpan="2"></Label>
-          <Label text="separatore" class="list-group-item-h-line" textWrap="true" row="3" colSpan="5"></Label>
-
-          <Button text="prova" class="my-button" tap="" row="4" col="0"></Button>
-          <!-- <Label text="" class="list-group-item-icona-photo" row="4" col="0"></Label> -->
-          <Label text="informazioni sul casting" class="list-group-item-info" row="4" col="1" colSpan="3"></Label>
-          <Label text="" class="list-group-item-freccia" row="4" col="4"></Label>
-        </GridLayout>
-      </StackLayout>
+<!-- https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
+<RadListView [items]="notifications">
+  <ng-template let-item="item" let-index="index">
+     <CardView elevation="40" radius="10" ios:shadowRadius="15" [class.list-group-first]="index===0">
+        <StackLayout class="list-group-item">
+          <GridLayout columns="46, auto, *, 20, 50" rows="auto, auto, auto, auto, auto" >
+            <Image src="~/assets/images/notifica.png" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
+            <Label [text]="item.title" class="list-group-item-heading" textWrap="true" row="1" colSpan="5"></Label>
+            <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" col="0" colSpan="3"></Label>
+            <Label [text]="item.date" class="text-right list-group-item-date" textWrap="true" row="2" col="3" colSpan="2"></Label>
+            <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
+            <!-- <StackLayout class="hr-light m-10" row="3" colSpan="5"></StackLayout> -->
+            <Label text="" class="list-group-item-icona-photo" row="4" col="0"></Label>
+            <Label text="informazioni sul casting" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3"></Label>
+            <Label text="" class="list-group-item-freccia" row="4" col="4"></Label>
+            <!-- <Button text="" class="my-button" tap="" row="4" col="4"></Button> -->
+          </GridLayout>
+        </StackLayout>
     </CardView>
   </ng-template>
-</ListView>
+</RadListView>
+
+
+<!-- https://play.nativescript.org/?template=play-tsc&id=Zwli5I&v=3 -->
+<!--
+<GridLayout rows="*">
+  <RadListView [items]="notifications" row="0"  backgroundColor="red">
+    <ng-template let-item="item">
+      <StackLayout margin="15" borderRadius="10">
+        <Image src="~/assets/images/notifica.png" class="list-group-item-img" stretch="aspectFill" ></Image>
+        <StackLayout backgroundColor="green" padding="10">
+          <Label [text]="item.title" class="list-group-item-heading" textWrap="true" ></Label>
+          <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" ></Label>
+          <Label [text]="item.date" class="text-right list-group-item-date" textWrap="true" ></Label>
+        </StackLayout>
+      </StackLayout>
+    </ng-template>
+  </RadListView>
+</GridLayout>
+-->

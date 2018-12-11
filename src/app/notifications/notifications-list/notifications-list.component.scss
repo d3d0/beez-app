@@ -8,6 +8,12 @@ StackLayout {
 GridLayout {
   background: white; /* IMPORTANTE */
 }
+CardView {
+  margin: 0 20 20 20;
+}
+.list-group-first {
+  margin-top: 20;
+}
 
 // ---------------------------------
 // CardView > list-group-item
@@ -15,6 +21,7 @@ GridLayout {
 .list-group-item {
   background: white; /* IMPORTANTE */
   border-radius: 5;   /* IMPORTANTE */
+  width:100%;
   .list-group-item-img {
     margin: 0 0 10 0;
     height: 160;            /* IMPORTANTE */
@@ -47,8 +54,6 @@ GridLayout {
     margin: 0 15 15 15;
   }
   .list-group-item-icona-photo {
-    font-size: 14;
-    color: #000;
     margin: 0 15 15 15;
     width:16;
     height: 12;
@@ -62,11 +67,30 @@ GridLayout {
     font-size: 10;
     color: #000;
     margin: 0 0 15 0; /* IMPORTANTE */
-    text-transform: uppercase;
     text-align: left;
   }
   .list-group-item-freccia {
-    font-size: 14;
+    margin: 0 15 15 15;
+    width:20;
+    height: 10;
+    display: block;
+    background-image: url("res://arrow_right") no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  .list-group-item-button {
+    margin: 0 15 15 15;
+    width:20;
+    height: 10;
+    display: block;
+    &--freccia {
+      background-image: url("res://arrow_right") no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+  .my-button {
+    font-size: 10;
     color: #000;
     margin: 0 15 15 15;
     width:20;
@@ -74,24 +98,16 @@ GridLayout {
     display: block;
     background-image: url("res://arrow_right") no-repeat;
     background-size: cover;
-    background-repeat: no-repeat;
     background-position: center center;
   }
-  .list-group-item-button {
-
-  }
-  .my-button {
-      background-color: red;
-      border-radius: 5;
-      color: white;
-      font-family: FontAwesome;
-      font-size: 24;
-      vertical-align: middle;
-      width: 80%;
-  }
   .my-button:active {
-      background-color: green;
-      color:white;
+    color:white;
+  }
+  .my-button::pressed {
+    color:white;
+  }
+  .my-button::highlighted{
+    color:white;
   }
 }
 
