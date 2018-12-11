@@ -1,23 +1,22 @@
 <ScrollView>
-<RadListView
-  [items]="castings | castingStatus:castingType" >
-  <ng-template let-item="item" >
-    <!-- <Image src="~/assets/images/logo_login.png"/> -->
-      <StackLayout>
-      <Label  [text]="item.title"></Label>
-      <Label  [text]="item.subtitle"></Label>
-      <Label textWrap="true">
-        <FormattedString>
-          <!-- <Span [title]="'CASTING_DATE" ></Label> -->
-          <Span text=" • " ></Span>
-          <Span [text]="item.casting_date" ></Span>
-          <Span text=" - " ></Span>
-          <Span [text]="item.start_at" ></Span>
-          <Span text="   ->" ></Span>
-          <Span [text]="item.end_at" ></Span>
-        </FormattedString>
-      </Label>
-      </StackLayout>
-  </ng-template>
-</RadListView>
+  <RadListView [items]="castings | castingStatus:castingType" >
+    <ng-template let-item="item" >
+      <!-- <Image src="~/assets/images/logo_login.png"/> -->
+        <StackLayout>
+        <Label  [text]="item.title"></Label>
+        <Label  [text]="item.subtitle"></Label>
+        <Label textWrap="true">
+          <FormattedString>
+            <!-- <Span [title]="'CASTING_DATE" ></Label> -->
+            <Span text=" • " ></Span>
+            <Span [text]="item.casting_date" ></Span>
+            <Span text=" - " ></Span>
+            <Span [text]="item.start_at" ></Span>
+            <Span text="   ->" ></Span>
+            <Span [text]="item.end_at" ></Span>
+          </FormattedString>
+        </Label>
+        </StackLayout>
+    </ng-template>
+  </RadListView>
 </ScrollView>
