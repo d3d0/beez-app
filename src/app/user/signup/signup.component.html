@@ -1,8 +1,8 @@
 <TabView androidTabsPosition="top">
-	<ScrollView *tabItem="TEST">
+	<ScrollView *tabItem="{title: signupTitle}" >
 		<StackLayout ref="mainContainer" >
-			<Label [text]="'LOGIN.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
-			<Label textWrap="true" [text]="'LOGIN.REGISTRATION_TEXT'|L"></Label>
+			<Label [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
+			<Label textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
 
 			<Label [text]="'USER.NAME'|L"></Label>
 			<TextField
@@ -33,13 +33,13 @@
 			returnKeyType="done"></TextField>
 
 			<Button
-			[text]="'LOGIN.REGISTRATION_SUBMIT'|L"></Button>
+			[text]="'SIGNUP.REGISTRATION_SUBMIT'|L"></Button>
 		</StackLayout>
 	</ScrollView>
-	<ScrollView *tabItem="{title: attendTitle}" name="attendTab">
+	<ScrollView *tabItem="{title: 'signupMinorTitle'}" >
 		<StackLayout>
-			<Label [text]="'LOGIN.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
-			<Label textWrap="true" [text]="'LOGIN.REGISTRATION_TEXT'|L"></Label>
+			<Label [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
+			<Label textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
 
 			<Label [text]="'USER.NAME'|L"></Label>
 			<TextField
@@ -89,7 +89,7 @@
 
 			<DatePicker></DatePicker>
 
-			<Button [text]="'LOGIN.MINOR_REGISTRATION_SUBMIT'|L"></Button>
+			<Button [text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L"></Button>
 
 		</StackLayout>
 	</ScrollView>

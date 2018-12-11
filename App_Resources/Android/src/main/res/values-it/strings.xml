@@ -72,5 +72,13 @@
   <string name="_CASTINGS_CONCLUDED_1RBVcj">"CONCLUDED"</string>
   <string name="_CASTINGS_ONGOING_1gX41U">"ON GOING"</string>
   <string name="_CASTINGS_CASTINGS_1BoPqT">"Castings"</string>
-  <string name="_SIGNUP_Z2bxEu0">"Sign Up"</string>
+  <string name="_SIGNUP_MINOR_REGISTRATION_SUBMIT_v2qDg">"REGISTER of A Minor"</string>
+  <string name="_SIGNUP_REGISTRATION_SUBMIT_1sVLUz">"REGISTER"</string>
+  <string name="_SIGNUP_REGISTRATION_FOOTER_11Gpp5">"REGISTRATION_TITLE"</string>
+  <string name="_SIGNUP_REGISTRATION_MINOR_TEXT_Z1txRx0">"Please fill all fields correctly so that the a minor registration to BEEZ can be completed"</string>
+  <string name="_SIGNUP_REGISTRATION_MINOR_TITLE_Zfpos2">"REGISTRATION OF A MINOR"</string>
+  <string name="_SIGNUP_REGISTRATION_TEXT_VdTRz">"Please fill all fields correctly so that the registration to BEEZ can be completed"</string>
+  <string name="_SIGNUP_REGISTRATION_TITLE_Z1q6WJg">"Registration of a new user"</string>
+  <string name="_SIGNUP_REGISTRATION_MINOR_Z1qzsAR">"REGISTRATION A MINOR"</string>
+  <string name="_SIGNUP_REGISTRATION_1GSckW">"REGISTRATION"</string>
 </resources>

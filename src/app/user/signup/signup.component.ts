@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { localize } from "nativescript-localize";
 
 @Component({
   selector: 'ns-signup',
@@ -9,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class SignupComponent implements OnInit {
 
   constructor() { }
-
+  signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
+  signupTitle = localize("SIGNUP.REGISTRATION");
   ngOnInit() {
   }
 

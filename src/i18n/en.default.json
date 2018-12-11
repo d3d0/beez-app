@@ -16,6 +16,9 @@
   "HELP": "Need Help?",
   "SHARE_WHITH_A_FRIEND": "SHARE WHITH A FRIEND",
   "LOGIN":{
+    "LOGIN" : "LOGIN"
+  },
+  "SIGNUP":{
     "REGISTRATION": "REGISTRATION",
     "REGISTRATION_MINOR": "REGISTRATION A MINOR",
     "REGISTRATION_TITLE" : "Registration of a new user",
@@ -24,8 +27,7 @@
     "REGISTRATION_MINOR_TEXT" :  "Please fill all fields correctly so that the a minor registration to BEEZ can be completed",
     "REGISTRATION_FOOTER" : "REGISTRATION_TITLE",
     "REGISTRATION_SUBMIT" : "REGISTER",
-    "MINOR_REGISTRATION_SUBMIT" : "REGISTER of A Minor",
-    "LOGIN" : "LOGIN"
+    "MINOR_REGISTRATION_SUBMIT" : "REGISTER of A Minor"
   },
   "CASTINGS": {
     "CASTINGS": "Castings",
