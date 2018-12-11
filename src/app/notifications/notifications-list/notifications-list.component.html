@@ -2,7 +2,6 @@
     <Label class="action-bar-title" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L" ></Label>
 </ActionBar>
 
-
 <ListView [items]="notifications">
   <ng-template let-item="item">
     <CardView margin="20" elevation="40" radius="10" ios:shadowRadius="20">
@@ -13,8 +12,9 @@
           <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" col="0" colSpan="3"></Label>
           <Label [text]="item.date" class="list-group-item-date" textWrap="true" row="2" col="3" colSpan="2"></Label>
           <Label text="separatore" class="list-group-item-h-line" textWrap="true" row="3" colSpan="5"></Label>
-          <!-- <Button text="prova" class="list-group-item-icona-photo" tap="" row="4" col="0"></Button> -->
-          <Label text="" class="list-group-item-icona-photo" row="4" col="0"></Label>
+
+          <Button text="prova" class="my-button" tap="" row="4" col="0"></Button>
+          <!-- <Label text="" class="list-group-item-icona-photo" row="4" col="0"></Label> -->
           <Label text="informazioni sul casting" class="list-group-item-info" row="4" col="1" colSpan="3"></Label>
           <Label text="" class="list-group-item-freccia" row="4" col="4"></Label>
         </GridLayout>
