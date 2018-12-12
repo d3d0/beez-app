@@ -32,7 +32,7 @@
 			returnKeyType="done"></TextField>
 
 			<Button
-			[text]="'SIGNUP.REGISTRATION_SUBMIT'|L"></Button>
+			[text]="'SIGNUP.REGISTRATION_SUBMIT'|L" [nsRouterLink]="['/user/login']"></Button>
 			</StackLayout>
 		</CardView>	
 	<ScrollView *tabItem="{title: 'signupMinorTitle'}" >
@@ -88,7 +88,7 @@
 
 			<DatePicker></DatePicker>
 
-			<Button [text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L"></Button>
+			<Button [text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L" [nsRouterLink]="['/user/login']"></Button>
 
 		</StackLayout>
 	</ScrollView>

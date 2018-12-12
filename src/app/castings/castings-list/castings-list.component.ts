@@ -46,10 +46,10 @@ export class CastingsListComponent implements OnInit {
     // this.isLoading = false;
   }
 
-  onCarItemTap(args: ListViewEventData): void {
-
+  onCastingTap(args: ListViewEventData): void {
+    console.log('test')
     const tappedCasting = args.view.bindingContext;
-    this.routerExtensions.navigate(["/home/castings/detail", tappedCasting.id],
+    this.routerExtensions.navigate(["home/default/castings", tappedCasting.id],
         {
             animated: true,
             transition: {
