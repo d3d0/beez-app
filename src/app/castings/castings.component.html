@@ -2,7 +2,7 @@
     <Label class="action-bar-title" [text]="'CASTINGS.CASTINGS'|L" ></Label>
 </ActionBar>
 
-
+<GridLayout>  
 <SegmentedBar [items]="items" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5"></SegmentedBar>
 
 <GridLayout  rows="*" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'" backgroundColor="white">
@@ -15,4 +15,5 @@
 
 <GridLayout rows="*" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'" backgroundColor="red">
   <ns-castings-list [castingType]="'concluded'" > </ns-castings-list>
+</GridLayout>
 </GridLayout>
