@@ -3,16 +3,16 @@
 </ActionBar>
 
 
-<SegmentedBar [items]="items" (selectedIndexChange)="onSelectedIndexChange($event)" ></SegmentedBar>
-<GridLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'" backgroundColor="white">
-      <ns-castings-list
-          [castingType]="'ongoing'" ></ns-castings-list></GridLayout>
+<SegmentedBar [items]="items" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5"></SegmentedBar>
+
+<GridLayout  rows="*" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'" backgroundColor="white">
+  <ns-castings-list [castingType]="'ongoing'" ></ns-castings-list>
+</GridLayout>
 
 <GridLayout rows="*" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'" backgroundColor="green">
-      <ns-castings-list
-          [castingType]="'attend'" > </ns-castings-list></GridLayout>
+  <ns-castings-list [castingType]="'attend'" > </ns-castings-list>
+</GridLayout>
 
 <GridLayout rows="*" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'" backgroundColor="red">
-      <ns-castings-list
-          [castingType]="'concluded'" > </ns-castings-list>
-        </GridLayout>
+  <ns-castings-list [castingType]="'concluded'" > </ns-castings-list>
+</GridLayout>

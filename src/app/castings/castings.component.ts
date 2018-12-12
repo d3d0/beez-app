@@ -20,9 +20,9 @@ export class CastingsComponent  {
       let segmentedBarItem0 = <SegmentedBarItem>new SegmentedBarItem();
       segmentedBarItem0.title = localize("CASTINGS.ONGOING");
       let segmentedBarItem1 = <SegmentedBarItem>new SegmentedBarItem();
-      segmentedBarItem1.title = localize("CASTINGS.ONGOING");
+      segmentedBarItem1.title = localize("CASTINGS.ATTEND");
       let segmentedBarItem2 = <SegmentedBarItem>new SegmentedBarItem();
-      segmentedBarItem2.title = localize("CASTINGS.ONGOING");
+      segmentedBarItem2.title = localize("CASTINGS.CONCLUDED");
       this.tabs.push(segmentedBarItem0);
       this.tabs.push(segmentedBarItem1);
       this.tabs.push(segmentedBarItem2);
