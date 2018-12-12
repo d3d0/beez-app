@@ -1,7 +1,6 @@
 <TabView androidTabsPosition="top">
-	<StackLayout *tabItem="{title: signupTitle}" >
-		<CardView class="cardStyle" margin="200" elevation="40" radius="1" >
-			
+	<CardView elevation="40" radius="1" margin="20" *tabItem="{title: signupTitle}">
+		<StackLayout>
 			<Label [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
 			<Label textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
 			<Label [text]="'USER.NAME'|L"></Label>
@@ -34,8 +33,8 @@
 
 			<Button
 			[text]="'SIGNUP.REGISTRATION_SUBMIT'|L"></Button>
+			</StackLayout>
 		</CardView>	
-	</StackLayout>
 	<ScrollView *tabItem="{title: 'signupMinorTitle'}" >
 		<StackLayout>
 			<Label [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>

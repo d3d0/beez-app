@@ -2,23 +2,17 @@
     <Label class="action-bar-title" [text]="'CASTINGS.CASTINGS'|L" ></Label>
 </ActionBar>
 
-<TabView androidTabsPosition="top">
-  <ScrollView *tabItem="{title: ongoingTitle}" name="ongoingTab">
+
+<SegmentedBar [items]="items" (selectedIndexChange)="onSelectedIndexChange($event)" ></SegmentedBar>
+<GridLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'" backgroundColor="white">
       <ns-castings-list
-          [castingType]="'ongoing'"
-          (loading)="showActivityIndicator()"
-          (loaded)="hideActivityIndicator()"></ns-castings-list>
-  </ScrollView>
-  <ScrollView *tabItem="{title: attendTitle}" name="attendTab">
+          [castingType]="'ongoing'" ></ns-castings-list></GridLayout>
+
+<GridLayout rows="*" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'" backgroundColor="green">
       <ns-castings-list
-          [castingType]="'attend'"
-          (loading)="showActivityIndicator()"
-          (loaded)="hideActivityIndicator()"> </ns-castings-list>
-  </ScrollView>
-  <ScrollView *tabItem="{title: concludedTitle}" name="concludedTab">
+          [castingType]="'attend'" > </ns-castings-list></GridLayout>
+
+<GridLayout rows="*" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'" backgroundColor="red">
       <ns-castings-list
-          [castingType]="'concluded'"
-          (loading)="showActivityIndicator()"
-          (loaded)="hideActivityIndicator()"> </ns-castings-list>
-  </ScrollView>
-</TabView>
+          [castingType]="'concluded'" > </ns-castings-list>
+        </GridLayout>
