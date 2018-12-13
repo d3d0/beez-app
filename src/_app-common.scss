@@ -3,10 +3,10 @@
 
 // Font icon class
 * {
-  font-family: "Sofia Pro Regular";
+  font-family: "SofiaProLight";
 }
 .fa {
-   font-family: "FontAwesome";
+  font-family: "FontAwesome";
 }
 
 // Common page class
@@ -222,4 +222,43 @@ CardView {
   .my-button::highlighted{
     color:white;
   }
+}
+
+.action-bar {
+  .action-image {
+    width: auto;
+    height: 24;
+    vertical-align: center;
+  }
+  .action-label {
+    color: #1E1E1E;
+    font-size: 24;
+    font-weight: bold;
+    vertical-align: center;
+  }
+}
+NSSegmentView{
+  font-size: 10; /* OK */
+  height:55; /* OK */
+
+  // android > background
+  background-color: white; /* OK */
+
+  // FONT COLOR
+  title-color:#1E1E1E;
+
+  // SELEZIONATA > background e border
+  selected-background-color:white;
+}
+SegmentedBar{
+  font-size: 10; /* OK */
+  height:55; /* OK */
+  color:#1E1E1E; /* OK */
+
+  // android > background
+  background-color: white; /* OK */
+
+  // android > border bottom della selezionata
+  // ios > background della selezionata
+  selected-background-color: #00D796; /* OK */
 }

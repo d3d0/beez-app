@@ -1,20 +1,35 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" [text]="'CASTINGS.CASTINGS'|L" ></Label>
+<ActionBar class="action-bar" [title]="'CASTINGS.CASTINGS'|L">
+    <!-- <Label class="action-bar-title" [text]="'CASTINGS.CASTINGS'|L" ></Label> -->
+    <!-- TITOLO > ANDROID -->
+    <StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="left">
+      <Image src="res://mark" class="action-image text-left pull-left m-r-10"></Image>
+      <Label [text]="'CASTINGS.CASTINGS'|L"  class="action-label text-left pull-left"></Label>
+    </StackLayout>
+    <!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
+    <ActionItem android:visibility="collapsed" ios.position="left" android.position="left">
+        <StackLayout>
+            <Image src="res://mark" stretch="none"></Image>
+        </StackLayout>
+    </ActionItem>
+    <ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left">
+      <Label class="action-bar-title text-left pull-left" [text]="'CASTINGS.CASTINGS'|L"></Label>
+    </ActionItem>
 </ActionBar>
+
+
 <StackLayout>
-  
-<SegmentedBar [items]="tabs" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5"></SegmentedBar>
+    <!-- NSSegmentView -->
+    <!-- <NSSegmentView ios:visibility="collapsed" android:visibility="collapsed" id="1" [items]="tabItems" height="50" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5"></NSSegmentView> -->
+    <!-- SegmentedBar -->
+    <SegmentedBar [items]="tabs" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5"></SegmentedBar>
 
-<GridLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
-  <ns-castings-list [castingType]="'ongoing'" ></ns-castings-list>
-</GridLayout>
-
-<GridLayout rows="*" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
-  <ns-castings-list [castingType]="'attend'" > </ns-castings-list>
-</GridLayout>
-
-<GridLayout rows="*" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
-  <ns-castings-list [castingType]="'concluded'" > </ns-castings-list>
-</GridLayout>
-
+    <GridLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
+      <ns-castings-list [castingType]="'ongoing'" ></ns-castings-list>
+    </GridLayout>
+    <GridLayout rows="*" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
+      <ns-castings-list [castingType]="'attend'" > </ns-castings-list>
+    </GridLayout>
+    <GridLayout rows="*" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
+      <ns-castings-list [castingType]="'concluded'" > </ns-castings-list>
+    </GridLayout>
 </StackLayout>

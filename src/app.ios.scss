@@ -9,3 +9,19 @@
 @import 'app-common';
 
 // Place any CSS rules you want to apply only on iOS here
+
+SegmentedBar{
+  // android > border bottom della selezionata
+  // ios > background della selezionata
+  // selected-background-color: #00D796;
+}
+
+NSSegmentView{
+  // NORMALE > background e border
+  seg-background-color:white;
+  line-color:#00D796;
+
+  // SELEZIONATA > background e border
+  selected-background-color:white;
+  selected-color:#00D796;
+}

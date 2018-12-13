@@ -1,5 +1,29 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L" ></Label>
+<ActionBar class="action-bar" [title]="'NOTIFICATIONS.NOTIFICATIONS'|L" >
+
+  <!-- TITOLO > ANDROID -->
+  <StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="left">
+    <Image src="res://mark" class="action-image text-left pull-left m-r-10"></Image>
+    <Label [text]="'NOTIFICATIONS.NOTIFICATIONS'|L"  class="action-label text-left pull-left"></Label>
+  </StackLayout>
+  <!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
+  <ActionItem android:visibility="collapsed" ios.position="left" android.position="left">
+      <StackLayout>
+          <Image src="res://mark" stretch="none"></Image>
+      </StackLayout>
+  </ActionItem>
+  <ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left">
+    <Label class="action-bar-title text-left pull-left" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L"></Label>
+  </ActionItem>
+
+  <!-- ICONE -->
+  <!--
+  <NavigationButton text="Go Back" icon="res://arrow_left" text="" (tap)="goBack()"></NavigationButton>
+  <ActionItem text="add" ios.position="right" android.position="actionbar" icon="res://add" ></ActionItem>
+  <ActionItem text="add" ios.position="right" android.position="actionbar" icon="res://add" ></ActionItem>
+  <ActionItem text="add" ios.position="right" android.position="actionbar" icon="res://add" ></ActionItem>
+  <ActionItem text="close" ios.position="right" android.position="actionbar" icon="res://close" ></ActionItem>
+  <ActionItem text="cerca" ios.position="right" android.position="actionbar" ios.systemIcon="12" android.systemIcon="ic_menu_search"></ActionItem>
+  -->
 </ActionBar>
 
 <!-- https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
