@@ -3,8 +3,7 @@ import { ModuleWithProviders }  from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule, NSEmptyOutletComponent } from "nativescript-angular/router";
 import { HomeComponent } from "./home.component";
-import { CastingDetailComponent } from "../castings/casting-detail/casting-detail.component";
-import { SettingsComponent } from '../settings/settings.component';
+=import { SettingsComponent } from '../settings/settings.component';
 
 const homeRoutes: Routes = [
     { path: "", redirectTo: "default" },

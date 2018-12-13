@@ -1,14 +1,13 @@
-<RadListView [items]="castings | castingStatus:castingType" >
+<RadListView [items]="castings | castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
   <ng-template let-item="item" let-index="index">
 
       <CardView elevation="40" radius="10" ios:shadowRadius="15" [class.list-group-first]="index===0">
-       <StackLayout class="list-group-item">
+       <StackLayout class="list-group-item" >
          <GridLayout columns="62, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
            <Image src="~/assets/images/notifica.png" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
            <Label [text]="item.title" class="list-group-item-heading" textWrap="true" row="1" colSpan="5"></Label>
            <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" colSpan="5"></Label>
            <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
-           <!-- <StackLayout class="hr-light m-10" row="3" colSpan="5"></StackLayout> -->
            <Label text="CASTING" class="text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
            <Label textWrap="true" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3">
              <FormattedString>
@@ -19,7 +18,7 @@
                <Span [text]="item.end_at" ></Span>
              </FormattedString>
            </Label>
-           <Label text="" class="list-group-item-freccia" row="4" col="4"></Label>
+           <Label text="" class="list-group-item-freccia" row="4" col="4" ></Label>
          </GridLayout>
        </StackLayout>
      </CardView>
