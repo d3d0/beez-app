@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { localize } from "nativescript-localize";
+import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
   selector: 'ns-signup',
@@ -9,10 +10,14 @@ import { localize } from "nativescript-localize";
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private routerExtensions: RouterExtensions) { }
   signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
   signupTitle = localize("SIGNUP.REGISTRATION");
   ngOnInit() {
   }
 
+	public goBack() {
+	    this.routerExtensions.back();
+	}
+	
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
   selector: 'ns-casting',
@@ -8,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CastingDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private routerExtensions: RouterExtensions) { }
 
   ngOnInit() {
+  }
+
+  goBack(): void{
+    // this.routerExtensions.backToPreviousPage();
+    this.routerExtensions.back();
+        // this.routerExtensions.navigate(["/home"],
+        // {
+        //     animated: true,
+        //     transition: {
+        //         name: "slide",
+        //         duration: 200,
+        //         curve: "ease"
+        //     }
+        // });
   }
 
 }

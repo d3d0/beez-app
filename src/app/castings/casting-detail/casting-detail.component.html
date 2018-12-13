@@ -1,1 +1,31 @@
-<Button text="casting works!" class="btn btn-primary"></Button>
+<ActionBar class="action-bar">
+	<Label class="action-bar-title" [text]="'CASTINGS.CASTINGS'|L" ></Label>
+	<NavigationButton android.systemIcon="ic_menu_back" text="Back to" (tap)="goBack()"></NavigationButton>
+</ActionBar>
+
+<StackLayout>
+	<Image src="~/assets/images/notifica.png" height="400" stretch="aspectFill"></Image>
+	<CardView elevation="40" radius="10" ios:shadowRadius="15" [class.list-group-first]="index===0">
+		<StackLayout class="list-group-item" >
+			<GridLayout columns="62, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
+				<Label text="item.title" class="list-group-item-heading" textWrap="true" row="1" colSpan="5"></Label>
+				<Label text="item.subtitle" class="list-group-item-text" textWrap="true" row="2" colSpan="5"></Label>
+				<Label text="test" class="list-group-item-h-line" row="3" colSpan="5"></Label>
+				<Label text="CASTING" class="text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
+				<Label textWrap="true" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3">
+					<FormattedString>
+						<Span text="item.casting_date" ></Span>
+						<Span text=" • " ></Span>
+						<Span text="item.start_at" ></Span>
+						<Span text=" - " ></Span>
+						<Span text="item.end_at" ></Span>
+					</FormattedString>
+				</Label>
+				<Label text="" class="list-group-item-freccia" row="4" col="4" ></Label>
+			</GridLayout>
+			<Button text="partecipate" class="btn btn-primary"> </Button>
+			<Button text="share" class="btn btn-primary"> </Button>
+		</StackLayout>
+	</CardView>
+</StackLayout>
+

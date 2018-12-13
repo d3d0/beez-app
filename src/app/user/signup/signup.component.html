@@ -1,95 +1,112 @@
+<ActionBar class="action-bar">
+	<Label class="action-bar-title" [text]="'SIGNUP.REGISTRATION'|L" ></Label>
+	<NavigationButton android.systemIcon="ic_menu_back" text="Back to" (tap)="goBack()"></NavigationButton>
+</ActionBar>
+
 <TabView androidTabsPosition="top">
-	<CardView elevation="40" radius="1" margin="20" *tabItem="{title: signupTitle}">
-		<StackLayout>
-			<Label [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
-			<Label textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
-			<Label [text]="'USER.NAME'|L"></Label>
-			<TextField
-			[hint]="'USER.NAME'|L"
-			returnKeyType="next"
-			autocorrect="false"></TextField>
+	
+	<StackLayout *tabItem="{title: signupTitle}">
+		<ScrollView>
+			<StackLayout>
+				<CardView elevation="40" radius="1" margin="20" >
+					<StackLayout>
+						<Label [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
+						<Label textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
+						<Label [text]="'USER.NAME'|L"></Label>
+						<TextField
+						[hint]="'USER.NAME'|L"
+						returnKeyType="next"
+						autocorrect="false"></TextField>
 
-			<Label [text]="'USER.SURNAME'|L"></Label>
-			<TextField
-			[hint]="'USER.SURNAME'|L"
-			returnKeyType="next"
-			autocorrect="false"></TextField>
+						<Label [text]="'USER.SURNAME'|L"></Label>
+						<TextField
+						[hint]="'USER.SURNAME'|L"
+						returnKeyType="next"
+						autocorrect="false"></TextField>
 
-			<Label [text]="'USER.DATE_OF_BIRTH'|L"></Label>
-			<DatePicker  ></DatePicker>
+						<Label [text]="'USER.DATE_OF_BIRTH'|L"></Label>
+						<DatePicker  ></DatePicker>
 
-			<Label [text]="'USER.EMAIL'|L"></Label>
-			<TextField
-			[hint]="'USER.EMAIL'|L"
-			keyboardType="email"
-			returnKeyType="next"
-			autocorrect="false"></TextField>
+						<Label [text]="'USER.EMAIL'|L"></Label>
+						<TextField
+						[hint]="'USER.EMAIL'|L"
+						keyboardType="email"
+						returnKeyType="next"
+						autocorrect="false"></TextField>
 
-			<Label [text]="'USER.PASSWORD'|L"></Label>
-			<TextField ref="password"
-			[hint]="'USER.PASSWORD'|L"
-			secure="true"
-			returnKeyType="done"></TextField>
+						<Label [text]="'USER.PASSWORD'|L"></Label>
+						<TextField ref="password"
+						[hint]="'USER.PASSWORD'|L"
+						secure="true"
+						returnKeyType="done"></TextField>
 
-			<Button
-			[text]="'SIGNUP.REGISTRATION_SUBMIT'|L" [nsRouterLink]="['/user/login']"></Button>
+						<Button
+						[text]="'SIGNUP.REGISTRATION_SUBMIT'|L" [nsRouterLink]="['/user/login']"></Button>
+					</StackLayout>
+				</CardView>	
 			</StackLayout>
-		</CardView>	
-	<ScrollView *tabItem="{title: 'signupMinorTitle'}" >
-		<StackLayout>
-			<Label [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
-			<Label textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
+		</ScrollView>
+	</StackLayout>
+	<StackLayout *tabItem="{title: signupMinorTitle}">
+		<ScrollView>
+			<StackLayout>
+				<CardView elevation="40" radius="1" margin="20" >
+					<StackLayout>
+						<Label [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
+						<Label textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
 
-			<Label [text]="'USER.NAME'|L"></Label>
-			<TextField
-			[hint]="'USER.NAME'|L"
-			returnKeyType="next"
-			autocorrect="false"></TextField>
+						<Label [text]="'USER.NAME'|L"></Label>
+						<TextField
+						[hint]="'USER.NAME'|L"
+						returnKeyType="next"
+						autocorrect="false"></TextField>
 
-			<Label [text]="'USER.SURNAME'|L"></Label>
-			<TextField
-			[hint]="'USER.SURNAME'|L"
-			returnKeyType="next"
-			autocorrect="false"></TextField>
+						<Label [text]="'USER.SURNAME'|L"></Label>
+						<TextField
+						[hint]="'USER.SURNAME'|L"
+						returnKeyType="next"
+						autocorrect="false"></TextField>
 
-			<Label [text]="'USER.DATE_OF_BIRTH'|L"></Label>
-			<DatePicker  ></DatePicker>
+						<Label [text]="'USER.DATE_OF_BIRTH'|L"></Label>
+						<DatePicker  ></DatePicker>
 
-			<Label [text]="'USER.EMAIL'|L"></Label>
-			<TextField
-			[hint]="'USER.EMAIL'|L"
-			keyboardType="email"
-			returnKeyType="next"
-			autocorrect="false"></TextField>
+						<Label [text]="'USER.EMAIL'|L"></Label>
+						<TextField
+						[hint]="'USER.EMAIL'|L"
+						keyboardType="email"
+						returnKeyType="next"
+						autocorrect="false"></TextField>
 
-			<Label [text]="'USER.PASSWORD'|L"></Label>
-			<TextField ref="password"
-			[hint]="'USER.PASSWORD'|L"
-			secure="true"
-			returnKeyType="done"></TextField>
+						<Label [text]="'USER.PASSWORD'|L"></Label>
+						<TextField ref="password"
+						[hint]="'USER.PASSWORD'|L"
+						secure="true"
+						returnKeyType="done"></TextField>
 
-			<Label [text]="'USER.MINOR_NAME'|L"></Label>
-			<TextField ref="password"
-			[hint]="'USER.MINOR_NAME'|L"
-			secure="true"
-			returnKeyType="done"></TextField>
+						<Label [text]="'USER.MINOR_NAME'|L"></Label>
+						<TextField ref="password"
+						[hint]="'USER.MINOR_NAME'|L"
+						secure="true"
+						returnKeyType="done"></TextField>
 
-			<Label [text]="'USER.MINOR_SURNAME'|L"></Label>
-			<TextField ref="password"
-			[hint]="'USER.MINOR_SURNAME'|L"
-			secure="true"
-			returnKeyType="done"></TextField>
+						<Label [text]="'USER.MINOR_SURNAME'|L"></Label>
+						<TextField ref="password"
+						[hint]="'USER.MINOR_SURNAME'|L"
+						secure="true"
+						returnKeyType="done"></TextField>
 
-			<Label [text]="'USER.MINOR_DATE_OF_BIRTH'|L"></Label>
-			<TextField ref="password"
-			[hint]="'USER.MINOR_SURNAME'|L"
-			secure="true"
-			returnKeyType="done"></TextField>
+						<Label [text]="'USER.MINOR_DATE_OF_BIRTH'|L"></Label>
+						<TextField ref="password"
+						[hint]="'USER.MINOR_SURNAME'|L"
+						secure="true"
+						returnKeyType="done"></TextField>
 
-			<DatePicker></DatePicker>
+						<DatePicker></DatePicker>
 
-			<Button [text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L" [nsRouterLink]="['/user/login']"></Button>
-
-		</StackLayout>
-	</ScrollView>
+						<Button [text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L" [nsRouterLink]="['/user/login']"></Button>
+					</StackLayout>
+				</CardView>	
+			</StackLayout>
+		</ScrollView>
+	</StackLayout>
 </TabView>

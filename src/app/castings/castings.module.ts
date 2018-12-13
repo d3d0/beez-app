@@ -7,6 +7,7 @@ import { CastingsRoutingModule } from "./castings.routing";
 import { CastingsComponent } from "./castings.component";
 import { CastingsListComponent } from "./castings-list/castings-list.component";
 import { CastingDetailComponent } from "./casting-detail/casting-detail.component";
+
 import { CastingStatusPipe } from "./castings-list/casting-status.pipe";
 
 @NgModule({
@@ -18,7 +19,7 @@ import { CastingStatusPipe } from "./castings-list/casting-status.pipe";
   ],
   declarations: [
     CastingsComponent,
-	  CastingsListComponent,
+    CastingsListComponent,
 	  CastingDetailComponent,
     CastingStatusPipe
   ],

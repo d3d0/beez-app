@@ -3,11 +3,9 @@ import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/dir
 import { RouterExtensions } from "nativescript-angular/router";
 import { EventData } from "tns-core-modules/data/observable";
 import { ActivatedRoute } from "@angular/router";
-import { confirm } from "ui/dialogs";
-import { Page } from "ui/page";
 import { isAndroid } from "tns-core-modules/platform";
-import { Router, CanActivate } from "@angular/router";
 import { AppModule } from "../app.module";
+import { Page } from "ui/page";
 
 @Component({
   selector: 'ns-home',
@@ -18,20 +16,14 @@ import { AppModule } from "../app.module";
 export class HomeComponent implements OnInit {
 
     constructor(
-        private modal: ModalDialogService,
-        private vcRef: ViewContainerRef,
         private routerExtension: RouterExtensions,
         private activeRoute: ActivatedRoute,
-        private router: Router,
         private page: Page) {
-        // this.page.actionBarHidden = true;
     }
 
     ngOnInit(): void {
-        // this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"] } }], { relativeTo: this.activeRoute });
-        // Init your component properties here.
-        console.log('hello from HOME component')
         this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
+        this.page.actionBarHidden = true;
     }
 
     getIconSource(icon: string): string {
