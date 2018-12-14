@@ -19,9 +19,11 @@
 
 <StackLayout>
     <!-- NSSegmentView -->
-    <!-- <NSSegmentView ios:visibility="collapsed" android:visibility="collapsed" id="1" [items]="tabItems" height="50" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5"></NSSegmentView> -->
+    <NSSegmentView id="1" [items]="tabItems" height="50" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5"></NSSegmentView>
     <!-- SegmentedBar -->
-    <SegmentedBar [items]="tabs" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5"></SegmentedBar>
+
+    
+    <!-- <SegmentedBar [items]="tabs" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5"></SegmentedBar> -->
     <GridLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
       <ns-castings-list [castingType]="'ongoing'" ></ns-castings-list>
     </GridLayout>

@@ -1,7 +1,9 @@
 <ScrollView>
   <DockLayout  stretchLastChild="false">
     <StackLayout dock="top">
-        <LottieView height="400" [src]="src" [autoPlay]="autoPlay" (loaded)="lottieViewLoaded($event)"></LottieView>
+
+      <!-- <LottieView height="400" [src]="src" [autoPlay]="autoPlay" (loaded)="lottieViewLoaded($event)"></LottieView> -->
+
       <StackLayout>
         <CardView elevation="40" radius="10" ios:shadowRadius="15">
           <GridLayout rows="*,*,*,*,*,*" >
@@ -15,7 +17,7 @@
             row="1"></TextField>
 
             <Label row="2" [text]="'PASSWORD'|L"></Label>
-            <TextField 
+            <TextField
             [hint]="'PASSWORD'|L"
             secure="true"
             returnKeyType="done"
@@ -25,7 +27,7 @@
             [busy]="isAuthenticating"
             row="4"></ActivityIndicator>
       <StackLayout>
-          
+
 
         <CardView elevation="200" radius="10" ios:shadowRadius="15">
             <Button
@@ -45,7 +47,7 @@
         [text]="'SIGNUP'|L"></Label>
 
         <Label
-        horizontalAlignment="right" 
+        horizontalAlignment="right"
         col="1"
         class="help-label"
         [text]="'HELP'|L"></Label>

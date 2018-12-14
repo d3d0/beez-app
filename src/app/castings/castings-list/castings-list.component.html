@@ -1,4 +1,4 @@
-<RadListView [items]="castings | castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
+<RadListView [items]="castings | castingStatus:castingType" (itemTap)="onCastingTap($event)" >
   <ng-template let-item="item" let-index="index">
 
       <CardView elevation="40" radius="10" ios:shadowRadius="15" [class.list-group-first]="index===0">

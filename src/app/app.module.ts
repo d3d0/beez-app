@@ -5,7 +5,6 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { enable as traceEnable, addCategories } from "tns-core-modules/trace";
 
 import { AppComponent } from "./app.component";
-import { HomeComponent } from "./home/home.component";
 
 import { AppRoutingModule, authProviders } from "./app.routing";
 import { setStatusBarColors, BackendService } from "./shared";
@@ -34,8 +33,7 @@ traceEnable();
         NativeScriptRouterModule
     ],
     declarations: [
-        AppComponent,
-        HomeComponent
+        AppComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
