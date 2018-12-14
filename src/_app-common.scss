@@ -262,3 +262,17 @@ SegmentedBar{
   // ios > background della selezionata
   selected-background-color: #00D796; /* OK */
 }
+
+
+.btn {
+    background-color: $verde;
+    padding: 18 0;
+    color: $bianco; 
+    letter-spacing: 0.2;
+    z-index:0;
+    border-radius: 4;
+    font-weight:bold;
+    vertical-align: middle;
+    border-color: transparent;
+    width: 80%;
+}

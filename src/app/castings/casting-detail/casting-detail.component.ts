@@ -16,7 +16,8 @@ export class CastingDetailComponent implements OnInit {
 
   goBack(): void{
     // this.routerExtensions.backToPreviousPage();
-    this.routerExtensions.back();
+    // this.routerExtensions.back();
+        this.routerExtensions.navigate(["/home"])
         // this.routerExtensions.navigate(["/home"],
         // {
         //     animated: true,

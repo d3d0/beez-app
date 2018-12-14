@@ -1,10 +1,10 @@
 <ScrollView>
   <DockLayout  stretchLastChild="false">
     <StackLayout dock="top">
-      <Image class="p-15" src="~/assets/images/logo_login.png" height="200"></Image>
+        <LottieView height="400" [src]="src" [autoPlay]="autoPlay" (loaded)="lottieViewLoaded($event)"></LottieView>
       <StackLayout>
-        <CardView elevation="40" radius="10" ios:shadowRadius="15" [class.list-group-first]="index===0">
-          <GridLayout rows="*,*,*,*,*,*">
+        <CardView elevation="40" radius="10" ios:shadowRadius="15">
+          <GridLayout rows="*,*,*,*,*,*" >
             <Label row="0" [text]="'EMAIL'|L"></Label>
             <TextField
             [hint]="'MAIL'|L"
@@ -24,12 +24,16 @@
             <ActivityIndicator
             [busy]="isAuthenticating"
             row="4"></ActivityIndicator>
+      <StackLayout>
+          
 
+        <CardView elevation="200" radius="10" ios:shadowRadius="15">
             <Button
             [text]="'LOGIN'|L"
-            row="5"
-            [nsRouterLink] = "['/home']"
-            class="submit-button"></Button>
+            [nsRouterLink] = "['/home']"></Button>
+</CardView>
+      </StackLayout>
+
           </GridLayout>
         </CardView>
       </StackLayout>
