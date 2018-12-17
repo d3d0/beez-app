@@ -54,10 +54,10 @@ export class LoginComponent implements OnInit {
       alert("BEEZ requires an internet connection to register.");
       return;
     }
-    if (!this.user.isValidEmail()) {
-      alert("Enter a valid email address.");
-      return;
-    }
+    // if (!this.user.isValidEmail()) {
+    //   alert("Enter a valid email address.");
+    //   return;
+    // }
 
     this.router.navigate(["/home"]);
   }
