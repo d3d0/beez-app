@@ -1,0 +1,22 @@
+@import '../../../app-variables';
+
+.form-container{
+	margin: 25;
+}
+
+.label-textfield {
+  color:$lilla;
+  opacity: 0;
+  transform:translate(0,20);
+}
+#labelpass{
+	margin-top: 10;
+}
+TextField{
+	border-bottom-width: 1;
+  border-color:$grigiochiaro; 
+}
+
+.btn-card{
+	width: 100%;
+}

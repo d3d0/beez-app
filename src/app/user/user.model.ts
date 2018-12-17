@@ -1,8 +1,9 @@
+const validator = require("email-validator");
+
 export class User {
-  constructor(
-    public id: string,
-    public email: string,
-    public password: string,
-    public status: boolean
-  ) {}
+  email: string;
+  password: string;
+  isValidEmail() {
+    return validator.validate(this.email);
+  }
 }

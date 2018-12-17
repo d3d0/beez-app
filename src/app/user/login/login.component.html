@@ -1,44 +1,44 @@
 <ScrollView>
-  <DockLayout  stretchLastChild="false">
-    <StackLayout dock="top">
+  <StackLayout >
+    <LottieView height="400"  src="data.json" autoPlay="true" (loaded)="lottieViewLoaded($event)"></LottieView>
+    <StackLayout verticalAlignment="bottom" >
+      <CardView  elevation="40" radius="10" ios:shadowRadius="15" >
+        <GridLayout rows="*,*,*,*,*,*,*" class="form-container">
+          <Label #labelmail row="0" [text]="'EMAIL'|L" class="label-textfield" ></Label>
+          <TextField #textfieldmail
+          [hint]="'MAIL'| L |titlecase"
+          (focus)="toggleLabel($event,'mail')"
+          (blur)="toggleLabel($event,'mail')"
+          keyboardType="email"
+          returnKeyType="next"
+          autocorrect="false"
+          autocapitalizationType="none"
+          row="1"></TextField>
 
-      <!-- <LottieView height="400" [src]="src" [autoPlay]="autoPlay" (loaded)="lottieViewLoaded($event)"></LottieView> -->
+          <Label #labelpass id="labelpass" row="2" [text]="'PASSWORD'|L" class="label-textfield"></Label>
+          <TextField #textfieldpass
+          (focus)="toggleLabel($event,'pass')"
+          (blur)="toggleLabel($event,'pass')"
+          returnKeyType="done"
+          (returnPress)="focusPassword()"
+          [hint]="'PASSWORD'| L |titlecase"
+          secure="true"
+          (returnPress)="login()"
+          autocorrect="false"
+          autocapitalizationType="none"
+          row="3"></TextField>
 
-      <StackLayout>
-        <CardView elevation="40" radius="10" ios:shadowRadius="15">
-          <GridLayout rows="*,*,*,*,*,*" >
-            <Label row="0" [text]="'EMAIL'|L"></Label>
-            <TextField
-            [hint]="'MAIL'|L"
-            keyboardType="email"
-            returnKeyType="next"
-            autocorrect="false"
-            autocapitalizationType="none"
-            row="1"></TextField>
+          <ActivityIndicator
+          [busy]="isAuthenticating"
+          row="4"></ActivityIndicator>
 
-            <Label row="2" [text]="'PASSWORD'|L"></Label>
-            <TextField
-            [hint]="'PASSWORD'|L"
-            secure="true"
-            returnKeyType="done"
-            row="3"></TextField>
-
-            <ActivityIndicator
-            [busy]="isAuthenticating"
-            row="4"></ActivityIndicator>
-      <StackLayout>
-
-
-        <CardView elevation="200" radius="10" ios:shadowRadius="15">
-            <Button
+          <CardView row="5" class="btn-card" elevation="20" radius="15" shadowOpacity="0.8" ripple="true" ios:shadowRadius="15">
+            <Button class="btn"
             [text]="'LOGIN'|L"
-            [nsRouterLink] = "['/home']"></Button>
-</CardView>
-      </StackLayout>
-
-          </GridLayout>
-        </CardView>
-      </StackLayout>
+            (tap)="login()"></Button>
+          </CardView>
+        </GridLayout>
+      </CardView>
       <GridLayout dock="bottom" height="60" columns="*,*">
         <Label
         [nsRouterLink] = "['/user/signup']"
@@ -51,8 +51,7 @@
         col="1"
         class="help-label"
         [text]="'HELP'|L"></Label>
-
       </GridLayout>
     </StackLayout>
-  </DockLayout>
+  </StackLayout>
 </ScrollView>

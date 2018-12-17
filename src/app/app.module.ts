@@ -8,7 +8,6 @@ import { AppComponent } from "./app.component";
 
 import { AppRoutingModule, authProviders } from "./app.routing";
 import { setStatusBarColors, BackendService } from "./shared";
-import { NgShadowModule } from 'nativescript-ng-shadow';
 
 // material card view
 import { registerElement } from "nativescript-angular/element-registry";
@@ -29,7 +28,6 @@ traceEnable();
         AppRoutingModule,
         NativeScriptModule,
         NativeScriptHttpClientModule,
-        NgShadowModule,
         NativeScriptRouterModule
     ],
     declarations: [
