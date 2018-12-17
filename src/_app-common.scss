@@ -210,14 +210,40 @@ CardView {
   border-radius: 5;  // IMPORTANTE
 }
 .card-button {
-  margin: 0;
+  margin: 0 0 20 0;
+  padding: 18 0;
+  color: $bianco;
+  background-color: $verde;
 }
 .card-button-button {
-  background: $verde;
+  background-color: $verde;
   border-radius: 5;
-  color:white;
-  height:50;
+  padding: 18 0;
+  color: $bianco;
+  letter-spacing: 0.2;
+  z-index:0;
+  font-weight:bold;
+  vertical-align: middle;
+  border-color: transparent;
 }
+
+.btn-card {
+    padding: 18 0;
+    color: $bianco;
+    background-color: $verde;
+}
+.btn {
+    background-color: $verde;
+    border-radius: 5;
+    padding: 18 0;
+    color: $bianco;
+    letter-spacing: 0.2;
+    z-index:0;
+    font-weight:bold;
+    vertical-align: middle;
+    border-color: transparent;
+}
+
 .card-group-login-email{
   font-size: 14;
   color: $lilla;
@@ -412,23 +438,4 @@ SegmentedBar{
   // android > border bottom della selezionata
   // ios > background della selezionata
   selected-background-color: #00D796; /* OK */
-}
-
-
-.btn-card {
-    padding: 18 0;
-    color: $bianco;
-    background-color: $verde;
-}
-
-.btn {
-    background-color: $verde;
-    padding: 18 0;
-    color: $bianco; 
-    letter-spacing: 0.2;
-    z-index:0;
-    font-weight:bold;
-    vertical-align: middle;
-    border-color: transparent;
-    width: 80%;
 }

@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   private _lottieView: LottieView;
   private user: User;
   private isAuthenticating = false;
-  
+
   constructor( private router: Router, private page: Page) {
     this.user = new User();
   }
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
   goToSignup(){
     this.router.navigate(["/user/signup"]);
   }
-  
+
   login() {
     if (getConnectionType() === connectionType.none) {
       alert("BEEZ requires an internet connection to register.");
@@ -65,12 +65,12 @@ export class LoginComponent implements OnInit {
   focusPassword() {
     this.textfieldpass.nativeElement.focus();
   }
-  
+
   toggleLabel(event, type) {
     let text = event.object.text
     let animations = [];
     let textfield, label
-    if (type == 'mail') { 
+    if (type == 'mail') {
       label = <View>this.labelmail.nativeElement;
       textfield = <View>this.textfieldmail.nativeElement;
     } else if (type == 'pass') {
@@ -78,14 +78,14 @@ export class LoginComponent implements OnInit {
       textfield = <View>this.textfieldpass.nativeElement;
     }
     if (event.eventName == 'focus' && text == '') {
-      textfield.style.placeholderColor= new Color("transparent"); 
-      textfield.style.borderColor= new Color("#5A82FF"); 
+      textfield.style.placeholderColor= new Color("transparent");
+      textfield.style.borderColor= new Color("#5A82FF");
       animations.push({ target: label, translate: { x: 0, y: 0 }, opacity: 1, duration: 150 });
       new Animation(animations, true).play();
     }
     if (event.eventName == 'blur' && text == '') {
-      textfield.style.placeholderColor= new Color("#d3d3d3"); 
-      textfield.style.borderColor= new Color("#d3d3d3"); 
+      textfield.style.placeholderColor= new Color("#d3d3d3");
+      textfield.style.borderColor= new Color("#d3d3d3");
       animations.push({ target: label, translate: { x: 0, y: 20 }, opacity: 0, duration: 150 });
       new Animation(animations, true).play();
     }
