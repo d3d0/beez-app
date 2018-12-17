@@ -1,58 +1,34 @@
-<ScrollView>
-  <DockLayout  stretchLastChild="false">
+<ScrollView class="login">
+  <DockLayout class="login-sfondo" stretchLastChild="false">
+
     <StackLayout dock="top">
-
-      <!-- <LottieView height="400" [src]="src" [autoPlay]="autoPlay" (loaded)="lottieViewLoaded($event)"></LottieView> -->
-
-      <StackLayout>
-        <CardView elevation="40" radius="10" ios:shadowRadius="15">
-          <GridLayout rows="*,*,*,*,*,*" >
-            <Label row="0" [text]="'EMAIL'|L"></Label>
-            <TextField
-            [hint]="'MAIL'|L"
-            keyboardType="email"
-            returnKeyType="next"
-            autocorrect="false"
-            autocapitalizationType="none"
-            row="1"></TextField>
-
-            <Label row="2" [text]="'PASSWORD'|L"></Label>
-            <TextField
-            [hint]="'PASSWORD'|L"
-            secure="true"
-            returnKeyType="done"
-            row="3"></TextField>
-
-            <ActivityIndicator
-            [busy]="isAuthenticating"
-            row="4"></ActivityIndicator>
-      <StackLayout>
-
-
-        <CardView elevation="200" radius="10" ios:shadowRadius="15">
-            <Button
-            [text]="'LOGIN'|L"
-            [nsRouterLink] = "['/home']"></Button>
-</CardView>
-      </StackLayout>
-
-          </GridLayout>
-        </CardView>
-      </StackLayout>
-      <GridLayout dock="bottom" height="60" columns="*,*">
-        <Label
-        [nsRouterLink] = "['/user/signup']"
-        col="0"
-        horizontalAlignment="left"
-        [text]="'SIGNUP'|L"></Label>
-
-        <Label
-        horizontalAlignment="right"
-        col="1"
-        class="help-label"
-        [text]="'HELP'|L"></Label>
-
-      </GridLayout>
+        <LottieView height="300" [src]="src" [autoPlay]="autoPlay" (loaded)="lottieViewLoaded($event)"></LottieView>
     </StackLayout>
+
+    <StackLayout dock="bottom" backgroundColor="">
+        <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" >
+          <StackLayout class="card-group-item">
+            <GridLayout rows="*,*,*,*,*,*" backgroundColor="" margin="20">
+                <!-- <Label row="0" [text]="'EMAIL'|L"></Label> -->
+                <TextField class="card-group-login-email" style.placeholderColor="#8E8E8E" row="0" rowSpan="2" backgroundColor="" [hint]="'Email'|L" keyboardType="email" returnKeyType="next" autocorrect="false" autocapitalizationType="none"></TextField>
+
+                <!-- <Label row="2" [text]="'PASSWORD'|L"></Label> -->
+                <TextField class="card-group-login-pw" style.placeholderColor="#8E8E8E" row="2" rowSpan="2" backgroundColor="" [hint]="'Password'|L" secure="true" returnKeyType="done" ></TextField>
+
+                <ActivityIndicator row="4" [busy]="isAuthenticating" height="0"></ActivityIndicator>
+
+                <CardView class="card-button" row="5" elevation="10" radius="0" ios:shadowRadius="5">
+                    <Button [text]="'LOGIN'|L" [nsRouterLink] = "['/home']" class="card-button-button"></Button>
+                </CardView>
+
+            </GridLayout>
+          </StackLayout>
+        </CardView>
+        <GridLayout class="login-footer"  columns="*,*" backgroundColor="">
+          <Label class="login-footer-register" col="0" horizontalAlignment="left" verticalAlignment="top" [nsRouterLink] = "['/user/signup']"  [text]="'SIGNUP'|L"></Label>
+          <Label class="login-footer-help" col="1" horizontalAlignment="right" verticalAlignment="top" [text]="'HELP'|L"></Label>
+        </GridLayout>
+    </StackLayout>
+
   </DockLayout>
 </ScrollView>

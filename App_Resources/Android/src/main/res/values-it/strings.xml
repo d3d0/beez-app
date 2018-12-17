@@ -59,10 +59,10 @@
   <string name="_MESSAGES_ERROR_LOGIN_1uPQ8G">"Unfortunately we could not find your account, wrong Password or Mail."</string>
   <string name="_MESSAGES_NO_CONNECTION_Z1G6ayt">"Sorry, BEEZ requires an internet connection."</string>
   <string name="_CASTINGS_X6FcW">"Castings"</string>
-  <string name="_APP_TITLE_1tl33B">"BEEZ CASTING APP"</string>
-  <string name="_app_name_1k3Sbz">"BEEZ CASTING NAME APP"</string>
-  <string name="app_name">"BEEZ CASTING NAME APP"</string>
-  <string name="title_activity_kimera">"BEEZ CASTING NAME APP"</string>
+  <string name="_APP_TITLE_1tl33B">"BEEZ"</string>
+  <string name="_app_name_1k3Sbz">"BEEZ"</string>
+  <string name="app_name">"BEEZ"</string>
+  <string name="title_activity_kimera">"BEEZ"</string>
   <string name="_LANG_afUt">"EN"</string>
   <string name="_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF">"This will be added to InfoPlist.strings"</string>
   <string name="_PROFILE_SETTINGS_Z25iJhJ">"Settings"</string>

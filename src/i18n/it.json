@@ -3,14 +3,8 @@
     "NSLocationWhenInUseUsageDescription": "This will be added to InfoPlist.strings"
   },
   "LANG": "EN",
-  "app.name": "BEEZ CASTING NAME APP",
-  "APP_TITLE": "BEEZ CASTING APP",
-  "CASTINGS": "Castings",
-  "MESSAGES": "Messages",
-  "PROFILE": "Profile",
-  "ONGOING": "ON GOING",
-  "CONCLUDED": "CONCLUDED",
-  "ATTEND": "TO ATTEND",
+  "app.name": "BEEZ",
+  "APP_TITLE": "BEEZ",
   "CASTING_DATE": "CASTING DATE",
   "INFORMATION": "INFORMATION",
   "LOGIN": "LOGIN",
@@ -18,10 +12,13 @@
   "FEATURES": "FEATURES",
   "DATE_AND_LOCATION": "DATE AND LOCATION",
   "PARTECIPATE": "PARTECIPATE",
-  "SIGNIN": "Sign In",
+  "SIGNUP": "Sign Up",
   "HELP": "Need Help?",
   "SHARE_WHITH_A_FRIEND": "SHARE WHITH A FRIEND",
   "LOGIN":{
+    "LOGIN" : "LOGIN"
+  },
+  "SIGNUP":{
     "REGISTRATION": "REGISTRATION",
     "REGISTRATION_MINOR": "REGISTRATION A MINOR",
     "REGISTRATION_TITLE" : "Registration of a new user",
@@ -30,13 +27,23 @@
     "REGISTRATION_MINOR_TEXT" :  "Please fill all fields correctly so that the a minor registration to BEEZ can be completed",
     "REGISTRATION_FOOTER" : "REGISTRATION_TITLE",
     "REGISTRATION_SUBMIT" : "REGISTER",
-    "MINOR_REGISTRATION_SUBMIT" : "REGISTER of A Minor",
-    "LOGIN" : "LOGIN"
+    "MINOR_REGISTRATION_SUBMIT" : "REGISTER of A Minor"
   },
-  "PROFILE": {  
+  "CASTINGS": {
+    "CASTINGS": "Castings",
+    "ONGOING": "ON GOING",
+    "CONCLUDED": "CONCLUDED",
+    "ATTEND": "TO ATTEND"
+  },
+  "NOTIFICATIONS": {
+    "NOTIFICATIONS": "Notifications"
+  },
+  "PROFILE": {
+    "PROFILE": "Profile",
     "DETAILS" : "DETAILS",
     "MEDIA" : "MEDIA",
     "CONTACTS" : "CONTACTS",
+    "SETTINGS" : "Settings",
     "INFO" : "INFO"
   },
   "USER": {
@@ -54,8 +61,8 @@
     "HEIGHT" : "Height",
     "BODY_SIZE" : "Size",
     "SHOE_SIZE" : "Shoes",
-    "ACTIVITIES": "Activities", 
-    "HAIR_COLOR": "Hair color", 
+    "ACTIVITIES": "Activities",
+    "HAIR_COLOR": "Hair color",
     "HAIR_LENGHT": "Hair lenght",
     "PHYSIQUE": "Physique",
     "NATIONALITY" : "Nationality",

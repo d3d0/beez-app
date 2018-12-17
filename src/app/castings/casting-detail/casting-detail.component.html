@@ -3,29 +3,74 @@
 	<NavigationButton android.systemIcon="ic_menu_back" text="Back to" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
-<StackLayout>
-	<Image src="~/assets/images/notifica.png" height="400" stretch="aspectFill"></Image>
-	<CardView elevation="40" radius="10" ios:shadowRadius="15" [class.list-group-first]="index===0">
-		<StackLayout class="list-group-item" >
-			<GridLayout columns="62, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
-				<Label text="item.title" class="list-group-item-heading" textWrap="true" row="1" colSpan="5"></Label>
-				<Label text="item.subtitle" class="list-group-item-text" textWrap="true" row="2" colSpan="5"></Label>
-				<Label text="test" class="list-group-item-h-line" row="3" colSpan="5"></Label>
-				<Label text="CASTING" class="text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
-				<Label textWrap="true" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3">
-					<FormattedString>
-						<Span text="item.casting_date" ></Span>
-						<Span text=" • " ></Span>
-						<Span text="item.start_at" ></Span>
-						<Span text=" - " ></Span>
-						<Span text="item.end_at" ></Span>
-					</FormattedString>
-				</Label>
-				<Label text="" class="list-group-item-freccia" row="4" col="4" ></Label>
-			</GridLayout>
-			<Button text="partecipate" class="btn btn-primary"> </Button>
-			<Button text="share" class="btn btn-primary"> </Button>
-		</StackLayout>
-	</CardView>
-</StackLayout>
+<ScrollView class="casting-detail">
 
+	<StackLayout backgroundColor="">
+
+		<Image src="~/assets/images/notifica.png" height="auto" stretch="aspectFit" horizontalAlignment="center" verticalAlignment="top"></Image>
+
+		<CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15">
+
+			<StackLayout class="list-group-item p-t-25" backgroundColor="">
+
+
+					<!-- <GridLayout columns="300" rows="auto, auto, auto, auto, auto" class="" backgroundColor="">
+						<Label text="Informazioni" class="list-group-item-heading-18" textWrap="true" row="0" col="1" horizontalAlignment="left" verticalAlignment="center" ></Label>
+						<Label text="Informazioni" class="list-group-item-heading-18" textWrap="true" row="1" col="1" horizontalAlignment="left" verticalAlignment="center" ></Label>
+						<Label text="Informazioni" *ngIf="false" class="list-group-item-heading-18" textWrap="true" row="2" col="1" horizontalAlignment="left" verticalAlignment="center" ></Label>
+						<Label text="Informazioni" class="list-group-item-heading-18" textWrap="true" row="3" col="1" horizontalAlignment="left" verticalAlignment="center" ></Label>
+						<Label text="Informazioni" class="list-group-item-heading-18" textWrap="true" row="4" col="1" horizontalAlignment="left" verticalAlignment="center" ></Label>
+					</GridLayout> -->
+
+					<GridLayout columns="50, *" rows="auto" backgroundColor="">
+						<Label text="" class="list-group-item-icona-info" row="0" col="0"></Label>
+						<Label text="Informazioni" class="list-group-item-heading-18" textWrap="true" row="0" col="1" horizontalAlignment="left" verticalAlignment="center" ></Label>
+					</GridLayout>
+
+					<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">
+						<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
+						<Label class="list-group-item-text-detail" text="Dopo il successo di “Il Fulgore di Dony”, di recente trasmesso su Rai1, Pupi Avati si dedica ad un altro progetto, per il quale si cerca una ragazza che in questa pellicola avrà un importante ruolo. Le riprese si effettueranno nei mesi estivi. Alle candidate non è richiesta esperienza in campo attoriale, ma la volontà di mettersi in gioco." textWrap="true" row="1" col="1"></Label>
+					</GridLayout>
+
+					<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">
+						<Label text="" class="list-group-item-icona-characteristics" row="0" col="0"></Label>
+						<Label text="Caratteristiche" class="list-group-item-heading-18" textWrap="true" row="0" col="1" horizontalAlignment="left" verticalAlignment="center"></Label>
+						<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
+						<Label class="list-group-item-text-detail" text="• Età scenica tra i 25 e i 35 anni;
+• Corporatura robusta;
+• Viso solare;
+• Marcato accento Veneto." textWrap="true" row="1" col="1"></Label>
+					</GridLayout>
+
+					<GridLayout columns="50, *" rows="auto,auto,auto,auto,auto" backgroundColor="">
+						<Label text="" class="list-group-item-icona-calendar" row="0" col="0"></Label>
+						<Label text="Date e location" class="list-group-item-heading-18" textWrap="true" row="0" col="1" colSpan="4" horizontalAlignment="left" verticalAlignment="center"></Label>
+
+						<Label text="" class="list-group-item-v-line-nospace" row="1" col="0"></Label>
+						<Label text="CASTING" class="text-uppercase list-group-item-heading-14" textWrap="true" row="1" col="1" horizontalAlignment="left" verticalAlignment="center" ></Label>
+
+						<Label text="" class="list-group-item-v-line" row="2" col="0"></Label>
+						<Label class="list-group-item-text-detail" text="26.09.2018 • 10:00 - 16:00
+Face & Place
+Via Lazzaro Papi, 7 - 20135 Milano MI." textWrap="true" row="2" col="1"></Label>
+
+						<Label text="" class="list-group-item-v-line-nospace" row="3" col="0"></Label>
+						<Label text="SHOOTING" class="text-uppercase list-group-item-heading-14" textWrap="true" row="3" col="1" horizontalAlignment="left" verticalAlignment="center" ></Label>
+
+						<Label text="" class="list-group-item-v-line" row="4" col="0"></Label>
+						<Label class="list-group-item-text-detail" text="21.10.2018
+Orario e location saranno comunicati." textWrap="true" row="4" col="1"></Label>
+					</GridLayout>
+					<!-- </GridLayout> -->
+					<StackLayout class="p-t-20" backgroundColor="">
+						<Button text="partecipate" class=" text-uppercase list-group-item-pulsante" ></Button>
+						<Button text="share" class=" text-uppercase list-group-item-pulsante" ></Button>
+					</StackLayout>
+
+			</StackLayout>
+
+		</CardView>
+
+	</StackLayout>
+
+</ScrollView>

@@ -61,10 +61,10 @@
   <string name="_LOGIN_LOGIN_Z19BGda">"LOGIN"</string>
   <string name="_INFORMATION_ZcvWXk">"INFORMATION"</string>
   <string name="_CASTING_DATE_Ztrn7E">"CASTING DATE"</string>
-  <string name="_APP_TITLE_1tl33B">"BEEZ CASTING APP"</string>
-  <string name="_app_name_1k3Sbz">"BEEZ CASTING NAME APP"</string>
-  <string name="app_name">"BEEZ CASTING NAME APP"</string>
-  <string name="title_activity_kimera">"BEEZ CASTING NAME APP"</string>
+  <string name="_APP_TITLE_1tl33B">"BEEZ"</string>
+  <string name="_app_name_1k3Sbz">"BEEZ"</string>
+  <string name="app_name">"BEEZ"</string>
+  <string name="title_activity_kimera">"BEEZ"</string>
   <string name="_LANG_afUt">"EN"</string>
   <string name="_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF">"This will be added to InfoPlist.strings"</string>
   <string name="_SIGNIN_Z2bxEA8">"SIGNIN"</string>

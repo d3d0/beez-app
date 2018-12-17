@@ -57,8 +57,8 @@
 "_MESSAGES_ERROR_LOGIN_1uPQ8G" = "Unfortunately we could not find your account, wrong Password or Mail.";
 "_MESSAGES_NO_CONNECTION_Z1G6ayt" = "Sorry, BEEZ requires an internet connection.";
 "_CASTINGS_X6FcW" = "Castings";
-"_APP_TITLE_1tl33B" = "BEEZ CASTING APP";
-"_app_name_1k3Sbz" = "BEEZ CASTING NAME APP";
+"_APP_TITLE_1tl33B" = "BEEZ";
+"_app_name_1k3Sbz" = "BEEZ";
 "_LANG_afUt" = "EN";
 "_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF" = "This will be added to InfoPlist.strings";
 "_PROFILE_SETTINGS_Z25iJhJ" = "Settings";

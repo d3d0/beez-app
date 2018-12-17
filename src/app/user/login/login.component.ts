@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
   private _lottieView: LottieView;
 
 	isAuthenticating = false;
-  
-  constructor( private router: Router, private page: Page) { 
+
+  constructor( private router: Router, private page: Page) {
     this.animations = ['data.json'];
     this.src = this.animations[0];
   }
@@ -38,5 +38,5 @@ export class LoginComponent implements OnInit {
   goToSignup(){
     this.router.navigate(["/user/signup"]);
   }
-  
+
 }
