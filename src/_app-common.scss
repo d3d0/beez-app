@@ -128,6 +128,53 @@ CardView {
 .list-group-first {
   margin-top: 20;
 }
+// ---------------------------------
+// SIGNUP
+// ---------------------------------
+.signup{
+  .card-group {
+    margin: 20;
+    .list-group-item {
+      background: white; // IMPORTANTE
+      border-radius: 5;  // IMPORTANTE
+      width:100%;
+      color: #000;
+      &-heading-signup {
+        font-size: 18;
+        font-weight: bold;
+        margin: 0 0 10 0;
+        line-height:9;
+      }
+      &-label-signup {
+        font-size: 14;
+        color: #8E8E8E;
+        font-weight: bold;
+        margin: 0 0 10 0;
+      }
+      &-info-signup {
+        font-size: 14;
+        color: #8E8E8E;
+        margin: 0 0 10 0;
+        letter-spacing:0.05;
+        line-height:7;
+      }
+      &-text-signup {
+        font-size: 14;
+        color: $lilla;
+        border-bottom-width: 1;
+        border-bottom-color: #DDD;
+        padding:10 0;
+        margin:0 0 20 0;
+        letter-spacing:0.05;
+        line-height:7;
+      }
+
+    }
+  }
+}
+// ---------------------------------
+// CASTING DETAIL
+// ---------------------------------
 .casting-detail{
   .card-group {
     margin: 20;
@@ -140,7 +187,7 @@ CardView {
         font-size: 18;
         font-weight: bold;
         margin: 0 20 10 0;
-        line-height:18;
+        line-height:9;
       }
       &-heading-14 {
         font-size: 14;
@@ -196,12 +243,12 @@ CardView {
         background-repeat: no-repeat;
         background-position: center center;
       }
-
-
     }
   }
 }
-
+// ---------------------------------
+// LOGIN
+// ---------------------------------
 .card-group {
   margin: 0 20 25 20;
 }
@@ -226,7 +273,6 @@ CardView {
   vertical-align: middle;
   border-color: transparent;
 }
-
 .btn-card {
     padding: 18 0;
     color: $bianco;
@@ -243,7 +289,6 @@ CardView {
     vertical-align: middle;
     border-color: transparent;
 }
-
 .card-group-login-email{
   font-size: 14;
   color: $lilla;

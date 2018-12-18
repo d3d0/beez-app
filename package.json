@@ -1,11 +1,11 @@
 {
   "nativescript": {
     "id": "io.beez.app",
-    "tns-android": {
-      "version": "5.1.0"
-    },
     "tns-ios": {
-      "version": "5.1.0"
+      "version": "5.2.0-2018-12-12-124022-01"
+    },
+    "tns-android": {
+      "version": "5.2.0-2018-12-14-174220-05"
     }
   },
   "description": "Beez Casting Hub",
@@ -38,7 +38,7 @@
     "nativescript-ui-listview": "^4.0.0",
     "reflect-metadata": "~0.1.10",
     "rxjs": "~6.2.0",
-    "tns-core-modules": "^5.1.0",
+    "tns-core-modules": "^5.2.0-next-2018-12-17-171233-03",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
