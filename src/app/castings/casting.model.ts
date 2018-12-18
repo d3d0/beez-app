@@ -1,5 +1,5 @@
 export interface Casting {
-   id: number,
+   id: string,
    title: string,
    subtitle: string,
    casting_date: string,

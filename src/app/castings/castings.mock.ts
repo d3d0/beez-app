@@ -1,7 +1,7 @@
  import { Casting} from "./casting.model";
  export const CASTINGS: Casting[] = [
   {
-    id : 2341,
+    "id" :"1",
     "title": "Film di Pupi Avati",
     "subtitle":"Attrice tra i 25 e i 35 anni",
     "casting_date":"23.12.2018",
@@ -21,7 +21,7 @@
    ]
   },
   {
-    id : 2341,
+    "id" :"2",
     "title":"Advertising Intimissimi",
     "subtitle":"Modelli tra i 18 e i 25 anni",
     "casting_date":"23.12.2018",
@@ -39,7 +39,7 @@
     ]
   },
   {
-    id : 2341,
+    "id" :"3",
     "title":"Spot TV Buondì Motta",
     "subtitle":"Attori vari tra i 5 e i 65 anni",
     "casting_date":"23/12/2018",
@@ -63,7 +63,7 @@
     ]
   },
   {
-    id : 2341,
+    "id" :"4",
     "title":"Advertising McDonald's",
     "subtitle":"Sottotitolo casting",
     "casting_date":"23.12.2018",
@@ -79,7 +79,7 @@
     "Eta scenica tra i 25 e i 35 anni"
     ]},
   {
-    id : 2341,
+    "id" :"5",
     "title":"Advertising Adidas",
     "subtitle":"Sottotitolo casting",
     "casting_date":"23.12.2018",
@@ -96,7 +96,7 @@
     ]
   },
   {
-    id : 2341,
+    "id" :"6",
     "title":"Spot TV Sony",
     "subtitle":"Sottotitolo casting",
     "casting_date":"23.12.2018",

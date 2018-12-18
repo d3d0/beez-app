@@ -5,14 +5,17 @@
 }
 
 .label-textfield {
-  color:$lilla;
+  color:$grigioscuro;
   opacity: 0;
   transform:translate(0,20);
 }
+
 #labelpass{
 	margin-top: 10;
 }
+
 TextField{
+	color:$grigioscuro;
 	border-bottom-width: 1;
   border-color:$grigiochiaro; 
 }

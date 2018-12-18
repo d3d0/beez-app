@@ -1,5 +1,5 @@
 <ActionBar class="action-bar">
-	<Label class="action-bar-title" [text]="'CASTINGS.CASTINGS'|L" ></Label>
+	<Label class="action-bar-title" [text]="casting.title" ></Label>
 	<NavigationButton android.systemIcon="ic_menu_back" text="Back to" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
@@ -7,7 +7,7 @@
 
 	<StackLayout backgroundColor="">
 
-		<Image src="~/assets/images/pupiavati.png" height="auto" stretch="aspectFit" horizontalAlignment="center" verticalAlignment="top"></Image>
+		<Image [src]="casting.image" height="auto" stretch="aspectFit" horizontalAlignment="center" verticalAlignment="top"></Image>
 
 		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
 
@@ -28,7 +28,7 @@
 
 					<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">
 						<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
-						<Label class="list-group-item-text-detail" text="Dopo il successo di “Il Fulgore di Dony”, di recente trasmesso su Rai1, Pupi Avati si dedica ad un altro progetto, per il quale si cerca una ragazza che in questa pellicola avrà un importante ruolo. Le riprese si effettueranno nei mesi estivi. Alle candidate non è richiesta esperienza in campo attoriale, ma la volontà di mettersi in gioco." textWrap="true" row="1" col="1"></Label>
+						<Label class="list-group-item-text-detail" [text]="casting.info" textWrap="true" row="1" col="1"></Label>
 					</GridLayout>
 
 					<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">

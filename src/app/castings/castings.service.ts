@@ -20,7 +20,17 @@ export class CastingsService {
     return CASTINGS;
   }
 
-  //   return this.http.get(this.baseUrl, {
+  getCarById(id: string) :Casting{
+        if (!id) {
+            return;
+        }
+
+        return CASTINGS.filter((car) => {
+            return car.id === id;
+        })[0];
+    }
+
+ //   return this.http.get(this.baseUrl, {
   //     headers: this.getCommonHeaders()
   //   })
   //   .pipe(

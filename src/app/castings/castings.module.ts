@@ -8,6 +8,7 @@ import { CastingsComponent } from "./castings.component";
 import { CastingsListComponent } from "./castings-list/castings-list.component";
 import { CastingDetailComponent } from "./casting-detail/casting-detail.component";
 
+import { CastingsService} from "./castings.service";
 import { CastingStatusPipe } from "./castings-list/casting-status.pipe";
 
 @NgModule({
@@ -16,6 +17,9 @@ import { CastingStatusPipe } from "./castings-list/casting-status.pipe";
     NativeScriptCommonModule,
     NativeScriptLocalizeModule,
     NativeScriptUIListViewModule
+  ],
+  providers: [
+  CastingsService
   ],
   declarations: [
     CastingsComponent,
