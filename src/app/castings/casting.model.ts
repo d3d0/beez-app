@@ -7,8 +7,9 @@ export interface Casting {
    end_at: string,
    info: string,
    features: string[],
-   active: boolean
-   closed: boolean
-   private: boolean
-   to_attend: boolean
+   active: boolean,
+   closed: boolean,
+   private: boolean,
+   to_attend: boolean,
+   image: string
 }

@@ -24,7 +24,7 @@ export class CastingStatusPipe implements PipeTransform {
 
           case "concluded":
             this.value = items.filter((casting: Casting) => {
-              return casting.closed === true && casting.active === false;
+              return casting.closed === true && casting.active === false && casting.to_attend === false;
             });
             break
 
