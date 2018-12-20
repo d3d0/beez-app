@@ -10,6 +10,7 @@ import { registerElement } from 'nativescript-angular';
 import { LottieView } from 'nativescript-lottie';
 import { User } from '../user.model'
 import { alert } from "../../shared";
+import { RouterExtensions } from "nativescript-angular/router";
 
 registerElement('LottieView', () => LottieView);
 
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
   private user: User;
   private isAuthenticating = false;
 
-  constructor( private router: Router, private page: Page) {
+  constructor( private router: Router, private page: Page, private routerExtensions: RouterExtensions) {
     this.user = new User();
   }
 
@@ -58,8 +59,9 @@ export class LoginComponent implements OnInit {
     //   alert("Enter a valid email address.");
     //   return;
     // }
+    this.routerExtensions.navigate(["../home"], { clearHistory: true });
 
-    this.router.navigate(["/home"]);
+    // this.router.navigate(["/home"]);
   }
 
   focusPassword() {
