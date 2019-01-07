@@ -2,6 +2,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { CastingsRoutingModule } from "./castings.routing";
 import { CastingsComponent } from "./castings.component";
@@ -13,10 +14,11 @@ import { CastingStatusPipe } from "./castings-list/casting-status.pipe";
 
 @NgModule({
   imports: [
-    CastingsRoutingModule,
     NativeScriptCommonModule,
     NativeScriptLocalizeModule,
-    NativeScriptUIListViewModule
+    NativeScriptUIListViewModule,
+    NativeScriptRouterModule,
+    CastingsRoutingModule
   ],
   providers: [
   CastingsService

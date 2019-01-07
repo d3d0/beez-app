@@ -2,7 +2,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-import { enable as traceEnable, addCategories } from "tns-core-modules/trace";
+import { SettingsComponent } from './settings/settings.component';
 
 import { AppComponent } from "./app.component";
 
@@ -13,8 +13,6 @@ import { setStatusBarColors, BackendService } from "./shared";
 import { registerElement } from "nativescript-angular/element-registry";
 import { CardView } from "nativescript-cardview";
 registerElement("CardView", () => CardView);
-
-traceEnable();
 
 @NgModule({
     bootstrap: [
@@ -31,6 +29,7 @@ traceEnable();
         NativeScriptRouterModule
     ],
     declarations: [
+        SettingsComponent,
         AppComponent
     ],
     schemas: [

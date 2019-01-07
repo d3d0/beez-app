@@ -20,6 +20,7 @@ export class SettingsComponent implements OnInit {
   }
   
   public goBack() {
-  	this.routerExtensions.backToPreviousPage();
+    console.log('goback')
+    this.routerExtensions.back();
   }
 }

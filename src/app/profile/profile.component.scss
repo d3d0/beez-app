@@ -1,1 +1,60 @@
-/* Add mobile styles for the component here.  */
+@import '../../app-variables';
+
+#container{
+			background-color: white;
+}
+
+.tab-content{
+				background-color: white;
+}
+
+.tab-buttons{
+	background-color: white;
+	label{
+		padding-top: 16;
+		padding-bottom: 16;
+    font-weight: bold;
+		border-bottom-color: $grigiochiaro;
+		border-bottom-width:1;
+    vertical-align: center;
+    text-align: center;
+		&.active{
+   		border-bottom-color: $verde;
+			border-bottom-width:1;
+			color:$verde;
+			transition: 1s ease;
+		}
+	}
+}
+
+.text-wrapper{
+	background-color: transparent;
+  vertical-align: bottom;
+  margin-bottom: $font-size + $font-size-title;
+  margin-left: $font-size + $font-size-title + 2;
+	.name{
+		color: white;
+		font-size: $font-size-title;
+		font-weight: bold;
+	}
+	.role{
+		color: $lilla;
+	}
+}
+
+.action-items{
+		padding: 0 9 0 9;
+		background-color: transparent;
+}
+
+.credits-value{
+	margin-bottom: 3;
+	font-size: 12;
+	font-weight: bold;
+	padding-bottom: 9;
+	color: $verde;
+	text-align: center;
+	background-image: url("res://credits");
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}

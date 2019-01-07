@@ -1,31 +1,78 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" [text]="'PROFILE.PROFILE'|L" ></Label>
-    <ActionItem ios.position="right"  android.systemIcon="ic_settings_black" android.position="right" pageTransition="flip" (tap)="goToSettings()">
-    </ActionItem>
+<ActionBar class="action-bar" [title]="'PROFILE.PROFILE'|L">
+  <!-- <Label class="action-bar-title" [text]="'CASTINGS.CASTINGS'|L" ></Label> -->
+  <!-- TITOLO > ANDROID -->
+  <StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="left">
+    <Image src="res://mark" class="action-image text-left pull-left m-r-10"></Image>
+    <Label [text]="'PROFILE.PROFILE'|L"  class="action-label text-left pull-left"></Label>
+  </StackLayout>
+  <!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
+  <ActionItem android:visibility="collapsed" ios.position="left" android.position="left">
+    <StackLayout>
+      <Image src="res://mark" stretch="none"></Image>
+    </StackLayout>
+  </ActionItem>
+
+  <ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left">
+    <Label class="action-bar-title text-left pull-left" [text]="'CASTINGS.CASTINGS'|L"></Label>
+  </ActionItem>
+
+  <ActionItem ios.position="right" android.position="right">
+    <Label  class="action-items credits-value" text="10"></Label>
+  </ActionItem>
+
+  <ActionItem  ios.position="right" android.position="right">
+    <Image class="action-items"  src="res://edit" stretch="none"></Image>
+  </ActionItem>
+
+  <ActionItem ios.position="right" android.position="right" (tap)="goToSettings()">
+    <Image class="action-items" src="res://settings" stretch="none"></Image>
+  </ActionItem>
+
 </ActionBar>
 
-<StackLayout orientation="vertical">
-<Image src="~/assets/images/profilo.png" stretch="none"> </Image>
-<TabView androidTabsPosition="top">
-  <ScrollView *tabItem="{title: infoTitle}" name="ongoingTab">
+
+<ScrollView #scrollView (scroll)="onScroll($event, scrollView, topView)" (swipe)="onSwipe($event)">
+  <StackLayout id="container" #container>
+
+    <GridLayout #polaroid>
+      <Image src="~/assets/images/c_h.jpg"></Image>
+      <Image src="~/assets/images/rect.png"></Image>
+      <StackLayout class="text-wrapper"> 
+        <Label class="name" text="Christina Hendricks"></Label>
+        <Label class="role" [text]='"actress / model" | uppercase'></Label>
+      </StackLayout>          
+    </GridLayout>
+
+    <GridLayout columns="*,*,*,*" rows="auto" class="tab-buttons">
+      <Label col="0" [text]="'PROFILE.INFO'|L|uppercase" [class.active]="selectedIndex === 0" (tap)="onSelectedIndexChange(0)"></Label>
+      <Label col="1" [text]="'PROFILE.DETAILS'|L|uppercase" [class.active]="selectedIndex === 1" (tap)="onSelectedIndexChange(1)"></Label>
+      <Label col="2" [text]="'PROFILE.MEDIA'|L|uppercase" [class.active]="selectedIndex === 2" (tap)="onSelectedIndexChange(2)"></Label>
+      <Label col="3" [text]="'PROFILE.CONTACTS'|L|uppercase" [class.active]="selectedIndex === 3" (tap)="onSelectedIndexChange(3)"></Label>
+    </GridLayout>
+
+    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
       <ns-info
-          (loading)="showActivityIndicator()"
-          (loaded)="hideActivityIndicator()"></ns-info>
-  </ScrollView>
-  <ScrollView *tabItem="{title: detailsTitle}" name="attendTab">
+      (loading)="showActivityIndicator()"
+      (loaded)="hideActivityIndicator()"></ns-info>
+    </GridLayout>
+
+    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
       <ns-details
-          (loading)="showActivityIndicator()"
-          (loaded)="hideActivityIndicator()"> </ns-details>
-  </ScrollView>
-  <ScrollView *tabItem="{title: mediaTitle}" name="concludedTab">
+      (loading)="showActivityIndicator()"
+      (loaded)="hideActivityIndicator()"> </ns-details>
+    </GridLayout>
+
+    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
       <ns-media
-          (loading)="showActivityIndicator()"
-          (loaded)="hideActivityIndicator()"> </ns-media>
-  </ScrollView>
-  <ScrollView *tabItem="{title: contactsTitle}" name="concludedTab">
+      (loading)="showActivityIndicator()"
+      (loaded)="hideActivityIndicator()"> </ns-media>
+    </GridLayout>
+
+    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 3 ? 'visible' : 'collapsed'">
       <ns-contacts
-          (loading)="showActivityIndicator()"
-          (loaded)="hideActivityIndicator()"> </ns-contacts>
-  </ScrollView>
-</TabView>
-</StackLayout>
+      (loading)="showActivityIndicator()"
+      (loaded)="hideActivityIndicator()"> </ns-contacts>
+    </GridLayout>
+
+  </StackLayout>
+</ScrollView>

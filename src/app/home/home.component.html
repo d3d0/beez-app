@@ -1,4 +1,9 @@
 <TabView androidTabsPosition="bottom">
+        
+    <page-router-outlet
+        *tabItem="{title: '', iconSource: getIconSource('profile_on')}"
+        name="profileTab">
+    </page-router-outlet>
 
     <page-router-outlet
         *tabItem="{title: '', iconSource: getIconSource('casting_on')}"
@@ -8,11 +13,6 @@
     <page-router-outlet
         *tabItem="{title: '', iconSource: getIconSource('notification_on')}"
         name="notificationsTab">
-    </page-router-outlet>
-
-    <page-router-outlet
-        *tabItem="{title: '', iconSource: getIconSource('profile_on')}"
-        name="profileTab">
     </page-router-outlet>
 
 </TabView>

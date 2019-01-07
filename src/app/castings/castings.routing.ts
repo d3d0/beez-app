@@ -5,12 +5,14 @@ import { CastingsComponent } from "./castings.component";
 import { CastingDetailComponent } from "../castings/casting-detail/casting-detail.component";
 
 export const routes: Routes = [
-    { path: "", component: CastingsComponent },
-    {path: ":id", component: CastingDetailComponent}
+		{ path: "", redirectTo: "castings" },
+    { path: "castings", component: CastingsComponent },
+    { path: "castings/:id", component: CastingDetailComponent}
 ];
 
 @NgModule({
-    imports: [NativeScriptRouterModule.forChild(routes)],  // set the lazy loaded routes using forChild
+    imports: [NativeScriptRouterModule.forChild(routes)],
     exports: [NativeScriptRouterModule]
 })
+
 export class CastingsRoutingModule { }
