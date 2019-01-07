@@ -4,9 +4,7 @@
 // ---------------------------------
 // FONT + ICON
 // ---------------------------------
-* {
-  font-family: "Sofia-Pro", "Sofia-Pro-Light"; // IMPORTANTE
-}
+
 .fa {
   font-family: "FontAwesome"; // IMPORTANTE
 }
@@ -132,8 +130,10 @@ CardView {
 // SIGNUP
 // ---------------------------------
 .signup{
+
   .card-group {
     margin: 20;
+    
     .list-group-item {
       background: white; // IMPORTANTE
       border-radius: 5;  // IMPORTANTE
@@ -176,73 +176,108 @@ CardView {
 // CASTING DETAIL
 // ---------------------------------
 .casting-detail{
+
   .card-group {
     margin: 20;
+
     .list-group-item {
       background: white; // IMPORTANTE
       border-radius: 5;  // IMPORTANTE
       width:100%;
       color: #000;
+
       &-heading-18 {
         font-size: 18;
         font-weight: bold;
-        margin: 0 20 10 0;
+        margin: 5 20 5 0; // RICALCOLARE
         line-height:9;
+        &-first {
+          margin: 0 20 5 0; // RICALCOLARE
+        }
       }
       &-heading-14 {
         font-size: 14;
+        line-height:7;
         font-weight: bold;
-        margin: 0 20 10 0;
+        margin: 3 20 7 0; // RICALCOLARE
+        // background-color: red;
       }
       &-text-detail {
         font-size: 14;
-        color: #8E8E8E;
-        margin: 0 20 10 0;
-        letter-spacing:0.05;
         line-height:7;
+        letter-spacing:0.05;
+        color: $grigioscuro;
+        margin: 3 20 7 0; // RICALCOLARE
+        // background-color: green;
+        &-last {
+          margin: 3 20 17 0; // RICALCOLARE
+        }
       }
+
       &-v-line {
         width: 1;
         background-color: #DDD;
-        margin: 0 0 10 0;
-        padding: 0 0 10 0;
+        margin: 0 0 0 0; // RICALCOLARE
+        padding: 0;
       }
       &-v-line-nospace {
         width: 1;
         background-color: #DDD;
-        margin: 0 0 0 0;
-        padding: 0 0 10 0;
+        margin: 0 0 0 0; // RICALCOLARE
+        padding: 0;
       }
-      &-icona-info {
-        margin: 5 0 15 0;
-        width:16;
-        height: 16;
-        display: block;
-        background-image: url("res://info") no-repeat;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
+
+      &-icona{
+        &-info {
+          margin: 5 0 5 0; // RICALCOLARE
+          width:16;
+          height: 16;
+          background-image: url("res://info") no-repeat center cover;
+          &-first {
+            margin: 0 0 5 0; // RICALCOLARE
+          }
+        }
+        &-characteristics {
+          margin: 5 0 5 0; // RICALCOLARE
+          width:16;
+          height: 16;
+          background-image: url("res://characteristics") no-repeat center cover;
+        }
+        &-calendar {
+          margin: 5 0 5 0; // RICALCOLARE
+          width:16;
+          height: 16;
+          background-image: url("res://calendar") no-repeat center cover;
+        }
+        &-partecipate {
+          margin: 17 0 17 0; // RICALCOLARE
+          width: 16;
+          height: 16;
+          background-image: url("res://confirm") no-repeat center cover;
+          background-repeat: no-repeat;
+        }
+        &-share {
+          margin: 17 0 17 0; // RICALCOLARE
+          width: 16;
+          height: 16;
+          background-image: url("res://send") no-repeat center cover;
+          background-repeat: no-repeat;
+        }
       }
-      &-icona-characteristics {
-        margin: 5 0 15 0;
-        width:16;
-        height: 16;
-        display: block;
-        background-image: url("res://characteristics") no-repeat;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
+
+      &-pulsante {
+        border-radius: 5;
+        color:white;
+        height:50;
+        margin:0 20 0 0;
+        &--verde {
+          background: $verde;
+        }
+        &--blu {
+          background: $lilla;
+        }
       }
-      &-icona-calendar {
-        margin: 5 0 15 0;
-        width:16;
-        height: 16;
-        display: block;
-        background-image: url("res://calendar") no-repeat;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-      }
+
     }
   }
 }
@@ -462,25 +497,15 @@ CardView {
 NSSegmentView{
   font-size: 10; /* OK */
   height:55; /* OK */
-
-  // android > background
   background-color: white; /* OK */
-
-  // FONT COLOR
-  title-color:#1E1E1E;
-
-  // SELEZIONATA > background e border
-  selected-background-color:white;
 }
 SegmentedBar{
   font-size: 10; /* OK */
   height:55; /* OK */
   color:#1E1E1E; /* OK */
-
   // android > background
-  background-color: white; /* OK */
-
+  //background-color: white; /* OK */
   // android > border bottom della selezionata
-  // ios > background della selezionata
-  selected-background-color: #00D796; /* OK */
+  // ios > background della selezionata + bordi
+  //selected-background-color: transparent; /* OK */
 }
