@@ -41,6 +41,7 @@ export class CastingsComponent extends Observable {
       // this.tabs.push(segmentedBarItem1);
       // this.tabs.push(segmentedBarItem2);
 
+
       // NSSegmentView
       this.tabItems = [];
       const item1 = new NSSegmentViewItem();
