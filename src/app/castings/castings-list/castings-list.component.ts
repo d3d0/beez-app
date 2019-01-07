@@ -47,7 +47,7 @@ export class CastingsListComponent implements OnInit {
 
   onCastingTap(args: ListViewEventData): void {
     const tappedCasting = args.view.bindingContext;
-    this.routerExtensions.navigate(["../castings/", tappedCasting.id],
+    this.routerExtensions.navigate(["/home/castings/", tappedCasting.id],
         {
             animated: true,
             transition: {

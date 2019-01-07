@@ -58,24 +58,24 @@ export class ProfileComponent implements OnInit {
   get minHeight() {
     return screen.mainScreen.heightDIPs + 2 * screen.mainScreen.widthDIPs;
   }
-    onScroll(event: ScrollEventData, scrollView: ScrollView) {
-        // If the header content is still visiible
-        let polaroid = <View>this.polaroid.nativeElement;
-        // this.flex.getMeasuredHeight()
-        // console.log(scrollView.verticalOffset);
-        if (scrollView.verticalOffset < 250) {
-            const offset = scrollView.verticalOffset / 2;
-            if (scrollView.ios) {
-                // iOS adjust the position with an animation to create a smother scrolling effect. 
-                polaroid.animate({ translate: { x: 0, y: offset } }).then(() => { }, () => { });
-            } else {
-                // Android, animations are jerky so instead just adjust the position without animation.
-                polaroid.translateY = Math.floor(offset);
-                // polaroid.marginTop = (scrollView.verticalOffset*8)*-1;
 
-            }
-        }
-    }
+  onScroll(event: ScrollEventData, scrollView: ScrollView) {
+      // If the header content is still visiible
+      let polaroid = <View>this.polaroid.nativeElement;
+      // this.flex.getMeasuredHeight()
+      // console.log(scrollView.verticalOffset);
+      if (scrollView.verticalOffset < 250) {
+          const offset = scrollView.verticalOffset / 2;
+          if (scrollView.ios) {
+              // iOS adjust the position with an animation to create a smother scrolling effect. 
+              polaroid.animate({ translate: { x: 0, y: offset } }).then(() => { }, () => { });
+          } else {
+              // Android, animations are jerky so instead just adjust the position without animation.
+              polaroid.translateY = Math.floor(offset);
+              // polaroid.marginTop = (scrollView.verticalOffset*8)*-1;
+          }
+      }
+  }
 
 
   public onScrollooo(args: ScrollEventData) {
