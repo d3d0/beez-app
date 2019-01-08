@@ -16,13 +16,14 @@
     </ActionItem>
 </ActionBar>
 
-<StackLayout>
-    <!-- NSSegmentView -->
-    <NSSegmentView id="1" [items]="tabItems" height="50" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5"></NSSegmentView>
+<StackLayout (swipe)="onSwipe($event)">
 
-    <!-- SegmentedBar -->
-    <!-- <SegmentedBar [items]="tabs" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5" ></SegmentedBar> -->
-
+    <GridLayout columns="*,*,*" rows="auto" class="tab-buttons">
+      <Label col="0" [text]="'CASTINGS.ONGOING'|L|uppercase" [class.active]="selectedIndex === 0" (tap)="onSelectedIndexChange(0)"></Label>
+      <Label col="1" [text]="'CASTINGS.ATTEND'|L|uppercase" [class.active]="selectedIndex === 1" (tap)="onSelectedIndexChange(1)"></Label>
+      <Label col="2" [text]="'CASTINGS.CONCLUDED'|L|uppercase" [class.active]="selectedIndex === 2" (tap)="onSelectedIndexChange(2)"></Label>
+   </GridLayout>
+   
     <GridLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
       <ns-castings-list [castingType]="'ongoing'" ></ns-castings-list>
     </GridLayout>

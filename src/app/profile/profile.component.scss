@@ -4,29 +4,6 @@
 			background-color: white;
 }
 
-.tab-content{
-				background-color: white;
-}
-
-.tab-buttons{
-	background-color: white;
-	label{
-		padding-top: 16;
-		padding-bottom: 16;
-    font-weight: bold;
-		border-bottom-color: $grigiochiaro;
-		border-bottom-width:1;
-    vertical-align: center;
-    text-align: center;
-		&.active{
-   		border-bottom-color: $verde;
-			border-bottom-width:1;
-			color:$verde;
-			transition: 1s ease;
-		}
-	}
-}
-
 .text-wrapper{
 	background-color: transparent;
   vertical-align: bottom;

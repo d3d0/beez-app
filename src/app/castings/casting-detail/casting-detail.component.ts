@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import { switchMap } from "rxjs/operators";
+import { ActivatedRoute } from "@angular/router";
 
 import { Casting } from "../casting.model";
 import { CastingsService} from "../castings.service";
@@ -15,7 +16,11 @@ import { CastingsService} from "../castings.service";
 export class CastingDetailComponent implements OnInit {
   private _casting: Casting;
 
-  constructor(private castingsService: CastingsService, private pageRoute: PageRoute, private routerExtensions: RouterExtensions) { }
+  constructor(
+    private castingsService: CastingsService,
+    private pageRoute: PageRoute,
+    private activeRoute: ActivatedRoute,
+    private routerExtension: RouterExtensions) { }
 
   ngOnInit() {
     this.pageRoute.activatedRoute
@@ -26,23 +31,12 @@ export class CastingDetailComponent implements OnInit {
     })
   }
 
-    get casting() : Casting{
-        return this._casting;
-    }
+  get casting() : Casting{
+      return this._casting;
+  }
 
-    goBack(): void{
-      // this.routerExtensions.backToPreviousPage();
-      // this.routerExtensions.back();
-      this.routerExtensions.navigate(["/home"])
-      // this.routerExtensions.navigate(["/home"],
-      // {
-        //     animated: true,
-        //     transition: {
-          //         name: "slide",
-          //         duration: 200,
-          //         curve: "ease"
-          //     }
-          // });
-        }
+  goBack(): void{
+    this.routerExtension.back({ relativeTo: this.activeRoute });
+  }
 
-      }
+}

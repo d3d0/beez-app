@@ -14,7 +14,8 @@ import { SettingsComponent } from "../settings/settings.component";
     NativeScriptCommonModule
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    SettingsComponent
       ],
   schemas: [NO_ERRORS_SCHEMA]
 })

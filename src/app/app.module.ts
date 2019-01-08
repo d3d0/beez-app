@@ -2,7 +2,6 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-import { SettingsComponent } from './settings/settings.component';
 
 import { AppComponent } from "./app.component";
 
@@ -29,7 +28,6 @@ registerElement("CardView", () => CardView);
         NativeScriptRouterModule
     ],
     declarations: [
-        SettingsComponent,
         AppComponent
     ],
     schemas: [

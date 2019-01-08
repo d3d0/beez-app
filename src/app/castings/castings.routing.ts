@@ -7,7 +7,7 @@ import { CastingDetailComponent } from "../castings/casting-detail/casting-detai
 export const routes: Routes = [
 		{ path: "", redirectTo: "castings" },
     { path: "castings", component: CastingsComponent },
-    { path: "castings/:id", component: CastingDetailComponent}
+    { path: "casting/:id", component: CastingDetailComponent}
 ];
 
 @NgModule({

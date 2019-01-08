@@ -11,10 +11,7 @@ const homeRoutes: Routes = [
         { path: "notifications", component: NSEmptyOutletComponent, loadChildren: "~/app/notifications/notifications.module#NotificationsModule", outlet: "notificationsTab"},
         { path: "profile", component: NSEmptyOutletComponent, loadChildren: "~/app/profile/profile.module#ProfileModule", outlet: "profileTab"}
     ]},
-    { path: "castings", loadChildren: "~/app/castings/castings.module#CastingsModule"},
-    { path: "notifications", loadChildren: "~/app/castings/castings.module#NotificationsModule"},
-    { path: "profile", loadChildren: "~/app/castings/castings.module#ProfileModule"}
-    // { path: "notifications", loadChildren: "~/app/notifications/notifications.module#NotificationsModule"},
+    { path: "settings", component:SettingsComponent}
 ];
 
 @NgModule({

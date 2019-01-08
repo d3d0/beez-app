@@ -1,1 +1,23 @@
-/* Add mobile styles for the component here.  */
+@import '../../../app-variables';
+
+CardView {
+	margin-top: $font-size*2; 
+}
+
+.row{
+	margin: 0 10;
+	padding: 16 0 14 0;
+	width: 100%;
+	border-bottom-width: 1;
+	border-bottom-color: $grigiochiaro;
+	.label{
+		color: $grigioscuro;
+	}
+	.value{
+		color:$nero;
+	}
+}
+
+.row.last{
+	border-bottom-width: 0;
+}

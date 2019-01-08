@@ -44,17 +44,4 @@ export class CastingsListComponent implements OnInit {
   hideActivityIndicator() {
     console.log('hideActivityIndicator')
   }
-
-  onCastingTap(args: ListViewEventData): void {
-    const tappedCasting = args.view.bindingContext;
-    this.routerExtensions.navigate(["/home/castings/", tappedCasting.id],
-        {
-            animated: true,
-            transition: {
-                name: "slide",
-                duration: 200,
-                curve: "ease"
-            }
-        });
-    }
 }

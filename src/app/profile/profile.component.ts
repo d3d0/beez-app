@@ -48,11 +48,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {}
 
   onSwipe(args){
-    if (args.direction === 1)
-      this.selectedIndex = Math.max(0,(this.selectedIndex - 1) % 4)
+   if (args.direction === 1)
+      this.selectedIndex = Math.abs(this.selectedIndex + 3 ) % 4
     if (args.direction === 2)
-      this.selectedIndex = Math.max(0,(this.selectedIndex + 1) % 4)
-    console.log(this.selectedIndex)
+      this.selectedIndex = Math.abs(this.selectedIndex + 1) % 4  
   }
 
   get minHeight() {
@@ -77,12 +76,6 @@ export class ProfileComponent implements OnInit {
       }
   }
 
-
-  public onScrollooo(args: ScrollEventData) {
-
-
-    // let tabButtons = <View>this.tabButtons.nativeElement;      
-    // this.showPolaroid()
      // if (this.tabButtonsEl  )
                 /* Check if the first item is already reached to top.
                 if (listView.getFirstVisiblePosition() == 0) {
@@ -98,8 +91,6 @@ export class ProfileComponent implements OnInit {
                 */
     // this.tabButtonsEl.style.marginTop = args.scrollY;
     // this.tabButtonsEl.style.marginBottom = Math.max(0,(args.scrollY)*-1 + 450);
-};
-
 
   showPolaroid(){
     let animations = [];
@@ -130,7 +121,7 @@ export class ProfileComponent implements OnInit {
   }
 
   goToSettings() {
-    this.routerExtension.navigate(["/settings"]);
+    this.routerExtension.navigate(["/home/settings"]);
   }
 
   hideActivityIndicator() {
