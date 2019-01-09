@@ -121,7 +121,7 @@ export class ProfileComponent implements OnInit {
   }
 
   goToSettings() {
-    this.routerExtension.navigate(["/home/settings"]);
+    this.routerExtension.navigate(["/home/profile/settings"]);
   }
 
   hideActivityIndicator() {

@@ -1,7 +1,8 @@
 <ActionBar class="action-bar" title="">
-	<Label class="action-bar-title" [text]="'PROFILE.SETTINGS'" ></Label>
+	<Label class="action-bar-title" [text]="'PROFILE.SETTINGS'|L" ></Label>
 	<NavigationButton android.systemIcon="ic_menu_back" text="Back to" (tap)="goBack()"></NavigationButton>
 </ActionBar>
+
 
 <StackLayout>
 	<Button text="logout" [nsRouterLink]="['/user/login']" clearHistory="true"></Button>

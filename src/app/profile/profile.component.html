@@ -24,7 +24,7 @@
     <Image class="action-items"  src="res://edit" stretch="none"></Image>
   </ActionItem>
 
-  <ActionItem ios.position="right" android.position="right" (tap)="goToSettings()">
+  <ActionItem ios.position="right" android.position="right" [nsRouterLink]="['../settings']">
     <Image class="action-items" src="res://settings" stretch="none"></Image>
   </ActionItem>
 

@@ -8,6 +8,7 @@ import { MediaComponent } from './media/media.component';
 import { DetailsComponent } from './details/details.component';
 import { InfoComponent } from './info/info.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { SettingsComponent } from "./settings/settings.component";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ContactsComponent } from './contacts/contacts.component';
   MediaComponent,
   DetailsComponent,
   InfoComponent,
-  ContactsComponent
+  ContactsComponent,
+  SettingsComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
