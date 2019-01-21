@@ -27,19 +27,18 @@
   <ActionItem ios.position="right" android.position="right" (tap)="goToSettings()">
     <Image class="action-items" src="res://settings" stretch="none"></Image>
   </ActionItem>
-
 </ActionBar>
 
-<ScrollView #scrollView (scroll)="onScroll($event, scrollView, topView)" (swipe)="onSwipe($event)">
+<ScrollView class="profile" #scrollView (scroll)="onScroll($event, scrollView, topView)" (swipe)="onSwipe($event)">
   <StackLayout id="container" #container>
 
     <GridLayout #polaroid>
       <Image src="~/assets/images/c_h.jpg"></Image>
       <Image src="~/assets/images/rect.png"></Image>
-      <StackLayout class="text-wrapper"> 
+      <StackLayout class="text-wrapper">
         <Label class="name" text="Christina Hendricks"></Label>
         <Label class="role" [text]='"actress / model" | uppercase'></Label>
-      </StackLayout>          
+      </StackLayout>
     </GridLayout>
 
     <GridLayout columns="*,*,*,*" rows="auto" class="tab-buttons">
@@ -58,19 +57,19 @@
     <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
       <ns-details
       (loading)="showActivityIndicator()"
-      (loaded)="hideActivityIndicator()"> </ns-details>
+      (loaded)="hideActivityIndicator()"></ns-details>
     </GridLayout>
 
     <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
       <ns-media
       (loading)="showActivityIndicator()"
-      (loaded)="hideActivityIndicator()"> </ns-media>
+      (loaded)="hideActivityIndicator()"></ns-media>
     </GridLayout>
 
     <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 3 ? 'visible' : 'collapsed'">
       <ns-contacts
       (loading)="showActivityIndicator()"
-      (loaded)="hideActivityIndicator()"> </ns-contacts>
+      (loaded)="hideActivityIndicator()"></ns-contacts>
     </GridLayout>
 
   </StackLayout>
