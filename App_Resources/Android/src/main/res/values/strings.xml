@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="_MESSAGES_ERROR_LOGIN_1uPQ8G">"Unfortunately we could not find your account, wrong Password or Mail."</string>
+  <string name="_MESSAGES_ERROR_EMAIL_1un5ey">"Please, enter a valid email address."</string>
+  <string name="_MESSAGES_ERROR_PASS_Z1U6uho">"Passwords must be at least six characters."</string>
+  <string name="_MESSAGES_ERROR_USER_Z1U5KI4">"Sorry, We can\'t find a user with that e-mail address."</string>
+  <string name="_MESSAGES_ERROR_TOKEN_1vnpFb">"Sorry, this password reset token is invalid."</string>
+  <string name="_MESSAGES_RESET_MAIL_SENT_ReiBM">"We have e-mailed your password reset link!"</string>
+  <string name="_MESSAGES_RESET_PASS_ZK9xkR">"Your password has been reset!"</string>
   <string name="_MESSAGES_NO_CONNECTION_Z1G6ayt">"Sorry, BEEZ requires an internet connection."</string>
   <string name="_USER_AGENCY_ZQwRSF">"Agency"</string>
   <string name="_USER_PHONE_2hoiDb">"Phone"</string>

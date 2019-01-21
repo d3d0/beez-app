@@ -11,6 +11,7 @@ import { LottieView } from 'nativescript-lottie';
 import { User } from '../user.model'
 import { alert } from "../../shared";
 import { RouterExtensions } from "nativescript-angular/router";
+import { localize } from "nativescript-localize";
 
 registerElement('LottieView', () => LottieView);
 
@@ -52,13 +53,17 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (getConnectionType() === connectionType.none) {
-      alert("BEEZ requires an internet connection to register.");
+      alert(localize("MESSAGES.NO_CONNECTION"));
       return;
     }
-    // if (!this.user.isValidEmail()) {
-    //   alert("Enter a valid email address.");
-    //   return;
-    // }
+    if (!this.user.isValidEmail()) {
+      alert(localize("MESSAGES.ERROR_EMAIL"));
+      return;
+    }
+    if (!this.user.isValidPassword()) {
+      alert(localize("MESSAGES.ERROR_PASS"));
+      return;
+    }
     this.routerExtensions.navigate(["../home"], { clearHistory: true });
 
     // this.router.navigate(["/home"]);
