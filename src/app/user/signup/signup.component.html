@@ -7,11 +7,11 @@
 
 	<StackLayout *tabItem="{title: signupTitle}">
 		<ScrollView>
-			<StackLayout>
+			<StackLayout><!-- non serve -->
 				<CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15">
 					<StackLayout class="list-group-item p-20">
 
-						<Label class="list-group-item-heading-signup" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
+						<Label class="list-group-item-heading-18" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
 						<Label class="list-group-item-info-signup" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.NAME'|L"></Label>
@@ -43,14 +43,14 @@
 						returnKeyType="done"></TextField>
 
 						<CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
-								<Button class="card-button-button"
+								<Button class="card-button-link"
 								[text]="'SIGNUP.REGISTRATION_SUBMIT'|L"
 								([nsRouterLink]="['/user/login']"></Button>
 						</CardView>
 
 					</StackLayout>
 				</CardView>
-			</StackLayout>
+			</StackLayout><!-- non serve -->
 		</ScrollView>
 	</StackLayout>
 	<StackLayout *tabItem="{title: signupMinorTitle}">
@@ -59,7 +59,7 @@
 				<CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15">
 					<StackLayout class="list-group-item p-20">
 
-						<Label class="list-group-item-heading-signup" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
+						<Label class="list-group-item-heading-18" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
 						<Label class="list-group-item-info-signup" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.NAME'|L"></Label>
@@ -111,7 +111,7 @@
 						<DatePicker></DatePicker>
 
 						<CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
-								<Button class="card-button-button"
+								<Button class="card-button-link"
 								[text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L"
 								([nsRouterLink]="['/user/login']"></Button>
 						</CardView>

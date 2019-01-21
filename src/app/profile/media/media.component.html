@@ -1,20 +1,77 @@
-	<StackLayout>
-		<CardView  elevation="40" radius="20" ios:shadowRadius="15">
-		  <GridLayout>
-		  <WrapLayout orientation="horizontal" >
+<StackLayout>
+	<CardView class="card-group " elevation="40" radius="20" ios:shadowRadius="15">
+	  <StackLayout class="list-group-item p-t-20 "><!-- IMPORTANTE -->
+			<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">
+				<Label text="" class="list-group-item-icona-photo list-group-item-icona-photo-first" row="0" col="0"></Label>
+				<Label text="FOTO" class="list-group-item-heading-14 list-group-item-heading-14-first" textWrap="true" row="0" col="1" ></Label>
+				<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
+				<WrapLayout orientation="horizontal" row="1" col="1" backgroundColor="">
 
-				<CardView  width= "35%" elevation="40" radius="20" ios:shadowRadius="15">
-					      <Image src="~/assets/images/c_h.jpg"></Image>
-				</CardView>
-				<CardView  width="35%" elevation="40" radius="20" ios:shadowRadius="15">
-					      <Image src="~/assets/images/c_h.jpg"></Image>
-				</CardView>
-				<CardView  width="35%" elevation="40" radius="20" ios:shadowRadius="15">
-					      <Image src="~/assets/images/c_h.jpg"></Image>
-				</CardView>
+					<!-- <CardView class="list-group-item-box" radius="20">
+						<StackLayout class="list-group-item">
+							<Image src="~/assets/images/c_h.jpg"></Image>
+						</StackLayout>
+					</CardView> -->
+					<CardView class="list-group-item-box" radius="20">
+						<StackLayout class="list-group-item p-0 m-0">
+							<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
+								<Image left="0" top="0" stretch="aspectFill" width="100%" src="~/assets/images/c_h.jpg" ></Image>
+								<StackLayout left="0" top="0" height="32" width="100%">
+									<Label class="list-group-item-icona-no-nero" horizontalAlignment="right"></Label>
+								</StackLayout>
+						  </AbsoluteLayout>
+						</StackLayout>
+					</CardView>
+					<CardView class="list-group-item-box" radius="20">
+						<StackLayout class="list-group-item">
+							<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
+								<Image left="0" top="0" stretch="aspectFill" width="100%" src="~/assets/images/c_h.jpg" ></Image>
+								<StackLayout left="0" top="0" height="32" width="100%">
+										<Label class="list-group-item-icona-no-nero" horizontalAlignment="right"></Label>
+								</StackLayout>
+						  </AbsoluteLayout>
+						</StackLayout>
+					</CardView>
+					<CardView class="list-group-item-box" radius="20">
+						<StackLayout class="list-group-item">
+							<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
+								<Image left="0" top="0" stretch="aspectFill" width="100%" src="~/assets/images/c_h.jpg" ></Image>
+								<StackLayout left="0" top="0" height="32" width="100%">
+										<Label class="list-group-item-icona-no-nero" horizontalAlignment="right"></Label>
+								</StackLayout>
+						  </AbsoluteLayout>
+						</StackLayout>
+					</CardView>
+					<CardView class="list-group-item-box" radius="20">
+						<StackLayout class="list-group-item">
+							<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
+								<Image left="0" top="0" stretch="aspectFill" width="100%" src="~/assets/images/c_h.jpg" ></Image>
+								<StackLayout left="0" top="0" height="32" width="100%">
+										<Label class="list-group-item-icona-no-nero" horizontalAlignment="right"></Label>
+								</StackLayout>
+						  </AbsoluteLayout>
+						</StackLayout>
+					</CardView>
+					<CardView class="list-group-item-box" radius="20">
+						<StackLayout class="list-group-item">
+							<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
+								<Image left="0" top="0" stretch="aspectFill" width="100%" src="~/assets/images/c_h.jpg" ></Image>
+								<StackLayout left="0" top="0" height="32" width="100%">
+										<Label class="list-group-item-icona-no-nero" horizontalAlignment="right"></Label>
+								</StackLayout>
+						  </AbsoluteLayout>
+						</StackLayout>
+					</CardView>
 
-			</WrapLayout>
-							</GridLayout>
+				</WrapLayout>
+			</GridLayout>
 
-		</CardView>
-	</StackLayout>
+			<StackLayout class="p-t-0 p-b-20" backgroundColor="">
+				<GridLayout columns="50, *" rows="auto" backgroundColor="">
+					<Label text="" class="list-group-item-icona-add" row="0" col="0" verticalAlignment="top"></Label>
+					<Button text="ADD NEW PHOTOS" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
+				</GridLayout>
+			</StackLayout>
+		</StackLayout><!-- IMPORTANTE -->
+	</CardView>
+</StackLayout>

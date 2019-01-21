@@ -1,11 +1,11 @@
-<RadListView [items]="castings | castingStatus:castingType" >
+<RadListView class="casting" [items]="castings | castingStatus:castingType" >
   <ng-template let-item="item" let-index="index">
 
-      <CardView  [nsRouterLink]="['../casting', item.id]" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="index===0">
+      <CardView class="card-group" [nsRouterLink]="['../casting', item.id]" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="index===0">
        <StackLayout class="list-group-item" >
          <GridLayout columns="62, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
            <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
-           <Label [text]="item.title" class="list-group-item-heading" textWrap="true" row="1" colSpan="5"></Label>
+           <Label [text]="item.title" class="list-group-item-heading-18" textWrap="true" row="1" colSpan="5"></Label>
            <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" colSpan="5"></Label>
            <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
            <Label text="CASTING" class="text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
@@ -18,7 +18,7 @@
                <Span [text]="item.end_at" ></Span>
              </FormattedString>
            </Label>
-           <Label text="" class="list-group-item-freccia" row="4" col="4" ></Label>
+           <Label text="" class="list-group-item-icona-freccia" row="4" col="4" ></Label>
          </GridLayout>
        </StackLayout>
      </CardView>

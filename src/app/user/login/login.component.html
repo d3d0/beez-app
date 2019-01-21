@@ -11,7 +11,7 @@
             <GridLayout rows="*,*,*,*,*,*" backgroundColor="" margin="20">
 
                 <Label #labelmail row="0" [text]="'EMAIL'|L" class="label-textfield" ></Label>
-                <TextField #textfieldmail class="card-group-login-email"  row="1" rowSpan="2"
+                <TextField #textfieldmail class="card-group-item-email"  row="1" rowSpan="2"
                 [hint]="'EMAIL'| L |titlecase"
                 (focus)="toggleLabel($event,'mail')"
                 (blur)="toggleLabel($event,'mail')"
@@ -22,7 +22,7 @@
                 row="1"></TextField>
 
                 <Label #labelpass id="labelpass" row="2" [text]="'PASSWORD'|L" class="label-textfield"></Label>
-                <TextField #textfieldpass row="3" class="card-group-login-pw"
+                <TextField #textfieldpass row="3" class="card-group-item-pw"
                 (focus)="toggleLabel($event,'pass')"
                 (blur)="toggleLabel($event,'pass')"
                 returnKeyType="done"
@@ -37,7 +37,7 @@
                 <ActivityIndicator row="4" [busy]="isAuthenticating" height="0"></ActivityIndicator>
 
                 <CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
-                    <Button class="card-button-button"
+                    <Button class="card-button-link"
                     [text]="'LOGIN'|L"
                     (tap)="login()"></Button>
                 </CardView>
