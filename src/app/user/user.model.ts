@@ -7,7 +7,7 @@ export class User {
   
   isValidEmail() {
     return validator.validate(this.email);
-  }
+  };
 
   isValidPassword() {
   	if ( this.password.length > 5 )

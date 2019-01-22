@@ -1,3 +1,5 @@
+@import '../../app-variables';
+
 /* Add mobile styles for the component here.  */
 
 // ---------------------------------
@@ -14,4 +16,10 @@ CardView {
 }
 .list-group-first {
   margin-top: 20;
+}
+.tabActiveIndex{
+	background-color: transparent;
+	z-index: 2;
+	border-bottom-width: 1;
+	border-color: $verde;
 }

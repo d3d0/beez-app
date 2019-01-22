@@ -35,3 +35,10 @@
 	background-repeat: no-repeat;
 	background-position: center bottom;
 }
+
+.tabActiveIndex{
+	background-color: transparent;
+	z-index: 2;
+	border-bottom-width: 1;
+	border-color: $verde;
+}

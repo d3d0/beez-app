@@ -27,31 +27,73 @@ export class ProfileComponent implements OnInit {
   private tabItems: SegmentedBarItem[];
   @ViewChild("tabButtons") tabButtons: ElementRef;
   @ViewChild("polaroid") polaroid: ElementRef;
+  @ViewChild('tabHighlight') tabHighlight: ElementRef;
+  @ViewChild("tab1") tab1: ElementRef;
+  @ViewChild("tab2") tab2: ElementRef;
+  @ViewChild("tab3") tab3: ElementRef;
+  @ViewChild("tab4") tab4: ElementRef;
 
   constructor(private routerExtension: RouterExtensions, private page: Page) {
     console.log('hello from PROFILE component');
-    this.tabItems = [];
-    const item1 = <SegmentedBarItem>new SegmentedBarItem();
-    item1.title = localize("PROFILE.INFO");
-    this.tabItems.push(item1);
-    const item2 = <SegmentedBarItem>new SegmentedBarItem();
-    item2.title = localize("PROFILE.CONTACTS");
-    this.tabItems.push(item2);
-    const item3 = <SegmentedBarItem>new SegmentedBarItem();
-    item3.title = localize("PROFILE.DETAILS");
-    this.tabItems.push(item3);
-    const item4 = <SegmentedBarItem>new SegmentedBarItem();
-    item4.title = localize("PROFILE.SETTINGS");
-    this.tabItems.push(item4);
   }
 
-  ngOnInit() {}
+  
+  ngOnInit(): void {
+  }
+  
+  ngAfterViewInit() {
+    setTimeout(() => { this.animateCurrentTab(this.tab1); }, 100);
+  }
 
+  public onSelectedIndexChange(index) {
+    let previousTab = this.selectedIndex;
+    if (index != this.selectedIndex) {
+      this.selectedIndex = index;
+      this.tabHighlight.nativeElement.animate({
+        translate: { x: index * screen.mainScreen.widthDIPs / 4, y: 0 },
+        curve: AnimationCurve.cubicBezier(1, .02, .45, .93),
+        duration: 300
+      })
+      // this.animateCurrentTab(this.getImage(index));
+      // this.animatePreviousTab(this.getImage(previousTab));
+    }
+  }
+  getImage(index) {
+    let currentTab ;
+    switch (index) {
+      case 0:
+        currentTab = this.tab1;
+        break;
+      case 1:
+        currentTab = this.tab2;
+        break;
+      case 2:
+        currentTab = this.tab3;
+        break;
+      default:
+        break; 
+    }
+    return currentTab;
+  }
+animateCurrentTab(arg){
+    arg.nativeElement.animate({
+      scale: { x: 1.2, y: 1.2 },
+      curve: AnimationCurve.cubicBezier(1, .02, .45, .93),
+      duration: 300
+    });
+}
+animatePreviousTab(arg){
+      arg.nativeElement.animate({
+      scale: { x: 1, y: 1 },
+      curve: AnimationCurve.cubicBezier(1, .02, .45, .93),
+      duration: 300
+    })
+}
   onSwipe(args){
    if (args.direction === 1)
-      this.selectedIndex = Math.abs(this.selectedIndex + 3 ) % 4
+      this.onSelectedIndexChange( Math.abs(this.selectedIndex + 3 ) % 4 )
     if (args.direction === 2)
-      this.selectedIndex = Math.abs(this.selectedIndex + 1) % 4  
+      this.onSelectedIndexChange( Math.abs(this.selectedIndex + 1) % 4 )
   }
 
   get minHeight() {
@@ -114,10 +156,6 @@ export class ProfileComponent implements OnInit {
 
       // Kick off the animation queue
       new Animation(animations, false).play();
-  }
-
-  public onSelectedIndexChange(selectedIndex) {
-    this.selectedIndex = selectedIndex;
   }
 
   goToSettings() {
