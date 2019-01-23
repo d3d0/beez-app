@@ -1,8 +1,6 @@
 import { Injectable } from "@angular/core";
 import { getString, setString } from "application-settings";
-import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { tap, catchError } from "rxjs/operators";
-import { throwError } from "rxjs";
+// import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
 
 export class BackendService {
   static baseUrl = "https://dev.beez.io/services/";
@@ -10,35 +8,32 @@ export class BackendService {
   static sessid = "sessid";
   static session_name = "session_name";
 
-  constructor(private http: HttpClient) { }
- 
-  static getAnonXCSFRtoken(){
-    //  return this.http.get(
-    //   BackendService.baseUrl + "session/token",
-    // ).pipe(
-    //   tap((data: any) => {
-    //     this.XCSFRtoken = data.content.toString()
-    //     console.log(this.XCSFRtoken)
-    //   })
-    // );
-  }
+  constructor() { }
 
   static isLoggedIn(): boolean {
-    return !!this.XCSFRtoken;
-  }
-
-  static logoff(){
-    this.session_name = ''
-    this.sessid = ''
-    this.XCSFRtoken = ''
+    return true;
+    // return !!getString("token");
   }
 
   static getCommonHeaders() {
     return {
       "Content-Type": "application/json",
-      "X-CSFR-token":  getString( this.XCSFRtoken),
+      // "X-CSFR-token":  getString( this.XCSFRtoken) || this.getAnonXCSFRtoken(),
     }
   }
+ 
+  // static getAnonXCSFRtoken(){ 
+  //   //  return new Promise((resolve, reject) => {
+  //   //   this.http.get({
+  //   //   url: this.baseUrl + "session/token",
+  //   //   method: "GET"
+  //   // })
+  //   // .then(data => {
+  //   //   console.log(data.content.toString())
+  //   //   this.XCSFRtoken = data.content.toString()
+  //   //   })
+  //   // })
+  // }
 
   get XCSFRtoken() {
     console.log('GETTING XCSFRtoken: ' + getString(this.XCSFRtoken))
@@ -90,4 +85,12 @@ export class BackendService {
         throw 'Error parsing JSON response: ' + e
       })
   }
+  // static get token(): string {
+  //   return getString("token");
+  // }
+
+
+  // static set token(theToken: string) {
+  //   setString("token", theToken);
+  // }
 }

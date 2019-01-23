@@ -41,7 +41,8 @@
                 <CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
                     <Button class="card-button-link"
                     [text]="'LOGIN'|L"
-                    (tap)="login()"></Button>
+                    [nsRouterLink] = "['/home']"
+                    ></Button>
                 </CardView>
 
             </GridLayout>

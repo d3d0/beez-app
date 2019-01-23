@@ -7,7 +7,7 @@ import { User } from "./user.model";
 import { USER } from "./user.mocks";
 import { Profile } from "./profile.model";
 import { PROFILE } from "./profile.mocks";
-import { BackendService } from "../shared/backend.service";
+// import { BackendService } from "../shared/backend.service";
 
 @Injectable({
   providedIn: 'root'
@@ -23,27 +23,27 @@ export class UserService {
     return PROFILE;
   }
 
-  login(user: User) {
-  	BackendService.getAnonXCSFRtoken()
-    return this.http.post(
-      BackendService.baseUrl + "user/",
-      JSON.stringify({
-        username: user.email,
-        password: user.password
-      }),
-      { headers: this.getCommonHeaders() }
-    )
-    .pipe(
-      tap((data: any) => {
-		console.log(data)
-      }),
-      catchError(this.handleErrors)
-    );
-  }
+  // login(user: User) {
+  // // 	BackendService.getAnonXCSFRtoken()
+  // //   return this.http.post(
+  // //     BackendService.baseUrl + "user/",
+  // //     JSON.stringify({
+  // //       username: user.email,
+  // //       password: user.password
+  // //     }),
+  // //     { headers: this.getCommonHeaders() }
+  // //   )
+  // //   .pipe(
+  // //     tap((data: any) => {
+		// // console.log(data)
+  // //     }),
+  // //     catchError(this.handleErrors)
+  // //   );
+  // }
 
-  logoff() {
-    BackendService.logoff();
-  }
+  // logoff() {
+  //   // BackendService.logoff();
+  // }
 
   private getCommonHeaders() {
     return new HttpHeaders({
