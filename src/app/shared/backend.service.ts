@@ -13,14 +13,14 @@ export class BackendService {
   constructor(private http: HttpClient) { }
  
   static getAnonXCSFRtoken(){
-     return this.http.get(
-      BackendService.baseUrl + "session/token",
-    ).pipe(
-      tap((data: any) => {
-        this.XCSFRtoken = data.content.toString()
-        console.log(this.XCSFRtoken)
-      })
-    );
+    //  return this.http.get(
+    //   BackendService.baseUrl + "session/token",
+    // ).pipe(
+    //   tap((data: any) => {
+    //     this.XCSFRtoken = data.content.toString()
+    //     console.log(this.XCSFRtoken)
+    //   })
+    // );
   }
 
   static isLoggedIn(): boolean {
