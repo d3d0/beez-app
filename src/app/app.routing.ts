@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
 import { AuthGuard } from "./auth-guard.service";
-import { SettingsComponent } from './settings/settings.component';
 
 export const authProviders = [
   AuthGuard
