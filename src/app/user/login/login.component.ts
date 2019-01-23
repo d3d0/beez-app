@@ -23,7 +23,7 @@ registerElement('LottieView', () => LottieView);
 })
 
 export class LoginComponent implements OnInit {
-
+  user: User;
   public animations: Array<string>;
 
   @ViewChild("labelmail") labelmail: ElementRef;
@@ -32,17 +32,21 @@ export class LoginComponent implements OnInit {
   @ViewChild("textfieldpass") textfieldpass: ElementRef;
 
   private _lottieView: LottieView;
-  private user: User;
   private isAuthenticating = false;
 
   constructor( private router: Router, private page: Page, private routerExtensions: RouterExtensions) {
     this.user = new User();
+    this.user.email = "";
+    this.user.password = "";
+    this.user.email="delprete@loool.it"
+    this.user.password="123456"
   }
 
   ngOnInit() {
     console.log('hello from login Component');
     this.page.actionBarHidden = true;
   }
+
   lottieViewLoaded(event) {
     this._lottieView = <LottieView>event.object;
   }
@@ -50,23 +54,22 @@ export class LoginComponent implements OnInit {
   goToSignup(){
     this.router.navigate(["/user/signup"]);
   }
-
+  
   login() {
+    console.log(this.user)
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
       return;
     }
-    if (!this.user.isValidEmail()) {
+    if (!User.isValidEmail(this.user.email)) {
       alert(localize("MESSAGES.ERROR_EMAIL"));
       return;
     }
-    if (!this.user.isValidPassword()) {
+    if (!User.isValidPassword(this.user.password)) {
       alert(localize("MESSAGES.ERROR_PASS"));
       return;
     }
     this.routerExtensions.navigate(["../home"], { clearHistory: true });
-
-    // this.router.navigate(["/home"]);
   }
 
   focusPassword() {

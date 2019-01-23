@@ -5,13 +5,12 @@ export class User {
   email: string;
   password: string;
   
-  isValidEmail() {
-    return validator.validate(this.email);
+  static isValidEmail(email) {
+    return validator.validate(email);
   };
 
-  isValidPassword() {
-  	if ( this.password.length > 5 )
-  		return true;
+  static isValidPassword(password) {
+  	if ( password.length > 5 ) return true;
   	return false
   }
 }

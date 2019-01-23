@@ -13,6 +13,7 @@ import { SignupComponent } from "./signup/signup.component";
 		UserRoutingModule,
     NativeScriptCommonModule,
     NativeScriptLocalizeModule,
+    NativeScriptFormsModule,
     NativeScriptRouterModule
   ],
   declarations: [
