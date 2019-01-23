@@ -17,5 +17,8 @@
 TextField{
 	color:$grigioscuro;
 	border-bottom-width: 1;
-  border-color:$grigiochiaro;
+	border-color:$grigiochiaro;
+  .input-field-error{
+  		border-color: rgba(253, 60, 67, .8);;
+  }
 }
