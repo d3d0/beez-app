@@ -1,7 +1,0 @@
-listone casting filtrati per utente
-/beez/entity_node?parameters[type]=casting // tutti attivi e non
-
-listone casting attivi - flag moule
-
-// exempio di lista
-https://github.com/telerik/nativescript-ui-samples-angular/blob/master/listview/app/examples/dataItem.service.ts

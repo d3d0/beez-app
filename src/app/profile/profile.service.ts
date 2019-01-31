@@ -3,9 +3,7 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http
 import { throwError } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
 
-import { User } from "./user.model";
 import { Profile } from "./profile.model";
-import { PROFILE } from "./profile.mocks";
 import { BackendService } from "../shared/backend.service";
 
 @Injectable({
@@ -15,14 +13,8 @@ import { BackendService } from "../shared/backend.service";
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  
-  // private isValidForm() {
-  //     let isValid = !!this.emailError || !!this.passError;
-  //     return !isValid;
-  // }
 
-  login(user: User) {
-    this.logoff()
+  getProfile(user: User) {
     this.getAnonXCSFRtoken()
     return this.http.post(
       BackendService.baseUrl + "beez/user/login",
@@ -75,8 +67,4 @@ export class UserService {
      console.log("getCommonHeader")
      return h
     }
-
-    getProfile() :Profile{
-      return PROFILE;
-    }
-  }
+}

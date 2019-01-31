@@ -5,5 +5,5 @@
 
 
 <StackLayout>
-	<Button text="logout" [nsRouterLink]="['/user/login']" clearHistory="true"></Button>
+	<Button text="logout" (tap)="logout()"></Button>
 </StackLayout>

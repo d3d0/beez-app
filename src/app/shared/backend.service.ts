@@ -1,43 +1,20 @@
 import { Injectable } from "@angular/core";
 import { getString, setString } from "application-settings";
-import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { tap, catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
+@Injectable()
 export class BackendService {
   static baseUrl = "https://dev.beez.io/services/";
   static XCSFRtoken = "XCSFRtoken";
   static sessid = "sessid";
   static session_name = "session_name";
 
-  constructor(private http: HttpClient) { }
- 
-  static getAnonXCSFRtoken(){
-     return this.http.get(
-      BackendService.baseUrl + "session/token",
-    ).pipe(
-      tap((data: any) => {
-        this.XCSFRtoken = data.content.toString()
-        console.log(this.XCSFRtoken)
-      })
-    );
-  }
+  constructor() { }
 
   static isLoggedIn(): boolean {
-    return !!this.XCSFRtoken;
-  }
-
-  static logoff(){
-    this.session_name = ''
-    this.sessid = ''
-    this.XCSFRtoken = ''
-  }
-
-  static getCommonHeaders() {
-    return {
-      "Content-Type": "application/json",
-      "X-CSFR-token":  getString( this.XCSFRtoken),
-    }
+    return !!this.sessid;
   }
 
   get XCSFRtoken() {
@@ -80,6 +57,12 @@ export class BackendService {
     })
   }
 
+  static reset(){
+    BackendService.session_name = ''
+    BackendService.sessid = ''
+    BackendService.XCSFRtoken = ''
+  }
+
   getJson(response) {
     return new Promise((resolve, reject) => {
      // console.info('Content: ' + response.content.toString())
@@ -90,4 +73,5 @@ export class BackendService {
         throw 'Error parsing JSON response: ' + e
       })
   }
+
 }

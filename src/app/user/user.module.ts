@@ -3,6 +3,7 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
+import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 
 import { UserRoutingModule} from "./user.routing";
 import { LoginComponent } from "./login/login.component";
@@ -14,6 +15,7 @@ import { SignupComponent } from "./signup/signup.component";
     NativeScriptCommonModule,
     NativeScriptLocalizeModule,
     NativeScriptFormsModule,
+    NativeScriptHttpClientModule,
     NativeScriptRouterModule
   ],
   declarations: [

@@ -12,6 +12,8 @@ import { User } from '../user.model'
 import { alert } from "../../shared";
 import { RouterExtensions } from "nativescript-angular/router";
 import { localize } from "nativescript-localize";
+import { UserService } from "../user.service";
+import { BackendService } from "../../shared/backend.service";
 
 registerElement('LottieView', () => LottieView);
 
@@ -34,12 +36,12 @@ export class LoginComponent implements OnInit {
   private _lottieView: LottieView;
   private isAuthenticating = false;
 
-  constructor( private router: Router, private page: Page, private routerExtensions: RouterExtensions) {
+  constructor( private userService: UserService, private router: Router, private page: Page, private routerExtensions: RouterExtensions) {
     this.user = new User();
     this.user.email = "";
     this.user.password = "";
     this.user.email="delprete@loool.it"
-    this.user.password="123456"
+    this.user.password="delprete@loool.it"
   }
 
   ngOnInit() {
@@ -56,7 +58,6 @@ export class LoginComponent implements OnInit {
   }
   
   login() {
-    console.log(this.user)
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
       return;
@@ -69,7 +70,20 @@ export class LoginComponent implements OnInit {
       alert(localize("MESSAGES.ERROR_PASS"));
       return;
     }
-    this.routerExtensions.navigate(["../home"], { clearHistory: true });
+    this.userService.login(this.user).subscribe((result) => {
+        console.log(result['sessid'])
+        BackendService.session_name = result['session_name']
+        BackendService.sessid = result['sessid']
+        BackendService.XCSFRtoken = result['token']
+        this.routerExtensions.navigate(["../home"], { clearHistory: true });
+      }, (error) => {
+        alert(localize("MESSAGES.ERROR_LOGIN"));
+        console.log('login user error ', error);
+        console.log('result login session_name:', BackendService.session_name );
+        console.log('result login sessid:', BackendService.sessid );
+        console.log('result login XCSFRtoken:', BackendService.XCSFRtoken );
+
+      });
   }
 
   focusPassword() {
