@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getProfile(user: User) {
+  getProfile(user: any) {
     this.getAnonXCSFRtoken()
     return this.http.post(
       BackendService.baseUrl + "beez/user/login",
@@ -25,7 +25,7 @@ export class UserService {
       {
         headers: new HttpHeaders({
           "Content-Type": "application/json",
-          "X-CSRF-Token":  BackendService.XCSFRtoken
+          "x-csrf-token":  BackendService.XCSFRtoken
         })
       })
     }
@@ -47,11 +47,9 @@ export class UserService {
       return this.http.post( BackendService.baseUrl + "beez/user/logout",
       {
         headers:        new HttpHeaders({
-        "X-CSRF-Token":  BackendService.XCSFRtoken,
-        "session": BackendService.session_name + "=" + BackendService.sessid,
-         this.getCommonHeader()
-
-      });
+        "x-csrf-token":  BackendService.XCSFRtoken,
+        "session": BackendService.session_name + "=" + BackendService.sessid
+      })
       });
     }
 

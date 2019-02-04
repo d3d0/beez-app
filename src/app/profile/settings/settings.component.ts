@@ -27,10 +27,8 @@ export class SettingsComponent implements OnInit {
   logout() {
     this.userService.logoff().subscribe((result) => {
         console.log('logoff ok ',result);
-        BackendService.reset()
         this.router.navigate(["/user/login"]);
       }, (error) => {
-        this.router.navigate(["/user/login"]);
         console.log('logoff error ',error);
       });
   }

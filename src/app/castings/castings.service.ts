@@ -1,23 +1,31 @@
-import { Injectable } from "@angular/core";
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-} from "@angular/common/http";
-// import { BehaviorSubject, throwError } from "rxjs";
-// import { map, catchError } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { throwError } from "rxjs";
+import { tap, catchError } from "rxjs/operators";
 
-// import { BackendService } from "../shared";
+import { BackendService } from "../shared/backend.service";
+
 import { Casting } from "./casting.model";
 import { CASTINGS } from "./castings.mock";
 
 @Injectable()
 export class CastingsService {
  
-  // constructor() {}
+  constructor(private http: HttpClient) { }
   
-  getCastings() :Casting[]{
-    return CASTINGS;
+  getCastings() :any{
+    return this.http.get( BackendService.baseUrl + "beez/loool_casting",
+      {
+        headers: new HttpHeaders({
+          "Content-Type": "application/json",
+          "x-csrf-token":  BackendService.XCSFRtoken,
+          "session": BackendService.session_name + "=" + BackendService.sessid
+        })
+       }).subscribe((result) => {
+        console.log('getCastings ',result);
+      }, (error) => {
+        console.log(error);
+      });
   }
 
   getCarById(id: string) :Casting{

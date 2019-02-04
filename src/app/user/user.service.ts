@@ -33,7 +33,7 @@ export class UserService {
       {
         headers: new HttpHeaders({
           "Content-Type": "application/json",
-          "X-CSRF-Token":  BackendService.XCSFRtoken
+          "x-csrf-token":  BackendService.XCSFRtoken
         })
       })
     }
@@ -54,12 +54,12 @@ export class UserService {
     logoff() {
       return this.http.post( BackendService.baseUrl + "beez/user/logout",
       {
-        headers:        new HttpHeaders({
-        "X-CSRF-Token":  BackendService.XCSFRtoken,
+        headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "content-type": "application/x-www-form-urlencoded",
+        "x-csrf-token":  BackendService.XCSFRtoken,
         "session": BackendService.session_name + "=" + BackendService.sessid,
-         this.getCommonHeader()
-
-      });
+      })
       });
     }
 

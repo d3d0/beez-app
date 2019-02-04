@@ -75,6 +75,9 @@ export class LoginComponent implements OnInit {
         BackendService.session_name = result['session_name']
         BackendService.sessid = result['sessid']
         BackendService.XCSFRtoken = result['token']
+        console.log('result login session_name:', BackendService.session_name );
+        console.log('result login sessid:', BackendService.sessid );
+        console.log('result login XCSFRtokenl:', BackendService.XCSFRtoken );
         this.routerExtensions.navigate(["../home"], { clearHistory: true });
       }, (error) => {
         alert(localize("MESSAGES.ERROR_LOGIN"));
