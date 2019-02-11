@@ -1,1 +1,93 @@
-/* Add mobile styles for the component here.  */
+@import '../../app-variables';
+
+// ---------------------------------
+// settings > list-group-item
+// ---------------------------------
+
+.settings {
+  .card-group {
+    margin: 20; // IMPORTANTE
+    .list-group-item {
+      &-heading { // item > titles
+        &-10 {
+          margin: 5 20 5 0;
+          &-first {
+            margin: 0 20 5 0;
+          }
+        }
+      }
+      &-text { // item > testi
+        font-size: 14;
+        line-height:7;
+        margin: 3 20 7 0; // RICALCOLARE ?
+        &-last {
+          margin: 3 20 17 0; // RICALCOLARE ?
+        }
+        &-right {
+          font-size: 12;
+          line-height:7;
+          letter-spacing:0.028;
+          color: $nero;
+          margin: 3 20 7 0; // RICALCOLARE ?
+        }
+      }
+      &-v-line {
+        margin: 0;
+        padding: 0;
+      }
+      &-pulsante { // item > buttons
+        margin:0 20 0 0;
+        &--black {
+          background: #1E1E1E;
+        }
+      }
+
+      &-switch {
+        // ...
+      }
+
+      &-icona{ // item > icons
+        &-plane {
+          margin: 5 0 5 0;
+          width: 16;
+          height: 16;
+          background-image: url("res://plane");
+          &-first {
+            margin: 0 0 5 0;
+          }
+        }
+        &-social {
+          margin: 5 0 5 0;
+          width: 16;
+          height: 16;
+          background-image: url("res://social");
+        }
+        &-account {
+          margin: 5 0 5 0;
+          width: 16;
+          height: 16;
+          background-image: url("res://account");
+        }
+        &-message {
+          margin: 5 0 5 0;
+          width: 16;
+          height: 16;
+          background-image: url("res://message");
+        }
+        &-info {
+          margin: 5 0 5 0;
+          width:16;
+          height: 16;
+          background-image: url("res://info");
+        }
+        &-confirm {
+          margin: 17 0 17 0;
+          width: 16;
+          height: 16;
+          background-image: url("res://confirm");
+        }
+      }
+
+    }
+  }
+}
