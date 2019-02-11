@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'ns-settings',
@@ -10,17 +11,19 @@ import { RouterExtensions } from "nativescript-angular/router";
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private router: Router, private routerExtensions: RouterExtensions) { }
+  constructor(
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+    private routerExtension: RouterExtensions
+    ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   logout() {
     this.router.navigate(["/user/login"]);
   }
   
   public goBack() {
-    console.log('goback')
-    this.routerExtensions.back();
+    this.routerExtension.back({ relativeTo: this.activeRoute });
   }
 }

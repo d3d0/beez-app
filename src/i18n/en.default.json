@@ -80,6 +80,12 @@
   },
   "MESSAGES": {
     "NO_CONNECTION" : "Sorry, BEEZ requires an internet connection.",
+    "RESET_PASS" : "Your password has been reset!",
+    "RESET_MAIL_SENT" : "We have e-mailed your password reset link!",
+    "ERROR_TOKEN" : "Sorry, this password reset token is invalid.",
+    "ERROR_USER" : "Sorry, We can't find a user with that e-mail address.",
+    "ERROR_PASS" : "Passwords must be at least six characters.",
+    "ERROR_EMAIL" : "Please, enter a valid email address.",
     "ERROR_LOGIN" : "Unfortunately we could not find your account, wrong Password or Mail."
   }
 }

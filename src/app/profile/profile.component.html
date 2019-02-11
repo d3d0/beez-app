@@ -22,8 +22,14 @@
   <ActionItem class="" ios.position="right" android.position="right">
     <Image class="action-items "  src="res://edit" stretch="none"></Image>
   </ActionItem>
+<<<<<<< HEAD
   <ActionItem class="" ios.position="right" android.position="right" (tap)="goToSettings()">
     <Image class="action-items " src="res://settings" stretch="none"></Image>
+=======
+
+  <ActionItem ios.position="right" android.position="right" [nsRouterLink]="['../settings']">
+    <Image class="action-items" src="res://settings" stretch="none"></Image>
+>>>>>>> af04ce82e1b5bd6f78ddfd49451def8da3bbfb6e
   </ActionItem>
 
 </ActionBar>
@@ -41,10 +47,20 @@
     </GridLayout>
 
     <GridLayout columns="*,*,*,*" rows="auto" class="tab-buttons">
-      <Label col="0" [text]="'PROFILE.INFO'|L|uppercase" [class.active]="selectedIndex === 0" (tap)="onSelectedIndexChange(0)"></Label>
-      <Label col="1" [text]="'PROFILE.DETAILS'|L|uppercase" [class.active]="selectedIndex === 1" (tap)="onSelectedIndexChange(1)"></Label>
-      <Label col="2" [text]="'PROFILE.MEDIA'|L|uppercase" [class.active]="selectedIndex === 2" (tap)="onSelectedIndexChange(2)"></Label>
-      <Label col="3" [text]="'PROFILE.CONTACTS'|L|uppercase" [class.active]="selectedIndex === 3" (tap)="onSelectedIndexChange(3)"></Label>
+      <GridLayout #tabHighlight col="0" class="tabActiveIndex"></GridLayout>
+      <GridLayout col="0" (tap)="onSelectedIndexChange(0)">
+        <Label #tab1 col="0" [text]="'PROFILE.INFO'|L|uppercase"></Label>
+        <!-- <Label #tab1 col="0" [text]="'PROFILE.INFO'|L|uppercase" [class.active]="selectedIndex === 0" ></Label> -->
+      </GridLayout>
+      <GridLayout col="1" (tap)="onSelectedIndexChange(1)">
+        <Label #tab2 col="1" [text]="'PROFILE.DETAILS'|L|uppercase" ></Label>
+      </GridLayout>
+      <GridLayout col="2" (tap)="onSelectedIndexChange(2)">
+        <Label #tab3 col="2" [text]="'PROFILE.MEDIA'|L|uppercase" ></Label>
+      </GridLayout>
+      <GridLayout col="3" (tap)="onSelectedIndexChange(3)">
+        <Label #tab4 col="3" [text]="'PROFILE.CONTACTS'|L|uppercase" ></Label>
+      </GridLayout>
     </GridLayout>
 
     <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">

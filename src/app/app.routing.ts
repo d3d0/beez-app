@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
 import { AuthGuard } from "./auth-guard.service";
-import { SettingsComponent } from './settings/settings.component';
 
 export const authProviders = [
   AuthGuard
@@ -11,8 +10,8 @@ export const authProviders = [
 const routes: Routes = [
 	{ path: "", redirectTo: "home", pathMatch: 'full' },
 
-  { path: "home", loadChildren: "~/app/home/home.module#HomeModule"},
-  // { path: "home", loadChildren: "~/app/home/home.module#HomeModule", canActivate: [AuthGuard]},
+  // { path: "home", loadChildren: "~/app/home/home.module#HomeModule"},
+  { path: "home", loadChildren: "~/app/home/home.module#HomeModule", canActivate: [AuthGuard]},
 
   { path: "user", loadChildren: "~/app/user/user.module#UserModule" }
 ];

@@ -4,7 +4,13 @@ export class User {
   id: string;
   email: string;
   password: string;
-  // isValidEmail() {
-  //   return validator.validate(this.email);
-  // }
+  
+  static isValidEmail(email) {
+    return validator.validate(email);
+  };
+
+  static isValidPassword(password) {
+  	if ( password.length > 5 ) return true;
+  	return false
+  }
 }

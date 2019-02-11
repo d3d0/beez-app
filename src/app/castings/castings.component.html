@@ -19,9 +19,17 @@
 <StackLayout (swipe)="onSwipe($event)">
 
     <GridLayout columns="*,*,*" rows="auto" class="tab-buttons">
-      <Label col="0" [text]="'CASTINGS.ONGOING'|L|uppercase" [class.active]="selectedIndex === 0" (tap)="onSelectedIndexChange(0)"></Label>
-      <Label col="1" [text]="'CASTINGS.ATTEND'|L|uppercase" [class.active]="selectedIndex === 1" (tap)="onSelectedIndexChange(1)"></Label>
-      <Label col="2" [text]="'CASTINGS.CONCLUDED'|L|uppercase" [class.active]="selectedIndex === 2" (tap)="onSelectedIndexChange(2)"></Label>
+      <GridLayout #tabHighlight col="0" class="tabActiveIndex"></GridLayout>
+      <GridLayout col="0" (tap)="onSelectedIndexChange(0)">
+        <Label #tab1 [text]="'CASTINGS.ONGOING'|L|uppercase"></Label>
+        <!-- <Label #tab1 [text]="'CASTINGS.ONGOING'|L|uppercase" [class.active]="selectedIndex === 0" ></Label> -->
+      </GridLayout>
+      <GridLayout col="1" (tap)="onSelectedIndexChange(1)">
+        <Label  #tab2 [text]="'CASTINGS.ATTEND'|L|uppercase" ></Label>
+      </GridLayout>
+      <GridLayout col="2" (tap)="onSelectedIndexChange(2)">
+        <Label  #tab3 [text]="'CASTINGS.CONCLUDED'|L|uppercase" ></Label>
+      </GridLayout>
    </GridLayout>
    
     <GridLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">

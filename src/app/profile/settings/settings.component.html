@@ -1,8 +1,9 @@
 <ActionBar class="action-bar" title="">
-	<Label class="action-bar-title" [text]="'PROFILE.SETTINGS'" ></Label>
+	<Label class="action-bar-title" [text]="'PROFILE.SETTINGS'|L" ></Label>
 	<NavigationButton android.systemIcon="ic_menu_back" text="Back to" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
+<<<<<<< HEAD:src/app/settings/settings.component.html
 <ScrollView class="settings">
 
 	<StackLayout>
@@ -74,3 +75,9 @@
 	</StackLayout>
 
 </ScrollView>
+=======
+
+<StackLayout>
+	<Button text="logout" [nsRouterLink]="['/user/login']" clearHistory="true"></Button>
+</StackLayout>
+>>>>>>> af04ce82e1b5bd6f78ddfd49451def8da3bbfb6e:src/app/profile/settings/settings.component.html

@@ -11,7 +11,7 @@ export class BackendService {
   constructor() { }
 
   static isLoggedIn(): boolean {
-    return false;
+    return true;
     // return !!getString("token");
   }
 
