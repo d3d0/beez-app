@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService} from "../../user/user.service";
-import { Profile} from "../../user/profile.model";
+import { Profile } from "../../user/profile.model";
 
 @Component({
   selector: 'ns-media',
@@ -12,7 +12,7 @@ export class MediaComponent implements OnInit {
 
 	private _profile: Profile;
   constructor(private userService: UserService) {
-  	this._profile = this.userService.getProfile();
+  	// this._profile = this.userService.getProfile();
   }
 
   ngOnInit() {

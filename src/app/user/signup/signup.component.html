@@ -17,45 +17,48 @@
 						<Label class="list-group-item-label-signup" [text]="'USER.NAME'|L"></Label>
 						<TextField class="list-group-item-text-signup"
 						[hint]="'USER.NAME'|L"
-						(ngModel)="profile.field_name"
+						[(ngModel)]="profile.name"
 		                returnKeyType="next"
 		                autocorrect="false"
-              			autocapitalizationType="true"
+              			autocapitalizationType="words"
 						returnKeyType="next"
-						autocorrect="false"></TextField>
+						></TextField>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.SURNAME'|L"></Label>
 						<TextField class="list-group-item-text-signup"
 						[hint]="'USER.SURNAME'|L"
-						(ngModel)="profile.field_surname"
+						[(ngModel)]="profile.surname"
 		                returnKeyType="next"
 		                autocorrect="false"
-              			autocapitalizationType="true"
+              			autocapitalizationType="words"
 						returnKeyType="next"
-						autocorrect="false"></TextField>
+						></TextField>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.DATE_OF_BIRTH'|L"></Label>
-						<DatePicker (ngModel)="profile.field_date_of_birth"></DatePicker>
+						<DatePicker [(ngModel)]="profile.date_of_birth"></DatePicker>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.EMAIL'|L"></Label>
 						<TextField class="list-group-item-text-signup"
 						[hint]="'USER.EMAIL'|L"
-						(ngModel)="user.mail"
+						[(ngModel)]="user.mail"
 						keyboardType="email"
 						returnKeyType="next"
-						autocorrect="false"></TextField>
+						autocorrect="false"
+						></TextField>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.PASSWORD'|L"></Label>
 						<TextField class="list-group-item-text-signup" ref="password"
 						[hint]="'USER.PASSWORD'|L"
-						(ngModel)="user.pass"
+						[(ngModel)]="user.pass"
 						secure="true"
-						returnKeyType="done"></TextField>
+						returnKeyType="done"
+						></TextField>
 
 						<CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
 								<Button class="card-button-link"
 								[text]="'SIGNUP.REGISTRATION_SUBMIT'|L"
-								(tap)="signup()"></Button>
+								(tap)="signup()"
+								></Button>
 						</CardView>
 
 					</StackLayout>
@@ -75,67 +78,71 @@
 						<Label class="list-group-item-label-signup" [text]="'USER.NAME'|L"></Label>
 						<TextField class="list-group-item-text-signup"
 						[hint]="'USER.NAME'|L"
-						(ngModel)="profile.field_tutor_name"
+						[(ngModel)]="profile.tutor_name"
 		                returnKeyType="next"
 		                autocorrect="false"
-              			autocapitalizationType="true"
+              			autocapitalizationType="words"
 						returnKeyType="next"
-						autocorrect="false"></TextField>
+						></TextField>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.SURNAME'|L"></Label>
 						<TextField class="list-group-item-text-signup"
 						[hint]="'USER.SURNAME'|L"
-						(ngModel)="profile.field_tutor_surname"
+						[(ngModel)]="profile.tutor_surname"
 		                returnKeyType="next"
 		                autocorrect="false"
-              			autocapitalizationType="true"
+              			autocapitalizationType="words"
 						returnKeyType="next"
-						autocorrect="false"></TextField>
+						></TextField>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.DATE_OF_BIRTH'|L"></Label>
-						<DatePicker (ngModel)="profile.field_tutor_date_of_birth" ></DatePicker>
+						<DatePicker [(ngModel)]="profile.tutor_date_of_birth" ></DatePicker>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.EMAIL'|L"></Label>
 						<TextField class="list-group-item-text-signup"
 						[hint]="'USER.EMAIL'|L"
-						(ngModel)="user.mail"
+						[(ngModel)]="user.mail"
 						keyboardType="email"
 						returnKeyType="next"
-						autocorrect="false"></TextField>
+						autocorrect="false"
+						></TextField>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.PASSWORD'|L"></Label>
 						<TextField class="list-group-item-text-signup" ref="password"
 						[hint]="'USER.PASSWORD'|L"
-						(ngModel)="user.pass"
+						[(ngModel)]="user.pass"
 						secure="true"
-						returnKeyType="done"></TextField>
+						returnKeyType="done"
+						></TextField>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.MINOR_NAME'|L"></Label>
 						<TextField class="list-group-item-text-signup" ref="password"
 						[hint]="'USER.MINOR_NAME'|L"
-						(ngModel)="profile.field_name"
+						[(ngModel)]="profile.name"
 		                returnKeyType="next"
 		                autocorrect="false"
-              			autocapitalizationType="true"
-						returnKeyType="next"						returnKeyType="done"></TextField>
+              			autocapitalizationType="words"
+              			></TextField>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.MINOR_SURNAME'|L"></Label>
 						<TextField class="list-group-item-text-signup" ref="password"
 						[hint]="'USER.MINOR_SURNAME'|L"
-						(ngModel)="profile.field_surname"
+						[(ngModel)]="profile.surname"
 		                returnKeyType="next"
 		                autocorrect="false"
-              			autocapitalizationType="true"
-						returnKeyType="next"						
-						returnKeyType="done"></TextField>
+              			autocapitalizationType="words"
+						returnKeyType="next"
+						></TextField>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.MINOR_DATE_OF_BIRTH'|L"></Label>
-						<TextField class="list-group-item-text-signup" ref="password"
+						<TextField class="list-group-item-text-signup"
+						ref="password"
 						[hint]="'USER.MINOR_SURNAME'|L"
 						secure="true"
-						returnKeyType="done"></TextField>
+						returnKeyType="done"
+						></TextField>
 
-						<DatePicker (ngModel)="profile.field_date_of_birth"></DatePicker>
+						<DatePicker [(ngModel)]="profile.date_of_birth"></DatePicker>
 
 						<CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
 								<Button class="card-button-link"

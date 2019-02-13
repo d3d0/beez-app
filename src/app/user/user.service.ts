@@ -5,7 +5,6 @@ import { tap, catchError } from "rxjs/operators";
 
 import { User } from "./user.model";
 import { Profile } from "./profile.model";
-import { PROFILE } from "./profile.mocks";
 import { BackendService } from "../shared/backend.service";
 
 @Injectable({
@@ -17,11 +16,10 @@ export class UserService {
   constructor(private http: HttpClient) { }
   
   login(user: User) {
-    this.getAnonXCSFRtoken()
     return this.http.post(
       BackendService.baseUrl + "beez/user/login",
       JSON.stringify({
-        username: user.email,
+        username: user.mail,
         password: user.pass
       }),
       {
@@ -32,38 +30,56 @@ export class UserService {
       })
     }
 
-    getAnonXCSFRtoken(){
-      this.http.get( BackendService.baseUrl + "session/token",
-      {
-        headers: new HttpHeaders({"Content-Type": "application/json"}),
-        responseType: 'text'
-      }).subscribe((result) => {
-        BackendService.XCSFRtoken = result;
-      }, (error) => {
-        console.log('getAnonXCSFRtoken error: ',error);
-      });
-    }
-
     logoff() {
       return this.http.post( BackendService.baseUrl + "beez/user/logout",{} ,
       {
+        headers: this.getCommonHeader()
+      });
+    }
+
+  signup(user: User, profile: Profile) {
+    return this.http.post(
+      BackendService.baseUrl + "beez/loool/register",
+      JSON.stringify({
+     "mail": user.mail,
+     "pass": user.pass,
+     "name": user.mail,
+     "profile":{
+        "field_name":profile.name,
+         "field_surname":profile.surname,
+         "field_date_of_birth":profile.date_of_birth,
+         "field_tutor_name":profile.tutor_name,
+         "field_tutor_surname":profile.tutor_surname,
+         "field_tutor_date_of_birth":profile.tutor_date_of_birth
+       }
+      }),
+      {
         headers: new HttpHeaders({
+          "Content-Type": "application/json",
+          "x-csrf-token":  BackendService.XCSFRtoken
+        })
+      })
+    }
+
+    // getProfile() :Profile{
+    //   return PROFILE;
+    // }
+
+    private getCommonHeader(){
+     return new HttpHeaders({
        'Content-Type': 'application/x-www-form-urlencoded',
        'Accept': 'application/json',
        'X-CSRF-Token': BackendService.XCSFRtoken,
-       'session': BackendService.session_name + "=" + BackendService.sessid
-      })
+       'Cookie': BackendService.session_name + "=" + BackendService.sessid
       })
     }
 
-    private getCommonHeader(){
-     let h =  new HttpHeaders({
-        "Content-Type": "application/json",
+    getAnonXCSFRtoken(){
+      return this.http.get( BackendService.baseUrl + "session/token",
+      {
+        headers: new HttpHeaders({"Content-Type": "application/json"}),
+        responseType: 'text'
       })
-     return h
     }
 
-    getProfile() :Profile{
-      return PROFILE;
-    }
   }

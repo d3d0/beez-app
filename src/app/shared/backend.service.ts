@@ -8,19 +8,6 @@ export class BackendService {
   static isLoggedIn(): boolean {
     return !!getString('sessid');
   }
- 
-  // static getAnonXCSFRtoken(){ 
-  //   //  return new Promise((resolve, reject) => {
-  //   //   this.http.get({
-  //   //   url: this.baseUrl + "session/token",
-  //   //   method: "GET"
-  //   // })
-  //   // .then(data => {
-  //   //   console.log(data.content.toString())
-  //   //   this.XCSFRtoken = data.content.toString()
-  //   //   })
-  //   // })
-  // }
 
  static get XCSFRtoken() {
    console.log('GETTING XCSFRtoken: ' + getString('XCSFRtoken'))
@@ -50,7 +37,7 @@ export class BackendService {
   static set session_name(newToken) {
     setString('session_name', newToken);
   //  console.log('SET session_name TO: ' + newToken)
-  }pr
+  }
 
   validateCode(response) {
     return new Promise((resolve, reject) => {
@@ -84,12 +71,4 @@ export class BackendService {
         throw 'Error parsing JSON response: ' + e
       })
   }
-  // static get token(): string {
-  //   return getString("token");
-  // }
-
-
-  // static set token(theToken: string) {
-  //   setString("token", theToken);
-  // }
 }

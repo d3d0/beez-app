@@ -8,10 +8,10 @@ import { TextField } from "tns-core-modules/ui/text-field";
 import { connectionType, getConnectionType } from "connectivity";
 import { registerElement } from 'nativescript-angular';
 import { LottieView } from 'nativescript-lottie';
-import { User } from '../user.model'
-import { alert } from "../../shared";
 import { RouterExtensions } from "nativescript-angular/router";
 import { localize } from "nativescript-localize";
+
+import { User } from '../user.model'
 import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
 
@@ -38,9 +38,9 @@ export class LoginComponent implements OnInit {
 
   constructor( private userService: UserService, private router: Router, private page: Page, private routerExtensions: RouterExtensions) {
     this.user = new User();
-    this.user.email = "";
+    this.user.mail = "";
     this.user.pass = "";
-    this.user.email="delprete@loool.it"
+    this.user.mail="delprete@loool.it"
     this.user.pass="delprete@loool.it"
   }
 
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
       alert(localize("MESSAGES.NO_CONNECTION"));
       return;
     }
-    if (!User.isValidEmail(this.user.email)) {
+    if (!User.isValidEmail(this.user.mail)) {
       alert(localize("MESSAGES.ERROR_EMAIL"));
       return;
     }
@@ -69,24 +69,23 @@ export class LoginComponent implements OnInit {
       alert(localize("MESSAGES.ERROR_PASS"));
       return;
     }
-    this.userService.login(this.user).subscribe((result) => {
-        // console.log('userService.login ',result)
+    this.userService.getAnonXCSFRtoken().subscribe((result) => {
+      BackendService.XCSFRtoken = result;
+      console.log('getAnonXCSFRtoken ',result)
+
+      this.userService.login(this.user).subscribe((result) => {
+        console.log('userService.login ',result)
         BackendService.session_name = result['session_name']
         BackendService.sessid = result['sessid']
         BackendService.XCSFRtoken = result['token']
-        // console.log('result login session_name:', BackendService.session_name );
-        // console.log('result login sessid:', BackendService.sessid );
-        // console.log('result login XCSFRtokenl:', BackendService.XCSFRtoken );
         this.routerExtensions.navigate(["../home"], { clearHistory: true });
       }, (error) => {
         BackendService.reset()
-        alert(localize("MESSAGES.ERROR_LOGIN"));
-        // console.log('login user error ', error);
-        // console.log('result login session_name:', BackendService.session_name );
-        // console.log('result login sessid:', BackendService.sessid );
-        // console.log('result login XCSFRtoken:', BackendService.XCSFRtoken );
-
+        console.log('login user error ', error);
       });
+    }, (error) => {
+      console.log('getAnonXCSFRtoken error: ',error);
+    });
   }
 
   focusPassword() {

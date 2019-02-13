@@ -12,7 +12,7 @@ export class InfoComponent implements OnInit {
 
 	private _profile: Profile;
   constructor(private userService: UserService) {
-  	this._profile = this.userService.getProfile();
+  	// this._profile = this.userService.getProfile();
   }
 
   ngOnInit() {

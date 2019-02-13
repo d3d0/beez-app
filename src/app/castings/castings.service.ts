@@ -11,7 +11,7 @@ import { Casting } from "./casting.model";
 
 export class CastingsService {
   private _castings: Array<Casting> = [];
-  // private allCastings: Array<Casting> = [];
+
   constructor(
     private http: HttpClient,
     private _ngZone: NgZone
@@ -33,7 +33,6 @@ export class CastingsService {
         headers: this.getCommonHeaders()
       })
     .pipe(
-      
       map((data: Casting []) => {
         this._castings = data
         }),
@@ -60,7 +59,6 @@ export class CastingsService {
   getCasting(id: string) {
             return this.load().pipe(first((castings) => castings.id === id))
    }
-
 
   cadidate(user_id, casting_id){
     return this.http.post(

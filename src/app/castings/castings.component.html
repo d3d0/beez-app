@@ -35,10 +35,10 @@
     <GridLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
       <ns-castings-list [castings] = "store.getAllCastings() | castingStatus:'ongoing'" ></ns-castings-list>
     </GridLayout>
-    <GridLayout rows="*" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
+    <GridLayout [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
       <ns-castings-list [castings] = "store.getAllCastings() | castingStatus:'attend'" > </ns-castings-list>
     </GridLayout>
-    <GridLayout rows="*" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
+    <GridLayout [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
       <ns-castings-list [castings] = "store.getAllCastings() | castingStatus:'concluded'" > </ns-castings-list>
     </GridLayout>
     

@@ -27,10 +27,10 @@ export class SettingsComponent implements OnInit {
   logout() {
     this.userService.logoff().subscribe((result) => {
         BackendService.reset();
-        this.router.navigate(["/user/login"]);
+        this.routerExtension.navigate(["/user/login"], { clearHistory: true });
       }, (error) => {
         BackendService.reset();
-        this.router.navigate(["/user/login"]);
+        this.routerExtension.navigate(["/user/login"], { clearHistory: true });
         console.log('logoff error ',error);
       });
   }

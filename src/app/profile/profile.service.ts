@@ -3,7 +3,7 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http
 import { throwError } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
 
-import { Profile } from "./profile.model";
+import { Profile } from "../user/profile.model";
 import { BackendService } from "../shared/backend.service";
 
 @Injectable({
