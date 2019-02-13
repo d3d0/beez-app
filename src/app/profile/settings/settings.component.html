@@ -3,7 +3,6 @@
 	<NavigationButton android.systemIcon="ic_menu_back" text="Back to" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
-<<<<<<< HEAD:src/app/settings/settings.component.html
 <ScrollView class="settings">
 
 	<StackLayout>
@@ -65,7 +64,7 @@
 				<StackLayout class="p-t-0 p-b-20" backgroundColor="">
 					<GridLayout columns="45, *" rows="auto" backgroundColor="">
 						<Label text="" class="list-group-item-icona-confirm" row="0" col="0" verticalAlignment="top"></Label>
-						<Button text="log out" [nsRouterLink]="['/user/login']" clearHistory="true" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--black" row="0" col="1"></Button>
+						<Button text="log out" (tap)="logout()" clearHistory="true" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--black" row="0" col="1"></Button>
 					</GridLayout>
 				</StackLayout>
 
@@ -75,9 +74,3 @@
 	</StackLayout>
 
 </ScrollView>
-=======
-
-<StackLayout>
-	<Button text="logout" (tap)="logout()"></Button>
-</StackLayout>
->>>>>>> af04ce82e1b5bd6f78ddfd49451def8da3bbfb6e:src/app/profile/settings/settings.component.html
