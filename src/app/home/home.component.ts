@@ -6,6 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 import { isAndroid } from "tns-core-modules/platform";
 import { AppModule } from "../app.module";
 import { Page } from "ui/page";
+import { BackendService } from "../shared/backend.service";
 
 @Component({
   selector: 'ns-home',
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
+      // BackendService.printAll()
         this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
         this.page.actionBarHidden = true;
     }

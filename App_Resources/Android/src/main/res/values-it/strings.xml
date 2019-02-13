@@ -67,6 +67,7 @@
   <string name="title_activity_kimera">"BEEZ"</string>
   <string name="_LANG_afUt">"EN"</string>
   <string name="_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF">"This will be added to InfoPlist.strings"</string>
+  <string name="_MESSAGES_ERROR_SERVICE_Zkeuaq">"Unfortunately we could not contact ours servers, try again later."</string>
   <string name="_MESSAGES_ERROR_EMAIL_1un5ey">"Please, enter a valid email address."</string>
   <string name="_MESSAGES_ERROR_PASS_Z1U6uho">"Passwords must be at least six characters."</string>
   <string name="_MESSAGES_ERROR_USER_Z1U5KI4">"Sorry, We can\'t find a user with that e-mail address."</string>

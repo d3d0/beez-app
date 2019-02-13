@@ -31,9 +31,9 @@
   },
   "CASTINGS": {
     "CASTINGS": "Castings",
-    "ONGOING": "ON GOING",
-    "CONCLUDED": "CONCLUDED",
-    "ATTEND": "TO ATTEND"
+    "ONGOING": "NEW",
+    "CONCLUDED": "SHOOTING",
+    "ATTEND": "AUDITION"
   },
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "Notifications"
@@ -86,6 +86,7 @@
     "ERROR_USER" : "Sorry, We can't find a user with that e-mail address.",
     "ERROR_PASS" : "Passwords must be at least six characters.",
     "ERROR_EMAIL" : "Please, enter a valid email address.",
-    "ERROR_LOGIN" : "Unfortunately we could not find your account, wrong Password or Mail."
+    "ERROR_LOGIN" : "Unfortunately we could not find your account, wrong Password or Mail.",
+    "ERROR_SERVICE" : "Unfortunately we could not contact ours servers, try again later."
   }
 }

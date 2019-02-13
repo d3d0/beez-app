@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import { switchMap } from "rxjs/operators";
 import { ActivatedRoute } from "@angular/router";
-
-import { Casting } from "../casting.model";
 import { CastingsService} from "../castings.service";
+import { Casting } from "../casting.model";
 
 @Component({
   selector: 'ns-casting',
@@ -14,25 +13,26 @@ import { CastingsService} from "../castings.service";
 })
 
 export class CastingDetailComponent implements OnInit {
-  private _casting: Casting;
+  private _casting = {};
+  private casting_id;
 
   constructor(
-    private castingsService: CastingsService,
-    private pageRoute: PageRoute,
     private activeRoute: ActivatedRoute,
-    private routerExtension: RouterExtensions) { }
+    private castingsService: CastingsService,
+    private routerExtension: RouterExtensions) {
+      this.activeRoute.params.subscribe((params) => {
+        this.casting_id=params.id
+      });
+    }
 
   ngOnInit() {
-    this.pageRoute.activatedRoute
-    .pipe(switchMap((activatedRoute) => activatedRoute.params))
-    .forEach((params) => {
-      const castingId = params.id;
-      this._casting = this.castingsService.getCarById(castingId);
-    })
+    this.castingsService.load().subscribe(
+      data => console.log(data) 
+      )
   }
 
-  get casting() : Casting{
-      return this._casting;
+  get casting(){
+    return this._casting
   }
 
   goBack(): void{

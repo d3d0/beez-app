@@ -1,31 +1,62 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, EventEmitter, Output, ElementRef, AfterViewInit } from '@angular/core';
 import { localize } from "nativescript-localize";
 import { screen } from "platform";
+import { Subscription } from "rxjs";
+import { ObservableArray } from "tns-core-modules/data/observable-array";
+import { finalize } from "rxjs/operators";
+
+import { alert } from "../shared";
 import { AnimationCurve } from "ui/enums";
+import { Casting} from "./casting.model";
+import { CastingsService} from "./castings.service";
 
 @Component({
   selector: 'ns-castings',
   templateUrl: './castings.component.html',
   styleUrls: ['./castings.component.css'],
+  providers: [CastingsService],
   moduleId: module.id,
 })
 
-export class CastingsComponent {
+export class CastingsComponent implements AfterViewInit{
 
   @ViewChild('tabHighlight') tabHighlight: ElementRef;
   @ViewChild('tab1') tab1: ElementRef;
   @ViewChild('tab2') tab2: ElementRef;
   @ViewChild('tab3') tab3: ElementRef;
+  @Output() loading = new EventEmitter();
+  @Output() loaded = new EventEmitter();
+
   selectedIndex = 0;
-  
-  constructor() {}
-  
-  ngOnInit(): void {
+  listLoaded = false;
+
+  private _dataSubscription: Subscription;
+  private castings= [];
+  private subscription;
+  private _isLoading = true;
+  public store: CastingsService;
+
+  constructor( castingsService: CastingsService ) {
+    this.store = castingsService;
   }
-  
-  // ngAfterViewInit() {
-  //   setTimeout(() => { this.animateCurrentTab(this.tab1); }, 100);
-  // }
+
+  ngAfterViewInit() {
+    this.load();
+  }
+
+  load() {
+    this.loading.next("");
+    this.store.load()
+    .subscribe(
+      () => {
+        this.loaded.next("");
+        this.listLoaded = true;
+      },
+      () => {
+        alert(localize("MESSAGES.ERROR_SERVICE"));
+      }
+      );
+  }
 
   public onSelectedIndexChange(index) {
     let previousTab = this.selectedIndex;
@@ -71,6 +102,7 @@ export class CastingsComponent {
 //       duration: 300
 //     })
 // }
+
   onSwipe(args){
     if (args.direction === 1)
       this.onSelectedIndexChange(Math.abs(this.selectedIndex + 2 ) % 3)

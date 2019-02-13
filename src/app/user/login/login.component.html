@@ -24,7 +24,7 @@
 
                 <Label #labelpass id="labelpass" row="2" [text]="'PASSWORD'|L" class="label-textfield"></Label>
                 <TextField #textfieldpass row="3" class="card-group-item-pw"
-                [(ngModel)]="user.password"
+                [(ngModel)]="user.pass"
                 (focus)="toggleLabel($event,'pass')"
                 (blur)="toggleLabel($event,'pass')"
                 returnKeyType="done"

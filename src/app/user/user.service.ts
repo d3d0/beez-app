@@ -16,19 +16,13 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
   
-  // private isValidForm() {
-  //     let isValid = !!this.emailError || !!this.passError;
-  //     return !isValid;
-  // }
-
   login(user: User) {
-    this.logoff()
     this.getAnonXCSFRtoken()
     return this.http.post(
       BackendService.baseUrl + "beez/user/login",
       JSON.stringify({
         username: user.email,
-        password: user.password
+        password: user.pass
       }),
       {
         headers: new HttpHeaders({
@@ -45,34 +39,27 @@ export class UserService {
         responseType: 'text'
       }).subscribe((result) => {
         BackendService.XCSFRtoken = result;
-        console.log('getAnonXCSFRtoken ',result);
       }, (error) => {
-        console.log(error);
+        console.log('getAnonXCSFRtoken error: ',error);
       });
     }
 
     logoff() {
-      return this.http.post( BackendService.baseUrl + "beez/user/logout",
+      return this.http.post( BackendService.baseUrl + "beez/user/logout",{} ,
       {
         headers: new HttpHeaders({
-        "Content-Type": "application/json",
-        "content-type": "application/x-www-form-urlencoded",
-        "x-csrf-token":  BackendService.XCSFRtoken,
-        "session": BackendService.session_name + "=" + BackendService.sessid,
+       'Content-Type': 'application/x-www-form-urlencoded',
+       'Accept': 'application/json',
+       'X-CSRF-Token': BackendService.XCSFRtoken,
+       'session': BackendService.session_name + "=" + BackendService.sessid
       })
-      });
+      })
     }
 
-    // getUser() :User{
-    //   return this.user;
-    // }
     private getCommonHeader(){
      let h =  new HttpHeaders({
         "Content-Type": "application/json",
-
       })
-     console.log(h)
-     console.log("getCommonHeader")
      return h
     }
 

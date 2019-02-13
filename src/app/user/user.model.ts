@@ -3,7 +3,7 @@ const validator = require("email-validator");
 export class User {
   id: string;
   email: string;
-  password: string;
+  pass: string;
   
   static isValidEmail(email) {
     return validator.validate(email);

@@ -21,7 +21,7 @@ registerElement('LottieView', () => LottieView);
   selector: 'ns-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  moduleId: module.id,
+  moduleId: module.id
 })
 
 export class LoginComponent implements OnInit {
@@ -39,13 +39,12 @@ export class LoginComponent implements OnInit {
   constructor( private userService: UserService, private router: Router, private page: Page, private routerExtensions: RouterExtensions) {
     this.user = new User();
     this.user.email = "";
-    this.user.password = "";
+    this.user.pass = "";
     this.user.email="delprete@loool.it"
-    this.user.password="delprete@loool.it"
+    this.user.pass="delprete@loool.it"
   }
 
   ngOnInit() {
-    console.log('hello from login Component');
     this.page.actionBarHidden = true;
   }
 
@@ -66,25 +65,26 @@ export class LoginComponent implements OnInit {
       alert(localize("MESSAGES.ERROR_EMAIL"));
       return;
     }
-    if (!User.isValidPassword(this.user.password)) {
+    if (!User.isValidPassword(this.user.pass)) {
       alert(localize("MESSAGES.ERROR_PASS"));
       return;
     }
     this.userService.login(this.user).subscribe((result) => {
-        console.log(result['sessid'])
+        // console.log('userService.login ',result)
         BackendService.session_name = result['session_name']
         BackendService.sessid = result['sessid']
         BackendService.XCSFRtoken = result['token']
-        console.log('result login session_name:', BackendService.session_name );
-        console.log('result login sessid:', BackendService.sessid );
-        console.log('result login XCSFRtokenl:', BackendService.XCSFRtoken );
+        // console.log('result login session_name:', BackendService.session_name );
+        // console.log('result login sessid:', BackendService.sessid );
+        // console.log('result login XCSFRtokenl:', BackendService.XCSFRtoken );
         this.routerExtensions.navigate(["../home"], { clearHistory: true });
       }, (error) => {
+        BackendService.reset()
         alert(localize("MESSAGES.ERROR_LOGIN"));
-        console.log('login user error ', error);
-        console.log('result login session_name:', BackendService.session_name );
-        console.log('result login sessid:', BackendService.sessid );
-        console.log('result login XCSFRtoken:', BackendService.XCSFRtoken );
+        // console.log('login user error ', error);
+        // console.log('result login session_name:', BackendService.session_name );
+        // console.log('result login sessid:', BackendService.sessid );
+        // console.log('result login XCSFRtoken:', BackendService.XCSFRtoken );
 
       });
   }

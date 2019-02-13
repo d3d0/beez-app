@@ -1,51 +1,43 @@
 import { Injectable } from "@angular/core";
 import { getString, setString } from "application-settings";
-import { tap, catchError } from "rxjs/operators";
-import { throwError } from "rxjs";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class BackendService {
   static baseUrl = "https://dev.beez.io/services/";
-  static XCSFRtoken = "XCSFRtoken";
-  static sessid = "sessid";
-  static session_name = "session_name";
-
-  constructor() { }
 
   static isLoggedIn(): boolean {
-    return !!this.sessid;
+    return !!getString('sessid');
   }
 
-  get XCSFRtoken() {
-    console.log('GETTING XCSFRtoken: ' + getString(this.XCSFRtoken))
-    return getString(this.XCSFRtoken);
+ static get XCSFRtoken() {
+   console.log('GETTING XCSFRtoken: ' + getString('XCSFRtoken'))
+    return getString('XCSFRtoken');
   }
 
-  set XCSFRtoken(newToken) {
-    setString(this.XCSFRtoken, newToken);
-    console.log('SET XCSFRtoken TO: ' + newToken)
+  static set XCSFRtoken(newToken) {
+    setString('XCSFRtoken', newToken);
+    // console.log('SET XCSFRtoken TO: ' + newToken)
   }
 
-  get sessid() {
-    console.log('GETTING sessid: ' + getString(this.sessid))
-    return getString(this.sessid);
+  static get sessid() {
+   console.log('GETTING sessid: ' + getString('sessid'))
+    return getString('sessid');
   }
 
-  set sessid(newToken) {
-    setString(this.sessid, newToken);
-    console.log('SET sessid TO: ' + newToken)
+  static set sessid(newToken) {
+    setString('sessid', newToken);
+    // console.log('SET sessid TO: ' + newToken)
   }
 
-  get session_name() {
-    console.log('GETTING session_name: ' + getString(this.session_name))
-    return getString(this.session_name);
+  static get session_name() {
+   console.log('GETTING session_name: ' + getString('session_name'))
+    return getString('session_name');
   }
 
-  set session_name(newToken) {
-    setString(this.session_name, newToken);
-    console.log('SET session_name TO: ' + newToken)
-  }
+  static set session_name(newToken) {
+    setString('session_name', newToken);
+  //  console.log('SET session_name TO: ' + newToken)
+  }pr
 
   validateCode(response) {
     return new Promise((resolve, reject) => {
@@ -63,9 +55,15 @@ export class BackendService {
     BackendService.XCSFRtoken = ''
   }
 
+  static printAll(){
+   console.log(
+     'BackendService.session_name: ',BackendService.session_name,
+     'BackendService.sessid: ', BackendService.sessid,
+     'BackendService.XCSFRtoken: ', BackendService.XCSFRtoken)
+  }
+
   getJson(response) {
     return new Promise((resolve, reject) => {
-     // console.info('Content: ' + response.content.toString())
       resolve(response.content.toJSON())
     })
       .catch(e => {
@@ -73,5 +71,4 @@ export class BackendService {
         throw 'Error parsing JSON response: ' + e
       })
   }
-
 }

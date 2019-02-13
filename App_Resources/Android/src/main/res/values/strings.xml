@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="_MESSAGES_ERROR_SERVICE_Zkeuaq">"Unfortunately we could not contact ours servers, try again later."</string>
   <string name="_MESSAGES_ERROR_LOGIN_1uPQ8G">"Unfortunately we could not find your account, wrong Password or Mail."</string>
   <string name="_MESSAGES_ERROR_EMAIL_1un5ey">"Please, enter a valid email address."</string>
   <string name="_MESSAGES_ERROR_PASS_Z1U6uho">"Passwords must be at least six characters."</string>
@@ -45,9 +46,9 @@
   <string name="_PROFILE_DETAILS_1o2AXX">"DETAILS"</string>
   <string name="_PROFILE_PROFILE_ZNNot5">"Profile"</string>
   <string name="_NOTIFICATIONS_NOTIFICATIONS_ZneLv7">"Notifications"</string>
-  <string name="_CASTINGS_ATTEND_1R59MI">"TO ATTEND"</string>
-  <string name="_CASTINGS_CONCLUDED_1RBVcj">"CONCLUDED"</string>
-  <string name="_CASTINGS_ONGOING_1gX41U">"ON GOING"</string>
+  <string name="_CASTINGS_ATTEND_1R59MI">"AUDITION"</string>
+  <string name="_CASTINGS_CONCLUDED_1RBVcj">"SHOOTING"</string>
+  <string name="_CASTINGS_ONGOING_1gX41U">"NEW"</string>
   <string name="_CASTINGS_CASTINGS_1BoPqT">"Castings"</string>
   <string name="_SHARE_WHITH_A_FRIEND_ZhQhD8">"SHARE WHITH A FRIEND"</string>
   <string name="_HELP_9JU7">"Need Help?"</string>

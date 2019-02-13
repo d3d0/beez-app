@@ -37,16 +37,16 @@ export class UserService {
         responseType: 'text'
       }).subscribe((result) => {
         BackendService.XCSFRtoken = result;
-        console.log('getAnonXCSFRtoken ',result);
+        // console.log('getAnonXCSFRtoken ',result);
       }, (error) => {
-        console.log(error);
+        console.log('getAnonXCSFRtoken error: ',error);
       });
     }
 
     logoff() {
       return this.http.post( BackendService.baseUrl + "beez/user/logout",
       {
-        headers:        new HttpHeaders({
+        headers: new HttpHeaders({
         "x-csrf-token":  BackendService.XCSFRtoken,
         "session": BackendService.session_name + "=" + BackendService.sessid
       })
@@ -61,7 +61,7 @@ export class UserService {
         "Content-Type": "application/json",
 
       })
-     console.log(h)
+     // console.log(h)
      console.log("getCommonHeader")
      return h
     }

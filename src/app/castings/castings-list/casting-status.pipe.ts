@@ -9,25 +9,24 @@ export class CastingStatusPipe implements PipeTransform {
   value: Array<Casting> = [];
   transform(items: Array<Casting>, castingType: string) {
     // if (items instanceof Array)
-     {
+    {
       switch(castingType) {
-          case "ongoing":
-            this.value = items.filter((casting: Casting) => {
-              return casting.closed === false;
-            });
-            break
-          case "attend":
-            this.value = items.filter((casting: Casting) => {
-              return casting.closed === true && casting.to_attend === true ;
-            });
-            break
+        case "ongoing":
+        this.value = items.filter((casting: Casting) => {
+          return casting.status === "New";
+        });
+        break
+        case "attend":
+        this.value = items.filter((casting: Casting) => {
+          return casting.status === "Audition";
+        });
+        break
 
-          case "concluded":
-            this.value = items.filter((casting: Casting) => {
-              return casting.closed === true && casting.active === false && casting.to_attend === false;
-            });
-            break
-
+        case "concluded":
+        this.value = items.filter((casting: Casting) => {
+          return casting.status === "Close";
+        });
+        break
       }
     }
     return this.value;
