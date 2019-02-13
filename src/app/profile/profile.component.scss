@@ -19,10 +19,26 @@
 	}
 }
 
+ActionItem {
+	background-color: green;
+}
+
 .action-items{
 		padding: 0 9 0 9;
 		background-color: transparent;
 }
+/*
+ActionItem {
+	background-color: yellow;
+}
+.action-items{
+		// padding: 0 9 0 9;
+		margin: 0 15 0 15;
+		&-last {
+			padding: 0 9 0 9;
+		}
+}
+*/
 
 .credits-value{
 	margin-bottom: 3;
@@ -35,6 +51,8 @@
 	background-repeat: no-repeat;
 	background-position: center bottom;
 }
+<<<<<<< HEAD
+=======
 
 .tabActiveIndex{
 	background-color: transparent;
@@ -42,3 +60,4 @@
 	border-bottom-width: 1;
 	border-color: $verde;
 }
+>>>>>>> af04ce82e1b5bd6f78ddfd49451def8da3bbfb6e

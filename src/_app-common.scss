@@ -2,6 +2,11 @@
 // This is where the vast majority of your CSS code goes.
 
 // ------------------------------------------------------------------
+// LETTER SPACING
+// letter-spacing = tracking * font-size / 1000
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
 // FONT + ICON
 // ------------------------------------------------------------------
 .fa {
@@ -170,28 +175,33 @@ WrapLayout {
     &-18 {
       font-size: 18;
       font-weight: bold;
-      line-height:9;
+      letter-spacing:0.028;
       margin: 0 15 10 15;
     }
     &-14 {
       font-size: 14;
       font-weight: bold;
-      line-height:7;
+      letter-spacing:0.028;
       margin: 3 20 7 0;
+    }
+    &-10 {
+      font-size: 10;
+      font-weight: bold;
+      letter-spacing: 0.15;
+      margin: 0 15 10 15;
     }
   }
   &-text { // item > testi
     font-size: 14;
-    line-height:7;
-    letter-spacing:0.05;
+    letter-spacing:0.028;
     color: $grigioscuro;
     margin: 0 15 15 15;
   }
   &-info {
     font-size: 10;
-    line-height:5;
-    letter-spacing:0.05;
-    margin: 0 0 15 0;
+    font-weight: bold;
+    letter-spacing:0.028;
+    margin: 0 0 15 5;
   }
   &-img { // item > immagini
     margin: 0 0 10 0;
@@ -199,6 +209,9 @@ WrapLayout {
     border-radius: 5 5 0 0;
   }
   &-pulsante { // item > pulsanti
+    font-size: 10;
+    font-weight: bold;
+    letter-spacing: 0.15;
     border-radius: 5;
     color:white;
     height:50;
@@ -208,6 +221,9 @@ WrapLayout {
     }
     &--blu {
       background: $lilla;
+    }
+    &--black {
+      background: $nero;
     }
     &:active {
       color:white;
@@ -237,14 +253,16 @@ WrapLayout {
   }
   &-icona{ // item > icone generiche
     &-casting {
-      margin: 0 0 15 15;
       font-size: 10;
+      font-weight: bold;
+      letter-spacing:0.028;
       color: #5A82FF;
+      margin: 0 0 15 15;
     }
     &-photo {
       margin: 0 15 15 15;
       width:16;
-      height: 12;
+      height: 16;
       background-image: url("res://photo");
       background-repeat: no-repeat;
       background-position: center center;
@@ -273,7 +291,6 @@ WrapLayout {
 
       &-heading-14 {
         font-size: 14;
-        line-height:7;
         font-weight: bold;
         margin: 3 20 7 0;
         &-first {
@@ -427,10 +444,10 @@ WrapLayout {
       }
 
       &-text { // item > testi
-        line-height:7;
-        margin: 3 20 7 0; // RICALCOLARE
+        line-height:7; // IMPORTANTE
+        margin: 3 20 7 0;
         &-last {
-          margin: 3 20 17 0; // RICALCOLARE
+          margin: 3 20 17 0;
         }
       }
 

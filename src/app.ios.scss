@@ -42,3 +42,15 @@ NSSegmentView{
   // indicatore tab selezionata
   indicator-color: #00D796;
 }
+
+// switch
+.list-group-item-switch {
+  margin: 0 20 10 0; // RICALCOLARE ?
+}
+// .list-group-item-switch[checked=false] {
+//   color: #1e1e1e;
+//   background-color: #1e1e1e;
+// }
+.list-group-item-switch[checked=true] {
+  background-color: #00D796;
+}

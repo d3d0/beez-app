@@ -3,7 +3,81 @@
 	<NavigationButton android.systemIcon="ic_menu_back" text="Back to" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
+<<<<<<< HEAD:src/app/settings/settings.component.html
+<ScrollView class="settings">
+
+	<StackLayout>
+
+		<CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15">
+			<StackLayout class="list-group-item p-t-20" backgroundColor="">
+
+				<GridLayout columns="45, *, auto" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" backgroundColor="">
+					<Label text="" class="list-group-item-icona-plane list-group-item-icona-plane-first" row="0" col="0"></Label>
+					<Label text="Invita" class="text-uppercase list-group-item-heading-10 list-group-item-heading-10-first " textWrap="true" row="0" col="1" ></Label>
+					<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
+					<Label class="list-group-item-text" text="Invita i tuoi contatti" textWrap="true" row="1" col="1"></Label>
+					<Label text="" class="list-group-item-v-line" row="2" col="0"></Label>
+					<Label class="list-group-item-text" text="Invita i tuoi amici" textWrap="true" row="2" col="1"></Label>
+
+					<Label text="" class="list-group-item-icona-social " row="4" col="0"></Label>
+					<Label text="Account Collegati" class="text-uppercase list-group-item-heading-10 " textWrap="true" row="4" col="1" ></Label>
+					<Label text="" class="list-group-item-v-line" row="5" col="0"></Label>
+					<Label class="list-group-item-text" text="Facebook" textWrap="true" row="5" col="1"></Label>
+					<Label class="list-group-item-text-right" text="Tobia Latino" textWrap="true" row="5" col="2" horizontalAlignment="right"></Label>
+					<Label text="" class="list-group-item-v-line" row="6" col="0"></Label>
+					<Label class="list-group-item-text" text="Instagram" textWrap="true" row="6" col="1"></Label>
+					<Label class="list-group-item-text-right" text="tobialatino" textWrap="true" row="6" col="2" horizontalAlignment="right"></Label>
+					<Label text="" class="list-group-item-v-line" row="7" col="0"></Label>
+					<Label class="list-group-item-text" text="Linkedin" textWrap="true" row="7" col="1"></Label>
+					<Label class="list-group-item-text-right" text="Tobia Latino" textWrap="true" row="7" col="2" horizontalAlignment="right"></Label>
+
+					<Label text="" class="list-group-item-icona-account " row="8" col="0"></Label>
+					<Label text="Account" class="text-uppercase list-group-item-heading-10 " textWrap="true" row="8" col="1" ></Label>
+					<Label text="" class="list-group-item-v-line" row="9" col="0"></Label>
+					<Label class="list-group-item-text" text="Lingua" textWrap="true" row="9" col="1"></Label>
+					<Label class="list-group-item-text-right" text="italiano" textWrap="true" row="9" col="2" horizontalAlignment="right"></Label>
+					<Label text="" class="list-group-item-v-line" row="10" col="0"></Label>
+					<Label class="list-group-item-text" text="Password" textWrap="true" row="10" col="1"></Label>
+					<Label text="" class="list-group-item-v-line" row="11" col="0"></Label>
+					<Label class="list-group-item-text" text="Elimina account" textWrap="true" row="11" col="1"></Label>
+					<!-- <Label class="list-group-item-text" text="prova" textWrap="true" row="11" col="2" backgroundColor="red"></Label> -->
+
+					<Label text="" class="list-group-item-icona-message " row="12" col="0"></Label>
+					<Label text="Notifiche" class="text-uppercase list-group-item-heading-10 " textWrap="true" row="12" col="1" ></Label>
+					<Label text="" class="list-group-item-v-line" row="13" col="0"></Label>
+					<Label class="list-group-item-text" text="Ricevi notifiche e-mail" textWrap="true" row="13" col="1"></Label>
+					<Switch class="list-group-item-switch" checked="false" row="13" col="2" horizontalAlignment="right" verticalAlignment="top"></Switch>
+					<Label text="" class="list-group-item-v-line" row="14" col="0"></Label>
+					<Label class="list-group-item-text" text="Ricevi notifiche di sistema" textWrap="true" row="14" col="1"></Label>
+					<Switch class="list-group-item-switch" checked="false" row="14" col="2" horizontalAlignment="right" verticalAlignment="top"></Switch>
+
+					<Label text="" class="list-group-item-icona-info " row="15" col="0"></Label>
+					<Label text="Informazioni" class="text-uppercase list-group-item-heading-10 " textWrap="true" row="15" col="1" ></Label>
+					<Label text="" class="list-group-item-v-line" row="16" col="0"></Label>
+					<Label class="list-group-item-text" text="Sito web sviluppatore" textWrap="true" row="16" col="1"></Label>
+					<Label text="" class="list-group-item-v-line" row="17" col="0"></Label>
+					<Label class="list-group-item-text" text="Termini di utilizzo" textWrap="true" row="17" col="1"></Label>
+					<Label text="" class="list-group-item-v-line" row="18" col="0"></Label>
+					<Label class="list-group-item-text list-group-item-text-last" text="Privacy policy" textWrap="true" row="18" col="1"></Label>
+
+				</GridLayout>
+
+				<StackLayout class="p-t-0 p-b-20" backgroundColor="">
+					<GridLayout columns="45, *" rows="auto" backgroundColor="">
+						<Label text="" class="list-group-item-icona-confirm" row="0" col="0" verticalAlignment="top"></Label>
+						<Button text="log out" [nsRouterLink]="['/user/login']" clearHistory="true" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--black" row="0" col="1"></Button>
+					</GridLayout>
+				</StackLayout>
+
+			</StackLayout>
+		</CardView>
+
+	</StackLayout>
+
+</ScrollView>
+=======
 
 <StackLayout>
 	<Button text="logout" (tap)="logout()"></Button>
 </StackLayout>
+>>>>>>> af04ce82e1b5bd6f78ddfd49451def8da3bbfb6e:src/app/profile/settings/settings.component.html
