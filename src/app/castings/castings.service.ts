@@ -67,11 +67,7 @@ export class CastingsService {
       }),
       { headers: this.getCommonHeaders() }
       ).pipe( 
-      tap(response => {
-        if( this.checkRole(response , 'pending user')) {
-          throw new Error('pending');
-        }
-      }),
+      // todoododod
       catchError(this.handleErrors)
       )
   }
