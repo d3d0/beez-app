@@ -75,5 +75,6 @@
   <string name="title_activity_kimera">"BEEZ"</string>
   <string name="_LANG_afUt">"IT"</string>
   <string name="_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF">"This will be added to InfoPlist.strings"</string>
+  <string name="_MODAL_test_Z19nFfM">"test"</string>
   <string name="_MESSAGES_ERROR_TOKEN_1vnpFb">"Sorry, password reset token invalid."</string>
 </resources>

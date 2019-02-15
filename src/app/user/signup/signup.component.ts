@@ -36,8 +36,6 @@ export class SignupComponent {
    }
 
    signup(){
-     console.log('user ', this.user)
-     console.log('profile ', this.profile)
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
       return;
@@ -52,9 +50,7 @@ export class SignupComponent {
     }
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
       BackendService.XCSFRtoken = result;
-      // console.log('getAnonXCSFRtoken ',result)
       this.userService.signup(this.user, this.profile).subscribe((result) => {
-        console.log('userService.signup ',result)
         this.routerExtensions.navigate(["/user/login"], { clearHistory: true });
         alert(localize("MESSAGES.CONFIRM_EMAIL"));
       }, (error) => {

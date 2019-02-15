@@ -16,7 +16,6 @@ import { BackendService } from "../../shared/backend.service";
 export class SettingsComponent implements OnInit {
 
   constructor(
-    private router: Router,
     private activeRoute: ActivatedRoute,
     private routerExtension: RouterExtensions,
     private userService: UserService
@@ -26,13 +25,13 @@ export class SettingsComponent implements OnInit {
 
   logout() {
     this.userService.logoff().subscribe((result) => {
-        BackendService.reset();
-        this.routerExtension.navigate(["/user/login"], { clearHistory: true });
-      }, (error) => {
-        BackendService.reset();
-        this.routerExtension.navigate(["/user/login"], { clearHistory: true });
-        console.log('logoff error ',error);
-      });
+      BackendService.reset();
+      this.routerExtension.navigate(["/user/login"], { clearHistory: true });
+    }, (error) => {
+      BackendService.reset();
+      this.routerExtension.navigate(["/user/login"], { clearHistory: true });
+      console.log('logoff error ',error);
+    });
   }
   
   public goBack() {

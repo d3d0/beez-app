@@ -55,17 +55,24 @@ export class CastingsService {
   }
 
   getCasting(id: string) {
-    return this.load().pipe(first((castings) => castings.id === id))
+    return this.getAllCastings().filter((castings) => castings.id === id)[0]
   }
 
   cadidate(user_id, casting_id){
     return this.http.post(
-      BackendService.baseUrl + "beez/loool_talentaction/candidate",
+      BackendService.baseUrl + "beez/loool_talentactions/candidate",
       JSON.stringify({
         uid: user_id,
         nid: casting_id
       }),
       { headers: this.getCommonHeaders() }
+      ).pipe( 
+      tap(response => {
+        if( this.checkRole(response , 'pending user')) {
+          throw new Error('pending');
+        }
+      }),
+      catchError(this.handleErrors)
       )
   }
 }

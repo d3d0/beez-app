@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService} from "../../user/user.service";
+import { ProfileService } from "../profile.service";
 import { Profile} from "../../user/profile.model";
 
 @Component({
@@ -8,16 +8,16 @@ import { Profile} from "../../user/profile.model";
   styleUrls: ['./details.component.css'],
   moduleId: module.id,
 })
+
 export class DetailsComponent implements OnInit {
 
-	private _profile: Profile;
-  constructor(private userService: UserService) {
-  	// this._profile = this.userService.getProfile();
+  private _profile: Profile;
+
+  constructor() {}
+  ngOnInit() {}
+
+  get profile() : Profile{
+      return this._profile;
   }
 
-  ngOnInit() {
-  }
-    get profile() : Profile{
-        return this._profile;
-    }
 }

@@ -49,7 +49,7 @@ Orario e location saranno comunicati." textWrap="true" row="4" col="1"></Label>
 					<StackLayout class="p-t-0 p-b-20" backgroun	dColor="">
 						<GridLayout columns="50, *" rows="auto" backgroundColor="">
 							<Label text="" class="list-group-item-icona-partecipate" row="0" col="0" verticalAlignment="top"></Label>
-							<Button [text]="'PARTICIPATE'|L" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
+							<Button [text]="'PARTICIPATE'|L" (tap)="candidate()" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
 						</GridLayout>
 						<GridLayout columns="50, *" rows="auto" backgroundColor="">
 							<Label text="" class="list-group-item-v-line" row="0" col="0" height="20"></Label>

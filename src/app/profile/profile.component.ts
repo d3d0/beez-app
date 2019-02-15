@@ -10,7 +10,7 @@ import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { screen } from 'tns-core-modules/platform';
 
 import { GestureTypes, SwipeGestureEventData } from "tns-core-modules/ui/gestures";
-import labelModule = require("tns-core-modules/ui/label");
+import *  as labelModule from "tns-core-modules/ui/label";
 
 @Component({
   selector: 'ns-profile',

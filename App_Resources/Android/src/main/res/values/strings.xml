@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="_MODAL_test_Z19nFfM">"test"</string>
   <string name="_MESSAGES_ERROR_SERVICE_Zkeuaq">"Unfortunately we couldn\'t reach the server, please try again later."</string>
   <string name="_MESSAGES_ERROR_ACCOUNT_DOUBLE_ZUB1BV">"Sorry, The email you entered is already present in BEEZ"</string>
   <string name="_MESSAGES_ERROR_LOGIN_1uPQ8G">"Unfortunately we couldn\'t find your account, incorret password or e-mail."</string>

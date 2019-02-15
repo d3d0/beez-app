@@ -1,9 +1,6 @@
 import { Component, ViewChild, EventEmitter, Output, ElementRef, OnInit } from '@angular/core';
 import { localize } from "nativescript-localize";
 import { screen } from "platform";
-import { Subscription } from "rxjs";
-import { ObservableArray } from "tns-core-modules/data/observable-array";
-import { finalize } from "rxjs/operators";
 
 import { alert } from "../shared";
 import { AnimationCurve } from "ui/enums";
@@ -14,7 +11,6 @@ import { CastingsService} from "./castings.service";
   selector: 'ns-castings',
   templateUrl: './castings.component.html',
   styleUrls: ['./castings.component.css'],
-  providers: [CastingsService],
   moduleId: module.id,
 })
 
@@ -30,7 +26,6 @@ export class CastingsComponent implements OnInit{
   selectedIndex = 0;
   listLoaded = false;
 
-  private _dataSubscription: Subscription;
   private castings= [];
   private subscription;
   private _isLoading = true;
@@ -38,6 +33,7 @@ export class CastingsComponent implements OnInit{
 
   constructor( castingsService: CastingsService ) {
     this.store = castingsService;
+    console.log('hello from CASTING component');
   }
 
   ngOnInit() {
@@ -51,9 +47,6 @@ export class CastingsComponent implements OnInit{
       () => {
         this.loaded.next("");
         this.listLoaded = true;
-      },
-      () => {
-        alert(localize("MESSAGES.ERROR_SERVICE"));
       }
       );
   }

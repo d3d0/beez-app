@@ -90,5 +90,8 @@
     "ERROR_LOGIN" : "Unfortunately we couldn't find your account, incorret password or e-mail.",
     "ERROR_ACCOUNT_DOUBLE" : "Sorry, The email you entered is already present in BEEZ",
     "ERROR_SERVICE" : "Unfortunately we couldn't reach the server, please try again later."
+  },
+  "MODAL": {
+    "test": "test"
   }
 }

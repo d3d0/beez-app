@@ -16,7 +16,7 @@ export class BackendService {
 
   static set XCSFRtoken(newToken) {
     setString('XCSFRtoken', newToken);
-    // console.log('SET XCSFRtoken TO: ' + newToken)
+    console.log('SET XCSFRtoken TO: ' + newToken)
   }
 
   static get sessid() {
@@ -26,7 +26,7 @@ export class BackendService {
 
   static set sessid(newToken) {
     setString('sessid', newToken);
-    // console.log('SET sessid TO: ' + newToken)
+    console.log('SET sessid TO: ' + newToken)
   }
 
   static get session_name() {
@@ -36,9 +36,18 @@ export class BackendService {
 
   static set session_name(newToken) {
     setString('session_name', newToken);
-  //  console.log('SET session_name TO: ' + newToken)
+   console.log('SET session_name TO: ' + newToken)
   }
 
+  static get UID() {
+   console.log('GETTING UID: ' + getString('UID'))
+    return getString('UID');
+  }
+
+  static set UID(newToken) {
+    setString('UID', newToken);
+    console.log('SET UID TO: ' + newToken)
+  }
   static validateCode(response) {
     return new Promise((resolve, reject) => {
       if (response.statusCode >= 200 && response.statusCode < 300) {
@@ -57,6 +66,7 @@ export class BackendService {
 
   static printAll(){
    console.log(
+     'BackendService.UID',BackendService.UID,
      'BackendService.session_name: ',BackendService.session_name,
      'BackendService.sessid: ', BackendService.sessid,
      'BackendService.XCSFRtoken: ', BackendService.XCSFRtoken)

@@ -74,20 +74,18 @@ export class LoginComponent implements OnInit {
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
       BackendService.XCSFRtoken = result;
       console.log('getAnonXCSFRtoken ',result)
-      this.userService.login(this.user).subscribe(
-        (result) => {
-        console.log('userService.login ',result)
+      this.userService.login(this.user).subscribe((result) => {
         BackendService.session_name = result['session_name']
         BackendService.sessid = result['sessid']
         BackendService.XCSFRtoken = result['token']
+        BackendService.UID = result['user']['uid']
         this.isAuthenticating = false;
         this.routerExtensions.navigate(["../home"], { clearHistory: true });
-      }, 
+       }, 
       (error) => {
         BackendService.reset()
         this.isAuthenticating = false;
         console.log('login user error ', error);
-        
         if (error.status == 407)
           alert(localize("MESSAGES.CONFIRM_EMAIL"));
         else

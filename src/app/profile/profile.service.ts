@@ -10,24 +10,12 @@ import { BackendService } from "../shared/backend.service";
   providedIn: 'root'
 })
 
-export class UserService {
-
+export class ProfileService {
+  
   constructor(private http: HttpClient) { }
 
-  getProfile(user: any) {
-    this.getAnonXCSFRtoken()
-    return this.http.post(
-      BackendService.baseUrl + "beez/user/login",
-      JSON.stringify({
-        username: user.email,
-        password: user.password
-      }),
-      {
-        headers: new HttpHeaders({
-          "Content-Type": "application/json",
-          "x-csrf-token":  BackendService.XCSFRtoken
-        })
-      })
+  getProfile() {
+    return new Profile()
     }
 
     getAnonXCSFRtoken(){
@@ -53,16 +41,9 @@ export class UserService {
       });
     }
 
-    // getUser() :User{
-    //   return this.user;
-    // }
     private getCommonHeader(){
-     let h =  new HttpHeaders({
+     return new HttpHeaders({
         "Content-Type": "application/json",
-
       })
-     // console.log(h)
-     console.log("getCommonHeader")
-     return h
     }
 }
