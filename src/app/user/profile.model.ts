@@ -12,7 +12,6 @@ export class  Profile {
 	body_size: string
 	shoe_size: string
 	agency: string
-	
 	constructor(){
 			this.date_of_birth= new Date()
 			this.tutor_date_of_birth= new Date()

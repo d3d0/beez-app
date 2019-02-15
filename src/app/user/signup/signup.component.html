@@ -4,14 +4,12 @@
 </ActionBar>
 
 <TabView class="signup" androidTabsPosition="top">
-
 	<StackLayout *tabItem="{title: signupTitle}">
 		<ScrollView>
-			<StackLayout><!-- non serve -->
+			<StackLayout>
 				<CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15">
 					<StackLayout class="list-group-item p-20">
-
-						<Label class="list-group-item-heading-18" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
+						<Label class="list-group-item-heading-18" textWrap="true" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
 						<Label class="list-group-item-info-signup" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.NAME'|L"></Label>
@@ -55,12 +53,12 @@
 						></TextField>
 
 						<CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
-								<Button class="card-button-link"
+
+							<Button class="card-button-link"
 								[text]="'SIGNUP.REGISTRATION_SUBMIT'|L"
 								(tap)="signup()"
-								></Button>
+								></Button> 
 						</CardView>
-
 					</StackLayout>
 				</CardView>
 			</StackLayout><!-- non serve -->
@@ -72,8 +70,8 @@
 				<CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15">
 					<StackLayout class="list-group-item p-20">
 
-						<Label class="list-group-item-heading-18" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
-						<Label class="list-group-item-info-signup" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
+						<Label class="list-group-item-heading-18" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TITLE'|L" fontWeight="bold" ></Label>
+						<Label class="list-group-item-info-signup" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TEXT'|L"></Label>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.NAME'|L"></Label>
 						<TextField class="list-group-item-text-signup"
@@ -152,6 +150,9 @@
 
 					</StackLayout>
 				</CardView>
+				<ActivityIndicator
+				[busy]="isAuthenticating"
+				rowSpan="2"></ActivityIndicator>
 			</StackLayout>
 		</ScrollView>
 	</StackLayout>

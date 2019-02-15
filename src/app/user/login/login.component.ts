@@ -11,6 +11,7 @@ import { LottieView } from 'nativescript-lottie';
 import { RouterExtensions } from "nativescript-angular/router";
 import { localize } from "nativescript-localize";
 
+import { alert } from "../../shared";
 import { User } from '../user.model'
 import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
@@ -40,8 +41,8 @@ export class LoginComponent implements OnInit {
     this.user = new User();
     this.user.mail = "";
     this.user.pass = "";
-    this.user.mail="delprete@loool.it"
-    this.user.pass="delprete@loool.it"
+    this.user.mail = "mirko@loool.com";
+    this.user.pass = "12345678";
   }
 
   ngOnInit() {
@@ -69,22 +70,34 @@ export class LoginComponent implements OnInit {
       alert(localize("MESSAGES.ERROR_PASS"));
       return;
     }
+    this.isAuthenticating = true;
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
       BackendService.XCSFRtoken = result;
       console.log('getAnonXCSFRtoken ',result)
-
-      this.userService.login(this.user).subscribe((result) => {
+      this.userService.login(this.user).subscribe(
+        (result) => {
         console.log('userService.login ',result)
         BackendService.session_name = result['session_name']
         BackendService.sessid = result['sessid']
         BackendService.XCSFRtoken = result['token']
+        this.isAuthenticating = false;
         this.routerExtensions.navigate(["../home"], { clearHistory: true });
-      }, (error) => {
+      }, 
+      (error) => {
         BackendService.reset()
+        this.isAuthenticating = false;
         console.log('login user error ', error);
+        
+        if (error.status == 407)
+          alert(localize("MESSAGES.CONFIRM_EMAIL"));
+        else
+        alert(localize("MESSAGES.ERROR_LOGIN"));
       });
-    }, (error) => {
-      console.log('getAnonXCSFRtoken error: ',error);
+    }, 
+    (error) => {
+      this.isAuthenticating = false;
+      alert(localize("MESSAGES.ERROR_SERVICE"));
+      console.log('login getAnonXCSFRtoken error: ',error);
     });
   }
 

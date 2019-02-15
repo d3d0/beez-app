@@ -1,4 +1,4 @@
-import { Component, ViewChild, EventEmitter, Output, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, EventEmitter, Output, ElementRef, OnInit } from '@angular/core';
 import { localize } from "nativescript-localize";
 import { screen } from "platform";
 import { Subscription } from "rxjs";
@@ -18,7 +18,7 @@ import { CastingsService} from "./castings.service";
   moduleId: module.id,
 })
 
-export class CastingsComponent implements AfterViewInit{
+export class CastingsComponent implements OnInit{
 
   @ViewChild('tabHighlight') tabHighlight: ElementRef;
   @ViewChild('tab1') tab1: ElementRef;
@@ -40,7 +40,7 @@ export class CastingsComponent implements AfterViewInit{
     this.store = castingsService;
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.load();
   }
 

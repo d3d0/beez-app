@@ -39,12 +39,12 @@ export class BackendService {
   //  console.log('SET session_name TO: ' + newToken)
   }
 
-  validateCode(response) {
+  static validateCode(response) {
     return new Promise((resolve, reject) => {
       if (response.statusCode >= 200 && response.statusCode < 300) {
         resolve(response)
       }
-     // console.log('Response with code: ' + response.statusCode + '\nContent: ' + response.content.toString())
+     console.log('Response with code: ' + response.statusCode + '\nContent: ' + response.content.toString())
      reject('Response with code: ' + response.statusCode + '\nContent: ' + response.content.toString())
     })
   }

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { localize } from "nativescript-localize";
 import { RouterExtensions } from "nativescript-angular/router";
 import { connectionType, getConnectionType } from "connectivity";
+import * as trace from "tns-core-modules/trace"
+import { alert } from "../../shared";
+import * as dialogs from "tns-core-modules/ui/dialogs";
 
 import { Profile } from "../profile.model"
 import { User } from '../user.model'
@@ -19,6 +22,8 @@ export class SignupComponent {
   profile: Profile;
   private signupMinorTitle
   private signupTitle
+  private isAuthenticating = true;
+
   constructor(private routerExtensions: RouterExtensions, private userService: UserService) {
     this.profile = new Profile();
     this.user = new User();
@@ -47,17 +52,19 @@ export class SignupComponent {
     }
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
       BackendService.XCSFRtoken = result;
-      console.log('getAnonXCSFRtoken ',result)
-
+      // console.log('getAnonXCSFRtoken ',result)
       this.userService.signup(this.user, this.profile).subscribe((result) => {
         console.log('userService.signup ',result)
-        BackendService.session_name = result['session_name']
-        BackendService.sessid = result['sessid']
-        BackendService.XCSFRtoken = result['token']
-        this.routerExtensions.navigate(["../home"], { clearHistory: true });
+        this.routerExtensions.navigate(["/user/login"], { clearHistory: true });
+        alert(localize("MESSAGES.CONFIRM_EMAIL"));
       }, (error) => {
         BackendService.reset()
-        console.log('signin user error ', error);
+        if (error.status == 406)
+          alert(localize("MESSAGES.ERROR_ACCOUNT_DOUBLE"));
+        else
+          alert(localize("MESSAGES.ERROR_SERVICE"));
+
+        console.log('signin user error ', error)
       });
     }, (error) => {
       console.log('getAnonXCSFRtoken error: ',error);

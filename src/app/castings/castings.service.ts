@@ -1,12 +1,14 @@
 import { Injectable, NgZone} from "@angular/core";
 import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, BehaviorSubject, throwError } from "rxjs";
+import { localize } from "nativescript-localize";
 import { map, catchError, first } from "rxjs/operators";
 import { BackendService } from "../shared/backend.service";
 import { Casting } from "./casting.model";
+import { alert } from "../shared";
 
 @Injectable({
-    providedIn: "root"
+  providedIn: "root"
 })
 
 export class CastingsService {
@@ -35,30 +37,26 @@ export class CastingsService {
     .pipe(
       map((data: Casting []) => {
         this._castings = data
-        }),
+      }),
       catchError(this.handleErrors)
       );
   }
 
-  // private publishUpdates() {
-  //   // Make sure all updates are published inside NgZone so that change detection is triggered if needed
-  //   this._ngZone.run(() => {
-  //     // must emit a *new* value (immutability!)
-  //     // this._castings.next([...this.allCastings]);
-  //   });
-  // }
-
   private handleErrors(error: Response): Observable<never> {
+    if (error.status == 407){
+      BackendService.reset()
+      return
+    }
     return throwError(error);
   }
-  
+
   getAllCastings(){
     return this._castings
   }
 
   getCasting(id: string) {
-            return this.load().pipe(first((castings) => castings.id === id))
-   }
+    return this.load().pipe(first((castings) => castings.id === id))
+  }
 
   cadidate(user_id, casting_id){
     return this.http.post(

@@ -37,10 +37,9 @@ export class ProfileComponent implements OnInit {
     console.log('hello from PROFILE component');
   }
 
-  
   ngOnInit(): void {
   }
-  
+
   ngAfterViewInit() {
     setTimeout(() => { this.animateCurrentTab(this.tab1); }, 100);
   }
@@ -58,6 +57,7 @@ export class ProfileComponent implements OnInit {
       // this.animatePreviousTab(this.getImage(previousTab));
     }
   }
+
   getImage(index) {
     let currentTab ;
     switch (index) {
@@ -75,6 +75,7 @@ export class ProfileComponent implements OnInit {
     }
     return currentTab;
   }
+
 animateCurrentTab(arg){
     arg.nativeElement.animate({
       scale: { x: 1.2, y: 1.2 },
@@ -82,6 +83,7 @@ animateCurrentTab(arg){
       duration: 300
     });
 }
+
 animatePreviousTab(arg){
       arg.nativeElement.animate({
       scale: { x: 1, y: 1 },

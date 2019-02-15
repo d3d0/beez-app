@@ -9,10 +9,12 @@
         <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" >
           <StackLayout class="card-group-item">
             <GridLayout rows="*,*,*,*,*,*" backgroundColor="" margin="20">
-
+                <ActivityIndicator
+                [busy]="isAuthenticating"
+                rowSpan="2"></ActivityIndicator>
                 <Label #labelmail row="0" [text]="'EMAIL'|L" class="label-textfield" ></Label>
                 <TextField #textfieldmail class="card-group-item-email"  row="1" rowSpan="2"
-                [(ngModel)]="user.email"
+                [(ngModel)]="user.mail"
                 [hint]="'EMAIL'|L|titlecase"
                 (focus)="toggleLabel($event,'mail')"
                 (blur)="toggleLabel($event,'mail')"
@@ -39,7 +41,7 @@
                 <ActivityIndicator row="4" [busy]="isAuthenticating" height="0"></ActivityIndicator>
 
                 <CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
-                    <Button class="card-button-link"
+                    <Button [isEnabled]="!isAuthenticating" class="card-button-link"
                     [text]="'LOGIN'|L"
                     (tap)="login()"></Button>
                 </CardView>
@@ -52,6 +54,5 @@
           <Label class="login-footer-help" col="1" horizontalAlignment="right" verticalAlignment="top" [text]="'HELP'|L"></Label>
         </GridLayout>
     </StackLayout>
-
   </DockLayout>
 </ScrollView>
