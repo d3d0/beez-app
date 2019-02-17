@@ -7,8 +7,8 @@ import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { Subscription } from "rxjs";
 import { finalize } from "rxjs/operators";
 
-import { CastingsService} from "../castings.service";
-import { Casting} from "../casting.model";
+import { CastingsService } from "../castings.service";
+import { Casting } from "../casting.model";
 
 @Component({
   selector: 'ns-castings-list',
@@ -21,8 +21,9 @@ export class CastingsListComponent  {
 
   private _numberOfAddedItems;
   private _isLoading = true;
+  private _castings: ObservableArray<Casting> = new ObservableArray<Casting>([]);
+  private _dataSubscription: Subscription;
 
-  @Input() castings : Casting[];
   @Input() castingType: string;
   // @Output() loading = new EventEmitter();
   @Output() loaded = new EventEmitter();
@@ -32,8 +33,23 @@ export class CastingsListComponent  {
     private routerExtensions: RouterExtensions,
     private castingsService: CastingsService) {
   }
-    get castingsList(){
-      return this.castings
+
+      ngOnInit(): void {
+        if (!this._dataSubscription) {
+            this._isLoading = true;
+
+            this._dataSubscription = this.castingsService.load()
+                .pipe(finalize(() => this._isLoading = false))
+                .subscribe((castings: Array<Casting>) => {
+                    this._castings = new ObservableArray(castings);
+                    this._isLoading = false;
+                });
+        }
+    }
+
+
+    get castings(){
+      return this._castings
     }
 
   public onPullToRefreshInitiated(args: ListViewEventData) {
