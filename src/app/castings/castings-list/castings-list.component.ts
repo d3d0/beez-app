@@ -66,7 +66,7 @@ export class CastingsListComponent implements OnInit, OnDestroy {
   onCastingTap(args: ListViewEventData): void {
       const tappedCasting = args.view.bindingContext;
 
-      this._routerExtensions.navigate(["../casting", tappedCasting.id],
+      this.routerExtensions.navigate(["../casting", tappedCasting.id],
           {
               animated: true,
               transition: {

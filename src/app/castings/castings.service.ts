@@ -2,7 +2,7 @@ import { Injectable, NgZone} from "@angular/core";
 import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, BehaviorSubject, throwError } from "rxjs";
 import { localize } from "nativescript-localize";
-import { map, catchError, first } from "rxjs/operators";
+import { map, catchError, first, retry } from "rxjs/operators";
 import { BackendService } from "../shared/backend.service";
 import { Casting } from "./casting.model";
 import { alert } from "../shared";
