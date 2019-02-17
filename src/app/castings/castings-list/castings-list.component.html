@@ -1,6 +1,6 @@
-<RadListView class="casting" [items]="castingsList" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
-  <ng-template  let-item="item" let-index="index">
-    <CardView class="card-group" [nsRouterLink]="['../casting', item.id]" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="index===0">
+<RadListView class="casting" [items]="castings" (itemTap)="onCastingTap($event)" pullToRefresh="false" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
+  <ng-template tkListItemTemplate  let-item="item" let-index="index">
+    <CardView class="card-group" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="index===0">
      <StackLayout class="list-group-item" >
        <GridLayout columns="62, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
          <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
@@ -21,13 +21,5 @@
        </GridLayout>
      </StackLayout>
    </CardView>
- </ng-template>
- <ng-template [ngIf]="!castingsList.length>0">
-  <CardView elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
-    <StackLayout class="card-default">
-     <Label [text]="'CASTINGS.NO_CLOSE_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
-     <Label [text]="'CASTINGS.NO_CLOSE_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
-   </StackLayout>
- </CardView>
  </ng-template>
 </RadListView>

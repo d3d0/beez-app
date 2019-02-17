@@ -33,13 +33,10 @@ export class CastingsService {
     return this.http.get(
       BackendService.baseUrl + "beez/loool_casting", {
         headers: this.getCommonHeaders()
-      })
-    .pipe(
-      map((data: Casting []) => {
-        this._castings = data
-      }),
-      catchError(this.handleErrors)
-      );
+      }).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleErrors) // then handle the error
+    );
   }
 
   private handleErrors(error: Response): Observable<never> {
@@ -66,7 +63,7 @@ export class CastingsService {
         nid: casting_id
       }),
       { headers: this.getCommonHeaders() }
-      ).pipe( 
+      ).pipe(
       // todoododod
       catchError(this.handleErrors)
       )

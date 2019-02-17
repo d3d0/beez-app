@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
   goToSignup(){
     this.router.navigate(["/user/signup"]);
   }
-  
+
   login() {
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
         BackendService.UID = result['user']['uid']
         this.isAuthenticating = false;
         this.routerExtensions.navigate(["../home"], { clearHistory: true });
-       }, 
+       },
       (error) => {
         BackendService.reset()
         this.isAuthenticating = false;
@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
         else
         alert(localize("MESSAGES.ERROR_LOGIN"));
       });
-    }, 
+    },
     (error) => {
       this.isAuthenticating = false;
       alert(localize("MESSAGES.ERROR_SERVICE"));

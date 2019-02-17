@@ -32,7 +32,7 @@
   </GridLayout>
 
   <StackLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
-    <ns-castings-list [castingType]="'New'" [castings] = "castingsTabNew" ></ns-castings-list>
+    <ns-castings-list></ns-castings-list>
 <!--     <CardView *ngIf="!castingsTabNew.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
      <StackLayout class="card-default">
       <Label [text]="'CASTINGS.NO_NEW_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>

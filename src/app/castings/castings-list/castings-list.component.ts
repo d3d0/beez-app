@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, EventEmitter, Input, Output, OnInit } from "@angular/core";
+import { Component, ChangeDetectionStrategy, EventEmitter, OnDestroy, Input, Output, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { TabView } from "tns-core-modules/ui/tab-view";
 import { localize } from "nativescript-localize";
@@ -17,60 +17,72 @@ import { Casting } from "../casting.model";
   moduleId: module.id
 })
 
-export class CastingsListComponent  {
+export class CastingsListComponent implements OnInit, OnDestroy {
 
-  private _numberOfAddedItems;
   private _isLoading = true;
   private _castings: ObservableArray<Casting> = new ObservableArray<Casting>([]);
   private _dataSubscription: Subscription;
 
-  @Input() castingType: string;
-  // @Output() loading = new EventEmitter();
-  @Output() loaded = new EventEmitter();
+  // @Input() castingType: string;
+  // // @Output() loading = new EventEmitter();
+  // @Output() loaded = new EventEmitter();
   // @Output() updateList = new EventEmitter<boolean>();
 
   constructor(
     private routerExtensions: RouterExtensions,
-    private castingsService: CastingsService) {
-  }
+    private castingsService: CastingsService) {}
 
-      ngOnInit(): void {
-        if (!this._dataSubscription) {
-            this._isLoading = true;
-
-            this._dataSubscription = this.castingsService.load()
-                .pipe(finalize(() => this._isLoading = false))
-                .subscribe((castings: Array<Casting>) => {
-                    this._castings = new ObservableArray(castings);
-                    this._isLoading = false;
-                });
+    ngOnInit(): void {
+      if (!this._dataSubscription) {
+        this._isLoading = true;
+        this._dataSubscription = this.castingsService.load()
+            .pipe(finalize(() => this._isLoading = false))
+            .subscribe((castings: Array<Casting>) => {
+                this._castings = new ObservableArray(castings);
+                this._isLoading = false;
+            });
+      }
+    }
+    ngOnDestroy(): void {
+        if (this._dataSubscription) {
+            this._dataSubscription.unsubscribe();
+            this._dataSubscription = null;
         }
     }
 
-
-    get castings(){
-      return this._castings
-    }
+  get castings(): ObservableArray<Casting> {
+    return this._castings
+  }
 
   public onPullToRefreshInitiated(args: ListViewEventData) {
-        this.castingsService.load().subscribe(() => {
-            args.object.notifyPullToRefreshFinished();
-        });
-    // setTimeout(function () {
-    //   args.object.notifyPullToRefreshFinished()
-    // }, 1000);
+    this.castingsService.load().subscribe(() => {
+        args.object.notifyPullToRefreshFinished();
+    });
+  // setTimeout(function () {
+  //   args.object.notifyPullToRefreshFinished()
+  // }, 1000);
   }
 
+  onCastingTap(args: ListViewEventData): void {
+      const tappedCasting = args.view.bindingContext;
 
+      this._routerExtensions.navigate(["../casting", tappedCasting.id],
+          {
+              animated: true,
+              transition: {
+                  name: "slide",
+                  duration: 200,
+                  curve: "ease"
+              }
+          });
+  }
 
+  showActivityIndicator() {
+    this._isLoading = true;
+    console.log('showActivityIndicator')
+  }
 
-
-        showActivityIndicator() {
-          this._isLoading = true;
-          console.log('showActivityIndicator')
-        }
-
-        hideActivityIndicator() {
-          console.log('hideActivityIndicator')
-        }
-      }
+  hideActivityIndicator() {
+    console.log('hideActivityIndicator')
+  }
+}

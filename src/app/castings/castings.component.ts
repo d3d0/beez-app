@@ -33,14 +33,13 @@ export class CastingsComponent implements OnInit{
   private _isLoading = true;
   public store: CastingsService;
 
-  constructor( castingsService: CastingsService ) {
-    this.store = castingsService;
-
-    console.log('hello from CASTING component');
+  constructor(  ) {
   }
 
   ngOnInit() {
-    this.load();
+    console.log('hello from CASTING component');
+
+    // this.load();
   }
 
   load() {
@@ -55,23 +54,23 @@ export class CastingsComponent implements OnInit{
         this.castingsTabAudition = this.castings.filter(casting => casting.status === "Audition")
         this.castingsTabClose = this.castings.filter(casting => casting.status === "Close")
       },
-       ()=>       this.listLoaded = true
+       ()=> this.listLoaded = true
       );
 
   }
 
   public onSelectedIndexChange(index) {
     let previousTab = this.selectedIndex;
-    if (index != this.selectedIndex) {
-      this.selectedIndex = index;
-      this.tabHighlight.nativeElement.animate({
-        translate: { x: index * screen.mainScreen.widthDIPs / 3, y: 0 },
-        curve: AnimationCurve.cubicBezier(1, .02, .45, .93),
-        duration: 300
-      })
-      // this.animateCurrentTab(this.getImage(index));
-      // this.animatePreviousTab(this.getImage(previousTab));
-    }
+    // if (index != this.selectedIndex) {
+    //   this.selectedIndex = index;
+    //   this.tabHighlight.nativeElement.animate({
+    //     translate: { x: index * screen.mainScreen.widthDIPs / 3, y: 0 },
+    //     curve: AnimationCurve.cubicBezier(1, .02, .45, .93),
+    //     duration: 300
+    //   })
+    //   // this.animateCurrentTab(this.getImage(index));
+    //   // this.animatePreviousTab(this.getImage(previousTab));
+    // }
   }
 //   getImage(index) {
 //     let currentTab;
@@ -86,7 +85,7 @@ export class CastingsComponent implements OnInit{
 //         currentTab = this.tab3;
 //         break;
 //       default:
-//         break; 
+//         break;
 //     }
 //     return currentTab;
 //   }
@@ -105,12 +104,12 @@ export class CastingsComponent implements OnInit{
 //     })
 // }
 
-  onSwipe(args){
-    if (args.direction === 1)
-      this.onSelectedIndexChange(Math.abs(this.selectedIndex + 2 ) % 3)
-    if (args.direction === 2)
-      this.onSelectedIndexChange(Math.abs(this.selectedIndex + 1) % 3)
-  }
+  // onSwipe(args){
+  //   if (args.direction === 1)
+  //     this.onSelectedIndexChange(Math.abs(this.selectedIndex + 2 ) % 3)
+  //   if (args.direction === 2)
+  //     this.onSelectedIndexChange(Math.abs(this.selectedIndex + 1) % 3)
+  // }
 
   deActivityIndicator() {
     // this.isLoading = true;
