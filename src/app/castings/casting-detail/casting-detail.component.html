@@ -13,53 +13,71 @@
 
 			<StackLayout class="list-group-item p-t-20" backgroundColor="">
 
-					<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">
-						<Label text="" class="list-group-item-icona-info list-group-item-icona-info-first" row="0" col="0"></Label>
-						<Label text="Informazioni" class="list-group-item-heading-18 list-group-item-heading-18-first" textWrap="true" row="0" col="1" ></Label>
-						<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
-						<Label class="list-group-item-text" [text]="casting.info" textWrap="true" row="1" col="1"></Label>
-					</GridLayout>
+				<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">
+					<Label text="" class="list-group-item-icona-info list-group-item-icona-info-first" row="0" col="0"></Label>
+					<Label [text]="'CASTINGS.INFORMATION'|L" class="list-group-item-heading-18 list-group-item-heading-18-first" textWrap="true" row="0" col="1" ></Label>
+					<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
+					<Label class="list-group-item-text" [text]="casting.info" textWrap="true" row="1" col="1"></Label>
+				</GridLayout>
 
-					<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">
-						<Label text="" class="list-group-item-icona-characteristics" row="0" col="0"></Label>
-						<Label text="Caratteristiche" class="list-group-item-heading-18" textWrap="true" row="0" col="1" ></Label>
-						<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
-						<Label class="list-group-item-text" text="• Età scenica tra i 25 e i 35 anni;
-• Corporatura robusta;
-• Viso solare;
-• Marcato accento Veneto." textWrap="true" row="1" col="1"></Label>
-					</GridLayout>
+				<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">
+					<Label text="" class="list-group-item-icona-characteristics" row="0" col="0"></Label>
+					<Label [text]="'CASTINGS.FEATURES'|L" class="list-group-item-heading-18" textWrap="true" row="0" col="1" ></Label>
+					<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
+					<Label  class="list-group-item-text" textWrap="true" row="1" col="1">
+						<FormattedString *ngFor="let feature of casting.features" >
+							<Span text=" • " ></Span>
+							<Span [text]="feature" ></Span>
+							<Span text=";" ></Span>
+						</FormattedString>
+					</Label>
+				</GridLayout>
 
-					<GridLayout columns="50, *" rows="auto,auto,auto,auto,auto" backgroundColor="">
-						<Label text="" class="list-group-item-icona-calendar" row="0" col="0"></Label>
-						<Label text="Date e location" class="list-group-item-heading-18" textWrap="true" row="0" col="1" colSpan="4" ></Label>
-						<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
-						<Label text="CASTING" class="text-uppercase list-group-item-heading-14" textWrap="true" row="1" col="1" ></Label>
-						<Label text="" class="list-group-item-v-line" row="2" col="0"></Label>
-						<Label class="list-group-item-text" text="26.09.2018 • 10:00 - 16:00
-Face & Place
-Via Lazzaro Papi, 7 - 20135 Milano MI." textWrap="true" row="2" col="1"></Label>
-						<Label text="" class="list-group-item-v-line" row="3" col="0"></Label>
-						<Label text="SHOOTING" class="text-uppercase list-group-item-heading-14" textWrap="true" row="3" col="1" ></Label>
-						<Label text="" class="list-group-item-v-line" row="4" col="0"></Label>
-						<Label class="list-group-item-text list-group-item-text-last" text="21.10.2018
-Orario e location saranno comunicati." textWrap="true" row="4" col="1"></Label>
-					</GridLayout>
+				<GridLayout columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto" backgroundColor="">
+					<Label text="" class="list-group-item-icona-calendar" row="0" col="0"></Label>
+					<Label [text]="'CASTINGS.DATE_LOCATION'|L" class="list-group-item-heading-18" textWrap="true" row="0" col="1" colSpan="4" ></Label>
 
-					<StackLayout class="p-t-0 p-b-20" backgroun	dColor="">
-						<GridLayout columns="50, *" rows="auto" backgroundColor="">
-							<Label text="" class="list-group-item-icona-partecipate" row="0" col="0" verticalAlignment="top"></Label>
-							<Button [text]="'PARTICIPATE'|L" (tap)="candidate()" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
-						</GridLayout>
-						<GridLayout columns="50, *" rows="auto" backgroundColor="">
-							<Label text="" class="list-group-item-v-line" row="0" col="0" height="20"></Label>
-							<Label text="" row="0" col="1"></Label>
-						</GridLayout>
-						<GridLayout columns="50, *" rows="auto" backgroundColor="">
-							<Label text="" class="list-group-item-icona-share" row="0" col="0" verticalAlignment="top"></Label>
-							<Button  [text]="'SHARE_WITH_A_FRIEND'|L" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--blu" row="0" col="1"></Button>
-						</GridLayout>
-					</StackLayout>
+					<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
+					<Label [text]="'CASTINGS.CASTING'|L" class="text-uppercase list-group-item-heading-14" textWrap="true" row="1" col="1" ></Label>
+
+					<Label text="" class="list-group-item-v-line" row="2" col="0"></Label>
+					<Label textWrap="true" class="text-left text-uppercase list-group-item-text" row="2" col="1" colSpan="3">
+						<FormattedString *ngFor="let date of casting.casting_date" >
+							<Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
+							<Span text=" • " ></Span>
+							<Span [text]="date[0] * 1000 | date:'HH:mm'" ></Span>
+							<Span text=" - " ></Span>
+							<Span [text]="date[1]  * 1000 | date:'HH:mm'" ></Span>
+						</FormattedString>
+					</Label>
+
+					<Label text="" class="list-group-item-v-line" row="3" col="0"></Label>
+					<Label class="list-group-item-text" [text]="casting.location" textWrap="true" row="3" col="1"></Label>
+
+					<Label text="" class="list-group-item-v-line" row="4" col="0"></Label>
+					<Label [text]="'CASTINGS.SHOOTING'|L" class="text-uppercase list-group-item-heading-14" textWrap="true" row="4" col="1" ></Label>
+
+					<Label text="" class="list-group-item-v-line" row="5" col="0"></Label>
+					<Label class="list-group-item-text" [text]="casting.shooting" textWrap="true" row="5" col="1"></Label>
+
+					<Label text="" class="list-group-item-v-line" row="6" col="0"></Label>
+					<Label class="list-group-item-text list-group-item-text-last" text="Orario e location saranno comunicati." textWrap="true" row="6" col="1"></Label>
+				</GridLayout>
+
+				<StackLayout class="p-t-0 p-b-20" backgroun	dColor="">
+					<GridLayout columns="50, *" rows="auto" backgroundColor="">
+						<Label text="" class="list-group-item-icona-partecipate" row="0" col="0" verticalAlignment="top"></Label>
+						<Button [text]="'PARTICIPATE'|L" (tap)="candidate()" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
+					</GridLayout>
+					<GridLayout columns="50, *" rows="auto" backgroundColor="">
+						<Label text="" class="list-group-item-v-line" row="0" col="0" height="20"></Label>
+						<Label text="" row="0" col="1"></Label>
+					</GridLayout>
+					<GridLayout columns="50, *" rows="auto" backgroundColor="">
+						<Label text="" class="list-group-item-icona-share" row="0" col="0" verticalAlignment="top"></Label>
+						<Button  [text]="'SHARE_WITH_A_FRIEND'|L" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--blu" row="0" col="1"></Button>
+					</GridLayout>
+				</StackLayout>
 
 			</StackLayout>
 

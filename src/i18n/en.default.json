@@ -9,7 +9,6 @@
   "INFORMATION": "INFORMATION",
   "LOGIN": "LOGIN",
   "LOGOUT": "LOGOUT",
-  "FEATURES": "FEATURES",
   "DATE_AND_LOCATION": "DATE AND LOCATION",
   "PARTICIPATE": "PARTICIPATE",
   "SIGNUP": "Sign Up",
@@ -31,9 +30,20 @@
   },
   "CASTINGS": {
     "CASTINGS": "CASTINGS",
+    "CASTING": "CASTING",
     "ONGOING": "NEW",
     "CONCLUDED": "SHOOTING",
-    "ATTEND": "AUDITION"
+    "ATTEND": "AUDITION",
+    "INFORMATION": "information",
+    "DATE_LOCATION": "Date and location",
+    "FEATURES": "Features",
+    "SHOOTING": "Shooting",
+    "NO_NEW_CASTINGS_TITLE": "Nessun nuovo casting",
+    "NO_NEW_CASTINGS_TEXT": "Siamo spiacenti, al momento non ci sono nuovi castings a cui candidarsi.",
+    "NO_AUDITION_CASTINGS_TITLE": "Nessun casting a cui parteciperai",
+    "NO_AUDITION_CASTINGS_TEXT": "In questa sezione troverai i casting ai quali sei stato selezionato e potrai partecipare. Controlla sempre i nuovi casting e trova quello giusto per te.",
+    "NO_CLOSE_CASTINGS_TITLE": "Nessun prossimo shooting",
+    "NO_CLOSE_CASTINGS_TEXT": "In questa sezione troverai i casting che hai superato con le informazioni sui relativi shooting confermati."
   },
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "NOTIFICATIONS"

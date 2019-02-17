@@ -77,4 +77,15 @@
   <string name="_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF">"This will be added to InfoPlist.strings"</string>
   <string name="_MODAL_test_Z19nFfM">"test"</string>
   <string name="_MESSAGES_ERROR_TOKEN_1vnpFb">"Sorry, password reset token invalid."</string>
+  <string name="_CASTINGS_NO_CLOSE_CASTINGS_TEXT_Z1oTCmv">"In questa sezione troverai i casting che hai superato con le informazioni sui relativi shooting confermati."</string>
+  <string name="_CASTINGS_NO_CLOSE_CASTINGS_TITLE_26wiRd">"Nessun prossimo shooting"</string>
+  <string name="_CASTINGS_NO_AUDITION_CASTINGS_TEXT_ZRgMB0">"In questa sezione troverai i casting ai quali sei stato selezionato e potrai partecipare. Controlla sempre i nuovi casting e trova quello giusto per te."</string>
+  <string name="_CASTINGS_NO_AUDITION_CASTINGS_TITLE_Z1DwsKL">"Nessun casting a cui parteciperai"</string>
+  <string name="_CASTINGS_NO_NEW_CASTINGS_TEXT_Z16OlfC">"Siamo spiacenti, al momento non ci sono nuovi castings a cui candidarsi."</string>
+  <string name="_CASTINGS_NO_NEW_CASTINGS_TITLE_17NHIM">"Nessun nuovo casting"</string>
+  <string name="_CASTINGS_SHOOTING_19S1UI">"Shooting"</string>
+  <string name="_CASTINGS_FEATURES_1dOB1J">"Features"</string>
+  <string name="_CASTINGS_DATE_LOCATION_Z2hcAVE">"Date and location"</string>
+  <string name="_CASTINGS_INFORMATION_hLST1">"information"</string>
+  <string name="_CASTINGS_CASTING_Z1zSgUB">"CASTING"</string>
 </resources>

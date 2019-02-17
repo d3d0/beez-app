@@ -27,12 +27,15 @@ export class CastingsComponent implements OnInit{
   listLoaded = false;
 
   private castings= [];
-  private subscription;
+  private castingsTabNew= [];
+  private castingsTabAudition= [];
+  private castingsTabClose= [];
   private _isLoading = true;
   public store: CastingsService;
 
   constructor( castingsService: CastingsService ) {
     this.store = castingsService;
+
     console.log('hello from CASTING component');
   }
 
@@ -47,8 +50,14 @@ export class CastingsComponent implements OnInit{
       () => {
         this.loaded.next("");
         this.listLoaded = true;
-      }
+        this.castings = this.store.getAllCastings()
+        this.castingsTabNew = this.castings.filter(casting => casting.status === "New")
+        this.castingsTabAudition = this.castings.filter(casting => casting.status === "Audition")
+        this.castingsTabClose = this.castings.filter(casting => casting.status === "Close")
+      },
+       ()=>       this.listLoaded = true
       );
+
   }
 
   public onSelectedIndexChange(index) {

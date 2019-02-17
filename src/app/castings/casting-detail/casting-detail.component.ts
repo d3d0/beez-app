@@ -3,6 +3,7 @@ import { localize } from "nativescript-localize";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import { switchMap } from "rxjs/operators";
 import { ActivatedRoute } from "@angular/router";
+import * as SocialShare from "nativescript-social-share";
 
 import { CastingsService} from "../castings.service";
 import { Casting } from "../casting.model";
@@ -17,7 +18,7 @@ import { alert } from "../../shared";
 })
 
 export class CastingDetailComponent  {
-  private _casting = {};
+  private _casting:Casting;
   private casting_id;
   private user_id;
 
@@ -28,7 +29,7 @@ export class CastingDetailComponent  {
       this.user_id = BackendService.UID
       this.activeRoute.params.subscribe((params) => {
         this.casting_id=params.id
-        this._casting = this.castingsService.getCasting(this.casting_id)
+        this._casting = <Casting>this.castingsService.getCasting(this.casting_id)
       });
     }
 
@@ -51,5 +52,7 @@ export class CastingDetailComponent  {
   goBack(): void{
     this.routerExtension.back({ relativeTo: this.activeRoute });
   }
-
+  share(){
+    SocialShare.shareText(this._casting.title);
+  }
 }

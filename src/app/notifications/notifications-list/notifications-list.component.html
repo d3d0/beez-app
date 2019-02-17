@@ -27,7 +27,7 @@
 </ActionBar>
 
 <!-- https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
-<RadListView class="notification" [items]="notifications">
+<RadListView class="notification" [items]="notifications"  pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)"`>
   <ng-template let-item="item" let-index="index">
      <CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15" [class.list-group-first]="index===0">
         <StackLayout class="list-group-item">

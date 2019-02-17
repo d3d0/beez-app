@@ -1,25 +1,33 @@
-<RadListView  class="casting" [items]="castings">
+<RadListView class="casting" [items]="castingsList" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
   <ng-template  let-item="item" let-index="index">
-      <CardView class="card-group" [nsRouterLink]="['../casting', item.id]" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="index===0">
-       <StackLayout class="list-group-item" >
-         <GridLayout columns="62, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
-           <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
-           <Label [text]="item.title" class="list-group-item-heading-18" textWrap="true" row="1" colSpan="5"></Label>
-           <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" colSpan="5"></Label>
-           <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
-           <Label text="CASTING" class="text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
-           <Label textWrap="true" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3">
-             <FormattedString *ngFor="let date of item.casting_date" >
-               <Span [text]="date[0]" ></Span>
-               <Span text=" • " ></Span>
-               <Span [text]="date[1]" ></Span>
-               <Span text=" - " ></Span>
-               <Span [text]="date[1]" ></Span>
-             </FormattedString>
-           </Label>
-           <Label text="" class="list-group-item-icona-freccia" row="4" col="4" ></Label>
-         </GridLayout>
-       </StackLayout>
-     </CardView>
-  </ng-template>
+    <CardView class="card-group" [nsRouterLink]="['../casting', item.id]" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="index===0">
+     <StackLayout class="list-group-item" >
+       <GridLayout columns="62, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
+         <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
+         <Label [text]="item.title" class="list-group-item-heading-18" textWrap="true" row="1" colSpan="5"></Label>
+         <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" colSpan="5"></Label>
+         <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
+         <Label text="CASTING" class="text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
+         <Label textWrap="true" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3">
+           <FormattedString *ngFor="let date of item.casting_date" >
+             <Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
+             <Span text=" • " ></Span>
+             <Span [text]="date[0] * 1000 | date:'HH:mm'" ></Span>
+             <Span text=" - " ></Span>
+             <Span [text]="date[1]  * 1000 | date:'HH:mm'" ></Span>
+           </FormattedString>
+         </Label>
+         <Label text="" class="list-group-item-icona-freccia" row="4" col="4" ></Label>
+       </GridLayout>
+     </StackLayout>
+   </CardView>
+ </ng-template>
+ <ng-template [ngIf]="!castingsList.length>0">
+  <CardView elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
+    <StackLayout class="card-default">
+     <Label [text]="'CASTINGS.NO_CLOSE_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
+     <Label [text]="'CASTINGS.NO_CLOSE_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
+   </StackLayout>
+ </CardView>
+ </ng-template>
 </RadListView>

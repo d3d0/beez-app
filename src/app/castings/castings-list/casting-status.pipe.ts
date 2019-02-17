@@ -11,18 +11,18 @@ export class CastingStatusPipe implements PipeTransform {
     // if (items instanceof Array)
     {
       switch(castingType) {
-        case "ongoing":
+        case "New":
         this.value = items.filter((casting: Casting) => {
           return casting.status === "New";
         });
         break
-        case "attend":
+        case "Audition":
         this.value = items.filter((casting: Casting) => {
           return casting.status === "Audition";
         });
         break
 
-        case "concluded":
+        case "Close":
         this.value = items.filter((casting: Casting) => {
           return casting.status === "Close";
         });
