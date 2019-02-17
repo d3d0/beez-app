@@ -3,5 +3,6 @@
     "files.exclude": {
         "**/*.js": { "when": "$(basename).ts" },
         "**/*.map": { "when": "$(basename).map" }
-    }
+    },
+    "nativescript.iosTeamId": "8P53D99L6U"
 }

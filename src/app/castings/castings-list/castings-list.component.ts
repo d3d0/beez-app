@@ -42,7 +42,8 @@ export class CastingsListComponent  {
         });
     // setTimeout(function () {
     //   args.object.notifyPullToRefreshFinished()
-    // }, 1000);  }
+    // }, 1000);
+  }
 
 
 

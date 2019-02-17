@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "io.beez.dev",
+    "id": "io.beez.casting.app",
     "tns-ios": {
       "version": "5.2.0-2018-12-12-124022-01"
     },
