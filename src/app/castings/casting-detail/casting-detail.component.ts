@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { PageRoute, RouterExtensions } from "nativescript-angular/router";import { switchMap } from "rxjs/operators";
 import { localize } from "nativescript-localize";
-import { PageRoute, RouterExtensions } from "nativescript-angular/router";
-import { switchMap } from "rxjs/operators";
 import { ActivatedRoute } from "@angular/router";
 import * as SocialShare from "nativescript-social-share";
 
@@ -17,7 +16,7 @@ import { alert } from "../../shared";
   moduleId: module.id,
 })
 
-export class CastingDetailComponent  {
+export class CastingDetailComponent implements OnInit {
   private _casting:Casting;
   private casting_id;
   private user_id;
@@ -27,19 +26,21 @@ export class CastingDetailComponent  {
     private castingsService: CastingsService,
     private routerExtension: RouterExtensions) {
       this.user_id = BackendService.UID
+    }
+
+    get casting(){
+      return this._casting
+    }
+
+    ngOnInit(): void {
       this.activeRoute.params.subscribe((params) => {
-        this.casting_id=params.id
-        this._casting = <Casting>this.castingsService.getCasting(this.casting_id)
+        this.casting_id = params.id
+        this._casting = <Casting>this.castingsService.getCastingById(this.casting_id)
       });
     }
 
-  get casting(){
-    return this._casting
-  }
-
   candidate(){
     this.castingsService.cadidate(this.user_id,this.casting_id).subscribe( (result)=>{
-      console.log(result)
       alert('ok')
     }),
     (error)=> {

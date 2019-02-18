@@ -32,7 +32,7 @@
   </GridLayout>
 
   <StackLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
-    <ns-castings-list></ns-castings-list>
+    <ns-castings-list [castingType]="'New'"></ns-castings-list>
 <!--     <CardView *ngIf="!castingsTabNew.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
      <StackLayout class="card-default">
       <Label [text]="'CASTINGS.NO_NEW_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
@@ -42,7 +42,7 @@
 </StackLayout>
 
 <StackLayout [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
-  <ns-castings-list [castingType]="'Audition'" [castings] = "castingsTabAudition" > </ns-castings-list>
+  <ns-castings-list [castingType]="'Audition'"> </ns-castings-list>
 <!--   <CardView *ngIf="!castingsTabAudition.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
     <StackLayout class="card-default">
      <Label [text]="'CASTINGS.NO_AUDITION_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
@@ -52,7 +52,7 @@
 </StackLayout>
 
 <StackLayout [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
-  <ns-castings-list [castingType]="'Close'" [castings] = "castingsTabClose" > </ns-castings-list>
+  <ns-castings-list [castingType]="'Close'" > </ns-castings-list>
 <!--   <CardView *ngIf="!castingsTabClose.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
     <StackLayout class="card-default">
      <Label [text]="'CASTINGS.NO_CLOSE_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>

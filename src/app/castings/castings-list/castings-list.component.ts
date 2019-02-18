@@ -1,11 +1,13 @@
 import { Component, ChangeDetectionStrategy, EventEmitter, OnDestroy, Input, Output, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { TabView } from "tns-core-modules/ui/tab-view";
 import { localize } from "nativescript-localize";
 import { ListViewEventData } from "nativescript-ui-listview";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { Subscription } from "rxjs";
 import { finalize } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 import { CastingsService } from "../castings.service";
 import { Casting } from "../casting.model";
@@ -23,12 +25,14 @@ export class CastingsListComponent implements OnInit, OnDestroy {
   private _castings: ObservableArray<Casting> = new ObservableArray<Casting>([]);
   private _dataSubscription: Subscription;
 
-  // @Input() castingType: string;
-  // // @Output() loading = new EventEmitter();
+  @Input() castingType: string;
+  // @Output() loading = new EventEmitter();
   // @Output() loaded = new EventEmitter();
   // @Output() updateList = new EventEmitter<boolean>();
 
   constructor(
+    private router: Router,
+    private activeRoute: ActivatedRoute,
     private routerExtensions: RouterExtensions,
     private castingsService: CastingsService) {}
 
@@ -65,16 +69,7 @@ export class CastingsListComponent implements OnInit, OnDestroy {
 
   onCastingTap(args: ListViewEventData): void {
       const tappedCasting = args.view.bindingContext;
-
-      this.routerExtensions.navigate(["../casting", tappedCasting.id],
-          {
-              animated: true,
-              transition: {
-                  name: "slide",
-                  duration: 200,
-                  curve: "ease"
-              }
-          });
+      this.router.navigate(["../casting", tappedCasting.id], { relativeTo: this.activeRoute })
   }
 
   showActivityIndicator() {
