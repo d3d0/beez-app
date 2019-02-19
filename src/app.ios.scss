@@ -54,3 +54,11 @@ NSSegmentView{
 .list-group-item-switch[checked=true] {
   background-color: #00D796;
 }
+
+// fonts
+.tab-buttons {
+  label {
+    font-size:11;
+    letter-spacing: 0.15;
+  }
+}

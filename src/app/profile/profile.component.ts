@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   public selectedIndex = 0;
   public polariud : ElementRef;
   private tabItems: SegmentedBarItem[];
+  private tabs = [];
   @ViewChild("tabButtons") tabButtons: ElementRef;
   @ViewChild("polaroid") polaroid: ElementRef;
   @ViewChild('tabHighlight') tabHighlight: ElementRef;
@@ -38,6 +39,11 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tabs[0] = <View>this.tab1.nativeElement;
+    this.tabs[1] = <View>this.tab2.nativeElement;
+    this.tabs[2] = <View>this.tab3.nativeElement;
+    this.tabs[3] = <View>this.tab4.nativeElement;
+    this.tabs[0].className = "active";
   }
 
   ngAfterViewInit() {
@@ -47,6 +53,8 @@ export class ProfileComponent implements OnInit {
   public onSelectedIndexChange(index) {
     let previousTab = this.selectedIndex;
     if (index != this.selectedIndex) {
+      this.tabs[index].className = "active";
+      this.tabs[previousTab].className = "not-active";
       this.selectedIndex = index;
       this.tabHighlight.nativeElement.animate({
         translate: { x: index * screen.mainScreen.widthDIPs / 4, y: 0 },
@@ -71,7 +79,7 @@ export class ProfileComponent implements OnInit {
         currentTab = this.tab3;
         break;
       default:
-        break; 
+        break;
     }
     return currentTab;
   }
@@ -110,7 +118,7 @@ animatePreviousTab(arg){
       if (scrollView.verticalOffset < 250) {
           const offset = scrollView.verticalOffset / 2;
           if (scrollView.ios) {
-              // iOS adjust the position with an animation to create a smother scrolling effect. 
+              // iOS adjust the position with an animation to create a smother scrolling effect.
               polaroid.animate({ translate: { x: 0, y: offset } }).then(() => { }, () => { });
           } else {
               // Android, animations are jerky so instead just adjust the position without animation.
