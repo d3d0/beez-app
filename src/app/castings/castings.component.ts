@@ -1,8 +1,12 @@
 import { Component, ViewChild, EventEmitter, Output, ElementRef, OnInit } from '@angular/core';
+
 import { localize } from "nativescript-localize";
 import { screen } from "platform";
 
 import { AnimationCurve } from "ui/enums";
+import { Color } from "color";
+import { View } from "ui/core/view";
+
 
 @Component({
   selector: 'ns-castings',
@@ -28,17 +32,31 @@ export class CastingsComponent implements OnInit{
   private castingsTabAudition= [];
   private castingsTabClose= [];
   private _isLoading = true;
+  private label = null;
+  private tabs = [];
 
   constructor(  ) {
   }
 
   ngOnInit() {
     console.log('hello from CASTING component');
+
+    this.tabs[0] = <View>this.tab1.nativeElement;
+    this.tabs[1] = <View>this.tab2.nativeElement;
+    this.tabs[2] = <View>this.tab3.nativeElement;
+    this.tabs[0].className = "active";
+    // this.tabs[0].style.color = new Color("#00D796");
   }
 
   public onSelectedIndexChange(index) {
     let previousTab = this.selectedIndex;
     if (index != this.selectedIndex) {
+
+      // this.tabs[index].style.color = new Color("#00D796");
+      // this.tabs[previousTab].style.color = new Color("#1E1E1E");
+      this.tabs[index].className = "active";
+      this.tabs[previousTab].className = "not-active";
+
       this.selectedIndex = index;
       this.tabHighlight.nativeElement.animate({
         translate: { x: index * screen.mainScreen.widthDIPs / 3, y: 0 },
