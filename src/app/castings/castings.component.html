@@ -1,9 +1,9 @@
-<ActionBar class="action-bar" [title]="'CASTINGS.CASTINGS'|L">
+<ActionBar flat="true" class="action-bar" >
   <!-- <Label class="action-bar-title" [text]="'CASTINGS.CASTINGS'|L" ></Label> -->
   <!-- TITOLO > ANDROID -->
   <StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="left">
     <Image src="res://mark" class="action-image text-left pull-left m-r-10"></Image>
-    <Label [text]="'CASTINGS.CASTINGS'|L"  class="action-label text-left pull-left"></Label>
+    <Label [text]="'CASTINGS.CASTINGS'|L|titlecase"  class="action-label text-left pull-left"></Label>
   </StackLayout>
   <!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
   <ActionItem android:visibility="collapsed" ios.position="left" android.position="left">
@@ -12,7 +12,7 @@
     </StackLayout>
   </ActionItem>
   <ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left">
-    <Label class="action-bar-title text-left pull-left" [text]="'CASTINGS.CASTINGS'|L"></Label>
+    <Label class="action-bar-title text-left pull-left" [text]="'CASTINGS.CASTINGS'|L|titlecase"></Label>
   </ActionItem>
 </ActionBar>
 
@@ -32,7 +32,8 @@
   </GridLayout>
 
   <StackLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
-    <ns-castings-list [castingType]="'New'"></ns-castings-list>
+    <ns-castings-list [castings]= "castingsTabNew" ></ns-castings-list>
+
 <!--     <CardView *ngIf="!castingsTabNew.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
      <StackLayout class="card-default">
       <Label [text]="'CASTINGS.NO_NEW_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
@@ -42,7 +43,7 @@
 </StackLayout>
 
 <StackLayout [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
-  <ns-castings-list [castingType]="'Audition'"> </ns-castings-list>
+  <ns-castings-list [castings]="castingsTabAudition" > </ns-castings-list>
 <!--   <CardView *ngIf="!castingsTabAudition.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
     <StackLayout class="card-default">
      <Label [text]="'CASTINGS.NO_AUDITION_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
@@ -52,7 +53,7 @@
 </StackLayout>
 
 <StackLayout [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
-  <ns-castings-list [castingType]="'Close'" > </ns-castings-list>
+  <ns-castings-list [castings]="castingsTabClose" > </ns-castings-list>
 <!--   <CardView *ngIf="!castingsTabClose.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
     <StackLayout class="card-default">
      <Label [text]="'CASTINGS.NO_CLOSE_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>

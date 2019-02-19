@@ -38,8 +38,6 @@
                 autocapitalizationType="none"
                 row="3"></TextField>
 
-                <ActivityIndicator row="4" [busy]="isAuthenticating" height="0"></ActivityIndicator>
-
                 <CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
                     <Button [isEnabled]="!isAuthenticating" class="card-button-link"
                     [text]="'LOGIN'|L"

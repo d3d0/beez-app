@@ -43,10 +43,6 @@
       <string>UIInterfaceOrientationLandscapeLeft</string>
       <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
-    <key>UIStatusBarStyle</key>
-    <string>UIStatusBarStyleLightContent</string>
-    <key>UIViewControllerBasedStatusBarAppearance</key>
-    <false/>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>This will be added to InfoPlist.strings</string>
   </dict>
