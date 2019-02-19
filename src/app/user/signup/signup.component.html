@@ -39,6 +39,7 @@
 						<TextField class="list-group-item-text-signup"
 						[hint]="'USER.EMAIL'|L"
 						[(ngModel)]="user.mail"
+              			autocapitalizationType="none"
 						keyboardType="email"
 						returnKeyType="next"
 						autocorrect="false"
@@ -100,6 +101,7 @@
 						<TextField class="list-group-item-text-signup"
 						[hint]="'USER.EMAIL'|L"
 						[(ngModel)]="user.mail"
+              			autocapitalizationType="none"
 						keyboardType="email"
 						returnKeyType="next"
 						autocorrect="false"
@@ -133,12 +135,6 @@
 						></TextField>
 
 						<Label class="list-group-item-label-signup" [text]="'USER.MINOR_DATE_OF_BIRTH'|L"></Label>
-						<TextField class="list-group-item-text-signup"
-						ref="password"
-						[hint]="'USER.MINOR_SURNAME'|L"
-						secure="true"
-						returnKeyType="done"
-						></TextField>
 
 						<DatePicker [(ngModel)]="profile.date_of_birth"></DatePicker>
 

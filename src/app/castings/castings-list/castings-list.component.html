@@ -3,7 +3,7 @@
 
 
   <ng-template tkTemplateKey="default" let-item="item" let-index="index">
-    <CardView class="card-group" marginTop="10"  marginBottom="10" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="index===0">
+    <CardView class="card-group" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="index===0">
      <StackLayout class="list-group-item" >
        <GridLayout columns="62, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
          <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
@@ -25,11 +25,12 @@
      </StackLayout>
    </CardView>
  </ng-template>
+
   <ng-template tkTemplateKey="empty" let-item="item" >
     <CardView class="card-group" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
       <StackLayout class="card-default">
-         <Label [text]="'CASTINGS.NO_'+item.status+'_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
-         <Label [text]="'CASTINGS.NO_'+item.status+'_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
+         <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
+         <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
       </StackLayout>
     </CardView>
   </ng-template>

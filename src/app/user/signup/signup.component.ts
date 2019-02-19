@@ -27,10 +27,10 @@ export class SignupComponent {
   constructor(private routerExtensions: RouterExtensions, private userService: UserService) {
     this.profile = new Profile();
     this.user = new User();
-    this.user.mail="mirko@loool.it"
-    this.user.pass="12345678"
-    this.profile.name="mirko"
-    this.profile.surname="sacchetti"
+    // this.user.mail="mirko@loool.it"
+    // this.user.pass="12345678"
+    // this.profile.name="mirko"
+    // this.profile.surname="sacchetti"
     this.signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
     this.signupTitle = localize("SIGNUP.REGISTRATION");
    }

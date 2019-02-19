@@ -29,6 +29,8 @@ export class CastingStatusPipe implements PipeTransform {
         break
       }
     }
+    // se vuoto ritorno lista vuota con un elemento per il layout di default
+    if(this.value.length<1) return [{id:null,status:castingType}]
     return this.value;
   }
 }
