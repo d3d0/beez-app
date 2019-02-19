@@ -1,5 +1,8 @@
-<RadListView  height="100%" class="casting" [items]="castings|castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="false" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
-  <ng-template  let-item="item" let-index="index">
+<RadListView row="0"  height="100%" class="casting" [items]="castings|castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" [itemTemplateSelector]="templateSelector">
+
+
+
+  <ng-template tkTemplateKey="default" let-item="item" let-index="index">
     <CardView class="card-group" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="index===0">
      <StackLayout class="list-group-item" >
        <GridLayout columns="62, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
@@ -13,7 +16,7 @@
              <Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
              <Span text=" • " ></Span>
              <Span [text]="date[0] * 1000 | date:'HH:mm'" ></Span>
-             <Span text=" - " ></Span>
+             <Span text=" - " ></Span>/
              <Span [text]="date[1]  * 1000 | date:'HH:mm'" ></Span>
            </FormattedString>
          </Label>
@@ -22,4 +25,12 @@
      </StackLayout>
    </CardView>
  </ng-template>
+  <ng-template tkTemplateKey="empty" >
+    <CardView class="card-group" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
+      <StackLayout class="card-default">
+         <Label [text]="'CASTINGS.NO_CLOSE_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
+         <Label [text]="'CASTINGS.NO_CLOSE_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
+      </StackLayout>
+    </CardView>
+  </ng-template>
 </RadListView>

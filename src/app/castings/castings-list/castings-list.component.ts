@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, EventEmitter, OnDestroy, Input, Output, OnInit } from "@angular/core";
+ import { Component, ChangeDetectionStrategy, EventEmitter, OnDestroy, Input, Output, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { TabView } from "tns-core-modules/ui/tab-view";
@@ -24,19 +24,23 @@ export class CastingsListComponent implements OnInit, OnDestroy {
   private _isLoading = true;
   private _castings: ObservableArray<Casting> = new ObservableArray<Casting>([]);
   private _dataSubscription: Subscription;
+  private _templateSelector: (item, index: number, items: any) => string;
 
   @Input() castingType: string;
-  // @Output() loading = new EventEmitter();
-  // @Output() loaded = new EventEmitter();
-  // @Output() updateList = new EventEmitter<boolean>();
 
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
     private routerExtensions: RouterExtensions,
-    private castingsService: CastingsService) {}
+    private castingsService: CastingsService) {
+  }
 
     ngOnInit(): void {
+      this._templateSelector = this.templateSelectorFunction;
+      this.load()
+    }
+
+    load(){
       if (!this._dataSubscription) {
         this._isLoading = true;
         this._dataSubscription = this.castingsService.load()
@@ -47,7 +51,8 @@ export class CastingsListComponent implements OnInit, OnDestroy {
             });
       }
     }
-    ngOnDestroy(): void {
+
+    ngOnDestroy() {
         if (this._dataSubscription) {
             this._dataSubscription.unsubscribe();
             this._dataSubscription = null;
@@ -58,14 +63,23 @@ export class CastingsListComponent implements OnInit, OnDestroy {
     return this._castings
   }
 
+  public templateSelectorFunction = (item: Casting, index: number, items: any) => {
+      if( !item.id ) return "empty";
+      return "default";
+    }
+
+    get templateSelector(): (item: any, index: number, items: any) => string {
+        return this._templateSelector;
+    }
+
+    set templateSelector(value: (item: any, index: number, items: any) => string) {
+        this._templateSelector = value;
+    }
+
   public onPullToRefreshInitiated(args: ListViewEventData) {
-    this.castingsService.load().subscribe(() => {
-        args.object.notifyPullToRefreshFinished();
-    });
-  // setTimeout(function () {
-  //   args.object.notifyPullToRefreshFinished()
-  // }, 1000);
-  }
+      this.load()
+      args.object.notifyPullToRefreshFinished()
+    }
 
   onCastingTap(args: ListViewEventData): void {
       const tappedCasting = args.view.bindingContext;
