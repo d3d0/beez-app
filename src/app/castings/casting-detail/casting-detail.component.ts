@@ -41,7 +41,7 @@ export class CastingDetailComponent implements OnInit {
 
   candidate(){
     this.castingsService.cadidate(this.user_id,this.casting_id).subscribe( (result)=>{
-      alert(localize("MESSAGE.CANDIDATE"))
+      alert(localize("MESSAGES.CANDIDATE"))
     }),
     (error)=> {
       console.log(error.status)
