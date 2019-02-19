@@ -75,7 +75,7 @@
 					</GridLayout>
 					<GridLayout columns="50, *" rows="auto" backgroundColor="">
 						<Label text="" class="list-group-item-icona-share" row="0" col="0" verticalAlignment="top"></Label>
-						<Button  [text]="'SHARE_WITH_A_FRIEND'|L" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--blu" row="0" col="1"></Button>
+						<Button  [text]="'SHARE_WITH_A_FRIEND'|L" (tap)="share()"class="text-uppercase list-group-item-pulsante list-group-item-pulsante--blu" row="0" col="1"></Button>
 					</GridLayout>
 				</StackLayout>
 

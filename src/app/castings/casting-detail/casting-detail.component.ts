@@ -54,6 +54,7 @@ export class CastingDetailComponent implements OnInit {
     this.routerExtension.back({ relativeTo: this.activeRoute });
   }
   share(){
-    SocialShare.shareText(this._casting.title);
+    let text = localize('MESSAGES.SHARE_WITH_A_FRIEND',this.casting.title)
+    SocialShare.shareText(text);
   }
 }

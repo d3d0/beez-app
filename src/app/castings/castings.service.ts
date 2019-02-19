@@ -39,6 +39,8 @@ export class CastingsService {
   }
 
   private handleErrors(error: Response): Observable<never> {
+          console.log('this.handleErrors', error)
+
     if (error.status == 407){
       BackendService.reset()
       return
@@ -66,8 +68,7 @@ export class CastingsService {
       }),
       { headers: this.getCommonHeaders() }
       ).pipe(
-      // todoododod
-      catchError(this.handleErrors)
+        catchError(this.handleErrors)
       )
     }
   }
