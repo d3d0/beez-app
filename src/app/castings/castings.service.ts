@@ -15,8 +15,7 @@ export class CastingsService {
   private _castings: Array<Casting> = [];
 
   constructor(
-    private http: HttpClient,
-    private _ngZone: NgZone
+    private http: HttpClient
     ) {}
 
   private getCommonHeaders(){
@@ -30,33 +29,14 @@ export class CastingsService {
   }
 
   load(): Observable<any> {
-    return new Observable((observer: any) => {
-      this._ngZone.run(() => {
-        let results = this.http.get(
-          BackendService.baseUrl + "beez/loool_casting", {
-            headers: this.getCommonHeaders()
-          }).pipe(
-          ()=> observer.next(results),
-          retry(3), // retry a failed request up to 3 times
-          catchError(this.handleErrors) // then handle the error
-          );
-
-        })
-    });
+    return this.http.get(
+      BackendService.baseUrl + "beez/loool_casting", {
+        headers: this.getCommonHeaders()
+      }).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleErrors) // then handle the error
+    );
   }
-
-  // load(): Observable<any> {
-  //   return new Observable((observer: any) => {
-
-  //     const onValueEvent = (snapshot: any) => {
-  //       this._ngZone.run(() => {
-  //         const results = this.handleSnapshot(snapshot.value);
-  //         observer.next(results);
-  //       });
-  //     };
-  //     firebase.addValueEventListener(onValueEvent, `/${path}`);
-  //   }).pipe(catchError(this.handleErrors));
-  // }
 
   private handleErrors(error: Response): Observable<never> {
     if (error.status == 407){
