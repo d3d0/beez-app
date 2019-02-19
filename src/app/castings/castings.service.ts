@@ -46,14 +46,15 @@ export class CastingsService {
     return throwError(error);
   }
 
-  getCastingById(id: string): Casting {
-    console.log(id)
-    if (!id) {
-      return;
-    }
-    return this._castings.filter((casting) => {
-      return casting.id === id;
-    })[0];
+  getCastingById(id: string): Observable<any> {
+    return this.http.get(
+
+      BackendService.baseUrl + "beez/loool_casting/"+id, {
+        headers: this.getCommonHeaders()
+      }).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleErrors) // then handle the error
+    );
   }
 
   cadidate(user_id, casting_id){

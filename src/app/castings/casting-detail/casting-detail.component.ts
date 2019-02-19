@@ -17,7 +17,7 @@ import { alert } from "../../shared";
 })
 
 export class CastingDetailComponent implements OnInit {
-  private _casting:Casting;
+  private _casting;
   private casting_id;
   private user_id;
 
@@ -35,7 +35,7 @@ export class CastingDetailComponent implements OnInit {
     ngOnInit(): void {
       this.activeRoute.params.subscribe((params) => {
         this.casting_id = params.id
-        this._casting = <Casting>this.castingsService.getCastingById(this.casting_id)
+        this._casting = this.castingsService.getCastingById(this.casting_id).subscribe((casting) => this._casting=casting)
       });
     }
 
