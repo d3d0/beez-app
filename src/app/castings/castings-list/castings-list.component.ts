@@ -77,9 +77,11 @@ export class CastingsListComponent implements OnInit, OnDestroy {
     }
 
   public onPullToRefreshInitiated(args: ListViewEventData) {
-      this.load()
+    this.load()
+    setTimeout(()=>{
       args.object.notifyPullToRefreshFinished()
-    }
+    },500)
+  }
 
   onCastingTap(args: ListViewEventData): void {
       const tappedCasting = args.view.bindingContext;
