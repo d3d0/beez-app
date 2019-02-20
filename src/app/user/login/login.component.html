@@ -49,7 +49,8 @@
         </CardView>
         <GridLayout class="login-footer"  columns="*,*" backgroundColor="">
           <Label class="login-footer-register" col="0" horizontalAlignment="left" verticalAlignment="top" [nsRouterLink] = "['/user/signup']"  [text]="'SIGNUP'|L"></Label>
-          <Label class="login-footer-help" col="1" horizontalAlignment="right" verticalAlignment="top" [text]="'HELP'|L"></Label>
+
+          <Label class="login-footer-help" col="1" horizontalAlignment="right" verticalAlignment="top" (tap)="openLink('https://beez.io')" [text]="'HELP'|L"></Label>
         </GridLayout>
     </StackLayout>
   </DockLayout>

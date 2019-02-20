@@ -10,6 +10,7 @@ import { registerElement } from 'nativescript-angular';
 import { LottieView } from 'nativescript-lottie';
 import { RouterExtensions } from "nativescript-angular/router";
 import { localize } from "nativescript-localize";
+import *  as utilsModule from 'tns-core-modules/utils/utils';
 
 import { alert } from "../../shared";
 import { User } from '../user.model'
@@ -99,6 +100,10 @@ export class LoginComponent implements OnInit {
 
   focusPassword() {
     this.textfieldpass.nativeElement.focus();
+  }
+
+  openLink(link){
+    utilsModule.openUrl(link)
   }
 
   toggleLabel(event, type) {
