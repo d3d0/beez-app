@@ -90,7 +90,8 @@
     "ERROR_LOGIN" : "Sfortunatamente non abbiamo trovato il tuo account, password o e-mail errati.",
     "ERROR_SERVICE" : "Il server non risponde, prova più tardi.",
     "SHARE_WITH_A_FRIEND": "Ciao! Partecipa al casting  %s! @BEEZ CASTING HUB https://beez.io",
-    "CANDIDATE": "Grazie per esserti iscritto al casting! Riceverai prossimamente una notifica di accettazione per le Audizioni."
+    "CANDIDATE": "Grazie per esserti iscritto al casting! Riceverai prossimamente una notifica di accettazione per le Audizioni.",
+    "ERROR_CASTING_CANDIDATE_ALREADY": "Sei già iscritto a questo casting, riceverai prossimamente una notifica di accettazione per le Audizioni."
 
   }
 }

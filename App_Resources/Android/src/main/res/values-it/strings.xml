@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="_MESSAGES_ERROR_CASTING_CANDIDATE_ALREADY_Z1rRJFu">"Sei già iscritto a questo casting, riceverai prossimamente una notifica di accettazione per le Audizioni."</string>
   <string name="_MESSAGES_CANDIDATE_Z1O0CXX">"Grazie per esserti iscritto al casting! Riceverai prossimamente una notifica di accettazione per le Audizioni."</string>
   <string name="_MESSAGES_SHARE_WITH_A_FRIEND_ZmGTkO">"Ciao! Partecipa al casting  %1$s! @BEEZ CASTING HUB https://beez.io"</string>
   <string name="_MESSAGES_ERROR_SERVICE_Zkeuaq">"Il server non risponde, prova più tardi."</string>

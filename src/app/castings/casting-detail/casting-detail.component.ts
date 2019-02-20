@@ -40,19 +40,20 @@ export class CastingDetailComponent implements OnInit {
     }
 
   candidate(){
-    this.castingsService.cadidate(this.user_id,this.casting_id).subscribe( (result)=>{
+    this.castingsService.cadidate(this.user_id,this.casting_id).subscribe(
+    (result)=>{
       alert(localize("MESSAGES.CANDIDATE"))
-    }),
+    },
     (error)=> {
-      console.log(error.status)
-        if (error.status === 400) alert(localize(error.error))
-        else alert(localize("ERROR_SERVICE"));
-    }
+      if (error.status === 400) alert(localize(error.error[0]))
+      else alert(localize("ERROR_SERVICE"));
+    })
   }
 
   goBack(): void{
     this.routerExtension.back({ relativeTo: this.activeRoute });
   }
+
   share(){
     let text = localize('MESSAGES.SHARE_WITH_A_FRIEND',this.casting.title)
     SocialShare.shareText(text);
