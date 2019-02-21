@@ -101,7 +101,8 @@
     "ERROR_ACCOUNT_DOUBLE" : "Sorry, The email you entered is already present in BEEZ",
     "ERROR_SERVICE" : "Unfortunately we couldn't reach the server, please try again later.",
     "SHARE_WITH_A_FRIEND": "Hi! Check this casting %s! @BEEZ CASTING HUB https://beez.io",
-    "CANDIDATE": "Grazie per esserti iscritto al casting! Riceverai prossimamente una notifica di accettazione per le Audizioni."
+    "CANDIDATE": "Thank you for signing up for the casting! You will receive an acceptance notification for the auditions.",
+    "ERROR_CASTING_CANDIDATE_ALREADY": "You are already enrolled in this Casting, you will soon receive a notification for the auditions."
 
   },
   "MODAL": {

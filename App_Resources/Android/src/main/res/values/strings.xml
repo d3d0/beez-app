@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="_MODAL_test_Z19nFfM">"test"</string>
-  <string name="_MESSAGES_CANDIDATE_Z1O0CXX">"Grazie per esserti iscritto al casting! Riceverai prossimamente una notifica di accettazione per le Audizioni."</string>
+  <string name="_MESSAGES_ERROR_CASTING_CANDIDATE_ALREADY_Z1rRJFu">"You are already enrolled in this Casting, you will soon receive a notification for the auditions."</string>
+  <string name="_MESSAGES_CANDIDATE_Z1O0CXX">"Thank you for signing up for the casting! You will receive an acceptance notification for the auditions."</string>
   <string name="_MESSAGES_SHARE_WITH_A_FRIEND_ZmGTkO">"Hi! Check this casting %1$s! @BEEZ CASTING HUB https://beez.io"</string>
   <string name="_MESSAGES_ERROR_SERVICE_Zkeuaq">"Unfortunately we couldn\'t reach the server, please try again later."</string>
   <string name="_MESSAGES_ERROR_ACCOUNT_DOUBLE_ZUB1BV">"Sorry, The email you entered is already present in BEEZ"</string>
