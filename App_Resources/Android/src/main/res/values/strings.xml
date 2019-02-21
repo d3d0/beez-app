@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="_MODAL_test_Z19nFfM">"test"</string>
+  <string name="_MESSAGES_CANDIDATE_Z1O0CXX">"Grazie per esserti iscritto al casting! Riceverai prossimamente una notifica di accettazione per le Audizioni."</string>
   <string name="_MESSAGES_SHARE_WITH_A_FRIEND_ZmGTkO">"Hi! Check this casting %1$s! @BEEZ CASTING HUB https://beez.io"</string>
   <string name="_MESSAGES_ERROR_SERVICE_Zkeuaq">"Unfortunately we couldn\'t reach the server, please try again later."</string>
   <string name="_MESSAGES_ERROR_ACCOUNT_DOUBLE_ZUB1BV">"Sorry, The email you entered is already present in BEEZ"</string>
@@ -88,6 +89,5 @@
   <string name="title_activity_kimera">"BEEZ"</string>
   <string name="_LANG_afUt">"EN"</string>
   <string name="_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF">"This will be added to InfoPlist.strings"</string>
-  <string name="_MESSAGES_CANDIDATE_Z1O0CXX">"MESSAGES.CANDIDATE"</string>
   <string name="_FEATURES_zwqMM">"FEATURES"</string>
 </resources>

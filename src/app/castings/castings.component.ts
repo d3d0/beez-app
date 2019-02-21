@@ -52,17 +52,18 @@ export class CastingsComponent implements OnInit{
     let previousTab = this.selectedIndex;
     if (index != this.selectedIndex) {
 
-      // this.tabs[index].style.color = new Color("#00D796");
-      // this.tabs[previousTab].style.color = new Color("#1E1E1E");
       this.tabs[index].className = "active";
       this.tabs[previousTab].className = "not-active";
+      // this.tabs[index].style.color = new Color("#00D796");
+      // this.tabs[previousTab].style.color = new Color("#1E1E1E");
 
       this.selectedIndex = index;
-      this.tabHighlight.nativeElement.animate({
-        translate: { x: index * screen.mainScreen.widthDIPs / 3, y: 0 },
-        curve: AnimationCurve.cubicBezier(1, .02, .45, .93),
-        duration: 300
-      })
+      // this.tabHighlight.nativeElement.animate({
+      //   translate: { x: index * screen.mainScreen.widthDIPs / 3, y: 0 },
+      //   curve: AnimationCurve.cubicBezier(1, .02, .45, .93),
+      //   duration: 300
+      // });
+      console.log(screen.mainScreen.widthDIPs);
     }
   }
 
