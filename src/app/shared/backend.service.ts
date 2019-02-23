@@ -1,16 +1,19 @@
 import { Injectable } from "@angular/core";
 import { getString, setString } from "application-settings";
+import { HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class BackendService {
   static baseUrl = "https://dev.beez.io/services/";
+  static term_ita = "beez/elenco-terms-it";
+  static term_eng = "beez/elenco-terms-en";
   
   static isLoggedIn(): boolean {
     return !!getString('sessid');
   }
 
- static get XCSFRtoken() {
-   console.log('GETTING XCSFRtoken: ' + getString('XCSFRtoken'))
+  static get XCSFRtoken() {
+    console.log('GETTING XCSFRtoken: ' + getString('XCSFRtoken'))
     return getString('XCSFRtoken');
   }
 
@@ -20,7 +23,7 @@ export class BackendService {
   }
 
   static get sessid() {
-   console.log('GETTING sessid: ' + getString('sessid'))
+    console.log('GETTING sessid: ' + getString('sessid'))
     return getString('sessid');
   }
 
@@ -30,17 +33,17 @@ export class BackendService {
   }
 
   static get session_name() {
-   console.log('GETTING session_name: ' + getString('session_name'))
+    console.log('GETTING session_name: ' + getString('session_name'))
     return getString('session_name');
   }
 
   static set session_name(newToken) {
     setString('session_name', newToken);
-   console.log('SET session_name TO: ' + newToken)
+    console.log('SET session_name TO: ' + newToken)
   }
 
   static get UID() {
-   console.log('GETTING UID: ' + getString('UID'))
+    console.log('GETTING UID: ' + getString('UID'))
     return getString('UID');
   }
 
@@ -53,8 +56,8 @@ export class BackendService {
       if (response.statusCode >= 200 && response.statusCode < 300) {
         resolve(response)
       }
-     console.log('Response with code: ' + response.statusCode + '\nContent: ' + response.content.toString())
-     reject('Response with code: ' + response.statusCode + '\nContent: ' + response.content.toString())
+      console.log('Response with code: ' + response.statusCode + '\nContent: ' + response.content.toString())
+      reject('Response with code: ' + response.statusCode + '\nContent: ' + response.content.toString())
     })
   }
 
@@ -65,20 +68,31 @@ export class BackendService {
   }
 
   static printAll(){
-   console.log(
-     'BackendService.UID',BackendService.UID,
-     'BackendService.session_name: ',BackendService.session_name,
-     'BackendService.sessid: ', BackendService.sessid,
-     'BackendService.XCSFRtoken: ', BackendService.XCSFRtoken)
+    console.log(
+      'BackendService.UID',BackendService.UID,
+      'BackendService.session_name: ',BackendService.session_name,
+      'BackendService.sessid: ', BackendService.sessid,
+      'BackendService.XCSFRtoken: ', BackendService.XCSFRtoken)
+  }
+
+
+  static getCommonHeaders(){
+    return  new HttpHeaders({
+      'Content-Type': "application/json",
+      'Accept': 'application/json',
+      'Cache-Control': 'no-cache',
+      'x-csrf-token': BackendService.XCSFRtoken,
+      'Cookie': BackendService.session_name + "=" + BackendService.sessid
+    })
   }
 
   getJson(response) {
     return new Promise((resolve, reject) => {
       resolve(response.content.toJSON())
     })
-      .catch(e => {
-        console.error('Error parsing JSON response: ' + e)
-        throw 'Error parsing JSON response: ' + e
-      })
+    .catch(e => {
+      console.error('Error parsing JSON response: ' + e)
+      throw 'Error parsing JSON response: ' + e
+    })
   }
 }

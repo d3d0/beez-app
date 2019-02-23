@@ -5,8 +5,8 @@
   <string name="_MESSAGES_CANDIDATE_Z1O0CXX">"Thank you for signing up for the casting! You will receive an acceptance notification for the auditions."</string>
   <string name="_MESSAGES_SHARE_WITH_A_FRIEND_ZmGTkO">"Hi! Check this casting %1$s! @BEEZ CASTING HUB https://beez.io"</string>
   <string name="_MESSAGES_ERROR_SERVICE_Zkeuaq">"Unfortunately we couldn\'t reach the server, please try again later."</string>
-  <string name="_MESSAGES_ERROR_ACCOUNT_DOUBLE_ZUB1BV">"Sorry, The email you entered is already present in BEEZ"</string>
   <string name="_MESSAGES_ERROR_LOGIN_1uPQ8G">"Unfortunately we couldn\'t find your account, incorret password or e-mail."</string>
+  <string name="_MESSAGES_ERROR_ACCOUNT_DOUBLE_ZUB1BV">"Sorry, The email you entered is already present in BEEZ"</string>
   <string name="_MESSAGES_ERROR_EMAIL_1un5ey">"Please, enter a valid e-mail address."</string>
   <string name="_MESSAGES_ERROR_PASS_Z1U6uho">"Password must contain at least six characters."</string>
   <string name="_MESSAGES_ERROR_USER_Z1U5KI4">"Sorry, we couldn\'t find a user with that e-mail address."</string>
@@ -52,6 +52,12 @@
   <string name="_PROFILE_DETAILS_1o2AXX">"DETAILS"</string>
   <string name="_PROFILE_PROFILE_ZNNot5">"PROFILE"</string>
   <string name="_NOTIFICATIONS_NOTIFICATIONS_ZneLv7">"NOTIFICATIONS"</string>
+  <string name="_CASTINGS_PARTICIPATION_AGENCY_SELECT_TITLE_2sW6tY">"Selezione l\'agenzia con cui parteciperai"</string>
+  <string name="_CASTINGS_PARTICIPATION_AUDITION_TITLE_ZJ9fVo">"Confirm your partecipation"</string>
+  <string name="_CASTINGS_PARTICIPATION_NO_AGENCY_CUh8E">"Partecipate with no agency"</string>
+  <string name="_CASTINGS_PARTICIPATION_CONFIRM_ZA3Qq3">"CONFIRM"</string>
+  <string name="_CASTINGS_PARTICIPATION_WHITH_ARCHIVE_ju7qF">"CONFIRM WITH ARCHIVE"</string>
+  <string name="_CASTINGS_PARTICIPATION_DECLINE_6CTcH">"I CAN NOT PARTICIPATE"</string>
   <string name="_CASTINGS_NO_CLOSE_CASTINGS_TEXT_Z1oTCmv">"In questa sezione troverai i casting che hai superato con le informazioni sui relativi shooting confermati."</string>
   <string name="_CASTINGS_NO_CLOSE_CASTINGS_TITLE_26wiRd">"Nessun prossimo shooting"</string>
   <string name="_CASTINGS_NO_AUDITION_CASTINGS_TEXT_ZRgMB0">"In questa sezione troverai i casting ai quali sei stato selezionato e potrai partecipare. Controlla sempre i nuovi casting e trova quello giusto per te."</string>
@@ -80,6 +86,7 @@
   <string name="_SIGNUP_REGISTRATION_1GSckW">"REGISTRATION"</string>
   <string name="_PARTICIPATE_Z1CgVtR">"PARTICIPATE"</string>
   <string name="_DATE_AND_LOCATION_2ajKni">"DATE AND LOCATION"</string>
+  <string name="_FEATURES_zwqMM">"FEATURES"</string>
   <string name="_LOGOUT_Z2pC9Es">"LOGOUT"</string>
   <string name="_LOGIN_LOGIN_Z19BGda">"LOGIN"</string>
   <string name="_INFORMATION_ZcvWXk">"INFORMATION"</string>
@@ -90,5 +97,9 @@
   <string name="title_activity_kimera">"BEEZ"</string>
   <string name="_LANG_afUt">"EN"</string>
   <string name="_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF">"This will be added to InfoPlist.strings"</string>
-  <string name="_FEATURES_zwqMM">"FEATURES"</string>
+  <string name="_CASTINGS_PARTICIPATION_NO_AGENCY__ZybQQS">"CASTINGS.PARTICIPATION_NO_AGENCY "</string>
+  <string name="_CASTINGS_PARTICIPATION_CONFIRM__20OV2J">"CASTINGS.PARTICIPATION_CONFIRM "</string>
+  <string name="_CASTINGS_PARTICIPATION_WHITH_ARCHIVE__Zg5v4v">"CASTINGS.PARTICIPATION_WHITH_ARCHIVE "</string>
+  <string name="_CASTINGS_PARTICIPATION_DECLINE__Z1Hq5ly">"CASTINGS.PARTICIPATION_DECLINE "</string>
+  <string name="_CASTINGS_PARTICIPATIONE_TITLE2__Z1vkXkw">"CASTINGS.PARTICIPATIONE_TITLE2 "</string>
 </resources>

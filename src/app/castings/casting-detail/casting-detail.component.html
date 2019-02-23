@@ -1,47 +1,44 @@
 <ActionBar class="action-bar">
 	<Label class="action-bar-title" [text]="casting.title" ></Label>
-	<NavigationButton android.systemIcon="ic_menu_back" text="Back to" (tap)="goBack()"></NavigationButton>
+	<NavigationButton android.systemIcon="ic_menu_back" text="" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
 <ScrollView class="casting-detail">
 
-	<StackLayout backgroundColor="">
+	<StackLayout>
 
 		<Image [src]="casting.image" height="auto" stretch="aspectFit" horizontalAlignment="center" verticalAlignment="top"></Image>
 
 		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
+			<StackLayout class="list-group-item p-t-20">
+				<GridLayout columns="50, *" rows="auto,auto,auto,auto,auto,auto">
 
-			<StackLayout class="list-group-item p-t-20" backgroundColor="">
-
-				<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">
 					<Label text="" class="list-group-item-icona-info list-group-item-icona-info-first" row="0" col="0"></Label>
 					<Label [text]="'CASTINGS.INFORMATION'|L" class="list-group-item-heading-18 list-group-item-heading-18-first" textWrap="true" row="0" col="1" ></Label>
+
 					<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
 					<Label class="list-group-item-text" [text]="casting.info" textWrap="true" row="1" col="1"></Label>
-				</GridLayout>
 
-				<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">
-					<Label text="" class="list-group-item-icona-characteristics" row="0" col="0"></Label>
-					<Label [text]="'CASTINGS.FEATURES'|L" class="list-group-item-heading-18" textWrap="true" row="0" col="1" ></Label>
-					<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
-					<Label  class="list-group-item-text" textWrap="true" row="1" col="1">
+					<Label text="" class="list-group-item-icona-characteristics" row="2" col="0"></Label>
+					<Label [text]="'CASTINGS.FEATURES'|L" class="list-group-item-heading-18" textWrap="true" row="2" col="1" ></Label>
+
+					<Label text="" class="list-group-item-v-line" row="3" col="0"></Label>
+					<Label  class="list-group-item-text" textWrap="true" row="3" col="1">
 						<FormattedString *ngFor="let feature of casting.features" >
 							<Span text=" • " ></Span>
 							<Span [text]="feature" ></Span>
 							<Span text=";" ></Span>
 						</FormattedString>
 					</Label>
-				</GridLayout>
 
-				<GridLayout columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto" backgroundColor="">
-					<Label text="" class="list-group-item-icona-calendar" row="0" col="0"></Label>
-					<Label [text]="'CASTINGS.DATE_LOCATION'|L" class="list-group-item-heading-18" textWrap="true" row="0" col="1" colSpan="4" ></Label>
+					<Label text="" class="list-group-item-icona-calendar" row="4" col="0"></Label>
+					<Label [text]="'CASTINGS.DATE_LOCATION'|L" class="list-group-item-heading-18" textWrap="true" row="4" col="1" ></Label>
 
-					<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
-					<Label [text]="'CASTINGS.CASTING'|L" class="text-uppercase list-group-item-heading-14" textWrap="true" row="1" col="1" ></Label>
+					<Label text="" class="list-group-item-v-line" row="5" col="0"></Label>
+					<Label [text]="'CASTINGS.CASTING'|L" class="text-uppercase list-group-item-heading-14" textWrap="true" row="5" col="1" ></Label>
 
-					<Label text="" class="list-group-item-v-line" row="2" col="0"></Label>
-					<Label textWrap="true" class="text-left text-uppercase list-group-item-text" row="2" col="1" colSpan="3">
+					<Label text="" class="list-group-item-v-line" row="6" col="0"></Label>
+					<Label textWrap="true" class="text-left text-uppercase list-group-item-text" row="6" col="1" colSpan="3">
 						<FormattedString *ngFor="let date of casting.casting_date" >
 							<Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
 							<Span text=" • " ></Span>
@@ -50,6 +47,12 @@
 							<Span [text]="date[1]  * 1000 | date:'HH:mm'" ></Span>
 						</FormattedString>
 					</Label>
+
+				</GridLayout>
+
+				<GridLayout columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto">
+
+
 
 					<Label text="" class="list-group-item-v-line" row="3" col="0"></Label>
 					<Label class="list-group-item-text" [text]="casting.location" textWrap="true" row="3" col="1"></Label>
@@ -64,25 +67,61 @@
 					<Label class="list-group-item-text list-group-item-text-last" text="Orario e location saranno comunicati." textWrap="true" row="6" col="1"></Label>
 				</GridLayout>
 
-				<StackLayout class="p-t-0 p-b-20" backgroun	dColor="">
-					<GridLayout columns="50, *" rows="auto" backgroundColor="">
+				<StackLayout *ngIf="casting.status === 'New'"  class="p-t-0 p-b-20">
+					<GridLayout columns="50, *" rows="auto">
 						<Label text="" class="list-group-item-icona-partecipate" row="0" col="0" verticalAlignment="top"></Label>
 						<Button [text]="'PARTICIPATE'|L" (tap)="candidate()" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
 					</GridLayout>
-					<GridLayout columns="50, *" rows="auto" backgroundColor="">
+					<GridLayout columns="50, *" rows="auto">
 						<Label text="" class="list-group-item-v-line" row="0" col="0" height="20"></Label>
 						<Label text="" row="0" col="1"></Label>
 					</GridLayout>
-					<GridLayout columns="50, *" rows="auto" backgroundColor="">
+					<GridLayout columns="50, *" rows="auto">
 						<Label text="" class="list-group-item-icona-share" row="0" col="0" verticalAlignment="top"></Label>
 						<Button  [text]="'SHARE_WITH_A_FRIEND'|L" (tap)="share()"class="text-uppercase list-group-item-pulsante list-group-item-pulsante--blu" row="0" col="1"></Button>
 					</GridLayout>
 				</StackLayout>
 
+				<StackLayout *ngIf="casting.status === 'Audition'"  class="p-t-0 p-b-20">
+
+					<GridLayout columns="50, *" rows="auto">
+					<Label col='1' [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE'|L" class="text-uppercase list-group-item-heading-14" textWrap="true"></Label>
+					</GridLayout>
+					
+					<GridLayout columns="50, *" rows="auto">
+						<Label text="" class="list-group-item-icona-partecipate" row="0" col="0" verticalAlignment="top"></Label>
+						<Button [text]="'PARTICIPATE'|L" (tap)="candidate()" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
+					</GridLayout>
+					<GridLayout columns="50, *" rows="auto">
+						<Label text="" class="list-group-item-v-line" row="0" col="0" height="20"></Label>
+						<Label text="" row="0" col="1"></Label>
+					</GridLayout>
+					<GridLayout columns="50, *" rows="auto">
+						<Label text="" class="list-group-item-icona-share" row="0" col="0" verticalAlignment="top"></Label>
+						<Button  [text]="'SHARE_WITH_A_FRIEND'|L" (tap)="share()"class="text-uppercase list-group-item-pulsante list-group-item-pulsante--blu" row="0" col="1"></Button>
+					</GridLayout>
+
+
+
+					<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="text-uppercase list-group-item-heading-14" textWrap="true"></Label>
+
+					<TextField class="card-group-item-email"
+					[editable]="false"
+					[text]="selectedAgency.name"
+					[hint]="'USER.AGENCY'|L|titlecase"
+					(tap)="selectAgency()"></TextField>
+
+				<StackLayout orientation="horizontal" (tap)="toggleCheck()">
+					<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="text-uppercase list-group-item-heading-14" textWrap="true"></Label>
+				    <CheckBox #CBAgency checked="false" (checkedChange)="changeAgency()"></CheckBox>
+				</StackLayout>
+
+					<Button [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" (tap)="partecipate('Confirmed')"class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde"></Button>
+					<Button [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" (tap)="partecipate('Confirmed by archive')"class="text-uppercase list-group-item-pulsante list-group-item-pulsante--blu"></Button>
+					<Button [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" (tap)="partecipate('Declined')"class="text-uppercase list-group-item-pulsante list-group-item-pulsante--blu"></Button>
+
+				</StackLayout>
 			</StackLayout>
-
 		</CardView>
-
 	</StackLayout>
-
 </ScrollView>
