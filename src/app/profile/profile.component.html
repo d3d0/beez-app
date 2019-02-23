@@ -3,7 +3,7 @@
   <!-- TITOLO > ANDROID -->
   <StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="left">
     <Image src="res://mark" class="action-image text-left pull-left m-r-10"></Image>
-    <Label [text]="'PROFILE.PROFILE'|L"  class="action-label text-left pull-left"></Label>
+    <Label [text]="'PROFILE.PROFILE'|L|titlecase"  class="action-label text-left pull-left"></Label>
   </StackLayout>
   <!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
   <ActionItem android:visibility="collapsed" ios.position="left" android.position="left">
@@ -11,9 +11,8 @@
       <Image src="res://mark" stretch="none"></Image>
     </StackLayout>
   </ActionItem>
-
   <ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left">
-    <Label class="action-bar-title text-left pull-left" [text]="'CASTINGS.CASTINGS'|L"></Label>
+    <Label class="action-bar-title text-left pull-left" [text]="'PROFILE.PROFILE'|L|titlecase"></Label>
   </ActionItem>
 
   <ActionItem class="" ios.position="right" android.position="right">

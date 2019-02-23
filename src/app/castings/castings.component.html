@@ -18,18 +18,42 @@
 
 <StackLayout (swipe)="onSwipe($event)">
 
-  <GridLayout columns="*,*,*" rows="auto" class="tab-buttons">
-    <GridLayout #tabHighlight col="0" class="tabActiveIndex"></GridLayout>
-    <GridLayout col="0" (tap)="onSelectedIndexChange(0)">
-      <Label #tab1 [text]="'CASTINGS.ONGOING'|L|uppercase"></Label>
+  <Label class="tab-h-line-d3d0" text=""></Label>
+
+  <AbsoluteLayout>
+    <!-- BORDO -->
+    <GridLayout left="0" top="0" width="100%" columns="auto" rows="auto" class="tab-border-d3d0" backgroundColor="transparent">
+      <Label text=""></Label>
     </GridLayout>
-    <GridLayout col="1" (tap)="onSelectedIndexChange(1)">
-      <Label  #tab2 [text]="'CASTINGS.ATTEND'|L|uppercase" ></Label>
+    <!-- d3d0 TABS -->
+    <GridLayout left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto" class="tab-buttons-d3d0" backgroundColor="transparent">
+      <GridLayout class="tab-container" col="0" (tap)="onSelectedIndexChange(0)" >
+          <Label #tab1 [text]="'CASTINGS.ONGOING'|L|uppercase" textWrap="false" backgroundColor=""></Label>
+      </GridLayout>
+      <GridLayout class="tab-container" col="1" (tap)="onSelectedIndexChange(1)">
+          <Label #tab2 [text]="'CASTINGS.ATTEND'|L|uppercase" textWrap="false" backgroundColor=""></Label>
+      </GridLayout>
+      <GridLayout class="tab-container" col="2" (tap)="onSelectedIndexChange(2)">
+          <Label #tab3 [text]="'CASTINGS.CONCLUDED'|L|uppercase" textWrap="false" backgroundColor=""></Label>
+      </GridLayout>
     </GridLayout>
-    <GridLayout col="2" (tap)="onSelectedIndexChange(2)">
-      <Label  #tab3 [text]="'CASTINGS.CONCLUDED'|L|uppercase" ></Label>
+    <!-- MIRKO TABS -->
+    <!--
+    <GridLayout left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto" class="tab-buttons" backgroundColor="transparent">
+      <GridLayout #tabHighlight col="0" class="tabActiveIndex" ></GridLayout>
+      <GridLayout class="tabContainer" col="0" (tap)="onSelectedIndexChange(0)" >
+          <Label #tab1 [text]="'CASTINGS.ONGOING'|L|uppercase" textWrap="false" backgroundColor=""></Label>
+      </GridLayout>
+      <GridLayout class="tabContainer" col="1" (tap)="onSelectedIndexChange(1)">
+          <Label #tab2 [text]="'CASTINGS.ATTEND'|L|uppercase" textWrap="false" backgroundColor=""></Label>
+      </GridLayout>
+      <GridLayout class="tabContainer" col="2" (tap)="onSelectedIndexChange(2)">
+          <Label #tab3 [text]="'CASTINGS.CONCLUDED'|L|uppercase" textWrap="false" backgroundColor=""></Label>
+      </GridLayout>
     </GridLayout>
-  </GridLayout>
+    -->
+  </AbsoluteLayout>
+
 
   <StackLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
     <ns-castings-list  [castingType]="'New'" ></ns-castings-list>

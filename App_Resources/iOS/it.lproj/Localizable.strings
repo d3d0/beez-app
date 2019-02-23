@@ -1,3 +1,6 @@
+"_MESSAGES_ERROR_CASTING_CANDIDATE_ALREADY_Z1rRJFu" = "Sei già iscritto a questo casting, riceverai prossimamente una notifica di accettazione per le Audizioni.";
+"_MESSAGES_CANDIDATE_Z1O0CXX" = "Grazie per esserti iscritto al casting! Riceverai prossimamente una notifica di accettazione per le Audizioni.";
+"_MESSAGES_SHARE_WITH_A_FRIEND_ZmGTkO" = "Ciao! Partecipa al casting  %1$@! @BEEZ CASTING HUB https://beez.io";
 "_MESSAGES_ERROR_SERVICE_Zkeuaq" = "Il server non risponde, prova più tardi.";
 "_MESSAGES_ERROR_LOGIN_1uPQ8G" = "Sfortunatamente non abbiamo trovato il tuo account, password o e-mail errati.";
 "_MESSAGES_ERROR_ACCOUNT_DOUBLE_ZUB1BV" = "La mail che hai inserito è già presente BEEZ";
@@ -47,7 +50,7 @@
 "_NOTIFICATIONS_NOTIFICATIONS_ZneLv7" = "NOTIFICHE";
 "_CASTINGS_ATTEND_1R59MI" = "AUDIZIONI";
 "_CASTINGS_CONCLUDED_1RBVcj" = "SHOOTING";
-"_CASTINGS_ONGOING_1gX41U" = "NUOVO";
+"_CASTINGS_ONGOING_1gX41U" = "NUOVI";
 "_CASTINGS_CASTINGS_1BoPqT" = "CASTING";
 "_SHARE_WITH_A_FRIEND_iPADl" = "Condividi con un amico!";
 "_HELP_9JU7" = "Hai bisogno di aiuto?";
@@ -72,7 +75,6 @@
 "_LANG_afUt" = "IT";
 "_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF" = "This will be added to InfoPlist.strings";
 "_MODAL_test_Z19nFfM" = "test";
-"_MESSAGES_SHARE_WITH_A_FRIEND_ZmGTkO" = "Hi! Check this casting %1$@! @BEEZ CASTING HUB";
 "_MESSAGES_ERROR_TOKEN_1vnpFb" = "Sorry, password reset token invalid.";
 "_CASTINGS_NO_CLOSE_CASTINGS_TEXT_Z1oTCmv" = "In questa sezione troverai i casting che hai superato con le informazioni sui relativi shooting confermati.";
 "_CASTINGS_NO_CLOSE_CASTINGS_TITLE_26wiRd" = "Nessun prossimo shooting";

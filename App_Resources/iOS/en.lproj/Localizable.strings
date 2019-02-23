@@ -1,5 +1,7 @@
 "_MODAL_test_Z19nFfM" = "test";
-"_MESSAGES_SHARE_WITH_A_FRIEND_ZmGTkO" = "Hi! Check this casting %1$@! @BEEZ CASTING HUB";
+"_MESSAGES_ERROR_CASTING_CANDIDATE_ALREADY_Z1rRJFu" = "You are already enrolled in this Casting, you will soon receive a notification for the auditions.";
+"_MESSAGES_CANDIDATE_Z1O0CXX" = "Thank you for signing up for the casting! You will receive an acceptance notification for the auditions.";
+"_MESSAGES_SHARE_WITH_A_FRIEND_ZmGTkO" = "Hi! Check this casting %1$@! @BEEZ CASTING HUB https://beez.io";
 "_MESSAGES_ERROR_SERVICE_Zkeuaq" = "Unfortunately we couldn't reach the server, please try again later.";
 "_MESSAGES_ERROR_ACCOUNT_DOUBLE_ZUB1BV" = "Sorry, The email you entered is already present in BEEZ";
 "_MESSAGES_ERROR_LOGIN_1uPQ8G" = "Unfortunately we couldn't find your account, incorret password or e-mail.";

@@ -3,7 +3,7 @@
   <!-- TITOLO > ANDROID -->
   <StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="left">
     <Image src="res://mark" class="action-image text-left pull-left m-r-10"></Image>
-    <Label [text]="'NOTIFICATIONS.NOTIFICATIONS'|L"  class="action-label text-left pull-left"></Label>
+    <Label [text]="'NOTIFICATIONS.NOTIFICATIONS'|L|titlecase"  class="action-label text-left pull-left"></Label>
   </StackLayout>
   <!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
   <ActionItem android:visibility="collapsed" ios.position="left" android.position="left">
@@ -12,7 +12,7 @@
       </StackLayout>
   </ActionItem>
   <ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left">
-    <Label class="action-bar-title text-left pull-left" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L"></Label>
+    <Label class="action-bar-title text-left pull-left" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L|titlecase"></Label>
   </ActionItem>
 
   <!-- ICONE -->
@@ -27,10 +27,10 @@
 </ActionBar>
 
 <!-- https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
-<!-- <RadListView class="notification" [items]="notifications"  pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)"`>
+<RadListView class="notification" [items]="notifications"  pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)"`>
   <ng-template let-item="item" let-index="index">
      <CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15" [class.list-group-first]="index===0">
-        <StackLayout class="list-group-item">
+        <!-- <StackLayout class="list-group-item">
           <GridLayout columns="46, auto, *, 20, 50" rows="auto, auto, auto, auto, auto" >
             <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
             <Label [text]="item.title" class="list-group-item-heading-18" textWrap="true" row="1" colSpan="5"></Label>
@@ -40,9 +40,27 @@
             <Label text="" class="list-group-item-icona-photo" row="4" col="0"></Label>
             <Label text="informazioni sul casting" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3"></Label>
             <Label text="" class="list-group-item-icona-freccia" row="4" col="4"></Label>
+          </GridLayout>
+        </StackLayout> -->
 
+        <StackLayout class="list-group-item">
+          <GridLayout columns="80, *" rows="80, auto" >
+            <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
+            <GridLayout row="0" col="1" columns="*" rows="44, 35, 1" backgroundColor="">
+              <Label [text]="item.title" class="list-group-item-heading-10 text-uppercase" textWrap="true" row="0" col="0"></Label>
+              <Label [text]="item.subtitle" class="list-group-item-heading-14" textWrap="true" row="1" col="0"></Label>
+              <Label text="" class="list-group-item-h-line" row="2" col="0"></Label>
+            </GridLayout>
+            <Label text="informazioni sul casting" class="list-group-item-text text-left text-uppercase" row="1" col="0" colSpan="2" ></Label>
+            <!-- <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" col="0" colSpan="3"></Label>
+            <Label [text]="item.date" class="text-right list-group-item-date" textWrap="true" row="2" col="3" colSpan="2"></Label>
+            <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
+            <Label text="" class="list-group-item-icona-photo" row="4" col="0"></Label>
+            <Label text="informazioni sul casting" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3"></Label>
+            <Label text="" class="list-group-item-icona-freccia" row="4" col="4"></Label> -->
           </GridLayout>
         </StackLayout>
+
     </CardView>
   </ng-template>
-</RadListView> -->
+</RadListView>
