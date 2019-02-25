@@ -33,6 +33,7 @@ export class CastingDetailComponent implements OnInit {
   private casting_id;
   private user_id;
   public agencies: Agency[]
+  public editToogle: boolean = false;
   public selectedAgency= new Agency();
   constructor(
     private activeRoute: ActivatedRoute,
@@ -53,7 +54,23 @@ export class CastingDetailComponent implements OnInit {
       this.agencies = this.taxonomyService.getVocabolary('AGENCY')
       )
   }
-
+  
+  private labelBannerCard(casting){
+    switch (casting) {
+      case "action-confirmed":
+       return 'CASTINGS.PARTICIPATION_CONFIRMED'
+        break;
+         case "action-confirmed-archive":
+       return 'CASTINGS.PARTICIPATION_CONFIRMED_WHITH_ARCHIVE'
+        break;
+      case "action-declined":
+       return 'CASTINGS.PARTICIPATION_DECLINED'
+        break;   
+      default:
+        return ''
+        break;
+    }
+  }
   private toggleCheck() {
     this.FirstCheckBox.nativeElement.toggle();
   }

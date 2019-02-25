@@ -96,10 +96,16 @@
   <string name="_LANG_afUt">"IT"</string>
   <string name="_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF">"This will be added to InfoPlist.strings"</string>
   <string name="_MODAL_test_Z19nFfM">"test"</string>
+  <string name="_CASTINGS_PARTICIPATION_AGENCY_SELECT_EDIT_TEXT_19oYxC">"Sei ancora in tempo per modificare la tua partecipazione o meno al casting."</string>
+  <string name="_CASTINGS_PARTICIPATION_AGENCY_SELECT_EDIT_TITLE_bjgik">"Hai cambiato idea?"</string>
   <string name="_CASTINGS_PARTICIPATION_AGENCY_SELECT_TITLE_2sW6tY">"Selezione l\'agenzia con cui parteciperai"</string>
+  <string name="_CASTINGS_PARTICIPATION_AUDITION_EDIT_2gADpe">"Modifica la tua partecipazione"</string>
   <string name="_CASTINGS_PARTICIPATION_AUDITION_TITLE_ZJ9fVo">"Confirm your partecipation"</string>
   <string name="_CASTINGS_PARTICIPATION_NO_AGENCY_CUh8E">"Partecipate with no agency"</string>
+  <string name="_CASTINGS_PARTICIPATION_CONFIRMED_1oufSz">"CONFIRMED"</string>
   <string name="_CASTINGS_PARTICIPATION_CONFIRM_ZA3Qq3">"CONFIRM"</string>
+  <string name="_CASTINGS_PARTICIPATION_CONFIRMED_WHITH_ARCHIVE_yPUB9">"CONFIRMED WITH ARCHIVE"</string>
   <string name="_CASTINGS_PARTICIPATION_WHITH_ARCHIVE_ju7qF">"CONFIRM WITH ARCHIVE"</string>
+  <string name="_CASTINGS_PARTICIPATION_DECLINED_Z1Hq5kX">"DECLINED"</string>
   <string name="_CASTINGS_PARTICIPATION_DECLINE_6CTcH">"I CAN NOT PARTICIPATE"</string>
 </resources>

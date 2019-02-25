@@ -17,19 +17,19 @@
 // COMMON PAGE
 // ------------------------------------------------------------------
 .page-content {
-    .page-placeholder {
-        color: $page-icon-color;
-        font-size: $page-content-placeholder-font-size;
-        vertical-align: center;
-        horizontal-align: center;
-    }
-    .page-icon {
-        font-size: 72;
-        vertical-align: top;
-        horizontal-align: center;
-        color: $page-icon-color;
-        margin-top: 20%;
-    }
+  .page-placeholder {
+    color: $page-icon-color;
+    font-size: $page-content-placeholder-font-size;
+    vertical-align: center;
+    horizontal-align: center;
+  }
+  .page-icon {
+    font-size: 72;
+    vertical-align: top;
+    horizontal-align: center;
+    color: $page-icon-color;
+    margin-top: 20%;
+  }
 }
 .tab-content {
   background-color: white;
@@ -161,9 +161,9 @@ ActionBar, .action-bar {
   color: $nero;
   background-color: $bianco;
   .action-bar-title {
-      horizontal-align: left;
-      font-size: 24;
-      color: $nero;
+    horizontal-align: left;
+    font-size: 24;
+    color: $nero;
   }
 }
 .action-bar {
@@ -200,6 +200,7 @@ ScrollView, ListView {
 CardView {
   margin: 0 20 20 20;
 }
+
 .list-group-first {
   margin-top: 20;
 }
@@ -498,6 +499,14 @@ WrapLayout {
           margin: 0 15 10 15;
         }
       }
+      &-icona{
+        &-info {
+          margin: 5 0 5 0;
+          width:16;
+          height: 16;
+          background-image: url("res://info");
+        }
+      }
     }
   }
 }
@@ -505,12 +514,29 @@ WrapLayout {
 // casting-detail > list-group-item
 // ---------------------------------
 .casting-detail{
-
   .card-group {
     margin: 20; // IMPORTANTE
-
+    .banner-top-card{
+      height: 100%;
+      width: 100%;
+      >*{
+        color:white;
+        font-size: 18;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 8 0;
+      }
+    }
+      .action-confirmed {
+        background-color:$verde;
+      }
+      .action-confirmed-archive {
+        background-color:red;
+      }
+      .action-declined {
+        background-color:red;
+      }
     .list-group-item {
-
       &-heading { // item > titoli
         &-18 {
           margin: 5 20 5 0;
