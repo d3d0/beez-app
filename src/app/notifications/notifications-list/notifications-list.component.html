@@ -45,19 +45,26 @@
 
         <StackLayout class="list-group-item">
           <GridLayout columns="80, *" rows="80, auto" >
+
             <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
-            <GridLayout row="0" col="1" columns="*" rows="44, 35, 1" backgroundColor="">
-              <Label [text]="item.title" class="list-group-item-heading-10 text-uppercase" textWrap="true" row="0" col="0"></Label>
-              <Label [text]="item.subtitle" class="list-group-item-heading-14" textWrap="true" row="1" col="0"></Label>
-              <Label text="" class="list-group-item-h-line" row="2" col="0"></Label>
+            <AbsoluteLayout row="0" col="1">
+              <GridLayout left="0" top="0" width="100%" columns="46, *, 65" rows="44, 35, 1" backgroundColor=""  >
+                <Label text="" class="list-group-item-icona-luchetto" row="0" col="0" backgroundColor=""></Label>
+                <Label [text]="item.title" class="list-group-item-heading-10 text-uppercase" textWrap="true" row="0" col="1" colSpan="2" backgroundColor=""></Label>
+                <Label [text]="item.subtitle" class="list-group-item-heading-14" textWrap="true" row="1" col="0" colSpan="2" backgroundColor=""></Label>
+                <Label [text]="item.date" class="text-right list-group-item-date" textWrap="true" row="1" col="2" backgroundColor=""></Label>
+                <Label text="" class="list-group-item-h-line" row="2" col="0" colSpan="3"></Label>
+              </GridLayout>
+              <StackLayout left="0" top="0" width="100%" height="32" >
+                  <Label class="list-group-item-icona-partecipo" horizontalAlignment="right"></Label>
+              </StackLayout>
+            </AbsoluteLayout>
+            <GridLayout row="1" col="0" colSpan="2" columns="46, *, 50" rows="auto" backgroundColor="">
+              <Label text="" class="list-group-item-icona-photo" row="0" col="0"></Label>
+              <Label text="informazioni sul casting" class="list-group-item-text text-left text-uppercase" row="0" col="1"></Label>
+              <Label text="" class="list-group-item-icona-freccia" row="0" col="2"></Label>
             </GridLayout>
-            <Label text="informazioni sul casting" class="list-group-item-text text-left text-uppercase" row="1" col="0" colSpan="2" ></Label>
-            <!-- <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" col="0" colSpan="3"></Label>
-            <Label [text]="item.date" class="text-right list-group-item-date" textWrap="true" row="2" col="3" colSpan="2"></Label>
-            <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
-            <Label text="" class="list-group-item-icona-photo" row="4" col="0"></Label>
-            <Label text="informazioni sul casting" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3"></Label>
-            <Label text="" class="list-group-item-icona-freccia" row="4" col="4"></Label> -->
+
           </GridLayout>
         </StackLayout>
 

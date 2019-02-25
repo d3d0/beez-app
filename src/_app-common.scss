@@ -214,7 +214,7 @@ WrapLayout {
 }
 
 // ------------------------------------------------------------------
-// LIST GROUP ITEM
+// generico > list-group-item!
 // ------------------------------------------------------------------
 .list-group-item {
   background: white; // IMPORTANTE > definisce lo sfondo delle CardView in IOS
@@ -347,14 +347,12 @@ WrapLayout {
           margin: 0 20 5 0;
         }
       }
-
       &-v-line {
         width: 1;
         background-color: #DDD;
         margin: 0 0 0 0;
         padding: 0 0 0 0;
       }
-
       &-box { // item > contenitori photo e video
         margin: 0 20 20 0;
         padding: 0 0 0 0;
@@ -366,11 +364,9 @@ WrapLayout {
           z-index:1;
         }
       }
-
       &-pulsante {
         margin:0 20 0 0;
       }
-
       &-icona{
         &-photo {
           margin: 5 0 5 0;
@@ -444,7 +440,7 @@ WrapLayout {
   }
 }
 // ---------------------------------
-// notification > list-group-item
+// notification > list-group-item!
 // ---------------------------------
 .notification {
   .card-group {
@@ -456,33 +452,77 @@ WrapLayout {
       }
       &-heading { // item > titoli
         &-10 {
-          font-size: 10;
+          font-size: 10; // ios +1
           font-weight: bold;
-          letter-spacing:0.028;
-          margin: 20 15 9 15;
+          letter-spacing:0.15;
+          margin: 20 15 9 0;
           padding: 0;
           color: $nero;
         }
         &-14 {
-          font-size: 14;
+          font-size: 14; // ios +1
           font-weight: normal;
-          letter-spacing:0.028;
-          margin: 1 15 15 15;
+          letter-spacing:0;
+          margin: 1 0 15 15;
           padding: 0;
           color: $grigioscuro;
         }
       }
-      &-text { // item > testi
+      &-date { // item > date
         font-size: 10;
-        letter-spacing:0.028;
-        margin: 15 15 15 15;
+        margin: 1 15 15 15;
+        text-align: right;
+        color: $grigioscuro;
+      }
+      &-text {
+        font-size: 10; // ios +1
+        font-weight: bold;
+        letter-spacing:0.15;
+        margin: 15 15 15 0;
         padding: 0;
         color: $nero;
       }
       &-h-line {
         height: 1;
-        background-color: #DDD;
         margin: 0 15 0 15;
+        background-color: $grigiochiaro;
+      }
+      &-icona { // item > icone generiche
+        &-photo {
+          margin: 15;
+          width:16;
+          height: 16;
+          background-image: url("res://photo");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+        &-freccia {
+          margin: 15;
+          width:20;
+          height: 10;
+          background-image: url("res://arrow_right");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+        &-luchetto {
+          margin: 20 15 9 15;
+          width:16;
+          height: 16;
+          background-image: url("res://lock");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+        &-partecipo {
+          margin: 0;
+          width: 32;
+          height: 32;
+          background-image: url("res://partecipo") no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
       }
     }
   }
