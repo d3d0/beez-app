@@ -1,0 +1,6 @@
+<GridLayout rows="*,auto" >
+<StackLayout row="1">
+	<ListPicker [items]="list" [selectedIndex]="vid" textField="name" (selectedIndexChange)="selectedIndexChanged($event)" class="p-15"></ListPicker>
+    <Button text="OK" (tap)="onClose()"></Button>
+</StackLayout>
+</GridLayout>
