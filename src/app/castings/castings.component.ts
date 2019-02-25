@@ -63,7 +63,7 @@ export class CastingsComponent implements OnInit{
       //   curve: AnimationCurve.cubicBezier(1, .02, .45, .93),
       //   duration: 300
       // });
-      console.log(screen.mainScreen.widthDIPs);
+      // console.log(screen.mainScreen.widthDIPs);
     }
   }
 
