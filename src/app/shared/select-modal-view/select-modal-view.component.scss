@@ -1,0 +1,19 @@
+@import '../../../app-variables';
+
+.list-group-item-pulsante{
+	margin-bottom: 0;
+}
+.title{
+	padding:0;
+	padding-top: 16;
+	padding-bottom: 16;
+	margin:0;
+	font-weight: bold;
+	border-bottom-color: $grigiochiaro;
+	border-bottom-width:1;
+}
+ListPicker{
+	margin-bottom:22;
+	border-bottom-color: $grigiochiaro;
+	border-bottom-width:1;	
+}

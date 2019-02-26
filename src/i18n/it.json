@@ -30,10 +30,26 @@
     "MINOR_REGISTRATION_SUBMIT" : "REGISTRA UN MINORE"
   },
   "CASTINGS": {
-    "CASTINGS": "CASTING",
+    "CASTINGS": "CASTINGS",
+    "CASTING": "CASTING",
     "ONGOING": "NUOVI",
     "CONCLUDED": "SHOOTING",
-    "ATTEND": "AUDIZIONI"
+    "ATTEND": "AUDIZIONI",
+    "INFORMATION": "informazioni",
+    "DATE_LOCATION": "Data e Luogo",
+    "FEATURES": "Caratteristiche",
+    "SHOOTING": "Shooting",
+    "NO_NEW_CASTINGS_TITLE": "Nessun nuovo casting",
+    "NO_NEW_CASTINGS_TEXT": "Siamo spiacenti, al momento non ci sono nuovi castings a cui candidarsi.",
+    "NO_AUDITION_CASTINGS_TITLE": "Nessun casting a cui parteciperai",
+    "NO_AUDITION_CASTINGS_TEXT": "In questa sezione troverai i casting ai quali sei stato selezionato e potrai partecipare. Controlla sempre i nuovi casting e trova quello giusto per te.",
+    "NO_CLOSE_CASTINGS_TITLE": "Nessun prossimo shooting",
+    "NO_CLOSE_CASTINGS_TEXT": "In questa sezione troverai i casting che hai superato con le informazioni sui relativi shooting confermati.",
+    "PARTICIPATIONE_TITLE2 ":"NON POSSO PARTECIPARE",
+    "PARTICIPATION_DECLINE ":"NON POSSO PARTECIPARE",
+    "PARTICIPATION_WHITH_ARCHIVE ":"PARTECIPO CON MATERIALE DI ARCHIVIO",
+    "PARTICIPATION_CONFIRM ":"CONFERMO LA PARTECIPAZIONE",
+    "PARTICIPATION_NO_AGENCY ":"Parteciperò senza agenzia"
   },
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "NOTIFICHE"
@@ -80,10 +96,11 @@
   },
   "MESSAGES": {
     "NO_CONNECTION" : "Sembra che tu non sia connesso a internet.",
+    "CONFIRM_EMAIL" : "Riceverai via e-mail un link per attivare il tuo account, clicca sul link per completare la procedura.",
     "RESET_PASS" : "La tua password è stata resettata!",
     "RESET_MAIL_SENT" : "Riceverai alla tua e-mail il link per resettare la password.",
+    "ERROR_TOKEN" : "Ci dispiace ma il token di reset password non è valido.",
     "ERROR_USER" : "Ci dispiace ma non esiste un account con questo indirizzo e-mail.",
-    "CONFIRM_EMAIL" : "Riceverai via e-mail un link per attivare il tuo account, clicca sul link per completare la procedura.",
     "ERROR_PASS" : "La password deve contenere almeno sei caratteri.",
     "ERROR_EMAIL" : "Inserisci un indirizzo e-mail valido.",
     "ERROR_ACCOUNT_DOUBLE" : "La mail che hai inserito è già presente BEEZ",
@@ -92,6 +109,5 @@
     "SHARE_WITH_A_FRIEND": "Ciao! Partecipa al casting  %s! @BEEZ CASTING HUB https://beez.io",
     "CANDIDATE": "Grazie per esserti iscritto al casting! Riceverai prossimamente una notifica di accettazione per le Audizioni.",
     "ERROR_CASTING_CANDIDATE_ALREADY": "Sei già iscritto a questo casting, riceverai prossimamente una notifica di accettazione per le Audizioni."
-
   }
 }

@@ -9,11 +9,13 @@
   "INFORMATION": "INFORMATION",
   "LOGIN": "LOGIN",
   "LOGOUT": "LOGOUT",
+  "FEATURES": "FEATURES",
   "DATE_AND_LOCATION": "DATE AND LOCATION",
   "PARTICIPATE": "PARTICIPATE",
   "SIGNUP": "Sign Up",
   "HELP": "Need Help?",
   "SHARE_WITH_A_FRIEND": "SHARE WITH A FRIEND",
+  "CONFIRM":"CONFIRM",
   "LOGIN":{
     "LOGIN" : "LOGIN"
   },
@@ -43,7 +45,19 @@
     "NO_AUDITION_CASTINGS_TITLE": "Nessun casting a cui parteciperai",
     "NO_AUDITION_CASTINGS_TEXT": "In questa sezione troverai i casting ai quali sei stato selezionato e potrai partecipare. Controlla sempre i nuovi casting e trova quello giusto per te.",
     "NO_CLOSE_CASTINGS_TITLE": "Nessun prossimo shooting",
-    "NO_CLOSE_CASTINGS_TEXT": "In questa sezione troverai i casting che hai superato con le informazioni sui relativi shooting confermati."
+    "NO_CLOSE_CASTINGS_TEXT": "In questa sezione troverai i casting che hai superato con le informazioni sui relativi shooting confermati.",
+    "PARTICIPATION_DECLINE":"I CAN NOT PARTICIPATE",
+    "PARTICIPATION_DECLINED":"DECLINED",
+    "PARTICIPATION_WHITH_ARCHIVE":"CONFIRM WITH ARCHIVE",
+    "PARTICIPATION_CONFIRMED_WHITH_ARCHIVE":"CONFIRMED WITH ARCHIVE",
+    "PARTICIPATION_CONFIRM":"CONFIRM",
+    "PARTICIPATION_CONFIRMED":"CONFIRMED",
+    "PARTICIPATION_NO_AGENCY":"Partecipate with no agency",
+    "PARTICIPATION_AUDITION_TITLE":"Confirm your partecipation",
+    "PARTICIPATION_AUDITION_EDIT":"Modifica la tua partecipazione",
+    "PARTICIPATION_AGENCY_SELECT_TITLE":"Selezione l'agenzia con cui parteciperai",
+    "PARTICIPATION_AGENCY_SELECT_EDIT_TITLE":"Hai cambiato idea?",
+    "PARTICIPATION_AGENCY_SELECT_EDIT_TEXT":"Sei ancora in tempo per modificare la tua partecipazione o meno al casting."
   },
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "NOTIFICATIONS"
@@ -97,8 +111,8 @@
     "ERROR_USER" : "Sorry, we couldn't find a user with that e-mail address.",
     "ERROR_PASS" : "Password must contain at least six characters.",
     "ERROR_EMAIL" : "Please, enter a valid e-mail address.",
-    "ERROR_LOGIN" : "Unfortunately we couldn't find your account, incorret password or e-mail.",
     "ERROR_ACCOUNT_DOUBLE" : "Sorry, The email you entered is already present in BEEZ",
+    "ERROR_LOGIN" : "Unfortunately we couldn't find your account, incorret password or e-mail.",
     "ERROR_SERVICE" : "Unfortunately we couldn't reach the server, please try again later.",
     "SHARE_WITH_A_FRIEND": "Hi! Check this casting %s! @BEEZ CASTING HUB https://beez.io",
     "CANDIDATE": "Thank you for signing up for the casting! You will receive an acceptance notification for the auditions.",
