@@ -27,13 +27,13 @@ class Agency  {
 
 export class CastingDetailComponent implements OnInit {
 
-  @ViewChild("CBAgency") FirstCheckBox: ElementRef;
+  @ViewChild("CBAgency") AgencyCheckBox: ElementRef;
 
   private casting = [];
   private casting_id;
   private user_id;
   public agencies: Agency[]
-  public editToogle: boolean = false;
+  public edit_actions: boolean = false;
   public selectedAgency= new Agency();
   constructor(
     private activeRoute: ActivatedRoute,
@@ -71,28 +71,31 @@ export class CastingDetailComponent implements OnInit {
         break;
     }
   }
+
   private toggleCheck() {
-    this.FirstCheckBox.nativeElement.toggle();
+    this.AgencyCheckBox.nativeElement.toggle();
   }
 
   private changeAgency(){
-    if (this.FirstCheckBox.nativeElement.checked) {
+    if (this.AgencyCheckBox.nativeElement.checked) {
       this.selectedAgency = new Agency()
     }
   }
 
   private selectAgency(): void {
-    if (this.FirstCheckBox.nativeElement.checked) return
+    if (this.AgencyCheckBox.nativeElement.checked) return
       this.createModelView().then(result => {
-        this.selectedAgency = result;
-        console.log('ritornato', result)
+        if (result){
+          this.selectedAgency = result;
+        } 
+        // console.log('ritornato', result)
       }).catch(error => console.log(error));
   }
 
   private createModelView(): Promise<any> {
     const today = new Date();
     const options: ModalDialogOptions = {
-      context: { list: this.agencies},
+      context: { list: this.agencies , title: "CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE"},
       fullscreen: true,
       viewContainerRef: this.vcRef
     };
@@ -103,6 +106,7 @@ export class CastingDetailComponent implements OnInit {
     this.castingsService.cadidate(this.user_id,this.casting_id).subscribe(
       (result)=>{
         alert(localize("MESSAGES.CANDIDATE"))
+        this.goBack()
       },
       (error)=> {
         if (error.status === 400) alert(localize(error.error[0]))
@@ -113,8 +117,8 @@ export class CastingDetailComponent implements OnInit {
   private partecipate(action){
     this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe(
       (result)=>{
-        console.log(result)
         alert(localize("MESSAGES.CANDIDATE"))
+        this.goBack()
       },
       (error)=> {
         console.log(error)

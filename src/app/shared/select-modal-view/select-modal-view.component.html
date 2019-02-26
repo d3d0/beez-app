@@ -1,6 +1,9 @@
 <GridLayout rows="*,auto" >
-<StackLayout row="1">
-	<ListPicker [items]="list" [selectedIndex]="vid" textField="name" (selectedIndexChange)="selectedIndexChanged($event)" class="p-15"></ListPicker>
-    <Button text="OK" (tap)="onClose()"></Button>
-</StackLayout>
+	<CardView  row="1" class="card-group" elevation="40" radius="10" ios:shadowRadius="15" [class.list-group-first]="index===0">
+		<StackLayout  class="list-group-item p-20" >
+			<Label [text]="title|L" class="list-group-item-heading-18 title"  textWrap="true"></Label>
+			<ListPicker [items]="list" [selectedIndex]="vid" textField="name" (selectedIndexChange)="selectedIndexChanged($event)"></ListPicker>
+		    <Button  class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde btn" width="100%" [text]="'CONFIRM'|L" (tap)="onClose()"></Button>
+		</StackLayout>
+	</CardView>
 </GridLayout>

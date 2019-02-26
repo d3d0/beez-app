@@ -11,10 +11,12 @@ import { ListPicker } from "tns-core-modules/ui/list-picker";
 })
 
 export class SelectModalViewComponent {
-    private picked
+    private picked:string
     private list
+    private title
     constructor(private _params: ModalDialogParams, private router: RouterExtensions ) {
         this.list = _params.context.list;
+        this.title = _params.context.title;
     }
 
     onNavigate(): void {
@@ -22,11 +24,12 @@ export class SelectModalViewComponent {
     }
 
     public onClose() {
-        this._params.closeCallback(this.list[this.picked]);
+        this._params.closeCallback(this.picked);
     }
 
     public selectedIndexChanged(args) {
-        this.picked = <ListPicker>args.object.selectedIndex;
+        let picker = <ListPicker>args.object;
+        this.picked = this.list[picker.selectedIndex];
     }
     
 }
