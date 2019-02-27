@@ -221,13 +221,12 @@ ScrollView, ListView {
   }
 }
 RadListView {
-  background-color: transparent;
+  // background-color: transparent;
 }
 CardView {
-  background-color: transparent;
+  // background-color: transparent;
   margin: 0 20 20 20;
 }
-
 .list-group-first {
   margin-top: 20;
 }
@@ -245,7 +244,7 @@ WrapLayout {
 // generico > list-group-item!
 // ------------------------------------------------------------------
 .list-group-item {
-  background: transparent; // IMPORTANTE > definisce lo sfondo delle CardView in IOS
+  background: yellow; // IMPORTANTE > definisce lo sfondo delle CardView in IOS
   border-radius: 5;  // IMPORTANTE > definisce il radius delle CardView in IOS
   width:100%;
   color: #000;

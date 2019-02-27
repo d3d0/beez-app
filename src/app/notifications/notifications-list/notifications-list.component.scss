@@ -2,7 +2,14 @@
 
 .notifications {
   .card-group {
+    &-delete { // item > immagini
+      background: transparent; // IMPORTANTE
+    }
     .list-group-item {
+      &-delete { // item > immagini
+        margin: 0;
+        background: transparent; // IMPORTANTE
+      }
       &-img { // item > immagini
         margin: 0;
         height: 80;
