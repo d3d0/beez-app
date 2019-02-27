@@ -12,7 +12,6 @@
   "FEATURES": "FEATURES",
   "DATE_AND_LOCATION": "DATE AND LOCATION",
   "PARTICIPATE": "PARTICIPATE",
-  "SIGNUP": "Sign Up",
   "HELP": "Need Help?",
   "SHARE_WITH_A_FRIEND": "SHARE WITH A FRIEND",
   "CONFIRM":"CONFIRM",
@@ -20,6 +19,7 @@
     "LOGIN" : "LOGIN"
   },
   "SIGNUP":{
+    "SIGNUP": "Sign Up",
     "REGISTRATION": "REGISTRATION",
     "REGISTRATION_MINOR": "Under-18 Account Registration",
     "REGISTRATION_TITLE" : "New User Account Registration",

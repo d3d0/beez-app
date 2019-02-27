@@ -3,21 +3,45 @@
 .form-container{
 	margin: 25;
 }
-
+.card-group{
+  margin-top: 0;
+}
+.card-group-item{
+  margin: 18;
+  margin-top: 10;
+}
+.card-button-link{
+  font-weight: 800;
+}
 .label-textfield {
-  color:$grigioscuro;
+  color:$lilla;
+  font-weight: bold;
   opacity: 0;
-  transform:translate(0,20);
+  transform:translate(0,16);
+  letter-spacing: 0.2;
+  font-size: 10;
+}
+.login-footer{
+  margin:20;
+  margin-top: 0;
+}
+.textfield{
+  color:$nero;
+  letter-spacing: $letter-spacing-text;
+  font-size: 16;
+  font-weight: normal;
 }
 
-#labelpass{
-	margin-top: 10;
+.card-button{
+ margin-top: 6; 
+ margin-bottom: 10; 
 }
 
 TextField{
 	color:$grigioscuro;
 	border-bottom-width: 1;
 	border-color:$grigiochiaro;
+  font-weight: bold;
   .input-field-error{
   		border-color: rgba(253, 60, 67, .8);;
   }
