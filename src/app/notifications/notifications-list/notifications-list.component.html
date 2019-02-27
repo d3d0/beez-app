@@ -29,15 +29,13 @@
 <!-- https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
 <!-- <RadListView class="notifications" [items]="notifications" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)"`> -->
 <!-- (itemSwipeProgressEnded)="onSwipeCellFinished($event)" (itemSwipeProgressStarted)="onSwipeCellStarted($event)" (itemSwipeProgressChanged)="onCellSwiping($event)" -->
-<RadListView #myListView class="notifications" [items]="notifications"
+<RadListView #myListView backgroundColor="red" class="notifications" [items]="notifications"
 selectionBehavior="None" swipeActions="true"
 pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
   <ng-template tkListItemTemplate let-item="item" let-index="index">
-     <CardView #myCardView cardBackgroundColor="transparent" class="card-group" elevation="40" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" [class.list-group-first]="index===0">
-
-        <StackLayout class="list-group-item">
+     <CardView #myCardView backgroundColor="transparent" class="card-group" elevation="40" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" [class.list-group-first]="index===0">
+        <StackLayout  class="list-group-item">
           <GridLayout columns="80, *" rows="80, auto" >
-
             <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
             <AbsoluteLayout row="0" col="1">
               <GridLayout left="0" top="0" width="100%" columns="41, *, 65" rows="44, 35, 1" backgroundColor=""  >
@@ -57,20 +55,25 @@ pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)"
               <Label [text]="item.message" class="list-group-item-text text-left text-uppercase" row="0" col="1"></Label>
               <Label text="" class="list-group-item-icon-arrow" row="0" col="2"></Label>
             </GridLayout>
-
           </GridLayout>
         </StackLayout>
-
     </CardView>
   </ng-template>
-  <GridLayout *tkListItemSwipeTemplate columns="auto, *, auto" class="gridLayoutLayout">
-      <StackLayout id="mark-view" col="0" class="markViewStackLayout" (tap)="onLeftSwipeClick($event)">
-          <Label text="mark" class="swipetemplateLabel" verticalAlignment="center" horizontalAlignment="center"></Label>
-      </StackLayout>
-      <StackLayout id="delete-view" col="2" class="deleteViewStackLayout" (tap)="onRightSwipeClick($event)">
-          <Label text="delete" class="swipetemplateLabel" verticalAlignment="center" horizontalAlignment="center"></Label>
-      </StackLayout>
-  </GridLayout>
+
+  <CardView *tkListItemSwipeTemplate backgroundColor="transparent" class="card-group" elevation="40" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" [class.list-group-first]="index===0">
+    <StackLayout  class="list-group-item">
+      <GridLayout  columns="auto, *, auto" class="gridLayoutLayout">
+         <StackLayout id="mark-view" col="0" class="markViewStackLayout" (tap)="onLeftSwipeClick($event)">
+             <Label text="mark" class="swipetemplateLabel" verticalAlignment="center" horizontalAlignment="center"></Label>
+         </StackLayout>
+         <StackLayout id="delete-view" col="2" class="deleteViewStackLayout" (tap)="onRightSwipeClick($event)">
+             <Label text="delete" class="swipetemplateLabel" verticalAlignment="center" horizontalAlignment="center"></Label>
+         </StackLayout>
+      </GridLayout>
+    </StackLayout>
+  </CardView>
+
+
 </RadListView>
 
 <!-- <lv:RadListView.itemSwipeTemplate>
