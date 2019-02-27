@@ -27,42 +27,35 @@
 </ActionBar>
 
 <!-- https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
-<RadListView class="notification" [items]="notifications"  pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)"`>
-  <ng-template let-item="item" let-index="index">
-     <CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15" [class.list-group-first]="index===0">
-        <!-- <StackLayout class="list-group-item">
-          <GridLayout columns="46, auto, *, 20, 50" rows="auto, auto, auto, auto, auto" >
-            <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
-            <Label [text]="item.title" class="list-group-item-heading-18" textWrap="true" row="1" colSpan="5"></Label>
-            <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" col="0" colSpan="3"></Label>
-            <Label [text]="item.date" class="text-right list-group-item-date" textWrap="true" row="2" col="3" colSpan="2"></Label>
-            <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
-            <Label text="" class="list-group-item-icona-photo" row="4" col="0"></Label>
-            <Label text="informazioni sul casting" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3"></Label>
-            <Label text="" class="list-group-item-icona-freccia" row="4" col="4"></Label>
-          </GridLayout>
-        </StackLayout> -->
+<!-- <RadListView class="notifications" [items]="notifications" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)"`> -->
+<!-- (itemSwipeProgressEnded)="onSwipeCellFinished($event)" (itemSwipeProgressStarted)="onSwipeCellStarted($event)" (itemSwipeProgressChanged)="onCellSwiping($event)" -->
+<RadListView #myListView class="notifications" [items]="notifications"
+selectionBehavior="None" swipeActions="true"
+pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
+  <ng-template tkListItemTemplate let-item="item" let-index="index">
+     <CardView #myCardView cardBackgroundColor="transparent" class="card-group" elevation="40" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" [class.list-group-first]="index===0">
 
         <StackLayout class="list-group-item">
           <GridLayout columns="80, *" rows="80, auto" >
 
             <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
             <AbsoluteLayout row="0" col="1">
-              <GridLayout left="0" top="0" width="100%" columns="46, *, 65" rows="44, 35, 1" backgroundColor=""  >
-                <Label text="" class="list-group-item-icona-luchetto" row="0" col="0" backgroundColor=""></Label>
-                <Label [text]="item.title" class="list-group-item-heading-10 text-uppercase" textWrap="true" row="0" col="1" colSpan="2" backgroundColor=""></Label>
+              <GridLayout left="0" top="0" width="100%" columns="41, *, 65" rows="44, 35, 1" backgroundColor=""  >
+                <Label *ngIf="item.private>0;" text="" class="list-group-item-icon-lock" row="0" col="0" backgroundColor="" ></Label>
+                <Label *ngIf="item.private>0;" [text]="item.title" class="list-group-item-heading-10 text-uppercase" textWrap="true" row="0" col="1" colSpan="2" backgroundColor=""></Label>
+                <Label *ngIf="item.private==0;" [text]="item.title" class="list-group-item-heading-10 list-group-item-heading-m-l-15 text-uppercase" textWrap="true" row="0" col="0" colSpan="3" backgroundColor=""></Label>
                 <Label [text]="item.subtitle" class="list-group-item-heading-14" textWrap="true" row="1" col="0" colSpan="2" backgroundColor=""></Label>
                 <Label [text]="item.date" class="text-right list-group-item-date" textWrap="true" row="1" col="2" backgroundColor=""></Label>
-                <Label text="" class="list-group-item-h-line" row="2" col="0" colSpan="3"></Label>
+                <Label *ngIf="item.message.length>0;" text="" class="list-group-item-h-line" row="2" col="0" colSpan="3"></Label>
               </GridLayout>
-              <StackLayout left="0" top="0" width="100%" height="32" >
-                  <Label class="list-group-item-icona-partecipo" horizontalAlignment="right"></Label>
+              <StackLayout left="0" top="0" width="100%" height="32" *ngIf="item.read==0;">
+                  <Label class="list-group-item-icon-partecipate" horizontalAlignment="right"></Label>
               </StackLayout>
             </AbsoluteLayout>
-            <GridLayout row="1" col="0" colSpan="2" columns="46, *, 50" rows="auto" backgroundColor="">
-              <Label text="" class="list-group-item-icona-photo" row="0" col="0"></Label>
-              <Label text="informazioni sul casting" class="list-group-item-text text-left text-uppercase" row="0" col="1"></Label>
-              <Label text="" class="list-group-item-icona-freccia" row="0" col="2"></Label>
+            <GridLayout row="1" col="0" colSpan="2" columns="41, *, 50" rows="auto" backgroundColor="" *ngIf="item.message.length>0;">
+              <Label text="" [ngClass]="'list-group-item-icon-' + item.type" row="0" col="0"></Label>
+              <Label [text]="item.message" class="list-group-item-text text-left text-uppercase" row="0" col="1"></Label>
+              <Label text="" class="list-group-item-icon-arrow" row="0" col="2"></Label>
             </GridLayout>
 
           </GridLayout>
@@ -70,4 +63,23 @@
 
     </CardView>
   </ng-template>
+  <GridLayout *tkListItemSwipeTemplate columns="auto, *, auto" class="gridLayoutLayout">
+      <StackLayout id="mark-view" col="0" class="markViewStackLayout" (tap)="onLeftSwipeClick($event)">
+          <Label text="mark" class="swipetemplateLabel" verticalAlignment="center" horizontalAlignment="center"></Label>
+      </StackLayout>
+      <StackLayout id="delete-view" col="2" class="deleteViewStackLayout" (tap)="onRightSwipeClick($event)">
+          <Label text="delete" class="swipetemplateLabel" verticalAlignment="center" horizontalAlignment="center"></Label>
+      </StackLayout>
+  </GridLayout>
 </RadListView>
+
+<!-- <lv:RadListView.itemSwipeTemplate>
+    <GridLayout columns="auto, *, auto" backgroundColor="White">
+        <StackLayout id="mark-view" col="0" style="background-color: blue;" tap="onLeftSwipeClick" paddingLeft="16" paddingRight="16" orientation="horizontal">
+            <Label text="mark" style="text-size: 20" verticalAlignment="center" horizontalAlignment="center"/>
+        </StackLayout>
+        <StackLayout id="delete-view" col="2" style="background-color: red;" tap="onRightSwipeClick"  paddingLeft="16" paddingRight="16" orientation="horizontal">
+            <Label text="delete" style="text-size: 20" verticalAlignment="center" horizontalAlignment="center" />
+        </StackLayout>
+    </GridLayout>
+</lv:RadListView.itemSwipeTemplate> -->

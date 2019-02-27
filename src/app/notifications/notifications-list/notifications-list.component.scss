@@ -1,113 +1,108 @@
-/* Add mobile styles for the component here.  */
+@import '../../../app-variables';
 
-/*
-// ---------------------------------
-// StackLayout, GridLayout, CardView
-// ---------------------------------
-StackLayout {
-}
-GridLayout {
-}
-CardView {
-  margin: 0 20 20 20;
-}
-.list-group-first {
-  margin-top: 20;
-}
-
-// ---------------------------------
-// CardView > list-group-item
-// ---------------------------------
-.list-group-item {
-  background: white; // IMPORTANTE
-  border-radius: 5;  // IMPORTANTE
-  width:100%;
-  .list-group-item-img {
-    margin: 0 0 10 0;
-    height: 160;            // IMPORTANTE
-    border-radius: 5 5 0 0; // IMPORTANTE
-  }
-  .list-group-item-heading {
-    font-size: 20;
-    color: #000;
-    margin: 0 15 10 15;
-  }
-  .list-group-item-text {
-    font-size: 14;
-    color: #000;
-    margin: 0 15 15 15;
-  }
-  .list-group-item-date {
-    font-size: 10;
-    color: #000;
-    margin: 3 15 15 15;
-    text-align: right;
-  }
-  .list-group-item-h-line {
-    height: 1;
-    background-color: #DDD;
-    margin: 0 15 15 15;
-  }
-  .list-group-item-v-line {
-    width: 1;
-    background-color: #DDD;
-    margin: 0 15 15 15;
-  }
-  .list-group-item-icona-photo {
-    margin: 0 15 15 15;
-    width:16;
-    height: 12;
-    display: block;
-    background-image: url("res://photo") no-repeat;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-  .list-group-item-info {
-    font-size: 10;
-    color: #000;
-    margin: 0 0 15 0; // IMPORTANTE
-    text-align: left;
-  }
-  .list-group-item-freccia {
-    margin: 0 15 15 15;
-    width:20;
-    height: 10;
-    display: block;
-    background-image: url("res://arrow_right") no-repeat;
-    background-size: cover;
-    background-position: center center;
-  }
-  .list-group-item-button {
-    margin: 0 15 15 15;
-    width:20;
-    height: 10;
-    display: block;
-    &--freccia {
-      background-image: url("res://arrow_right") no-repeat;
-      background-size: cover;
-      background-position: center center;
+.notifications {
+  .card-group {
+    .list-group-item {
+      &-img { // item > immagini
+        margin: 0;
+        height: 80;
+        border-radius: 5 0 0 0;
+      }
+      &-heading { // item > titoli
+        &-10 {
+          font-size: 10; // ios +1
+          font-weight: bold;
+          letter-spacing:0.15;
+          margin: 20 15 9 0;
+          padding: 0;
+          color: $nero;
+        }
+        &-14 {
+          font-size: 14; // ios +1
+          font-weight: normal;
+          letter-spacing:0;
+          margin: 1 0 15 15;
+          padding: 0;
+          color: $grigioscuro;
+        }
+        &-m-l-15{
+          margin: 20 15 9 15;
+        }
+      }
+      &-date { // item > date
+        font-size: 10;
+        margin: 1 15 15 15;
+        text-align: right;
+        color: $grigioscuro;
+      }
+      &-text {
+        font-size: 10; // ios +1
+        font-weight: bold;
+        letter-spacing:0.15;
+        margin: 15 15 15 0;
+        padding: 0;
+        color: $nero;
+      }
+      &-h-line {
+        height: 1;
+        margin: 0 15 0 15;
+        background-color: $grigiochiaro;
+      }
+      &-icon { // item > icone generiche
+        &-casting {
+          margin: 15 10 15 15;
+          width:16;
+          height: 16;
+          background-image: url("res://photo");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+        &-project {
+          margin: 15 10 15 15;
+          width:16;
+          height: 16;
+          background-image: url("res://project");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+        &-shooting {
+          margin: 15 10 15 15;
+          width:16;
+          height: 16;
+          background-image: url("res://video");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+        &-arrow {
+          margin: 15;
+          width:20;
+          height: 10;
+          background-image: url("res://arrow_right");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+        &-lock {
+          margin: 20 10 9 15;
+          width:16;
+          height: 16;
+          background-image: url("res://lock");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+        }
+        &-partecipate {
+          margin: 0;
+          width: 32;
+          height: 32;
+          background-image: url("res://partecipo") no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+      }
     }
   }
-  .my-button {
-    font-size: 10;
-    color: #000;
-    margin: 0 15 15 15;
-    width:20;
-    height: 10;
-    display: block;
-    background-image: url("res://arrow_right") no-repeat;
-    background-size: cover;
-    background-position: center center;
-  }
-  .my-button:active {
-    color:white;
-  }
-  .my-button::pressed {
-    color:white;
-  }
-  .my-button::highlighted{
-    color:white;
-  }
 }
-*/
