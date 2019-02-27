@@ -16,9 +16,6 @@
 // ------------------------------------------------------------------
 // COMMON PAGE
 // ------------------------------------------------------------------
-page-router-outlet {
-  background-color: red;
-}
 .page-content {
   .page-placeholder {
     color: $page-icon-color;
@@ -174,6 +171,9 @@ page-router-outlet {
 // 3) Label Text color
 // 4) Layout
 // ------------------------------------------------------------------
+.page-background {
+  background-color: $verde;
+}
 .page {
   background-color: $verde;
   label {
@@ -215,7 +215,7 @@ TabView {
   }
 }
 ScrollView, ListView {
-  background-color: $bianco;
+  background-color: transparent;
   label {
     color: $nero;
   }
@@ -245,7 +245,7 @@ WrapLayout {
 // generico > list-group-item!
 // ------------------------------------------------------------------
 .list-group-item {
-  background: white; // IMPORTANTE > definisce lo sfondo delle CardView in IOS
+  background: transparent; // IMPORTANTE > definisce lo sfondo delle CardView in IOS
   border-radius: 5;  // IMPORTANTE > definisce il radius delle CardView in IOS
   width:100%;
   color: #000;
