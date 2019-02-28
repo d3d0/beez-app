@@ -7,8 +7,8 @@
 	<StackLayout >
 		<Image [src]="casting.image" height="auto" stretch="aspectFit" horizontalAlignment="center" verticalAlignment="top"></Image>
 		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
-			<StackLayout class="p-t-0 p-b-20">
 
+			<StackLayout *ngIf="casting.status != 'Shooting'"  class="p-t-0 p-b-20">
 				<!-- Label of status on top only from auditionTab -->
 				<StackLayout *ngIf="casting.status === 'Audition'" horizontalAlignment ="center" verticalAlignment="center" class="banner-top-card" [ngClass]="casting.audition_action">
 					<Label [text]="labelBannerCard(casting.audition_action)|L"></Label>
@@ -92,51 +92,41 @@
 						<Label textWrap="true" class="list-group-item-text  p-b-20 " [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_EDIT_TEXT'|L"></Label>
 					</StackLayout>
 
-					<Label  *ngIf="casting.audition_action != ''"  text="" class="list-group-item-icona-share" row="1" col="0" verticalAlignment="top"></Label>
-					<Button  *ngIf="casting.audition_action != ''"  row="1" col="1" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" (tap)="edit_actions=!edit_actions" class=" btn text-uppercase list-group-item-pulsante list-group-item-pulsante--blu"></Button>
+					<Label  *ngIf="casting.audition_action != '' && !edit_actions"  text="" class="list-group-item-icona-share" row="1" col="0" verticalAlignment="top"></Label>
+					<Button  *ngIf="casting.audition_action != '' && !edit_actions"  row="1" col="1" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" (tap)="edit_actions=!edit_actions" class=" btn text-uppercase list-group-item-pulsante list-group-item-pulsante--blu"></Button>
 				</GridLayout>
 
-				<GridLayout *ngIf="edit_actions" columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto" class="list-group-item">
+				<StackLayout *ngIf="edit_actions" class="accordion" width="100%" >
 
-					<Label text="" class="list-group-item-v-line" row="0" col="0"></Label>
-					<StackLayout row="0" col="1">
+					<Label verticalAlignment="top" horizontalAlignment="right" width="40" text="x" height="40" backgroundColor="green"  (tap)="edit_actions=!edit_actions"	></Label>	
+					<StackLayout class="content">
 						<Label [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" class="list-group-item-heading-18 p-t-20 " textWrap="true"></Label>
 						<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="list-group-item-text " textWrap="true"></Label>
+
+						<TextField verticalAlignment="center" class="modal-select"
+						[editable]="false"
+						[text]="selectedAgency.name"
+						[hint]="'USER.AGENCY'|L|titlecase"
+						(tap)="selectAgency()" ></TextField>
+
+						<StackLayout orientation="horizontal" (tap)="toggleCheck()">
+							<CheckBox fillColor="#00D796" #CBAgency checked="false" (checkedChange)="changeAgency()" verticalAlignment="center"></CheckBox>
+							<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"  verticalAlignment="center"></Label>
+						</StackLayout>
+
+						<Button [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" (tap)="partecipate('Confirmed')" class=" text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" verticalAlignment="center"></Button>
+						<Button [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" (tap)="partecipate('Confirmed by archive')" class=" btn text-uppercase list-group-item-pulsante list-group-item-pulsante--blu"verticalAlignment="center" ></Button>
+						<Button [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" (tap)="partecipate('Declined')" class="btn text-uppercase list-group-item-pulsante list-group-item-pulsante--black" verticalAlignment="center"></Button>
 					</StackLayout>
+				</StackLayout>
+			</StackLayout>
 
-					<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
-
-					<TextField row="1" col="1" class="modal-select"
-					[editable]="false"
-					[text]="selectedAgency.name"
-					[hint]="'USER.AGENCY'|L|titlecase"
-					(tap)="selectAgency()" ></TextField>
-					
-					<Label text="" class="list-group-item-v-line" row="2" col="0"></Label>
-					<StackLayout row="2" col="1" orientation="horizontal" (tap)="toggleCheck()">
-						<CheckBox fillColor="#00D796" #CBAgency checked="false" (checkedChange)="changeAgency()" verticalAlignment="center"></CheckBox>
-						<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"  verticalAlignment="center"></Label>
-					</StackLayout>
-
-					<Label text="" class="list-group-item-v-line" row="3" col="0"  height="20"></Label>
-
-					<Label text="" class="list-group-item-icona-partecipate" row="4" col="0" verticalAlignment="top"></Label>
-					<!-- <Label text="" class="list-group-item-v-line" row="4" col="0"></Label> -->
-					<Button row="4" col="1" [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" (tap)="partecipate('Confirmed')" class=" text-uppercase list-group-item-pulsante list-group-item-pulsante--verde"></Button>
-
-					<Label text="" class="list-group-item-v-line" row="5" col="0" height="20"></Label>
-
-					<Label text="" class="list-group-item-icona-partecipate" row="6" col="0" verticalAlignment="top"></Label>
-					<Button row="6" col="1" [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" (tap)="partecipate('Confirmed by archive')" class=" btn text-uppercase list-group-item-pulsante list-group-item-pulsante--blu"></Button>
-
-					<Label text="" class="list-group-item-v-line" row="7" col="0" height="20"></Label>
-
-					<Label text="" class="list-group-item-icona-partecipate" row="8" col="0" verticalAlignment="top"></Label>
-					<Button row="8" col="1" [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" (tap)="partecipate('Declined')" class="btn text-uppercase list-group-item-pulsante list-group-item-pulsante--black"></Button>
-				</GridLayout>
-
-				<!-- shooting tab -->
-
+			<!-- shooting tab -->
+			<StackLayout *ngIf="casting.status === 'Shooting'"  class="p-t-0 p-b-20">
+				<StackLayout row="0" col="1">
+					<Label [text]="'CASTINGS.SHOOTING_TITLE'|L" class="list-group-item-heading-18 p-t-20 " textWrap="true"></Label>
+					<Label [text]="'CASTINGS.SHOOTING_TEXT'|L" class="list-group-item-text " textWrap="true"></Label>
+				</StackLayout>
 			</StackLayout>
 		</CardView>
 	</StackLayout>
