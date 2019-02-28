@@ -14,35 +14,6 @@
   font-family: "Sofia Pro"; // IMPORTANTE
 }
 
-SegmentedBar{
-  // android > background
-  background-color: white; /* OK */
-
-  // android > border bottom della selezionata
-  // ios > background della selezionata + bordi
-  selected-background-color: transparent; /* OK */
-}
-
-NSSegmentView{
-  // sfondo selezionata ios
-  // selected-background-color:white;
-
-  // sfondo totale ios + border bottom android
-  // seg-background-color:#00D796;
-
-  // border bottom ios
-  // line-color:#00D796;
-
-  // testo normale
-  title-color:$grigioscuro;
-
-  // testo selezionato
-  selected-color:#00D796;
-
-  // indicatore tab selezionata
-  indicator-color: #00D796;
-}
-
 // switch
 .list-group-item-switch {
   margin: 0 20 10 0; // RICALCOLARE ?

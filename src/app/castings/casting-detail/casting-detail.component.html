@@ -13,9 +13,10 @@
 				<StackLayout *ngIf="casting.status === 'Audition'" horizontalAlignment ="center" verticalAlignment="center" class="banner-top-card" [ngClass]="casting.audition_action">
 					<Label [text]="labelBannerCard(casting.audition_action)|L"></Label>
 				</StackLayout>
+				<GridLayout rows='*,*,*'>
 
 				<!-- info -->
-				<GridLayout columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" class="list-group-item p-t-20">
+				<GridLayout row='0'columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" class="list-group-item p-t-20">
 					<Label text="" class="list-group-item-icona-info list-group-item-icona-info-first" row="0" col="0"></Label>
 					<Label [text]="'CASTINGS.INFORMATION'|L" class="list-group-item-heading-18 list-group-item-heading-18-first" textWrap="true" row="0" col="1" ></Label>
 
@@ -67,7 +68,7 @@
 				<!-- new tab -->
 
 				<!-- candidate actions -->
-				<GridLayout *ngIf="casting.status === 'New'" columns="50, *" rows="auto,auto,auto" class="list-group-item">
+				<GridLayout row='1' *ngIf="casting.status === 'New'" columns="50, *" rows="auto,auto,auto" class="list-group-item">
 					<Label text="" class="list-group-item-icona-partecipate" row="0" col="0" verticalAlignment="top"></Label>
 					<Button [text]="'PARTICIPATE'|L" (tap)="candidate()" class="btn text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
 
@@ -134,6 +135,7 @@
 					<Label text="" class="list-group-item-icona-partecipate" row="8" col="0" verticalAlignment="top"></Label>
 					<Button row="8" col="1" [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" (tap)="partecipate('Declined')" class="btn text-uppercase list-group-item-pulsante list-group-item-pulsante--black"></Button>
 				</GridLayout>
+			</GridLayout>
 
 				<!-- shooting tab -->
 
