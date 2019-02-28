@@ -11,17 +11,15 @@
 }
 
 .accordion{
-	background-color: $backgroung-light-gray;
 	border-color: $grigiochiaro;
 	border-bottom-width:1;
 	border-top-width:1;
 	.content{
-		margin: -20;
-		margin-top: -40;
-		padding: 40;
+		width: 100%;
+		padding: 20;
 		Button{
-			text-align: center;
-			margin: 10 0;
+			margin:20,0,0,0;
 		}
 	}
 }
+

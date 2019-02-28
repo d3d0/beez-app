@@ -96,11 +96,13 @@
 					<Button  *ngIf="casting.audition_action != '' && !edit_actions"  row="1" col="1" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" (tap)="edit_actions=!edit_actions" class=" btn text-uppercase list-group-item-pulsante list-group-item-pulsante--blu"></Button>
 				</GridLayout>
 
-				<StackLayout *ngIf="edit_actions" class="accordion" width="100%" >
+				<AbsoluteLayout *ngIf="edit_actions" class="accordion" width="100%" >
+					<StackLayout left="0" top="0"  width="100%"  height="32">
+						<Label class="list-group-item-icona-no-nero" horizontalAlignment="right"  (tap)="edit_actions=!edit_actions"></Label>	
+					</StackLayout>
 
-					<Label verticalAlignment="top" horizontalAlignment="right" width="40" text="x" height="40" backgroundColor="green"  (tap)="edit_actions=!edit_actions"	></Label>	
-					<StackLayout class="content">
-						<Label [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" class="list-group-item-heading-18 p-t-20 " textWrap="true"></Label>
+					<StackLayout left="0" top="0"  class="content">
+						<Label [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" class="list-group-item-heading-18 " textWrap="true"></Label>
 						<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="list-group-item-text " textWrap="true"></Label>
 
 						<TextField verticalAlignment="center" class="modal-select"
@@ -110,7 +112,7 @@
 						(tap)="selectAgency()" ></TextField>
 
 						<StackLayout orientation="horizontal" (tap)="toggleCheck()">
-							<CheckBox fillColor="#00D796" #CBAgency checked="false" (checkedChange)="changeAgency()" verticalAlignment="center"></CheckBox>
+							<CheckBox fillColor="#DDD" #CBAgency checked="false" (checkedChange)="changeAgency()" verticalAlignment="center"></CheckBox>
 							<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"  verticalAlignment="center"></Label>
 						</StackLayout>
 
@@ -118,7 +120,7 @@
 						<Button [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" (tap)="partecipate('Confirmed by archive')" class=" btn text-uppercase list-group-item-pulsante list-group-item-pulsante--blu"verticalAlignment="center" ></Button>
 						<Button [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" (tap)="partecipate('Declined')" class="btn text-uppercase list-group-item-pulsante list-group-item-pulsante--black" verticalAlignment="center"></Button>
 					</StackLayout>
-				</StackLayout>
+				</AbsoluteLayout>
 			</StackLayout>
 
 			<!-- shooting tab -->

@@ -244,7 +244,7 @@ WrapLayout {
 // generico > list-group-item!
 // ------------------------------------------------------------------
 .list-group-item {
-  background: yellow; // IMPORTANTE > definisce lo sfondo delle CardView in IOS
+  background: white; // IMPORTANTE > definisce lo sfondo delle CardView in IOS
   border-radius: 5;  // IMPORTANTE > definisce il radius delle CardView in IOS
   width:100%;
   color: #000;
@@ -352,6 +352,14 @@ WrapLayout {
       background-image: url("res://arrow_right");
       background-repeat: no-repeat;
       background-position: center center;
+      background-size: cover;
+    }
+    &-no-nero {
+      margin: 0;
+      width: 32;
+      height: 32;
+      background-image: url("res://no_nero") no-repeat;
+      background-position: center;
       background-size: cover;
     }
   }
@@ -515,15 +523,15 @@ WrapLayout {
         padding: 6 0;
       }
     }
-      .action-confirmed {
-        background-color: $verde;
-      }
-      .action-confirmed-archive {
-        background-color:$lilla;
-      }
-      .action-declined {
-        background-color: $nero;
-      }
+    .action-confirmed {
+      background-color: $verde;
+    }
+    .action-confirmed-archive {
+      background-color:$lilla;
+    }
+    .action-declined {
+      background-color: $nero;
+    }
     .list-group-item {
       &-heading { // item > titoli
         &-18 {
