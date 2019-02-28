@@ -7,7 +7,7 @@
 	<StackLayout >
 		<Image [src]="casting.image" height="auto" stretch="aspectFit" horizontalAlignment="center" verticalAlignment="top"></Image>
 		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
-			<StackLayout class="p-t-0 p-b-20">
+			<StackLayout class="list-group-item p-t-0 p-b-20">
 
 				<!-- Label of status on top only from auditionTab -->
 				<StackLayout *ngIf="casting.status === 'Audition'" horizontalAlignment ="center" verticalAlignment="center" class="banner-top-card" [ngClass]="casting.audition_action">
@@ -16,7 +16,7 @@
 				<GridLayout rows='*,*,*'>
 
 				<!-- info -->
-				<GridLayout row='0'columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" class="list-group-item p-t-20">
+				<GridLayout row='0'columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" class="p-t-20">
 					<Label text="" class="list-group-item-icona-info list-group-item-icona-info-first" row="0" col="0"></Label>
 					<Label [text]="'CASTINGS.INFORMATION'|L" class="list-group-item-heading-18 list-group-item-heading-18-first" textWrap="true" row="0" col="1" ></Label>
 
@@ -68,7 +68,7 @@
 				<!-- new tab -->
 
 				<!-- candidate actions -->
-				<GridLayout row='1' *ngIf="casting.status === 'New'" columns="50, *" rows="auto,auto,auto" class="list-group-item">
+				<GridLayout row='1' *ngIf="casting.status === 'New'" columns="50, *" rows="auto,auto,auto" class="">
 					<Label text="" class="list-group-item-icona-partecipate" row="0" col="0" verticalAlignment="top"></Label>
 					<Button [text]="'PARTICIPATE'|L" (tap)="candidate()" class="btn text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
 
@@ -80,9 +80,9 @@
 
 
 				<!-- audition tab -->
+				<StackLayout row='2' >
 
-
-				<GridLayout *ngIf="casting.status === 'Audition'" columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" class="list-group-item">
+				<GridLayout  *ngIf="casting.status === 'Audition'" columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" class="">
 
 					<!-- partecipate action or edit partecipateactions -->
 					<Label text="" class="list-group-item-v-line" row="0" col="0"></Label>
@@ -97,7 +97,7 @@
 					<Button  *ngIf="casting.audition_action != ''"  row="1" col="1" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" (tap)="edit_actions=!edit_actions" class=" btn text-uppercase list-group-item-pulsante list-group-item-pulsante--blu"></Button>
 				</GridLayout>
 
-				<GridLayout *ngIf="edit_actions" columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto" class="list-group-item">
+				<GridLayout *ngIf="edit_actions" columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto" class="">
 
 					<Label text="" class="list-group-item-v-line" row="0" col="0"></Label>
 					<StackLayout row="0" col="1">
@@ -135,8 +135,9 @@
 					<Label text="" class="list-group-item-icona-partecipate" row="8" col="0" verticalAlignment="top"></Label>
 					<Button row="8" col="1" [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" (tap)="partecipate('Declined')" class="btn text-uppercase list-group-item-pulsante list-group-item-pulsante--black"></Button>
 				</GridLayout>
-			</GridLayout>
+			</StackLayout>	
 
+			</GridLayout>
 				<!-- shooting tab -->
 
 			</StackLayout>
