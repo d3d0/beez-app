@@ -357,6 +357,14 @@ WrapLayout {
       background-position: center center;
       background-size: cover;
     }
+        &-no-nero {
+          margin: 0;
+          width: 32;
+          height: 32;
+          background-image: url("res://no_nero") no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
   }
 }
 // ---------------------------------
