@@ -1,12 +1,11 @@
 <ActionBar class="action-bar">
 	<Label class="action-bar-title" [text]="'SIGNUP.REGISTRATION'|L" ></Label>
-	<NavigationButton android.systemIcon="ic_menu_back" text="Back to" (tap)="goBack()"></NavigationButton>
+	<NavigationButton android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
 </ActionBar>
 
 <TabView class="signup" androidTabsPosition="top">
 	<StackLayout *tabItem="{title: signupTitle}">
 		<ScrollView>
-			<StackLayout>
 				<CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15">
 					<StackLayout class="list-group-item p-20">
 						<Label class="list-group-item-heading-18" textWrap="true" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
@@ -62,7 +61,6 @@
 						</CardView>
 					</StackLayout>
 				</CardView>
-			</StackLayout><!-- non serve -->
 		</ScrollView>
 	</StackLayout>
 	<StackLayout *tabItem="{title: signupMinorTitle}">
