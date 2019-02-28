@@ -6,6 +6,9 @@ import { Notification} from "../notification.model";
 
 import { View } from "ui/core/view";
 
+import {Color} from "color";
+import {isIOS} from "platform" ;
+
 @Component({
   selector: 'ns-notifications',
   templateUrl: './notifications-list.component.html',
@@ -14,9 +17,6 @@ import { View } from "ui/core/view";
 })
 export class NotificationsListComponent implements OnInit {
 
-  // @ViewChild('myCardView') myCardView: ElementRef;
-  // @ViewChild('myListView') myListView: ElementRef;
-
   notifications: Notification[];
 
   constructor(store: NotificationsService) {
@@ -24,21 +24,7 @@ export class NotificationsListComponent implements OnInit {
   }
   ngOnInit() {
   	console.log('hello from Notifications component');
-    // let cardInstance = this.myCardView.nativeElement;
-    // cardInstance.setBackgroundColor(Color."#F0C");
-    // let radInstance = this.myListView.nativeElement;
-    // radInstance.ListViewElement.DrawFill = false;
   }
-
-  // onItemLoading(args){
-  //       console.log("onItemLoading");
-  //       if(isIOS){
-  //           console.log(args.ios);
-  //           var newcolor = new Color(20,255,0,0);
-  //           args.ios.backgroundView.backgroundColor = newcolor.ios;
-  //       }
-  //
-  //   }
 
   public onPullToRefreshInitiated(args: ListViewEventData) {
     setTimeout(function () {
@@ -47,23 +33,28 @@ export class NotificationsListComponent implements OnInit {
     }, 1000);
   }
 
+  // DOCS > eliminiamo il background solo in IOS RadListView
+  public onItemLoading(args: ListViewEventData){
+        console.log("onItemLoading");
+        if(isIOS){
+            console.log(args.ios);
+            var newcolor = new Color(0,0,0,0);
+            args.ios.backgroundView.backgroundColor = newcolor.ios;
+        }
+  }
+
+  // DOCS > implementazione swipe in base a larghezza di swipe template
   public onSwipeCellStarted(args: ListViewEventData) {
     const swipeLimits = args.data.swipeLimits;
     const swipeView = args['object'];
-    //const leftItem = swipeView.getViewById<View>('mark-view');
     const rightItem = swipeView.getViewById<View>('delete-view');
     swipeLimits.left = 0;
     swipeLimits.right = rightItem.getMeasuredWidth();
     swipeLimits.threshold = rightItem.getMeasuredWidth() / 2;
   }
 
-  // public onLeftSwipeClick(args: ListViewEventData) {
-  //     console.log("Left swipe click");
-  //     this.listViewComponent.listView.notifySwipeToExecuteFinished();
-  // }
-  //
-  // public onRightSwipeClick(args) {
-  //     console.log("Right swipe click");
-  //     this.dataItems.splice(this.dataItems.indexOf(args.object.bindingContext), 1);
-  // }
+  // DOCS > funzione per eliminare la notifica
+  public onRightSwipeClick(args) {
+      console.log("Right swipe click");
+  }
 }

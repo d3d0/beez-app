@@ -171,14 +171,8 @@
 // 3) Label Text color
 // 4) Layout
 // ------------------------------------------------------------------
-.page-background {
-  background-color: $verde;
-}
 .page {
-  background-color: $verde;
-  label {
-    color: red;
-  }
+  background-color: $grigiobackground;
 }
 ActionBar, .action-bar {
   color: $nero;
@@ -221,7 +215,7 @@ ScrollView, ListView {
   }
 }
 RadListView {
-  // background-color: transparent;
+  background-color: $grigiobackground;
 }
 CardView {
   // background-color: transparent;
@@ -244,7 +238,7 @@ WrapLayout {
 // generico > list-group-item!
 // ------------------------------------------------------------------
 .list-group-item {
-  background: yellow; // IMPORTANTE > definisce lo sfondo delle CardView in IOS
+  background: white; // IMPORTANTE > definisce lo sfondo delle CardView in IOS e Android
   border-radius: 5;  // IMPORTANTE > definisce il radius delle CardView in IOS
   width:100%;
   color: #000;
@@ -350,6 +344,15 @@ WrapLayout {
       width:20;
       height: 10;
       background-image: url("res://arrow_right");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+    &-bin {
+      margin: 0;
+      width:21;
+      height: 21;
+      background-image: url("res://bin");
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
@@ -598,7 +601,7 @@ WrapLayout {
 // ------------------------------------------------------------------
 .card-group {
   margin: 0 20 25 20;
-  background: white; // IMPORTANTE
+  background: transparent; // IMPORTANTE
   &-item {
     background: white; // IMPORTANTE
     border-radius: 5;  // IMPORTANTE

@@ -1,14 +1,22 @@
 @import '../../../app-variables';
 
 .notifications {
+
   .card-group {
+
+    margin: 0 20 25 20;
+
     &-delete { // item > immagini
       background: transparent; // IMPORTANTE
     }
     .list-group-item {
+      .deleteViewStackLayout {
+        width:80;
+        height: 100%;
+      }
       &-delete { // item > immagini
         margin: 0;
-        background: transparent; // IMPORTANTE
+        background: $nero; // IMPORTANTE
       }
       &-img { // item > immagini
         margin: 0;
