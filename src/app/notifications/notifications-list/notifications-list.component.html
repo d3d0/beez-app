@@ -17,30 +17,27 @@
 
   <!-- ICONE -->
   <!--
-  <NavigationButton text="Go Back" icon="res://arrow_left" text="" (tap)="goBack()"></NavigationButton>
-  <ActionItem text="add" ios.position="right" android.position="actionbar" icon="res://add" ></ActionItem>
-  <ActionItem text="add" ios.position="right" android.position="actionbar" icon="res://add" ></ActionItem>
-  <ActionItem text="add" ios.position="right" android.position="actionbar" icon="res://add" ></ActionItem>
-  <ActionItem text="close" ios.position="right" android.position="actionbar" icon="res://close" ></ActionItem>
-  <ActionItem text="cerca" ios.position="right" android.position="actionbar" ios.systemIcon="12" android.systemIcon="ic_menu_search"></ActionItem>
+    <NavigationButton text="Go Back" icon="res://arrow_left" text="" (tap)="goBack()"></NavigationButton>
+    <ActionItem text="add" ios.position="right" android.position="actionbar" icon="res://add" ></ActionItem>
+    <ActionItem text="add" ios.position="right" android.position="actionbar" icon="res://add" ></ActionItem>
+    <ActionItem text="add" ios.position="right" android.position="actionbar" icon="res://add" ></ActionItem>
+    <ActionItem text="close" ios.position="right" android.position="actionbar" icon="res://close" ></ActionItem>
+    <ActionItem text="cerca" ios.position="right" android.position="actionbar" ios.systemIcon="12" android.systemIcon="ic_menu_search"></ActionItem>
   -->
 </ActionBar>
 
 <!-- https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
-
-<!-- <RadListView class="notifications" [items]="notifications" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)"`> -->
-
 <!-- (itemSwipeProgressEnded)="onSwipeCellFinished($event)"  (itemSwipeProgressChanged)="onCellSwiping($event)" -->
 
-<RadListView backgroundColor="red" class="notifications" [items]="notifications"
+<RadListView class="notifications" [items]="notifications" (itemLoading)="onItemLoading($event)"
 (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
 selectionBehavior="None" swipeActions="true"
-pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
+pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" >
 
   <ListViewLinearLayout tkListViewLayout scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default"></ListViewLinearLayout>
 
   <ng-template tkListItemTemplate let-item="item" let-index="index">
-    <CardView backgroundColor="" class="card-group" elevation="40" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" [class.list-group-first]="index===0">
+    <CardView backgroundColor="transparent" class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" [class.list-group-first-NO]="index===0">
       <StackLayout  class="list-group-item">
         <GridLayout columns="80, *" rows="80, auto" >
           <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
@@ -68,24 +65,13 @@ pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)"
   </ng-template>
 
   <StackLayout *tkListItemSwipeTemplate class="card-group card-group-delete" >
-    <StackLayout class="list-group-item list-group-item-delete" backgroundColor="green" >
+    <StackLayout class="list-group-item list-group-item-delete" [class.list-group-first]="index===0">
       <GridLayout  columns="auto, *, auto" class="gridLayoutLayout">
-         <StackLayout id="delete-view" col="2" class="deleteViewStackLayout" (tap)="onRightSwipeClick($event)">
-             <Label text="delete item" class="swipetemplateLabel" verticalAlignment="center" horizontalAlignment="center"></Label>
+         <StackLayout id="delete-view" col="2" class="deleteViewStackLayout" (tap)="onRightSwipeClick($event)" verticalAlignment="center" horizontalAlignment="center">
+             <Label text="" class="list-group-item-icona-bin" verticalAlignment="center" horizontalAlignment="center"></Label>
          </StackLayout>
       </GridLayout>
     </StackLayout>
   </StackLayout>
 
 </RadListView>
-
-<!-- <lv:RadListView.itemSwipeTemplate>
-    <GridLayout columns="auto, *, auto" backgroundColor="White">
-        <StackLayout id="mark-view" col="0" style="background-color: blue;" tap="onLeftSwipeClick" paddingLeft="16" paddingRight="16" orientation="horizontal">
-            <Label text="mark" style="text-size: 20" verticalAlignment="center" horizontalAlignment="center"/>
-        </StackLayout>
-        <StackLayout id="delete-view" col="2" style="background-color: red;" tap="onRightSwipeClick"  paddingLeft="16" paddingRight="16" orientation="horizontal">
-            <Label text="delete" style="text-size: 20" verticalAlignment="center" horizontalAlignment="center" />
-        </StackLayout>
-    </GridLayout>
-</lv:RadListView.itemSwipeTemplate> -->
