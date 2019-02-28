@@ -14,10 +14,10 @@
           <!-- <Label  text="" class="list-group-item-icona" row="0"row="0" ></Label> -->
           <Image *ngIf="castingType === 'audition'" src="res://confirm" stretch="none"row="0" col="4"></Image>
 
-          <Label [text]="item.title" class="list-group-item-heading-18" textWrap="true" row="1" colSpan="5"></Label>
+          <Label [text]="item.title" class="label-18 list-group-item-heading-18" textWrap="true" row="1" colSpan="5"></Label>
           <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" colSpan="5"></Label>
           <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
-          <Label text="CASTING" class="text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
+          <Label text="CASTING" class="label text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
           <Label textWrap="true" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3">
             <FormattedString *ngFor="let date of item.casting_date" >
               <Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
