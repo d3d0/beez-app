@@ -35,6 +35,7 @@
     "nativescript-iqkeyboardmanager": "^1.4.0",
     "nativescript-localize": "^3.0.6",
     "nativescript-lottie": "^2.1.2",
+    "nativescript-plugin-firebase": "^8.0.0",
     "nativescript-social-share": "^1.5.1",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-listview": "^5.1.1",

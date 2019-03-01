@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:638348566092:android:e3c83cb7a5ded105",
+        "mobilesdk_app_id": "1:638348566092:android:43d605e47168d318",
         "android_client_info": {
-          "package_name": "io.beez.castinghub"
+          "package_name": "io.beez.casting.app"
         }
       },
       "oauth_client": [

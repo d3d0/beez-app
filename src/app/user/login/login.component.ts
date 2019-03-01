@@ -10,6 +10,9 @@ import { registerElement } from 'nativescript-angular';
 import { LottieView } from 'nativescript-lottie';
 import { RouterExtensions } from "nativescript-angular/router";
 import { localize } from "nativescript-localize";
+import { messaging, Message } from "nativescript-plugin-firebase/messaging";
+import { PushNotificationsService } from "../../shared/pushNotifications.service"
+
 import *  as utilsModule from 'tns-core-modules/utils/utils';
 
 import { alert } from "../../shared";
@@ -38,7 +41,11 @@ export class LoginComponent implements OnInit {
   private _lottieView: LottieView;
   private isAuthenticating = false;
 
-  constructor( private userService: UserService, private router: Router, private page: Page, private routerExtensions: RouterExtensions) {
+  constructor( private userService: UserService,
+    private router: Router,
+    private pushService: PushNotificationsService,
+    private page: Page,
+    private routerExtensions: RouterExtensions) {
     this.user = new User();
     this.user.mail = "";
     this.user.pass = "";
@@ -79,6 +86,13 @@ export class LoginComponent implements OnInit {
         BackendService.XCSFRtoken = result['token']
         BackendService.UID = result['user']['uid']
         this.isAuthenticating = false;
+        /// push notification send token
+        messaging.getCurrentPushToken()
+            .then(token =>  {
+              this.pushService.push_token(token).subscribe(result => console.log("resulult form pushservice", result))
+              console.log(`Current push token: ${token}`)
+            }     
+        );
         this.routerExtensions.navigate(["../home"], { clearHistory: true });
        },
       (error) => {

@@ -1,8 +1,10 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { ListViewEventData } from "nativescript-ui-listview";
-
+import { RouterExtensions } from "nativescript-angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { NotificationsService} from "../notifications.service";
 import { Notification} from "../notification.model";
+import { Router } from "@angular/router";
 
 import { View } from "ui/core/view";
 
@@ -17,22 +19,36 @@ import {isIOS} from "platform" ;
 })
 export class NotificationsListComponent implements OnInit {
 
-  notifications: Notification[];
+  notifications:any;
 
-  constructor(store: NotificationsService) {
-    this.notifications = store.load();
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private routerExtensions: RouterExtensions,
+    private router: Router,
+    private store: NotificationsService) {
+    store.load().subscribe(
+    notifications => {
+      console.log(notifications)
+      this.notifications = notifications}
+      )
   }
+
   ngOnInit() {
   	console.log('hello from Notifications component');
   }
 
-  public onPullToRefreshInitiated(args: ListViewEventData) {
-    setTimeout(function () {
-      console.log(args)
-      args.object.notifyPullToRefreshFinished()
-    }, 1000);
+  goToCasting(id){
+    if( id )this.router.navigate(["../../castings/casting", id], { relativeTo: this.activeRoute })
   }
-
+  // public onPullToRefreshInitiated(args: ListViewEventData) {
+  //   this.store.load().subscribe(
+  //   notifications => {
+  //     console.log(notifications)
+  //     this.notifications = notifications
+  //   }
+  //     )
+  // }
+  
   // DOCS > eliminiamo il background solo in IOS RadListView
   public onItemLoading(args: ListViewEventData){
         console.log("onItemLoading");
