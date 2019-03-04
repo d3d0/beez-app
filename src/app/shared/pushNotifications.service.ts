@@ -19,10 +19,11 @@ export class PushNotificationsService {
 
   push_token(token) {
     return this.http.post(
-      BackendService.baseUrl + 'beez/push_notifications',
+      BackendService.baseUrl + 'beez/fcm_token',
       JSON.stringify({
         token: token,
-        type: 'android'
+        platform: 'android',
+        language: 'en'
       }),
       {
         headers: BackendService.getCommonHeaders()
