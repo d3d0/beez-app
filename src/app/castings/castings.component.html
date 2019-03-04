@@ -68,12 +68,11 @@
 
 <StackLayout [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
   <ns-castings-list [castingType]="'Audition'" > </ns-castings-list>
-<!--   <CardView *ngIf="!castingsTabAudition.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
+  <CardView *ngIf="!castingsTabAudition.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
     <StackLayout class="card-default">
-     <Label [text]="'CASTINGS.NO_AUDITION_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
-     <Label [text]="'CASTINGS.NO_AUDITION_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
+     <Label [text]="'CASTINGS.NO_AUDITION_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label> w<Label [text]="'CASTINGS.NO_AUDITION_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
    </StackLayout>
- </CardView> -->
+ </CardView>
 </StackLayout>
 
 <StackLayout [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">

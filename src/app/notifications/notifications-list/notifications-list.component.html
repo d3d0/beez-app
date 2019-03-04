@@ -37,7 +37,7 @@ pullToRefresh="false" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)
   <ListViewLinearLayout tkListViewLayout scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default"></ListViewLinearLayout>
 
   <ng-template tkListItemTemplate let-item="item" let-index="index">
-    <CardView backgroundColor="transparent" class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" [class.list-group-first-NO]="index===0" (tap)="goToCasting(item.nid)">
+    <CardView backgroundColor="transparent" class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" [class.list-group-first-NO]="index===0" (tap)="goToCasting(item)">
       <StackLayout  class="list-group-item">
         <GridLayout columns="80, *" rows="80, auto" >
           <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
