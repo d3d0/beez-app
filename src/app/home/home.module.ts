@@ -6,6 +6,7 @@ import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { HomeComponent } from "./home.component";
 import { SelectModalViewComponent } from "../shared/select-modal-view/select-modal-view.component";
 import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
+import { CastingDetailComponent } from "../castings/casting-detail/casting-detail.component"
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
   ],
   declarations: [
     HomeComponent,
+    CastingDetailComponent,
     SelectModalViewComponent
       ],
   schemas: [NO_ERRORS_SCHEMA]
