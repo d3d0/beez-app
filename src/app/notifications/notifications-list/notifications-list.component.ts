@@ -8,6 +8,7 @@ import { View } from "ui/core/view";
 import {Color} from "color";
 import {isIOS} from "platform" ;
 import { topmost } from "tns-core-modules/ui/frame";
+import { Label } from "tns-core-modules/ui/label";
 
 @Component({
   selector: 'ns-notifications',
@@ -17,7 +18,9 @@ import { topmost } from "tns-core-modules/ui/frame";
 })
 export class NotificationsListComponent implements OnInit {
 
-  notifications:any;
+  private counter: number;
+  notifications: any;
+
   @ViewChild("delete-view") deleteView: View;
 
   constructor(
@@ -25,15 +28,24 @@ export class NotificationsListComponent implements OnInit {
     private routerExtensions: RouterExtensions,
     private router: Router,
     private notificationService: NotificationsService) {
-    notificationService.load().subscribe(
-      notifications => {
-        console.log(notifications)
-        this.notifications = notifications}
-        )
+    this.counter = 0;
+    notificationService.load().subscribe( notifications => {
+        console.log(notifications);
+        this.notifications = notifications;
+        }
+    )
   }
 
   ngOnInit() {
   	console.log('hello from Notifications component');
+  }
+
+  ngAfterViewInit(){
+    // this.input is NOW valid !!
+    // console.log(this.cardTemplate.nativeElement.value);
+    // console.log('---');
+    // console.log(this.cardTemplate.nativeElement);
+    // console.log('---');
   }
 
   goToCasting(notification){
@@ -44,9 +56,9 @@ export class NotificationsListComponent implements OnInit {
       this.router.navigate(["../casting", notification.id], { relativeTo: this.activeRoute })
   }
 
-  // public onPullToRefreshInitiated(args: ListViewEventData) {
-    //   this.store.load().subscribe(
-    //   notifications => {
+      // public onPullToRefreshInitiated(args: ListViewEventData) {
+      //   this.store.load().subscribe(
+      //   notifications => {
       //     console.log(notifications)
       //     this.notifications = notifications
       //   }
@@ -54,12 +66,26 @@ export class NotificationsListComponent implements OnInit {
       // }
 
       // DOCS > eliminiamo il background solo in IOS RadListView
-      public onItemLoading(args: ListViewEventData){
+      public onItemLoading(args: ListViewEventData, items){
+        //console.log(items[0].read);
+        this.counter++;
+        console.log(this.counter);
         console.log("onItemLoading");
         if(isIOS){
           console.log(args.ios);
           var newcolor = new Color(0,0,0,0);
           args.ios.backgroundView.backgroundColor = newcolor.ios;
+        }
+        const vista = args['object'];
+        if (vista) {
+          let stack = vista.getViewById<View>("delete-stack");
+          if (stack) {
+            if(this.counter == 1){
+              //stack.text =  this.counter.toString() ;
+              //stack.className = 'list-group-item-first';
+              stack.style.marginTop = 20;
+            }
+          }
         }
       }
 

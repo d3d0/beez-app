@@ -18,6 +18,12 @@
         margin: 0;
         background: $nero; // IMPORTANTE
       }
+      &-first {
+        margin: 20 0 0 0; // IMPORTANTE
+        border-radius: 5; // IMPORTANTE
+        width:100%;
+        background: $nero; // IMPORTANTE
+      }
       &-img { // item > immagini
         margin: 0;
         height: 80;

@@ -29,20 +29,22 @@
 <!-- https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
 <!-- (itemSwipeProgressEnded)="onSwipeCellFinished($event)"  (itemSwipeProgressChanged)="onCellSwiping($event)" -->
 
-<RadListView class="notifications" [items]="notifications" (itemLoading)="onItemLoading($event)"
+<RadListView class="notifications" [items]="notifications" (itemLoading)="onItemLoading($event, notifications)"
 (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
 selectionBehavior="None" swipeActions="true"
 pullToRefresh="false" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" >
 
   <ListViewLinearLayout tkListViewLayout scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default"></ListViewLinearLayout>
 
-  <ng-template tkListItemTemplate let-item="item" let-index="index">
-    <CardView backgroundColor="transparent" class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" [class.list-group-first-NO]="index===0" (tap)="goToCasting(item)">
+  <ng-template #cardTemplate tkListItemTemplate let-item="item" let-index="index" >
+    <CardView backgroundColor="transparent" class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" [class.list-group-first]="index===0" (tap)="goToCasting(item)">
       <StackLayout  class="list-group-item">
         <GridLayout columns="80, *" rows="80, auto" >
+          <Label text="{{ index }}"></Label>
+
           <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
           <AbsoluteLayout row="0" col="1">
-            <GridLayout left="0" top="0" width="100%" columns="41, *, 65" rows="44, 35, 1" backgroundColor=""  >
+            <GridLayout left="0" top="0" width="100%" columns="41, *, 65" rows="44, 35, 1" backgroundColor="" >
               <Label *ngIf="item.private==1;" text="" class="list-group-item-icon-lock" row="0" col="0" backgroundColor="" ></Label>
               <Label *ngIf="item.private==1;" [text]="item.title" class="list-group-item-heading-10 text-uppercase" textWrap="true" row="0" col="1" colSpan="2" backgroundColor=""></Label>
               <Label *ngIf="item.private==0;" [text]="item.title" class="list-group-item-heading-10 list-group-item-heading-m-l-15 text-uppercase" textWrap="true" row="0" col="0" colSpan="3" backgroundColor=""></Label>
@@ -65,13 +67,15 @@ pullToRefresh="false" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)
   </ng-template>
 
   <StackLayout *tkListItemSwipeTemplate class="card-group card-group-delete" >
-    <StackLayout class="list-group-item list-group-item-delete" [class.list-group-first]="index===0">
+    <StackLayout class="list-group-item list-group-item-delete" id="delete-stack">
       <GridLayout  columns="auto, *, auto" class="gridLayoutLayout">
          <StackLayout id="delete-view" col="2" class="deleteViewStackLayout" (tap)="onRightSwipeClick($event)" verticalAlignment="center" horizontalAlignment="center">
+             <!-- <Label text="counter" class="" verticalAlignment="center" horizontalAlignment="center" backgroundColor="white"></Label> -->
              <Label text="" class="list-group-item-icona-bin" verticalAlignment="center" horizontalAlignment="center"></Label>
          </StackLayout>
       </GridLayout>
     </StackLayout>
   </StackLayout>
+
 
 </RadListView>
