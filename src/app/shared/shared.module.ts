@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
-
-import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
+import { NativeScriptCommonModule } from 'nativescript-angular/common';
+import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 
 import { CastingStatusPipe } from "../castings/castings-list/casting-status.pipe";
 import { CastingDetailComponent } from '../castings/casting-detail/casting-detail.component';
 
 @NgModule({
   imports: [
-    NativeScriptModule,
+    NativeScriptCommonModule,
+    NativeScriptLocalizeModule
   ],
   declarations: [
     CastingDetailComponent,
+    CastingStatusPipe
   ],
   exports: [
+    CastingStatusPipe,
     CastingDetailComponent,
-    CastingStatusPipe
+    NativeScriptCommonModule,
+    NativeScriptLocalizeModule
   ]
 })
-export class SharedModule {
-
-}
+export class SharedModule { }

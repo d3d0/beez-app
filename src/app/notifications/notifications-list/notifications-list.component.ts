@@ -36,11 +36,13 @@ export class NotificationsListComponent implements OnInit {
   }
 
   goToCasting(notification){
- if (!notification.read) this.notificationService.setRead(notification.mid).subscribe(result=>console.log("notification.read OK ",result))
-    if( notification.message_type =! "audition_talent_was_not_selected") {
-      this.router.navigate(["../castings", notification.nid], { relativeTo: this.activeRoute }) 
+    if (!notification.read){
+      this.notificationService.setRead(notification.mid).subscribe(result=>console.log("notification.read OK ",result))
     }
-        // this.router.navigate(['./', { outlets: { castingsTab: ['casting', notification.id] } }], { relativeTo: this.activeRoute })
+    if( notification.message_type == "audition_talent_was_not_selected") {
+      return
+    }
+      this.router.navigate(["../casting", notification.nid], { relativeTo: this.activeRoute }) 
   }
 
   // public onPullToRefreshInitiated(args: ListViewEventData) {
@@ -77,4 +79,4 @@ export class NotificationsListComponent implements OnInit {
         // console.log("args.object.bindingContext",args.object.bindingContext)
         let data = this.notifications.splice(this.notifications.indexOf(args.object.bindingContext), 1)
         this.notificationService.delete(data[0].mid).subscribe(result=>console.log(result)) }
-    }
+      }

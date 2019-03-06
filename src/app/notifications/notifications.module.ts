@@ -1,10 +1,10 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
-import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
+import { SharedModule } from "../shared/shared.module";
 
 import { NotificationsListComponent } from "./notifications-list/notifications-list.component";
-import { NotificationsRoutingModule } from "./notifications-routing.module";
+import { NotificationsRoutingModule } from "./notifications.routing"
 import { NotificationsService} from "./notifications.service";
 
 
@@ -12,8 +12,8 @@ import { NotificationsService} from "./notifications.service";
   imports: [
     NotificationsRoutingModule,
     NativeScriptCommonModule,
-    NativeScriptLocalizeModule,
-    NativeScriptUIListViewModule
+    NativeScriptUIListViewModule,
+    SharedModule
   ],
   providers:[
   NotificationsService

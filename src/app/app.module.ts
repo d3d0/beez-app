@@ -1,19 +1,16 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptAnimationsModule } from "nativescript-angular/animations";
 import { ModalDialogService } from "nativescript-angular/modal-dialog";
-import { SharedModule } from './shared/shared.module';
+import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppComponent } from "./app.component";
-
 import { AppRoutingModule, authProviders } from "./app.routing";
 import { setStatusBarColors, BackendService } from "./shared";
 
-// material card view
-import { registerElement } from "nativescript-angular/element-registry";
 import { CardView } from "nativescript-cardview";
+import { registerElement } from "nativescript-angular/element-registry";
 registerElement("CardView", () => CardView);
 
 @NgModule({
@@ -30,10 +27,9 @@ registerElement("CardView", () => CardView);
         NativeScriptModule,
         NativeScriptHttpClientModule,
         NativeScriptRouterModule,
-        SharedModule
     ],
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     schemas: [
         NO_ERRORS_SCHEMA
