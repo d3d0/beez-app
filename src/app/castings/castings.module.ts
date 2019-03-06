@@ -9,7 +9,6 @@ import { CastingsComponent } from "./castings.component";
 import { CastingsListComponent } from "./castings-list/castings-list.component";
 
 import { CastingsService} from "./castings.service";
-import { CastingStatusPipe } from "./castings-list/casting-status.pipe";
 
 @NgModule({
   imports: [
@@ -24,8 +23,7 @@ import { CastingStatusPipe } from "./castings-list/casting-status.pipe";
   ],
   declarations: [
     CastingsComponent,
-    CastingsListComponent,
-    CastingStatusPipe
+    CastingsListComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

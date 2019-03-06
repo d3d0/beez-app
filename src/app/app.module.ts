@@ -4,6 +4,7 @@ import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptAnimationsModule } from "nativescript-angular/animations";
 import { ModalDialogService } from "nativescript-angular/modal-dialog";
+import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from "./app.component";
 
@@ -28,7 +29,8 @@ registerElement("CardView", () => CardView);
         AppRoutingModule,
         NativeScriptModule,
         NativeScriptHttpClientModule,
-        NativeScriptRouterModule
+        NativeScriptRouterModule,
+        SharedModule
     ],
     declarations: [
         AppComponent
