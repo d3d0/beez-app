@@ -28,9 +28,9 @@ export class NotificationsListComponent implements OnInit {
     private routerExtensions: RouterExtensions,
     private router: Router,
     private notificationService: NotificationsService) {
+
     this.counter = 0;
     notificationService.load().subscribe( notifications => {
-        console.log(notifications);
         this.notifications = notifications;
         }
     )
@@ -49,11 +49,13 @@ export class NotificationsListComponent implements OnInit {
   }
 
   goToCasting(notification){
-
-    if (!notification.read) this.notificationService.setRead(notification.mid).subscribe(result=>console.log("notification.read OK ",result))
-    if( notification.id )  { }
-        // this.router.navigate(['./', { outlets: { castingsTab: ['casting', notification.id] } }], { relativeTo: this.activeRoute })
-      this.router.navigate(["../casting", notification.id], { relativeTo: this.activeRoute })
+    if (!notification.read){
+      this.notificationService.setRead(notification.mid).subscribe(result=>console.log("notification.read OK ",result))
+    }
+    if( notification.message_type == "audition_talent_was_not_selected") {
+      return
+    }
+      this.router.navigate(["../casting", notification.nid], { relativeTo: this.activeRoute }) 
   }
 
       // public onPullToRefreshInitiated(args: ListViewEventData) {
@@ -67,12 +69,10 @@ export class NotificationsListComponent implements OnInit {
 
       // DOCS > eliminiamo il background solo in IOS RadListView
       public onItemLoading(args: ListViewEventData, items){
-        //console.log(items[0].read);
         this.counter++;
-        console.log(this.counter);
-        console.log("onItemLoading");
+        // console.log("onItemLoading");
         if(isIOS){
-          console.log(args.ios);
+          // console.log(args.ios);
           var newcolor = new Color(0,0,0,0);
           args.ios.backgroundView.backgroundColor = newcolor.ios;
         }
@@ -101,9 +101,7 @@ export class NotificationsListComponent implements OnInit {
 
       // DOCS > funzione per eliminare la notifica
       public onRightSwipeClick(args) {
-        console.log("args.object.bindingContext",args.object.bindingContext)
+        // console.log("args.object.bindingContext",args.object.bindingContext)
         let data = this.notifications.splice(this.notifications.indexOf(args.object.bindingContext), 1)
-        console.log("data.mid ",data[0].mid)
-        this.notificationService.delete(data[0].mid).subscribe(result=>console.log(result))
+        this.notificationService.delete(data[0].mid).subscribe(result=>console.log(result)) }
       }
-    }
