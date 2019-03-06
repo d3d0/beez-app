@@ -8,41 +8,6 @@
 // Import common styles
 @import 'app-common';
 
-// Place any CSS rules you want to apply only on Android here
-
-* {
-  font-family: "Sofia Pro Light", "Sofia Pro Semi Bold"; // IMPORTANTE
-}
-
-SegmentedBar{
-  // android > background
-  background-color: white; /* OK */
-
-  // android > border bottom della selezionata
-  // ios > background della selezionata + bordi
-  selected-background-color: #00D796; /* OK */
-}
-
-NSSegmentView{
-  // sfondo selezionata ios
-  // selected-background-color:white;
-
-  // sfondo totale ios + border bottom android
-  // seg-background-color:#00D796;
-
-  // border bottom ios
-  // line-color:#00D796;
-
-  // testo normale
-  title-color:$grigioscuro;
-
-  // testo selezionato
-  selected-color:#00D796;
-
-  // indicatore tab selezionata
-  indicator-color: #00D796;
-}
-
 // switch
 .list-group-item-switch {
   margin: 3 10 0 0; // RICALCOLARE ?

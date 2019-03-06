@@ -1,16 +1,41 @@
-// Place any CSS rules you want to apply on both iOS and Android here.
-// This is where the vast majority of your CSS code goes.
+// ------------------------------------------------------------------
+// TIPOGRAPHY
+// ------------------------------------------------------------------
+*{
+  font-family: "Sofia Pro Light";
+}
 
-// ------------------------------------------------------------------
-// LETTER SPACING
-// letter-spacing = tracking * font-size / 1000
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-// FONT + ICON
-// ------------------------------------------------------------------
 .fa {
   font-family: "FontAwesome"; // IMPORTANTE
+}
+
+.title{
+  font-family: "Sofia Pro Light";
+  font-size: 10;
+  font-weight: $normal;
+  letter-spacing:0.028;
+  color: $nero;
+}
+  
+.text{
+  font-family: "Sofia Pro Semi Bold";
+  font-size: 14;
+  letter-spacing:0.028;
+  color: $nero;
+}
+
+.label{
+  font-family: "Sofia Pro Semi Bold";
+  color: $lilla;
+  font-size: 10;
+  font-weight: bold;
+  letter-spacing:0.2;
+}
+
+.body {
+  font-family: "Sofia Pro Semi Bold";
+  font-weight: $normal;
+  color: $grigioscuro;
 }
 
 // ------------------------------------------------------------------
@@ -103,69 +128,6 @@
   }
 }
 
-// ------------------------------------------------------------------
-// TIPOGRAPHY
-// ------------------------------------------------------------------
-.title{
-  font-size: 10;
-  font-weight: bold;
-  letter-spacing:0.028;
-  margin: 20 15 9 15;
-  padding: 0;
-  color: $nero;
-}
-
-.label{
-  font-family: "Sofia Pro Semi Bold";
-  font-size: 12;
-  font-weight: bold;
-  letter-spacing:0.028;
-  &-14 {
-  font-weight: bold;
-  }
-}
-
-.text{
-  font-size: 10;
-  letter-spacing:0.028;
-}
-
-.body {
-  font-size: 14;
-}
-.h1 {
-  font-size: 36;
-}
-.h2 {
-  font-size: 30;
-}
-.h3 {
-  font-size: 24;
-}
-.h4 {
-  font-size: 18;
-}
-.h5 {
-  font-size: 14;
-}
-.h6 {
-  font-size: 12;
-}
-.page label.text-primary, .tab-view label.text-primary {
-  color: #33cd5f;
-}
-.page label.bg-primary, .tab-view label.bg-primary {
-  background-color: #33cd5f;
-}
-.page label.text-danger, .tab-view label.text-danger {
-  color: #ff0000;
-}
-.page label.bg-danger, .tab-view label.bg-danger {
-  background-color: #ff0000;
-}
-.page label.text-muted, .tab-view label.text-muted {
-  color: #444444;
-}
 
 // ------------------------------------------------------------------
 // GLOBAL
@@ -635,36 +597,24 @@ WrapLayout {
   &-footer {
     margin:0 20 25 20;
     height:auto;
-    &-register {
-      font-size: 12;
-    }
-    &-help {
-      font-size: 12;
-    }
   }
   .card-group {
     &-item {
       &-email{
-        font-size: 14;
-        color: $lilla;
         border-bottom-width: 1;
         border-bottom-color: #DDD;
         padding:10 0;
         margin:0 0 30 0;
         &:focus {
-          font-size: 20;
           border-bottom-color: $lilla;
         }
       }
       &-pw {
-        font-size: 14;
-        color: $lilla;
         border-bottom-width: 1;
         border-bottom-color: #DDD;
         padding:10 0;
         margin:0 0 20 0;
         &:focus {
-          font-size: 20;
           border-bottom-color: $lilla;
         }
       }
