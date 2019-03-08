@@ -28,61 +28,32 @@
     <!-- d3d0 TABS -->
     <GridLayout left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto" class="tab-buttons-d3d0" backgroundColor="transparent">
       <GridLayout class="tab-container" col="0" (tap)="onSelectedIndexChange(0)" >
-          <Label #tab1 [text]="'CASTINGS.ONGOING'|L|uppercase" class="label-16" textWrap="false" backgroundColor=""></Label>
+        <Label #tab1 [text]="'CASTINGS.ONGOING'|L|uppercase" class="label-16" textWrap="false" backgroundColor=""></Label>
       </GridLayout>
       <GridLayout class="tab-container" col="1" (tap)="onSelectedIndexChange(1)">
-          <Label #tab2 [text]="'CASTINGS.ATTEND'|L|uppercase" class="label-16" textWrap="false" backgroundColor=""></Label>
+        <Label #tab2 [text]="'CASTINGS.ATTEND'|L|uppercase" class="label-16" textWrap="false" backgroundColor=""></Label>
       </GridLayout>
       <GridLayout class="tab-container" col="2" (tap)="onSelectedIndexChange(2)">
-          <Label #tab3 [text]="'CASTINGS.CONCLUDED'|L|uppercase" class="label-16"  textWrap="false" backgroundColor=""></Label>
+        <Label #tab3 [text]="'CASTINGS.CONCLUDED'|L|uppercase" class="label-16"  textWrap="false" backgroundColor=""></Label>
       </GridLayout>
     </GridLayout>
-    <!-- MIRKO TABS -->
-    <!--
-    <GridLayout left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto" class="tab-buttons" backgroundColor="transparent">
-      <GridLayout #tabHighlight col="0" class="tabActiveIndex" ></GridLayout>
-      <GridLayout class="tabContainer" col="0" (tap)="onSelectedIndexChange(0)" >
-          <Label #tab1 [text]="'CASTINGS.ONGOING'|L|uppercase" textWrap="false" backgroundColor=""></Label>
-      </GridLayout>
-      <GridLayout class="tabContainer" col="1" (tap)="onSelectedIndexChange(1)">
-          <Label #tab2 [text]="'CASTINGS.ATTEND'|L|uppercase" textWrap="false" backgroundColor=""></Label>
-      </GridLayout>
-      <GridLayout class="tabContainer" col="2" (tap)="onSelectedIndexChange(2)">
-          <Label #tab3 [text]="'CASTINGS.CONCLUDED'|L|uppercase" textWrap="false" backgroundColor=""></Label>
-      </GridLayout>
-    </GridLayout>
-    -->
   </AbsoluteLayout>
-
 
   <StackLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
     <ns-castings-list  [castingType]="'New'" ></ns-castings-list>
+  </StackLayout>
 
-<!--     <CardView *ngIf="!castingsTabNew.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
-     <StackLayout class="card-default">
-      <Label [text]="'CASTINGS.NO_NEW_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
-      <Label [text]="'CASTINGS.NO_NEW_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
-    </StackLayout>
-  </CardView> -->
-</StackLayout>
+  <StackLayout [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
+    <ns-castings-list [castingType]="'Audition'" > </ns-castings-list>
+    <CardView *ngIf="!castingsTabAudition.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
+      <StackLayout class="card-default">
+       <Label [text]="'CASTINGS.NO_AUDITION_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label> w<Label [text]="'CASTINGS.NO_AUDITION_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
+     </StackLayout>
+   </CardView>
+ </StackLayout>
 
-<StackLayout [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
-  <ns-castings-list [castingType]="'Audition'" > </ns-castings-list>
-  <CardView *ngIf="!castingsTabAudition.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
-    <StackLayout class="card-default">
-     <Label [text]="'CASTINGS.NO_AUDITION_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label> w<Label [text]="'CASTINGS.NO_AUDITION_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
-   </StackLayout>
- </CardView>
-</StackLayout>
-
-<StackLayout [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
+ <StackLayout [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
   <ns-castings-list [castingType]="'Close'" > </ns-castings-list>
-<!--   <CardView *ngIf="!castingsTabClose.length>0 && listLoaded" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
-    <StackLayout class="card-default">
-     <Label [text]="'CASTINGS.NO_CLOSE_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
-     <Label [text]="'CASTINGS.NO_CLOSE_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
-   </StackLayout>
- </CardView> -->
 </StackLayout>
 
 </StackLayout>

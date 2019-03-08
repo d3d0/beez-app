@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, EventEmitter, Output, ElementRef, OnInit } from '@angular/core';
 import { localize } from "nativescript-localize";
 import { RouterExtensions } from "nativescript-angular/router";
 import { connectionType, getConnectionType } from "connectivity";
-import * as trace from "tns-core-modules/trace"
 import { alert } from "../../shared";
 import * as dialogs from "tns-core-modules/ui/dialogs";
+import { View } from "ui/core/view";
+import { Color } from "color";
+import { Animation } from "ui/animation";
 
 import { Profile } from "../profile.model"
 import { User } from '../user.model'
@@ -17,24 +19,69 @@ import { BackendService } from "../../shared/backend.service";
   styleUrls: ['./signup.component.css'],
   moduleId: module.id,
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit{
   user: User;
   profile: Profile;
+  selectedIndex = 0;
   private signupMinorTitle
   private signupTitle
   private isAuthenticating = true;
+  private tabs = [];
+
+  @ViewChild('tabHighlight') tabHighlight: ElementRef;
+  @ViewChild('tab1') tab1: ElementRef;
+  @ViewChild('tab2') tab2: ElementRef;
 
   constructor(private routerExtensions: RouterExtensions, private userService: UserService) {
     this.profile = new Profile();
     this.user = new User();
-    // this.user.mail="mirko@loool.it"
-    // this.user.pass="12345678"
-    // this.profile.name="mirko"
-    // this.profile.surname="sacchetti"
     this.signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
     this.signupTitle = localize("SIGNUP.REGISTRATION");
    }
 
+  ngOnInit() {
+    console.log('hello from CASTING component');
+
+    this.tabs[0] = <View>this.tab1.nativeElement;
+    this.tabs[1] = <View>this.tab2.nativeElement;
+    this.tabs[0].className = "active";
+    // this.tabs[0].style.color = new Color("#00D796");
+  }
+
+  public onSelectedIndexChange(index) {
+    let previousTab = this.selectedIndex;
+    if (index != this.selectedIndex) {
+      this.tabs[index].className = "active";
+      this.tabs[previousTab].className = "not-active";
+      this.selectedIndex = index;
+    }
+  }
+
+  toggleLabel(event, type) {
+    let text = event.object.text
+    let animations = [];
+    let textfield, label
+    // if (type == 'mail') {
+    //   label = <View>this.labelmail.nativeElement;
+    //   textfield = <View>this.textfieldmail.nativeElement;
+    // } else if (type == 'pass') {
+    //   label = <View>this.labelpass.nativeElement;
+    //   textfield = <View>this.textfieldpass.nativeElement;
+    // }
+
+    if (event.eventName == 'focus' && text == '') {
+      textfield.style.placeholderColor= new Color("transparent");
+      textfield.style.borderColor= new Color("#5A82FF");
+      animations.push({ target: label, translate: { x: 0, y: 0 }, opacity: 1, duration: 150 });
+      new Animation(animations, true).play();
+    }
+    if (event.eventName == 'blur' && text == '') {
+      textfield.style.placeholderColor= new Color("#d3d3d3");
+      textfield.style.borderColor= new Color("#d3d3d3");
+      animations.push({ target: label, translate: { x: 0, y: 20 }, opacity: 0, duration: 150 });
+      new Animation(animations, true).play();
+    }
+  };
    signup(){
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));

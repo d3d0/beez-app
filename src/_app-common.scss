@@ -9,19 +9,31 @@
   font-family: "FontAwesome"; // IMPORTANTE
 }
 
+.header{
+  font-family: "Sofia Pro Semi Bold";
+  font-size: 18;
+  font-weight: bold;
+  letter-spacing:0.028;
+  color:$nero;
+  margin: 0 0 10 0;
+}
+
 .title{
   font-family: "Sofia Pro Light";
-  font-size: 10;
+  font-size: 14;
   font-weight: $normal;
   letter-spacing:0.028;
   color: $nero;
+  &-small{
+    font-size: 12;
+  }
 }
   
 .text{
   font-family: "Sofia Pro Semi Bold";
   font-size: 14;
   letter-spacing:0.028;
-  color: $nero;
+  color: $grigioscuro;
 }
 
 .label{
@@ -417,26 +429,17 @@ WrapLayout {
         margin: 0 0 10 0;
       }
       &-label-signup {
-        font-size: 14;
-        color: #8E8E8E;
-        font-weight: bold;
         margin: 0 0 10 0;
       }
       &-info-signup {
-        font-size: 14;
-        color: #8E8E8E;
         margin: 0 0 10 0;
-        letter-spacing:0.05;
         line-height:7;
       }
       &-text-signup {
-        font-size: 14;
-        color: $lilla;
         border-bottom-width: 1;
         border-bottom-color: #DDD;
         padding:10 0;
         margin:0 0 20 0;
-        letter-spacing:0.05;
         line-height:7;
       }
 

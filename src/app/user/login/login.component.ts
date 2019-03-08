@@ -119,29 +119,32 @@ export class LoginComponent implements OnInit {
   openLink(link){
     utilsModule.openUrl(link)
   }
-
-  toggleLabel(event, type) {
-    let text = event.object.text
-    let animations = [];
-    let textfield, label
-    if (type == 'mail') {
-      label = <View>this.labelmail.nativeElement;
-      textfield = <View>this.textfieldmail.nativeElement;
-    } else if (type == 'pass') {
-      label = <View>this.labelpass.nativeElement;
-      textfield = <View>this.textfieldpass.nativeElement;
-    }
-    if (event.eventName == 'focus' && text == '') {
-      textfield.style.placeholderColor= new Color("transparent");
-      textfield.style.borderColor= new Color("#5A82FF");
-      animations.push({ target: label, translate: { x: 0, y: 0 }, opacity: 1, duration: 150 });
-      new Animation(animations, true).play();
-    }
-    if (event.eventName == 'blur' && text == '') {
-      textfield.style.placeholderColor= new Color("#d3d3d3");
-      textfield.style.borderColor= new Color("#d3d3d3");
-      animations.push({ target: label, translate: { x: 0, y: 20 }, opacity: 0, duration: 150 });
-      new Animation(animations, true).play();
-    }
-  };
+  textfieldEvent($event, field){
+    this.user[field]=$event
+    console.log(this.user)
+  }
+  // toggleLabel(event, type) {
+  //   let text = event.object.text
+  //   let animations = [];
+  //   let textfield, label
+  //   if (type == 'mail') {
+  //     label = <View>this.labelmail.nativeElement;
+  //     textfield = <View>this.textfieldmail.nativeElement;
+  //   } else if (type == 'pass') {
+  //     label = <View>this.labelpass.nativeElement;
+  //     textfield = <View>this.textfieldpass.nativeElement;
+  //   }
+  //   if (event.eventName == 'focus' && text == '') {
+  //     textfield.style.placeholderColor= new Color("transparent");
+  //     textfield.style.borderColor= new Color("#5A82FF");
+  //     animations.push({ target: label, translate: { x: 0, y: 0 }, opacity: 1, duration: 150 });
+  //     new Animation(animations, true).play();
+  //   }
+  //   if (event.eventName == 'blur' && text == '') {
+  //     textfield.style.placeholderColor= new Color("#d3d3d3");
+  //     textfield.style.borderColor= new Color("#d3d3d3");
+  //     animations.push({ target: label, translate: { x: 0, y: 20 }, opacity: 0, duration: 150 });
+  //     new Animation(animations, true).play();
+  //   }
+  // };
 }

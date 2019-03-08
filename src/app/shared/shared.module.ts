@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 import { CastingStatusPipe } from "../castings/castings-list/casting-status.pipe";
 import { CastingDetailComponent } from '../castings/casting-detail/casting-detail.component';
@@ -8,7 +9,8 @@ import { CastingDetailComponent } from '../castings/casting-detail/casting-detai
 @NgModule({
   imports: [
     NativeScriptCommonModule,
-    NativeScriptLocalizeModule
+    NativeScriptLocalizeModule,
+    NativeScriptFormsModule
   ],
   declarations: [
     CastingDetailComponent,
@@ -18,6 +20,7 @@ import { CastingDetailComponent } from '../castings/casting-detail/casting-detai
     CastingStatusPipe,
     CastingDetailComponent,
     NativeScriptCommonModule,
+    NativeScriptFormsModule,
     NativeScriptLocalizeModule
   ]
 })
