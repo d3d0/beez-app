@@ -5,9 +5,9 @@ import { Color } from "tns-core-modules/color";
     selector: "FloatLabel",
     moduleId: module.id,
     template: `
-    <GridLayout rows="30, auto" marginBottom="5">
-    <Label #label row="1" [text]="placeholder" opacity="0" class="label" verticalAlignment="bottom" marginBottom="10"></Label>
-    <TextField #textField row="1" paddingBottom="10" class="title"
+    <GridLayout rows="10, auto" marginBottom="0">
+    <Label #label row="1" [text]="placeholder" opacity="0" class="label" verticalAlignment="bottom" marginBottom="16"></Label>
+    <TextField #textField row="1" paddingBottom="12" class="title"
     [secure]="secure"
     (textChange)="textChange()"
     (onReturn)="textChange()"
@@ -63,7 +63,7 @@ export class FloatLabel {
                 opacity: 0
             }).then(() => {
                 // reset border bottom color.
-                textField.style.placeholderColor= new Color("#DDDDDD");
+                textField.style.placeholderColor= new Color("#8E8E8E");
                 textField.borderBottomColor = new Color('#DDDDDD'); 
             }, () => { });
         }

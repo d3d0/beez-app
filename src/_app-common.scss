@@ -22,7 +22,7 @@
   font-family: "Sofia Pro Light";
   font-size: 14;
   font-weight: $normal;
-  letter-spacing:0.028;
+  letter-spacing:0.02;
   color: $nero;
   &-small{
     font-size: 12;
@@ -41,7 +41,7 @@
   color: $lilla;
   font-size: 10;
   font-weight: bold;
-  letter-spacing:0.2;
+  letter-spacing:0.15;
 }
 
 .body {
@@ -219,7 +219,7 @@ WrapLayout {
   background: white; // IMPORTANTE > definisce lo sfondo delle CardView in IOS e Android
   border-radius: 5;  // IMPORTANTE > definisce il radius delle CardView in IOS
   width:100%;
-  color: #000;
+  padding: 20 16 20 16;
   &-heading { // item > titoli
     &-18 {
       font-size: 18;

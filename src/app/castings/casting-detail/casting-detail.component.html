@@ -109,7 +109,7 @@
 								[hint]="'USER.AGENCY'|L|titlecase"
 								(tap)="selectAgency()" ></TextField>
 
-								<StackLayout orientation="horizontal" (tap)="toggleCheck()">
+								<StackLayout orientation="horizontal">
 									<CheckBox fillColor="#DDD" #CBAgency checked="false" (checkedChange)="changeAgency()" verticalAlignment="center"></CheckBox>
 									<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"  verticalAlignment="center"></Label>
 								</StackLayout>
