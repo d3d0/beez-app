@@ -115,6 +115,8 @@ animatePreviousTab(arg){
       let polaroid = <View>this.polaroid.nativeElement;
       // this.flex.getMeasuredHeight()
       // console.log(scrollView.verticalOffset);
+
+      /*
       if (scrollView.verticalOffset < 250) {
           const offset = scrollView.verticalOffset / 2;
           if (scrollView.ios) {
@@ -123,24 +125,25 @@ animatePreviousTab(arg){
           } else {
               // Android, animations are jerky so instead just adjust the position without animation.
               polaroid.translateY = Math.floor(offset);
-              // polaroid.marginTop = (scrollView.verticalOffset*8)*-1;
           }
       }
+      */
   }
 
-     // if (this.tabButtonsEl  )
-                /* Check if the first item is already reached to top.
-                if (listView.getFirstVisiblePosition() == 0) {
-                    View firstChild = listView.getChildAt(0);
-                    int topY = 0;
-                    if (firstChild != null) {
-                        topY = firstChild.getTop();
-                    }
-                    int heroTopY = stickyViewSpacer.getTop();
-                    stickyView.setY(Math.max(0, heroTopY + topY));
-                    heroImageView.setY(topY * 0.5f);
-                }
-                */
+   // if (this.tabButtonsEl  )
+              /* Check if the first item is already reached to top.
+              if (listView.getFirstVisiblePosition() == 0) {
+                  View firstChild = listView.getChildAt(0);
+                  int topY = 0;
+                  if (firstChild != null) {
+                      topY = firstChild.getTop();
+                  }
+                  int heroTopY = stickyViewSpacer.getTop();
+                  stickyView.setY(Math.max(0, heroTopY + topY));
+                  heroImageView.setY(topY * 0.5f);
+              }
+              */
+
     // this.tabButtonsEl.style.marginTop = args.scrollY;
     // this.tabButtonsEl.style.marginBottom = Math.max(0,(args.scrollY)*-1 + 450);
 

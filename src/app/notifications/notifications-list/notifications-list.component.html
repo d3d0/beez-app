@@ -37,7 +37,9 @@ pullToRefresh="false" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)
   <ListViewLinearLayout tkListViewLayout scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default"></ListViewLinearLayout>
 
   <ng-template #cardTemplate tkListItemTemplate let-item="item" let-index="index" >
-    <CardView backgroundColor="transparent" class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" [class.list-group-first]="index===0" (tap)="goToCasting(item)">
+
+    <!-- <CardView class="card-group" elevation="15" radius="10" ios:shadowRadius="4" shadowOpacity="0.1" shadowColor="#000" shadowOffsetHeight="6" [class.list-group-first]="index===0" (tap)="goToCasting(item)"> -->
+    <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="15" [class.list-group-first]="index===0" (tap)="goToCasting(item)">
       <StackLayout  class="list-group-item">
         <GridLayout columns="80, *" rows="80, auto" >
           <Label text="{{ index }}"></Label>
@@ -64,6 +66,7 @@ pullToRefresh="false" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)
         </GridLayout>
       </StackLayout>
     </CardView>
+
   </ng-template>
 
   <StackLayout *tkListItemSwipeTemplate class="card-group card-group-delete" >
