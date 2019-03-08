@@ -41,16 +41,18 @@
 							<Label [text]="'CASTINGS.CASTING'|L" class="text-uppercase list-group-item-heading-14" textWrap="true" row="5" col="1" ></Label>
 							
 							<Label text="" class="list-group-item-v-line" row="6" col="0"></Label>
-							<Label textWrap="false" class="text-left text-uppercase list-group-item-text" row="6" col="1">
-								<FormattedString *ngFor="let date of casting.casting_date" >
-									<Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
-									<Span text=" • " ></Span>
-									<Span [text]="date[0] * 1000 | date:'HH:mm'" ></Span>
-									<Span text=" - " ></Span>
-									<Span [text]="date[1]  * 1000 | date:'HH:mm'" ></Span>
-								</FormattedString>
-							</Label>
-							
+							<Stacklayout  row="6" col="1">
+								<Label class="text-left text-uppercase list-group-item-text" *ngFor="let date of casting.casting_date">
+									<FormattedString>
+										<Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
+										<Span text=" • " ></Span>
+										<Span [text]="date[0] * 1000 | date:'HH:mm'" ></Span>
+										<Span text=" - " ></Span>
+										<Span [text]="date[1]  * 1000 | date:'HH:mm'" ></Span>
+									</FormattedString>
+								</Label>
+							</Stacklayout>
+
 							<Label text="" class="list-group-item-v-line" row="7" col="0"></Label>
 							<Label class="list-group-item-text" [text]="casting.location" textWrap="true" row="7" col="1"></Label>
 							

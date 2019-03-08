@@ -7,7 +7,7 @@
 
         <Label *ngIf="item.audition_action === '' && castingType === 'audition'" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="list-group-item-text" textWrap="true"></Label>
 
-        <GridLayout columns="62, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
+        <GridLayout columns="150, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
 
           <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
 
@@ -17,14 +17,14 @@
           <Label [text]="item.title" class="label-18 list-group-item-heading-18" textWrap="true" row="1" colSpan="5"></Label>
           <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" colSpan="5"></Label>
           <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
-          <Label text="CASTING" class="label text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
-          <Label textWrap="true" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3">
-            <FormattedString *ngFor="let date of item.casting_date" >
-              <Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
+          <Label [text]="'CASTINGS.START_DATE'|L" class="label text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
+          <Label textWrap="true" class="text-left list-group-item-info" row="4" col="1" colSpan="3">
+            <FormattedString>
+              <Span [text]="item.casting_date[0][0] * 1000 | date:'dd.MM.yy'" ></Span>
               <Span text=" • " ></Span>
-              <Span [text]="date[0] * 1000 | date:'HH:mm'" ></Span>
-              <Span text=" - " ></Span>/
-              <Span [text]="date[1]  * 1000 | date:'HH:mm'" ></Span>
+              <Span [text]="item.casting_date[0][0] * 1000 | date:'HH:mm'" ></Span>
+              <Span text=" - " ></Span>
+              <Span [text]="item.casting_date[0][1]  * 1000 | date:'HH:mm'" ></Span>
             </FormattedString>
           </Label>
           <Label text="" class="list-group-item-icona-freccia" row="4" col="4" ></Label>
