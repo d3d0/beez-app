@@ -11,7 +11,6 @@ const homeRoutes: Routes = [
         { path: "notifications", component: NSEmptyOutletComponent, loadChildren: "~/app/notifications/notifications.module#NotificationsModule", outlet: "notificationsTab"},
         { path: "profile", component: NSEmptyOutletComponent, loadChildren: "~/app/profile/profile.module#ProfileModule", outlet: "profileTab"},
 		{ path: "modal-view", component: SelectModalViewComponent }
-
     ]}
 ];
 

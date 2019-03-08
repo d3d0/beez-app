@@ -107,7 +107,7 @@
 								[editable]="false"
 								[text]="selectedAgency.name"
 								[hint]="'USER.AGENCY'|L|titlecase"
-								(tap)="selectAgency()" ></TextField>
+								(tap)="createModelView()" ></TextField>
 
 								<StackLayout orientation="horizontal">
 									<CheckBox fillColor="#DDD" #CBAgency checked="false" (checkedChange)="changeAgency()" verticalAlignment="center"></CheckBox>
