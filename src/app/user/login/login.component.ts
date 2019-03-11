@@ -47,8 +47,8 @@ export class LoginComponent implements OnInit {
     private page: Page,
     private routerExtensions: RouterExtensions) {
     this.user = new User();
-    this.user.mail = "mirko@loool.com";
-    this.user.pass = "123456";
+    this.user.mail = "";
+    this.user.pass = "";
   }
 
   ngOnInit() {

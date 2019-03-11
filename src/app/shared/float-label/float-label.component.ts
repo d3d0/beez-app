@@ -9,16 +9,12 @@ import { Color } from "tns-core-modules/color";
     <Label #label row="1" [text]="placeholder" opacity="0" class="label" verticalAlignment="bottom" marginBottom="16"></Label>
     <TextField #textField row="1" paddingBottom="12" class="title"
     [secure]="secure"
-    (textChange)="textChange()"
-    (onReturn)="textChange()"
     (focus)="onFocus()"
     [(ngModel)]="value"
     [hint]="placeholder|titlecase"
     (blur)="onBlur()"
     keyboardType="email"
     returnKeyType="next"
-    borderBottomWidth="1"
-    borderBottomColor="#cec8c8"
     autocorrect="false"
     autocapitalizationType="none"
     ></TextField>
@@ -54,6 +50,7 @@ export class FloatLabel {
     }
 
     onBlur() {
+        this.textfieldEvent.emit(this.value)
         const label = this.label.nativeElement;
         const textField = this.textField.nativeElement;
         // if there is text in our input then don't move the label back to its initial position.
@@ -68,9 +65,4 @@ export class FloatLabel {
             }, () => { });
         }
     }
-
-textChange(){
-    console.log(this.value)
-    this.textfieldEvent.emit(this.value)
-}
 }
