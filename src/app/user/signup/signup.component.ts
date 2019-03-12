@@ -3,7 +3,6 @@ import { localize } from "nativescript-localize";
 import { RouterExtensions } from "nativescript-angular/router";
 import { connectionType, getConnectionType } from "connectivity";
 import { alert } from "../../shared";
-import * as dialogs from "tns-core-modules/ui/dialogs";
 import { View } from "ui/core/view";
 import { Color } from "color";
 import { Animation } from "ui/animation";
@@ -32,7 +31,10 @@ export class SignupComponent implements OnInit{
   @ViewChild('tab1') tab1: ElementRef;
   @ViewChild('tab2') tab2: ElementRef;
 
-  constructor(private routerExtensions: RouterExtensions, private userService: UserService) {
+  constructor(
+    private routerExtensions: RouterExtensions,
+    private userService: UserService
+    ) {
     this.profile = new Profile();
     this.user = new User();
     this.signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
@@ -114,7 +116,12 @@ export class SignupComponent implements OnInit{
     });
   }
 
-   
+  textfieldEvent($event, field){
+    this.user[field]=$event
+    console.log(this.user)
+  }
+
+
     goBack() {
   	    this.routerExtensions.back();
   	}

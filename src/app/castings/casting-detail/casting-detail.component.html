@@ -9,7 +9,7 @@
 		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
 			<StackLayout class="list-group-item p-t-0 p-b-20">
 				<StackLayout *ngIf="casting.status != 'Shooting'"  class="p-t-0 p-b-20">
-					
+
 					<!-- Label of status on top only from auditionTab -->
 					<StackLayout *ngIf="casting.status === 'Audition'" horizontalAlignment ="center" verticalAlignment="center" class="banner-top-card" [ngClass]="casting.audition_action">
 						<Label [text]="labelBannerCard(casting.audition_action)|L"></Label>
@@ -46,9 +46,9 @@
 							<FormattedString *ngFor="let date of casting.casting_date" >
 								<Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
 								<Span text=" • " ></Span>
-								<Span [text]="date[0] * 1000 | date:'HH:mm'" ></Span>
+								<Span [text]="date[0] * 1000 | date:'HH:mm z'" ></Span>
 								<Span text=" - " ></Span>
-								<Span [text]="date[1]  * 1000 | date:'HH:mm'" ></Span>
+								<Span [text]="date[1]  * 1000 | date:'HH:mm z'" ></Span>
 							</FormattedString>
 						</Label>
 
