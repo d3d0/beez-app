@@ -11,5 +11,4 @@ import { Profile} from "../../user/profile.model";
 
 export class DetailsComponent {
   @Input() profile
-  
 }

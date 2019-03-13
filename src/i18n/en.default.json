@@ -36,7 +36,7 @@
     "ONGOING": "NEW",
     "CONCLUDED": "SHOOTING",
     "ATTEND": "AUDITION",
-    "INFORMATION": "information",
+    "INFORMATION": "Information",
     "DATE_LOCATION": "Date and location",
     "FEATURES": "Features",
     "SHOOTING": "Shooting",
@@ -101,7 +101,12 @@
     "GENDER" : "Gender",
     "WEBSITE" : "Website",
     "PHONE" : "Phone",
-    "AGENCY": "Agency"
+    "AGENCY": "Agency",
+    "CITY": "City",
+    "ADDRESS": "Address",
+    "POSTAL_CODE": "Postal Code",
+    "COUNTRY": "Country",
+    "PROVINCE": "Province"
   },
   "MESSAGES": {
     "NO_CONNECTION" : "Sorry, BEEZ needs an internet connection.",
