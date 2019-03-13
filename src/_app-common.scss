@@ -111,9 +111,7 @@
 .fa {
   font-family: "FontAwesome";
 }
-* {
-  font-family: "Sofia Pro Light";
-}
+
 .header{
   font-family: "Sofia Pro Semi Bold";
   font-size: 18;
@@ -166,7 +164,6 @@
   color: $nero;
   background-color: $bianco;
   .action-bar-title {
-    font-family: "Sofia Pro Semi Bold";
     font-weight: bold;
     font-size: 24;
     letter-spacing: 0.01;
@@ -180,15 +177,12 @@
     vertical-align: center;
   }
   .action-label {
-    font-family: "Sofia Pro Semi Bold";
     font-weight: bold;
-    font-size: 24;
+    font-size: 20;
     letter-spacing: 0.01;
     color: $nero;
     horizontal-align: left;
     vertical-align: center;
-  }
-  .action-back {
   }
 }
 // ---------------------------------
@@ -239,21 +233,18 @@ WrapLayout {
   color: #000;
   &-heading { // item > titoli
     &-18 {
-      font-family: "Sofia Pro Semi Bold";
       font-size: 18;
       font-weight: bold;
       letter-spacing:0.028;
       margin: 0 15 10 15;
     }
     &-14 {
-      font-family: "Sofia Pro Semi Bold";
       font-size: 14;
       font-weight: bold;
       letter-spacing:0.028;
       margin: 3 20 7 0;
     }
     &-10 {
-      font-family: "Sofia Pro Semi Bold";
       font-size: 10;
       font-weight: bold;
       letter-spacing: 0.15;
@@ -261,7 +252,6 @@ WrapLayout {
     }
   }
   &-text { // item > testi
-    font-family: "Sofia Pro Light";
     font-size: 14;
     font-weight: normal;
     letter-spacing:0.028;
@@ -269,7 +259,6 @@ WrapLayout {
     margin: 0 15 15 15;
   }
   &-info {
-    font-family: "Sofia Pro Light";
     font-size: 12;
     font-weight: normal;
     letter-spacing:0.028;
@@ -281,7 +270,6 @@ WrapLayout {
     border-radius: 4 4 0 0;
   }
   &-pulsante { // item > pulsanti
-    font-family: "Sofia Pro Semi Bold";
     font-size: 10;
     font-weight: bold;
     letter-spacing: 0.15;
@@ -309,8 +297,8 @@ WrapLayout {
     }
   }
   &-date { // item > date
-    font-family: "Sofia Pro Light";
     font-size: 10;
+    font-weight: normal;
     margin: 3 15 15 15;
     text-align: right;
   }
@@ -327,7 +315,6 @@ WrapLayout {
   }
   &-icona{ // item > icone generiche
     &-casting {
-      font-family: "Sofia Pro Semi Bold";
       font-size: 10;
       font-weight: bold;
       letter-spacing:0.028;
@@ -457,33 +444,35 @@ WrapLayout {
 
     .list-group-item {
 
-      &-heading-18 {
-        margin: 0 0 10 0;
+      &-heading-18 { // titolo principale > OK
+        margin: 0 0 14 0;
       }
-      &-label-signup {
+      &-info-signup { // testo sotto al titolo > OK
         font-size: 14;
-        color: #8E8E8E;
+        font-weight: normal;
+        color: $grigioscuro;
+        letter-spacing:0.05;
+        line-height:7;
+        margin: 0 0 22 0;
+      }
+      &-label-signup { // etichetta del textfield > OK
+        font-size: 10;
         font-weight: bold;
-        margin: 0 0 10 0;
-      }
-      &-info-signup {
-        font-size: 14;
-        color: #8E8E8E;
-        margin: 0 0 10 0;
-        letter-spacing:0.05;
-        line-height:7;
-      }
-      &-text-signup {
-        font-size: 14;
         color: $lilla;
-        border-bottom-width: 1;
-        border-bottom-color: #DDD;
-        padding:10 0;
-        margin:0 0 20 0;
         letter-spacing:0.05;
-        line-height:7;
+        margin: 0 0 14 0;
+        text-transform: uppercase;
       }
-
+      &-text-signup { // textfield per inserimento dati > OK
+        font-size: 14;
+        font-weight: normal;
+        color: $nero;
+        letter-spacing:0.05;
+        margin:0 0 20 0;
+        padding:0 0 14 0;
+        border-bottom-width: 1;
+        border-bottom-color: $grigiochiaro;
+      }
     }
   }
 }
@@ -653,37 +642,41 @@ WrapLayout {
   &-footer {
     margin:0 20 25 20;
     height:auto;
-    &-register {
+    &-register { // OK
       font-size: 12;
+      font-weight: normal;
+      color: $nero;
     }
-    &-help {
+    &-help { // OK
       font-size: 12;
+      font-weight: normal;
+      color: $nero;
     }
   }
   .card-group {
     &-item {
       &-email{
-        font-size: 14;
-        color: $lilla;
+        // font-size: 14;
+        // color: $lilla;
         border-bottom-width: 1;
         border-bottom-color: #DDD;
         padding:10 0;
         margin:0 0 30 0;
         &:focus {
-          font-size: 20;
-          border-bottom-color: $lilla;
+          // font-size: 20;
+          // border-bottom-color: $lilla;
         }
       }
       &-pw {
-        font-size: 14;
-        color: $lilla;
+        // font-size: 14;
+        // color: $lilla;
         border-bottom-width: 1;
         border-bottom-color: #DDD;
         padding:10 0;
         margin:0 0 20 0;
         &:focus {
-          font-size: 20;
-          border-bottom-color: $lilla;
+          // font-size: 20;
+          // border-bottom-color: $lilla;
         }
       }
     }
@@ -721,6 +714,7 @@ WrapLayout {
   border-color: transparent;
 }
 
+
 // ---------------------------------
 // NSSegmentView
 // ---------------------------------
@@ -729,6 +723,7 @@ NSSegmentView{
   height:55; /* OK */
   background-color: white; /* OK */
 }
+
 
 // ---------------------------------
 // SegmentedBar

@@ -1,16 +1,16 @@
 <ActionBar class="action-bar">
 	<!-- android icon > android.systemIcon="ic_menu_back" -->
 	<NavigationButton text="" (tap)="goBack()" icon="res://arrow_left" class="action-back" ></NavigationButton>
-	<!-- <Label class="action-bar-title text-left pull-left" [text]="casting.title"></Label> -->
+	<!-- <Label class="action-label text-left pull-left" [text]="casting.title"></Label> -->
 
 	<!-- TITOLO > ANDROID -->
   <StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="left" android:horizontalAlignment="left">
-		<Label class="action-bar-title text-left pull-left" [text]="casting.title"></Label>
+		<Label class="action-label text-left pull-left" [text]="casting.title"></Label>
   </StackLayout>
 
 	<!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
   <ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left" backgroundColor="red">
-    <Label class="action-bar-title text-left pull-left" [text]="casting.title"></Label>
+    <Label class="action-label text-left pull-left" [text]="casting.title"></Label>
   </ActionItem>
 
 </ActionBar>

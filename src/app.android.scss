@@ -43,7 +43,9 @@ NSSegmentView{
   indicator-color: #00D796;
 }
 
-// switch
+// ------------------------------------------------------------------
+// SWITCH
+// ------------------------------------------------------------------
 .list-group-item-switch {
   margin: 3 10 0 0; // RICALCOLARE ?
 }
@@ -56,7 +58,9 @@ NSSegmentView{
   background-color: #00D796;
 }
 
-// fonts
+// ------------------------------------------------------------------
+// TAB BUTTONS
+// ------------------------------------------------------------------
 .tab-buttons, .tab-buttons-d3d0 {
   label {
     font-size:10;
@@ -64,19 +68,67 @@ NSSegmentView{
   }
 }
 
-// generico
+// ------------------------------------------------------------------
+// ACTIONBAR
+// ------------------------------------------------------------------
+.action-bar {
+  .action-bar-title {
+    font-family: "Sofia Pro Semi Bold";
+    font-weight: bold;
+  }
+  .action-label {
+    font-family: "Sofia Pro Semi Bold";
+    font-weight: bold;
+  }
+}
+
+// ------------------------------------------------------------------
+// GENERICO
+// ------------------------------------------------------------------
 .list-group-item {
+  &-heading { // item > titoli
+    &-18 {
+      font-family: "Sofia Pro Semi Bold";
+      font-weight: bold;
+    }
+    &-14 {
+      font-family: "Sofia Pro Semi Bold";
+      font-weight: bold;
+    }
+    &-10 {
+      font-family: "Sofia Pro Semi Bold";
+      font-weight: bold;
+    }
+  }
+  &-text { // item > testi
+    font-family: "Sofia Pro Light";
+    font-weight: normal;
+  }
   &-info {
+    font-family: "Sofia Pro Light";
+    font-weight: normal;
     margin: 0 0 15 5;
+  }
+  &-pulsante { // item > pulsanti
+    font-family: "Sofia Pro Semi Bold";
+    font-weight: bold;
+  }
+  &-date { // item > date
+    font-family: "Sofia Pro Light";
+    font-weight: normal;
   }
   &-icona{ // item > icone generiche
     &-casting {
+      font-family: "Sofia Pro Semi Bold";
+      font-weight: bold;
       margin: 1 0 15 15;
     }
   }
 }
 
-// profile
+// ------------------------------------------------------------------
+// PROFILE
+// ------------------------------------------------------------------
 .profile-info {
   .list-group-item {
 		.row {
