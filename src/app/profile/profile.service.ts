@@ -22,11 +22,9 @@ export class ProfileService {
     })
   }
 
-  edit(mid) {
-      return this.http.post( BackendService.baseUrl + "beez/messages-notification/hide",
-        {
-          "mid":mid
-        } ,
+  edit(profile) {
+      return this.http.put( BackendService.baseUrl + 'beez/loool_talent_profile/'+ BackendService.UID,
+       profile,
       {
         headers: BackendService.getCommonHeaders()
       });

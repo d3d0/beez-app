@@ -1,75 +1,33 @@
 <StackLayout>
 	<CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
-	  <StackLayout class="list-group-item p-t-20 "><!-- IMPORTANTE -->
+		<StackLayout class="list-group-item p-t-20 "><!-- IMPORTANTE -->
 			<GridLayout columns="50, *" rows="auto,auto" backgroundColor="">
 				<Label text="" class="list-group-item-icona-photo list-group-item-icona-photo-first" row="0" col="0"></Label>
 				<Label text="FOTO" class="list-group-item-heading-14 list-group-item-heading-14-first" textWrap="true" row="0" col="1" ></Label>
 				<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
-				<WrapLayout orientation="horizontal" row="1" col="1" backgroundColor="">
-
-					<!-- <CardView class="list-group-item-box" radius="20">
-						<StackLayout class="list-group-item">
-							<Image src="~/assets/images/c_h.jpg"></Image>
-						</StackLayout>
-					</CardView> -->
-					<CardView class="list-group-item-box" elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
-						<StackLayout class="list-group-item p-0 m-0">
-							<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
-								<Image left="0" top="0" stretch="aspectFill" width="100%" src="~/assets/images/c_h.jpg" ></Image>
-								<StackLayout left="0" top="0" height="32" width="100%">
-									<Label class="list-group-item-icona-no-nero" horizontalAlignment="right"></Label>
+					<ListView [items]="imageAssets"  row="1" col="1">
+						<ng-template let-image="item" let-i="index">
+							<CardView class="list-group-item-box" elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
+								<StackLayout class="list-group-item p-0 m-0">
+									<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
+										<Image
+										[width]="thumbSize" 
+										[height]="thumbSize" 
+										[src]="image" stretch="aspectFill"></Image>
+										<StackLayout left="0" top="0" height="32" width="100%">
+											<Label class="list-group-item-icona-no-nero" [text]="index" horizontalAlignment="right"></Label>
+										</StackLayout>
+									</AbsoluteLayout>
 								</StackLayout>
-						  </AbsoluteLayout>
-						</StackLayout>
-					</CardView>
-					<CardView class="list-group-item-box" elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8">
-						<StackLayout class="list-group-item">
-							<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
-								<Image left="0" top="0" stretch="aspectFill" width="100%" src="~/assets/images/c_h.jpg" ></Image>
-								<StackLayout left="0" top="0" height="32" width="100%">
-										<Label class="list-group-item-icona-no-nero" horizontalAlignment="right"></Label>
-								</StackLayout>
-						  </AbsoluteLayout>
-						</StackLayout>
-					</CardView>
-					<CardView class="list-group-item-box" elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8">
-						<StackLayout class="list-group-item">
-							<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
-								<Image left="0" top="0" stretch="aspectFill" width="100%" src="~/assets/images/c_h.jpg" ></Image>
-								<StackLayout left="0" top="0" height="32" width="100%">
-										<Label class="list-group-item-icona-no-nero" horizontalAlignment="right"></Label>
-								</StackLayout>
-						  </AbsoluteLayout>
-						</StackLayout>
-					</CardView>
-					<CardView class="list-group-item-box" elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8">
-						<StackLayout class="list-group-item">
-							<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
-								<Image left="0" top="0" stretch="aspectFill" width="100%" src="~/assets/images/c_h.jpg" ></Image>
-								<StackLayout left="0" top="0" height="32" width="100%">
-										<Label class="list-group-item-icona-no-nero" horizontalAlignment="right"></Label>
-								</StackLayout>
-						  </AbsoluteLayout>
-						</StackLayout>
-					</CardView>
-					<CardView class="list-group-item-box" elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8">
-						<StackLayout class="list-group-item">
-							<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
-								<Image left="0" top="0" stretch="aspectFill" width="100%" src="~/assets/images/c_h.jpg" ></Image>
-								<StackLayout left="0" top="0" height="32" width="100%">
-										<Label class="list-group-item-icona-no-nero" horizontalAlignment="right"></Label>
-								</StackLayout>
-						  </AbsoluteLayout>
-						</StackLayout>
-					</CardView>
-
-				</WrapLayout>
+							</CardView>
+						</ng-template>
+					</ListView>
 			</GridLayout>
 
 			<StackLayout class="p-t-0 p-b-20" backgroundColor="">
 				<GridLayout columns="50, *" rows="auto" backgroundColor="">
 					<Label text="" class="list-group-item-icona-add" row="0" col="0" verticalAlignment="top"></Label>
-					<Button text="ADD NEW PHOTOS" class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
+					<Button text="ADD NEW PHOTOS"  (tap)="onSelectMultipleTap()"  class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
 				</GridLayout>
 			</StackLayout>
 		</StackLayout><!-- IMPORTANTE -->

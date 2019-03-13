@@ -181,6 +181,11 @@ animatePreviousTab(arg){
     // this.isLoading = true;
     console.log('hideActivityIndicator')
   }
+  edit(profile){
+    profile.name="mirko modificato"
+    profile.surname="mirko modificato"
+    this.profileService.edit(profile).subscribe(result=>console.log(result))
+  }
 
   showActivityIndicator() {
     // this.isLoading = true;
