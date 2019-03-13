@@ -32,11 +32,11 @@
     <StackLayout id="container" #container>
 
       <GridLayout #polaroid>
-        <Image src="~/assets/images/c_h.jpg"></Image>
+        <Image [src]="profile.polaroid"></Image>
         <Image src="~/assets/images/rect.png"></Image>
         <StackLayout class="text-wrapper">
-          <Label class="name" text="Christina Hendricks"></Label>
-          <Label class="role" [text]='"actress / model" | uppercase'></Label>
+          <Label class="name" [text]="profile.name"></Label>
+          <Label class="role" [text]='profile.website | uppercase'></Label>
         </StackLayout>
       </GridLayout>
 
@@ -59,26 +59,30 @@
 
       <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
         <ns-info
+        [_profile]="profile"
         (loading)="showActivityIndicator()"
         (loaded)="hideActivityIndicator()"></ns-info>
       </GridLayout>
 
       <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
-        <!-- <ns-details
+        <ns-details
+        [profile]="profile"
         (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"></ns-details> -->
+        (loaded)="hideActivityIndicator()"></ns-details>
       </GridLayout>
 
       <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
         <ns-media
+        [profile]="profile"
         (loading)="showActivityIndicator()"
         (loaded)="hideActivityIndicator()"></ns-media>
       </GridLayout>
 
       <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 3 ? 'visible' : 'collapsed'">
-        <!-- <ns-contacts
+        <ns-contacts
+        [profile]="profile"
         (loading)="showActivityIndicator()"
-        (loaded)="hideActivityIndicator()"></ns-contacts> -->
+        (loaded)="hideActivityIndicator()"></ns-contacts>
       </GridLayout>
 
     </StackLayout>

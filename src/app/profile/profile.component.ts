@@ -1,17 +1,15 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { localize } from "nativescript-localize";
 import { RouterExtensions } from "nativescript-angular/router";
-import { SegmentedBarItem } from "tns-core-modules/ui/segmented-bar";
 import { View } from "ui/core/view";
 import { Page } from "tns-core-modules/ui/page";
 import { Animation } from "ui/animation";
 import { AnimationCurve } from "tns-core-modules/ui/enums";
 import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { screen } from 'tns-core-modules/platform';
-
 import { GestureTypes, SwipeGestureEventData } from "tns-core-modules/ui/gestures";
-import *  as labelModule from "tns-core-modules/ui/label";
+import { Observable } from 'rxjs';
 
+import { ProfileService } from "./profile.service"
 @Component({
   selector: 'ns-profile',
   templateUrl: './profile.component.html',
@@ -23,9 +21,9 @@ export class ProfileComponent implements OnInit {
 
   static IMAGE_MIN_HEIGHT = 48;
   public selectedIndex = 0;
-  public polariud : ElementRef;
-  private tabItems: SegmentedBarItem[];
   private tabs = [];
+  private _profile= {}
+
   @ViewChild("tabButtons") tabButtons: ElementRef;
   @ViewChild("polaroid") polaroid: ElementRef;
   @ViewChild('tabHighlight') tabHighlight: ElementRef;
@@ -34,11 +32,15 @@ export class ProfileComponent implements OnInit {
   @ViewChild("tab3") tab3: ElementRef;
   @ViewChild("tab4") tab4: ElementRef;
 
-  constructor(private routerExtension: RouterExtensions, private page: Page) {
+  constructor(private routerExtension: RouterExtensions, private profileService: ProfileService,private page: Page) {
     console.log('hello from PROFILE component');
-  }
 
+  }
+  get profile(){
+    return  this._profile
+  }
   ngOnInit(): void {
+    this.profileService.load().subscribe(profile=> this._profile = profile[0])
     this.tabs[0] = <View>this.tab1.nativeElement;
     this.tabs[1] = <View>this.tab2.nativeElement;
     this.tabs[2] = <View>this.tab3.nativeElement;

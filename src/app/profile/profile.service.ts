@@ -11,39 +11,24 @@ import { BackendService } from "../shared/backend.service";
 })
 
 export class ProfileService {
-  
-  constructor(private http: HttpClient) { }
 
-  getProfile() {
-    return new Profile()
-    }
+  constructor(private http: HttpClient) {
+    console.log('BackendService.UID ',BackendService.UID)
+  }
 
-    getAnonXCSFRtoken(){
-      this.http.get( BackendService.baseUrl + "session/token",
+  load() {
+    return this.http.get(BackendService.baseUrl + 'beez/loool_talent_profile/'+ BackendService.UID, {
+      headers: BackendService.getCommonHeaders()
+    })
+  }
+
+  edit(mid) {
+      return this.http.post( BackendService.baseUrl + "beez/messages-notification/hide",
+        {
+          "mid":mid
+        } ,
       {
-        headers: new HttpHeaders({"Content-Type": "application/json"}),
-        responseType: 'text'
-      }).subscribe((result) => {
-        BackendService.XCSFRtoken = result;
-        // console.log('getAnonXCSFRtoken ',result);
-      }, (error) => {
-        console.log('getAnonXCSFRtoken error: ',error);
+        headers: BackendService.getCommonHeaders()
       });
-    }
-
-    logoff() {
-      return this.http.post( BackendService.baseUrl + "beez/user/logout",
-      {
-        headers: new HttpHeaders({
-        "x-csrf-token":  BackendService.XCSFRtoken,
-        "session": BackendService.session_name + "=" + BackendService.sessid
-      })
-      });
-    }
-
-    private getCommonHeader(){
-     return new HttpHeaders({
-        "Content-Type": "application/json",
-      })
-    }
+  }
 }

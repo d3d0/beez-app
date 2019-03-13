@@ -5,14 +5,14 @@
 					<Label class="row" textWrap="true" row="0" col="1" horizontalAlignment="left" verticalAlignment="center" >
 						<FormattedString>
 							<Span [text]="'USER.DATE_OF_BIRTH'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<!-- <Span [text]="profile.date_of_birth" class="value"></Span> -->
+							<Span fontSize="18" [text]="profile.name"></Span>
+							<!-- <Span [text]="profile.date_of_birth" class="value"></Span>  -->
 						</FormattedString>
 					</Label>
 					<Label class="row" textWrap="true" row="1" col="1" horizontalAlignment="left" verticalAlignment="center" >
 						<FormattedString>
 							<Span [text]="'USER.PLACE_OF_BIRTH'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
+							<Span fontSize="18" [text]="profile.place_of_birth"></Span>
 							<!-- <Span [text]="profile.place_of_birth" class="value"></Span> -->
 						</FormattedString>
 					</Label>
