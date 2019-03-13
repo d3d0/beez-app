@@ -13,9 +13,9 @@ export class NotificationsService {
   constructor(private http: HttpClient) {}
 
   load() {
-    return this.http.get(BackendService.baseUrl + 'beez/messages-notification', {
-      headers: BackendService.getCommonHeaders()
-    })
+      return this.http.get(BackendService.baseUrl + 'beez/messages-notification', {
+        headers: BackendService.getCommonHeaders()
+      })
   }
   setRead(mid) {
       return this.http.post( BackendService.baseUrl + "beez/messages-notification/"+mid,
@@ -33,4 +33,4 @@ export class NotificationsService {
         headers: BackendService.getCommonHeaders()
       });
   }
-  }
+}

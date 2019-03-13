@@ -33,3 +33,30 @@
     letter-spacing: 0.15;
   }
 }
+
+// generico
+.list-group-item {
+  &-info {
+    margin: 0 0 13 5;
+  }
+  &-icona{ // item > icone generiche
+    &-casting {
+      margin: 0 0 15 15;
+    }
+  }
+}
+
+// profile
+.profile-info {
+  .list-group-item {
+		.row {
+      padding: 16 0 15 0;
+			.label{
+				font-size: 13;
+			}
+			.value{
+				font-size: 15;
+			}
+		}
+  }
+}
