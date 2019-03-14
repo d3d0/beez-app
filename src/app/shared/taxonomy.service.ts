@@ -42,6 +42,10 @@ export class TaxonomyService {
     getVocabolary(vocabolary){
       return this.allTerms.filter(el => el['vid'] == DICTIONARIES[vocabolary])
     }
+    
+    getNameValue(tid){
+      return this.allTerms.filter(el => el.tid == tid)
+    }
 
     private publishUpdates() {
       // Make sure all updates are published inside NgZone so that change detection is triggered if needed

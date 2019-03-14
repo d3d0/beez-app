@@ -24,27 +24,27 @@ export class HomeComponent implements OnInit {
         private page: Page) {}
 
     ngOnInit(): void {
-      console.log(`Notifications enabled? ${messaging.areNotificationsEnabled()}`);
+      console.log(`Notifications esnabled? ${messaging.areNotificationsEnabled()}`);
 
-      // BackendService.printAll()
+//       // BackendService.printAll()
         this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
         this.page.actionBarHidden = true;
 
-messaging.registerForPushNotifications({
-  onPushTokenReceivedCallback: (token: string): void => {
-    console.log("Firebase plugin received a push token: " + token);
-  },
+// messaging.registerForPushNotifications({
+//   onPushTokenReceivedCallback: (token: string): void => {
+//     console.log("Firebase plugin received a push token: " + token);
+//   },
 
-  onMessageReceivedCallback: (message: Message) => {
-    console.log("Push message received: " + message);
-  },
+//   onMessageReceivedCallback: (message: Message) => {
+//     console.log("Push message received: " + message);
+//   },
 
-  // Whether you want this plugin to automatically display the notifications or just notify the callback. Currently used on iOS only. Default true.
-  showNotifications: true,
+//   // Whether you want this plugin to automatically display the notifications or just notify the callback. Currently used on iOS only. Default true.
+//   showNotifications: true,
 
-  // Whether you want this plugin to always handle the notifications when the app is in foreground. Currently used on iOS only. Default false.
-  showNotificationsWhenInForeground: true
-}).then(() => console.log("Registered for push"));
+//   // Whether you want this plugin to always handle the notifications when the app is in foreground. Currently used on iOS only. Default false.
+//   showNotificationsWhenInForeground: true
+// }).then(() => console.log("Registered for push"));
     }
 
     getIconSource(icon: string): string {

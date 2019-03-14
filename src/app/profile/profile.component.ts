@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
 
   static IMAGE_MIN_HEIGHT = 48;
   public selectedIndex = 0;
+  public isEditable = false;
   private tabs = [];
   private _profile= {}
 

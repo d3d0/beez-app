@@ -41,7 +41,7 @@
 						<FormattedString>
 							<Span [text]="'USER.NATIONALITY'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.nationality"></Span>
+							<Span [text]="profile.nationality|taxonomyNameValue|async"></Span>
 						</FormattedString>
 					</Label>
 				</StackLayout>

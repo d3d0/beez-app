@@ -9,8 +9,11 @@ import { Profile} from "../../user/profile.model";
   moduleId: module.id,
 })
 export class InfoComponent  {
-  @Input() _profile
-  get profile(){
-    return this._profile
+  @Input() profile
+  @Input() isEditable
+
+  edit(){
+  	if(this.isEditable)
+  		console.log('editami')
   }
 }

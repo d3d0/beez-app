@@ -3,6 +3,7 @@ import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 
 import { CastingStatusPipe } from "../castings/castings-list/casting-status.pipe";
+import { TaxonomyNameValuePipe } from "./taxonomy-name-value.pipe";
 import { CastingDetailComponent } from '../castings/casting-detail/casting-detail.component';
 
 @NgModule({
@@ -12,10 +13,12 @@ import { CastingDetailComponent } from '../castings/casting-detail/casting-detai
   ],
   declarations: [
     CastingDetailComponent,
-    CastingStatusPipe
+    CastingStatusPipe,
+    TaxonomyNameValuePipe
   ],
   exports: [
     CastingStatusPipe,
+    TaxonomyNameValuePipe,
     CastingDetailComponent,
     NativeScriptCommonModule,
     NativeScriptLocalizeModule
