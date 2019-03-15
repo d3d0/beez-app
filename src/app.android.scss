@@ -28,3 +28,32 @@
     letter-spacing: 0.15;
   }
 }
+
+// generico
+.list-group-item {
+  &-info {
+    margin: 0 0 15 5;
+  }
+  &-icona{ // item > icone generiche
+    &-casting {
+      margin: 1 0 15 15;
+    }
+  }
+}
+
+// profile
+.profile-info {
+  .list-group-item {
+		.row {
+      padding: 8 0 15 0;
+			.label{
+				font-size: 12;
+        line-height: 1;
+			}
+			.value{
+				font-size: 14;
+        line-height: 1;
+			}
+		}
+  }
+}

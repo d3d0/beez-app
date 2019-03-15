@@ -1,30 +1,30 @@
 <RadListView row="0"  height="100%" class="casting" [items]="castings|castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" [itemTemplateSelector]="templateSelector">
 
   <ng-template tkTemplateKey="default" let-item="item" let-index="index">
-    <CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="index===0">
+    <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="index===0">
 
       <StackLayout class="list-group-item" >
 
         <Label *ngIf="item.audition_action === '' && castingType === 'audition'" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="list-group-item-text" textWrap="true"></Label>
 
-        <GridLayout columns="62, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
+        <GridLayout columns="auto, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
 
           <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
 
           <!-- <Label  text="" class="list-group-item-icona" row="0"row="0" ></Label> -->
           <Image *ngIf="castingType === 'audition'" src="res://confirm" stretch="none"row="0" col="4"></Image>
 
-          <Label [text]="item.title" class="label-18 list-group-item-heading-18" textWrap="true" row="1" colSpan="5"></Label>
+          <Label [text]="item.title" class="label-18-NO list-group-item-heading-18" textWrap="true" row="1" colSpan="5"></Label>
           <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" colSpan="5"></Label>
           <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
-          <Label text="CASTING" class="label text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
-          <Label textWrap="true" class="text-left text-uppercase list-group-item-info" row="4" col="1" colSpan="3">
-            <FormattedString *ngFor="let date of item.casting_date" >
-              <Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
+          <Label [text]="'CASTINGS.START_DATE'|L" class="label-NO text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
+          <Label textWrap="true" class="text-left list-group-item-info" row="4" col="1" colSpan="3">
+            <FormattedString>
+              <Span [text]="item.casting_date[0][0] * 1000 | date:'dd.MM.yy'" ></Span>
               <Span text=" • " ></Span>
-              <Span [text]="date[0] * 1000 | date:'HH:mm'" ></Span>
-              <Span text=" - " ></Span>/
-              <Span [text]="date[1]  * 1000 | date:'HH:mm'" ></Span>
+              <Span [text]="item.casting_date[0][0] * 1000 | date:'HH:mm'" ></Span>
+              <Span text=" - " ></Span>
+              <Span [text]="item.casting_date[0][1]  * 1000 | date:'HH:mm'" ></Span>
             </FormattedString>
           </Label>
           <Label text="" class="list-group-item-icona-freccia" row="4" col="4" ></Label>
@@ -34,11 +34,13 @@
   </ng-template>
 
   <ng-template tkTemplateKey="empty" let-item="item" >
-    <CardView class="card-group" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
-      <StackLayout class="card-default">
-        <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TITLE' | L" class="list-group-item-heading-18" textWrap="true"></Label>
+    <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="true">
+
+      <StackLayout class="list-group-item">
+        <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TITLE' | L" class="list-group-item-heading-18 list-group-item-heading-18-empty" textWrap="true"></Label>
         <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
       </StackLayout>
+
     </CardView>
   </ng-template>
 </RadListView>

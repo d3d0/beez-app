@@ -1,54 +1,55 @@
-	<StackLayout>
-		<CardView class="m-t-20" elevation="40" radius="20" ios:shadowRadius="15">
-			<StackLayout class="list-group-item p-20"><!-- IMPORTANTE -->
-				<GridLayout columns="*" rows="auto, auto, auto, auto, auto, auto, auto" >
-					<Label class="row" textWrap="true" row="0" col="1" horizontalAlignment="left" verticalAlignment="center" >
+	<StackLayout class="profile-info">
+		<CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
+			<StackLayout class="list-group-item "><!-- IMPORTANTE -->
+				<GridLayout class="list-group-item-grid " columns="*" rows="auto, auto, auto, auto, auto, auto, auto" >
+					<Label class="row" textWrap="true" row="0" col="0" >
 						<FormattedString>
 							<Span [text]="'USER.DATE_OF_BIRTH'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.date_of_birth" class="value"></Span>
+							<Span text="03 maggio 1975" class="value"></Span>
+							<!-- <Span [text]="profile.date_of_birth" class="value"></Span> -->
 						</FormattedString>
 					</Label>
-					<Label class="row" textWrap="true" row="1" col="1" horizontalAlignment="left" verticalAlignment="center" >
+					<Label class="row" textWrap="true" row="1" col="0" >
 						<FormattedString>
 							<Span [text]="'USER.PLACE_OF_BIRTH'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.place_of_birth" class="value"></Span>
+							<!-- <Span [text]="profile.place_of_birth" class="value"></Span> -->
 						</FormattedString>
 					</Label>
-					<Label class="row" textWrap="true" row="2" col="1" horizontalAlignment="left" verticalAlignment="center" >
+					<Label class="row" textWrap="true" row="2" col="0" >
 						<FormattedString>
 							<Span [text]="'USER.AGE_RANGE'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.age_range" class="value"></Span>
+							<!-- <Span [text]="profile.age_range" class="value"></Span> -->
 						</FormattedString>
 					</Label>
-					<Label class="row" textWrap="true" row="3" col="1" horizontalAlignment="left" verticalAlignment="center" >
+					<Label class="row" textWrap="true" row="3" col="0" >
 						<FormattedString>
 							<Span [text]="'USER.HEIGHT'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.height" class="value"></Span>
+							<!-- <Span [text]="profile.height" class="value"></Span> -->
 						</FormattedString>
 					</Label>
-					<Label class="row" textWrap="true" row="4" col="1" horizontalAlignment="left" verticalAlignment="center" >
+					<Label class="row" textWrap="true" row="4" col="0" >
 						<FormattedString>
 							<Span [text]="'USER.BODY_SIZE'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.body_size" class="value"></Span>
+							<!-- <Span [text]="profile.body_size" class="value"></Span> -->
 						</FormattedString>
 					</Label>
-					<Label class="row" textWrap="true" row="5" col="1" horizontalAlignment="left" verticalAlignment="center" >
+					<Label class="row" textWrap="true" row="5" col="0" >
 						<FormattedString>
 							<Span [text]="'USER.SHOE_SIZE'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.shoe_size" class="value"></Span>
+							<!-- <Span [text]="profile.shoe_size" class="value"></Span> -->
 						</FormattedString>
 					</Label>
-					<Label class="row last" textWrap="true" row="6" col="1" horizontalAlignment="left" verticalAlignment="center" >
+					<Label class="row last" textWrap="true" row="6" col="0" >
 						<FormattedString>
 							<Span [text]="'USER.AGENCY'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.agency" class="value"></Span>
+							<!-- <Span [text]="profile.agency" class="value"></Span> -->
 						</FormattedString>
 					</Label>
 				</GridLayout>

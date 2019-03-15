@@ -28,57 +28,59 @@
 </ActionBar>
 
 <ScrollView class="profile" #scrollView (scroll)="onScroll($event, scrollView, topView)" (swipe)="onSwipe($event)">
-  <StackLayout id="container" #container>
 
-    <GridLayout #polaroid>
-      <Image src="~/assets/images/c_h.jpg"></Image>
-      <Image src="~/assets/images/rect.png"></Image>
-      <StackLayout class="text-wrapper">
-        <Label class="name" text="Christina Hendricks"></Label>
-        <Label class="role" [text]='"actress / model" | uppercase'></Label>
-      </StackLayout>
-    </GridLayout>
+    <StackLayout id="container" #container>
 
-    <GridLayout columns="*,*,*,*" rows="auto" class="tab-buttons">
-      <GridLayout #tabHighlight col="0" class="tabActiveIndex"></GridLayout>
-      <GridLayout col="0" (tap)="onSelectedIndexChange(0)">
-        <Label #tab1 col="0" [text]="'PROFILE.INFO'|L|uppercase"></Label>
-        <!-- <Label #tab1 col="0" [text]="'PROFILE.INFO'|L|uppercase" [class.active]="selectedIndex === 0" ></Label> -->
+      <GridLayout #polaroid>
+        <Image src="~/assets/images/c_h.jpg"></Image>
+        <Image src="~/assets/images/rect.png"></Image>
+        <StackLayout class="text-wrapper">
+          <Label class="name" text="Christina Hendricks"></Label>
+          <Label class="role" [text]='"actress / model" | uppercase'></Label>
+        </StackLayout>
       </GridLayout>
-      <GridLayout col="1" (tap)="onSelectedIndexChange(1)">
-        <Label #tab2 col="1" [text]="'PROFILE.DETAILS'|L|uppercase" ></Label>
+
+      <GridLayout columns="*,*,*,*" rows="auto" class="tab-buttons" #profileTab >
+        <GridLayout #tabHighlight col="0" class="tabActiveIndex"></GridLayout>
+        <GridLayout col="0" (tap)="onSelectedIndexChange(0)">
+          <Label #tab1 col="0" [text]="'PROFILE.INFO'|L|uppercase"></Label>
+          <!-- <Label #tab1 col="0" [text]="'PROFILE.INFO'|L|uppercase" [class.active]="selectedIndex === 0" ></Label> -->
+        </GridLayout>
+        <GridLayout col="1" (tap)="onSelectedIndexChange(1)">
+          <Label #tab2 col="1" [text]="'PROFILE.DETAILS'|L|uppercase" ></Label>
+        </GridLayout>
+        <GridLayout col="2" (tap)="onSelectedIndexChange(2)">
+          <Label #tab3 col="2" [text]="'PROFILE.MEDIA'|L|uppercase" ></Label>
+        </GridLayout>
+        <GridLayout col="3" (tap)="onSelectedIndexChange(3)">
+          <Label #tab4 col="3" [text]="'PROFILE.CONTACTS'|L|uppercase" ></Label>
+        </GridLayout>
       </GridLayout>
-      <GridLayout col="2" (tap)="onSelectedIndexChange(2)">
-        <Label #tab3 col="2" [text]="'PROFILE.MEDIA'|L|uppercase" ></Label>
+
+      <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
+        <ns-info
+        (loading)="showActivityIndicator()"
+        (loaded)="hideActivityIndicator()"></ns-info>
       </GridLayout>
-      <GridLayout col="3" (tap)="onSelectedIndexChange(3)">
-        <Label #tab4 col="3" [text]="'PROFILE.CONTACTS'|L|uppercase" ></Label>
+
+      <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
+        <!-- <ns-details
+        (loading)="showActivityIndicator()"
+        (loaded)="hideActivityIndicator()"></ns-details> -->
       </GridLayout>
-    </GridLayout>
 
-    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
-<!--       <ns-info
-      (loading)="showActivityIndicator()"
-      (loaded)="hideActivityIndicator()"></ns-info> -->
-    </GridLayout>
+      <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
+        <ns-media
+        (loading)="showActivityIndicator()"
+        (loaded)="hideActivityIndicator()"></ns-media>
+      </GridLayout>
 
-    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
-<!--       <ns-details
-      (loading)="showActivityIndicator()"
-      (loaded)="hideActivityIndicator()"></ns-details> -->
-    </GridLayout>
+      <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 3 ? 'visible' : 'collapsed'">
+        <!-- <ns-contacts
+        (loading)="showActivityIndicator()"
+        (loaded)="hideActivityIndicator()"></ns-contacts> -->
+      </GridLayout>
 
-    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
-<!--       <ns-media
-      (loading)="showActivityIndicator()"
-      (loaded)="hideActivityIndicator()"></ns-media> -->
-    </GridLayout>
+    </StackLayout>
 
-    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 3 ? 'visible' : 'collapsed'">
-<!--       <ns-contacts
-      (loading)="showActivityIndicator()"
-      (loaded)="hideActivityIndicator()"></ns-contacts> -->
-    </GridLayout>
-
-  </StackLayout>
 </ScrollView>
