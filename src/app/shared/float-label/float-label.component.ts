@@ -8,11 +8,12 @@ import { formatDate } from '@angular/common';
     selector: "FloatLabel",
     moduleId: module.id,
     template: `
-    <GridLayout rows="10, auto" marginBottom="0" (tap)="createModelView()">
-        <Label #label row="1" [text]="placeholder" opacity="0" class="label" verticalAlignment="bottom" marginBottom="16"></Label>
-        <TextField #textField row="1" paddingBottom="12" class="title"
+    <GridLayout rows="10, auto" marginBottom="20" (tap)="createModelView()">
+        <Label #label row="1" [text]="placeholder|uppercase" opacity="0" class="label" verticalAlignment="bottom" marginBottom="16"></Label>
+        <TextField #textField row="1" ios:paddingBottom="12" android:paddingBottom="18" class="title"
         [secure]="secure"
         (focus)="onFocus()"
+        lineHeight="200"
         [(ngModel)]="value"
         [editable]="editable"
         [hint]="placeholder|titlecase"
@@ -30,6 +31,7 @@ export class FloatLabel {
     @Input() placeholder: string;
     @Input() secure: boolean;
     @Input() inModal: string;
+    @Input() last: boolean;
     @Input() editable: boolean = true;
     @Input() type: string;
     @Output() textfieldEvent = new EventEmitter<string>()
@@ -42,7 +44,12 @@ export class FloatLabel {
         private vcRef: ViewContainerRef,
         private modal: ModalDialogService) { }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        if (this.last){
+            const textField = this.textField.nativeElement;
+            textField.marginBottom = 0
+        }
+    }
 
     onFocus() {
         const label = this.label.nativeElement;

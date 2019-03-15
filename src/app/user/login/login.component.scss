@@ -1,27 +1,12 @@
-@import '../../../app-variables';
-
-.card-group{
-  margin-top: 0;
-}
-
-.label-textfield {
-  opacity: 0;
-  transform:translate(0,16);
-}
 .login-footer{
-  margin:20;
-  margin-top: 0;
+  margin:0 20 20 20;
 }
-
+.card-group{
+  margin-bottom: 20;
+}
+.list-group-item{
+  margin-bottom:0;
+}
 .card-button{
- margin-top: 6; 
- margin-bottom: 5; 
-}
-
-TextField{
-	border-bottom-width: 1;
-	border-color:$grigiochiaro;
-  .input-field-error{
-  		border-color: rgba(253, 60, 67, .8);
-  }
+  margin-bottom:0;
 }
