@@ -85,7 +85,23 @@ export class BackendService {
       'Cookie': BackendService.session_name + "=" + BackendService.sessid
     })
   }
-
+    static getServiceCommonHeaders(){
+    return  new HttpHeaders({
+      'Content-Type': "application/json",
+      'Accept': 'application/json',
+      'Cache-Control': 'no-cache',
+      'x-csrf-token': BackendService.XCSFRtoken,
+      'Session': BackendService.session_name + "=" + BackendService.sessid
+    })
+  }
+  static getRawCommonHeaders(){
+    return  {
+      "Content-Type": "application/octet-stream",
+      "File-Name": 'name',
+      'x-csrf-token': BackendService.XCSFRtoken,
+      'Cookie': BackendService.session_name + "=" + BackendService.sessid
+    }
+  }
   getJson(response) {
     return new Promise((resolve, reject) => {
       resolve(response.content.toJSON())
