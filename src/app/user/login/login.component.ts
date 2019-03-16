@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
         messaging.getCurrentPushToken()
             .then(token =>  {
               this.pushService.push_token(token).subscribe(result => console.log("resulult form pushservice", result))
-              console.log(`Current push token: ${token}`)
+              // console.log(`Current push token: ${token}`)
             }     
         );
         this.routerExtensions.navigate(["../home"], { clearHistory: true });

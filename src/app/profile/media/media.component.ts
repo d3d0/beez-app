@@ -38,7 +38,7 @@ export class MediaComponent {
     }
     loadImages(){
         this.profileService.getImages().subscribe(result => {
-            console.log(result)
+            // console.log(result)
             this.images = result} )
     }
     deleteImage(fid){
