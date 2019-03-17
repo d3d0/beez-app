@@ -8,7 +8,7 @@ import { formatDate } from '@angular/common';
     selector: "FloatLabel",
     moduleId: module.id,
     template: `
-    <GridLayout rows="10, auto" marginBottom="20" (tap)="createModelView()">
+    <GridLayout rows="10, auto" marginBottom="20">
         <Label #label row="1" [text]="placeholder|uppercase" opacity="0" class="label" verticalAlignment="bottom" marginBottom="16"></Label>
         <TextField #textField row="1" ios:paddingBottom="12" android:paddingBottom="18" class="title"
         [secure]="secure"
@@ -18,7 +18,7 @@ import { formatDate } from '@angular/common';
         [editable]="editable"
         [hint]="placeholder|titlecase"
         (blur)="onBlur()"
-        keyboardType="email"
+        [keyboardType]="type"
         returnKeyType="next"
         autocorrect="false"
         autocapitalizationType="none"
@@ -30,7 +30,7 @@ import { formatDate } from '@angular/common';
 export class FloatLabel {
     @Input() placeholder: string;
     @Input() secure: boolean;
-    @Input() inModal: string;
+    @Input() inModal: boolean = false;
     @Input() last: boolean;
     @Input() editable: boolean = true;
     @Input() type: string;

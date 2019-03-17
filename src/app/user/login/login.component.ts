@@ -79,7 +79,6 @@ export class LoginComponent implements OnInit {
     this.isAuthenticating = true;
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
       BackendService.XCSFRtoken = result;
-      console.log('getAnonXCSFRtoken ',result)
       this.userService.login(this.user).subscribe((result) => {
         BackendService.session_name = result['session_name']
         BackendService.sessid = result['sessid']
@@ -121,7 +120,6 @@ export class LoginComponent implements OnInit {
   }
   textfieldEvent($event, field){
     this.user[field]=$event
-    console.log(this.user)
   }
   // toggleLabel(event, type) {
   //   let text = event.object.text
