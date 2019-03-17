@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProfileService } from "../profile.service";
 import { Profile} from "../../user/profile.model";
 
@@ -9,15 +9,7 @@ import { Profile} from "../../user/profile.model";
   moduleId: module.id,
 })
 
-export class DetailsComponent implements OnInit {
-
-  private _profile: Profile;
-
-  constructor() {}
-  ngOnInit() {}
-
-  get profile() : Profile{
-      return this._profile;
-  }
-
+export class DetailsComponent {
+  @Input() profile
+  
 }

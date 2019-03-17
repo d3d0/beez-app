@@ -3,7 +3,6 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 import { HomeRoutingModule } from "./home.routing";
 import { HomeComponent } from "./home.component";
-import { SelectModalViewComponent } from "../shared/select-modal-view/select-modal-view.component";
 import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
@@ -14,7 +13,6 @@ import { SharedModule } from "../shared/shared.module";
   ],
   declarations: [
     HomeComponent,
-    SelectModalViewComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

@@ -33,8 +33,8 @@
     </CardView>
   </ng-template>
 
-  <ng-template tkTemplateKey="empty" let-item="item" >
-    <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="true">
+  <ng-template tkTemplateKey="empty"  let-item="item" >
+    <CardView *ngIf="!_isLoading" class="card-group" elevation="30" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="true">
 
       <StackLayout class="list-group-item">
         <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TITLE' | L" class="list-group-item-heading-18 list-group-item-heading-18-empty" textWrap="true"></Label>

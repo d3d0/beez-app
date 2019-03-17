@@ -1,16 +1,53 @@
-// Place any CSS rules you want to apply on both iOS and Android here.
-// This is where the vast majority of your CSS code goes.
+// ------------------------------------------------------------------
+// TIPOGRAPHY
+// ------------------------------------------------------------------
+*{
+  font-family: "Sofia Pro Light";
+}
 
-// ------------------------------------------------------------------
-// LETTER SPACING
-// letter-spacing = tracking * font-size / 1000
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-// FONT + ICON
-// ------------------------------------------------------------------
 .fa {
   font-family: "FontAwesome"; // IMPORTANTE
+}
+
+.header{
+  font-family: "Sofia Pro Semi Bold";
+  font-size: 18;
+  font-weight: bold;
+  letter-spacing:0.028;
+  color:$nero;
+  margin: 0 0 10 0;
+}
+
+.title{
+  font-family: "Sofia Pro Light";
+  font-size: 14;
+  font-weight: $normal;
+  letter-spacing:0.02;
+  color: $nero;
+  &-small{
+    font-size: 12;
+  }
+}
+  
+.text{
+  font-family: "Sofia Pro Semi Bold";
+  font-size: 14;
+  letter-spacing:0.028;
+  color: $grigioscuro;
+}
+
+.label{
+  font-family: "Sofia Pro Semi Bold";
+  color: $lilla;
+  font-size: 10;
+  font-weight: bold;
+  letter-spacing:0.15;
+}
+
+.body {
+  font-family: "Sofia Pro Semi Bold";
+  font-weight: $normal;
+  color: $grigioscuro;
 }
 
 // ------------------------------------------------------------------
@@ -230,7 +267,7 @@ WrapLayout {
   background: white; // IMPORTANTE > definisce lo sfondo delle CardView in IOS e Android
   border-radius: 4;  // IMPORTANTE > definisce il radius delle CardView in IOS
   width:100%;
-  color: #000;
+  padding: 20 16 20 16;
   &-heading { // item > titoli
     &-18 {
       font-size: 18;
@@ -737,4 +774,7 @@ SegmentedBar{
   // android > border bottom della selezionata
   // ios > background della selezionata + bordi
   // selected-background-color: transparent; /* OK */
+}
+.m-b-20{
+  margin-bottom:20;
 }

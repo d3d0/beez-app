@@ -19,7 +19,7 @@ import { CastingsService} from "./castings.service";
     SharedModule
   ],
   providers: [
-  CastingsService
+    CastingsService
   ],
   declarations: [
     CastingsComponent,

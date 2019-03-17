@@ -4,7 +4,7 @@ import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 import { ListPicker } from "tns-core-modules/ui/list-picker";
 
 @Component({
-    selector: 'ns-details',
+    selector: 'ns-select-modal',
     templateUrl: './select-modal-view.component.html',
     styleUrls: ['./select-modal-view.component.css'],
     moduleId: module.id,

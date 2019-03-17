@@ -88,7 +88,6 @@ export class CastingDetailComponent implements OnInit {
         if (result){
           this.selectedAgency = result;
         } 
-        // console.log('ritornato', result)
       }).catch(error => console.log(error));
   }
 

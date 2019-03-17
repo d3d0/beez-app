@@ -12,7 +12,7 @@
 								<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
 									<Image [src]="image.filepath"></Image>
 									<StackLayout left="0" top="0" height="32" width="100%">
-										<Label class="list-group-item-icona-no-nero" [text]="index" (tap)="setPolaroidImage(image.fid)" horizontalAlignment="right"></Label>
+										<Label class="list-group-item-icona-no-nero" [text]="index" (tap)="deleteImage(image.fid)" horizontalAlignment="right"></Label>
 									</StackLayout>
 								</AbsoluteLayout>
 							</StackLayout>

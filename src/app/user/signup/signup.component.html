@@ -2,152 +2,68 @@
 	<Label class="action-bar-title" [text]="'SIGNUP.REGISTRATION'|L" ></Label>
 	<NavigationButton android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
 </ActionBar>
+<StackLayout>
+	<Label class="tab-h-line-d3d0" text=""></Label>
+	<AbsoluteLayout>
+		<GridLayout left="0" top="0" width="100%" columns="auto" rows="auto" class="tab-border-d3d0" backgroundColor="transparent">
+			<Label text=""></Label>
+		</GridLayout>
+		<GridLayout left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto, auto" class="tab-buttons-d3d0" backgroundColor="transparent">
+			<GridLayout class="tab-container" col="0" (tap)="onSelectedIndexChange(0)" >
+				<Label #tab1 [text]="'SIGNUP.REGISTRATION'|L" class="text" textWrap="false" ></Label>
+			</GridLayout>
+			<GridLayout class="tab-container" col="1" (tap)="onSelectedIndexChange(1)">
+				<Label #tab2 [text]="'SIGNUP.REGISTRATION_MINOR'|L" class="text" textWrap="false" ></Label>
+			</GridLayout>
+		</GridLayout>
+	</AbsoluteLayout>
 
-<TabView class="signup" androidTabsPosition="top">
-	<StackLayout *tabItem="{title: signupTitle}">
-		<ScrollView>
-				<CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15">
-					<StackLayout class="list-group-item p-20">
-						<Label class="list-group-item-heading-18" textWrap="true" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
-						<Label class="list-group-item-info-signup" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.NAME'|L"></Label>
-						<TextField class="list-group-item-text-signup"
-						[hint]="'USER.NAME'|L"
-						[(ngModel)]="profile.name"
-		                returnKeyType="next"
-		                autocorrect="false"
-              			autocapitalizationType="words"
-						returnKeyType="next"
-						></TextField>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.SURNAME'|L"></Label>
-						<TextField class="list-group-item-text-signup"
-						[hint]="'USER.SURNAME'|L"
-						[(ngModel)]="profile.surname"
-		                returnKeyType="next"
-		                autocorrect="false"
-              			autocapitalizationType="words"
-						returnKeyType="next"
-						></TextField>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.DATE_OF_BIRTH'|L"></Label>
-						<DatePicker [(ngModel)]="profile.date_of_birth"></DatePicker>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.EMAIL'|L"></Label>
-						<TextField class="list-group-item-text-signup"
-						[hint]="'USER.EMAIL'|L"
-						[(ngModel)]="user.mail"
-              			autocapitalizationType="none"
-						keyboardType="email"
-						returnKeyType="next"
-						autocorrect="false"
-						></TextField>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.PASSWORD'|L"></Label>
-						<TextField class="list-group-item-text-signup" ref="password"
-						[hint]="'USER.PASSWORD'|L"
-						[(ngModel)]="user.pass"
-						secure="true"
-						returnKeyType="done"
-						></TextField>
-
-						<CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
-
-							<Button class="card-button-link"
-								[text]="'SIGNUP.REGISTRATION_SUBMIT'|L"
-								(tap)="signup()"
-								></Button> 
-						</CardView>
-					</StackLayout>
-				</CardView>
-		</ScrollView>
-	</StackLayout>
-	<StackLayout *tabItem="{title: signupMinorTitle}">
-		<ScrollView>
+	<StackLayout (swipe)="onSwipe($event)" height="100%" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
+		<ScrollView height="100%" >
 			<StackLayout>
-				<CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15">
-					<StackLayout class="list-group-item p-20">
+				<CardView class="list-group-item-box" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
+					<StackLayout class="list-group-item">
+						<Label class="list-group-item-heading header" textWrap="true" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
+						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
 
-						<Label class="list-group-item-heading-18" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TITLE'|L" fontWeight="bold" ></Label>
-						<Label class="list-group-item-info-signup" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TEXT'|L"></Label>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.NAME'|L"></Label>
-						<TextField class="list-group-item-text-signup"
-						[hint]="'USER.NAME'|L"
-						[(ngModel)]="profile.tutor_name"
-		                returnKeyType="next"
-		                autocorrect="false"
-              			autocapitalizationType="words"
-						returnKeyType="next"
-						></TextField>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.SURNAME'|L"></Label>
-						<TextField class="list-group-item-text-signup"
-						[hint]="'USER.SURNAME'|L"
-						[(ngModel)]="profile.tutor_surname"
-		                returnKeyType="next"
-		                autocorrect="false"
-              			autocapitalizationType="words"
-						returnKeyType="next"
-						></TextField>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.DATE_OF_BIRTH'|L"></Label>
-						<DatePicker [(ngModel)]="profile.tutor_date_of_birth" ></DatePicker>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.EMAIL'|L"></Label>
-						<TextField class="list-group-item-text-signup"
-						[hint]="'USER.EMAIL'|L"
-						[(ngModel)]="user.mail"
-              			autocapitalizationType="none"
-						keyboardType="email"
-						returnKeyType="next"
-						autocorrect="false"
-						></TextField>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.PASSWORD'|L"></Label>
-						<TextField class="list-group-item-text-signup" ref="password"
-						[hint]="'USER.PASSWORD'|L"
-						[(ngModel)]="user.pass"
-						secure="true"
-						returnKeyType="done"
-						></TextField>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.MINOR_NAME'|L"></Label>
-						<TextField class="list-group-item-text-signup" ref="password"
-						[hint]="'USER.MINOR_NAME'|L"
-						[(ngModel)]="profile.name"
-		                returnKeyType="next"
-		                autocorrect="false"
-              			autocapitalizationType="words"
-              			></TextField>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.MINOR_SURNAME'|L"></Label>
-						<TextField class="list-group-item-text-signup" ref="password"
-						[hint]="'USER.MINOR_SURNAME'|L"
-						[(ngModel)]="profile.surname"
-		                returnKeyType="next"
-		                autocorrect="false"
-              			autocapitalizationType="words"
-						returnKeyType="next"
-						></TextField>
-
-						<Label class="list-group-item-label-signup" [text]="'USER.MINOR_DATE_OF_BIRTH'|L"></Label>
-
-						<DatePicker [(ngModel)]="profile.date_of_birth"></DatePicker>
-
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></FloatLabel>
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></FloatLabel>
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'tutor_date_of_birth')" [inModal]="true" [editable]="false" [placeholder]="'USER.DATE_OF_BIRTH'|L"></FloatLabel>
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'mail')" [placeholder]="'USER.EMAIL'|L"></FloatLabel>
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'USER.PASSWORD'|L"></FloatLabel>
 						<CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
-								<Button class="card-button-link"
-								[text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L"
-								(tap)="signup()"></Button>
+							<Button class="card-button-link"
+							[text]="'SIGNUP.REGISTRATION_SUBMIT'|L"
+							(tap)="signup()"
+							></Button> 
 						</CardView>
-
 					</StackLayout>
 				</CardView>
-				<ActivityIndicator
-				[busy]="isAuthenticating"
-				rowSpan="2"></ActivityIndicator>
 			</StackLayout>
 		</ScrollView>
 	</StackLayout>
-</TabView>
+
+	<StackLayout  [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
+		<ScrollView height="100%" >
+			<StackLayout>
+				<CardView height="100%" class="card-group" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
+					<StackLayout class="list-group-item p-20">
+						<Label class="list-group-item-heading-18" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TITLE'|L" fontWeight="bold" ></Label>
+						<Label class="list-group-item-info-signup m-b-20" marginBottom="20" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TEXT'|L"></Label>
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'tutor_name')" [placeholder]="'USER.NAME'|L"></FloatLabel>
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'tutor_surname')" [placeholder]="'USER.SURNAME'|L"></FloatLabel>
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'mail')" [placeholder]="'USER.EMAIL'|L"></FloatLabel>
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'USER.PASSWORD'|L"></FloatLabel>
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.MINOR_NAME'|L"></FloatLabel>
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.MINOR_SURNAME'|L"></FloatLabel>
+						<CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
+							<Button class="card-button-link"
+							[text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L"
+							(tap)="signup()"></Button>
+						</CardView>
+					</StackLayout>
+				</CardView>
+			</StackLayout>
+		</ScrollView>
+	</StackLayout>
+</StackLayout>

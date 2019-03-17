@@ -38,15 +38,13 @@ export class MediaComponent {
     }
     loadImages(){
         this.profileService.getImages().subscribe(result => {
-            // console.log(result)
+            console.log(result)
             this.images = result} )
     }
     deleteImage(fid){
         this.profileService.deleteImage(fid).subscribe(result => this.images = result )
     }
-setPolaroidImage(fid){
-        this.profileService.setPolaroidImage(fid).subscribe(result => console.log(result) )
-    }
+
 
 
 

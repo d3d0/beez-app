@@ -7,7 +7,6 @@ import { AnimationCurve } from "ui/enums";
 import { Color } from "color";
 import { View } from "ui/core/view";
 
-
 @Component({
   selector: 'ns-castings',
   templateUrl: './castings.component.html',
@@ -35,12 +34,9 @@ export class CastingsComponent implements OnInit{
   private label = null;
   private tabs = [];
 
-  constructor(  ) {
-  }
+  constructor() {}
 
   ngOnInit() {
-    console.log('hello from CASTING component');
-
     this.tabs[0] = <View>this.tab1.nativeElement;
     this.tabs[1] = <View>this.tab2.nativeElement;
     this.tabs[2] = <View>this.tab3.nativeElement;
@@ -51,19 +47,9 @@ export class CastingsComponent implements OnInit{
   public onSelectedIndexChange(index) {
     let previousTab = this.selectedIndex;
     if (index != this.selectedIndex) {
-
       this.tabs[index].className = "active";
       this.tabs[previousTab].className = "not-active";
-      // this.tabs[index].style.color = new Color("#00D796");
-      // this.tabs[previousTab].style.color = new Color("#1E1E1E");
-
       this.selectedIndex = index;
-      // this.tabHighlight.nativeElement.animate({
-      //   translate: { x: index * screen.mainScreen.widthDIPs / 3, y: 0 },
-      //   curve: AnimationCurve.cubicBezier(1, .02, .45, .93),
-      //   duration: 300
-      // });
-      // console.log(screen.mainScreen.widthDIPs);
     }
   }
 
