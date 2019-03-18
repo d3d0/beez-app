@@ -1,0 +1,14 @@
+@import '../../../app-variables';
+
+Button {
+	margin: 8 0 4 0;
+	background-color: $verde;
+	border-radius: 4;
+	padding: 18 0;
+	color: $bianco;
+	letter-spacing: 0.2;
+	z-index:0;
+	font-weight:bold;
+	vertical-align: middle;
+	border-color: transparent;
+}

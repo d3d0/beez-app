@@ -267,7 +267,6 @@ WrapLayout {
   background: white; // IMPORTANTE > definisce lo sfondo delle CardView in IOS e Android
   border-radius: 4;  // IMPORTANTE > definisce il radius delle CardView in IOS
   width:100%;
-  padding: 20 16 20 16;
   &-heading { // item > titoli
     &-18 {
       font-size: 18;
@@ -719,38 +718,6 @@ WrapLayout {
     }
   }
 }
-// ---------------------------------
-// login, signup > card-button
-// ---------------------------------
-.card-button {
-  margin: 0 0 20 0;
-  padding: 18 0;
-  color: $bianco;
-  background-color: $verde;
-  &-link {
-    background-color: $verde;
-    border-radius: 4;
-    padding: 18 0;
-    color: $bianco;
-    letter-spacing: 0.2;
-    z-index:0;
-    font-weight:bold;
-    vertical-align: middle;
-    border-color: transparent;
-  }
-}
-.btn {
-  background-color: $verde;
-  border-radius: 4;
-  padding: 18 0;
-  color: $bianco;
-  letter-spacing: 0.2;
-  z-index:0;
-  font-weight:bold;
-  vertical-align: middle;
-  border-color: transparent;
-}
-
 
 // ---------------------------------
 // NSSegmentView

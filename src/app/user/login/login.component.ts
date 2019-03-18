@@ -11,10 +11,9 @@ import { LottieView } from 'nativescript-lottie';
 import { RouterExtensions } from "nativescript-angular/router";
 import { localize } from "nativescript-localize";
 import { messaging, Message } from "nativescript-plugin-firebase/messaging";
-import { PushNotificationsService } from "../../shared/pushNotifications.service"
-
 import *  as utilsModule from 'tns-core-modules/utils/utils';
 
+import { PushNotificationsService } from "../../shared/pushNotifications.service"
 import { alert } from "../../shared";
 import { User } from '../user.model'
 import { UserService } from "../user.service";
@@ -39,7 +38,7 @@ export class LoginComponent implements OnInit {
   @ViewChild("textfieldpass") textfieldpass: ElementRef;
 
   private _lottieView: LottieView;
-  private isAuthenticating = false;
+  private isLoading = false;
 
   constructor( private userService: UserService,
     private router: Router,
@@ -63,7 +62,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(["/user/signup"]);
   }
 
-  login() {
+  login($event){
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
       return;
@@ -76,7 +75,7 @@ export class LoginComponent implements OnInit {
       alert(localize("MESSAGES.ERROR_PASS"));
       return;
     }
-    this.isAuthenticating = true;
+    this.isLoading = true;
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
       BackendService.XCSFRtoken = result;
       this.userService.login(this.user).subscribe((result) => {
@@ -84,19 +83,21 @@ export class LoginComponent implements OnInit {
         BackendService.sessid = result['sessid']
         BackendService.XCSFRtoken = result['token']
         BackendService.UID = result['user']['uid']
-        this.isAuthenticating = false;
+        this.isLoading = false;
         /// push notification send token
         messaging.getCurrentPushToken()
             .then(token =>  {
+              console.log(`Current push token: ${token}`)
               this.pushService.push_token(token).subscribe(result => console.log("resulult form pushservice", result))
-              // console.log(`Current push token: ${token}`)
-            }     
-        );
+            } 
+        ).catch( err=> console.log(err))
+
+
         this.routerExtensions.navigate(["../home"], { clearHistory: true });
        },
       (error) => {
         BackendService.reset()
-        this.isAuthenticating = false;
+        this.isLoading = false;
         console.log('login user error ', error);
         if (error.status == 407)
           alert(localize("MESSAGES.CONFIRM_EMAIL"));
@@ -105,7 +106,7 @@ export class LoginComponent implements OnInit {
       });
     },
     (error) => {
-      this.isAuthenticating = false;
+      this.isLoading = false;
       alert(localize("MESSAGES.ERROR_SERVICE"));
       console.log('login getAnonXCSFRtoken error: ',error);
     });
@@ -118,31 +119,10 @@ export class LoginComponent implements OnInit {
   openLink(link){
     utilsModule.openUrl(link)
   }
+
   textfieldEvent($event, field){
+    console.log($event)
     this.user[field]=$event
   }
-  // toggleLabel(event, type) {
-  //   let text = event.object.text
-  //   let animations = [];
-  //   let textfield, label
-  //   if (type == 'mail') {
-  //     label = <View>this.labelmail.nativeElement;
-  //     textfield = <View>this.textfieldmail.nativeElement;
-  //   } else if (type == 'pass') {
-  //     label = <View>this.labelpass.nativeElement;
-  //     textfield = <View>this.textfieldpass.nativeElement;
-  //   }
-  //   if (event.eventName == 'focus' && text == '') {
-  //     textfield.style.placeholderColor= new Color("transparent");
-  //     textfield.style.borderColor= new Color("#5A82FF");
-  //     animations.push({ target: label, translate: { x: 0, y: 0 }, opacity: 1, duration: 150 });
-  //     new Animation(animations, true).play();
-  //   }
-  //   if (event.eventName == 'blur' && text == '') {
-  //     textfield.style.placeholderColor= new Color("#d3d3d3");
-  //     textfield.style.borderColor= new Color("#d3d3d3");
-  //     animations.push({ target: label, translate: { x: 0, y: 20 }, opacity: 0, duration: 150 });
-  //     new Animation(animations, true).play();
-  //   }
-  // };
+
 }

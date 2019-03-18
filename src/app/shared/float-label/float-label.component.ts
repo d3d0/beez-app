@@ -7,9 +7,10 @@ import { formatDate } from '@angular/common';
 @Component({
     selector: "FloatLabel",
     moduleId: module.id,
+    styleUrls: ['./float-label.component.css'],
     template: `
-    <GridLayout rows="10, auto" marginBottom="20">
-        <Label #label row="1" [text]="placeholder|uppercase" opacity="0" class="label" verticalAlignment="bottom" marginBottom="16"></Label>
+    <GridLayout rows="10, auto">
+        <Label #label row="1" [text]="placeholder|uppercase" opacity="0" class="label" verticalAlignment="bottom"></Label>
         <TextField #textField row="1" ios:paddingBottom="12" android:paddingBottom="18" class="title"
         [secure]="secure"
         (focus)="onFocus()"
@@ -43,13 +44,6 @@ export class FloatLabel {
     constructor(
         private vcRef: ViewContainerRef,
         private modal: ModalDialogService) { }
-
-    ngOnInit(): void {
-        if (this.last){
-            const textField = this.textField.nativeElement;
-            textField.marginBottom = 0
-        }
-    }
 
     onFocus() {
         const label = this.label.nativeElement;
