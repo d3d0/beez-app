@@ -32,8 +32,15 @@
 .text{
   font-family: "Sofia Pro Semi Bold";
   font-size: 14;
-  letter-spacing:0.028;
-  color: $grigioscuro;
+  letter-spacing:0.02; color: $grigioscuro;
+}
+
+.note{
+  font-size: 12;
+}
+
+.accent{
+  color: $verde;
 }
 
 .label{

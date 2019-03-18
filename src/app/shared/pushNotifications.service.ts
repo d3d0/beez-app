@@ -5,7 +5,6 @@ import { localize } from "nativescript-localize";
 import { map, catchError, first, retry } from "rxjs/operators";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { isAndroid } from "tns-core-modules/platform";
-
 import { filter } from 'rxjs/operators';
 
 import { BackendService } from "../shared/backend.service";
@@ -24,7 +23,7 @@ export class PushNotificationsService {
       JSON.stringify({
         token: token,
         platform: isAndroid ? 'android' : 'ios',
-        language: localize('LANG').toLowerCase
+        language: 'en'
       }),
       {
         headers: BackendService.getCommonHeaders()

@@ -11,9 +11,9 @@ import { LottieView } from 'nativescript-lottie';
 import { RouterExtensions } from "nativescript-angular/router";
 import { localize } from "nativescript-localize";
 import { messaging, Message } from "nativescript-plugin-firebase/messaging";
-import *  as utilsModule from 'tns-core-modules/utils/utils';
 
 import { PushNotificationsService } from "../../shared/pushNotifications.service"
+import { openLink } from "../../shared/dialog-util"
 import { alert } from "../../shared";
 import { User } from '../user.model'
 import { UserService } from "../user.service";
@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
 
   private _lottieView: LottieView;
   private isLoading = false;
+  private openLink = openLink
 
   constructor( private userService: UserService,
     private router: Router,
@@ -110,10 +111,6 @@ export class LoginComponent implements OnInit {
       alert(localize("MESSAGES.ERROR_SERVICE"));
       console.log('login getAnonXCSFRtoken error: ',error);
     });
-  }
-
-  openLink(link){
-    utilsModule.openUrl(link)
   }
 
   textfieldEvent($event, field){

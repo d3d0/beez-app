@@ -49,7 +49,9 @@ export class ProfileService {
     return this.http.get(BackendService.baseUrl + 'beez/loool_talent_images/'+ BackendService.UID,
     {
       headers: BackendService.getCommonHeaders()
-    })
+    }).pipe(
+        retry(3)
+        );
   }
   deleteImage(fid) {
     return this.http.post(BackendService.baseUrl + 'beez/loool_talent_images/deleteimage',

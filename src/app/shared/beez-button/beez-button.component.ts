@@ -6,13 +6,15 @@ import { Color } from "tns-core-modules/color";
     moduleId: module.id,
     styleUrls: ['./beez-button.component.css'],
     template: `
-        <CardView margin="0" padding="0" width="100%" elevation="2" radius="15" shadowOpacity="0.2" ripple="false" ios:shadowRadius="5">
+    <StackLayout class="container">
+        <CardView width="100%" elevation="2" radius="15" shadowOpacity="0.2" ripple="false" ios:shadowRadius="5">
         <Button
           class="label"
           [isEnabled]="!isBusy" 
           [text]="text|uppercase"
           (tap)="onClick()"></Button>
         </CardView>
+    </StackLayout>        
     `
 })
 

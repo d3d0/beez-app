@@ -11,6 +11,7 @@ import { Profile } from "../profile.model"
 import { User } from '../user.model'
 import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
+import { openLink } from "../../shared/dialog-util"
 
 @Component({
   selector: 'ns-signup',
@@ -26,6 +27,7 @@ export class SignupComponent implements OnInit{
   private signupTitle
   private isAuthenticating = true;
   private tabs = [];
+  private openLink = openLink
 
   @ViewChild('tabHighlight') tabHighlight: ElementRef;
   @ViewChild('tab1') tab1: ElementRef;
