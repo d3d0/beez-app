@@ -19,6 +19,11 @@ export class PushNotificationsService {
   constructor( private http: HttpClient ) { }
 
   push_token(token) {
+    console.log(      JSON.stringify({
+        token: token,
+        platform: isAndroid ? 'android' : 'ios',
+        language: localize('LANG').toLowerCase
+      }))
     return this.http.post(
       BackendService.baseUrl + 'beez/fcm_token',
       JSON.stringify({
