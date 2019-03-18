@@ -9,19 +9,19 @@ import { formatDate } from '@angular/common';
     moduleId: module.id,
     styleUrls: ['./float-label.component.css'],
     template: `
-    <GridLayout rows="10, auto">
+    <GridLayout rows="10, auto" ios:paddingTop="16" android:paddingTop="8"   >
         <Label #label row="1" [text]="placeholder|uppercase" opacity="0" class="label" verticalAlignment="bottom"></Label>
-        <TextField #textField row="1" ios:paddingBottom="12" android:paddingBottom="18" class="title"
-        [secure]="secure"
-        (focus)="onFocus()"
-        lineHeight="200"
+        <TextField #textField row="1" ios:paddingBottom="12" class="title"
         [(ngModel)]="value"
-        [editable]="editable"
         [hint]="placeholder|titlecase"
-        (blur)="onBlur()"
+        [secure]="secure"
         [keyboardType]="type"
-        returnKeyType="next"
+        [editable]="editable"
+        (blur)="onBlur($event)"
+        (focus)="onFocus()"
+        (returnPress)="returnPress($event)"
         autocorrect="false"
+        lineHeight="200"
         autocapitalizationType="none"
         ></TextField>
     </GridLayout>
@@ -34,6 +34,7 @@ export class FloatLabel {
     @Input() inModal: boolean = false;
     @Input() last: boolean;
     @Input() editable: boolean = true;
+    @Input() returnKeyType: string;
     @Input() type: string;
     @Output() textfieldEvent = new EventEmitter<string>()
 
@@ -64,8 +65,8 @@ export class FloatLabel {
             })
     }
 
-    onBlur() {
-        this.textfieldEvent.emit(this.value)
+    onBlur($event) {
+        this.textfieldEvent.emit($event)
         const label = this.label.nativeElement;
         const textField = this.textField.nativeElement;
         // if there is text in our input then don't move the label back to its initial position.
@@ -79,6 +80,10 @@ export class FloatLabel {
                 textField.borderBottomColor = new Color('#DDDDDD'); 
             }, () => { });
         }
+    }
+    
+    returnPress($event){
+        this.textfieldEvent.emit($event)
     }
 
     private createModelView(): Promise<any> {

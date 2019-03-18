@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(["/user/signup"]);
   }
 
-  login($event){
+  login(){
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
       return;
@@ -112,17 +112,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  focusPassword() {
-    this.textfieldpass.nativeElement.focus();
-  }
-
   openLink(link){
     utilsModule.openUrl(link)
   }
 
   textfieldEvent($event, field){
-    console.log($event)
-    this.user[field]=$event
+    this.user[field]=$event.object.text
+    if ($event.eventName == 'returnPress') this.login()
   }
 
 }

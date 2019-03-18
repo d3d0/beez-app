@@ -5,9 +5,8 @@
   <GridLayout row=1 rows="auto,auto">
     <CardView  row=0 class="card-group" elevation="40" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" >
       <StackLayout class="list-group-item">
-        <FloatLabel (textfieldEvent)="textfieldEvent($event,'mail')" [placeholder]="'EMAIL'|L" [type]="email"></FloatLabel>
-        <FloatLabel (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" [secure]="true"></FloatLabel>
-        <BeezButton [text]="'LOGIN'|L" [isBusy]="isLoading" (buttonClick)="login($event)"></BeezButton>
+        <FloatLabel (textfieldEvent)="textfieldEvent($event,'mail')" [placeholder]="'EMAIL'|L" type="email" returnKeyType="next"></FloatLabel>
+        <FloatLabel (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" [secure]="true" returnKeyType="done"></FloatLabel> <BeezButton [text]="'LOGIN'|L" [isBusy]="isLoading" (buttonClick)="login($event)"></BeezButton>
       </StackLayout>
     </CardView>
     <ActivityIndicator [busy]="isLoading" row="0" rowSpan="1"></ActivityIndicator>
