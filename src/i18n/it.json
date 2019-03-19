@@ -1,4 +1,4 @@
-{
+ {
   "ios.info.plist": {
     "NSLocationWhenInUseUsageDescription": "This will be added to InfoPlist.strings"
   },
@@ -14,6 +14,7 @@
   "PARTICIPATE": "PARTECIPA",
   "HELP": "Hai bisogno di aiuto?",
   "SHARE_WITH_A_FRIEND": "Condividi con un amico!",
+  "AND":" e ",
   "LOGIN":{
     "LOGIN" : "ACCEDI"
   },

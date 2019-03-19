@@ -16,7 +16,7 @@ import { formatDate } from '@angular/common';
         [hint]="placeholder|titlecase"
         [secure]="secure"
         [keyboardType]="type"
-        [editable]="editable"
+        [editable]="!datePicker"
         (blur)="onBlur($event)"
         (focus)="onFocus()"
         (returnPress)="returnPress($event)"
@@ -33,7 +33,6 @@ export class FloatLabel {
     @Input() secure: boolean;
     @Input() datePicker: boolean = false;
     @Input() last: boolean;
-    @Input() editable: boolean = true;
     @Input() returnKeyType: string;
     @Input() type: string;
     @Output() textfieldEvent = new EventEmitter<string>()

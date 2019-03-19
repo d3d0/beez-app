@@ -25,6 +25,7 @@
 					<StackLayout class="list-group-item">
 						<Label class="list-group-item-heading header" textWrap="true" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
 						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
+
 						<FloatLabel (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></FloatLabel>
 						<FloatLabel (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></FloatLabel>
 						<FloatLabel (textfieldEvent)="textfieldEvent($event,'tutor_date_of_birth')" [datePicker]="true" [placeholder]="'USER.DATE_OF_BIRTH'|L"></FloatLabel>
@@ -34,7 +35,7 @@
 							<FormattedString>
 								<Span class="note" [text]="'SIGNUP.REGISTRATION_CONDITIONS'|L" ></Span>
 								<Span class="note accent " [text]="'SIGNUP.REGISTRATION_TERMS'|L" (tap)="openLink('https://beez.io')"></Span>
-								<Span text=" e " ></Span>
+								<Span [text]="'AND'|L" ></Span>
 								<Span class="accent note" [text]="'SIGNUP.REGISTRATION_POLICY'|L" (tap)="openLink('https://beez.io')" ></Span>
 							</FormattedString>
 						</Label>
@@ -58,14 +59,19 @@
 						<FloatLabel (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'USER.PASSWORD'|L"></FloatLabel>
 						<FloatLabel (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.MINOR_NAME'|L"></FloatLabel>
 						<FloatLabel (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.MINOR_SURNAME'|L"></FloatLabel>
-						<CardView row="5" class="card-button" elevation="7" radius="15" shadowOpacity="0.2" ripple="true" ios:shadowRadius="5">
-							<Button class="card-button-link"
-							[text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L"
-							(tap)="signup()"></Button>
-						</CardView>
+						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" >
+							<FormattedString>
+								<Span class="note" [text]="'SIGNUP.REGISTRATION_CONDITIONS'|L" ></Span>
+								<Span class="note accent " [text]="'SIGNUP.REGISTRATION_TERMS'|L" (tap)="openLink('https://beez.io')"></Span>
+								<Span text=" e " ></Span>
+								<Span class="accent note" [text]="'SIGNUP.REGISTRATION_POLICY'|L" (tap)="openLink('https://beez.io')" ></Span>
+							</FormattedString>
+						</Label>
+						<BeezButton [text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L" [isBusy]="isLoading" (buttonClick)="signup($event)"></BeezButton>
 					</StackLayout>
 				</CardView>
 			</StackLayout>
 		</ScrollView>
 	</StackLayout>
+
 </StackLayout>
