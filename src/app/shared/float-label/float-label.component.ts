@@ -12,7 +12,7 @@ import { formatDate } from '@angular/common';
     <GridLayout rows="10, auto" ios:paddingTop="16" android:paddingTop="8"   >
         <Label #label row="1" [text]="placeholder|uppercase" opacity="0" class="label" verticalAlignment="bottom"></Label>
         <TextField #textField row="1" ios:paddingBottom="12" class="title"
-        [(ngModel)]="value"
+        [text]='value|date:"dd/MM/yy"'
         [hint]="placeholder|titlecase"
         [secure]="secure"
         [keyboardType]="type"
@@ -31,7 +31,7 @@ import { formatDate } from '@angular/common';
 export class FloatLabel {
     @Input() placeholder: string;
     @Input() secure: boolean;
-    @Input() inModal: boolean = false;
+    @Input() datePicker: boolean = false;
     @Input() last: boolean;
     @Input() editable: boolean = true;
     @Input() returnKeyType: string;
@@ -57,11 +57,9 @@ export class FloatLabel {
             // set the border bottom color to green to indicate focus
             textField.style.placeholderColor= new Color("transparent");
             textField.borderBottomColor = new Color('#5A82FF');
-         if (this.inModal) this.createModelView().then(
+         if (this.datePicker) this.createModelView().then(
             result => {
-                console.log('result',result)
-                this.value = result
-                this.textField.nativeElement.text=formatDate(result, 'dd-MM-yyyy','');
+                this.value = new Date(result)
             })
     }
 
@@ -90,7 +88,7 @@ export class FloatLabel {
     const textField = this.textField.nativeElement;
     const today = textField.text? new Date(textField.text): new Date();
     const options: ModalDialogOptions = {
-      context: { title: "CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE", currentdate: today },
+      context: { title: this.placeholder, currentdate: today },
       fullscreen: true,
       viewContainerRef: this.vcRef
     };

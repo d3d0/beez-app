@@ -27,7 +27,7 @@
 						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
 						<FloatLabel (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></FloatLabel>
 						<FloatLabel (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></FloatLabel>
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'tutor_date_of_birth')" [inModal]="true" [editable]="false" [placeholder]="'USER.DATE_OF_BIRTH'|L"></FloatLabel>
+						<FloatLabel (textfieldEvent)="textfieldEvent($event,'tutor_date_of_birth')" [datePicker]="true" [placeholder]="'USER.DATE_OF_BIRTH'|L"></FloatLabel>
 						<FloatLabel (textfieldEvent)="textfieldEvent($event,'mail')" [placeholder]="'USER.EMAIL'|L"></FloatLabel>
 						<FloatLabel (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'USER.PASSWORD'|L"></FloatLabel>
 						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" >
@@ -38,7 +38,7 @@
 								<Span class="accent note" [text]="'SIGNUP.REGISTRATION_POLICY'|L" (tap)="openLink('https://beez.io')" ></Span>
 							</FormattedString>
 						</Label>
-						<BeezButton [text]="'SIGNUP.REGISTRATION_TERMS'|L" [isBusy]="isLoading" (buttonClick)="signup($event)"></BeezButton>
+						<BeezButton [text]="'SIGNUP.REGISTRATION'|L" [isBusy]="isLoading" (buttonClick)="signup($event)"></BeezButton>
 					</StackLayout>
 				</CardView>
 			</StackLayout>
