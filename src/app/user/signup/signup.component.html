@@ -1,6 +1,18 @@
 <ActionBar class="action-bar">
-	<Label class="action-bar-title" [text]="'SIGNUP.REGISTRATION'|L" ></Label>
-	<NavigationButton android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
+	<!-- android icon > android.systemIcon="ic_menu_back" -->
+	<NavigationButton text="" (tap)="goBack()" icon="res://arrow_left" class="action-back" ></NavigationButton>
+	<!-- <Label class="action-label text-left pull-left" [text]="casting.title"></Label> -->
+
+	<!-- TITOLO > ANDROID -->
+  <StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="left" android:horizontalAlignment="left">
+		<Label class="action-label text-left pull-left" [text]="'SIGNUP.REGISTRATION'|L|titlecase"></Label>
+  </StackLayout>
+
+	<!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
+  <ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left" backgroundColor="red">
+    <Label class="action-label text-left pull-left" [text]="'SIGNUP.REGISTRATION'|L"></Label>
+  </ActionItem>
+
 </ActionBar>
 <StackLayout>
 	<Label class="tab-h-line-d3d0" text=""></Label>
@@ -10,10 +22,10 @@
 		</GridLayout>
 		<GridLayout left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto, auto" class="tab-buttons-d3d0" backgroundColor="transparent">
 			<GridLayout class="tab-container" col="0" (tap)="onSelectedIndexChange(0)" >
-				<Label #tab1 [text]="'SIGNUP.REGISTRATION'|L" class="text" textWrap="false" ></Label>
+				<Label #tab1 [text]="'SIGNUP.REGISTRATION'|L|uppercase" class="text" textWrap="false" ></Label>
 			</GridLayout>
 			<GridLayout class="tab-container" col="1" (tap)="onSelectedIndexChange(1)">
-				<Label #tab2 [text]="'SIGNUP.REGISTRATION_MINOR'|L" class="text" textWrap="false" ></Label>
+				<Label #tab2 [text]="'SIGNUP.REGISTRATION_MINOR'|L|uppercase" class="text" textWrap="false" ></Label>
 			</GridLayout>
 		</GridLayout>
 	</AbsoluteLayout>
@@ -40,7 +52,7 @@
 								<Span class="accent note" [text]="'SIGNUP.REGISTRATION_POLICY'|L" (tap)="openLink('https://beez.io')" ></Span>
 							</FormattedString>
 						</Label>
-						<BeezButton [text]="'SIGNUP.REGISTRATION'|L" [isBusy]="isLoading" (buttonClick)="signup($event)"></BeezButton>
+						<BeezButton [text]="'SIGNUP.REGISTRATION_SUBMIT'|L" [isBusy]="isLoading" (buttonClick)="signup($event)"></BeezButton>
 					</StackLayout>
 				</CardView>
 			</StackLayout>
@@ -52,19 +64,19 @@
 			<StackLayout>
 				<CardView class="list-group-item-box" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
 					<StackLayout class="list-group-item">
-						<Label class="list-group-item-heading header" textWrap="true" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
-						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
+						<Label class="list-group-item-heading header" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TITLE'|L" fontWeight="bold" ></Label>
+						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TEXT'|L"></Label>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'tutor_name')" [placeholder]="'USER.NAME'|L" returnKeyType="next"></BeezFloatLabelTextfield>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'tutor_surname')" [placeholder]="'USER.SURNAME'|L"returnKeyType="next"></BeezFloatLabelTextfield>
 						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'tutor_date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
-						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L" returnKeyType="next"></BeezFloatLabelTextfield>
-						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"returnKeyType="next"></BeezFloatLabelTextfield>
-						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
-						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.MINOR_NAME'|L" returnKeyType="next"></BeezFloatLabelTextfield>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.MINOR_SURNAME'|L"returnKeyType="next"></BeezFloatLabelTextfield>
+						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.MINOR_DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.MINOR_GENDER'|L"></BeezFloatLabelSelect>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'mail')" keyboardType="email" [placeholder]="'USER.EMAIL'|L" returnKeyType="next"></BeezFloatLabelTextfield>
     					<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" secure="true" returnKeyType="done"></BeezFloatLabelTextfield>
 						
-						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" >
+						<Label class="list-group-item-info-signup text" textWrap="true" >
 							<FormattedString>
 								<Span class="note" [text]="'SIGNUP.REGISTRATION_CONDITIONS'|L" ></Span>
 								<Span class="note accent " [text]="'SIGNUP.REGISTRATION_TERMS'|L" (tap)="openLink('https://beez.io')"></Span>
@@ -72,7 +84,7 @@
 								<Span class="accent note" [text]="'SIGNUP.REGISTRATION_POLICY'|L" (tap)="openLink('https://beez.io')" ></Span>
 							</FormattedString>
 						</Label>
-						<BeezButton [text]="'SIGNUP.REGISTRATION'|L" [isBusy]="isLoading" (buttonClick)="signup($event)"></BeezButton>
+						<BeezButton [text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L" [isBusy]="isLoading" (buttonClick)="signup($event)"></BeezButton>
 					</StackLayout>
 				</CardView>
 			</StackLayout>

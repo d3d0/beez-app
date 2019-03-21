@@ -86,6 +86,7 @@
     "MINOR_SURNAME" : "Under-18's Surname",
     "DATE_OF_BIRTH" : "Date of Birth",
     "MINOR_DATE_OF_BIRTH" : "Under-18's Date of Birth",
+    "MINOR_GENDER" : "Under-18's Gender",
     "PLACE_OF_BIRTH" : "Place of Birth",
     "AGE_RANGE" : "Age Range",
     "HEIGHT" : "Height",
