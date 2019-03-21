@@ -7,7 +7,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule, authProviders } from "./app.routing";
-import { setStatusBarColors, BackendService } from "./shared";
+import { BackendService } from "./shared/backend.service";
 
 import { CardView } from "nativescript-cardview";
 import { registerElement } from "nativescript-angular/element-registry";

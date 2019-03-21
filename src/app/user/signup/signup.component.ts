@@ -2,7 +2,6 @@ import { Component, ViewChild, EventEmitter, Output, ElementRef, OnInit, ViewCon
 import { localize } from "nativescript-localize";
 import { RouterExtensions } from "nativescript-angular/router";
 import { connectionType, getConnectionType } from "connectivity";
-import { alert } from "../../shared";
 import { View } from "ui/core/view";
 import { Color } from "color";
 import { Animation } from "ui/animation";
@@ -13,7 +12,8 @@ import { TaxonomyService} from "../../shared/taxonomy.service";
 import { User } from '../user.model'
 import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
-import { openLink } from "../../shared/dialog-util"
+import { openLink } from "../../shared/utils"
+import { alert } from "../../shared/utils";
 
 @Component({
   selector: 'ns-signup',

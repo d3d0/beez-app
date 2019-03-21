@@ -2,7 +2,7 @@ import { Injectable, NgZone } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { BehaviorSubject, throwError } from "rxjs";
 import { map, retry } from "rxjs/operators";
-import { BackendService } from "../shared";
+import { BackendService } from "../shared/backend.service";
 import { Notification } from "./notification.model";
 import { Notifications } from "./notifications.mock";
 

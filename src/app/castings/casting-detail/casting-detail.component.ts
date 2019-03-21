@@ -10,7 +10,7 @@ import { CastingsService} from "../castings.service";
 import { TaxonomyService} from "../../shared/taxonomy.service";
 import { Casting } from "../casting.model";
 import { BackendService } from "../../shared/backend.service";
-import { alert } from "../../shared";
+import { alert, getIconSource } from "../../shared/utils";
 
 class Agency  {
   vid=""
@@ -33,6 +33,7 @@ export class CastingDetailComponent implements OnInit {
   private casting_id;
   private user_id;
   public agencies: Agency[]
+getIconSource = getIconSource
   public edit_actions: boolean = false;
   public selectedAgency= new Agency();
   constructor(

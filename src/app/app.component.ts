@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { isAndroid } from "tns-core-modules/platform";
 const firebase = require("nativescript-plugin-firebase");
 
 @Component({
@@ -21,8 +20,5 @@ export class AppComponent implements OnInit {
       }
     );
   }
-	    getIconSource(icon: string): string {
-        const iconPrefix = isAndroid ? "res://" : "res://tabIcons/";
-        return iconPrefix + icon;
-    }
+
 }

@@ -5,7 +5,6 @@ import { localize } from "nativescript-localize";
 import { map, catchError, first, retry } from "rxjs/operators";
 import { BackendService } from "../shared/backend.service";
 import { Casting } from "./casting.model";
-import { alert } from "../shared";
 
 @Injectable({
   providedIn: "root"

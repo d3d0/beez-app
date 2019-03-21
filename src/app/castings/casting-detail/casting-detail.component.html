@@ -19,7 +19,7 @@
 	<StackLayout >
 		<Image [src]="casting.image" height="auto" stretch="aspectFit" horizontalAlignment="center" verticalAlignment="top"></Image>
 		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
-			<StackLayout class="list-group-item p-t-0 p-b-20">
+			<StackLayout class="list-group-item p-l-8 p-r-16  p-t-0 p-b-0">
 				<StackLayout *ngIf="casting.status != 'Shooting'"  class="p-t-0 p-b-20">
 
 					<!-- Label of status on top only from auditionTab -->
@@ -27,18 +27,17 @@
 						<Label [text]="labelBannerCard(casting.audition_action)|L"></Label>
 					</StackLayout>
 
-					<!-- info -->
-					<GridLayout row='0'columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" class="p-t-20">
-						<Label text="" class="list-group-item-icona-info list-group-item-icona-info-first" row="0" col="0"></Label>
-						<Label [text]="'CASTINGS.INFORMATION'|L" class="list-group-item-heading-18 list-group-item-heading-18-first" textWrap="true" row="0" col="1" ></Label>
+					<GridLayout row='0'columns="32, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" class="p-t-20">
+						<!-- lateral line -->
+						<Label text="" class="list-group-item-v-line" rowSpan="10" col="0" horizontalAlignment="center" ></Label>
 
-						<Label text="" class="list-group-item-v-line" row="1" col="0"></Label>
+						<!-- INFORMATION -->
+						<Image [src]="getIconSource('info')" row="0" col="0"  class="icon" backgroundColor="white" stretch="none" ></Image>
+						<Label [text]="'CASTINGS.INFORMATION'|L" class="header" textWrap="true" row="0" col="1" ></Label>
 						<Label class="list-group-item-text" [text]="casting.info" textWrap="true" row="1" col="1"></Label>
-
-						<Label text="" class="list-group-item-icona-characteristics" row="2" col="0"></Label>
-						<Label [text]="'CASTINGS.FEATURES'|L" class="list-group-item-heading-18" textWrap="true" row="2" col="1" ></Label>
-
-						<Label text="" class="list-group-item-v-line" row="3" col="0"></Label>
+						<!-- FEATURES -->
+						<Image [src]="getIconSource('characteristics')" class="icon" backgroundColor="white" row="2" col="0" stretch="none" ></Image>
+						<Label [text]="'CASTINGS.FEATURES'|L" class="header" textWrap="true" row="2" col="1"></Label>
 						<Label  class="list-group-item-text" textWrap="true" row="3" col="1">
 							<FormattedString *ngFor="let feature of casting.features" >
 								<Span text=" • " ></Span>
@@ -46,56 +45,47 @@
 								<Span text=";" ></Span>
 							</FormattedString>
 						</Label>
-
-						<Label text="" class="list-group-item-icona-calendar" row="4" col="0"></Label>
-						<Label [text]="'CASTINGS.DATE_LOCATION'|L" class="list-group-item-heading-18" textWrap="true" row="4" col="1" ></Label>
-
-						<Label text="" class="list-group-item-v-line" row="5" col="0"></Label>
-						<Label [text]="'CASTINGS.CASTING'|L" class="text-uppercase list-group-item-heading-14" textWrap="true" row="5" col="1" ></Label>
-
-						<Label text="" class="list-group-item-v-line" row="6" col="0"></Label>
-						<Label textWrap="false" class="text-left text-uppercase list-group-item-text" row="6" col="1">
+						<!-- DATE_LOCATION -->
+						<Image [src]="getIconSource('calendar')" class="icon" backgroundColor="white" row="4" col="0" stretch="none" ></Image>
+						<Label [text]="'CASTINGS.DATE_LOCATION'|L" class="header" textWrap="true" row="4" col="1" ></Label>
+						<Label [text]="'CASTINGS.CASTING'|L" class="header-small" textWrap="true" row="5" col="1" ></Label>
+						<Label textWrap="false" class="list-group-item-text list-group-item-text-middle" row="6" col="1">
 							<FormattedString *ngFor="let date of casting.casting_date" >
 								<Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
 								<Span text=" • " ></Span>
-								<Span [text]="date[0] * 1000 | date:'HH:mm z'" ></Span>
+								<Span [text]="date[0] * 1000 | date:'HH:mm'" ></Span>
 								<Span text=" - " ></Span>
-								<Span [text]="date[1]  * 1000 | date:'HH:mm z'" ></Span>
+								<Span [text]="date[1]  * 1000 | date:'HH:mm'" ></Span>
 							</FormattedString>
 						</Label>
-
-						<Label text="" class="list-group-item-v-line" row="7" col="0"></Label>
 						<Label class="list-group-item-text" [text]="casting.location" textWrap="true" row="7" col="1"></Label>
 
-						<Label text="" class="list-group-item-v-line" row="8" col="0"></Label>
-						<Label [text]="'CASTINGS.SHOOTING'|L" class="text-uppercase list-group-item-heading-14" textWrap="true" row="8" col="1" ></Label>
+						<Label [text]="'CASTINGS.SHOOTING'|L|uppercase" class="header-small" textWrap="true" row="8" col="1" ></Label>
 
-						<Label text="" class="list-group-item-v-line" row="9" col="0"></Label>
 						<StackLayout row="9" col="1">
-							<Label class="text" [text]="casting.shooting" textWrap="true" ></Label>
-							<Label class="text" [text]="'CASTINGS.SHOOTING_NOTE'|L" textWrap="true"></Label>
+							<Label class="list-group-item-text" [text]="casting.shooting|titlecase" textWrap="true" ></Label>
+							<Label class="list-group-item-text italic" [text]="'CASTINGS.SHOOTING_NOTE'|L" textWrap="true"></Label>
 						</StackLayout>
-
 					</GridLayout>
 
 					<!-- participate actions -->
-					<GridLayout row='1' *ngIf="casting.status === 'New'" columns="50, *" rows="auto,auto,auto" class="">
-						<Label text="" class="list-group-item-icona-partecipate" row="0" col="0" verticalAlignment="top"></Label>
-						<Button [text]="'PARTICIPATE'|L" (tap)="candidate()" class="label text-uppercase list-group-item-pulsante list-group-item-pulsante--verde" row="0" col="1"></Button>
+					<GridLayout  row='1' *ngIf="casting.status === 'New'" columns="32, *" rows="auto,auto" >
+						<Label text="" class="list-group-item-v-line" marginBottom="32" rowSpan="2" col="0" horizontalAlignment="center" ></Label>
 
-						<Label text="" class="list-group-item-v-line" row="1" col="0" height="20"></Label>
+						<Image [src]="getIconSource('confirm')" row="0" col="0"  class="icon" backgroundColor="white" stretch="none" verticalAlignment="center"></Image>
+						<BeezButton  [text]="'PARTICIPATE'|L" [isBusy]="isLoading" (buttonClick)="candidate()" row="0" col="1" ></BeezButton>
 
-						<Label text="" class="list-group-item-icona-share" row="2" col="0" verticalAlignment="top"></Label>
-						<Button  [text]="'SHARE_WITH_A_FRIEND'|L" (tap)="share()"class="label text-uppercase list-group-item-pulsante list-group-item-pulsante--blu" row="2" col="1"></Button>
+						<Image [src]="getIconSource('send')" row="1" col="0"  class="icon" backgroundColor="white" stretch="none" verticalAlignment="center"></Image>
+						<BeezButton  [text]="'SHARE_WITH_A_FRIEND'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="share()" row="1" col="1" ></BeezButton>
 					</GridLayout>
 
 					<!-- audition tab -->
 					<StackLayout row='2' >
 
-						<GridLayout  *ngIf="casting.status === 'Audition'" columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" class="">
+						<GridLayout  *ngIf="casting.status === 'Audition'" columns="32, *" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" class="">
 
 							<!-- partecipate action or edit partecipateactions -->
-							<Label text="" class="list-group-item-v-line" row="0" col="0"></Label>
+							<!-- <Label text="" class="list-group-item-v-line" row="0" col="0"></Label> -->
 							<Label row="0" col="1"  *ngIf="casting.audition_action === ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE'|L" class="list-group-item-heading-18" textWrap="true"></Label>
 
 							<StackLayout row="0" col="1"  *ngIf="casting.audition_action != ''" class="list-group-item-heading-18" >

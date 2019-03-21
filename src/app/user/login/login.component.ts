@@ -13,8 +13,8 @@ import { localize } from "nativescript-localize";
 import { messaging, Message } from "nativescript-plugin-firebase/messaging";
 
 import { PushNotificationsService } from "../../shared/pushNotifications.service"
-import { openLink } from "../../shared/dialog-util"
-import { alert } from "../../shared";
+import { openLink } from "../../shared/utils"
+import { alert } from "../../shared/utils";
 import { User } from '../user.model'
 import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
