@@ -25,12 +25,13 @@
 					<StackLayout class="list-group-item">
 						<Label class="list-group-item-heading header" textWrap="true" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
 						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
-
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></FloatLabel>
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></FloatLabel>
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'tutor_date_of_birth')" [datePicker]="true" [placeholder]="'USER.DATE_OF_BIRTH'|L"></FloatLabel>
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'mail')" [placeholder]="'USER.EMAIL'|L"></FloatLabel>
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'USER.PASSWORD'|L"></FloatLabel>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L" returnKeyType="next"></BeezFloatLabelTextfield>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"returnKeyType="next"></BeezFloatLabelTextfield>
+						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'mail')" keyboardType="email" [placeholder]="'USER.EMAIL'|L" returnKeyType="next"></BeezFloatLabelTextfield>
+    					<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" secure="true" returnKeyType="done"></BeezFloatLabelTextfield>
+						
 						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" >
 							<FormattedString>
 								<Span class="note" [text]="'SIGNUP.REGISTRATION_CONDITIONS'|L" ></Span>
@@ -49,25 +50,29 @@
 	<StackLayout  [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
 		<ScrollView height="100%" >
 			<StackLayout>
-				<CardView height="100%" class="card-group" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
+				<CardView class="list-group-item-box" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
 					<StackLayout class="list-group-item">
-						<Label class="list-group-item-heading-18" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TITLE'|L" fontWeight="bold" ></Label>
-						<Label class="list-group-item-info-signup m-b-20" marginBottom="20" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TEXT'|L"></Label>
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'tutor_name')" [placeholder]="'USER.NAME'|L"></FloatLabel>
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'tutor_surname')" [placeholder]="'USER.SURNAME'|L"></FloatLabel>
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'mail')" [placeholder]="'USER.EMAIL'|L"></FloatLabel>
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'USER.PASSWORD'|L"></FloatLabel>
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.MINOR_NAME'|L"></FloatLabel>
-						<FloatLabel (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.MINOR_SURNAME'|L"></FloatLabel>
+						<Label class="list-group-item-heading header" textWrap="true" [text]="'SIGNUP.REGISTRATION_TITLE'|L" fontWeight="bold" ></Label>
+						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'tutor_name')" [placeholder]="'USER.NAME'|L" returnKeyType="next"></BeezFloatLabelTextfield>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'tutor_surname')" [placeholder]="'USER.SURNAME'|L"returnKeyType="next"></BeezFloatLabelTextfield>
+						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'tutor_date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L" returnKeyType="next"></BeezFloatLabelTextfield>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"returnKeyType="next"></BeezFloatLabelTextfield>
+						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'mail')" keyboardType="email" [placeholder]="'USER.EMAIL'|L" returnKeyType="next"></BeezFloatLabelTextfield>
+    					<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" secure="true" returnKeyType="done"></BeezFloatLabelTextfield>
+						
 						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" >
 							<FormattedString>
 								<Span class="note" [text]="'SIGNUP.REGISTRATION_CONDITIONS'|L" ></Span>
 								<Span class="note accent " [text]="'SIGNUP.REGISTRATION_TERMS'|L" (tap)="openLink('https://beez.io')"></Span>
-								<Span text=" e " ></Span>
+								<Span [text]="'AND'|L" ></Span>
 								<Span class="accent note" [text]="'SIGNUP.REGISTRATION_POLICY'|L" (tap)="openLink('https://beez.io')" ></Span>
 							</FormattedString>
 						</Label>
-						<BeezButton [text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L" [isBusy]="isLoading" (buttonClick)="signup($event)"></BeezButton>
+						<BeezButton [text]="'SIGNUP.REGISTRATION'|L" [isBusy]="isLoading" (buttonClick)="signup($event)"></BeezButton>
 					</StackLayout>
 				</CardView>
 			</StackLayout>

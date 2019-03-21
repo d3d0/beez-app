@@ -1,0 +1,23 @@
+@import '../../../app-variables';
+
+GridLayout{
+	padding-bottom: 16;	
+}
+
+#text{
+	padding: 16 0;
+	border-bottom-width: 1;
+	border-bottom-color: $lilla;
+} 
+
+#placeholder{
+	color: $grigioscuro;
+	border-bottom-width: 1;
+	border-bottom-color: $grigiochiaro;
+	padding: 16 0;
+}
+
+#label{
+	transform: translate(0, -25);
+	padding: 16 0;
+}

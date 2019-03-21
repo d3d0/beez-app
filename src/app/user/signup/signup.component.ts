@@ -1,4 +1,4 @@
-import { Component, ViewChild, EventEmitter, Output, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, EventEmitter, Output, ElementRef, OnInit, ViewContainerRef } from '@angular/core';
 import { localize } from "nativescript-localize";
 import { RouterExtensions } from "nativescript-angular/router";
 import { connectionType, getConnectionType } from "connectivity";
@@ -6,8 +6,10 @@ import { alert } from "../../shared";
 import { View } from "ui/core/view";
 import { Color } from "color";
 import { Animation } from "ui/animation";
+import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 
-import { Profile } from "../profile.model"
+import { SelectModalViewComponent } from "../../shared/select-modal-view/select-modal-view.component";
+import { TaxonomyService} from "../../shared/taxonomy.service";
 import { User } from '../user.model'
 import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
@@ -21,12 +23,12 @@ import { openLink } from "../../shared/dialog-util"
 })
 export class SignupComponent implements OnInit{
   user: User;
-  profile: Profile;
   selectedIndex = 0;
   private signupMinorTitle
   private signupTitle
   private isAuthenticating = true;
   private tabs = [];
+  private genders = [];
   private openLink = openLink
 
   @ViewChild('tabHighlight') tabHighlight: ElementRef;
@@ -35,9 +37,12 @@ export class SignupComponent implements OnInit{
 
   constructor(
     private routerExtensions: RouterExtensions,
-    private userService: UserService
+    private userService: UserService,
+    private vcRef: ViewContainerRef,
+    private modal: ModalDialogService,
+    private taxonomyService: TaxonomyService,
+
     ) {
-    this.profile = new Profile();
     this.user = new User();
     this.signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
     this.signupTitle = localize("SIGNUP.REGISTRATION");
@@ -45,6 +50,7 @@ export class SignupComponent implements OnInit{
 
   ngOnInit() {
     console.log('hello from CASTING component');
+    this.genders = this.taxonomyService.getVocabolary('GENDERS')
 
     this.tabs[0] = <View>this.tab1.nativeElement;
     this.tabs[1] = <View>this.tab2.nativeElement;
@@ -60,7 +66,15 @@ export class SignupComponent implements OnInit{
       this.selectedIndex = index;
     }
   }
-
+  private createModelView(): Promise<any> {
+    const today = new Date();
+    const options: ModalDialogOptions = {
+      context: { list: this.genders , title: "CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE"},
+      fullscreen: true,
+      viewContainerRef: this.vcRef
+    };
+    return this.modal.showModal(SelectModalViewComponent, options);
+  }
    signup(){
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
@@ -76,7 +90,7 @@ export class SignupComponent implements OnInit{
     }
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
       BackendService.XCSFRtoken = result;
-      this.userService.signup(this.user, this.profile).subscribe((result) => {
+      this.userService.signup(this.user).subscribe((result) => {
         this.routerExtensions.navigate(["/user/login"], { clearHistory: true });
         alert(localize("MESSAGES.CONFIRM_EMAIL"));
       }, (error) => {
@@ -93,10 +107,14 @@ export class SignupComponent implements OnInit{
     });
   }
 
-  textfieldEvent($event, field){
-    this.user[field]=$event
+  selectEvent(value, field){
+    this.user[field]=value
+    console.dir(this.user)
   }
 
+  textfieldEvent($event, field){
+    this.user[field]=$event.object.text
+  }
 
     goBack() {
   	    this.routerExtensions.back();

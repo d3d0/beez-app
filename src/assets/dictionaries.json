@@ -11,5 +11,6 @@
     "ETHNICITY": 15,
     "DRIVER_LICENCE": 12,
     "ACTIVITIES": 4,
-    "AGENCY": 5
+    "AGENCY": 5,
+    "GENDERS": [{"tid":"M", "name":"MALE"},{"tid":"F", "name":"FEMALE"}]
 }

@@ -40,7 +40,8 @@ export class TaxonomyService {
     }
 
     getVocabolary(vocabolary){
-      return this.allTerms.filter(el => el['vid'] == DICTIONARIES[vocabolary])
+      if (typeof DICTIONARIES[vocabolary] != 'string' ) return DICTIONARIES[vocabolary]
+      else return this.allTerms.filter(el => el['vid'] == DICTIONARIES[vocabolary])
     }
 
     private publishUpdates() {

@@ -45,7 +45,7 @@ export class UserService {
       });
     }
 
-    signup(user: User, profile: Profile) {
+    signup(user: User) {
       return this.http.post(
         BackendService.baseUrl + "beez/loool/register",
         JSON.stringify({
@@ -54,12 +54,13 @@ export class UserService {
           "name": user.mail,
           "field_registrato_da_app":{"und":[{"value":1}]},
           "profile":{
-            "field_name":profile.name,
-            "field_surname":profile.surname,
-            "field_date_of_birth":profile.date_of_birth,
-            "field_tutor_name":profile.tutor_name,
-            "field_tutor_surname":profile.tutor_surname,
-            "field_tutor_date_of_birth":profile.tutor_date_of_birth
+            "field_name":user.name,
+            "field_gender":user.gender,
+            "field_surname":user.surname,
+            "field_date_of_birth":user.date_of_birth,
+            "field_tutor_name":user.tutor_name,
+            "field_tutor_surname":user.tutor_surname,
+            "field_tutor_date_of_birth":user.tutor_date_of_birth
           }
         }),
         {

@@ -9,7 +9,8 @@ import { CastingStatusPipe } from "../castings/castings-list/casting-status.pipe
 import { CastingDetailComponent } from '../castings/casting-detail/casting-detail.component';
 import { SelectDateModalViewComponent } from "./select-date-modal-view/select-date-modal-view.component";
 import { SelectModalViewComponent } from "./select-modal-view/select-modal-view.component";
-import { FloatLabel } from './float-label/float-label.component'
+import { BeezFloatLabelSelect } from './beez-float-label-select/beez-float-label-select.component'
+import { BeezFloatLabelTextfield } from './beez-float-label-textfield/beez-float-label-textfield.component'
 import { BeezButton } from './beez-button/beez-button.component'
 
 const sharedRoutes: Routes = [
@@ -27,7 +28,8 @@ const sharedRoutes: Routes = [
   declarations: [
     CastingDetailComponent,
     CastingStatusPipe,
-    FloatLabel,
+    BeezFloatLabelSelect,
+    BeezFloatLabelTextfield,
     BeezButton,
     SelectDateModalViewComponent,
     SelectModalViewComponent
@@ -35,7 +37,8 @@ const sharedRoutes: Routes = [
   exports: [
     NativeScriptRouterModule,
     CastingStatusPipe,
-    FloatLabel,
+    BeezFloatLabelSelect,
+    BeezFloatLabelTextfield,
     BeezButton,
     CastingDetailComponent,
     NativeScriptCommonModule,
