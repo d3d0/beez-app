@@ -4,7 +4,6 @@ export class User {
   id: string;
   mail: string;
   pass: string;
-  id: string
   name: string
   surname: string
   date_of_birth: Date

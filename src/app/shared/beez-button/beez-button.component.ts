@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter,ViewChild, ElementRef, OnChanges  } from "@angular/core";
 import { Color } from "tns-core-modules/color";
 
 @Component({
@@ -8,7 +8,7 @@ import { Color } from "tns-core-modules/color";
     template: `
     <StackLayout class="container">
         <CardView width="100%" elevation="2" radius="15" shadowOpacity="0.2" ripple="false" ios:shadowRadius="5">
-        <Button
+        <Button #button
           class="label"
           [isEnabled]="!isBusy" 
           [text]="text|uppercase"
@@ -18,14 +18,18 @@ import { Color } from "tns-core-modules/color";
     `
 })
 
-export class BeezButton {
+export class BeezButton implements OnChanges{
     @Input() text: string;
     @Input() backgroundColor: string;
     @Input() isBusy: boolean;
     @Output() buttonClick = new EventEmitter<string>()
+    @ViewChild("button") button: ElementRef;
 
     constructor() {}
-
+    ngOnChanges(changes) {
+        if(this.isBusy) this.button.nativeElement.text= "Loading ..."
+        else this.button.nativeElement.text= this.text
+    }
     onClick(){
         if(!this.isBusy) this.buttonClick.emit()
     }

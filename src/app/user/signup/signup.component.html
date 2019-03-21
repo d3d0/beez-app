@@ -65,7 +65,7 @@
 				<CardView class="list-group-item-box" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
 					<StackLayout class="list-group-item">
 						<Label class="list-group-item-heading header" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TITLE'|L" fontWeight="bold" ></Label>
-						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TEXT'|L"></Label>
+						<Label class="list-group-item-info-signup text" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TEXT'|L"></Label>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'tutor_name')" [placeholder]="'USER.NAME'|L" returnKeyType="next"></BeezFloatLabelTextfield>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'tutor_surname')" [placeholder]="'USER.SURNAME'|L"returnKeyType="next"></BeezFloatLabelTextfield>
 						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'tutor_date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>

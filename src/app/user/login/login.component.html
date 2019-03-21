@@ -3,7 +3,6 @@
     <LottieView height="280" src="data.json" autoplay="true"  (loaded)="lottieViewLoaded($event)"></LottieView>
   </StackLayout>
   <GridLayout row=1 rows="auto,auto">
-    <ActivityIndicator [busy]="isLoading" row="0" rowSpan="1"></ActivityIndicator>
     <CardView  row=0 class="card-group" elevation="40" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" >
       <StackLayout class="list-group-item">
         <BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'mail')" [placeholder]="'EMAIL'|L" type="email" returnKeyType="next"></BeezFloatLabelTextfield>

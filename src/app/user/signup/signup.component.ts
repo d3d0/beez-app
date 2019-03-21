@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit{
   selectedIndex = 0;
   private signupMinorTitle
   private signupTitle
-  private isAuthenticating = true;
+  private isLoading = false;
   private tabs = [];
   private genders = [];
   private openLink = openLink
@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit{
     this.user = new User();
     this.signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
     this.signupTitle = localize("SIGNUP.REGISTRATION");
-   }
+  }
 
   ngOnInit() {
     console.log('hello from CASTING component');
@@ -75,7 +75,7 @@ export class SignupComponent implements OnInit{
     };
     return this.modal.showModal(SelectModalViewComponent, options);
   }
-   signup(){
+  signup(){
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
       return;
@@ -88,6 +88,7 @@ export class SignupComponent implements OnInit{
       alert(localize("MESSAGES.ERROR_PASS"));
       return;
     }
+    this.isLoading = true;
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
       BackendService.XCSFRtoken = result;
       this.userService.signup(this.user).subscribe((result) => {
@@ -95,6 +96,8 @@ export class SignupComponent implements OnInit{
         alert(localize("MESSAGES.CONFIRM_EMAIL"));
       }, (error) => {
         BackendService.reset()
+        this.isLoading = false;
+
         if (error.status == 406)
           alert(localize("MESSAGES.ERROR_ACCOUNT_DOUBLE"));
         else
@@ -103,21 +106,22 @@ export class SignupComponent implements OnInit{
         console.log('signin user error ', error)
       });
     }, (error) => {
+      this.isLoading = false;
+
       console.log('getAnonXCSFRtoken error: ',error);
     });
   }
 
   selectEvent(value, field){
     this.user[field]=value
-    console.dir(this.user)
   }
 
   textfieldEvent($event, field){
     this.user[field]=$event.object.text
   }
 
-    goBack() {
-  	    this.routerExtensions.back();
-  	}
-	
+  goBack() {
+    if(!this.isLoading) this.routerExtensions.back();
+  }
+
 }

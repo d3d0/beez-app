@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
   }
 
   goToSignup(){
-    this.router.navigate(["/user/signup"]);
+    if(!this.isLoading) this.router.navigate(["/user/signup"]);
   }
 
   login(){
@@ -92,7 +92,6 @@ export class LoginComponent implements OnInit {
               this.pushService.push_token(token).subscribe(result => console.log("resulult form pushservice", result))
             } 
         ).catch( err=> console.log(err))
-
 
         this.routerExtensions.navigate(["../home"], { clearHistory: true });
        },
