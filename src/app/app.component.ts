@@ -8,7 +8,10 @@ const firebase = require("nativescript-plugin-firebase");
     styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
+
+
 	  ngOnInit() {
+
     firebase.init({
   		iOSEmulatorFlush: true
     }).then(

@@ -3,9 +3,7 @@ import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import { localize } from "nativescript-localize";
 import { ActivatedRoute } from "@angular/router";
 import * as SocialShare from "nativescript-social-share";
-import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 
-import { SelectModalViewComponent } from "../../shared/select-modal-view/select-modal-view.component";
 import { CastingsService} from "../castings.service";
 import { TaxonomyService} from "../../shared/taxonomy.service";
 import { Casting } from "../casting.model";
@@ -38,7 +36,6 @@ getIconSource = getIconSource
   public selectedAgency= new Agency();
   constructor(
     private activeRoute: ActivatedRoute,
-    private modal: ModalDialogService,
     private taxonomyService: TaxonomyService,
     private castingsService: CastingsService,
     private vcRef: ViewContainerRef,
@@ -81,25 +78,6 @@ getIconSource = getIconSource
     if (this.AgencyCheckBox.nativeElement.checked) {
       this.selectedAgency = new Agency()
     }
-  }
-
-  private selectAgency(): void {
-    if (this.AgencyCheckBox.nativeElement.checked) return
-      this.createModelView().then(result => {
-        if (result){
-          this.selectedAgency = result;
-        } 
-      }).catch(error => console.log(error));
-  }
-
-  private createModelView(): Promise<any> {
-    const today = new Date();
-    const options: ModalDialogOptions = {
-      context: { list: this.agencies , title: "CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE"},
-      fullscreen: true,
-      viewContainerRef: this.vcRef
-    };
-    return this.modal.showModal(SelectModalViewComponent, options);
   }
 
   private candidate(){

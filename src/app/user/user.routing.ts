@@ -5,14 +5,12 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from "./signup/signup.component";
-import { SelectDateModalViewComponent } from "../shared/select-date-modal-view/select-date-modal-view.component";
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
   // { path: "user", redirectTo: "login", pathMatch: 'full'},
   { path: "signup", component: SignupComponent },
-  { path: "login", component: LoginComponent },
-  { path: "date-model", component: SelectDateModalViewComponent }
+  { path: "login", component: LoginComponent }
 ];
 
 @NgModule({

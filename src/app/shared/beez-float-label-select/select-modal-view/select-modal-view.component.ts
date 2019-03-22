@@ -14,13 +14,14 @@ export class SelectModalViewComponent {
     private picked:string
     private list
     private title
-    constructor(private _params: ModalDialogParams, private router: RouterExtensions ) {
+    constructor(private _params: ModalDialogParams, private routerExtensions: RouterExtensions ) {
         this.list = _params.context.list;
         this.title = _params.context.title;
     }
 
-    onNavigate(): void {
-        this.router.back();
+    onBack(): void {
+        console.log("onback")
+        this._params.closeCallback();
     }
 
     public onClose() {

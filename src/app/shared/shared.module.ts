@@ -7,8 +7,8 @@ import { NativeScriptRouterModule, NSEmptyOutletComponent } from "nativescript-a
 
 import { CastingStatusPipe } from "../castings/castings-list/casting-status.pipe";
 import { CastingDetailComponent } from '../castings/casting-detail/casting-detail.component';
-import { SelectDateModalViewComponent } from "./select-date-modal-view/select-date-modal-view.component";
-import { SelectModalViewComponent } from "./select-modal-view/select-modal-view.component";
+import { SelectDateModalViewComponent } from "./beez-float-label-select/select-date-modal-view/select-date-modal-view.component";
+import { SelectModalViewComponent } from "./beez-float-label-select/select-modal-view/select-modal-view.component";
 import { BeezFloatLabelSelect } from './beez-float-label-select/beez-float-label-select.component'
 import { BeezFloatLabelTextfield } from './beez-float-label-textfield/beez-float-label-textfield.component'
 import { BeezButton } from './beez-button/beez-button.component'
