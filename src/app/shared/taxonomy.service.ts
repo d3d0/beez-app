@@ -3,10 +3,10 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http
 import { Observable, BehaviorSubject, throwError } from "rxjs";
 import { localize } from "nativescript-localize";
 import { map, catchError, first, retry } from "rxjs/operators";
-import { BackendService } from "../shared/backend.service";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { filter } from 'rxjs/operators';
 
+import { BackendService } from "../shared/backend.service";
 const DICTIONARIES = require('../../assets/dictionaries.json');
 
 @Injectable({
@@ -14,12 +14,11 @@ const DICTIONARIES = require('../../assets/dictionaries.json');
 })
 
 export class TaxonomyService {
-
   terms: BehaviorSubject<Array<any>> = new BehaviorSubject([]);
   allTerms =[];
-
   // private _allTerms = new ObservableArray();
   private serviceURl
+
   constructor( private http: HttpClient, private zone:NgZone ) {
     this.serviceURl = localize('LANG') === 'IT' ? BackendService.term_ita : BackendService.term_eng
     this.load()
@@ -40,14 +39,14 @@ export class TaxonomyService {
     }
 
     getVocabolary(vocabolary){
-      if (typeof DICTIONARIES[vocabolary] != 'string' ) return DICTIONARIES[vocabolary]
-      else return this.allTerms.filter(el => el['vid'] == DICTIONARIES[vocabolary])
+      if (typeof DICTIONARIES[vocabolary] != 'string' ) 
+        return DICTIONARIES[vocabolary]
+      else
+        return this.allTerms.filter(el => el['vid'] == DICTIONARIES[vocabolary])
     }
 
     private publishUpdates() {
-      // Make sure all updates are published inside NgZone so that change detection is triggered if needed
       this.zone.run(() => {
-        // must emit a *new* value (immutability!)
         this.terms.next([...this.allTerms]);
       });
     }

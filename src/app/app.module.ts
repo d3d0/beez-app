@@ -10,8 +10,10 @@ import { AppRoutingModule, authProviders } from "./app.routing";
 import { BackendService } from "./shared/backend.service";
 
 import { CardView } from "nativescript-cardview";
-import { registerElement } from "nativescript-angular/element-registry";
+import { registerElement } from "nativescript-angular";
+
 registerElement("CardView", () => CardView);
+registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanager").PreviousNextView);
 
 @NgModule({
     bootstrap: [

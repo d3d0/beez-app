@@ -1,10 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
 import { Page } from "ui/page";
-import { View } from "ui/core/view";
-import { Animation } from "ui/animation";
-import { Color } from "color";
-import { TextField } from "tns-core-modules/ui/text-field";
 import { connectionType, getConnectionType } from "connectivity";
 import { registerElement } from 'nativescript-angular';
 import { LottieView } from 'nativescript-lottie';
@@ -30,19 +25,11 @@ registerElement('LottieView', () => LottieView);
 
 export class LoginComponent implements OnInit {
   user: User;
-  public animations: Array<string>;
-
-  @ViewChild("labelmail") labelmail: ElementRef;
-  @ViewChild("labelpass") labelpass: ElementRef;
-  @ViewChild("textfieldmail") textfieldmail: ElementRef;
-  @ViewChild("textfieldpass") textfieldpass: ElementRef;
-
   private _lottieView: LottieView;
   private isLoading = false;
   private openLink = openLink
 
   constructor( private userService: UserService,
-    private router: Router,
     private pushService: PushNotificationsService,
     private page: Page,
     private routerExtensions: RouterExtensions) {
@@ -60,7 +47,7 @@ export class LoginComponent implements OnInit {
   }
 
   goToSignup(){
-    if(!this.isLoading) this.router.navigate(["/user/signup"]);
+    if(!this.isLoading) this.routerExtensions.navigate(["/user/signup"]);
   }
 
   login(){

@@ -4,14 +4,16 @@
   </StackLayout>
   <GridLayout row=1 rows="auto,auto">
     <CardView  row=0 class="card-group" elevation="40" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" >
+      <PreviousNextView>
       <StackLayout class="list-group-item">
-        <BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'mail')" [placeholder]="'EMAIL'|L" type="email" returnKeyType="next"></BeezFloatLabelTextfield>
+        <BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'mail')" [placeholder]="'EMAIL'|L" type="email"></BeezFloatLabelTextfield>
         <BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" secure="true" returnKeyType="done"></BeezFloatLabelTextfield>
         <BeezButton [text]="'LOGIN'|L" [isBusy]="isLoading" (buttonClick)="login($event)"></BeezButton>
       </StackLayout>
+    </PreviousNextView>
     </CardView>
     <GridLayout class="login-footer" row="1" >
-      <Label class="title title-small login-footer-register" col="0" horizontalAlignment="left" [nsRouterLink] = "['/user/signup']"  [text]="'SIGNUP.SIGNUP'|L"></Label>
+      <Label class="title title-small login-footer-register" col="0" horizontalAlignment="left" (tap)="goToSignup()" [text]="'SIGNUP.SIGNUP'|L"></Label>
       <Label class="title title-small login-footer-help" col="1" horizontalAlignment="right" (tap)="openLink('https://beez.io')" [text]="'HELP'|L"></Label>
     </GridLayout>
   </GridLayout>

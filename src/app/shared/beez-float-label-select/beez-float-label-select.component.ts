@@ -3,8 +3,8 @@ import { formatDate } from '@angular/common';
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 import { localize } from "nativescript-localize";
 
-import { SelectDateModalViewComponent } from "../../shared/select-date-modal-view/select-date-modal-view.component";
-import { SelectModalViewComponent } from "../../shared/select-modal-view/select-modal-view.component";
+import { SelectDateModalViewComponent } from "./select-date-modal-view/select-date-modal-view.component";
+import { SelectModalViewComponent } from "./select-modal-view/select-modal-view.component";
 import { TaxonomyService} from "../taxonomy.service";
 
 @Component({
@@ -14,8 +14,8 @@ import { TaxonomyService} from "../taxonomy.service";
     template: `
         <GridLayout rows="10, auto" (tap)="openModal()">
         <Label [visibility]="!!value?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label"></Label>
-        <Label [visibility]="!!value?'visible':'hidden'" id="text" row="1" [text]="value" ></Label>
-        <Label [visibility]="!value?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder" ></Label>
+        <Label [visibility]="!!value?'visible':'hidden'" id="text" row="1" [text]="value"></Label>
+        <Label [visibility]="!value?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder"></Label>
         </GridLayout>
     `
 })

@@ -1,14 +1,9 @@
-import { Component, ViewChild, EventEmitter, Output, ElementRef, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild, EventEmitter, ElementRef, OnInit, ViewContainerRef } from '@angular/core';
 import { localize } from "nativescript-localize";
 import { RouterExtensions } from "nativescript-angular/router";
 import { connectionType, getConnectionType } from "connectivity";
-import { View } from "ui/core/view";
-import { Color } from "color";
-import { Animation } from "ui/animation";
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 
-import { SelectModalViewComponent } from "../../shared/select-modal-view/select-modal-view.component";
-import { TaxonomyService} from "../../shared/taxonomy.service";
 import { User } from '../user.model'
 import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
@@ -28,10 +23,9 @@ export class SignupComponent implements OnInit{
   private signupTitle
   private isLoading = false;
   private tabs = [];
-  private genders = [];
   private openLink = openLink
 
-  @ViewChild('tabHighlight') tabHighlight: ElementRef;
+  // @ViewChild('tabHighlight') tabHighlight: ElementRef;
   @ViewChild('tab1') tab1: ElementRef;
   @ViewChild('tab2') tab2: ElementRef;
 
@@ -39,9 +33,7 @@ export class SignupComponent implements OnInit{
     private routerExtensions: RouterExtensions,
     private userService: UserService,
     private vcRef: ViewContainerRef,
-    private modal: ModalDialogService,
-    private taxonomyService: TaxonomyService,
-
+    private modal: ModalDialogService
     ) {
     this.user = new User();
     this.signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
@@ -49,11 +41,8 @@ export class SignupComponent implements OnInit{
   }
 
   ngOnInit() {
-    console.log('hello from CASTING component');
-    this.genders = this.taxonomyService.getVocabolary('GENDERS')
-
-    this.tabs[0] = <View>this.tab1.nativeElement;
-    this.tabs[1] = <View>this.tab2.nativeElement;
+    this.tabs[0] = this.tab1.nativeElement;
+    this.tabs[1] = this.tab2.nativeElement;
     this.tabs[0].className = "active";
     // this.tabs[0].style.color = new Color("#00D796");
   }
@@ -66,15 +55,7 @@ export class SignupComponent implements OnInit{
       this.selectedIndex = index;
     }
   }
-  private createModelView(): Promise<any> {
-    const today = new Date();
-    const options: ModalDialogOptions = {
-      context: { list: this.genders , title: "CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE"},
-      fullscreen: true,
-      viewContainerRef: this.vcRef
-    };
-    return this.modal.showModal(SelectModalViewComponent, options);
-  }
+
   signup(){
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
@@ -97,17 +78,14 @@ export class SignupComponent implements OnInit{
       }, (error) => {
         BackendService.reset()
         this.isLoading = false;
-
         if (error.status == 406)
           alert(localize("MESSAGES.ERROR_ACCOUNT_DOUBLE"));
         else
           alert(localize("MESSAGES.ERROR_SERVICE"));
-
         console.log('signin user error ', error)
       });
     }, (error) => {
       this.isLoading = false;
-
       console.log('getAnonXCSFRtoken error: ',error);
     });
   }
