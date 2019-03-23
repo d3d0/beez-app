@@ -32,7 +32,7 @@ export class MediaComponent {
     private images:any = [];
 
     constructor( private profileService: ProfileService ) {
-        this.url = BackendService.baseUrl + "beez/loool_talent_profile/media_images_upload/" + BackendService.UID
+        this.url = BackendService.baseUrl + "beez/loool_talent_images/upload_image_multipart"
         this.session = bgHttp.session("image-upload");
         this.loadImages()
     }
@@ -54,14 +54,6 @@ export class MediaComponent {
         this.startSelection(context);
     }
 
-    public onSelectSingleTap() {
-        this.isSingleMode = true;
-        let context = imagepicker.create({
-            mode: "single"
-        });
-        this.startSelection(context);
-    }
-
     private startSelection(context) {
         let that = this;
         context
@@ -79,27 +71,21 @@ export class MediaComponent {
                 element.options.width = that.isSingleMode ? that.previewSize : that.thumbSize;
                 element.options.height = that.isSingleMode ? that.previewSize : that.thumbSize;
             });
-            that.file = selection[0]._android;
-            let image = fromFile(that.file);
-            that.image_base64 = image.toBase64String('jpg');
+            this.file = selection[0]._android;
         }).catch(function (e) {
             console.log(e);
         });
     }
 
-    start_upload(should_fail, isMulti) {
+    start_upload() {
         const name = this.file.substr(this.file.lastIndexOf("/") + 1);
         // this.file = fs.path.normalize(fs.knownFolders.currentApp().path + this.file);
-
         const description = `${name} (${++this.counter})`;
 
-        let headers = []
-        // headers["Content-Type"] = "multipart/form-data"
+        let headers = BackendService.getCommonHeaders()
         headers["Content-Type"] = "application/octet-stream"
         headers["Accept"] = 'application/json'
         headers["File-Name"] =  name
-        headers['x-csrf-token'] =  BackendService.XCSFRtoken,
-        headers['Cookie'] = BackendService.session_name + "=" + BackendService.sessid
 
         const request = {
             url: this.url,
@@ -108,11 +94,10 @@ export class MediaComponent {
             androidAutoDeleteAfterUpload: false,
             androidNotificationTitle: 'BEEEZ',
         };
-
         let task: bgHttp.Task;
         let lastEvent = "";
         const params = [
-        { name: "image1", filename: this.file, mimeType: "image/jpeg" }
+        { name: "image12", filename: this.file }
         ];
         task = this.session.multipartUpload(params, request);
 
@@ -142,10 +127,5 @@ export class MediaComponent {
         task.on("complete", onEvent.bind(this));
         lastEvent = "";
         this.tasks.push(task);
-        // selection.forEach(function (element) {
-            //     element.options.width = that.isSingleMode ? that.previewSize : that.thumbSize;
-            //     element.options.height = that.isSingleMode ? that.previewSize : that.thumbSize;
-            // });
-            // this.file = selection[0]._android;
     }
 }
