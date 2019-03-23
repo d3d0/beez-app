@@ -44,7 +44,6 @@ export class UserService {
         headers: this.getCommonHeader()
       });
     }
-
     signup(user: User) {
       return this.http.post(
         BackendService.baseUrl + "beez/loool/register",

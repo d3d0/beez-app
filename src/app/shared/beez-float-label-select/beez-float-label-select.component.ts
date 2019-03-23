@@ -1,4 +1,4 @@
-import { Component, Input, Output, ViewContainerRef, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, ViewContainerRef, EventEmitter } from "@angular/core";
 import { formatDate } from '@angular/common';
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 import { localize } from "nativescript-localize";
@@ -12,15 +12,15 @@ import { TaxonomyService} from "../taxonomy.service";
     moduleId: module.id,
     styleUrls: ['./beez-float-label-select.component.css'],
     template: `
-        <GridLayout rows="10, auto" (tap)="openModal()">
-        <Label [visibility]="!!value?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label"></Label>
-        <Label [visibility]="!!value?'visible':'hidden'" id="text" row="1" [text]="value"></Label>
-        <Label [visibility]="!value?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder"></Label>
-        </GridLayout>
+    <GridLayout rows="10, auto" (tap)="openModal()">
+    <Label [visibility]="!!value?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label"></Label>
+    <Label [visibility]="!!value?'visible':'hidden'" id="text" row="1" [text]="value" ></Label>
+    <Label [visibility]="!value?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder" ></Label>
+    </GridLayout>
     `
 })
 
-export class BeezFloatLabelSelect {
+export class BeezFloatLabelSelect implements OnInit {
     @Input() placeholder: string;
     @Input() type: string;
     @Output() selectEvent = new EventEmitter<string>()
@@ -30,11 +30,6 @@ export class BeezFloatLabelSelect {
     constructor(
         private vcRef: ViewContainerRef,
         private taxonomyService: TaxonomyService,
-        private modal: ModalDialogService) {
-        if (this.type != "datapicker")
-            this.taxonomyService.load().subscribe( ()=>{
-                this.list = this.taxonomyService.getVocabolary(this.type)
-            })
     }
 
     private openModal(){

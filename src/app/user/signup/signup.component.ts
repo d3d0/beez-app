@@ -2,7 +2,8 @@ import { Component, ViewChild, EventEmitter, ElementRef, OnInit, ViewContainerRe
 import { localize } from "nativescript-localize";
 import { RouterExtensions } from "nativescript-angular/router";
 import { connectionType, getConnectionType } from "connectivity";
-import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
+
+
 
 import { User } from '../user.model'
 import { UserService } from "../user.service";
@@ -32,8 +33,7 @@ export class SignupComponent implements OnInit{
   constructor(
     private routerExtensions: RouterExtensions,
     private userService: UserService,
-    private vcRef: ViewContainerRef,
-    private modal: ModalDialogService
+
     ) {
     this.user = new User();
     this.signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
@@ -91,11 +91,11 @@ export class SignupComponent implements OnInit{
   }
 
   selectEvent(value, field){
-    this.user[field]=value
+    if (field) this.user[field]=value
   }
 
   textfieldEvent($event, field){
-    this.user[field]=$event.object.text
+    if (field) this.user[field]=$event.object.text
   }
 
   goBack() {

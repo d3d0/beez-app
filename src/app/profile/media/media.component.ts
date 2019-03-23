@@ -29,41 +29,23 @@ export class MediaComponent {
     private url: string;
     private counter: number = 0;
     private session: any;
-    private images:any;
+    private images:any = [];
 
     constructor( private profileService: ProfileService ) {
-        this.url = BackendService.baseUrl + "beez/loool_talent_profile/media_images_upload/" + BackendService.UID
+        this.url = BackendService.baseUrl + "beez/loool_talent_images/upload_image_multipart"
         this.session = bgHttp.session("image-upload");
         this.loadImages()
     }
     loadImages(){
-        this.profileService.getImages().subscribe(result => {
-            // console.log(result)
-            this.images = result} )
+        this.profileService.getImages().subscribe(result => this.images = result )
     }
     deleteImage(fid){
         this.profileService.deleteImage(fid).subscribe(result => this.images = result )
     }
-setPolaroidImage(fid){
+    setPolaroidImage(fid){
         this.profileService.setPolaroidImage(fid).subscribe(result => console.log(result) )
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////
     public onSelectMultipleTap() {
         this.isSingleMode = false;
         let context = imagepicker.create({
@@ -106,36 +88,42 @@ setPolaroidImage(fid){
         });
     }
 
-    ////////////////////////////////////////////////////////
-    upload(args) {
-        const name = this.file.substr(this.file.lastIndexOf("/") + 1);
-        // this.start_upload(false, true);
-        this.profileService.drupal_upload(name, this.image_base64).subscribe(result=>console.log(result))
-    }
-
     start_upload(should_fail, isMulti) {
         console.log( 'this.file ',this.file)
+
         const name = this.file.substr(this.file.lastIndexOf("/") + 1);
+        // this.file = fs.path.normalize(fs.knownFolders.currentApp().path + this.file);
+
         const description = `${name} (${++this.counter})`;
+
+        let headers = []
+        // headers["Content-Type"] = "multipart/form-data"
+        headers["Content-Type"] = "application/octet-stream"
+        headers["Accept"] = 'application/json'
+        headers["File-Name"] =  name
+        headers['x-csrf-token'] =  BackendService.XCSFRtoken,
+        headers['Cookie'] = BackendService.session_name + "=" + BackendService.sessid
+
         const request = {
             url: this.url,
             method: "POST",
-            headers:  BackendService.getRawCommonHeaders(),
-            description: description,
+            headers: headers,
             androidAutoDeleteAfterUpload: false,
-            androidNotificationTitle: 'NativeScript HTTP background',
+            androidNotificationTitle: 'BEEEZ',
         };
 
         let task: bgHttp.Task;
         let lastEvent = "";
-        console.log('this.image_base64' ,this.image_base64)
+        console.log('this.file', this.file)
         const params = [
-        { name: "fileToUpload", filename: name, file:this.image_base64 }
+        { name: "image1", filename: this.file, mimeType: "image/jpeg" },
+        { name: "image2", filename: this.file, mimeType: "image/jpeg" }
         ];
-        // task = this.session.multipartUpload(params, request);
-        task = this.session.uploadFile(this.file, request);
+        task = this.session.multipartUpload(params, request);
+        // task = this.session.uploadFile(this.file, request);
 
         function onEvent(e) {
+            console.log(e)
             if (lastEvent !== e.eventName) {
                 // suppress all repeating progress events and only show the first one
                 lastEvent = e.eventName;
@@ -160,14 +148,10 @@ setPolaroidImage(fid){
         task.on("complete", onEvent.bind(this));
         lastEvent = "";
         this.tasks.push(task);
+        // selection.forEach(function (element) {
+            //     element.options.width = that.isSingleMode ? that.previewSize : that.thumbSize;
+            //     element.options.height = that.isSingleMode ? that.previewSize : that.thumbSize;
+            // });
+            // this.file = selection[0]._android;
     }
-
-
-
-
-
-
-
-
-
 }
