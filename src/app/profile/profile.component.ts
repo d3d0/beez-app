@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
 
   static IMAGE_MIN_HEIGHT = 48;
   public selectedIndex = 0;
+  public isEditable = false;
   private tabs = [];
   private _profile= {}
 
@@ -36,9 +37,11 @@ export class ProfileComponent implements OnInit {
     console.log('hello from PROFILE component');
 
   }
+  
   get profile(){
     return  this._profile
   }
+
   ngOnInit(): void {
     this.profileService.load().subscribe(profile=> this._profile = profile[0])
     this.tabs[0] = <View>this.tab1.nativeElement;
@@ -46,10 +49,6 @@ export class ProfileComponent implements OnInit {
     this.tabs[2] = <View>this.tab3.nativeElement;
     this.tabs[3] = <View>this.tab4.nativeElement;
     this.tabs[0].className = "active";
-  }
-
-  ngAfterViewInit() {
-    setTimeout(() => { this.animateCurrentTab(this.tab1); }, 100);
   }
 
   public onSelectedIndexChange(index) {

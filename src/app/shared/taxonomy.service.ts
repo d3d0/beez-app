@@ -44,6 +44,10 @@ export class TaxonomyService {
       else
         return this.allTerms.filter(el => el['vid'] == DICTIONARIES[vocabolary])
     }
+    
+    getNameValue(tid){
+      return this.allTerms.filter(el => el.tid == tid)
+    }
 
     private publishUpdates() {
       this.zone.run(() => {

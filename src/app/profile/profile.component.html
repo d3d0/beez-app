@@ -19,7 +19,7 @@
     <Label  class="action-items credits-value" text="10"></Label>
   </ActionItem>
   <ActionItem class="" ios.position="right" android.position="right">
-    <Image class="action-items " (tap)="edit(profile)" src="res://edit" stretch="none"></Image>
+    <Image class="action-items "  src="res://edit" (tap)="isEditable = !isEditable"stretch="none"></Image>
   </ActionItem>
   <ActionItem class="" ios.position="right" android.position="right" [nsRouterLink]="['../settings']">
     <Image class="action-items " src="res://settings" stretch="none"></Image>
@@ -59,7 +59,8 @@
 
       <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
         <ns-info
-        [_profile]="profile"
+        [isEditable]="isEditable"
+        [profile]="profile"
         (loading)="showActivityIndicator()"
         (loaded)="hideActivityIndicator()"></ns-info>
       </GridLayout>

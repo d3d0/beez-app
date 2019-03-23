@@ -1,50 +1,83 @@
 	<StackLayout>
 		<CardView class="m-t-20" elevation="40" radius="20" ios:shadowRadius="15">
 			<StackLayout class="list-group-item p-20"><!-- IMPORTANTE -->
-				<GridLayout columns="*" rows="auto, auto, auto, auto, auto, auto, auto" >
-					<Label class="row" textWrap="true" row="0" col="1" horizontalAlignment="left" verticalAlignment="center" >
+					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
 						<FormattedString>
-							<Span [text]="'USER.PLACE_OF_BIRTH'|L" class="label"></Span>
+							<Span [text]="'USER.PHONE'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.place_of_birth" class="value"></Span>
+							<Span [text]="profile.phone" class="value"></Span>
 						</FormattedString>
 					</Label>
-					<Label class="row" textWrap="true" row="2" col="1" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.AGE_RANGE'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.age_range" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" row="3" col="1" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.HEIGHT'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.height" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" row="4" col="1" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.BODY_SIZE'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.body_size" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" row="5" col="1" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.SHOE_SIZE'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.shoe_size" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row last" textWrap="true" row="6" col="1" horizontalAlignment="left" verticalAlignment="center" >
+					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
 						<FormattedString>
 							<Span [text]="'USER.AGENCY'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
 							<Span [text]="profile.agency" class="value"></Span>
 						</FormattedString>
 					</Label>
-				</GridLayout>
+					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
+						<FormattedString>
+							<Span text="WEBSITE" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.website" class="value"></Span>
+						</FormattedString>
+					</Label>
+					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
+						<FormattedString>
+							<Span text="Facebook profile" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.facebook" class="value"></Span>
+						</FormattedString>
+					</Label>
+					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
+						<FormattedString>
+							<Span text="Instagram profile" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.instagram" class="value"></Span>
+						</FormattedString>
+					</Label>
+					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
+						<FormattedString>
+							<Span text="Linkedin profile" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.linkedin" class="value"></Span>
+						</FormattedString>
+					</Label>
+					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
+						<FormattedString>
+							<Span [text]="'USER.ADDRESS'|L" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.address" class="value"></Span>
+						</FormattedString>
+					</Label>
+					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
+						<FormattedString>
+							<Span [text]="'USER.CITY'|L" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.city" class="value"></Span>
+						</FormattedString>
+					</Label>
+					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
+						<FormattedString>
+							<Span [text]="'USER.POSTAL_CODE'|L" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.city" class="value"></Span>
+						</FormattedString>
+					</Label>
+					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
+						<FormattedString>
+							<Span [text]="'USER.PROVINCE'|L" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.province" class="value"></Span>
+						</FormattedString>
+					</Label>
+					<Label class="row last" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
+						<FormattedString>
+							<Span [text]="'USER.COUNTRY'|L" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.country" class="value"></Span>
+						</FormattedString>
+					</Label>
 			</StackLayout><!-- IMPORTANTE -->
 		</CardView>
 	</StackLayout>

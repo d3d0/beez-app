@@ -1,57 +1,50 @@
 	<StackLayout class="profile-info">
 		<CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
 			<StackLayout class="list-group-item "><!-- IMPORTANTE -->
-				<GridLayout class="list-group-item-grid " columns="*" rows="auto, auto, auto, auto, auto, auto, auto" >
-					<Label class="row" textWrap="true" row="0" col="0" >
+				<StackLayout class="list-group-item-grid " >
+					<Label class="row" textWrap="true" >
+						<FormattedString>
+							<Span [text]="'USER.NAME'|L" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.name" class="value"></Span>
+						</FormattedString>
+					</Label>
+					<Label class="row" textWrap="true" >
+						<FormattedString>
+							<Span [text]="'USER.SURNAME'|L" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.surname" class="value"></Span>
+						</FormattedString>
+					</Label>
+					<Label class="row" textWrap="true" >
+						<FormattedString>
+							<Span [text]="'USER.GENDER'|L" class="label"></Span>
+							<Span fontSize="18" text=" "></Span>
+							<Span [text]="profile.gender" class="value"></Span>
+						</FormattedString>
+					</Label>
+					<Label class="row" textWrap="true" >
 						<FormattedString>
 							<Span [text]="'USER.DATE_OF_BIRTH'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<Span fontSize="18" [text]="profile.name"></Span>
-							<!-- <Span [text]="profile.date_of_birth" class="value"></Span> -->						</FormattedString>
+							<Span [text]="profile.date_of_birth" class="value"></Span>
+						</FormattedString>
 					</Label>
-					<Label class="row" textWrap="true" row="1" col="0" >
+					<Label class="row" textWrap="true" >
 						<FormattedString>
 							<Span [text]="'USER.PLACE_OF_BIRTH'|L" class="label"></Span>
-							<Span fontSize="18" [text]="profile.place_of_birth"></Span>
-							<!-- <Span [text]="profile.place_of_birth" class="value"></Span> -->
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" row="2" col="0" >
-						<FormattedString>
-							<Span [text]="'USER.AGE_RANGE'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<!-- <Span [text]="profile.age_range" class="value"></Span> -->
+							<Span [text]="profile.place_of_birth"></Span>
 						</FormattedString>
 					</Label>
-					<Label class="row" textWrap="true" row="3" col="0" >
+					<Label class="row last" textWrap="true" >
 						<FormattedString>
-							<Span [text]="'USER.HEIGHT'|L" class="label"></Span>
+							<Span [text]="'USER.NATIONALITY'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
-							<!-- <Span [text]="profile.height" class="value"></Span> -->
+							<Span [text]="profile.nationality|taxonomyNameValue|async"></Span>
 						</FormattedString>
 					</Label>
-					<Label class="row" textWrap="true" row="4" col="0" >
-						<FormattedString>
-							<Span [text]="'USER.BODY_SIZE'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<!-- <Span [text]="profile.body_size" class="value"></Span> -->
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" row="5" col="0" >
-						<FormattedString>
-							<Span [text]="'USER.SHOE_SIZE'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<!-- <Span [text]="profile.shoe_size" class="value"></Span> -->
-						</FormattedString>
-					</Label>
-					<Label class="row last" textWrap="true" row="6" col="0" >
-						<FormattedString>
-							<Span [text]="'USER.AGENCY'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<!-- <Span [text]="profile.agency" class="value"></Span> -->
-						</FormattedString>
-					</Label>
-				</GridLayout>
+				</StackLayout>
 			</StackLayout><!-- IMPORTANTE -->
 		</CardView>
 	</StackLayout>
