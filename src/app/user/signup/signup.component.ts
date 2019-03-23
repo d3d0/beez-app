@@ -41,8 +41,8 @@ export class SignupComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.tabs[0] = <View>this.tab1.nativeElement;
-    this.tabs[1] = <View>this.tab2.nativeElement;
+    this.tabs[0] = this.tab1.nativeElement;
+    this.tabs[1] = this.tab2.nativeElement;
     this.tabs[0].className = "active";
     // this.tabs[0].style.color = new Color("#00D796");
   }

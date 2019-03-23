@@ -19,6 +19,7 @@ import { Color } from "tns-core-modules/color";
     (returnPress)="returnPress($event)"
     autocorrect="false"
     lineHeight="200"
+    [returnKeyType]="returnKeyType"
     autocapitalizationType="none"
     ></TextField>
     </GridLayout>

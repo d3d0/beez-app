@@ -5,7 +5,6 @@ export class  Profile {
 	date_of_birth: Date
 	tutor_name: string
 	tutor_surname: string
-	gender: any
 	tutor_date_of_birth: Date
 	place_of_birth: string
 	age_range: string

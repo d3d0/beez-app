@@ -11,11 +11,6 @@
 								<StackLayout class="list-group-item p-0 m-0">
 									<AbsoluteLayout class="list-group-item-box-close" width="100%" backgroundColor="yellow">
 									<Image [src]="image.filepath"></Image>
-
-<!-- 										<Image
-										[width]="thumbSize" 
-										[height]="thumbSize" 
-										[src]="image.pa" stretch="aspectFill"></Image> -->
 										<StackLayout left="0" top="0" height="32" width="100%">
 											<Label class="list-group-item-icona-no-nero" [text]="index" horizontalAlignment="right"></Label>
 										</StackLayout>
@@ -29,6 +24,7 @@
 			<StackLayout class="p-t-0 p-b-20" backgroundColor="">
 				<GridLayout columns="50, *" rows="auto" backgroundColor="">
 					<Label text="" class="list-group-item-icona-add" row="0" col="0" verticalAlignment="top"></Label>
+					<BeezButton text="ADD NEW PHOTOS"  (buttonClick)="onSelectMultipleTap()"  row="0" col="1"></BeezButton>
 				</GridLayout>
 			</StackLayout>
 			

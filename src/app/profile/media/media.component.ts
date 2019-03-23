@@ -32,7 +32,7 @@ export class MediaComponent {
     private images:any = [];
 
     constructor( private profileService: ProfileService ) {
-        this.url = BackendService.baseUrl + "beez/loool_talent_images/upload_image_multipart"
+        this.url = BackendService.baseUrl + "beez/loool_talent_profile/media_images_upload/" + BackendService.UID
         this.session = bgHttp.session("image-upload");
         this.loadImages()
     }
@@ -81,7 +81,6 @@ export class MediaComponent {
             });
             that.file = selection[0]._android;
             let image = fromFile(that.file);
-            console.log(image)
             that.image_base64 = image.toBase64String('jpg');
         }).catch(function (e) {
             console.log(e);
@@ -89,8 +88,6 @@ export class MediaComponent {
     }
 
     start_upload(should_fail, isMulti) {
-        console.log( 'this.file ',this.file)
-
         const name = this.file.substr(this.file.lastIndexOf("/") + 1);
         // this.file = fs.path.normalize(fs.knownFolders.currentApp().path + this.file);
 
@@ -114,13 +111,10 @@ export class MediaComponent {
 
         let task: bgHttp.Task;
         let lastEvent = "";
-        console.log('this.file', this.file)
         const params = [
-        { name: "image1", filename: this.file, mimeType: "image/jpeg" },
-        { name: "image2", filename: this.file, mimeType: "image/jpeg" }
+        { name: "image1", filename: this.file, mimeType: "image/jpeg" }
         ];
         task = this.session.multipartUpload(params, request);
-        // task = this.session.uploadFile(this.file, request);
 
         function onEvent(e) {
             console.log(e)
