@@ -30,6 +30,11 @@ export class BeezFloatLabelSelect implements OnInit {
     constructor(
         private vcRef: ViewContainerRef,
         private taxonomyService: TaxonomyService,
+        private modal: ModalDialogService) {}
+    
+    ngOnInit(){
+        if (this.type != "datapicker") 
+            this.list = this.taxonomyService.getVocabolary(this.type)
     }
 
     private openModal(){
