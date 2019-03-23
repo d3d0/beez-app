@@ -29,7 +29,7 @@ const sharedRoutes: Routes = [
   declarations: [
     CastingDetailComponent,
     CastingStatusPipe,
-    TaxonomyNameValuePipe
+    TaxonomyNameValuePipe,
     CastingStatusPipe,
     BeezFloatLabelSelect,
     BeezFloatLabelTextfield,

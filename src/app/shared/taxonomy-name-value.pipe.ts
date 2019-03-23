@@ -1,4 +1,4 @@
-import { Pipe, PipeTranwsform } from "@angular/core";
+import { Pipe, PipeTransform } from "@angular/core";
 import { TaxonomyService } from "./taxonomy.service"
 @Pipe({
   name: "taxonomyNameValue"
