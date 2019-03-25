@@ -25,7 +25,7 @@ class Agency  {
 export class CastingDetailComponent implements OnInit {
 
   @ViewChild("CBAgency") AgencyCheckBox: ElementRef;
-
+  public isLoading: boolean = false;
   private casting = [];
   private casting_id;
   private user_id;
@@ -79,24 +79,30 @@ private changeAgency(){
 }
 
 private candidate(){
+  this.isLoading =true
   this.castingsService.cadidate(this.user_id,this.casting_id).subscribe(
     (result)=>{
       alert(localize("MESSAGES.CANDIDATE"))
+      this.isLoading =false
       this.goBack()
     },
     (error)=> {
+      this.isLoading =false
       if (error.status === 400) alert(localize(error.error[0]))
         else alert(localize("ERROR_SERVICE"));
     })
 }
 
 private partecipate(action){
+  this.isLoading =true
   this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe(
     (result)=>{
+      this.isLoading =false
       alert(localize("MESSAGES.CANDIDATE"))
       this.goBack()
     },
     (error)=> {
+      this.isLoading =false
       console.log(error)
       if (error.status === 400) alert(localize(error.error[0]))
         else alert(localize("ERROR_SERVICE"));
