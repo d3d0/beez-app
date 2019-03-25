@@ -77,7 +77,7 @@ export class CastingsListComponent implements OnInit, OnDestroy {
     }
 
   public onPullToRefreshInitiated(args: ListViewEventData) {
-    this.load()
+    this.castingsService.load()
     setTimeout(()=>{
       args.object.notifyPullToRefreshFinished()
     },500)

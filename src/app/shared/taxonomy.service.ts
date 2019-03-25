@@ -1,6 +1,6 @@
 import { Injectable, NgZone} from "@angular/core";
 import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Observable, BehaviorSubject, throwError } from "rxjs";
+import { Observable, of, BehaviorSubject, throwError } from "rxjs";
 import { localize } from "nativescript-localize";
 import { map, catchError, first, retry } from "rxjs/operators";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
@@ -46,7 +46,7 @@ export class TaxonomyService {
       if (typeof dict =='number' )
         return this.load
       else
-        return dict
+        return of(dict)
     }
     
     getNameValue(tid){

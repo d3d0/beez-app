@@ -32,7 +32,7 @@
 <RadListView class="notifications" [items]="notifications" (itemLoading)="onItemLoading($event, notifications)"
 (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
 selectionBehavior="None" swipeActions="true"
-pullToRefresh="false" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" >
+ pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" >
 
   <ListViewLinearLayout tkListViewLayout scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default"></ListViewLinearLayout>
 

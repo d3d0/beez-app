@@ -100,8 +100,8 @@ export class LoginComponent implements OnInit {
   }
 
   textfieldEvent($event, field){
+    if(field)
     this.user[field]=$event.object.text
-    if ($event.eventName == 'returnPress') this.login()
   }
 
 }

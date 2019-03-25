@@ -33,8 +33,11 @@ export class BeezFloatLabelSelect {
     private openModal(){
         if (this.type == "datapicker"){
             this.createDatapickerModelView().then((value)=> {
+                if(value){
                 this.selectEvent.emit(value)
-                this.value=formatDate(value,'dd MMMM yy',localize('LANG'))})
+                this.value=formatDate(value,'dd MMMM yy',localize('LANG'))
+            }
+        })
         }
         else {
             this.createTaxonomyModelView().then((value)=> {

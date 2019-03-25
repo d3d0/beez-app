@@ -2,9 +2,11 @@
 		<CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
 			<StackLayout class="list-group-item "><!-- IMPORTANTE -->
 				<StackLayout class="list-group-item-grid " >
+
+						<BeezFloatLabelTextfield editable="false"  [text]="profile.name" (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></BeezFloatLabelTextfield>
 					<Label class="row" textWrap="true" >
 						<FormattedString>
-							<Span [text]="'USER.NAME'|L" class="label"></Span>
+							<Span [text]="'USER.USER.NAME'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
 							<Span [text]="profile.name" class="value"></Span>
 						</FormattedString>
@@ -16,13 +18,14 @@
 							<Span [text]="profile.surname" class="value"></Span>
 						</FormattedString>
 					</Label>
-					<Label class="row" textWrap="true" >
+					<BeezFloatLabelSelect  [text]="profile.gender" (selectEvent)="selectEvent($event,'GENDER')" type="GENDER" [placeholder]="'USER.GENDER'|L"></BeezFloatLabelSelect>
+<!-- 					<Label class="row" textWrap="true" >
 						<FormattedString>
 							<Span [text]="'USER.GENDER'|L" class="label"></Span>
 							<Span fontSize="18" text=" "></Span>
 							<Span [text]="profile.gender" class="value"></Span>
 						</FormattedString>
-					</Label>
+					</Label> -->
 					<Label class="row" textWrap="true" >
 						<FormattedString>
 							<Span [text]="'USER.DATE_OF_BIRTH'|L" class="label"></Span>

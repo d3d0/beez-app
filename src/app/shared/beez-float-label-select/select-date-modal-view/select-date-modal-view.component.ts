@@ -21,8 +21,9 @@ export class SelectDateModalViewComponent {
         this.title = params.context.title;
     }
 
-    back(): void {
-        this.params.closeCallback(new Date(this.currentdate))
+    onBack(): void {
+        console.log("onback")
+        this.params.closeCallback();
     }
 
     public onClose() {

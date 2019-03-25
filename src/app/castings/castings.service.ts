@@ -18,6 +18,7 @@ export class CastingsService {
     ) {}
 
   load(): Observable<any> {
+    console.log('casting loading...')
     return this.http.get(
       BackendService.baseUrl + "beez/loool_casting", {
         headers: BackendService.getCommonHeaders()

@@ -17,16 +17,16 @@
 <StackLayout>
 	<Label class="tab-h-line-d3d0" text=""></Label>
 	<AbsoluteLayout>
-		<GridLayout left="0" top="0" width="100%" columns="auto" rows="auto" class="tab-border-d3d0" backgroundColor="transparent">
+		<StackLayout left="0" top="0" width="100%" class="tab-border-d3d0" backgroundColor="transparent">
 			<Label text=""></Label>
-		</GridLayout>
+		</StackLayout>
 		<GridLayout left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto, auto" class="tab-buttons-d3d0" backgroundColor="transparent">
-			<GridLayout class="tab-container" col="0" (tap)="onSelectedIndexChange(0)" >
+			<StackLayout class="tab-container" col="0" (tap)="onSelectedIndexChange(0)" >
 				<Label #tab1 [text]="'SIGNUP.REGISTRATION'|L|uppercase" class="text" textWrap="false" ></Label>
-			</GridLayout>
-			<GridLayout class="tab-container" col="1" (tap)="onSelectedIndexChange(1)">
+			</StackLayout>
+			<StackLayout class="tab-container" col="1" (tap)="onSelectedIndexChange(1)">
 				<Label #tab2 [text]="'SIGNUP.REGISTRATION_MINOR'|L|uppercase" class="text" textWrap="false" ></Label>
-			</GridLayout>
+			</StackLayout>
 		</GridLayout>
 	</AbsoluteLayout>
 

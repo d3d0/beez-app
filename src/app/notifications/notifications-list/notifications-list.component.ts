@@ -49,14 +49,12 @@ export class NotificationsListComponent implements OnInit {
       this.router.navigate(["../casting", notification.nid], { relativeTo: this.activeRoute })
   }
 
-  // public onPullToRefreshInitiated(args: ListViewEventData) {
-  //   this.store.load().subscribe(
-  //   notifications => {
-  //     console.log(notifications)
-  //     this.notifications = notifications
-  //   }
-  //     )
-  // }
+  public onPullToRefreshInitiated(args: ListViewEventData) {
+    this.notificationService.load()
+    setTimeout(()=>{
+      args.object.notifyPullToRefreshFinished()
+    },500)
+  }
 
   // DOCS > eliminiamo il background solo in IOS RadListView
   public onItemLoading(args: ListViewEventData, items) {
