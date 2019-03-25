@@ -10,6 +10,7 @@ import { finalize } from "rxjs/operators";
 import { Router } from "@angular/router";
 import * as utils from "utils/utils";
 declare var UIColor: any;
+import { Color } from "color";
 
 import { CastingsService } from "../castings.service";
 import { Casting } from "../casting.model";
@@ -96,6 +97,8 @@ export class CastingsListComponent implements OnInit, OnDestroy {
     let cell = args.ios;
     if (cell) {
       // support XCode 8
+      var newcolor = new Color(0,0,0,0);
+      args.ios.backgroundView.backgroundColor = newcolor.ios;
       cell.backgroundColor = utils.ios.getter(UIColor, UIColor.clearColor);
     }
   }
