@@ -40,8 +40,8 @@
 						<Label class="list-group-item-info-signup text p-b-20" textWrap="true" [text]="'SIGNUP.REGISTRATION_TEXT'|L"></Label>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L" ></BeezFloatLabelTextfield>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></BeezFloatLabelTextfield>
-						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" ></BeezFloatLabelSelect>
-						<!-- <BeezFloatLabelSelect (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezFloatLabelSelect> -->
+						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezFloatLabelSelect>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'mail')" keyboardType="email" [placeholder]="'USER.EMAIL'|L" ></BeezFloatLabelTextfield>
     					<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" secure="true" ></BeezFloatLabelTextfield>
 						
@@ -61,7 +61,7 @@
 		</ScrollView>
 	</StackLayout>
 
-<!-- 	<StackLayout  [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
+	<StackLayout  [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
 		<ScrollView height="100%" >
 			<StackLayout>
 				<CardView class="list-group-item-box" elevation="40" radius="15" ios:shadowRadius="15" [class.list-group-first]="true">
@@ -91,6 +91,6 @@
 				</CardView>
 			</StackLayout>
 		</ScrollView>
-	</StackLayout> --> 
+	</StackLayout> 
 
 </StackLayout>

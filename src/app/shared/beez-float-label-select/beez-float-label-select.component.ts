@@ -1,11 +1,10 @@
-import { Component, OnInit, Input, Output, ViewContainerRef, EventEmitter } from "@angular/core";
+import { Component, Input, Output, ViewContainerRef, EventEmitter } from "@angular/core";
 import { formatDate } from '@angular/common';
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 import { localize } from "nativescript-localize";
 
 import { SelectDateModalViewComponent } from "./select-date-modal-view/select-date-modal-view.component";
 import { SelectModalViewComponent } from "./select-modal-view/select-modal-view.component";
-import { TaxonomyService} from "../taxonomy.service";
 
 @Component({
     selector: "BeezFloatLabelSelect",
@@ -20,7 +19,7 @@ import { TaxonomyService} from "../taxonomy.service";
     `
 })
 
-export class BeezFloatLabelSelect implements OnInit {
+export class BeezFloatLabelSelect {
     @Input() placeholder: string;
     @Input() type: string;
     @Output() selectEvent = new EventEmitter<string>()
@@ -29,13 +28,7 @@ export class BeezFloatLabelSelect implements OnInit {
     
     constructor(
         private vcRef: ViewContainerRef,
-        private taxonomyService: TaxonomyService,
         private modal: ModalDialogService) {}
-    
-    ngOnInit(){
-        if (this.type != "datapicker") 
-            this.list = this.taxonomyService.getVocabolary(this.type)
-    }
 
     private openModal(){
         if (this.type == "datapicker"){
@@ -45,8 +38,11 @@ export class BeezFloatLabelSelect implements OnInit {
         }
         else {
             this.createTaxonomyModelView().then((value)=> {
-                this.selectEvent.emit(value.tid)
-                this.value=value.name})
+                if(value){
+                    this.selectEvent.emit(value.tid)
+                    this.value=value.name
+                }
+            })
         }
     }
 
@@ -62,7 +58,7 @@ export class BeezFloatLabelSelect implements OnInit {
 
     private createTaxonomyModelView(): Promise<any> {
         const options: ModalDialogOptions = {
-            context: { list: this.list , title: this.placeholder},
+            context: { vid: this.type , title: this.placeholder},
             fullscreen: true,
             viewContainerRef: this.vcRef
         };

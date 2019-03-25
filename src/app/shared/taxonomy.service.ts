@@ -9,40 +9,44 @@ import { filter } from 'rxjs/operators';
 import { BackendService } from "../shared/backend.service";
 const DICTIONARIES = require('../../assets/dictionaries.json');
 
+interface Term {
+  vid:string;
+  tid:string;
+  name:string;
+}
+
 @Injectable({
   providedIn: "root"
 })
 
 export class TaxonomyService {
-  terms: BehaviorSubject<Array<any>> = new BehaviorSubject([]);
-  allTerms =[];
-  // private _allTerms = new ObservableArray();
-  private serviceURl
+  private terms: BehaviorSubject<Array<Term>> = new BehaviorSubject([]);
+  allTerms:Term[] =[];
+  private serviceURl = localize('LANG') === 'IT' ? BackendService.term_ita : BackendService.term_eng
 
-  constructor( private http: HttpClient, private zone:NgZone ) {
-    this.serviceURl = localize('LANG') === 'IT' ? BackendService.term_ita : BackendService.term_eng
-    this.load()
-  }
+  constructor( private http: HttpClient, private zone:NgZone ) {}
 
-  load(): Observable<any> {
-    return this.http.get(
+  load(vocabolary){
+      let dict =  DICTIONARIES[vocabolary]
+     return this.http.get(
       BackendService.baseUrl + this.serviceURl, {
         headers: BackendService.getCommonHeaders()
       }).pipe(
       retry(3), // retry a failed request up to 3 times 
-      map((data: any[]) => {
-        this.allTerms = data.sort((a, b) => a.name.localeCompare(b.name)),
-        this.publishUpdates()
+      map((data: Term[]) => {
+        this.allTerms = data.filter(el => el.vid == dict),
+        this.publishUpdates();
       }),
       catchError(this.handleErrors)
       )
     }
 
     getVocabolary(vocabolary){
-      if (typeof DICTIONARIES[vocabolary] != 'string' ) 
-        return DICTIONARIES[vocabolary]
+      let dict =  DICTIONARIES[vocabolary]
+      if (typeof dict =='number' )
+        return this.load
       else
-        return this.allTerms.filter(el => el['vid'] == DICTIONARIES[vocabolary])
+        return dict
     }
     
     getNameValue(tid){

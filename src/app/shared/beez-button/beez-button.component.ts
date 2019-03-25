@@ -10,6 +10,7 @@ import { Color } from "tns-core-modules/color";
     <CardView width="100%" elevation="2" radius="15" shadowOpacity="0.2" ripple="false" ios:shadowRadius="5">
     <Button #button
     [backgroundColor]="color"
+    [visibility]="visibility"
     class="label"
     [isEnabled]="!isBusy" 
     [text]="text|uppercase"
@@ -23,6 +24,7 @@ export class BeezButton implements OnChanges{
     @Input() text: string;
     @Input() buttonColor: string;
     @Input() isBusy: boolean;
+    @Input() visibility: string ='visible';
     @Input() row: number;
     @Input() col: number;
     @Output() buttonClick = new EventEmitter<string>()
@@ -40,6 +42,8 @@ export class BeezButton implements OnChanges{
     
     onClick(){
         if(!this.isBusy) this.buttonClick.emit()
+        this.setColor()
+
     }
 
     setColor(){

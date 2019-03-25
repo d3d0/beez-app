@@ -60,8 +60,8 @@
     "PARTICIPATION_AUDITION_TITLE":"Confirm your partecipation",
     "PARTICIPATION_AUDITION_EDIT":"Modifica la tua partecipazione",
     "PARTICIPATION_AGENCY_SELECT_TITLE":"Selezione l'agenzia con cui parteciperai",
-    "PARTICIPATION_AGENCY_SELECT_EDIT_TITLE":"Hai cambiato idea?",
-    "PARTICIPATION_AGENCY_SELECT_EDIT_TEXT":"Sei ancora in tempo per modificare la tua partecipazione o meno al casting.",
+    "PARTICIPATION_EDIT_PARTICIPATION_TITLE":"Hai cambiato idea?",
+    "PARTICIPATION_EDIT_PARTICIPATION_TEXT":"Sei ancora in tempo per modificare la tua partecipazione o meno al casting.",
     "SHOOTING_NOTE":"Orario e location saranno comunicati.",
     "START_DATE": "STARTING DATE"
   },

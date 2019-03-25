@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild, ElementRef, AfterViewInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 import { ListPicker } from "tns-core-modules/ui/list-picker";
+import { TaxonomyService} from "../../taxonomy.service";
 
 @Component({
     selector: 'ns-select-modal',
@@ -10,13 +11,40 @@ import { ListPicker } from "tns-core-modules/ui/list-picker";
     moduleId: module.id,
 })
 
-export class SelectModalViewComponent {
+export class SelectModalViewComponent implements AfterViewInit {
+    @ViewChild('picker') picker: ElementRef;
     private picked:string
     private list
+    private vid
     private title
-    constructor(private _params: ModalDialogParams, private routerExtensions: RouterExtensions ) {
-        this.list = _params.context.list;
+    public store: TaxonomyService;
+
+    constructor(private _params: ModalDialogParams, store: TaxonomyService, private routerExtensions: RouterExtensions ) {
+        this.vid = _params.context.vid;
         this.title = _params.context.title;
+        this.store = store;
+    }
+    ngAfterViewInit(){
+        this.load()
+    } 
+
+    private load() {
+        this.store.load(this.vid)
+        .subscribe(
+            () => {},
+            () => {
+                alert("An error occurred loading your list.");
+            }
+            );
+    }
+    getList(){
+        this.store.getVocabolary(this.vid)
+    }
+    onClose() {
+        let picker = this.picker.nativeElement
+        this.picked = picker.items[picker.selectedIndex];
+        console.log(this.picked)
+        this._params.closeCallback(this.picked);
     }
 
     onBack(): void {
@@ -24,13 +52,8 @@ export class SelectModalViewComponent {
         this._params.closeCallback();
     }
 
-    public onClose() {
-        this._params.closeCallback(this.picked);
-    }
-
-    public selectedIndexChanged(args) {
-        let picker = <ListPicker>args.object;
-        this.picked = this.list[picker.selectedIndex];
+    selectedIndexChanged(args) {
+        // let picker = <ListPicker>args.object;
     }
     
 }
