@@ -17,7 +17,10 @@
 
 <ScrollView class="casting-detail">
 	<StackLayout >
-		<Image [src]="casting.image" height="240" stretch="aspectFill" horizontalAlignment="center" verticalAlignment="top"></Image>
+		<GridLayout rows="auto">
+       		<Image src="~/assets/images/boys.jpg" height="240" stretch="aspectFill" horizontalAlignment="center" verticalAlignment="top"></Image>
+			<Image [src]="casting.image" height="240" stretch="aspectFill" horizontalAlignment="center" verticalAlignment="top"></Image>
+		</GridLayout>
 		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
 			<StackLayout class="list-group-item p-t-0 p-b-8">
 				<StackLayout *ngIf="casting.status != 'Shooting'" >
