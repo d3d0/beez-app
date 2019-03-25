@@ -7,6 +7,7 @@ import { NativeScriptRouterModule, NSEmptyOutletComponent } from "nativescript-a
 
 import { CastingStatusPipe } from "../castings/castings-list/casting-status.pipe";
 import { TaxonomyNameValuePipe } from "./taxonomy-name-value.pipe";
+import { TaxonomyVocabolaryPipe } from "./taxonomy-vocabolary.pipe";
 import { CastingDetailComponent } from '../castings/casting-detail/casting-detail.component';
 import { SelectDateModalViewComponent } from "./beez-float-label-select/select-date-modal-view/select-date-modal-view.component";
 import { SelectModalViewComponent } from "./beez-float-label-select/select-modal-view/select-modal-view.component";
@@ -30,6 +31,7 @@ const sharedRoutes: Routes = [
     CastingDetailComponent,
     CastingStatusPipe,
     TaxonomyNameValuePipe,
+    TaxonomyVocabolaryPipe,
     CastingStatusPipe,
     BeezFloatLabelSelect,
     BeezFloatLabelTextfield,
@@ -44,6 +46,7 @@ const sharedRoutes: Routes = [
     BeezFloatLabelTextfield,
     BeezButton,
     TaxonomyNameValuePipe,
+    TaxonomyVocabolaryPipe,
     CastingDetailComponent,
     NativeScriptCommonModule,
     NativeScriptFormsModule,

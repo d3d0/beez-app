@@ -26,27 +26,32 @@ export class TaxonomyService {
 
   constructor( private http: HttpClient, private zone:NgZone ) {}
 
-  load(vocabolary){
-      let dict =  DICTIONARIES[vocabolary]
+  load(){
      return this.http.get(
       BackendService.baseUrl + this.serviceURl, {
         headers: BackendService.getCommonHeaders()
       }).pipe(
       retry(3), // retry a failed request up to 3 times 
       map((data: Term[]) => {
-        this.allTerms = data.filter(el => el.vid == dict),
+        this.allTerms = data.sort((a,b) => (a.name < b.name) ? 1 : ((b.name > a.name) ? -1 : 0)),
         this.publishUpdates();
       }),
       catchError(this.handleErrors)
       )
     }
+    
+    getVId(vocabolary){
+      return DICTIONARIES[vocabolary]
+    }
 
     getVocabolary(vocabolary){
       let dict =  DICTIONARIES[vocabolary]
       if (typeof dict =='number' )
-        return this.load
-      else
+        return this.terms
+      else{
+        console.log('gender ', vocabolary ,dict)
         return of(dict)
+      }
     }
     
     getNameValue(tid){
@@ -55,7 +60,7 @@ export class TaxonomyService {
 
     private publishUpdates() {
       this.zone.run(() => {
-        this.terms.next([...this.allTerms]);
+        this.terms.next(this.allTerms);
       });
     }
     
