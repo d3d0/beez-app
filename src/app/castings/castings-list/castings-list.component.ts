@@ -8,6 +8,8 @@ import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { Subscription } from "rxjs";
 import { finalize } from "rxjs/operators";
 import { Router } from "@angular/router";
+import * as utils from "utils/utils";
+declare var UIColor: any;
 
 import { CastingsService } from "../castings.service";
 import { Casting } from "../casting.model";
@@ -88,6 +90,16 @@ export class CastingsListComponent implements OnInit, OnDestroy {
       this.router.navigate(["../casting", tappedCasting.id], { relativeTo: this.activeRoute })
   }
 
+  // The following trick makes the background color of each cell
+  // in the UITableView transparent as it’s created.
+  makeBackgroundTransparent(args) {
+    let cell = args.ios;
+    if (cell) {
+      // support XCode 8
+      cell.backgroundColor = utils.ios.getter(UIColor, UIColor.clearColor);
+    }
+  }
+  
   showActivityIndicator() {
     this._isLoading = true;
     console.log('showActivityIndicator')

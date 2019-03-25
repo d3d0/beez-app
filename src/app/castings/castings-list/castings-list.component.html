@@ -1,4 +1,4 @@
-<RadListView height="100%" class="casting" [items]="castings|castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" [itemTemplateSelector]="templateSelector">
+<RadListView height="100%" class="casting" [items]="castings|castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" (itemLoading)="makeBackgroundTransparent($event)" [itemTemplateSelector]="templateSelector">
 
   <ng-template tkTemplateKey="default" let-item="item" let-index="index">
     <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="index===0">
