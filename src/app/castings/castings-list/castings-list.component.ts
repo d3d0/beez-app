@@ -88,7 +88,8 @@ export class CastingsListComponent implements OnInit, OnDestroy {
 
   onCastingTap(args: ListViewEventData): void {
       const tappedCasting = args.view.bindingContext;
-      this.router.navigate(["../casting", tappedCasting.id], { relativeTo: this.activeRoute })
+      if(tappedCasting.id)
+        this.router.navigate(["../casting", tappedCasting.id], { relativeTo: this.activeRoute })
   }
 
   // The following trick makes the background color of each cell
