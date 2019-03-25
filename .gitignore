@@ -33,6 +33,7 @@ typings/
 !.vscode/launch.json
 !.vscode/extensions.json
 
-
+App_Resources/iOS/it.lproj/InfoPlist.strings
+App_Resources/iOS/it.lproj/Localizable.strings
 App_Resources/Android/src/main/res/values-it/
 App_Resources/Android/src/main/res/values/strings.xml

@@ -28,10 +28,11 @@
 </ActionBar>
 
 <ScrollView class="profile" #scrollView (scroll)="onScroll($event, scrollView, topView)" (swipe)="onSwipe($event)">
-
     <StackLayout id="container" #container>
 
       <GridLayout #polaroid>
+        <Image *ngIf="profile.gender === 'M'" src="~/assets/images/user_man.png"></Image>
+        <Image *ngIf="profile.gender === 'F'" src="~/assets/images/user_woman.png"></Image>
         <Image [src]="profile.polaroid"></Image>
         <Image src="~/assets/images/rect.png"></Image>
         <StackLayout class="text-wrapper">

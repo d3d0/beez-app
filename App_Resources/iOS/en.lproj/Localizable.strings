@@ -13,6 +13,11 @@
 "_MESSAGES_RESET_PASS_ZK9xkR" = "Your password has been successfully reset!";
 "_MESSAGES_CONFIRM_EMAIL_Z2u90hj" = "You'll receive by e-mail a link to activate your account, please click the link to complete the process.";
 "_MESSAGES_NO_CONNECTION_Z1G6ayt" = "Sorry, BEEZ needs an internet connection.";
+"_USER_PROVINCE_Z1HYvx5" = "Province";
+"_USER_COUNTRY_175BwF" = "Country";
+"_USER_POSTAL_CODE_Z1qj31A" = "Postal Code";
+"_USER_ADDRESS_Z1mXAby" = "Address";
+"_USER_CITY_Z1ozUx9" = "City";
 "_USER_AGENCY_ZQwRSF" = "Agency";
 "_USER_PHONE_2hoiDb" = "Phone";
 "_USER_WEBSITE_1qkJg8" = "Website";
@@ -34,6 +39,7 @@
 "_USER_HEIGHT_ZCbBqW" = "Height";
 "_USER_AGE_RANGE_1M9dtO" = "Age Range";
 "_USER_PLACE_OF_BIRTH_Z2viBOQ" = "Place of Birth";
+"_USER_MINOR_GENDER_Z1yrRm1" = "Under-18's Gender";
 "_USER_MINOR_DATE_OF_BIRTH_Z2kvMUQ" = "Under-18's Date of Birth";
 "_USER_DATE_OF_BIRTH_Z16l0vs" = "Date of Birth";
 "_USER_MINOR_SURNAME_eLX3H" = "Under-18's Surname";
@@ -52,8 +58,8 @@
 "_NOTIFICATIONS_NOTIFICATIONS_ZneLv7" = "NOTIFICATIONS";
 "_CASTINGS_START_DATE_2wD7WX" = "STARTING DATE";
 "_CASTINGS_SHOOTING_NOTE_Z1Y7q7L" = "Orario e location saranno comunicati.";
-"_CASTINGS_PARTICIPATION_AGENCY_SELECT_EDIT_TEXT_19oYxC" = "Sei ancora in tempo per modificare la tua partecipazione o meno al casting.";
-"_CASTINGS_PARTICIPATION_AGENCY_SELECT_EDIT_TITLE_bjgik" = "Hai cambiato idea?";
+"_CASTINGS_PARTICIPATION_EDIT_PARTICIPATION_TEXT_Z27gOL6" = "Sei ancora in tempo per modificare la tua partecipazione o meno al casting.";
+"_CASTINGS_PARTICIPATION_EDIT_PARTICIPATION_TITLE_p2zDE" = "Hai cambiato idea?";
 "_CASTINGS_PARTICIPATION_AGENCY_SELECT_TITLE_2sW6tY" = "Selezione l'agenzia con cui parteciperai";
 "_CASTINGS_PARTICIPATION_AUDITION_EDIT_2gADpe" = "Modifica la tua partecipazione";
 "_CASTINGS_PARTICIPATION_AUDITION_TITLE_ZJ9fVo" = "Confirm your partecipation";
@@ -92,6 +98,7 @@
 "_SIGNUP_REGISTRATION_MINOR_Z1qzsAR" = "Under-18 Account Registration";
 "_SIGNUP_REGISTRATION_1GSckW" = "REGISTRATION";
 "_SIGNUP_SIGNUP_54hYw" = "Sign Up";
+"_AND_hrL" = " and ";
 "_CONFIRM_1Xxtge" = "CONFIRM";
 "_SHARE_WITH_A_FRIEND_iPADl" = "SHARE WITH A FRIEND";
 "_HELP_9JU7" = "Need Help?";
