@@ -61,7 +61,7 @@ export class BeezFloatLabelSelect {
 
     private createTaxonomyModelView(): Promise<any> {
         const options: ModalDialogOptions = {
-            context: { vid: this.type , title: this.placeholder},
+            context: { vocabolary: this.type , title: this.placeholder},
             fullscreen: true,
             viewContainerRef: this.vcRef
         };

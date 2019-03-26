@@ -14,6 +14,6 @@ export function openLink(link){
     utilsModule.openUrl(link)
 }
 export function getIconSource(icon: string): string {
-	const iconPrefix = isAndroid ? "res://" : "res://tabIcons/";
+	const iconPrefix = isAndroid ? "res://" : "res://";
 	 return iconPrefix + icon;
 	}

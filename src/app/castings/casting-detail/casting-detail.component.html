@@ -31,14 +31,18 @@
 
 					<GridLayout columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
 						<!-- lateral line -->
-						<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center" ></Label>
+						<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center" backgroundColor="olive"></Label>
 
 						<!-- INFORMATION -->
-						<Image [src]="getIconSource('info')" row="0" col="1"  class="icon" backgroundColor="white" stretch="none" ></Image>
+						<StackLayout class="icon-container" row="0" col="1" verticalAlignment="center" horizontalAlignment="center">
+							<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						</StackLayout>
 						<Label [text]="'CASTINGS.INFORMATION'|L" class="header" textWrap="true" row="0" col="2" ></Label>
 						<Label class="list-group-item-text" [text]="casting.info" textWrap="true" row="1" col="2"></Label>
 						<!-- FEATURES -->
-						<Image [src]="getIconSource('characteristics')" class="icon" backgroundColor="white" row="2" col="1" stretch="none" ></Image>
+						<StackLayout class="icon-container" row="2" col="1" verticalAlignment="center" horizontalAlignment="center">
+							<Image [src]="getIconSource('characteristics')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						</StackLayout>
 						<Label [text]="'CASTINGS.FEATURES'|L" class="header" textWrap="true" row="2" col="2"></Label>
 						<Label  class="list-group-item-text" textWrap="true" row="3" col="2">
 							<FormattedString *ngFor="let feature of casting.features" >
@@ -48,7 +52,9 @@
 							</FormattedString>
 						</Label>
 						<!-- DATE_LOCATION -->
-						<Image [src]="getIconSource('calendar')" class="icon" backgroundColor="white" row="4" col="1" stretch="none" ></Image>
+						<StackLayout class="icon-container" row="4" col="1" verticalAlignment="center" horizontalAlignment="center">
+							<Image [src]="getIconSource('calendar')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						</StackLayout>
 						<Label [text]="'CASTINGS.DATE_LOCATION'|L" class="header" textWrap="true" row="4" col="2" ></Label>
 						<StackLayout row="5" col="2" >
 							<Label [text]="'CASTINGS.CASTING'|L" class="header-small" textWrap="true"></Label>
@@ -73,9 +79,14 @@
 						<!-- lateral line -->
 						<Label text="" class="list-group-item-v-line" rowSpan="2" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
 
-						<Image [src]="getIconSource('send')" row="0" col="1"  class="icon" backgroundColor="white" stretch="none" verticalAlignment="center"></Image>
+						<StackLayout class="icon-container" row="0" col="1" verticalAlignment="center" horizontalAlignment="center">
+							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						</StackLayout>
 						<BeezButton  [text]="'PARTICIPATE'|L" [isBusy]="isLoading" (buttonClick)="candidate()" row="0" col="2" ></BeezButton>
-						<Image [src]="getIconSource('send')" row="1" col="1"  class="icon" backgroundColor="white" stretch="none" verticalAlignment="center"></Image>
+
+						<StackLayout class="icon-container" row="1" col="1" verticalAlignment="center" horizontalAlignment="center">
+							<Image [src]="getIconSource('send')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						</StackLayout>
 						<BeezButton  [text]="'SHARE_WITH_A_FRIEND'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="share()" row="1" col="2" ></BeezButton>
 					</GridLayout>
 
@@ -92,12 +103,13 @@
 							<Label textWrap="true" class="list-group-item-text" [text]="'CASTINGS.PARTICIPATION_EDIT_PARTICIPATION_TEXT'|L"></Label>
 						</StackLayout>
 
-						<Image [visibility]="edit_actions == false ? 'visible' : 'collapsed'" [src]="getIconSource('send')" row="1" col="1"  class="icon" backgroundColor="white" stretch="none" verticalAlignment="center"></Image>
+						<StackLayout [visibility]="edit_actions == false ? 'visible' : 'collapsed'"class="icon-container" row="1" col="1" verticalAlignment="center" horizontalAlignment="center">
+							<Image [src]="getIconSource('send')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						</StackLayout>
 						<BeezButton [visibility]="edit_actions == false ? 'visible' : 'collapsed'" buttonColor="blue" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" [isBusy]="isLoading" (buttonClick)="edit_actions=!edit_actions" row="1" col="2" ></BeezButton>
 
-						<GridLayout rows="auto" row="1" col="0" colSpan="4"  [visibility]="edit_actions === true ? 'visible' : 'collapsed'" class="accordion" >
-
-							<StackLayout row="0" class="content" >
+						<AbsoluteLayout row="1" col="0" colSpan="4" [visibility]="edit_actions === true ? 'visible' : 'collapsed'" class="accordion" >
+							<StackLayout top=0 class="content" >
 								<Label [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" class="list-group-item-heading-18 " textWrap="true"></Label>
 								<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="list-group-item-text " textWrap="true"></Label>
 								<CheckBox fillColor="#DDD" #CBAgency checked="false" (checkedChange)="changeAgency()" verticalAlignment="center"></CheckBox>
@@ -107,11 +119,11 @@
 								<BeezButton  [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="partecipate('Confirmed by archive')"></BeezButton>
 								<BeezButton  [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" [isBusy]="isLoading" buttonColor="black" (buttonClick)="partecipate('Declined')"></BeezButton>
 							</StackLayout>
-							<StackLayout row="0" >
+							<StackLayout top="0" width="100%"	>
 								<Image [src]="getIconSource('no_nero')" class="icon" stretch="none" horizontalAlignment="right" (tap)="edit_actions=!edit_actions" ></Image>
 							</StackLayout>
 
-						</GridLayout>
+						</AbsoluteLayout>
 					</GridLayout>
 
 					<!-- shooting tab -->

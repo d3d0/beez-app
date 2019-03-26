@@ -1,10 +1,15 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from "@angular/core";
+import { Component, ViewChild, ElementRef, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 import { ListPicker } from "tns-core-modules/ui/list-picker";
 import { TaxonomyService} from "../../taxonomy.service";
 import { Observable, of, BehaviorSubject, throwError } from "rxjs";
 import { map, combineLatest, filter, retry } from "rxjs/operators";
+interface Term {
+    vid:string;
+    tid:string;
+    name:string;
+}
 
 @Component({
     selector: 'ns-select-modal',
@@ -13,43 +18,25 @@ import { map, combineLatest, filter, retry } from "rxjs/operators";
     moduleId: module.id,
 })
 
-export class SelectModalViewComponent implements AfterViewInit {
+export class SelectModalViewComponent implements OnInit {
     @ViewChild('picker') picker: ElementRef;
     private picked:string
     private list
     public vocabolary
     private title
     private vid
-    public store: TaxonomyService;
-
-    constructor(private _params: ModalDialogParams, store: TaxonomyService, private routerExtensions: RouterExtensions ) {
-        this.vocabolary = _params.context.vid;
-        this.vid = store.getVId(this.vocabolary)
+    public taxonomyService: TaxonomyService;
+    public index: number = 0;
+    private terms: Observable<Term[]>;
+    
+    constructor(private _params: ModalDialogParams, taxonomyService: TaxonomyService, private routerExtensions: RouterExtensions ) {
+        this.vocabolary = _params.context.vocabolary;
         this.title = _params.context.title;
-        this.store = store;
-    }
-    ngAfterViewInit(){
-        this.load()
-    } 
-
-    private load() {
-        this.store.load()
-        .subscribe(
-            () => {console.log('store loaded')},
-            () => {
-                alert("An error occurred loading your list.");
-            }
-            );
-    }
-    getList(){
-        console.log(this.vid)
-            return this.store.getVocabolary(this.vocabolary).pipe(filter( el=> el.vid == this.vid))
+        this.taxonomyService = taxonomyService;
     }
 
-    alphabeticalSort(a, b) {
-        const aQ = a.name.toUpperCase();
-        const bQ = b.name.toUpperCase();
-        return aQ.localeCompare(bQ);
+    ngOnInit(){
+        this.terms = this.taxonomyService.getVocabolary(this.vocabolary)
     }
 
     onClose() {
@@ -64,8 +51,9 @@ export class SelectModalViewComponent implements AfterViewInit {
         this._params.closeCallback();
     }
 
-    selectedIndexChanged(args) {
-        // let picker = <ListPicker>args.object;
+    // selectedIndexChanged(args) {
+        //     // let picker = <ListPicker>args.object;
+        // // 
+        // }
+
     }
-    
-}

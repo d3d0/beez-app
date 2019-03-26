@@ -360,6 +360,8 @@ WrapLayout {
     margin: 0 15 15 15;
   }
   &-v-line {
+    width:1;
+    height: 100%;
     margin: 0;
     padding:0;
     border-left-width: 1;
@@ -769,4 +771,12 @@ SegmentedBar{
 }
 .m-b-20{
   margin-bottom:20;
+}
+
+.icon-container{
+  width: 28;
+  height: 28;
+  background-color:white;
+  transform: translate(0,-4);
+
 }

@@ -20,6 +20,7 @@ export class NotificationsListComponent implements OnInit {
 
   private counter: number;
   notifications: any;
+  private _templateSelector: (item, index: number, items: any) => string;
 
   @ViewChild("delete-view") deleteView: View;
 
@@ -28,25 +29,28 @@ export class NotificationsListComponent implements OnInit {
     private routerExtensions: RouterExtensions,
     private router: Router,
     private notificationService: NotificationsService) {
-      this.counter = 0;
-      notificationService.load().subscribe( notifications => {
-          this.notifications = notifications;
-          }
-      )
+    this.counter = 0;
+    notificationService.load().subscribe( notifications => {
+      if (!notifications[0])
+        this.notifications = notifications;
+      else this.notifications = ['empty']
+    }
+  )
   }
 
   ngOnInit() {
-      console.log('hello from Notifications component');
+    this._templateSelector = this.templateSelectorFunction;
+    console.log('hello from Notifications component');
   }
 
   goToCasting(notification){
-      if(!notification.read){
-        this.notificationService.setRead(notification.mid).subscribe(result=>console.log("notification.read OK ",result))
-      }
-      if(notification.message_type == "audition_talent_was_not_selected") {
-        return
-      }
-      this.router.navigate(["../casting", notification.nid], { relativeTo: this.activeRoute })
+    if(!notification.read){
+      this.notificationService.setRead(notification.mid).subscribe(result=>console.log("notification.read OK ",result))
+    }
+    if(notification.message_type == "audition_talent_was_not_selected") {
+      return
+    }
+    this.router.navigate(["../casting", notification.nid], { relativeTo: this.activeRoute })
   }
 
   public onPullToRefreshInitiated(args: ListViewEventData) {
@@ -54,6 +58,17 @@ export class NotificationsListComponent implements OnInit {
     setTimeout(()=>{
       args.object.notifyPullToRefreshFinished()
     },500)
+  }
+
+  public templateSelectorFunction = (item:any, index: number, items: any) => {
+    if( item == "empty" ) return "empty"
+    else return "default";
+  }
+  get templateSelector(): (item: any, index: number, items: any) => string {
+    return this._templateSelector;
+  }
+  set templateSelector(value: (item: any, index: number, items: any) => string) {
+    this._templateSelector = value;
   }
 
   // DOCS > eliminiamo il background solo in IOS RadListView

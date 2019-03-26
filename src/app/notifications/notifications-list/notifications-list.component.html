@@ -29,14 +29,19 @@
 <!-- https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
 <!-- (itemSwipeProgressEnded)="onSwipeCellFinished($event)"  (itemSwipeProgressChanged)="onCellSwiping($event)" -->
 
-<RadListView class="notifications" [items]="notifications" (itemLoading)="onItemLoading($event, notifications)"
+<RadListView class="notifications"
+[items]="notifications"
+(itemLoading)="onItemLoading($event, notifications)"
 (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
-selectionBehavior="None" swipeActions="true"
- pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" >
+selectionBehavior="None"
+swipeActions="true"
+ pullToRefresh="true"
+ (pullToRefreshInitiated)="onPullToRefreshInitiated($event)"
+ [itemTemplateSelector]="templateSelector" >
 
   <ListViewLinearLayout tkListViewLayout scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default"></ListViewLinearLayout>
 
-  <ng-template #cardTemplate tkListItemTemplate let-item="item" let-index="index" >
+  <ng-template  #cardTemplate tkTemplateKey="default" let-item="item" let-index="index">
 
     <!-- <CardView class="card-group" elevation="15" radius="10" ios:shadowRadius="4" shadowOpacity="0.1" shadowColor="#000" shadowOffsetHeight="6" [class.list-group-first]="index===0" (tap)="goToCasting(item)"> -->
     <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="15" [class.list-group-first]="index===0" (tap)="goToCasting(item)">
@@ -67,6 +72,17 @@ selectionBehavior="None" swipeActions="true"
       </StackLayout>
     </CardView>
 
+  </ng-template>
+
+  <ng-template tkTemplateKey="empty"  let-item="item" >
+    <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="true">
+
+      <StackLayout class="list-group-item">
+        <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TITLE' | L" class="list-group-item-heading-18 list-group-item-heading-18-empty" textWrap="true"></Label>
+        <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
+      </StackLayout>
+
+    </CardView>
   </ng-template>
 
   <StackLayout *tkListItemSwipeTemplate class="card-group card-group-delete" >

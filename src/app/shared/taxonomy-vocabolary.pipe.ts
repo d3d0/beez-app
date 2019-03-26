@@ -7,7 +7,7 @@ export class TaxonomyVocabolaryPipe implements PipeTransform {
 	constructor(private taxonomyService:TaxonomyService){}
 	transform(items, dictionary: string) {
 
-		let vid = this.taxonomyService.getVId(dictionary)
+		let vid = 'this.taxonomyService.getVId(dictionary)'
 		if (vid){
 		let result = items
 		return result

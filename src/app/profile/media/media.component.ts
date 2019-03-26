@@ -8,6 +8,7 @@ import * as fs from "file-system";
 import { BackendService } from "../../shared/backend.service";
 import {ImageSource, fromFile,fromNativeSource, fromResource, fromBase64} from "tns-core-modules/image-source";
 import { ProfileService } from "../profile.service"
+import { alert, getIconSource } from "../../shared/utils";
 
 @Component({
     selector: 'ns-media',
@@ -23,6 +24,7 @@ export class MediaComponent {
     isSingleMode: boolean = false;
     thumbSize: number = 80;
     previewSize: number = 300;
+    getIconSource = getIconSource
     public tasks: bgHttp.Task[] = [];
     public events: { eventTitle: string, eventData: any }[] = [];
     private file: string;
@@ -30,20 +32,20 @@ export class MediaComponent {
     private counter: number = 0;
     private session: any;
     private images:any = [];
-
+    public isLoading:boolean = false;
     constructor( private profileService: ProfileService ) {
         this.url = BackendService.baseUrl + "beez/loool_talent_images/upload_image_multipart"
         this.session = bgHttp.session("image-upload");
         this.loadImages()
     }
     loadImages(){
-        this.profileService.getImages().subscribe(result => this.images = result )
+        this.profileService.getImages().subscribe( result => this.images = result )
     }
     deleteImage(fid){
-        this.profileService.deleteImage(fid).subscribe(result => this.images = result )
+        this.profileService.deleteImage(fid).subscribe( result => this.images = result )
     }
     setPolaroidImage(fid){
-        this.profileService.setPolaroidImage(fid).subscribe(result => console.log(result) )
+        this.profileService.setPolaroidImage(fid).subscribe( result => console.log(result) )
     }
 
     public onSelectMultipleTap() {
@@ -78,14 +80,18 @@ export class MediaComponent {
     }
 
     start_upload() {
+        this.isLoading = true
         const name = this.file.substr(this.file.lastIndexOf("/") + 1);
         // this.file = fs.path.normalize(fs.knownFolders.currentApp().path + this.file);
         const description = `${name} (${++this.counter})`;
-
-        let headers = BackendService.getCommonHeaders()
+        console.log(name)
+        console.log(this.file)
+        debugger
+        let headers = []
+        headers["x-csrf-token"] = BackendService.XCSFRtoken
+        headers["Cookie"] = BackendService.session_name + "=" + BackendService.sessid
         headers["Content-Type"] = "application/octet-stream"
         headers["Accept"] = 'application/json'
-        headers["File-Name"] =  name
 
         const request = {
             url: this.url,
@@ -97,16 +103,21 @@ export class MediaComponent {
         let task: bgHttp.Task;
         let lastEvent = "";
         const params = [
-        { name: "image12", filename: this.file }
+        { name: name+'_2', filename: this.file },
+        { name: name, filename: this.file }
         ];
         task = this.session.multipartUpload(params, request);
 
         function onEvent(e) {
             console.log(e)
+            this.isLoading = false
+
             if (lastEvent !== e.eventName) {
                 // suppress all repeating progress events and only show the first one
                 lastEvent = e.eventName;
+                if (e.eventName == 'complete') this.isLoading = false
             } else {
+                this.isLoading = false
                 return;
             }
 
