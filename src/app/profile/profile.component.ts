@@ -8,6 +8,7 @@ import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { screen } from 'tns-core-modules/platform';
 import { GestureTypes, SwipeGestureEventData } from "tns-core-modules/ui/gestures";
 import { Observable } from 'rxjs';
+import { localize } from "nativescript-localize";
 
 import { ProfileService } from "./profile.service"
 @Component({
@@ -40,6 +41,33 @@ export class ProfileComponent implements OnInit {
   
   get profile(){
     return  this._profile
+  }
+
+    textfieldEvent($event, field){
+    if(field)
+    this.profile[field]=$event.object.text
+  }
+  
+  toogleEditable(){
+    if (this.isEditable){
+      this.profileService.edit(this.profile).subscribe(
+        (result) => {
+          console.log(result)
+          console.log('profile ', this.profile)
+
+          alert('edit OK')
+        },
+        (err) => {
+          console.log(err)
+          alert(localize('MESSAGES.ERROR_SERVICE'))
+        }
+      );
+      this.isEditable = false
+      // this.profileService.load()
+          console.log('profile ', this.profile)
+
+    }
+    else this.isEditable = true
   }
 
   ngOnInit(): void {
@@ -180,9 +208,8 @@ animatePreviousTab(arg){
     // this.isLoading = true;
     console.log('hideActivityIndicator')
   }
+
   edit(profile){
-    profile.name="mirko modificato"
-    profile.surname="mirko modificato"
     this.profileService.edit(profile).subscribe(result=>console.log(result))
   }
 

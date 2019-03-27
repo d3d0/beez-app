@@ -11,9 +11,9 @@ import { SelectModalViewComponent } from "./select-modal-view/select-modal-view.
     moduleId: module.id,
     styleUrls: ['./beez-float-label-select.component.css'],
     template: `
-    <GridLayout rows="10, auto" (tap)="openModal()">
+    <GridLayout rows="10, 32" (tap)="openModal()">
     <Label [visibility]="!!value?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label"></Label>
-    <Label [visibility]="!!value?'visible':'hidden'" id="text" row="1" [text]="value" ></Label>
+    <Label [visibility]="!!value?'visible':'hidden'" id="text" row="1" class="title" [text]="value" ></Label>
     <Label [visibility]="!value?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder" ></Label>
     </GridLayout>
     `
@@ -22,6 +22,7 @@ import { SelectModalViewComponent } from "./select-modal-view/select-modal-view.
 export class BeezFloatLabelSelect {
     @Input() placeholder: string;
     @Input() type: string;
+    @Input() text: any;
     @Output() selectEvent = new EventEmitter<string>()
     private value ='';
     private list;
@@ -50,9 +51,9 @@ export class BeezFloatLabelSelect {
     }
 
     private createDatapickerModelView(): Promise<any> {
-        const today =  new Date();
+        const date = new Date(this.text * 1000) || new Date();
         const options: ModalDialogOptions = {
-            context: { title: this.placeholder, currentdate: today },
+            context: { title: this.placeholder, currentdate: date },
             fullscreen: true,
             viewContainerRef: this.vcRef
         };
@@ -60,8 +61,9 @@ export class BeezFloatLabelSelect {
     }
 
     private createTaxonomyModelView(): Promise<any> {
+        const tid = this.text || '';
         const options: ModalDialogOptions = {
-            context: { vocabolary: this.type , title: this.placeholder},
+            context: { vocabolary: this.type , title: this.placeholder, tid: tid},
             fullscreen: true,
             viewContainerRef: this.vcRef
         };

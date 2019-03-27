@@ -1,10 +1,11 @@
 @import '../../../app-variables';
 
 GridLayout{
-	padding-bottom: 16;	
+	padding-bottom: 16;
  }
 
 TextField{
+	height: 100%;
 	border-bottom-width: 1;
     border-bottom-color: $grigiochiaro;
     placeholder-color : $grigioscuro;

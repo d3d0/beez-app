@@ -3,7 +3,7 @@
 		<AbsoluteLayout>
 			<StackLayout left="0" top="0" class="list-group-item p-20">
 				<Label [text]="title|L" class="list-group-item-heading-18 title"  textWrap="true"></Label>
-					<DatePicker #datepicker></DatePicker>
+					<DatePicker #datepicker [date]="currentdate"></DatePicker>
 				<Button  class="text-uppercase list-group-item-pulsante list-group-item-pulsante--verde btn" width="100%" [text]="'CONFIRM'|L" (tap)="onClose()"></Button>
 			</StackLayout>
 			<StackLayout left="0" top="0"  width="100%"  height="32">

@@ -58,3 +58,29 @@ ActionItem {
 	border-bottom-width: 1;
 	border-color: $verde;
 }
+
+.profile-info {
+	background-color: $grigiobackground;
+	.list-group-item {
+		padding: 8 16 8 16;
+		// background-color: green;
+		&-grid{
+		}
+		.row{
+			border-bottom-width: 1;
+			border-bottom-color: $grigiochiaro;
+			// background-color: green;
+			.label{
+				font-family: "Sofia Pro Light";
+				font-weight: normal;
+				color: $grigioscuro;
+			  	letter-spacing:0.028;	
+				padding-right: 8;
+				// background-color: green;
+			}
+		}
+		.row.last{
+			border-bottom-width: 0;
+		}
+	}
+}

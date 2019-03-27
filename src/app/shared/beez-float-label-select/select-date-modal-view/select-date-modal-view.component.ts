@@ -17,7 +17,7 @@ export class SelectDateModalViewComponent {
     private title
 
     constructor( private router: RouterExtensions, private params: ModalDialogParams ) {
-        this.currentdate = new Date(params.context.currentdate);
+        this.currentdate = params.context.currentdate;
         this.title = params.context.title;
     }
 

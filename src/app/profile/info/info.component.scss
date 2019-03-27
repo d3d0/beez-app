@@ -1,34 +1,27 @@
 @import '../../../app-variables';
 
 .profile-info {
-  background-color: $grigiobackground;
-  .list-group-item {
-    padding: 8 0 8 0;
+	background-color: $grigiobackground;
+	.list-group-item {
+		padding: 8 0 8 0;
 		// background-color: green;
 		&-grid{
 		}
 		.row{
-			margin: 0 16 0 16;
 			border-bottom-width: 1;
 			border-bottom-color: $grigiochiaro;
 			// background-color: green;
 			.label{
 				font-family: "Sofia Pro Light";
-			  font-weight: normal;
-			  letter-spacing:0.028;
-				color: $grigioscuro;
-				// background-color: green;
-			}
-			.value{
-				font-family: "Sofia Pro Light";
 				font-weight: normal;
-			  letter-spacing:0.028;
-				color:$nero;
+				color: $grigioscuro;
+			  	letter-spacing:0.028;	
+				padding-right: 8;
 				// background-color: green;
 			}
 		}
 		.row.last{
 			border-bottom-width: 0;
 		}
-  }
+	}
 }

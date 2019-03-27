@@ -31,9 +31,7 @@ export class NotificationsListComponent implements OnInit {
     private notificationService: NotificationsService) {
     this.counter = 0;
     notificationService.load().subscribe( notifications => {
-      if (!notifications[0])
         this.notifications = notifications;
-      else this.notifications = ['empty']
     }
   )
   }

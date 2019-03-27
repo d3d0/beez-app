@@ -4,7 +4,6 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { NativeScriptAnimationsModule } from "nativescript-angular/animations";
 import { ModalDialogService } from "nativescript-angular/modal-dialog";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-
 import { AppComponent } from "./app.component";
 import { AppRoutingModule, authProviders } from "./app.routing";
 import { BackendService } from "./shared/backend.service";
@@ -28,7 +27,7 @@ registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanage
         AppRoutingModule,
         NativeScriptModule,
         NativeScriptHttpClientModule,
-        NativeScriptRouterModule,
+        NativeScriptRouterModule
     ],
     declarations: [
         AppComponent,

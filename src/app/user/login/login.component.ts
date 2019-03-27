@@ -72,16 +72,31 @@ export class LoginComponent implements OnInit {
         BackendService.XCSFRtoken = result['token']
         BackendService.UID = result['user']['uid']
         this.isLoading = false;
-        /// push notification send token
-        messaging.getCurrentPushToken()
-            .then(token =>  {
-              console.log(`Current push token: ${token}`)
-              this.pushService.push_token(token).subscribe(result => console.log("resulult form pushservice", result))
-            } 
-        ).catch( err=> console.log(err))
+
+        messaging.registerForPushNotifications({
+          onPushTokenReceivedCallback: (token: string): void => {
+            this.pushService.push_token(token).subscribe(
+              result => console.log("resulult form pushservice", result),
+              err => console.log("resulult form pushservice ERR ", err),
+              )
+
+            console.log("Firebase plugin received a push token: " + token);
+          },
+
+          onMessageReceivedCallback: (message: Message) => {
+            console.log("Push message received: " + message.title);
+          },
+
+          // Whether you want this plugin to automatically display the notifications or just notify the callback. Currently used on iOS only. Default true.
+          showNotifications: true,
+
+          // Whether you want this plugin to always handle the notifications when the app is in foreground. Currently used on iOS only. Default false.
+          showNotificationsWhenInForeground: true
+        }).then(() => console.log("Registered for push"));
+
 
         this.routerExtensions.navigate(["../home"], { clearHistory: true });
-       },
+      },
       (error) => {
         BackendService.reset()
         this.isLoading = false;
@@ -89,7 +104,7 @@ export class LoginComponent implements OnInit {
         if (error.status == 407)
           alert(localize("MESSAGES.CONFIRM_EMAIL"));
         else
-        alert(localize("MESSAGES.ERROR_LOGIN"));
+          alert(localize("MESSAGES.ERROR_LOGIN"));
       });
     },
     (error) => {
@@ -101,7 +116,7 @@ export class LoginComponent implements OnInit {
 
   textfieldEvent($event, field){
     if(field)
-    this.user[field]=$event.object.text
+      this.user[field]=$event.object.text
   }
 
 }

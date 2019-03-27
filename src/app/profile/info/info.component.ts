@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProfileService } from "../profile.service";
 import { Profile} from "../../user/profile.model";
 
@@ -8,12 +8,19 @@ import { Profile} from "../../user/profile.model";
   styleUrls: ['./info.component.css'],
   moduleId: module.id,
 })
-export class InfoComponent  {
+export class InfoComponent {
   @Input() profile
   @Input() isEditable
+  constructor(){
+  }
 
   edit(){
   	if(this.isEditable)
   		console.log('editami')
+  }
+
+  textfieldEvent($event, field){
+    if(field)
+    this.profile[field]=$event.object.text
   }
 }

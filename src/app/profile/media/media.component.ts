@@ -88,10 +88,10 @@ export class MediaComponent {
         console.log(this.file)
         debugger
         let headers = []
-        headers["x-csrf-token"] = BackendService.XCSFRtoken
-        headers["Cookie"] = BackendService.session_name + "=" + BackendService.sessid
         headers["Content-Type"] = "application/octet-stream"
         headers["Accept"] = 'application/json'
+        headers["x-csrf-token"] = BackendService.XCSFRtoken
+        headers["Cookie"] = BackendService.session_name + "=" + BackendService.sessid
 
         const request = {
             url: this.url,

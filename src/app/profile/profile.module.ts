@@ -9,12 +9,14 @@ import { DetailsComponent } from './details/details.component';
 import { InfoComponent } from './info/info.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SettingsComponent } from "./settings/settings.component";
+import { NativeScriptFormsModule } from "nativescript-angular/forms"
 
 @NgModule({
   imports: [
     ProfileRoutingModule,
     NativeScriptCommonModule,
-    SharedModule
+    SharedModule,
+    NativeScriptFormsModule
   ],
   declarations: [
   ProfileComponent,

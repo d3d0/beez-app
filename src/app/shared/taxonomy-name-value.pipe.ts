@@ -7,6 +7,6 @@ export class TaxonomyNameValuePipe implements PipeTransform {
   constructor(private taxonomyService:TaxonomyService){}
   value: string
   transform( tid: string ) {
-    return this.taxonomyService.getNameValue(tid)	;
+    return' this.taxonomyService.getNameValue(tid)	';
   }
 }

@@ -6,29 +6,30 @@ import { Color } from "tns-core-modules/color";
     moduleId: module.id,
     styleUrls: ['./beez-float-label-textfield.component.css'],
     template: `
-    <GridLayout rows="10, auto" ios:paddingTop="16" android:paddingTop="8"   >
-    <Label #label row="1" [text]="placeholder|uppercase" opacity="0" class="label" verticalAlignment="bottom"></Label>
-    <TextField #textField row="1" ios:paddingBottom="12" class="title"
-    [text]='value'
-    [hint]="placeholder|titlecase"
-    [secure]="secure"
-    [keyboardType]="keyboardType"
-    [editable]="editable"
-    (blur)="onBlur($event)"
-    (focus)="onFocus()"
-    (returnPress)="returnPress($event)"
-    autocorrect="false"
-    lineHeight="200"
-    [returnKeyType]="returnKeyType"
-    autocapitalizationType="none"
-    ></TextField>
-    </GridLayout>
+        <GridLayout rows="10, 32" ios:paddingTop="16" android:paddingTop="8">
+            <Label *ngIf="editable" #label row="1" [text]="placeholder|uppercase" opacity="0" class="label" verticalAlignment="bottom"></Label>
+            <TextField #textField row="1" ios:paddingBottom="8" class="title"
+            [(ngModel)]="text"
+            [hint]="placeholder|titlecase"
+            [secure]="secure"
+            [keyboardType]="keyboardType"
+            [editable]="editable"
+            (blur)="onBlur($event)"
+            (focus)="onFocus()"
+            (returnPress)="returnPress($event)"
+            autocorrect="false"
+            lineHeight="200"
+            [returnKeyType]="returnKeyType"
+            autocapitalizationType="none"
+            ></TextField>
+        </GridLayout>
     `
 })
 
 export class BeezFloatLabelTextfield {
     @Input() placeholder: string;
     @Input() secure: boolean;
+    @Input() text: string;
     @Input() editable: boolean = true;
     @Input() returnKeyType: string;
     @Input() keyboardType: string;
@@ -36,7 +37,6 @@ export class BeezFloatLabelTextfield {
 
     @ViewChild("label") label: ElementRef;
     @ViewChild("textField") textField: ElementRef;
-    private value;
     
     constructor() { }
 
