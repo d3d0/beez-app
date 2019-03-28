@@ -16,7 +16,8 @@ import { Color } from "tns-core-modules/color";
             [editable]="editable"
             (blur)="onBlur($event)"
             (focus)="onFocus()"
-            (returnPress)="returnPress($event)"
+            (ngModelChange)="changeValue()"
+            (returnPress)="changeValue()"
             autocorrect="false"
             lineHeight="200"
             [returnKeyType]="returnKeyType"
@@ -52,7 +53,6 @@ export class BeezFloatLabelTextfield {
     }
 
     onBlur($event) {
-        this.textfieldEvent.emit($event)
         const label = this.label.nativeElement;
         const textField = this.textField.nativeElement;
         if (!textField.text) {
@@ -67,8 +67,8 @@ export class BeezFloatLabelTextfield {
         }
     }
     
-    returnPress($event){
-        this.textfieldEvent.emit($event)
+    changeValue(){
+        this.textfieldEvent.emit(this.text)
     }
 
 }

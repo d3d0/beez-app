@@ -19,8 +19,8 @@ export class InfoComponent {
   		console.log('editami')
   }
 
-  textfieldEvent($event, field){
+  textfieldEvent(text, field){
     if(field)
-    this.profile[field]=$event.object.text
+    this.profile[field]=text
   }
 }

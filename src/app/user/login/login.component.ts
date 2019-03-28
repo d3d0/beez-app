@@ -113,9 +113,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  textfieldEvent($event, field){
+  textfieldEvent(text, field){
     if(field)
-      this.user[field]=$event.object.text
+      this.user[field]=text
   }
 
 }

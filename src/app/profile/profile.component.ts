@@ -43,9 +43,9 @@ export class ProfileComponent implements OnInit {
     return  this._profile
   }
 
-    textfieldEvent($event, field){
+    textfieldEvent(text, field){
     if(field)
-    this.profile[field]=$event.object.text
+    this.profile[field]=text
   }
   
   toogleEditable(){

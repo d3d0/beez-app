@@ -94,8 +94,8 @@ export class SignupComponent implements OnInit{
     if (field) this.user[field]=value
   }
 
-  textfieldEvent($event, field){
-    if (field) this.user[field]=$event.object.text
+  textfieldEvent(text, field){
+    if (field) this.user[field]=text
   }
 
   goBack() {
