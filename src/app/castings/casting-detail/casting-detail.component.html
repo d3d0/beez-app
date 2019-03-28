@@ -18,30 +18,30 @@
 <ScrollView class="casting-detail">
 	<StackLayout>
 		<GridLayout rows="auto">
-       		<Image src="~/assets/images/boys.jpg" height="240" stretch="aspectFill" horizontalAlignment="center" verticalAlignment="top"></Image>
-			<Image [src]="casting.image" height="240" stretch="aspectFill" horizontalAlignment="center" verticalAlignment="top"></Image>
+       		<Image src="~/assets/images/boys.jpg" height="240" stretch="aspectFill"></Image>
+			<Image [src]="casting.image" height="240" stretch="aspectFill"></Image>
 		</GridLayout>
 		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
 			<StackLayout class="list-group-item p-t-0 p-b-8">
 				<StackLayout *ngIf="casting.status != 'Shooting'" >
 					<!-- Label of status on top only from auditionTab -->
-					<StackLayout *ngIf="casting.status === 'Audition'" horizontalAlignment ="center" verticalAlignment="center" class="banner-top-card" [ngClass]="casting.audition_action">
+					<StackLayout *ngIf="casting.status === 'Audition'" class="banner-top-card" [ngClass]="casting.audition_action">
 						<Label [text]="labelBannerCard(casting.audition_action)|L"></Label>
 					</StackLayout>
 
 					<GridLayout columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
 						<!-- lateral line -->
-						<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center" backgroundColor="olive"></Label>
+						<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center"></Label>
 
 						<!-- INFORMATION -->
-						<StackLayout class="icon-container" row="0" col="1" verticalAlignment="center" horizontalAlignment="center">
-							<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						<StackLayout class="icon-container" row="0" col="1" >
+							<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
 						</StackLayout>
 						<Label [text]="'CASTINGS.INFORMATION'|L" class="header" textWrap="true" row="0" col="2" ></Label>
 						<Label class="list-group-item-text" [text]="casting.info" textWrap="true" row="1" col="2"></Label>
 						<!-- FEATURES -->
-						<StackLayout class="icon-container" row="2" col="1" verticalAlignment="center" horizontalAlignment="center">
-							<Image [src]="getIconSource('characteristics')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						<StackLayout class="icon-container" row="2" col="1">
+							<Image [src]="getIconSource('characteristics')" stretch="none" width=16 height=16></Image>
 						</StackLayout>
 						<Label [text]="'CASTINGS.FEATURES'|L" class="header" textWrap="true" row="2" col="2"></Label>
 						<Label  class="list-group-item-text" textWrap="true" row="3" col="2">
@@ -52,8 +52,8 @@
 							</FormattedString>
 						</Label>
 						<!-- DATE_LOCATION -->
-						<StackLayout class="icon-container" row="4" col="1" verticalAlignment="center" horizontalAlignment="center">
-							<Image [src]="getIconSource('calendar')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						<StackLayout class="icon-container" row="4" col="1">
+							<Image [src]="getIconSource('calendar')" stretch="none" width=16 height=16></Image>
 						</StackLayout>
 						<Label [text]="'CASTINGS.DATE_LOCATION'|L" class="header" textWrap="true" row="4" col="2" ></Label>
 						<StackLayout row="5" col="2" >
@@ -79,13 +79,13 @@
 						<!-- lateral line -->
 						<Label text="" class="list-group-item-v-line" rowSpan="2" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
 
-						<StackLayout class="icon-container" row="0" col="1" verticalAlignment="center" horizontalAlignment="center">
-							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						<StackLayout class="icon-container" row="0" col="1">
+							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16></Image>
 						</StackLayout>
 						<BeezButton  [text]="'PARTICIPATE'|L" [isBusy]="isLoading" (buttonClick)="candidate()" row="0" col="2" ></BeezButton>
 
-						<StackLayout class="icon-container" row="1" col="1" verticalAlignment="center" horizontalAlignment="center">
-							<Image [src]="getIconSource('send')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						<StackLayout class="icon-container" row="1" col="1">
+							<Image [src]="getIconSource('send')" stretch="none" width=16 height=16></Image>
 						</StackLayout>
 						<BeezButton  [text]="'SHARE_WITH_A_FRIEND'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="share()" row="1" col="2" ></BeezButton>
 					</GridLayout>
@@ -103,8 +103,8 @@
 							<Label textWrap="true" class="list-group-item-text" [text]="'CASTINGS.PARTICIPATION_EDIT_PARTICIPATION_TEXT'|L"></Label>
 						</StackLayout>
 
-						<StackLayout [visibility]="edit_actions == false ? 'visible' : 'collapsed'"class="icon-container" row="1" col="1" verticalAlignment="center" horizontalAlignment="center">
-							<Image [src]="getIconSource('send')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+						<StackLayout [visibility]="edit_actions == false ? 'visible' : 'collapsed'"class="icon-container" row="1" col="1">
+							<Image [src]="getIconSource('send')" stretch="none" width=16 height=16></Image>
 						</StackLayout>
 						<BeezButton [visibility]="edit_actions == false ? 'visible' : 'collapsed'" buttonColor="blue" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" [isBusy]="isLoading" (buttonClick)="edit_actions=!edit_actions" row="1" col="2" ></BeezButton>
 
@@ -112,9 +112,9 @@
 							<StackLayout top=0 class="content" >
 								<Label [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" class="list-group-item-heading-18 " textWrap="true"></Label>
 								<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="list-group-item-text " textWrap="true"></Label>
-								<CheckBox fillColor="#DDD" #CBAgency checked="false" (checkedChange)="changeAgency()" verticalAlignment="center"></CheckBox>
+								<CheckBox fillColor="#DDD" #CBAgency checked="false" (checkedChange)="changeAgency()"></CheckBox>
 								<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'AGENCY')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezFloatLabelSelect>
-								<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"  verticalAlignment="center"></Label>
+								<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"></Label>
 								<BeezButton  [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="partecipate('Confirmed')"></BeezButton>
 								<BeezButton  [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="partecipate('Confirmed by archive')"></BeezButton>
 								<BeezButton  [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" [isBusy]="isLoading" buttonColor="black" (buttonClick)="partecipate('Declined')"></BeezButton>

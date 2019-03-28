@@ -13,8 +13,8 @@ import { SelectModalViewComponent } from "./select-modal-view/select-modal-view.
     template: `
     <GridLayout rows="10, 32" (tap)="openModal()">
     <Label [visibility]="!!value?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label"></Label>
-    <Label [visibility]="!!value?'visible':'hidden'" id="text" row="1" class="title" [text]="value" ></Label>
-    <Label [visibility]="!value?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder" ></Label>
+    <Label [visibility]="!!value?'visible':'hidden'" id="text" row="1" class="title" [text]="value" class="title" ios:paddingBottom="8" ></Label>
+    <Label [visibility]="!value?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder" class="title" ios:paddingBottom="8" ></Label>
     </GridLayout>
     `
 })
@@ -51,7 +51,7 @@ export class BeezFloatLabelSelect {
     }
 
     private createDatapickerModelView(): Promise<any> {
-        const date = new Date(this.text * 1000) || new Date();
+        const date = new Date();
         const options: ModalDialogOptions = {
             context: { title: this.placeholder, currentdate: date },
             fullscreen: true,

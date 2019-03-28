@@ -73,8 +73,9 @@ export class SignupComponent implements OnInit{
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
       BackendService.XCSFRtoken = result;
       this.userService.signup(this.user).subscribe((result) => {
-        this.routerExtensions.navigate(["/user/login"], { clearHistory: true });
         alert(localize("MESSAGES.CONFIRM_EMAIL"));
+        this.isLoading = false;
+        this.routerExtensions.navigate(["/"], { clearHistory: true });
       }, (error) => {
         BackendService.reset()
         this.isLoading = false;

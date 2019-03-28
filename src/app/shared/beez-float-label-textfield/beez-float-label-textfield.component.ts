@@ -6,8 +6,8 @@ import { Color } from "tns-core-modules/color";
     moduleId: module.id,
     styleUrls: ['./beez-float-label-textfield.component.css'],
     template: `
-        <GridLayout rows="10, 32" ios:paddingTop="16" android:paddingTop="8">
-            <Label *ngIf="editable" #label row="1" [text]="placeholder|uppercase" opacity="0" class="label" verticalAlignment="bottom"></Label>
+        <GridLayout rows="10, 32">
+            <Label [visibility]="editable?'visible':'hidden'" #label row="1" [text]="placeholder|uppercase" opacity="0" class="label" verticalAlignment="bottom"></Label>
             <TextField #textField row="1" ios:paddingBottom="8" class="title"
             [(ngModel)]="text"
             [hint]="placeholder|titlecase"

@@ -774,9 +774,11 @@ SegmentedBar{
 }
 
 .icon-container{
-  width: 28;
-  height: 28;
+  width: 24;
+  height: 24;
   background-color:white;
   transform: translate(0,-4);
-
+  > Image{
+      transform: translate(0,4);
+  }
 }
