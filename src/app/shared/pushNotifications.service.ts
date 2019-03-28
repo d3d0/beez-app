@@ -1,11 +1,8 @@
 import { Injectable } from "@angular/core";
-import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Observable, BehaviorSubject, throwError } from "rxjs";
+import {HttpClient  } from "@angular/common/http";
 import { localize } from "nativescript-localize";
-import { map, catchError, first, retry } from "rxjs/operators";
-import { ObservableArray } from "tns-core-modules/data/observable-array";
+import { retry } from "rxjs/operators";
 import { isAndroid } from "tns-core-modules/platform";
-import { filter } from 'rxjs/operators';
 
 import { BackendService } from "../shared/backend.service";
 
@@ -23,11 +20,13 @@ export class PushNotificationsService {
       JSON.stringify({
         token: token,
         platform: isAndroid ? 'android' : 'ios',
-        language: 'en'
+        language: localize('LANG').toLowerCase()
       }),
       {
         headers: BackendService.getCommonHeaders()
-      })
+      }).pipe(
+      retry(3)
+      )
   }
 
 }

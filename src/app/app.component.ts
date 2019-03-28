@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-const firebase = require("nativescript-plugin-firebase");
+import { Component } from "@angular/core";
+require("nativescript-plugin-firebase");
 
 @Component({
     selector: "ns-app",
@@ -7,21 +7,4 @@ const firebase = require("nativescript-plugin-firebase");
     templateUrl: "app.component.html",
     styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements OnInit {
-
-
-	  ngOnInit() {
-
-    firebase.init({
-  		iOSEmulatorFlush: true
-    }).then(
-      () => {
-        console.log("firebase.init done");
-      },
-      error => {
-        console.log(`firebase.init error: ${error}`);
-      }
-    );
-  }
-
-}
+export class AppComponent { }

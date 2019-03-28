@@ -71,31 +71,30 @@ export class LoginComponent implements OnInit {
         BackendService.sessid = result['sessid']
         BackendService.XCSFRtoken = result['token']
         BackendService.UID = result['user']['uid']
-        this.isLoading = false;
 
-        messaging.registerForPushNotifications({
-          onPushTokenReceivedCallback: (token: string): void => {
+        messaging.addOnPushTokenReceivedCallback(
+            token => {
             this.pushService.push_token(token).subscribe(
               result => console.log("resulult form pushservice", result),
-              err => console.log("resulult form pushservice ERR ", err),
+              err => console.log("resulult form pushservice ERR ", err)
               )
+              console.log("Firebase plugin received a push token: " + token);
+            }
+        );
 
-            console.log("Firebase plugin received a push token: " + token);
-          },
-
+        messaging.registerForPushNotifications({
           onMessageReceivedCallback: (message: Message) => {
             console.log("Push message received: " + message.title);
           },
 
-          // Whether you want this plugin to automatically display the notifications or just notify the callback. Currently used on iOS only. Default true.
           showNotifications: true,
-
-          // Whether you want this plugin to always handle the notifications when the app is in foreground. Currently used on iOS only. Default false.
           showNotificationsWhenInForeground: true
-        }).then(() => console.log("Registered for push"));
+        }).then(() => {
+          console.log("Registered for push")
 
-
-        this.routerExtensions.navigate(["../home"], { clearHistory: true });
+        })
+                  this.isLoading = false;
+          this.routerExtensions.navigate(["../home"], { clearHistory: true });
       },
       (error) => {
         BackendService.reset()
