@@ -1,19 +1,27 @@
 @import '../../../app-variables';
 
-.row{
-	margin: 0 10;
-	padding: 16 0 14 0;
-	width: 100%;
-	border-bottom-width: 1;
-	border-bottom-color: $grigiochiaro;
-	.label{
-		color: $grigioscuro;
+.profile-info {
+	background-color: $grigiobackground;
+	.list-group-item {
+		padding: 8 0 8 0;
+		// background-color: green;
+		&-grid{
+		}
+		.row{
+			border-bottom-width: 1;
+			border-bottom-color: $grigiochiaro;
+			// background-color: green;
+			.label{
+				font-family: "Sofia Pro Light";
+				font-weight: normal;
+				color: $grigioscuro;
+			  	letter-spacing:0.028;	
+				padding-right: 8;
+				// background-color: green;
+			}
+		}
+		.row.last{
+			border-bottom-width: 0;
+		}
 	}
-	.value{
-		color:$nero;
-	}
-}
-
-.row.last{
-	border-bottom-width: 0;
 }

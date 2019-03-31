@@ -73,14 +73,14 @@ export class LoginComponent implements OnInit {
         BackendService.UID = result['user']['uid']
 
         messaging.addOnPushTokenReceivedCallback(
-            token => {
+          token => {
             this.pushService.push_token(token).subscribe(
               result => console.log("resulult form pushservice", result),
               err => console.log("resulult form pushservice ERR ", err)
               )
-              console.log("Firebase plugin received a push token: " + token);
-            }
-        );
+            console.log("Firebase plugin received a push token: " + token);
+          }
+          );
 
         messaging.registerForPushNotifications({
           onMessageReceivedCallback: (message: Message) => {
@@ -93,8 +93,8 @@ export class LoginComponent implements OnInit {
           console.log("Registered for push")
 
         })
-                  this.isLoading = false;
-          this.routerExtensions.navigate(["../home"], { clearHistory: true });
+        this.isLoading = false;
+        this.routerExtensions.navigate(["../home"], { clearHistory: true });
       },
       (error) => {
         BackendService.reset()

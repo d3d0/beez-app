@@ -82,9 +82,9 @@ private candidate(){
   this.isLoading =true
   this.castingsService.cadidate(this.user_id,this.casting_id).subscribe(
     (result)=>{
-      alert(localize("MESSAGES.CANDIDATE"))
       this.isLoading =false
       this.goBack()
+      alert(localize("MESSAGES.CANDIDATE"))
     },
     (error)=> {
       this.isLoading =false
@@ -98,8 +98,8 @@ private partecipate(action){
   this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe(
     (result)=>{
       this.isLoading =false
-      alert(localize("MESSAGES.CANDIDATE"))
       this.goBack()
+      alert(localize("MESSAGES.CANDIDATE"))
     },
     (error)=> {
       this.isLoading =false

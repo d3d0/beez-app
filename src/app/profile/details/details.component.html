@@ -1,104 +1,62 @@
-	<StackLayout>
-		<CardView class="m-t-20" elevation="40" radius="20" ios:shadowRadius="15">
-			<StackLayout class="list-group-item p-20"><!-- IMPORTANTE -->
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.HEIGHT'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.height" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.BODY_SIZE'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.size" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.SHOE_SIZE'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.shoes" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.BODY_SIZE'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.size" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.EYES'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.eyes" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.HAIR_COLOR'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.hair_color" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.HAIR_LENGHT'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.hair_lenght" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.PHYSIQUE'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.physique" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.ETHNICITY'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.ethnicity" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.LANGUAGES'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.languages" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.BREAST'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.breast" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.WAIST'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.waist" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.HIPS'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.hips" class="value"></Span>
-						</FormattedString>
-					</Label>
-					<Label class="row last" textWrap="true" horizontalAlignment="left" verticalAlignment="center" >
-						<FormattedString>
-							<Span [text]="'USER.DRIVING_LICENSE'|L" class="label"></Span>
-							<Span fontSize="18" text=" "></Span>
-							<Span [text]="profile.driver_licence" class="value"></Span>
-						</FormattedString>
-					</Label>
-				</StackLayout>
+	<StackLayout class="profile-info">
+		<CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
+			<StackLayout class="list-group-item list-group-item-grid " >
+
+				<StackLayout orientation="horizontal" class="row">
+					<Label textWrap="true" [text]="'USER.HEIGHT'|L" class="label" ></Label>
+					<BeezFloatLabelTextfield  [text]="profile.height"  (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.HEIGHT'|L"></BeezFloatLabelTextfield>
+				</StackLayout> 
+
+				<StackLayout orientation="horizontal" class="row">
+					<Label textWrap="true" [text]="'USER.BODY_SIZE'|L" class="label" ></Label>
+					<BeezFloatLabelSelect  [text]="profile.size" (selectEvent)="selectEvent($event,'BODY_SIZE')" type="BODY_SIZE" [placeholder]="'USER.BODY_SIZE'|L"></BeezFloatLabelSelect>
+				</StackLayout> 
+
+				<StackLayout orientation="horizontal" class="row">
+					<Label textWrap="true" [text]="'USER.EYES'|L" class="label" ></Label>
+					<BeezFloatLabelSelect  [text]="profile.eye" (selectEvent)="selectEvent($event,'EYES')" type="EYES" [placeholder]="'USER.EYES'|L"></BeezFloatLabelSelect>
+				</StackLayout> 
+
+				<StackLayout orientation="horizontal" class="row">
+					<Label textWrap="true" [text]="'USER.HAIR_COLOR'|L" class="label" ></Label>
+					<BeezFloatLabelSelect  [text]="profile.hair_color" (selectEvent)="selectEvent($event,'BODY_SIZE')" type="HAIR_COLOR" [placeholder]="'USER.HAIR_COLOR'|L"></BeezFloatLabelSelect>
+				</StackLayout> 
+
+				<StackLayout orientation="horizontal" class="row">
+					<Label textWrap="true" [text]="'USER.HAIR_LENGHT'|L" class="label" ></Label>
+					<BeezFloatLabelSelect  [text]="profile.hair_lenght" (selectEvent)="selectEvent($event,'BODY_SIZE')" type="HAIR_LENGHT" [placeholder]="'USER.HAIR_LENGHT'|L"></BeezFloatLabelSelect>
+				</StackLayout> 
+
+				<StackLayout orientation="horizontal" class="row">
+					<Label textWrap="true" [text]="'USER.PHYSIQUE'|L" class="label" ></Label>
+					<BeezFloatLabelSelect  [text]="profile.physique" (selectEvent)="selectEvent($event,'PHYSIQUE')" type="PHYSIQUE" [placeholder]="'USER.PHYSIQUE'|L"></BeezFloatLabelSelect>
+				</StackLayout> 
+
+				<StackLayout orientation="horizontal" class="row">
+					<Label textWrap="true" [text]="'USER.ETHNICITY'|L" class="label" ></Label>
+					<BeezFloatLabelSelect  [text]="profile.ethnicity" (selectEvent)="selectEvent($event,'ETHNICITY')" type="ETHNICITY" [placeholder]="'USER.ETHNICITY'|L"></BeezFloatLabelSelect>
+				</StackLayout> 
+
+				<StackLayout orientation="horizontal" class="row">
+					<Label textWrap="true" [text]="'USER.LANGUAGES'|L" class="label" ></Label>
+					<BeezFloatLabelSelect  [text]="profile.languages" (selectEvent)="selectEvent($event,'LANGUAGES')" type="LANGUAGES" [placeholder]="'USER.LANGUAGES'|L"></BeezFloatLabelSelect>
+				</StackLayout> 
+
+				<StackLayout orientation="horizontal" class="row">
+					<Label textWrap="true" [text]="'USER.BREAST'|L" class="label" ></Label>
+					<BeezFloatLabelSelect  [text]="profile.breast" (selectEvent)="selectEvent($event,'BREAST')" type="BREAST" [placeholder]="'USER.BREAST'|L"></BeezFloatLabelSelect>
+				</StackLayout> 
+
+				<StackLayout orientation="horizontal" class="row">
+					<Label textWrap="true" [text]="'USER.WAIST'|L" class="label" ></Label>
+					<BeezFloatLabelSelect  [text]="profile.waist" (selectEvent)="selectEvent($event,'WAIST')" type="WAIST" [placeholder]="'USER.WAIST'|L"></BeezFloatLabelSelect>
+				</StackLayout> 
+
+				<StackLayout orientation="horizontal" class="row">
+					<Label textWrap="true" [text]="'USER.HIPS'|L" class="label" ></Label>
+					<BeezFloatLabelSelect  [text]="profile.hips" (selectEvent)="selectEvent($event,'HIPS')" type="HIPS" [placeholder]="'USER.HIPS'|L"></BeezFloatLabelSelect>
+				</StackLayout> 
+			</StackLayout>
 		</CardView>
 	</StackLayout>
+

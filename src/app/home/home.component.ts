@@ -4,7 +4,6 @@ import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/dir
 import { RouterExtensions } from "nativescript-angular/router";
 import { isAndroid } from "tns-core-modules/platform";
 import { Page } from "ui/page";
-import { messaging, Message } from "nativescript-plugin-firebase/messaging";
 
 import { AppModule } from "../app.module";
 import { BackendService } from "../shared/backend.service";
@@ -27,8 +26,6 @@ export class HomeComponent implements OnInit {
     private page: Page) {}
 
   ngOnInit(): void {
-    console.log(`Notifications enabled? ${messaging.areNotificationsEnabled()}`);
-
     // BackendService.printAll()
     this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
     this.page.actionBarHidden = true;
