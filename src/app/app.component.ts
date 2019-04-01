@@ -9,10 +9,7 @@ const firebase = require("nativescript-plugin-firebase");
 })
 export class AppComponent implements OnInit {
   ngOnInit() {
-    firebase.init({
-      showNotifications: true,
-      showNotificationsWhenInForeground: true
-    }).then(
+    firebase.init({}).then(
       () => {
         console.log("firebase.init done");
       },
