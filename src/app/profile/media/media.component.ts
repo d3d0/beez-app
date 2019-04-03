@@ -57,35 +57,51 @@ export class MediaComponent {
     }
 
     private startSelection(context) {
-        let that = this;
         context
         .authorize()
         .then(() => {
-            that.imageAssets = [];
-            that.imageSrc = null;
             return context.present();
+        }).then((selection) => {
+            let counter = 0
+            selection.forEach( (selected_item) => {
+                let source = new ImageSource();
+                source.fromAsset(selected_item).then((image) => {
+                    console.log('image', image)
+                    // this.images.push(image)
+                    if (!isIOS) {
+                        var localPath = null;
+                        localPath = image.android.toString();
+                    } else {
+                        let name = new Date().toISOString() +'__'+ counter + ".jpg"
+                        let folder = fs.knownFolders.documents();
+                        let path = fs.path.join(folder.path, name );
+                        let saved = image.saveToFile(path, "jpg");
+                        localPath = path;
+                    }
+                    localPath = localPath 
+                    console.log(localPath)
+                    var task = this.start_upload("image_" + counter + ".jpg", localPath);
+                    this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
+                    counter++
+                })
+            })
         })
-        .then((selection) => {
-            console.log("Selection done: " + JSON.stringify(selection));
-            that.imageAssets = that.isSingleMode && selection.length > 0 ? selection[0] : null;
-            // set the images to be loaded from the assets with optimal sizes (optimize memory usage)
-            selection.forEach(function (element) {
-                element.options.width = that.isSingleMode ? that.previewSize : that.thumbSize;
-                element.options.height = that.isSingleMode ? that.previewSize : that.thumbSize;
-            });
-            this.file = selection[0]._android;
-        }).catch(function (e) {
-            console.log(e);
-        });
     }
 
-    start_upload() {
+
+
+
+
+
+
+
+
+    start_upload(uri, fileUri) {
         this.isLoading = true
-        const name = this.file.substr(this.file.lastIndexOf("/") + 1);
-        // this.file = fs.path.normalize(fs.knownFolders.currentApp().path + this.file);
+        // console.log('uri ', uri)
+        // console.log(fileUri)
+        const name = this.extractImageName(fileUri);
         const description = `${name} (${++this.counter})`;
-        console.log(name)
-        console.log(this.file)
         debugger
         let headers = []
         headers["Content-Type"] = "application/octet-stream"
@@ -103,15 +119,13 @@ export class MediaComponent {
         let task: bgHttp.Task;
         let lastEvent = "";
         const params = [
-        { name: name+'_2', filename: this.file },
-        { name: name, filename: this.file }
+            { name: name, filename: fileUri }
         ];
         task = this.session.multipartUpload(params, request);
 
         function onEvent(e) {
             console.log(e)
             this.isLoading = false
-
             if (lastEvent !== e.eventName) {
                 // suppress all repeating progress events and only show the first one
                 lastEvent = e.eventName;
@@ -120,7 +134,6 @@ export class MediaComponent {
                 this.isLoading = false
                 return;
             }
-
             this.events.push({
                 eventTitle: e.eventName + " " + e.object.description,
                 eventData: JSON.stringify({
@@ -139,4 +152,11 @@ export class MediaComponent {
         lastEvent = "";
         this.tasks.push(task);
     }
+
+    extractImageName(fileUri) {
+        var pattern = /[^/]*$/;
+        var imageName = fileUri.match(pattern);
+        return imageName;
+    }
+
 }

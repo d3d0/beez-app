@@ -43,9 +43,17 @@ export class ProfileComponent implements OnInit {
     return  this._profile
   }
 
-    textfieldEvent(text, field){
+  textfieldEvent(text, field){
     if(field)
     this.profile[field]=text
+  }
+
+  selectEvent(text, field){
+    if(field){
+        this.profile[field]=text.tid
+         console.log('selectEvent', this.profile[field])
+
+      }
   }
   
   toogleEditable(){
@@ -71,7 +79,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.profileService.load().subscribe(profile=> this._profile = profile[0])
+    this.profileService.load().subscribe(profile=> {
+      console.log(profile)
+      this._profile = profile[0]})
     this.tabs[0] = <View>this.tab1.nativeElement;
     this.tabs[1] = <View>this.tab2.nativeElement;
     this.tabs[2] = <View>this.tab3.nativeElement;

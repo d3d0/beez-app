@@ -2,7 +2,7 @@ import { Injectable, NgZone} from "@angular/core";
 import { HttpHeaders, HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, from, BehaviorSubject, throwError } from "rxjs";
 import { localize } from "nativescript-localize";
-import { map,filter, catchError, first, retry } from "rxjs/operators";
+import { map,filter, catchError, last, retry } from "rxjs/operators";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
 
 import { BackendService } from "../shared/backend.service";
@@ -31,7 +31,7 @@ export class TaxonomyService {
     return this.http.get(
       BackendService.baseUrl + this.serviceURl, {
         headers: BackendService.getCommonHeaders()
-      })    .pipe(
+      }).pipe(
       map((data: any[]) => {
         data.sort((a, b) => (a.name > b.name) ? 1 : -1)
         this.allTerms = data
@@ -43,26 +43,22 @@ export class TaxonomyService {
 
     private publishUpdates() {
       this.zone.run(() => {
+        // add the genders statics options
+        this.allTerms = this.allTerms.concat(DICTIONARIES['GENDERS'])
         this.terms.next([...this.allTerms]);
       });
     }
 
     getVocabolary(vocabolary){
       let vid =  DICTIONARIES[vocabolary]
-      if (typeof vid =='number' )
-        return this.terms.pipe(map( data => data.filter((el:Term)=>el.vid == vid)))
-      else{
-        return from([vid])
-      }
+      if (typeof vid !='number' ) vid = vocabolary
+      return this.terms.pipe(map( data => data.filter((el:Term)=>el.vid == vid)))
     }
 
     getTerm(tid){
-      return this.terms.pipe(
-        map( data => data.filter((el:Term)=>el.tid == tid)),
-        first()
-        )
+        return this.terms.pipe(map( data => data.filter((el:Term)=>el.tid == tid)))
     }
-
+    
     private handleErrors(error: Response): Observable<never> {
       return throwError(error);
     }

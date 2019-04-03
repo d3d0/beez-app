@@ -1,18 +1,19 @@
-import { NgModule } from '@angular/core';
+ import { NgModule } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule, NSEmptyOutletComponent } from "nativescript-angular/router";
 
 import { CastingStatusPipe } from "../castings/castings-list/casting-status.pipe";
-import { TaxonomyNameValuePipe } from "./taxonomy-name-value.pipe";
 import { TaxonomyVocabolaryPipe } from "./taxonomy-vocabolary.pipe";
 import { CastingDetailComponent } from '../castings/casting-detail/casting-detail.component';
-import { SelectDateModalViewComponent } from "./beez-float-label-select/select-date-modal-view/select-date-modal-view.component";
-import { SelectModalViewComponent } from "./beez-float-label-select/select-modal-view/select-modal-view.component";
-import { BeezFloatLabelSelect } from './beez-float-label-select/beez-float-label-select.component'
-import { BeezFloatLabelTextfield } from './beez-float-label-textfield/beez-float-label-textfield.component'
-import { BeezButton } from './beez-button/beez-button.component'
+import { SelectDateModalViewComponent } from "../components/select-date-modal-view/select-date-modal-view.component";
+import { SelectModalViewComponent } from "../components/select-modal-view/select-modal-view.component";
+import { BeezFloatLabelSelect } from '../components/beez-float-label-select/beez-float-label-select.component'
+import { BeezFloatLabelTextfield } from '../components/beez-float-label-textfield/beez-float-label-textfield.component'
+import { BeezInlineSelect } from '../components/beez-inline-select/beez-inline-select.component'
+import { BeezInlineTextfield } from '../components/beez-inline-textfield/beez-inline-textfield.component'
+import { BeezButton } from '../components/beez-button/beez-button.component'
 import { NativeScriptFormsModule } from "nativescript-angular/forms"
 
 const sharedRoutes: Routes = [
@@ -30,11 +31,12 @@ const sharedRoutes: Routes = [
   declarations: [
     CastingDetailComponent,
     CastingStatusPipe,
-    TaxonomyNameValuePipe,
     TaxonomyVocabolaryPipe,
     CastingStatusPipe,
     BeezFloatLabelSelect,
     BeezFloatLabelTextfield,
+    BeezInlineSelect,
+    BeezInlineTextfield,
     BeezButton,
     SelectDateModalViewComponent,
     SelectModalViewComponent
@@ -44,8 +46,9 @@ const sharedRoutes: Routes = [
     CastingStatusPipe,
     BeezFloatLabelSelect,
     BeezFloatLabelTextfield,
+    BeezInlineSelect,
+    BeezInlineTextfield,
     BeezButton,
-    TaxonomyNameValuePipe,
     TaxonomyVocabolaryPipe,
     CastingDetailComponent,
     NativeScriptCommonModule,

@@ -1,0 +1,17 @@
+@import '../../../app-variables';
+
+StackLayout{
+	padding-top: 8;
+	padding-bottom: 8;
+	border-bottom-width: 1;
+    border-bottom-color: $grigiochiaro;
+ }
+
+Label {
+	color:$grigioscuro;
+	padding: 8 0;
+}
+
+#text{
+	padding: 8 0 8 8;
+} 

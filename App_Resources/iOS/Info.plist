@@ -41,6 +41,8 @@
     </array>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>This will be added to InfoPlist.strings</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Pick and upload a photo</string>
     <key>UIBackgroundModes</key>
     <array>
         <string>remote-notification</string>

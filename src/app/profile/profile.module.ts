@@ -5,9 +5,6 @@ import { SharedModule } from "../shared/shared.module"
 import { ProfileRoutingModule } from "./profile-routing.module";
 import { ProfileComponent } from "./profile.component";
 import { MediaComponent } from './media/media.component';
-import { DetailsComponent } from './details/details.component';
-import { InfoComponent } from './info/info.component';
-import { ContactsComponent } from './contacts/contacts.component';
 import { SettingsComponent } from "./settings/settings.component";
 import { NativeScriptFormsModule } from "nativescript-angular/forms"
 
@@ -21,9 +18,6 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms"
   declarations: [
   ProfileComponent,
   MediaComponent,
-  DetailsComponent,
-  InfoComponent,
-  ContactsComponent,
   SettingsComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
