@@ -1,14 +1,16 @@
-import { Component, OnInit, Input} from '@angular/core';
-import { Profile } from "../../user/profile.model";
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import * as imagepicker from "nativescript-imagepicker";
 import * as bgHttp from "nativescript-background-http";
 import { isIOS } from "platform";
 import { ObservableArray } from "data/observable-array";
 import * as fs from "file-system";
-import { BackendService } from "../../shared/backend.service";
 import {ImageSource, fromFile,fromNativeSource, fromResource, fromBase64} from "tns-core-modules/image-source";
+import { localize } from "nativescript-localize";
+
+import { Profile } from "../../user/profile.model";
+import { BackendService } from "../../shared/backend.service";
 import { ProfileService } from "../profile.service"
-import { alert, getIconSource } from "../../shared/utils";
+import { alert, confirm, getIconSource } from "../../shared/utils";
 
 @Component({
     selector: 'ns-media',
@@ -18,6 +20,7 @@ import { alert, getIconSource } from "../../shared/utils";
 })
 export class MediaComponent {
     @Input() profile
+    @Output() refreshProfile = new EventEmitter<string>()
     imageAssets = [];
     imageSrc: any;
     image_base64: any;
@@ -39,13 +42,30 @@ export class MediaComponent {
         this.loadImages()
     }
     loadImages(){
-        this.profileService.getImages().subscribe( result => this.images = result )
+        this.profileService.getImages().subscribe( result => {
+            this.images = result
+            console.log(result)
+        })
     }
-    deleteImage(fid){
-        this.profileService.deleteImage(fid).subscribe( result => this.images = result )
+    deleteImage(image){
+        if(image.polaroid) this.profileService.setPolaroidImage(0).subscribe(
+                () => this.refreshProfile.emit(),
+                () => alert(localize("ERROR_SERVICE"))
+                )
+        confirm("DELETE?").then(()=>
+            this.profileService.deleteImage(image.fid).subscribe(
+                ()=> this.loadImages()),
+                ()=> alert(localize("ERROR_SERVICE")
+                )
+            )
     }
-    setPolaroidImage(fid){
-        this.profileService.setPolaroidImage(fid).subscribe( result => console.log(result) )
+    setPolaroidImage(image){
+        confirm("Set as cover image?").then(()=>
+            this.profileService.setPolaroidImage(image.fid).subscribe(
+                () => this.refreshProfile.emit(),
+                () => alert(localize("ERROR_SERVICE"))
+                )
+            )
     }
 
     public onSelectMultipleTap() {
@@ -119,7 +139,7 @@ export class MediaComponent {
         let task: bgHttp.Task;
         let lastEvent = "";
         const params = [
-            { name: name, filename: fileUri }
+        { name: name, filename: fileUri }
         ];
         task = this.session.multipartUpload(params, request);
 

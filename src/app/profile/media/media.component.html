@@ -11,9 +11,9 @@
 				<WrapLayout orientation="horizontal" row="1" col="2">
 					<CardView *ngFor="let image of images" margin=8 elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
 						<AbsoluteLayout>
-							<Image [src]="image.filepath" left="0" top="0" width="120" height="120" stretch="aspectFill" ></Image>
+							<Image [src]="image.filepath" left="0" top="0" width="120" height="120" stretch="aspectFill" (tap)="setPolaroidImage(image)" ></Image>
 							<StackLayout left="0" top="0" height="32"  width="120" >
-								<Label class="list-group-item-icona-no-nero" [text]="index" horizontalAlignment="right"></Label>
+								<Label class="list-group-item-icona-no-nero" [text]="index" (tap)="deleteImage(image)"horizontalAlignment="right"></Label>
 							</StackLayout>
 						</AbsoluteLayout>
 					</CardView>

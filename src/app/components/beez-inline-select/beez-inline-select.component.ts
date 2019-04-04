@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, ViewContainerRef, EventEmitter } from "@angular/core";
+import { Component, Input, Output, ViewContainerRef, EventEmitter } from "@angular/core";
 import { formatDate } from '@angular/common';
 import { Observable, from, BehaviorSubject, throwError } from "rxjs";
 
@@ -18,13 +18,13 @@ class Term {
     styleUrls: ['./beez-inline-select.component.css'],
     template: `
     <StackLayout orientation="horizontal" [borderWidth]="last?0:1" (tap)="openModal()">
-        <Label class="label-gray" [text]="placeholder"></Label>
-        <Label id="text" class="title" *ngIf="obj" [text]="obj.name | titlecase"></Label>
+    <Label class="label-gray" [text]="placeholder"></Label>
+    <Label id="text" class="title" *ngIf="obj" [text]="obj.name | titlecase"></Label>
     </StackLayout>
     `
 })
 
-export class BeezInlineSelect implements OnInit {
+export class BeezInlineSelect {
     @Input() placeholder: string;
     @Input() type: string;
     @Input() last: boolean;
@@ -38,16 +38,13 @@ export class BeezInlineSelect implements OnInit {
 
     @Input() 
     set value (value:string){
-            if( value )
+        if( value )
             if (this.type == "datapicker"){
                 this.obj.name = formatDate(parseInt(value) * 1000 ,'dd MMMM yy',localize('LANG'))
             } else{ 
-                console.log(value)
                 this.taxonomyService.getTerm(value).subscribe( obj => this.obj = obj[0] )
             }
         }
-        
-        ngOnInit(){ }
 
         private openModal(){
             if (this.type == "datapicker"){

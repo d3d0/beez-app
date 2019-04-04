@@ -99,6 +99,7 @@
     <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
       <ns-media
       [profile]="profile"
+      (refreshProfile)="loadProfile()"
       (loading)="showActivityIndicator()"
       (loaded)="hideActivityIndicator()"></ns-media>
     </GridLayout>

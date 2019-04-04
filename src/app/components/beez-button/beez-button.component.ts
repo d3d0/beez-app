@@ -7,15 +7,15 @@ import { Color } from "tns-core-modules/color";
     styleUrls: ['./beez-button.component.css'],
     template: `
     <StackLayout class="container" [row]="row" [col]="col" android:marginBottom="13">
-    <CardView width="100%" elevation="2" radius="15" shadowOpacity="0.2" ripple="false" ios:shadowRadius="5">
-    <Button #button
-    [backgroundColor]="color"
-    [visibility]="visibility"
-    class="label"
-    [isEnabled]="!isBusy" 
-    [text]="text|uppercase"
-    (tap)="onClick()"></Button>
-    </CardView>
+        <CardView width="100%" elevation="2" radius="15" shadowOpacity="0.2" ripple="false" ios:shadowRadius="5">
+            <Button #button
+            [backgroundColor]="color"
+            [visibility]="visibility"
+            class="label"
+            [isEnabled]="!isBusy" 
+            [text]="text|uppercase"
+            (tap)="onClick()"></Button>
+        </CardView>
     </StackLayout>        
     `
 })
@@ -42,7 +42,7 @@ export class BeezButton implements OnChanges{
     
     onClick(){
         if(!this.isBusy) this.buttonClick.emit()
-        this.setColor()
+            this.setColor()
 
     }
 
