@@ -57,7 +57,7 @@
 						</StackLayout>
 						<Label [text]="'CASTINGS.DATE_LOCATION'|L" class="header" textWrap="true" row="4" col="2" ></Label>
 						<StackLayout row="5" col="2" >
-							<Label [text]="'CASTINGS.CASTING'|L" class="header-small" textWrap="true"></Label>
+							<Label [text]="'CASTINGS.CASTING'|L" class="header-small p-b-8" textWrap="true"></Label>
 							<Label textWrap="false" class="list-group-item-text list-group-item-text-middle">
 								<FormattedString *ngFor="let date of casting.casting_date" >
 									<Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
@@ -68,7 +68,7 @@
 								</FormattedString>
 							</Label>
 							<Label class="list-group-item-text" [text]="casting.location" textWrap="true"></Label>
-							<Label [text]="'CASTINGS.SHOOTING'|L|uppercase" class="header-small" textWrap="true"></Label>
+							<Label [text]="'CASTINGS.SHOOTING'|L|uppercase" class="header-small p-b-8" textWrap="true"></Label>
 							<Label class="list-group-item-text" [text]="casting.shooting|titlecase" textWrap="true" ></Label>
 							<Label class="list-group-item-text italic" [text]="'CASTINGS.SHOOTING_NOTE'|L" textWrap="true"></Label>
 						</StackLayout>

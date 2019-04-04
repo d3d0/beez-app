@@ -5,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 
 import { UserService } from "../../user/user.service";
 import { BackendService } from "../../shared/backend.service";
+import { alert, getIconSource } from "../../shared/utils";
 
 @Component({
   selector: 'ns-settings',
@@ -14,6 +15,7 @@ import { BackendService } from "../../shared/backend.service";
 })
 
 export class SettingsComponent implements OnInit {
+  getIconSource = getIconSource
 
   constructor(
     private activeRoute: ActivatedRoute,

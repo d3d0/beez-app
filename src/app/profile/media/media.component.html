@@ -1,11 +1,11 @@
 <StackLayout>
 	<CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
-		<StackLayout class="list-group-item p-t-20 ">
-			<GridLayout columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto">
+		<StackLayout class="list-group-item p-t-8 ">
+			<GridLayout columns="8,32,*,16" rows="auto,auto,auto">
 				<Label text="" class="list-group-item-v-line" rowSpan="3" col="1" row="0" marginBottom="32" horizontalAlignment="center" ></Label>
 				<!-- PHOTO -->
-				<StackLayout class="icon-container" row="0" col="1" verticalAlignment="center" horizontalAlignment="center">
-					<Image [src]="getIconSource('photo')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+				<StackLayout class="icon-container" row="0" col="1" >
+					<Image [src]="getIconSource('photo')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
 				</StackLayout>
 				<Label text="FOTO" class="header" textWrap="true" row="0" col="2"></Label>
 				<WrapLayout orientation="horizontal" row="1" col="2">

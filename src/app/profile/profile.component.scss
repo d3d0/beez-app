@@ -19,37 +19,19 @@
 	}
 }
 
-ActionItem {
-	background-color: green;
-}
-
 .action-items{
-		padding: 0 12 0 12;
 		background-color: transparent;
 }
-/*
-ActionItem {
-	background-color: yellow;
-}
-.action-items{
-		// padding: 0 9 0 9;
-		margin: 0 15 0 15;
-		&-last {
-			padding: 0 9 0 9;
-		}
-}
-*/
 
 .credits-value{
-	margin-bottom: 3;
+	padding: 0 4 12 4;
 	font-size: 12;
 	font-weight: bold;
-	padding-bottom: 9;
 	color: $verde;
 	text-align: center;
 	background-image: url("res://credits");
 	background-repeat: no-repeat;
-	background-position: center bottom;
+	background-position: center center;
 }
 
 .tabActiveIndex{

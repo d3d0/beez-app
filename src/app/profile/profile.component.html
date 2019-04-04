@@ -14,15 +14,15 @@
   <ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left">
     <Label class="action-bar-title text-left pull-left" [text]="'PROFILE.PROFILE'|L|titlecase"></Label>
   </ActionItem>
-  <ActionItem class="" ios.position="right" android.position="right">
-    <Label  class="action-items credits-value" text="10"></Label>
+  <ActionItem  class="action-items "ios.position="right" android.position="right">
+    <Label class="m-5" class="action-items credits-value" text="98"></Label>
   </ActionItem>
-  <ActionItem class="" ios.position="right" android.position="right">
-    <Image class="action-items " *ngIf="!isEditable"  src="res://edit" (tap)="toogleEditable()" stretch="none"></Image>
-    <Image class="action-items " *ngIf="isEditable"  src="res://check_no" (tap)="toogleEditable()" stretch="none"></Image>
+  <ActionItem  class="action-items " ios.position="right" android.position="right" (tap)="toogleEditable()" >
+    <Image class="m-5" *ngIf="!isEditable"  src="res://edit" stretch="none"></Image>
+    <Image class="m-5" *ngIf="isEditable"  src="res://check_no" stretch="none"></Image>
   </ActionItem>
-  <ActionItem class="" ios.position="right" android.position="right" [nsRouterLink]="['../settings']">
-    <Image class="action-items " src="res://settings" stretch="none"></Image>
+  <ActionItem class="action-items " ios.position="right" android.position="right" [nsRouterLink]="['../settings']">
+    <Image class="m-5" src="res://settings" stretch="none"></Image>
   </ActionItem>
 
 </ActionBar>
