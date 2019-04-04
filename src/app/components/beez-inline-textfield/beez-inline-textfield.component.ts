@@ -5,11 +5,10 @@ import { Component, ElementRef, Input, Output, ViewContainerRef, EventEmitter, V
     moduleId: module.id,
     styleUrls: ['./beez-inline-textfield.component.css'],
     template: `
-        <StackLayout orientation="horizontal">
-            <Label [text]="placeholder"></Label>
+        <StackLayout [borderWidth]="last?0:1" orientation="horizontal">
+            <Label class="label-gray" [text]="placeholder"></Label>
             <TextField ios:paddingBottom="8" class="title"
             [(ngModel)]="text"
-            [hint]="placeholder|titlecase"
             [keyboardType]="keyboardType"
             [editable]="editable"
             (ngModelChange)="changeValue()"
@@ -25,6 +24,7 @@ import { Component, ElementRef, Input, Output, ViewContainerRef, EventEmitter, V
 export class BeezInlineTextfield {
     @Input() placeholder: string;
     @Input() secure: boolean;
+    @Input() last: boolean;
     @Input() text: string;
     @Input() editable: boolean = true;
     @Input() returnKeyType: string;

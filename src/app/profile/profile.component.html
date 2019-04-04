@@ -63,12 +63,12 @@
       <StackLayout class="profile-info">
         <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
           <StackLayout class="list-group-item list-group-item-grid " >
-            <BeezInlineTextfield class="row" [editable]="isEditable"  [text]="profile.name"  (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row"  [text]="profile.surname"  (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></BeezInlineTextfield>
-            <BeezInlineSelect class="row"  [value]="profile.gender" (selectEvent)="selectEvent($event,'GENDER')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezInlineSelect>
-            <BeezInlineSelect class="row" [value]="profile.date_of_birth" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezInlineSelect>
-            <BeezInlineTextfield class="row"  [text]="profile.place_of_birth"  (textfieldEvent)="textfieldEvent($event,'place_of_birth')" [placeholder]="'USER.PLACE_OF_BIRTH'|L"></BeezInlineTextfield>
-            <BeezInlineSelect class="row"  [value]="profile.nationality" (selectEvent)="selectEvent($event,'NATIONALITY')" type="NATIONALITY" [placeholder]="'USER.NATIONALITY'|L"></BeezInlineSelect>
+            <BeezInlineTextfield [editable]="isEditable"  [text]="profile.name"  (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.surname"  (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></BeezInlineTextfield>
+            <BeezInlineSelect [value]="profile.gender" (selectEvent)="selectEvent($event,'GENDER')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezInlineSelect>
+            <BeezInlineSelect [value]="profile.date_of_birth" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezInlineSelect>
+            <BeezInlineTextfield [text]="profile.place_of_birth"  (textfieldEvent)="textfieldEvent($event,'place_of_birth')" [placeholder]="'USER.PLACE_OF_BIRTH'|L"></BeezInlineTextfield>
+            <BeezInlineSelect [last]='true'  [value]="profile.nationality" (selectEvent)="selectEvent($event,'NATIONALITY')" type="NATIONALITY" [placeholder]="'USER.NATIONALITY'|L"></BeezInlineSelect>
           </StackLayout>
         </CardView>
       </StackLayout>
@@ -79,17 +79,17 @@
       <StackLayout class="profile-info">
         <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
           <StackLayout class="list-group-item list-group-item-grid " >
-            <BeezInlineTextfield class="row"  [text]="profile.height"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.HEIGHT'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row"  [text]="profile.breast"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.BREAST'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row"  [text]="profile.waist"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.WAIST'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row"  [text]="profile.hips"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.HIPS'|L"></BeezInlineTextfield>
-            <BeezInlineSelect class="row"  [value]="profile.size" (selectEvent)="selectEvent($event,'BODY_SIZE')" type="BODY_SIZE" [placeholder]="'USER.BODY_SIZE'|L"></BeezInlineSelect>
-            <BeezInlineSelect class="row"  [value]="profile.eye" (selectEvent)="selectEvent($event,'EYES')" type="EYES" [placeholder]="'USER.EYES'|L"></BeezInlineSelect>
-            <BeezInlineSelect class="row"  [value]="profile.hair_color" (selectEvent)="selectEvent($event,'BODY_SIZE')" type="HAIR_COLOR" [placeholder]="'USER.HAIR_COLOR'|L"></BeezInlineSelect>
-            <BeezInlineSelect class="row"  [value]="profile.hair_lenght" (selectEvent)="selectEvent($event,'BODY_SIZE')" type="HAIR_LENGHT" [placeholder]="'USER.HAIR_LENGHT'|L"></BeezInlineSelect>
-            <BeezInlineSelect class="row"  [value]="profile.physique" (selectEvent)="selectEvent($event,'PHYSIQUE')" type="PHYSIQUE" [placeholder]="'USER.PHYSIQUE'|L"></BeezInlineSelect>
-            <BeezInlineSelect class="row"  [value]="profile.ethnicity" (selectEvent)="selectEvent($event,'ETHNICITY')" type="ETHNICITY" [placeholder]="'USER.ETHNICITY'|L"></BeezInlineSelect>
-            <BeezInlineSelect class="row"  [value]="profile.languages" (selectEvent)="selectEvent($event,'LANGUAGES')" type="LANGUAGES" [placeholder]="'USER.LANGUAGES'|L"></BeezInlineSelect>
+            <BeezInlineTextfield [text]="profile.height"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.HEIGHT'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.breast"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.BREAST'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.waist"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.WAIST'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.hips"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.HIPS'|L"></BeezInlineTextfield>
+            <BeezInlineSelect [value]="profile.size" (selectEvent)="selectEvent($event,'BODY_SIZE')" type="BODY_SIZE" [placeholder]="'USER.BODY_SIZE'|L"></BeezInlineSelect>
+            <BeezInlineSelect [value]="profile.eye" (selectEvent)="selectEvent($event,'EYES')" type="EYES" [placeholder]="'USER.EYES'|L"></BeezInlineSelect>
+            <BeezInlineSelect [value]="profile.hair_color" (selectEvent)="selectEvent($event,'BODY_SIZE')" type="HAIR_COLOR" [placeholder]="'USER.HAIR_COLOR'|L"></BeezInlineSelect>
+            <BeezInlineSelect [value]="profile.hair_lenght" (selectEvent)="selectEvent($event,'BODY_SIZE')" type="HAIR_LENGHT" [placeholder]="'USER.HAIR_LENGHT'|L"></BeezInlineSelect>
+            <BeezInlineSelect [value]="profile.physique" (selectEvent)="selectEvent($event,'PHYSIQUE')" type="PHYSIQUE" [placeholder]="'USER.PHYSIQUE'|L"></BeezInlineSelect>
+            <BeezInlineSelect [value]="profile.ethnicity" (selectEvent)="selectEvent($event,'ETHNICITY')" type="ETHNICITY" [placeholder]="'USER.ETHNICITY'|L"></BeezInlineSelect>
+            <BeezInlineSelect [last]='true'  [value]="profile.languages" (selectEvent)="selectEvent($event,'LANGUAGES')" type="LANGUAGES" [placeholder]="'USER.LANGUAGES'|L"></BeezInlineSelect>
           </StackLayout>
         </CardView>
       </StackLayout>
@@ -108,17 +108,17 @@
       <StackLayout class="profile-info">
         <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
           <StackLayout class="list-group-item list-group-item-grid " >
-            <BeezInlineTextfield class="row"  [text]="profile.phone"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.PHONE'|L"></BeezInlineTextfield>
-            <BeezInlineSelect class="row"  [value]="profile.agency" (selectEvent)="selectEvent($event,'AGENCY')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezInlineSelect>
-            <BeezInlineTextfield class="row"  [text]="profile.website"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.WEBSITE'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row"  [text]="profile.facebook"  (textfieldEvent)="textfieldEvent($event,'facebook')" [placeholder]="'Facebook profile'"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row"  [text]="profile.instagram"  (textfieldEvent)="textfieldEvent($event,'instagram')" [placeholder]="'Instagram profile'"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row"  [text]="profile.linkedin"  (textfieldEvent)="textfieldEvent($event,'linkedin')" [placeholder]="'Linkedin profile'"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row" [text]="profile.address" (textfieldEvent)="textfieldEvent($event,'address')" [placeholder]="'USER.ADDRESS'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row" [text]="profile.city" (textfieldEvent)="textfieldEvent($event,'city')" [placeholder]="'USER.CITY'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row" [text]="profile.postal_code" (textfieldEvent)="textfieldEvent($event,'city')" [placeholder]="'USER.POSTAL_CODE'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row" [text]="profile.province" (textfieldEvent)="textfieldEvent($event,'city')" [placeholder]="'USER.PROVINCE'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield class="row" [text]="profile.country" (textfieldEvent)="textfieldEvent($event,'city')" [placeholder]="'USER.COUNTRY'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.phone"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.PHONE'|L"></BeezInlineTextfield>
+            <BeezInlineSelect [value]="profile.agency" (selectEvent)="selectEvent($event,'AGENCY')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezInlineSelect>
+            <BeezInlineTextfield [text]="profile.website"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.WEBSITE'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.facebook"  (textfieldEvent)="textfieldEvent($event,'facebook')" [placeholder]="'Facebook profile'"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.instagram"  (textfieldEvent)="textfieldEvent($event,'instagram')" [placeholder]="'Instagram profile'"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.linkedin"  (textfieldEvent)="textfieldEvent($event,'linkedin')" [placeholder]="'Linkedin profile'"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.address" (textfieldEvent)="textfieldEvent($event,'address')" [placeholder]="'USER.ADDRESS'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.city" (textfieldEvent)="textfieldEvent($event,'city')" [placeholder]="'USER.CITY'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.postal_code" (textfieldEvent)="textfieldEvent($event,'city')" [placeholder]="'USER.POSTAL_CODE'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield [text]="profile.province" (textfieldEvent)="textfieldEvent($event,'city')" [placeholder]="'USER.PROVINCE'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield [last]='true' [text]="profile.country" (textfieldEvent)="textfieldEvent($event,'city')" [placeholder]="'USER.COUNTRY'|L"></BeezInlineTextfield>
           </StackLayout>
         </CardView>
       </StackLayout>

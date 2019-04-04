@@ -7,7 +7,7 @@ import { localize } from "nativescript-localize";
 import { SelectDateModalViewComponent } from "../select-date-modal-view/select-date-modal-view.component";
 import { SelectModalViewComponent } from "../select-modal-view/select-modal-view.component";
 import { TaxonomyService} from "../../shared/taxonomy.service";
-interface Term {
+class Term {
     vid:string;
     tid:string;
     name:string;
@@ -17,9 +17,9 @@ interface Term {
     moduleId: module.id,
     styleUrls: ['./beez-inline-select.component.css'],
     template: `
-    <StackLayout orientation="horizontal" (tap)="openModal()">
-        <Label [text]="placeholder"></Label>
-        <Label id="text" *ngIf="obj" [text]="obj.name" class="title"></Label>
+    <StackLayout orientation="horizontal" [borderWidth]="last?0:1" (tap)="openModal()">
+        <Label class="label-gray" [text]="placeholder"></Label>
+        <Label id="text" class="title" *ngIf="obj" [text]="obj.name | titlecase"></Label>
     </StackLayout>
     `
 })
@@ -27,8 +27,9 @@ interface Term {
 export class BeezInlineSelect implements OnInit {
     @Input() placeholder: string;
     @Input() type: string;
+    @Input() last: boolean;
     @Output() selectEvent = new EventEmitter<string>()
-    private obj = null;
+    private obj = new Term;
 
     constructor(
         private vcRef: ViewContainerRef,
@@ -39,7 +40,7 @@ export class BeezInlineSelect implements OnInit {
     set value (value:string){
             if( value )
             if (this.type == "datapicker"){
-                // this.obj.name = formatDate(Date() ,'dd MMMM yy',localize('LANG'))
+                this.obj.name = formatDate(parseInt(value) * 1000 ,'dd MMMM yy',localize('LANG'))
             } else{ 
                 console.log(value)
                 this.taxonomyService.getTerm(value).subscribe( obj => this.obj = obj[0] )
