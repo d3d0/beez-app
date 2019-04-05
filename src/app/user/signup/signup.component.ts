@@ -48,10 +48,9 @@ export class SignupComponent implements OnInit{
   }
 
   public onSelectedIndexChange(index) {
-    let previousTab = this.selectedIndex;
     if (index != this.selectedIndex) {
       this.tabs[index].className = "active";
-      this.tabs[previousTab].className = "not-active";
+      this.tabs[this.selectedIndex].className = "not-active";
       this.selectedIndex = index;
     }
   }

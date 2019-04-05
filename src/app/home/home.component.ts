@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // BackendService.printAll()
+    this.taxonomyService.load()
     this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
     this.page.actionBarHidden = true;
 

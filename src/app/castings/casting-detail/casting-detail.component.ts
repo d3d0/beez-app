@@ -83,13 +83,16 @@ private candidate(){
   this.castingsService.cadidate(this.user_id,this.casting_id).subscribe(
     (result)=>{
       this.isLoading =false
-      this.goBack()
-      alert(localize("MESSAGES.CANDIDATE"))
+      alert(localize("MESSAGES.CANDIDATE")).then(
+        ()=> this.goBack()
+        )
     },
     (error)=> {
       this.isLoading =false
       if (error.status === 400) alert(localize(error.error[0]))
-        else alert(localize("ERROR_SERVICE"));
+        else alert(localize("ERROR_SERVICE")).then(
+        ()=> this.goBack()
+        )
     })
 }
 
@@ -98,8 +101,9 @@ private partecipate(action){
   this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe(
     (result)=>{
       this.isLoading =false
-      this.goBack()
-      alert(localize("MESSAGES.CANDIDATE"))
+      alert(localize("MESSAGES.CANDIDATE")).then(
+        ()=> this.goBack()
+        )
     },
     (error)=> {
       this.isLoading =false

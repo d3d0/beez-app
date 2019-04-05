@@ -11,9 +11,9 @@ import { SelectModalViewComponent } from "../select-modal-view/select-modal-view
     styleUrls: ['./beez-float-label-select.component.css'],
     template: `
     <GridLayout rows="10, 32" (tap)="openModal()">
-    <Label [visibility]="!value?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label"></Label>
-    <Label [visibility]="!value?'visible':'hidden'" id="text" row="1" class="title" [text]="text" class="title" ios:paddingBottom="8" ></Label>
-    <Label [visibility]="!!value?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder" class="title" ios:paddingBottom="8" ></Label>
+    <Label [visibility]="text?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label"></Label>
+    <Label [visibility]="!text?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder" class="title" ios:paddingBottom="8" ></Label>
+    <Label [visibility]="text?'visible':'hidden'" id="text" row="1" class="title" [text]="text" class="title" ios:paddingBottom="8" ></Label>
     </GridLayout>
     `
 })
@@ -31,14 +31,8 @@ export class BeezFloatLabelSelect implements OnInit {
 
     @Input() 
     set value (value:string){
-        // if(value){
-                // if (this.type == "datapicker")
-                //     this.text = formatDate(this.value,'dd MMMM yy',localize('LANG'))
-                // else
                  this.text = value 
                  console.log('value', value)
-
-             // }
     }
   
     ngOnInit(){
@@ -81,7 +75,7 @@ private createDatapickerModelView(): Promise<any> {
 
 private createTaxonomyModelView(): Promise<any> {
     const options: ModalDialogOptions = {
-        context: { vocabolary: this.type , title: this.placeholder, tid: this.value},
+        context: { vocabolary: this.type , title: this.placeholder, tid: ''},
         fullscreen: true,
         viewContainerRef: this.vcRef
     };
