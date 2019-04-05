@@ -40,7 +40,7 @@ export class BeezInlineSelect {
     set value (value:string){
         if( value )
             if (this.type == "datapicker"){
-                this.obj.name = formatDate(parseInt(value) * 1000 ,'dd MMMM yy',localize('LANG'))
+                this.obj.name = formatDate(parseInt(value) * 1000 ,'dd MMMM yy','en')
             } else{ 
                 this.taxonomyService.getTerm(value).subscribe( obj => this.obj = obj[0] )
             }
@@ -50,7 +50,7 @@ export class BeezInlineSelect {
             if (this.type == "datapicker"){
                 this.createDatapickerModelView().then((value)=> {
                     if(value){
-                        this.obj.name = formatDate(value ,'dd MMMM yy',localize('LANG'))
+                        this.obj.name = formatDate(value ,'dd MMMM yy','en')
                         this.selectEvent.emit(value)
                     }
                 })

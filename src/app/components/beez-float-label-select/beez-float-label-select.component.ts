@@ -38,7 +38,7 @@ export class BeezFloatLabelSelect implements OnInit {
     ngOnInit(){
         // console.log('value ' , this.value)
         // if (this.type == "datapicker")
-        //     this.text = formatDate(this.value,'dd MMMM yy',localize('LANG'))
+        //     this.text = formatDate(this.value,'dd MMMM yy','en')
         // else
         //  this.text = this.value 
 
@@ -48,7 +48,7 @@ export class BeezFloatLabelSelect implements OnInit {
     if (this.type == "datapicker"){
         this.createDatapickerModelView().then((value)=> {
             if(value){
-                this.text=formatDate(value,'dd MMMM yy',localize('LANG'))
+                this.text=formatDate(value,'dd MMMM yy','en')
                 this.selectEvent.emit(value)
             }
         })
