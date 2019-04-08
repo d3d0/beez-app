@@ -24,7 +24,10 @@ export class TaxonomyService {
   private subscription
   private serviceURl = localize('LANG') === 'IT' ? BackendService.term_ita : BackendService.term_eng
   constructor( private http: HttpClient, private zone:NgZone ) {
-    this.load().subscribe()
+    this.load().subscribe(()=>{},(err)=>console.log('err TaxonomyService: ', err))
+    console.log('hello from TaxonomyService')
+    /// default value for signin form (no auth)
+    this.terms = new BehaviorSubject(DICTIONARIES['GENDERS']);
   }
   
   load(){
@@ -42,6 +45,7 @@ export class TaxonomyService {
     }
 
     private publishUpdates() {
+      console.log('update TaxonomyService')
       this.zone.run(() => {
         // add the genders statics options
         this.allTerms = this.allTerms.concat(DICTIONARIES['GENDERS'])

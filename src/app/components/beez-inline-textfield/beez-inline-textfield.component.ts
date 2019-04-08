@@ -8,14 +8,15 @@ import { Component, ElementRef, Input, Output, ViewContainerRef, EventEmitter, V
         <StackLayout [borderWidth]="last?0:1" orientation="horizontal">
             <Label class="label-gray" [text]="placeholder"></Label>
             <TextField ios:paddingBottom="8" class="title"
-            [(ngModel)]="text"
-            [keyboardType]="keyboardType"
-            [editable]="editable"
-            (ngModelChange)="changeValue()"
-            (returnPress)="changeValue()"
-            autocorrect="false"
-            [returnKeyType]="returnKeyType"
-            autocapitalizationType="none"
+                width="100%"
+                [(ngModel)]="text"
+                [keyboardType]="keyboardType"
+                [editable]="editable"
+                (ngModelChange)="changeValue()"
+                (returnPress)="changeValue()"
+                autocorrect="false"
+                [returnKeyType]="returnKeyType"
+                autocapitalizationType="none"
             ></TextField>
         </StackLayout>
     `

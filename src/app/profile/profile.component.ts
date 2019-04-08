@@ -9,7 +9,7 @@ import { screen } from 'tns-core-modules/platform';
 import { GestureTypes, SwipeGestureEventData } from "tns-core-modules/ui/gestures";
 import { Observable } from 'rxjs';
 import { localize } from "nativescript-localize";
-
+import { alert, getIconSource } from "../shared/utils";
 import { ProfileService } from "./profile.service"
 @Component({
   selector: 'ns-profile',
@@ -22,12 +22,13 @@ export class ProfileComponent implements OnInit {
 
   static IMAGE_MIN_HEIGHT = 48;
   public selectedIndex = 0;
-  public isEditable = false;
+  public editable = false;
   private tabs = [];
   private _profile= {}
 
   @ViewChild("tabButtons") tabButtons: ElementRef;
   @ViewChild("polaroid") polaroid: ElementRef;
+  @ViewChild("profileTabs") profileTabs: ElementRef;
   @ViewChild('tabHighlight') tabHighlight: ElementRef;
   @ViewChild("tab1") tab1: ElementRef;
   @ViewChild("tab2") tab2: ElementRef;
@@ -36,7 +37,6 @@ export class ProfileComponent implements OnInit {
 
   constructor(private routerExtension: RouterExtensions, private profileService: ProfileService,private page: Page) {
     console.log('hello from PROFILE component');
-
   }
   
   get profile(){
@@ -52,25 +52,25 @@ export class ProfileComponent implements OnInit {
     if(field){
       this.profile[field]=text.tid
       console.log('selectEvent', this.profile[field])
-
     }
   }
   
   toogleEditable(){
-    if (this.isEditable){
+    // this.showPolaroid()
+    if (this.editable){
       this.profileService.edit(this.profile).subscribe(
         (result) => {
-          alert('edit OK')
+          alert('Profilo aggiornato!')
         },
         (err) => {
           console.log(err)
           alert(localize('MESSAGES.ERROR_SERVICE'))
         }
         );
-      this.isEditable = false
+      this.editable = false
       // this.profileService.load()
     }
-    else this.isEditable = true
+    else this.editable = true
   }
 
 loadProfile(){
@@ -186,15 +186,18 @@ onScroll(event: ScrollEventData, scrollView: ScrollView) {
 
               showPolaroid(){
                 let animations = [];
-                let polaroidEl = <View>this.polaroid.nativeElement;
+                let tabsEl = <View>this.profileTabs.nativeElement;
 
 
                 // Fade in the main container and logo over one half second.
-                animations.push({ target: polaroidEl, scale: { x: 2, y: 2 },curve: AnimationCurve.linear, opacity: 0, delay: 500, duration: 1500 });
-                animations.push({ target: polaroidEl, translate: { x: 0, y: -1000 },curve: AnimationCurve.linear, opacity: 0, delay: 500, duration: 1500 });
+                // animations.push({ target: polaroidEl, scale: { x: 2, y: 2 },curve: AnimationCurve.linear, opacity: 0, delay: 500, duration: 1500 });
+                if (this.editable){
+                animations.push({ target: tabsEl, translate: { x: 0, y:  -300 },curve: AnimationCurve.linear,  delay: 0, duration: 900 });
 
-                animations.push({ target: polaroidEl, scale: { x: 1, y: 1 },curve: AnimationCurve.linear, delay: 2500, duration: 1500 });
-                animations.push({ target: polaroidEl, translate: { x: 0, y: 0 },curve: AnimationCurve.linear, opacity: 1,  delay: 2500, duration: 1500 });
+                } else {
+                animations.push({ target: tabsEl, translate: { x: 0, y: 0 },curve: AnimationCurve.linear, delay: 0, duration: 900 });
+                }
+                // animations.push({ target: polaroidEl, scale: { x: 1, y: 1 },curve: AnimationCurve.linear, delay: 2500, duration: 1500 });
                 // animations.push({ target: logoContainer, opacity: 1, duration: 500 });
                 // scale: { x: 1.2, y: 1.2 },
                 // duration: 200,

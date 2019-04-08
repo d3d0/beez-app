@@ -24,7 +24,13 @@ export class ProfileService {
         );
   }
 
-  edit(profile) {
+  edit(profile_data) {
+      let profile =  JSON.parse(JSON.stringify(profile_data));
+      profile.ethnicity=[profile.ethnicity]
+      profile.languages=[profile.languages]
+      profile.agency=[profile.agency]
+      profile.phone=[profile.phone]
+      profile.website=[{url:profile.website}]
       return this.http.put( BackendService.baseUrl + 'beez/loool_talent_profile/'+ BackendService.UID,
        profile,
       {

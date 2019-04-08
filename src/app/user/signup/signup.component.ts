@@ -3,11 +3,10 @@ import { localize } from "nativescript-localize";
 import { RouterExtensions } from "nativescript-angular/router";
 import { connectionType, getConnectionType } from "connectivity";
 
-
-
 import { User } from '../user.model'
 import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
+import { TaxonomyService } from "../../shared/taxonomy.service";
 import { openLink } from "../../shared/utils"
 import { alert } from "../../shared/utils";
 
@@ -33,11 +32,10 @@ export class SignupComponent implements OnInit{
   constructor(
     private routerExtensions: RouterExtensions,
     private userService: UserService,
-
-    ) {
-    this.user = new User();
-    this.signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
-    this.signupTitle = localize("SIGNUP.REGISTRATION");
+    private taxonomyService: TaxonomyService ) {
+      this.user = new User();
+      this.signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
+      this.signupTitle = localize("SIGNUP.REGISTRATION");
   }
 
   ngOnInit() {

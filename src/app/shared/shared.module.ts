@@ -3,6 +3,7 @@ import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule, NSEmptyOutletComponent } from "nativescript-angular/router";
+import { NativeScriptFormsModule } from "nativescript-angular/forms"
 
 import { CastingStatusPipe } from "../castings/castings-list/casting-status.pipe";
 import { TaxonomyVocabolaryPipe } from "./taxonomy-vocabolary.pipe";
@@ -14,7 +15,6 @@ import { BeezFloatLabelTextfield } from '../components/beez-float-label-textfiel
 import { BeezInlineSelect } from '../components/beez-inline-select/beez-inline-select.component'
 import { BeezInlineTextfield } from '../components/beez-inline-textfield/beez-inline-textfield.component'
 import { BeezButton } from '../components/beez-button/beez-button.component'
-import { NativeScriptFormsModule } from "nativescript-angular/forms"
 
 const sharedRoutes: Routes = [
     { path: "modal-date-view", component: SelectDateModalViewComponent },

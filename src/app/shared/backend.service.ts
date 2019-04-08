@@ -2,7 +2,9 @@ import { Injectable } from "@angular/core";
 import { getString, setString } from "application-settings";
 import { HttpHeaders } from "@angular/common/http";
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class BackendService {
   static baseUrl = "https://dev.beez.io/services/";
   static term_ita = "beez/elenco-terms-it";

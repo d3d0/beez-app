@@ -9,7 +9,6 @@ import { AppModule } from "../app.module";
 import { BackendService } from "../shared/backend.service";
 import { TaxonomyService } from "../shared/taxonomy.service";
 
-
 @Component({
   selector: 'ns-home',
   templateUrl: './home.component.html',
@@ -19,15 +18,16 @@ import { TaxonomyService } from "../shared/taxonomy.service";
 export class HomeComponent implements OnInit {
 
   constructor(
-    /// warmup taxonmyservice
-    private taxonomyService: TaxonomyService,
     private routerExtension: RouterExtensions,
     private activeRoute: ActivatedRoute,
-    private page: Page) {}
+    private taxonomyService: TaxonomyService,
+    private page: Page) {
+    /// warmup taxonomyService
+    this.taxonomyService.load()
+  }
 
   ngOnInit(): void {
     // BackendService.printAll()
-    this.taxonomyService.load()
     this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
     this.page.actionBarHidden = true;
 

@@ -7,6 +7,8 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule, authProviders } from "./app.routing";
 import { BackendService } from "./shared/backend.service";
+import { TaxonomyService } from "./shared/taxonomy.service";
+import { SharedModule } from "./shared/shared.module";
 
 import { CardView } from "nativescript-cardview";
 import { registerElement } from "nativescript-angular";
@@ -27,7 +29,8 @@ registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanage
         AppRoutingModule,
         NativeScriptModule,
         NativeScriptHttpClientModule,
-        NativeScriptRouterModule
+        NativeScriptRouterModule,
+        SharedModule
     ],
     declarations: [
         AppComponent,

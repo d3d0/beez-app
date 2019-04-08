@@ -28,6 +28,7 @@ export class BeezInlineSelect {
     @Input() placeholder: string;
     @Input() type: string;
     @Input() last: boolean;
+    @Input() editable: boolean;
     @Output() selectEvent = new EventEmitter<string>()
     private obj = new Term;
 
@@ -47,6 +48,7 @@ export class BeezInlineSelect {
         }
 
         private openModal(){
+            if (!this.editable) return
             if (this.type == "datapicker"){
                 this.createDatapickerModelView().then((value)=> {
                     if(value){
