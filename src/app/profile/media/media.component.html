@@ -1,28 +1,22 @@
-<StackLayout>
-	<CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
-		<StackLayout class="list-group-item p-t-8 ">
-			<GridLayout columns="8,32,*,16" rows="auto,auto,auto">
-				<Label text="" class="list-group-item-v-line" rowSpan="3" col="1" row="0" marginBottom="32" horizontalAlignment="center" ></Label>
-				<!-- PHOTO -->
-				<StackLayout class="icon-container" row="0" col="1" >
-					<Image [src]="getIconSource('photo')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
+<GridLayout margin=0 columns="16,8,*" rows="auto,auto,auto" class="p-t-16">
+	<Label text="" class="list-group-item-v-line" rowSpan="3" col="0" row="0" marginBottom="32" horizontalAlignment="center" ></Label>
+	<!-- PHOTO -->
+	<StackLayout class="icon-container" row="0" col="0" >
+		<Image [src]="getIconSource('photo')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
+	</StackLayout>
+	<Label text="FOTO" class="header" textWrap="true" row="0" col="2"></Label>
+	<WrapLayout orientation="horizontal" row="1" col="2">
+		<CardView *ngFor="let image of images" margin=8 elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
+			<AbsoluteLayout>
+				<Image [src]="image.filepath" left="0" top="0" width="120" height="120" stretch="aspectFill" (tap)="setPolaroidImage(image)" ></Image>
+				<StackLayout left="0" top="0" height="32"  width="120" >
+					<Label class="list-group-item-icona-no-nero" [text]="index" (tap)="deleteImage(image)"horizontalAlignment="right"></Label>
 				</StackLayout>
-				<Label text="FOTO" class="header" textWrap="true" row="0" col="2"></Label>
-				<WrapLayout orientation="horizontal" row="1" col="2">
-					<CardView *ngFor="let image of images" margin=8 elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
-						<AbsoluteLayout>
-							<Image [src]="image.filepath" left="0" top="0" width="120" height="120" stretch="aspectFill" (tap)="setPolaroidImage(image)" ></Image>
-							<StackLayout left="0" top="0" height="32"  width="120" >
-								<Label class="list-group-item-icona-no-nero" [text]="index" (tap)="deleteImage(image)"horizontalAlignment="right"></Label>
-							</StackLayout>
-						</AbsoluteLayout>
-					</CardView>
-				</WrapLayout>
-				<StackLayout class="icon-container" row="2" col="1" verticalAlignment="center" horizontalAlignment="center">
-					<Image [src]="getIconSource('add')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
-				</StackLayout>
-				<BeezButton text="ADD NEW PHOTOS" (buttonClick)="onSelectMultipleTap()" row="2" col="2"></BeezButton>
-			</GridLayout>
-		</StackLayout>
-	</CardView>
-</StackLayout>
+			</AbsoluteLayout>
+		</CardView>
+	</WrapLayout>
+	<StackLayout class="icon-container" row="2" col="0" verticalAlignment="center" horizontalAlignment="center">
+		<Image [src]="getIconSource('add')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+	</StackLayout>
+	<BeezButton text="ADD NEW PHOTOS" [isBusy]="isLoading" (buttonClick)="onSelectMultipleTap()" row="2" col="2"></BeezButton>
+</GridLayout>

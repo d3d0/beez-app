@@ -1,14 +1,16 @@
 @import '../../app-variables';
 
 #container{
-			background-color: white;
+			background-color: $grigiobackground;
 }
-
+.wrapper{
+	padding: 0 16;
+}
 .text-wrapper{
 	background-color: transparent;
-  vertical-align: bottom;
-  margin-bottom: $font-size + $font-size-title;
-  margin-left: $font-size + $font-size-title + 2;
+	vertical-align: bottom;
+	margin-bottom: $font-size + $font-size-title;
+	margin-left: $font-size + $font-size-title + 2;
 	.name{
 		color: white;
 		font-size: $font-size-title;
@@ -41,28 +43,30 @@
 	border-color: $verde;
 }
 
-.profile-info {
-	background-color: $grigiobackground;
-	.list-group-item {
-		padding: 8 16 8 16;
-		// background-color: green;
-		&-grid{
-		}
-		.row{
-			border-bottom-width: 1;
-			border-bottom-color: $grigiochiaro;
-			// background-color: green;
-			.label{
-				font-family: "Sofia Pro Light";
-				font-weight: normal;
-				color: $grigioscuro;
-			  	letter-spacing:0.028;	
-				padding-right: 8;
-				// background-color: green;
-			}
-		}
-		.row.last{
-			border-bottom-width: 0;
-		}
-	}
-}
+.banner-top-card{
+	height: 100%;
+	width: 100%;
+	color:white;
+	color: $bianco;
+	font-size: 12;
+	letter-spacing: 0.2;
+	font-weight:bold;
+	vertical-align: middle;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: $verde;
+	padding: 10 0;
+	margin-bottom: 4;
+  }
+  
+  .label {
+	padding-left: 8;
+	font-weight: bold;
+	color:$verde;
+  }
+
+.edit{
+  	margin: 20 0 8 0;
+  	border-bottom-width: 1;
+	border-color: $grigiochiaro;
+  }

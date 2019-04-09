@@ -17,17 +17,13 @@
   <ActionItem  class="action-items "ios.position="right" android.position="right">
     <Label class="m-5" class="action-items credits-value" text="98"></Label>
   </ActionItem>
-  <ActionItem  class="action-items " ios.position="right" android.position="right" (tap)="toogleEditable()" >
-    <Image class="m-5" *ngIf="!editable"  src="res://edit" stretch="none"></Image>
-    <Image class="m-5" *ngIf="editable"  src="res://check_no" stretch="none"></Image>
-  </ActionItem>
   <ActionItem class="action-items " ios.position="right" android.position="right" [nsRouterLink]="['../settings']">
     <Image class="m-5" src="res://settings" stretch="none"></Image>
   </ActionItem>
 </ActionBar>
 
 <ScrollView class="profile" #scrollView (scroll)="onScroll($event, scrollView, topView)" (swipe)="onSwipe($event)">
-    <StackLayout id="container" #container>
+  <StackLayout id="container" #container>
 
     <GridLayout [visibility]="!editable? 'visible' : 'collapsed'" #polaroid >
       <Image *ngIf="profile.gender === 'M'" src="~/assets/images/user_man.png"></Image>
@@ -36,49 +32,55 @@
       <Image src="~/assets/images/rect.png"></Image>
       <StackLayout class="text-wrapper">
         <Label class="name" [text]="profile.name + ' ' + profile.surname"></Label>
-        <Label class="role" [text]='profile.website | uppercase'></Label>
+        <Label class="role label" [text]='profile.website | uppercase'></Label>
       </StackLayout>
     </GridLayout>
 
-  <StackLayout #profileTabs>
     <GridLayout  columns="*,*,*,*" rows="auto" class="tab-buttons" #profileTab >
-      <GridLayout #tabHighlight col="0" class="tabActiveIndex"></GridLayout>
-      <GridLayout col="0" (tap)="onSelectedIndexChange(0)">
+      <StackLayout #tabHighlight col="0" class="tabActiveIndex"></StackLayout>
+      <StackLayout col="0" (tap)="onSelectedIndexChange(0)">
         <Label #tab1 col="0" [text]="'PROFILE.INFO'|L|uppercase"></Label>
-      </GridLayout>
-      <GridLayout col="1" (tap)="onSelectedIndexChange(1)">
+      </StackLayout>
+      <StackLayout col="1" (tap)="onSelectedIndexChange(1)">
         <Label #tab2 col="1" [text]="'PROFILE.DETAILS'|L|uppercase" ></Label>
-      </GridLayout>
-      <GridLayout col="2" (tap)="onSelectedIndexChange(2)">
-        <Label #tab3 col="2" [text]="'PROFILE.MEDIA'|L|uppercase" ></Label>
-      </GridLayout>
-      <GridLayout col="3" (tap)="onSelectedIndexChange(3)">
+      </StackLayout>
+      <StackLayout col="3" (tap)="onSelectedIndexChange(3)">
         <Label #tab4 col="3" [text]="'PROFILE.CONTACTS'|L|uppercase" ></Label>
-      </GridLayout>
+      </StackLayout>
+      <StackLayout col="2" (tap)="onSelectedIndexChange(2)">
+        <Label #tab3 col="2" [text]="'PROFILE.MEDIA'|L|uppercase" ></Label>
+      </StackLayout>
     </GridLayout>
 
-
-    <!-- INFO tab -->
-    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
-      <StackLayout class="profile-info">
-        <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
-          <StackLayout class="list-group-item list-group-item-grid " >
+    <StackLayout class="profile-info">
+      <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
+        <StackLayout  class="list-group-item m-t-0 p-t-0 p-b-8" >
+          <Label [visibility]="editable ? 'visible' : 'collapsed'" class="banner-top-card" [text]="'MODIFICA LE TUE INFO'"></Label>
+          <!-- tab -->
+          <StackLayout class="wrapper" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
+            <AbsoluteLayout class="edit" [visibility]="!editable ? 'visible' : 'collapsed'" [visibility]="selectedIndex != 2 ? 'visible' : 'collapsed'">
+              <StackLayout width="100%" top=0 verticalAlignment="center" horizontalAlignment="right" [visibility]="!editable ? 'visible' : 'collapsed'" orientation="horizontal">
+                <Image src="res://edit" stretch="none" (tap)="toogleEditable()" ></Image>
+                <Label class="label" [text]="'EDIT'" (tap)="toogleEditable()"></Label>
+              </StackLayout>
+              <Label top=0 class="header" [text]="'PROFILE.INFO'|L|titlecase"></Label>
+            </AbsoluteLayout>
             <BeezInlineTextfield [editable]="editable" [editable]="isEditable"  [text]="profile.name"  (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.surname"  (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></BeezInlineTextfield>
             <BeezInlineSelect [editable]="editable" [value]="profile.gender" (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezInlineSelect>
             <BeezInlineSelect [editable]="editable" [value]="profile.date_of_birth" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezInlineSelect>
             <BeezInlineTextfield [editable]="editable" [text]="profile.place_of_birth"  (textfieldEvent)="textfieldEvent($event,'place_of_birth')" [placeholder]="'USER.PLACE_OF_BIRTH'|L"></BeezInlineTextfield>
-            <BeezInlineSelect [editable]="editable" [last]='true'  [value]="profile.nationality" (selectEvent)="selectEvent($event,'nationality')" type="NATIONALITY" [placeholder]="'USER.NATIONALITY'|L"></BeezInlineSelect>
+            <BeezInlineSelect [editable]="editable" [last]='!editable'  [value]="profile.nationality" (selectEvent)="selectEvent($event,'nationality')" type="NATIONALITY" [placeholder]="'USER.NATIONALITY'|L"></BeezInlineSelect>
           </StackLayout>
-        </CardView>
-      </StackLayout>
-    </GridLayout>
-
-    <!-- DETAILS tab -->
-    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
-      <StackLayout class="profile-info">
-        <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
-          <StackLayout class="list-group-item list-group-item-grid " >
+          <!-- tab -->
+          <StackLayout class="wrapper" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'" >
+            <AbsoluteLayout class="edit" [visibility]="!editable ? 'visible' : 'collapsed'" [visibility]="selectedIndex != 2 ? 'visible' : 'collapsed'">
+              <StackLayout width="100%" top=0 verticalAlignment="center" horizontalAlignment="right" [visibility]="!editable ? 'visible' : 'collapsed'" orientation="horizontal">
+                <Image src="res://edit" stretch="none" (tap)="toogleEditable()" ></Image>
+                <Label class="label" [text]="'EDIT'" (tap)="toogleEditable()"></Label>
+              </StackLayout>
+              <Label top=0 class="header" [text]="'PROFILE.DETAILS'|L|titlecase"></Label>
+            </AbsoluteLayout>
             <BeezInlineTextfield [editable]="editable" [text]="profile.height"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.HEIGHT'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.breast"  (textfieldEvent)="textfieldEvent($event,'breast')" [placeholder]="'USER.BREAST'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.waist"  (textfieldEvent)="textfieldEvent($event,'waist')" [placeholder]="'USER.WAIST'|L"></BeezInlineTextfield>
@@ -89,26 +91,23 @@
             <BeezInlineSelect [editable]="editable" [value]="profile.hair_lenght" (selectEvent)="selectEvent($event,'hair_lenght')" type="HAIR_LENGHT" [placeholder]="'USER.HAIR_LENGHT'|L"></BeezInlineSelect>
             <BeezInlineSelect [editable]="editable" [value]="profile.physique" (selectEvent)="selectEvent($event,'physique')" type="PHYSIQUE" [placeholder]="'USER.PHYSIQUE'|L"></BeezInlineSelect>
             <BeezInlineSelect [editable]="editable" [value]="profile.ethnicity" (selectEvent)="selectEvent($event,'ethnicity')" type="ETHNICITY" [placeholder]="'USER.ETHNICITY'|L"></BeezInlineSelect>
-            <BeezInlineSelect [editable]="editable" [last]='true'  [value]="profile.languages" (selectEvent)="selectEvent($event,'languages')" type="LANGUAGES" [placeholder]="'USER.LANGUAGES'|L"></BeezInlineSelect>
+            <BeezInlineSelect [editable]="editable" [last]='!editable'  [value]="profile.languages" (selectEvent)="selectEvent($event,'languages')" type="LANGUAGES" [placeholder]="'USER.LANGUAGES'|L"></BeezInlineSelect>
           </StackLayout>
-        </CardView>
-      </StackLayout>
-    </GridLayout>
-
-    <!-- MEDIA tab -->
-    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
-      <ns-media
-      [profile]="profile"
-      (refreshProfile)="loadProfile()"
-      (loading)="showActivityIndicator()"
-      (loaded)="hideActivityIndicator()"></ns-media>
-    </GridLayout>
-
-    <!-- CONTACT tab -->
-    <GridLayout class="tab-content" rows="auto" [visibility]="selectedIndex === 3 ? 'visible' : 'collapsed'">
-      <StackLayout class="profile-info">
-        <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
-          <StackLayout class="list-group-item list-group-item-grid " >
+          <!-- tab -->
+          <StackLayout class="wrapper" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
+            <ns-media [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'"
+            [profile]="profile"
+            (refreshProfile)="loadProfile()"></ns-media>
+          </StackLayout>
+          <!-- tab -->
+          <StackLayout class="wrapper" [visibility]="selectedIndex === 3 ? 'visible' : 'collapsed'">
+            <AbsoluteLayout class="edit" [visibility]="!editable ? 'visible' : 'collapsed'" [visibility]="selectedIndex != 2 ? 'visible' : 'collapsed'">
+              <StackLayout width="100%" top=0 verticalAlignment="center" horizontalAlignment="right" [visibility]="!editable ? 'visible' : 'collapsed'" orientation="horizontal">
+                <Image src="res://edit" stretch="none" (tap)="toogleEditable()" ></Image>
+                <Label class="label" [text]="'EDIT'" (tap)="toogleEditable()"></Label>
+              </StackLayout>
+              <Label top=0 class="header" [text]="'PROFILE.CONTACTS'|L|titlecase"></Label>
+            </AbsoluteLayout>
             <BeezInlineTextfield [editable]="editable" [text]="profile.phone"  (textfieldEvent)="textfieldEvent($event,'phone')" [placeholder]="'USER.PHONE'|L"></BeezInlineTextfield>
             <BeezInlineSelect [editable]="editable" [value]="profile.agency" (selectEvent)="selectEvent($event,'agency')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezInlineSelect>
             <BeezInlineTextfield [editable]="editable" [text]="profile.website"  (textfieldEvent)="textfieldEvent($event,'website')" [placeholder]="'USER.WEBSITE'|L"></BeezInlineTextfield>
@@ -119,11 +118,16 @@
             <BeezInlineTextfield [editable]="editable" [text]="profile.city" (textfieldEvent)="textfieldEvent($event,'city')" [placeholder]="'USER.CITY'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.postal_code" (textfieldEvent)="textfieldEvent($event,'postal_code')" [placeholder]="'USER.POSTAL_CODE'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.province" (textfieldEvent)="textfieldEvent($event,'province')" [placeholder]="'USER.PROVINCE'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield [editable]="editable" [last]='true' [text]="profile.country" (textfieldEvent)="textfieldEvent($event,'country')" [placeholder]="'USER.COUNTRY'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield [editable]="editable" [last]='!editable' [text]="profile.country" (textfieldEvent)="textfieldEvent($event,'country')" [placeholder]="'USER.COUNTRY'|L"></BeezInlineTextfield>
           </StackLayout>
-        </CardView>
-      </StackLayout>
-    </GridLayout>
-  </StackLayout>
+          <!-- edit -->
+          <GridLayout class="wrapper m-t-16" columns="*, 16, *" rows="auto" [visibility]="editable ? 'visible' : 'collapsed'">
+            <BeezButton text="CANCEL" [isBusy]="isLoading" buttonColor="black" (buttonClick)="editCancel()" row=0 col="0"></BeezButton>
+            <BeezButton text="SAVE" [isBusy]="isLoading" (buttonClick)="editSave()" row=0 col="2"></BeezButton>
+          </GridLayout>
+
+        </StackLayout>
+      </CardView>
+    </StackLayout>
   </StackLayout>
 </ScrollView>

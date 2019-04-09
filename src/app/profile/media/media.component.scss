@@ -1,26 +1,2 @@
 @import '../../../app-variables';
 
-CardView {
-	//margin-top: 20;
-}
-.row{
-	margin: 0 10;
-	padding: 16 0 14 0;
-	width: 100%;
-	border-bottom-width: 1;
-	border-bottom-color: $grigiochiaro;
-	.label{
-		color: $grigioscuro;
-	}
-	.value{
-		color:$nero;
-	}
-}
-
-.row.last{
-	border-bottom-width: 0;
-}
-
-.card-group {
-	margin: 20;
-}
