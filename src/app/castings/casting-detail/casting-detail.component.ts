@@ -43,7 +43,9 @@ export class CastingDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe((params) => {
       this.casting_id = params.id
-      this.castingsService.getCastingById(this.casting_id).subscribe((casting) => this.casting=casting)
+      this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
+        console.log(casting)
+        this.casting=casting})
     });
   }
   

@@ -16,6 +16,13 @@
   "SHARE_WITH_A_FRIEND": "SHARE WITH A FRIEND",
   "CONFIRM":"CONFIRM",
   "AND":" and ",
+  "EDIT":"Edit",
+  "CANCEL":"CANCEL",
+  "SAVE":"SAVE",
+  "WELCOME_TITLE":"Welcome to BEEZ!",
+  "WELCOME_TEXT":"",
+  "WELCOME_FOOTER":"Please complete all the information in your profile to increase the chances of being selected for castings.",
+  "WELCOME_BUTTON":"OK",
   "LOGIN":{
     "LOGIN" : "LOGIN"
   },
@@ -74,7 +81,14 @@
     "MEDIA" : "MEDIA",
     "CONTACTS" : "CONTACTS",
     "SETTINGS" : "SETTINGS",
-    "INFO" : "INFO"
+    "INFO" : "INFO",
+    "EDIT_INFO":"UPDATE YOUR INFO",
+    "EDIT_CONTACTS":"UPDATE YOUR CONTACTS",
+    "EDIT_DETAILS":"UPDATE YOUR DETAILS",
+    "POPUP_TITLE":"",
+    "POPUP_TEXT":"",
+    "POPUP_FOOTER":"Please fill in all the information and keep your profile updated to increase the chances of being selected for castings.",
+    "POPUP_BUTTON":"OK"
   },
   "USER": {
     "NAME" : "Name",

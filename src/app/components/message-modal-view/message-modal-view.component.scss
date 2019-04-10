@@ -1,0 +1,35 @@
+@import '../../../app-variables';
+GridLayout{
+	background:transparent;
+}
+.wrapper{
+	padding: 8 16;
+	background: white; // IMPORTANTE > definisce lo sfondo delle CardView in IOS e Android
+	border-radius: 4;  // IMPORTANTE > definisce il radius delle CardView in IOS
+	width:100%;
+}
+.header{
+	padding: 12 0;
+	border-bottom-width: 1;
+	border-bottom-color: $grigiochiaro;
+}
+.message{
+
+}
+.footer{
+	padding: 8 0;
+}
+
+.modal {
+  margin: 20;
+  margin-top: 35;
+  border-radius: 8;
+  horizontal-align: center;
+  vertical-align: middle;
+  background-color: white;
+}
+ 
+.modal-container {
+  padding: 25;
+  padding-bottom: 10;
+}

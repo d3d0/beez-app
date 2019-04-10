@@ -11,11 +11,18 @@
   "LOGOUT": "ESCI",
   "FEATURES": "CARATTERISTICHE",
   "DATE_AND_LOCATION": "DATA E LUOGO",
-  "PARTICIPATE": "PARTECIPA",
+  "PARTICIPATE": "ISCRIVITI",
   "HELP": "Hai bisogno di aiuto?",
   "SHARE_WITH_A_FRIEND": "Condividi con un amico!",
   "CONFIRM":"CONFERMA",
   "AND":" e ",
+  "EDIT":"Modifica",
+  "CANCEL":"ANNULLA",
+  "SAVE":"CONFERMA",
+  "WELCOME_TITLE":"Benvenuto in BEEZ!",
+  "WELCOME_TEXT":"",
+  "WELCOME_FOOTER":"Compleata tutte le informazioni del tuo profilo per aumentare le possibilità di essere selezionato per i casting.",
+  "WELCOME_BUTTON":"OK",
   "LOGIN":{
     "LOGIN" : "ACCEDI"
   },
@@ -74,7 +81,14 @@
     "MEDIA" : "MEDIA",
     "CONTACTS" : "CONTATTI",
     "SETTINGS" : "CONFIGURAZIONI",
-    "INFO" : "INFO"
+    "INFO" : "INFO",
+    "EDIT_INFO":"AGGIORNA LE TUE INFO",
+    "EDIT_CONTACTS":"AGGIORNA I TUOI CONTATTI",
+    "EDIT_DETAILS":"AGGIORNA I TUOI DETTAGLI",
+    "POPUP_TITLE":"Questa é la sezione PROFILO",
+    "POPUP_TEXT":"Completa tutti i campi e aggiungi nuovi MEDIA al tuo profilo prima di candidarti a un casting.",
+    "POPUP_FOOTER":"..e buona fortuna!",
+    "POPUP_BUTTON":"VAI Al PROFILO"
   },
   "USER": {
     "NAME" : "Nome",

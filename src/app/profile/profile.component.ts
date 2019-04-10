@@ -1,16 +1,21 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ElementRef, OnInit } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
 import { View } from "ui/core/view";
 import { Page } from "tns-core-modules/ui/page";
 import { Animation } from "ui/animation";
+import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/directives/dialogs";
 import { AnimationCurve } from "tns-core-modules/ui/enums";
 import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { screen } from 'tns-core-modules/platform';
 import { GestureTypes, SwipeGestureEventData } from "tns-core-modules/ui/gestures";
 import { Observable } from 'rxjs';
 import { localize } from "nativescript-localize";
+
+import { BackendService } from "../shared/backend.service";
+import { MessageModalViewComponent } from "../components/message-modal-view/message-modal-view.component";
 import { alert, getIconSource } from "../shared/utils";
 import { ProfileService } from "./profile.service"
+
 @Component({
   selector: 'ns-profile',
   templateUrl: './profile.component.html',
@@ -36,10 +41,31 @@ export class ProfileComponent implements OnInit {
   @ViewChild("tab3") tab3: ElementRef;
   @ViewChild("tab4") tab4: ElementRef;
 
-  constructor(private routerExtension: RouterExtensions, private profileService: ProfileService,private page: Page) {
+  constructor(private routerExtension: RouterExtensions,     private vcRef: ViewContainerRef,
+    private modal: ModalDialogService, private profileService: ProfileService,private page: Page) {
     console.log('hello from PROFILE component');
   }
   
+  ngOnInit(): void {
+    this.loadProfile()
+    this.tabs[0] = <View>this.tab1.nativeElement;
+    this.tabs[1] = <View>this.tab2.nativeElement;
+    this.tabs[2] = <View>this.tab3.nativeElement;
+    this.tabs[3] = <View>this.tab4.nativeElement;
+    this.tabs[0].className = "active";
+    // if (BackendService.showProfilePopup()) {  
+    //   setTimeout(() => {
+    //     console.log('popup profile')
+    //     const options: ModalDialogOptions = {
+    //         context: { message: localize('POPUP_TEXT') , buttonText: localize('POPUP_BUTTON'), title: localize('POPUP_TITLE'), footer: localize('POPUP_FOOTER')},
+    //         fullscreen: true,
+    //         viewContainerRef: this.vcRef
+    //       };
+    //       this.modal.showModal(MessageModalViewComponent, options)
+    //           })
+    //     }
+  }
+
   get profile(){
     return  this._profile
   }
@@ -89,15 +115,6 @@ export class ProfileComponent implements OnInit {
   loadProfile(){
     this.profileService.load().subscribe(profile=> {
       this._profile = profile[0]})
-  }
-
-  ngOnInit(): void {
-    this.loadProfile()
-    this.tabs[0] = <View>this.tab1.nativeElement;
-    this.tabs[1] = <View>this.tab2.nativeElement;
-    this.tabs[2] = <View>this.tab3.nativeElement;
-    this.tabs[3] = <View>this.tab4.nativeElement;
-    this.tabs[0].className = "active";
   }
 
   public onSelectedIndexChange(index) {

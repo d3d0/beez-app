@@ -31,9 +31,9 @@ export class NotificationsListComponent implements OnInit {
     private notificationService: NotificationsService) {
     this.counter = 0;
     notificationService.load().subscribe( notifications => {
-        this.notifications = notifications;
+      this.notifications = notifications;
     }
-  )
+    )
   }
 
   ngOnInit() {
@@ -52,59 +52,61 @@ export class NotificationsListComponent implements OnInit {
   }
 
   public onPullToRefreshInitiated(args: ListViewEventData) {
-    this.notificationService.load()
     setTimeout(()=>{
-      args.object.notifyPullToRefreshFinished()
+      notificationService.load().subscribe( notifications => {
+        this.notifications = notifications;
+        args.object.notifyPullToRefreshFinished()
+      }
     },500)
-  }
-
-  public templateSelectorFunction = (item:any, index: number, items: any) => {
-    if( item == "empty" ) return "empty"
-    else return "default";
-  }
-  get templateSelector(): (item: any, index: number, items: any) => string {
-    return this._templateSelector;
-  }
-  set templateSelector(value: (item: any, index: number, items: any) => string) {
-    this._templateSelector = value;
-  }
-
-  // DOCS > eliminiamo il background solo in IOS RadListView
-  public onItemLoading(args: ListViewEventData, items) {
-    this.counter++;
-    // console.log("onItemLoading");
-    if(isIOS){
-      var newcolor = new Color(0,0,0,0);
-      args.ios.backgroundView.backgroundColor = newcolor.ios;
     }
-    const vista = args.object; // the object that fires the event
-    if (vista) {
-      let stack = vista.getViewById<View>("delete-stack"); // gets a child view by id
-      if (stack) {
-        if(this.counter == 1){
-          //stack.text =  this.counter.toString() ;
-          //stack.className = 'list-group-item-first';
-          stack.style.marginTop = 20;
+
+    public templateSelectorFunction = (item:any, index: number, items: any) => {
+      if( item == "empty" ) return "empty"
+        else return "default";
+    }
+    get templateSelector(): (item: any, index: number, items: any) => string {
+      return this._templateSelector;
+    }
+    set templateSelector(value: (item: any, index: number, items: any) => string) {
+      this._templateSelector = value;
+    }
+
+    // DOCS > eliminiamo il background solo in IOS RadListView
+    public onItemLoading(args: ListViewEventData, items) {
+      this.counter++;
+      // console.log("onItemLoading");
+      if(isIOS){
+        var newcolor = new Color(0,0,0,0);
+        args.ios.backgroundView.backgroundColor = newcolor.ios;
+      }
+      const vista = args.object; // the object that fires the event
+      if (vista) {
+        let stack = vista.getViewById<View>("delete-stack"); // gets a child view by id
+        if (stack) {
+          if(this.counter == 1){
+            //stack.text =  this.counter.toString() ;
+            //stack.className = 'list-group-item-first';
+            stack.style.marginTop = 20;
+          }
         }
       }
     }
-  }
 
-  // DOCS > implementazione swipe in base a larghezza di swipe template
-  public onSwipeCellStarted(args: ListViewEventData) {
-    const swipeLimits = args.data.swipeLimits;
-    const swipeView = args['object'];
-    const rightItem = swipeView.getViewById<View>('delete-view');
-    swipeLimits.left = 0;
-    swipeLimits.right = rightItem.getMeasuredWidth();
-    swipeLimits.threshold = rightItem.getMeasuredWidth() / 2;
-  }
+    // DOCS > implementazione swipe in base a larghezza di swipe template
+    public onSwipeCellStarted(args: ListViewEventData) {
+      const swipeLimits = args.data.swipeLimits;
+      const swipeView = args['object'];
+      const rightItem = swipeView.getViewById<View>('delete-view');
+      swipeLimits.left = 0;
+      swipeLimits.right = rightItem.getMeasuredWidth();
+      swipeLimits.threshold = rightItem.getMeasuredWidth() / 2;
+    }
 
-  // DOCS > funzione per eliminare la notifica
-  public onRightSwipeClick(args) {
-    // console.log("args.object.bindingContext",args.object.bindingContext)
-    let data = this.notifications.splice(this.notifications.indexOf(args.object.bindingContext), 1)
-    this.notificationService.delete(data[0].mid).subscribe(result=>console.log(result))
-  }
+    // DOCS > funzione per eliminare la notifica
+    public onRightSwipeClick(args) {
+      // console.log("args.object.bindingContext",args.object.bindingContext)
+      let data = this.notifications.splice(this.notifications.indexOf(args.object.bindingContext), 1)
+      this.notificationService.delete(data[0].mid).subscribe(result=>console.log(result))
+    }
 
-}
+  }

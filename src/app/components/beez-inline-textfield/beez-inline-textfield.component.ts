@@ -7,7 +7,7 @@ import { Component, ElementRef, Input, Output, ViewContainerRef, EventEmitter, V
     template: `
         <StackLayout [borderWidth]="last?0:1" orientation="horizontal">
             <Label class="label-gray" [text]="placeholder"></Label>
-            <TextField ios:paddingBottom="8" class="title"
+            <TextField #textField ios:paddingBottom="8" class="title"
                 width="100%"
                 [(ngModel)]="text"
                 [keyboardType]="keyboardType"
@@ -31,9 +31,10 @@ export class BeezInlineTextfield {
     @Input() returnKeyType: string;
     @Input() keyboardType: string;
     @Output() textfieldEvent = new EventEmitter<string>()
-    
-    constructor() { }
+    @ViewChild("textField") textField: ElementRef;
 
+    constructor() { }
+    
     changeValue(){
         this.textfieldEvent.emit(this.text)
     }

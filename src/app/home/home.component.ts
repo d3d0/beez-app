@@ -1,14 +1,21 @@
 import { Component, ViewContainerRef, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/directives/dialogs";
 import { RouterExtensions } from "nativescript-angular/router";
 import { isAndroid } from "tns-core-modules/platform";
 import { Page } from "ui/page";
+import { localize } from "nativescript-localize";
+import { EventData } from "tns-core-modules/data/observable";
 
 import { AppModule } from "../app.module";
 import { BackendService } from "../shared/backend.service";
 import { TaxonomyService } from "../shared/taxonomy.service";
+import { MessageModalViewComponent } from "../components/message-modal-view/message-modal-view.component";
 
+export function onLayoutChanged(args: EventData) {
+  console.log(args.eventName);
+  console.log(args.object);
+}
 @Component({
   selector: 'ns-home',
   templateUrl: './home.component.html',
@@ -20,33 +27,29 @@ export class HomeComponent implements OnInit {
   constructor(
     private routerExtension: RouterExtensions,
     private activeRoute: ActivatedRoute,
+    private router: Router,
     private taxonomyService: TaxonomyService,
+    private vcRef: ViewContainerRef,
+    private modal: ModalDialogService,
     private page: Page) {
     /// warmup taxonomyService
     this.taxonomyService.load()
   }
 
   ngOnInit(): void {
-    // BackendService.printAll()
     this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
     this.page.actionBarHidden = true;
 
-    // messaging.registerForPushNotifications({
-    //   onPushTokenReceivedCallback: (token: string): void => {
-    //     console.log("Firebase plugin received a push token: " + token);
-    //   },
-
-    //   onMessageReceivedCallback: (message: Message) => {
-    //     console.log("Push message received: " + message);
-    //   },
-
-    //   // Whether you want this plugin to automatically display the notifications or just notify the callback. Currently used on iOS only. Default true.
-    //   showNotifications: true,
-
-    //   // Whether you want this plugin to always handle the notifications when the app is in foreground. Currently used on iOS only. Default false.
-    //   showNotificationsWhenInForeground: true
-    // }).then(() => console.log("Registered for push"));
-    
+    if (!BackendService.firstLogin()) {
+      setTimeout(() => {
+        const options: ModalDialogOptions = {
+          context: { message: localize('WELCOME_TEXT') , buttonText: localize('WELCOME_BUTTON'), title: localize('WELCOME_TITLE'), footer: localize('WELCOME_FOOTER')},
+          fullscreen: true,
+          viewContainerRef: this.vcRef
+        };
+        this.modal.showModal(MessageModalViewComponent, options)
+      })
+    }
   }
 
   getIconSource(icon: string): string {

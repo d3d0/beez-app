@@ -44,7 +44,7 @@ export class MediaComponent {
     loadImages(){
         this.profileService.getImages().subscribe( result => {
             this.images = result
-            console.log(result)
+            // console.log(result)
         })
     }
     deleteImage(image){

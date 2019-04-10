@@ -67,7 +67,6 @@ export class LoginComponent implements OnInit {
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
       BackendService.XCSFRtoken = result;
       this.userService.login(this.user).subscribe((result) => {
-        console.log(result)
         BackendService.session_name = result['session_name']
         BackendService.sessid = result['sessid']
         BackendService.XCSFRtoken = result['token']

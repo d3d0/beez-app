@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { getString, setString } from "application-settings";
+import { getString, setString, hasKey } from "application-settings";
 import { HttpHeaders } from "@angular/common/http";
 
 @Injectable({
@@ -12,6 +12,18 @@ export class BackendService {
   
   static isLoggedIn(): boolean {
     return !!getString('sessid');
+  }
+
+  static firstLogin(): boolean {
+    if (hasKey('firstLogin')) return false
+    setString('firstLogin', 'true')
+    return true
+  }
+
+  static showProfilePopup(): boolean {
+    if (hasKey('showProfilePopup')) return true
+    setString('showProfilePopup', 'false')
+    return false
   }
 
   static get XCSFRtoken() {
