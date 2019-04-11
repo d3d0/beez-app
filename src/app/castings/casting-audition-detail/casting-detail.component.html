@@ -43,8 +43,8 @@
 						<StackLayout class="icon-container" row="2" col="1">
 							<Image [src]="getIconSource('characteristics')" stretch="none" width=16 height=16></Image>
 						</StackLayout>
-						<Label [text]="'CASTINGS.FEATURES'|L" class="header" textWrap="true" row="2" col="2"></Label>
-						<Label  class="list-group-item-text" textWrap="true" row="3" col="2">
+						<Label *ngIf="casting.features" [text]="'CASTINGS.FEATURES'|L" class="header" textWrap="true" row="2" col="2"></Label>
+						<Label  *ngIf="casting.features" class="list-group-item-text" textWrap="true" row="3" col="2">
 							<FormattedString *ngFor="let feature of casting.features" >
 								<Span text=" • " ></Span>
 								<Span [text]="feature" ></Span>

@@ -3,12 +3,12 @@ import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { NotificationsListComponent } from "./notifications-list/notifications-list.component";
-import { CastingDetailComponent } from "../castings/casting-detail/casting-detail.component";
+import { CastingDetailComponent } from "../castings/casting-new-detail/casting-detail.component";
 
 const routes: Routes = [
 	{ path: "", redirectTo: "notifications" },
 	{ path: "notifications", component: NotificationsListComponent },
-	{ path: "casting/:id", component: CastingDetailComponent }
+	{ path: "casting/new/:id", component: CastingDetailComponent },
 ];
 
 @NgModule({

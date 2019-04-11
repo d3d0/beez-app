@@ -53,11 +53,11 @@ export class NotificationsListComponent implements OnInit {
 
   public onPullToRefreshInitiated(args: ListViewEventData) {
     setTimeout(()=>{
-      notificationService.load().subscribe( notifications => {
+      this.notificationService.load().subscribe( notifications => {
         this.notifications = notifications;
         args.object.notifyPullToRefreshFinished()
-      }
-    },500)
+      }),
+      200})
     }
 
     public templateSelectorFunction = (item:any, index: number, items: any) => {

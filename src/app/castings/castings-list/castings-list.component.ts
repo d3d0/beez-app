@@ -93,10 +93,8 @@
      },500)
    }
 
-   onCastingTap(args: ListViewEventData): void {
-     const tappedCasting = args.view.bindingContext;
-     if(tappedCasting.id)
-       this.router.navigate(["../casting", tappedCasting.id], { relativeTo: this.activeRoute })
+   public onCastingTap(castingType :string, id :string){
+       this.router.navigate(["../casting/"+castingType, id], { relativeTo: this.activeRoute })
    }
 
    // The following trick makes the background color of each cell

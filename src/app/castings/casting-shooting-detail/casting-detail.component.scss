@@ -1,0 +1,14 @@
+@import '../../../app-variables';
+
+.accordion{
+	border-color: $grigiochiaro;
+	border-bottom-width:1;
+	border-top-width:1;
+	background-color: $grigiobackground;
+	width: 100%;
+	height: 100%;
+	margin-bottom:8;
+	.content{
+		padding: 8,32;
+	}
+}

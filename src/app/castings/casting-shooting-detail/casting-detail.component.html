@@ -1,0 +1,138 @@
+<ActionBar class="action-bar">
+	<!-- android icon > android.systemIcon="ic_menu_back" -->
+	<NavigationButton text="" (tap)="goBack()" icon="res://arrow_left" class="action-back" ></NavigationButton>
+	<!-- <Label class="action-label text-left pull-left" [text]="casting.title"></Label> -->
+
+	<!-- TITOLO > ANDROID -->
+	<StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="left" android:horizontalAlignment="left">
+		<Label class="action-label text-left pull-left" [text]="casting.title"></Label>
+	</StackLayout>
+
+	<!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
+	<ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left" backgroundColor="red">
+		<Label class="action-label text-left pull-left" [text]="casting.title"></Label>
+	</ActionItem>
+
+</ActionBar>
+
+<ScrollView class="casting-detail">
+	<StackLayout>
+		<GridLayout rows="auto">
+       		<Image src="~/assets/images/boys.jpg" height="240" stretch="aspectFill"></Image>
+			<Image [src]="casting.image" height="240" stretch="aspectFill"></Image>
+		</GridLayout>
+		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
+			<StackLayout class="list-group-item p-t-0 p-b-8">
+				<StackLayout *ngIf="casting.status != 'Shooting'" >
+					<!-- Label of status on top only from auditionTab -->
+					<StackLayout *ngIf="casting.status === 'Audition'" class="banner-top-card" [ngClass]="casting.audition_action">
+						<Label [text]="labelBannerCard(casting.audition_action)|L"></Label>
+					</StackLayout>
+
+					<GridLayout columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
+						<!-- lateral line -->
+						<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center"></Label>
+
+						<!-- INFORMATION -->
+						<StackLayout class="icon-container" row="0" col="1" >
+							<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
+						</StackLayout>
+						<Label [text]="'CASTINGS.INFORMATION'|L" class="header" textWrap="true" row="0" col="2" ></Label>
+						<Label class="list-group-item-text" [text]="casting.info" textWrap="true" row="1" col="2"></Label>
+						<!-- FEATURES -->
+						<StackLayout class="icon-container" row="2" col="1">
+							<Image [src]="getIconSource('characteristics')" stretch="none" width=16 height=16></Image>
+						</StackLayout>
+						<Label *ngIf="casting.features" [text]="'CASTINGS.FEATURES'|L" class="header" textWrap="true" row="2" col="2"></Label>
+						<Label  *ngIf="casting.features" class="list-group-item-text" textWrap="true" row="3" col="2">
+							<FormattedString *ngFor="let feature of casting.features" >
+								<Span text=" • " ></Span>
+								<Span [text]="feature" ></Span>
+								<Span text=";" ></Span>
+							</FormattedString>
+						</Label>
+						<!-- DATE_LOCATION -->
+						<StackLayout class="icon-container" row="4" col="1">
+							<Image [src]="getIconSource('calendar')" stretch="none" width=16 height=16></Image>
+						</StackLayout>
+						<Label [text]="'CASTINGS.DATE_LOCATION'|L" class="header" textWrap="true" row="4" col="2" ></Label>
+						<StackLayout row="5" col="2" >
+							<Label [text]="'CASTINGS.CASTING'|L" class="header-small p-b-8" textWrap="true"></Label>
+							<Label textWrap="false" class="list-group-item-text list-group-item-text-middle">
+								<FormattedString *ngFor="let date of casting.casting_date" >
+									<Span [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Span>
+									<Span text=" • " ></Span>
+									<Span [text]="date[0] * 1000 | date:'HH:mm'" ></Span>
+									<Span text=" - " ></Span>
+									<Span [text]="date[1]  * 1000 | date:'HH:mm'" ></Span>
+								</FormattedString>
+							</Label>
+							<Label class="list-group-item-text" [text]="casting.location" textWrap="true"></Label>
+							<Label [text]="'CASTINGS.SHOOTING'|L|uppercase" class="header-small p-b-8" textWrap="true"></Label>
+							<Label class="list-group-item-text" [text]="casting.shooting|titlecase" textWrap="true" ></Label>
+							<Label class="list-group-item-text italic" [text]="'CASTINGS.SHOOTING_NOTE'|L" textWrap="true"></Label>
+						</StackLayout>
+					</GridLayout>
+
+					<!-- NEW tab -->
+					<GridLayout  *ngIf="casting.status === 'New'" columns="8,32,*,16" rows="auto,auto">
+						<!-- lateral line -->
+						<Label text="" class="list-group-item-v-line" rowSpan="2" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
+
+						<StackLayout class="icon-container" row="0" col="1">
+							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16></Image>
+						</StackLayout>
+						<BeezButton  [text]="'PARTICIPATE'|L" [isBusy]="isLoading" (buttonClick)="candidate()" row="0" col="2" ></BeezButton>
+
+						<StackLayout class="icon-container" row="1" col="1">
+							<Image [src]="getIconSource('send')" stretch="none" width=16 height=16></Image>
+						</StackLayout>
+						<BeezButton  [text]="'SHARE_WITH_A_FRIEND'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="share()" row="1" col="2" ></BeezButton>
+					</GridLayout>
+
+
+					<!-- AUDITION tab -->
+					<GridLayout  *ngIf="casting.status === 'Audition'" columns="8,32,*,16" rows="auto,auto" >
+						<!-- lateral line -->
+						<Label text="" class="list-group-item-v-line" rowSpan="4"  row="0" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
+						<!-- AUDITION tab -> partecipate action or edit partecipateactions -->
+						<Label row="0" col="2"  *ngIf="casting.audition_action === ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE'|L" class="list-group-item-heading-18" textWrap="true"></Label>
+
+						<StackLayout row="0" col="2"  *ngIf="casting.audition_action != ''" >
+							<Label textWrap="true" class="list-group-item-heading-18" [text]="'CASTINGS.PARTICIPATION_EDIT_PARTICIPATION_TITLE'|L"></Label>
+							<Label textWrap="true" class="list-group-item-text" [text]="'CASTINGS.PARTICIPATION_EDIT_PARTICIPATION_TEXT'|L"></Label>
+						</StackLayout>
+
+						<StackLayout [visibility]="edit_actions != '' ? 'visible' : 'collapsed'"class="icon-container" row="1" col="1">
+							<Image [src]="getIconSource('send')" stretch="none" width=16 height=16></Image>
+						</StackLayout>
+						<BeezButton [visibility]="edit_actions != '' ? 'visible' : 'collapsed'" buttonColor="blue" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" [isBusy]="isLoading" (buttonClick)="edit_actions=!edit_actions" row="1" col="2" ></BeezButton>
+
+						<AbsoluteLayout row="1" col="0" colSpan="4" [visibility]="edit_actions != '' ? 'visible' : 'collapsed'" class="accordion" >
+							<StackLayout top=0 class="content" >
+								<Label [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" class="list-group-item-heading-18 " textWrap="true"></Label>
+								<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="list-group-item-text " textWrap="true"></Label>					
+ 								<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'AGENCY')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezFloatLabelSelect>
+								<!--  <Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"></Label> -->
+								<BeezButton  [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="partecipate('Confirmed')"></BeezButton>
+								<BeezButton  [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="partecipate('Confirmed by archive')"></BeezButton>
+								<BeezButton  [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" [isBusy]="isLoading" buttonColor="black" (buttonClick)="partecipate('Declined')"></BeezButton>
+							</StackLayout>
+							<StackLayout top="0" width="100%"	>
+								<Image [src]="getIconSource('no_nero')" class="icon" stretch="none" horizontalAlignment="right" (tap)="edit_actions=!edit_actions" ></Image>
+							</StackLayout>
+						</AbsoluteLayout>
+					</GridLayout>
+
+					<!-- shooting tab -->
+					<StackLayout *ngIf="casting.status === 'Shooting'"  class="p-t-0 p-b-20">
+						<StackLayout row="0" col="1">
+							<Label [text]="'CASTINGS.SHOOTING_TITLE'|L" class="list-group-item-heading-18 p-t-20 " textWrap="true"></Label>
+							<Label [text]="'CASTINGS.SHOOTING_TEXT'|L" class="list-group-item-text " textWrap="true"></Label>
+						</StackLayout>
+					</StackLayout>
+				</StackLayout>
+			</StackLayout>
+		</CardView>
+	</StackLayout>
+</ScrollView>

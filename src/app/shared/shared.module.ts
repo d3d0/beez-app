@@ -7,7 +7,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms"
 
 import { CastingStatusPipe } from "../castings/castings-list/casting-status.pipe";
 import { TaxonomyVocabolaryPipe } from "./taxonomy-vocabolary.pipe";
-import { CastingDetailComponent } from '../castings/casting-detail/casting-detail.component';
+import { CastingDetailComponent } from '../castings/casting-new-detail/casting-detail.component';
 import { SelectDateModalViewComponent } from "../components/select-date-modal-view/select-date-modal-view.component";
 import { SelectModalViewComponent } from "../components/select-modal-view/select-modal-view.component";
 import { MessageModalViewComponent } from "../components/message-modal-view/message-modal-view.component";
