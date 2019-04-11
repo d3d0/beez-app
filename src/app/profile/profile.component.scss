@@ -42,28 +42,13 @@
 	border-bottom-width: 1;
 	border-color: $verde;
 }
-
-.banner-top-card{
-	height: 100%;
-	width: 100%;
-	color:white;
-	color: $bianco;
-	font-size: 12;
-	letter-spacing: 0.2;
-	font-weight:bold;
-	vertical-align: middle;
-	text-align: center;
-	text-transform: uppercase;
-	background-color: $verde;
-	padding: 10 0;
-	margin-bottom: 4;
-  }
   
   .label {
 	padding-left: 8;
 	font-weight: bold;
 	color:$verde;
   }
+  
 .disabled{
 	color: $grigiochiaro;
 }

@@ -11,7 +11,7 @@
 
 .header{
   font-family: "Sofia Pro Semi Bold";
-  font-size: 18;
+  font-size: 20;
   font-weight: bold;
   letter-spacing:0.028;
   color:$nero;
@@ -20,7 +20,8 @@
 
 .header-small{
   font-family: "Sofia Pro Semi Bold";
-  font-size: 12;
+  font-size: 10;
+  letter-spacing:0.028;
   font-weight: bold;
   color:$nero;
 }
@@ -120,7 +121,6 @@
 .tab-h-line-d3d0 {
   height: 1;
   background-color: #ddd;
-  margin: 0 20 0 20;
   padding: 0 20 0 20;
 }
 .tab-border-d3d0 {
@@ -328,7 +328,7 @@ WrapLayout {
   &-img { // item > immagini
     margin: 0 0 10 0;
     height: 160;
-    border-radius: 4 4 0 0;
+    // border-radius: 4 4 0 0;
   }
   &-pulsante { // item > pulsanti
     font-size: 10;
@@ -383,7 +383,7 @@ WrapLayout {
       font-weight: bold;
       letter-spacing:0.028;
       color: #5A82FF;
-      margin: 0 0 15 15;
+      // margin: 0 0 15 15;
     }
     &-photo {
       margin: 0 15 15 15;
@@ -793,3 +793,18 @@ SegmentedBar{
       transform: translate(0,4);
   }
 }
+
+.banner-top-card{
+  height: 100%;
+  width: 100%;
+  color:white;
+  color: $bianco;
+  font-size: 12;
+  letter-spacing: 0.2;
+  font-weight:bold;
+  vertical-align: middle;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: $verde;
+  padding: 10 0;
+  }

@@ -51,6 +51,8 @@
     "DATE_LOCATION": "Date and location",
     "FEATURES": "Features",
     "SHOOTING": "Shooting",
+    "SHOOTING_INFO": "Information on the shooting",
+    "AUDITION_INFO": "Information on the casting",
     "NO_NEW_CASTINGS_TITLE": "Nessun nuovo casting",
     "NO_NEW_CASTINGS_TEXT": "Siamo spiacenti, al momento non ci sono nuovi castings a cui candidarsi.",
     "NO_AUDITION_CASTINGS_TITLE": "Nessun casting a cui parteciperai",

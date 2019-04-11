@@ -5,30 +5,46 @@
 
       <StackLayout class="list-group-item" >
 
-        <Label *ngIf="item.audition_action === '' && castingType === 'audition'" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="list-group-item-text" textWrap="true"></Label>
+        <Label *ngIf="castingType == 'Audition' && item.audition_action == ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="banner-top-card" textWrap="true"></Label>
 
-        <GridLayout columns="auto, auto, *, 20, 50" rows="auto, auto, auto, auto, auto">
+        <GridLayout columns="16, *, 20, 16" rows="auto, auto, auto, auto, auto" class="m-b-20">
 
           <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
           <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
 
-          <!-- <Label  text="" class="list-group-item-icona" row="0"row="0" ></Label> -->
-          <Image *ngIf="castingType === 'audition'" src="res://confirm" stretch="none"row="0" col="4"></Image>
+          <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed' " src="res://partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
+          <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed-archive' " src="res://partecipo_da_archivio" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
+          <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-declined' " src="res://non_partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
 
-          <Label [text]="item.title" class="label-18-NO list-group-item-heading-18" textWrap="true" row="1" colSpan="5"></Label>
-          <Label [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" colSpan="5"></Label>
-          <Label text="" class="list-group-item-h-line" row="3" colSpan="5"></Label>
-          <Label [text]="'CASTINGS.START_DATE'|L" class="label-NO text-left text-uppercase list-group-item-icona-casting" row="4" col="0"></Label>
-          <Label textWrap="true" class="text-left list-group-item-info" row="4" col="1" colSpan="3">
-            <FormattedString>
-              <Span [text]="item.casting_date[0][0] * 1000 | date:'dd.MM.yy'" ></Span>
-              <Span text=" • " ></Span>
-              <Span [text]="item.casting_date[0][0] * 1000 | date:'HH:mm'" ></Span>
-              <Span text=" - " ></Span>
-              <Span [text]="item.casting_date[0][1]  * 1000 | date:'HH:mm'" ></Span>
-            </FormattedString>
-          </Label>
-          <Label text="" class="list-group-item-icona-freccia" row="4" col="4" ></Label>
+          <Label [text]="item.title" class="label-18-NO list-group-item-heading-18" textWrap="true" row="1" col="0" colSpan="4"></Label>
+          <Label  *ngIf="castingType == 'New'" [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" col="0" colSpan="4"></Label>
+          <Label text="" class="list-group-item-h-line" row="3"  col="0" colSpan="5"></Label>
+
+          <StackLayout orientation="horizontal" row="4" col="1" *ngIf="castingType == 'New'" >
+            <Label [text]="'CASTINGS.START_DATE'|L" class="label"></Label>
+            <Label textWrap="true" class="title  p-l-8">
+              <FormattedString>
+                <Span [text]="item.casting_date[0][0] * 1000 | date:'dd.MM.yy'" ></Span>
+                <Span text=" • " ></Span>
+                <Span [text]="item.casting_date[0][0] * 1000 | date:'HH:mm'" ></Span>
+                <Span text=" - " ></Span>
+                <Span [text]="item.casting_date[0][1]  * 1000 | date:'HH:mm'" ></Span>
+              </FormattedString>
+            </Label>
+          </StackLayout>
+
+          <StackLayout *ngIf="castingType === 'Audition'" verticalAlignment="center" orientation="horizontal" row="4" col="1">
+            <Image src="res://photo" stretch="none"  class="p-b-16" ></Image>
+            <Label [text]="'CASTINGS.AUDITION_INFO'|L|uppercase" class="header-small p-l-8" ></Label>
+          </StackLayout>
+          
+          <StackLayout *ngIf="castingType === 'Close'" verticalAlignment="center" orientation="horizontal" row="4" col="1">
+            <Image src="res://video" stretch="none" class="p-b-16" ></Image>
+            <Label [text]="'CASTINGS.SHOOTING_INFO'|L|uppercase" class="header-small p-l-8" ></Label>
+          </StackLayout>
+          
+          <Image src="res://arrow_right" stretch="none" row="4" col="2" ></Image>
+
         </GridLayout>
       </StackLayout>
     </CardView>

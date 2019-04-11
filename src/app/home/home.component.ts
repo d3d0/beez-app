@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
     this.page.actionBarHidden = true;
 
-    if (!BackendService.firstLogin()) {
+    if (BackendService.firstLogin()) {
       setTimeout(() => {
         const options: ModalDialogOptions = {
           context: { message: localize('WELCOME_TEXT') , buttonText: localize('WELCOME_BUTTON'), title: localize('WELCOME_TITLE'), footer: localize('WELCOME_FOOTER')},
