@@ -11,7 +11,7 @@ import { alert, getIconSource } from "../../shared/utils";
 
 class Agency  {
   vid=""
-  name="No Agency"
+  name=""
   tid=""
 }
 
@@ -26,6 +26,7 @@ export class CastingDetailComponent implements OnInit {
 
   @ViewChild("CBAgency") AgencyCheckBox: ElementRef;
   public isLoading: boolean = false;
+  public noAgency: boolean = false;
   private casting = [];
   private casting_id;
   private user_id;
@@ -48,11 +49,15 @@ export class CastingDetailComponent implements OnInit {
     });
   }
 
-  private toggleCheck() {
-    this.AgencyCheckBox.nativeElement.toggle();
+  private toggleCheckAgency() {
+
+      console.log(this.selectedAgency)
+      this.noAgency = !this.noAgency
+      if (this.noAgency) this.selectedAgency= new Agency();
   }
 
   selectEvent(value, field){
+    console.log(value, field)
     if (field) this.selectedAgency = value
   }
 

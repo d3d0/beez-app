@@ -13,7 +13,10 @@ GridLayout{
 	padding: 8 0;
 	border-bottom-width: 1;
 	border-bottom-color: $lilla;
-} 
+}
+#text.dark{
+	border-bottom-color: $nero;
+}
 
 #placeholder{
 	width: 100%;
@@ -27,4 +30,7 @@ GridLayout{
 	width: 100%;
 	transform: translate(0, -25);
 	padding: 8 0 16 0;
+}
+#label.dark{
+	color: $grigioscuro;
 }

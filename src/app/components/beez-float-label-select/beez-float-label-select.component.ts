@@ -11,9 +11,9 @@ import { SelectModalViewComponent } from "../select-modal-view/select-modal-view
     styleUrls: ['./beez-float-label-select.component.css'],
     template: `
     <GridLayout rows="10, 32" (tap)="openModal()">
-    <Label [visibility]="text?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label"></Label>
-    <Label [visibility]="!text?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder" class="title" ios:paddingBottom="8" ></Label>
-    <Label [visibility]="text?'visible':'hidden'" id="text" row="1" class="title" [text]="text" class="title" ios:paddingBottom="8" ></Label>
+    <Label [visibility]="text?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label" [class.dark]="dark"></Label>
+    <Label [visibility]="!text?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder" class="title"  [class.dark]="dark" ios:paddingBottom="8" ></Label>
+    <Label [visibility]="text?'visible':'hidden'" id="text" row="1" class="title" [text]="text" class="title"  [class.dark]="dark" ios:paddingBottom="8" ></Label>
     </GridLayout>
     `
 })
@@ -21,9 +21,11 @@ import { SelectModalViewComponent } from "../select-modal-view/select-modal-view
 export class BeezFloatLabelSelect implements OnInit {
     @Input() placeholder: string;
     @Input() type: string;
+    @Input() dark: boolean;
     @Output() selectEvent = new EventEmitter<string>()
     private text: string;
     private list;
+    private isEditable;
 
     constructor(
         private vcRef: ViewContainerRef,
@@ -32,9 +34,13 @@ export class BeezFloatLabelSelect implements OnInit {
     @Input() 
     set value (value:string){
                  this.text = value 
-                 console.log('value', value)
     }
-  
+    
+    @Input()
+    set editable(value: boolean){
+        this.isEditable=value
+    }
+
     ngOnInit(){
         // console.log('value ' , this.value)
         // if (this.type == "datapicker")
@@ -45,6 +51,7 @@ export class BeezFloatLabelSelect implements OnInit {
  }
 
  private openModal(){
+    if(!this.isEditable) return
     if (this.type == "datapicker"){
         this.createDatapickerModelView().then((value)=> {
             if(value){
@@ -57,7 +64,7 @@ export class BeezFloatLabelSelect implements OnInit {
         this.createTaxonomyModelView().then((value)=> {
             if(value){
                 this.text=value.name
-                this.selectEvent.emit(value.tid)
+                this.selectEvent.emit(value)
             }
         })
     }

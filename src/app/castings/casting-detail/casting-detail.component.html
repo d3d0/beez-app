@@ -98,7 +98,11 @@
 						
 						<Label row="0" col="2" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE'|L" class="list-group-item-heading-18" textWrap="true"></Label>
 						<StackLayout row="2" col="2" >
-							<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="list-group-item-text" textWrap="true"></Label>
+							<StackLayout orientation="horizontal" verticalAlignment="center">
+								<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="list-group-item-text" textWrap="true"></Label>
+								<Image [src]="getIconSource('chekbox_on')" stretch="none"></Image>
+							</StackLayout>	
+
 							<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'AGENCY')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezFloatLabelSelect>
 							<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"></Label>
 						</StackLayout>
@@ -133,9 +137,14 @@
 
 						<AbsoluteLayout row="1" col="0" colSpan="4" [visibility]="edit_actions != '' ? 'visible' : 'collapsed'" class="accordion" >
 							<StackLayout top=0 class="content" >
-								<Label [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" class="list-group-item-heading-18 " textWrap="true"></Label>
-								<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="list-group-item-text " textWrap="true"></Label>					
-								<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'AGENCY')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezFloatLabelSelect>
+								<Label [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" class="list-group-item-heading-18 p-b-16" textWrap="true"></Label>
+								<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'AGENCY')" [editable]="!noAgency" dark="true" [value]="selectedAgency.name" type="AGENCY" [placeholder]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L"></BeezFloatLabelSelect>
+								<StackLayout orientation="horizontal" verticalAlignment="center" (tap)="toggleCheckAgency()" class="p-t-8">
+									<Image  *ngIf="noAgency" [src]="getIconSource('chekbox_on')" stretch="none" ></Image>
+									<Image  *ngIf="!noAgency" [src]="getIconSource('checkbox_off')" stretch="none" ></Image>
+									<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text p-l-8 " textWrap="true"></Label>
+								</StackLayout>		
+
 								<BeezButton  [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="partecipate('Confirmed')"></BeezButton>
 								<BeezButton  [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="partecipate('Confirmed by archive')"></BeezButton>
 								<BeezButton  [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" [isBusy]="isLoading" buttonColor="black" (buttonClick)="partecipate('Declined')"></BeezButton>
