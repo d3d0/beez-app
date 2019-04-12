@@ -23,7 +23,7 @@
 		</GridLayout>
 		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
 			<StackLayout class="list-group-item p-t-0 p-b-8">
-				<StackLayout *ngIf="casting.status != 'Shooting'" >
+				<StackLayout *ngIf="casting.status != 'Close'" >
 					<!-- Label of status on top only from auditionTab -->
 					<Label *ngIf="casting.audition_action == 'action-confirmed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED'|L" class="banner-top-card cornfirmed"></Label>
 					<Label *ngIf="casting.audition_action == 'action-confirmed-archive'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED_WHITH_ARCHIVE'|L" class="banner-top-card cornfirmed-archive"></Label>
@@ -154,14 +154,18 @@
 							</StackLayout>
 						</AbsoluteLayout>
 					</GridLayout>
+				</StackLayout>
 
-					<!-- shooting tab -->
-					<StackLayout *ngIf="casting.status === 'Shooting'"  class="p-t-0 p-b-20">
-						<StackLayout row="0" col="1">
-							<Label [text]="'CASTINGS.SHOOTING_TITLE'|L" class="list-group-item-heading-18 p-t-20 " textWrap="true"></Label>
-							<Label [text]="'CASTINGS.SHOOTING_TEXT'|L" class="list-group-item-text " textWrap="true"></Label>
-						</StackLayout>
-					</StackLayout>
+				<!-- shooting tab -->
+				<StackLayout *ngIf="casting.status === 'Close'" class="shooting">
+					<Label [text]="'CASTINGS.SHOOTING_TITLE'|L" class="header" textWrap="true"></Label>
+					<Label [text]="'CASTINGS.SHOOTING_TEXT'|L" class="text " textWrap="true"></Label>
+					<Label class="p-t-8"  textWrap="true">
+						<FormattedString >
+							<Span text="N. B. " class="label" ></Span>
+							<Span [text]="'CASTINGS.SHOOTING_NOTE'|L" class="note"></Span>
+						</FormattedString>
+					</Label>
 				</StackLayout>
 			</StackLayout>
 		</CardView>

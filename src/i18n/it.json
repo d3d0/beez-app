@@ -72,7 +72,10 @@
     "PARTICIPATION_EDIT_PARTICIPATION_TITLE":"Hai cambiato idea?",
     "PARTICIPATION_EDIT_PARTICIPATION_TEXT":"Sei ancora in tempo per modificare la tua partecipazione o meno al casting.",
     "SHOOTING_NOTE":"Orario e location saranno comunicati.",
-    "START_DATE": "DATA INIZIO CASTING"
+    "START_DATE": "DATA INIZIO CASTING",
+    "SHOOTING_TITLE":"Informazioni sullo Shooting",
+    "SHOOTING_TEXT":"Congratulazioni, hai superato casting ed ora è il momento di mettersi in gioco.",
+    "SHOOTING_NOTE":"Sarai contattato telefonicamente o tramite email dove ti verranno comunicate tutte le informazioni necessarie per lo Shooting."
   },
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "NOTIFICHE"
