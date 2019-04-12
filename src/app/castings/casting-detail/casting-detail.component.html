@@ -9,7 +9,7 @@
 	</StackLayout>
 
 	<!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
-	<ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left" backgroundColor="red">
+	<ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left">
 		<Label class="action-label text-left pull-left" [text]="casting.title"></Label>
 	</ActionItem>
 
@@ -18,16 +18,16 @@
 <ScrollView class="casting-detail">
 	<StackLayout>
 		<GridLayout rows="auto">
-       		<Image src="~/assets/images/boys.jpg" height="240" stretch="aspectFill"></Image>
+			<Image src="~/assets/images/boys.jpg" height="240" stretch="aspectFill"></Image>
 			<Image [src]="casting.image" height="240" stretch="aspectFill"></Image>
 		</GridLayout>
 		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
 			<StackLayout class="list-group-item p-t-0 p-b-8">
 				<StackLayout *ngIf="casting.status != 'Shooting'" >
 					<!-- Label of status on top only from auditionTab -->
-					<StackLayout *ngIf="casting.status === 'Audition'" class="banner-top-card" [ngClass]="casting.audition_action">
-						<Label [text]="labelBannerCard(casting.audition_action)|L"></Label>
-					</StackLayout>
+					<Label *ngIf="casting.audition_action == 'action-confirmed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED'|L" class="banner-top-card" bacgroundColor="red"></Label>
+					<Label *ngIf="casting.audition_action == 'action-confirmed-archive'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED_WHITH_ARCHIVE'|L" class="banner-top-card"></Label>
+					<Label *ngIf="casting.audition_action == 'action-declined'" [text]="'CASTINGS.PARTICIPATION_DECLINED'|L" class="banner-top-card"></Label>
 
 					<GridLayout columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
 						<!-- lateral line -->
@@ -91,29 +91,51 @@
 					</GridLayout>
 
 
-					<!-- AUDITION tab -->
-					<GridLayout  *ngIf="casting.status === 'Audition'" columns="8,32,*,16" rows="auto,auto" >
+					<!-- AUDITION  first partecipation -->
+					<GridLayout  *ngIf="casting.status === 'Audition' && casting.audition_action == ''" columns="8,32,*,16" rows="auto,auto,auto,auto,auto,auto,auto" >
+						<!-- lateral line -->
+						<Label class="list-group-item-v-line" rowSpan="7"  row="0" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
+						
+						<Label row="0" col="2" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE'|L" class="list-group-item-heading-18" textWrap="true"></Label>
+						<StackLayout row="2" col="2" >
+							<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="list-group-item-text" textWrap="true"></Label>
+							<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'AGENCY')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezFloatLabelSelect>
+							<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"></Label>
+						</StackLayout>
+						<BeezButton row="4" col="2" [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="partecipate('Confirmed')"></BeezButton>
+						<StackLayout row="4" col="1" class="icon-container">
+							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16 ></Image>
+						</StackLayout>
+						<BeezButton row="5" col="2" [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="partecipate('Confirmed by archive')"></BeezButton>
+						<StackLayout row="5" col="1" class="icon-container">
+							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16 ></Image>
+						</StackLayout>
+						<BeezButton row="6" col="2" [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" [isBusy]="isLoading" buttonColor="black" (buttonClick)="partecipate('Declined')"></BeezButton>
+						<StackLayout row="6" col="1" class="icon-container">
+							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16 ></Image>
+						</StackLayout>
+					</GridLayout>
+
+					<!-- AUDITION  edit partecipation -->
+					<GridLayout  *ngIf="casting.status === 'Audition'  && casting.audition_action != ''" columns="8,32,*,16" rows="auto,auto" >
 						<!-- lateral line -->
 						<Label text="" class="list-group-item-v-line" rowSpan="4"  row="0" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
-						<!-- AUDITION tab -> partecipate action or edit partecipateactions -->
-						<Label row="0" col="2"  *ngIf="casting.audition_action === ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE'|L" class="list-group-item-heading-18" textWrap="true"></Label>
 
-						<StackLayout row="0" col="2"  *ngIf="casting.audition_action != ''" >
+						<StackLayout row="0" col="2"  *ngIf="casting.audition_action != ''"  >
 							<Label textWrap="true" class="list-group-item-heading-18" [text]="'CASTINGS.PARTICIPATION_EDIT_PARTICIPATION_TITLE'|L"></Label>
 							<Label textWrap="true" class="list-group-item-text" [text]="'CASTINGS.PARTICIPATION_EDIT_PARTICIPATION_TEXT'|L"></Label>
 						</StackLayout>
-
-						<StackLayout [visibility]="edit_actions != '' ? 'visible' : 'collapsed'"class="icon-container" row="1" col="1">
-							<Image [src]="getIconSource('send')" stretch="none" width=16 height=16></Image>
+						
+						<StackLayout row="1" col="1" class="icon-container" *ngIf="casting.audition_action != ''" >
+							<Image [src]="getIconSource('send')" stretch="none" width=16 height=16 ></Image>
 						</StackLayout>
-						<BeezButton [visibility]="edit_actions != '' ? 'visible' : 'collapsed'" buttonColor="blue" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" [isBusy]="isLoading" (buttonClick)="edit_actions=!edit_actions" row="1" col="2" ></BeezButton>
+						<BeezButton  *ngIf="casting.audition_action != ''" [visibility]="edit_actions ? 'collapsed' : 'visible'" buttonColor="blue" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" [isBusy]="isLoading" (buttonClick)="edit_actions=!edit_actions" row="1" col="2" ></BeezButton>
 
 						<AbsoluteLayout row="1" col="0" colSpan="4" [visibility]="edit_actions != '' ? 'visible' : 'collapsed'" class="accordion" >
 							<StackLayout top=0 class="content" >
 								<Label [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" class="list-group-item-heading-18 " textWrap="true"></Label>
 								<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="list-group-item-text " textWrap="true"></Label>					
- 								<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'AGENCY')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezFloatLabelSelect>
-								<!--  <Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"></Label> -->
+								<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'AGENCY')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezFloatLabelSelect>
 								<BeezButton  [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="partecipate('Confirmed')"></BeezButton>
 								<BeezButton  [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="partecipate('Confirmed by archive')"></BeezButton>
 								<BeezButton  [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" [isBusy]="isLoading" buttonColor="black" (buttonClick)="partecipate('Declined')"></BeezButton>
