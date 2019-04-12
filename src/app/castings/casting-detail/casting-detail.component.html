@@ -22,7 +22,7 @@
 			<Image [src]="casting.image" height="240" stretch="aspectFill"></Image>
 		</GridLayout>
 		<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
-			<StackLayout class="list-group-item p-t-0 p-b-8">
+			<StackLayout class="list-group-item p-t-0 p-b-12">
 				<StackLayout *ngIf="casting.status != 'Close'" >
 					<!-- Label of status on top only from auditionTab -->
 					<Label *ngIf="casting.audition_action == 'action-confirmed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED'|L" class="banner-top-card cornfirmed"></Label>
@@ -133,7 +133,7 @@
 						<StackLayout row="1" col="1" class="icon-container" *ngIf="casting.audition_action != ''" >
 							<Image [src]="getIconSource('send')" stretch="none" width=16 height=16 ></Image>
 						</StackLayout>
-						<BeezButton  *ngIf="casting.audition_action != ''" [visibility]="edit_actions ? 'collapsed' : 'visible'" buttonColor="blue" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" [isBusy]="isLoading" (buttonClick)="edit_actions=!edit_actions" row="1" col="2" ></BeezButton>
+						<BeezButton  *ngIf="casting.audition_action != ''" [visibility]="edit_actions ? 'collapsed' : 'visible'" buttonColor="blue" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L|uppercase" [isBusy]="isLoading" (buttonClick)="edit_actions=!edit_actions" row="1" col="2" ></BeezButton>
 
 						<AbsoluteLayout row="1" col="0" colSpan="4" [visibility]="edit_actions != '' ? 'visible' : 'collapsed'" class="accordion" >
 							<StackLayout top=0 class="content" >

@@ -71,12 +71,11 @@
   letter-spacing:0.15;
 }
 
-.body {
+.label-textfield {
   font-family: "Sofia Pro Semi Bold";
   color: $grigioscuro;
-  font-size: 10;
+  font-size: 12;
 }
-
 // ------------------------------------------------------------------
 // COMMON PAGE
 // ------------------------------------------------------------------
@@ -436,7 +435,7 @@ WrapLayout {
   // }
 
   .card-group {
-    margin: 20;
+  margin: 25 20 25 20; // IMPORTANTE > la prima card non ha margin top in IOS e Android
 
     .list-group-item {
 
@@ -507,7 +506,7 @@ WrapLayout {
 .signup{
 
   .card-group {
-    margin: 20; // IMPORTANTE
+  margin: 25 20 25 20; // IMPORTANTE > la prima card non ha margin top in IOS e Android
 
     .list-group-item {
 
@@ -577,7 +576,7 @@ WrapLayout {
 // ---------------------------------
 .casting-detail{
   .card-group {
-    margin: 20; // IMPORTANTE
+  margin: 25 20 25 20; // IMPORTANTE > la prima card non ha margin top in IOS e Android
     .banner-top-card{
       height: 100%;
       width: 100%;

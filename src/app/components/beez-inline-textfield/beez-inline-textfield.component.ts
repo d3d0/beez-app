@@ -6,7 +6,7 @@ import { Component, ElementRef, Input, Output, ViewContainerRef, EventEmitter, V
     styleUrls: ['./beez-inline-textfield.component.css'],
     template: `
         <StackLayout [borderWidth]="last?0:1" orientation="horizontal">
-            <Label class="label-gray" [text]="placeholder"></Label>
+            <Label class="label-textfield" [text]="placeholder"></Label>
             <TextField #textField ios:paddingBottom="8" class="title"
                 width="100%"
                 [(ngModel)]="text"

@@ -86,7 +86,6 @@
        .subscribe((castings: Array<Casting>) => {
          this._castings = new ObservableArray(castings);
          this._isLoading = false;
-         console.log(this._castings)
          args.object.notifyPullToRefreshFinished()
 
        });

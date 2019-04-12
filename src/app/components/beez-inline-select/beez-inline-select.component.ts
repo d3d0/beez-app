@@ -18,7 +18,7 @@ class Term {
     styleUrls: ['./beez-inline-select.component.css'],
     template: `
     <StackLayout orientation="horizontal" [borderWidth]="last?0:1" (tap)="openModal()">
-    <Label class="label-gray" [text]="placeholder"></Label>
+    <Label class="label-textfield" [text]="placeholder"></Label>
     <Label id="text" class="title" *ngIf="obj" [text]="obj.name | titlecase"></Label>
     </StackLayout>
     `

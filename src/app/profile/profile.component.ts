@@ -53,6 +53,7 @@ export class ProfileComponent implements OnInit {
     this.tabs[2] = <View>this.tab3.nativeElement;
     this.tabs[3] = <View>this.tab4.nativeElement;
     this.tabs[0].className = "active";
+
     // if (BackendService.showProfilePopup()) {  
     //   setTimeout(() => {
     //     console.log('popup profile')
