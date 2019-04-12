@@ -13,7 +13,7 @@
           <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
 
           <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed' " src="res://partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
-          <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed-archive' " src="res://partecipo_da_archivio" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
+          <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed-archive' " src="res://partecipo_archivio" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
           <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-declined' " src="res://non_partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
 
           <Label [text]="item.title" class="label-18-NO list-group-item-heading-18" textWrap="true" row="1" col="0" colSpan="4"></Label>

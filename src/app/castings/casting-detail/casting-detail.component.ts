@@ -44,26 +44,8 @@ export class CastingDetailComponent implements OnInit {
     this.activeRoute.params.subscribe((params) => {
       this.casting_id = params.id
       this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
-        console.log(casting)
         this.casting=casting})
     });
-  }
-  
-  private labelBannerCard(casting){
-    switch (casting) {
-      case "action-confirmed":
-      return 'CASTINGS.PARTICIPATION_CONFIRMED'
-      break;
-      case "action-confirmed-archive":
-      return 'CASTINGS.PARTICIPATION_CONFIRMED_WHITH_ARCHIVE'
-      break;
-      case "action-declined":
-      return 'CASTINGS.PARTICIPATION_DECLINED'
-      break;   
-      default:
-      return ''
-      break;
-    }
   }
 
   private toggleCheck() {
@@ -85,6 +67,7 @@ private candidate(){
   this.castingsService.cadidate(this.user_id,this.casting_id).subscribe(
     (result)=>{
       this.isLoading =false
+      this.castingsService.load()
       alert(localize("MESSAGES.CANDIDATE")).then(
         ()=> this.goBack()
         )

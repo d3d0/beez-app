@@ -25,9 +25,9 @@
 			<StackLayout class="list-group-item p-t-0 p-b-8">
 				<StackLayout *ngIf="casting.status != 'Shooting'" >
 					<!-- Label of status on top only from auditionTab -->
-					<Label *ngIf="casting.audition_action == 'action-confirmed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED'|L" class="banner-top-card" bacgroundColor="red"></Label>
-					<Label *ngIf="casting.audition_action == 'action-confirmed-archive'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED_WHITH_ARCHIVE'|L" class="banner-top-card"></Label>
-					<Label *ngIf="casting.audition_action == 'action-declined'" [text]="'CASTINGS.PARTICIPATION_DECLINED'|L" class="banner-top-card"></Label>
+					<Label *ngIf="casting.audition_action == 'action-confirmed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED'|L" class="banner-top-card cornfirmed"></Label>
+					<Label *ngIf="casting.audition_action == 'action-confirmed-archive'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED_WHITH_ARCHIVE'|L" class="banner-top-card cornfirmed-archive"></Label>
+					<Label *ngIf="casting.audition_action == 'action-declined'" [text]="'CASTINGS.PARTICIPATION_DECLINED'|L" class="banner-top-card declined"></Label>
 
 					<GridLayout columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
 						<!-- lateral line -->
