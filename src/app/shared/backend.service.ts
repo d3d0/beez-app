@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { getString, setString, hasKey } from "application-settings";
+// https://docs.nativescript.org/ns-framework-modules/application-settings
+import { getString, setString, setBoolean, getBoolean, hasKey } from "application-settings"; 
 import { HttpHeaders } from "@angular/common/http";
 
 @Injectable({
@@ -12,6 +13,14 @@ export class BackendService {
   
   static isLoggedIn(): boolean {
     return !!getString('sessid');
+  }
+
+  // d3d0 --> boolean per modale di registrazione
+  static get registeredUser() {
+    return getBoolean("isRegistered", false);
+  }
+  static set registeredUser(value) {
+    setBoolean("isRegistered",value);
   }
 
   static firstLogin(): boolean {
@@ -27,58 +36,65 @@ export class BackendService {
   }
 
   static get XCSFRtoken() {
-    // console.log('GETTING XCSFRtoken: ' + getString('XCSFRtoken'))
+    console.log('l☯☯☯l > BackendService > XCSFRtoken() > Get XCSFRtoken from storage: ', getString('XCSFRtoken'));
     return getString('XCSFRtoken');
   }
-
   static set XCSFRtoken(newToken) {
     setString('XCSFRtoken', newToken);
-    // console.log('SET XCSFRtoken TO: ' + newToken)
+    // console.log('SET XCSFRtoken TO: ' + newToken);
   }
 
   static get sessid() {
-    // console.log('GETTING sessid: ' + getString('sessid'))
+    console.log('l☯☯☯l > BackendService > sessid() > Get sessid from storage: ', getString('sessid'));
     return getString('sessid');
   }
-
   static set sessid(newToken) {
     setString('sessid', newToken);
-    // console.log('SET sessid TO: ' + newToken)
+    // console.log('SET sessid TO: ' + newToken);
   }
 
   static get session_name() {
-    // console.log('GETTING session_name: ' + getString('session_name'))
+    console.log('l☯☯☯l > BackendService > session_name() > Get session_name from storage: ', getString('session_name'));
     return getString('session_name');
   }
-
   static set session_name(newToken) {
     setString('session_name', newToken);
-    // console.log('SET session_name TO: ' + newToken)
+    // console.log('SET session_name TO: ' + newToken);
   }
 
   static get UID() {
-    // console.log('GETTING UID: ' + getString('UID'))
+    console.log('l☯☯☯l > BackendService > session_name() > Get UID from storage: ', getString('UID'));
     return getString('UID');
   }
-
   static set UID(newToken) {
     setString('UID', newToken);
-    // console.log('SET UID TO: ' + newToken)
+    // console.log('SET UID TO: ' + newToken);
   }
+
   static validateCode(response) {
     return new Promise((resolve, reject) => {
       if (response.statusCode >= 200 && response.statusCode < 300) {
         resolve(response)
       }
-      // console.log('Response with code: ' + response.statusCode + '\nContent: ' + response.content.toString())
+      // console.log('Response with code: ' + response.statusCode + '\nContent: ' + response.content.toString());
       reject('Response with code: ' + response.statusCode + '\nContent: ' + response.content.toString())
     })
   }
 
   static reset(){
-    BackendService.session_name = ''
-    BackendService.sessid = ''
-    BackendService.XCSFRtoken = ''
+    // if(appSettings.hasKey("XCSFRtoken")) {
+    //   appSettings.remove("XCSFRtoken");
+    // }
+    // if(appSettings.hasKey("sessid")) {
+    //   appSettings.remove("sessid");
+    // }
+    // if(appSettings.hasKey("session_name")) {
+    //   appSettings.remove("session_name");
+    // }
+    BackendService.session_name = '';
+    BackendService.sessid = '';
+    BackendService.XCSFRtoken = '';
+    console.log('l☯☯☯l > BackendService > reset()');
   }
 
   static printAll(){

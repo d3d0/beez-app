@@ -15,7 +15,7 @@ class Term {
 @Component({
     selector: "BeezInlineSelect",
     moduleId: module.id,
-    styleUrls: ['./beez-inline-select.component.css'],
+    styleUrls: ['./beez-inline-select.component.scss'],
     template: `
     <StackLayout orientation="horizontal" [borderWidth]="last?0:1" (tap)="openModal()">
     <Label class="label-textfield" [text]="placeholder"></Label>

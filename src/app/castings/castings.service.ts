@@ -13,59 +13,55 @@ import { Casting } from "./casting.model";
 export class CastingsService {
   private _castings: Array<Casting> = [];
 
-  constructor(
-    private http: HttpClient
-    ) {}
+  constructor(private http: HttpClient) { }
 
   load(): Observable<any> {
-    console.log('casting loading...')
-    return this.http.get(
-      BackendService.baseUrl + "beez/loool_casting", {
+    console.log('casting loading ...');
+    return this.http.get( BackendService.baseUrl + "beez/loool_casting", {
         headers: BackendService.getCommonHeaders()
       }).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleErrors) // then handle the error
       );
+  }
+
+  private handleErrors(error: Response): Observable<never> {
+    if (error.status == 407){
+      BackendService.reset()
+      return
     }
+    return throwError(error);
+  }
 
-    private handleErrors(error: Response): Observable<never> {
-      if (error.status == 407){
-        BackendService.reset()
-        return
-      }
-      return throwError(error);
-    }
+  getCastingById(id: string): Observable<any> {
+    return this.http.get( BackendService.baseUrl + "beez/loool_casting/"+id, {
+        headers: BackendService.getCommonHeaders()
+      }).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleErrors) // then handle the error
+      );
+  }
 
-    getCastingById(id: string): Observable<any> {
-      return this.http.get(  BackendService.baseUrl + "beez/loool_casting/"+id, {
-          headers: BackendService.getCommonHeaders()
-        }).pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleErrors) // then handle the error
-        );
-      }
+  cadidate(user_id, casting_id){
+    return this.http.post( BackendService.baseUrl + "beez/loool_talentactions/candidate",
+      JSON.stringify({
+        uid: user_id,
+        nid: casting_id
+      }),
+      { headers: BackendService.getCommonHeaders() })
+  }
 
-      cadidate(user_id, casting_id){
-        return this.http.post(
-          BackendService.baseUrl + "beez/loool_talentactions/candidate",
-          JSON.stringify({
-            uid: user_id,
-            nid: casting_id
-          }),
-          { headers: BackendService.getCommonHeaders() })
-      }
+  partecipate(user_id, casting_id, agency_id, action){
+    return this.http.post( BackendService.baseUrl + "beez/loool_talentactions/participate",
+      JSON.stringify({
+        'uid': user_id,
+        'nid': casting_id,
+        'agency-tid' : agency_id,
+        'op': action
+      }),
+      {
+        headers: BackendService.getCommonHeaders()
+      })
+  }
 
-      partecipate(user_id, casting_id, agency_id, action){
-        return this.http.post(
-          BackendService.baseUrl + "beez/loool_talentactions/participate",
-          JSON.stringify({
-            'uid': user_id,
-            'nid': casting_id,
-            'agency-tid' : agency_id,
-            'op': action
-          }),
-          {
-            headers: BackendService.getCommonHeaders()
-          })
-      }
-    }
+}

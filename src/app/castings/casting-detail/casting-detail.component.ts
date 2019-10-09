@@ -18,13 +18,13 @@ class Agency  {
 @Component({
   selector: 'ns-casting',
   templateUrl: './casting-detail.component.html',
-  styleUrls: ['./casting-detail.component.css'],
+  styleUrls: ['./casting-detail.component.scss'],
   moduleId: module.id,
 })
 
 export class CastingDetailComponent implements OnInit {
 
-  @ViewChild("CBAgency") AgencyCheckBox: ElementRef;
+  @ViewChild("CBAgency", {static: false}) AgencyCheckBox: ElementRef;
   public isLoading: boolean = false;
   public noAgency: boolean = false;
   private casting = [];
@@ -33,6 +33,7 @@ export class CastingDetailComponent implements OnInit {
   getIconSource = getIconSource
   public edit_actions: boolean = false;
   public selectedAgency= new Agency();
+
   constructor(
     private activeRoute: ActivatedRoute,
     private castingsService: CastingsService,
@@ -42,10 +43,15 @@ export class CastingDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('l☯☯☯l > CastingDetailComponent > ngOnInit()');
     this.activeRoute.params.subscribe((params) => {
       this.casting_id = params.id
       this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
-        this.casting=casting})
+        this.casting=casting;
+        console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+        console.log('l☯☯☯l > CastingsService > getCastingById() > casting: ', casting);
+        console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+      });
     });
   }
 

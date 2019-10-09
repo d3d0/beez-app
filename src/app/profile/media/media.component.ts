@@ -15,7 +15,7 @@ import { alert, confirm, getIconSource } from "../../shared/utils";
 @Component({
     selector: 'ns-media',
     templateUrl: './media.component.html',
-    styleUrls: ['./media.component.css'],
+    styleUrls: ['./media.component.scss'],
     moduleId: module.id,
 })
 export class MediaComponent {

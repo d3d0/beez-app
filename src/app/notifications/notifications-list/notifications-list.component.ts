@@ -13,7 +13,7 @@ import { Label } from "tns-core-modules/ui/label";
 @Component({
   selector: 'ns-notifications',
   templateUrl: './notifications-list.component.html',
-  styleUrls: ['./notifications-list.component.css'],
+  styleUrls: ['./notifications-list.component.scss'],
   moduleId: module.id,
 })
 export class NotificationsListComponent implements OnInit {
@@ -22,7 +22,7 @@ export class NotificationsListComponent implements OnInit {
   notifications: any;
   private _templateSelector: (item, index: number, items: any) => string;
 
-  @ViewChild("delete-view") deleteView: View;
+  @ViewChild("delete-view", {static: false}) deleteView: View;
 
   constructor(
     private activeRoute: ActivatedRoute,

@@ -4,7 +4,7 @@ import { Color } from "tns-core-modules/color";
 @Component({
     selector: "BeezButton",
     moduleId: module.id,
-    styleUrls: ['./beez-button.component.css'],
+    styleUrls: ['./beez-button.component.scss'],
     template: `
     <StackLayout class="container" [row]="row" [col]="col" android:marginBottom="13">
         <CardView width="100%" elevation="2" radius="15" shadowOpacity="0.2" ripple="false" ios:shadowRadius="5">
@@ -28,7 +28,7 @@ export class BeezButton implements OnChanges{
     @Input() row: number;
     @Input() col: number;
     @Output() buttonClick = new EventEmitter<string>()
-    @ViewChild("button") button: ElementRef;
+    @ViewChild("button", {static: true}) button: ElementRef;
     color
     constructor() {
 

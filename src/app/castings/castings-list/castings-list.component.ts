@@ -18,7 +18,7 @@
  @Component({
    selector: 'ns-castings-list',
    templateUrl: './castings-list.component.html',
-   styleUrls: ['./castings-list.component.css'],
+   styleUrls: ['./castings-list.component.scss'],
    moduleId: module.id
  })
 
@@ -106,7 +106,8 @@
        // support XCode 8
        var newcolor = new Color(0,0,0,0);
        args.ios.backgroundView.backgroundColor = newcolor.ios;
-       cell.backgroundColor = utils.ios.getter(UIColor, UIColor.clearColor);
+       // cell.backgroundColor = utils.ios.getter(UIColor, UIColor.clearColor); // FIX 23/09
+       cell.backgroundColor = UIColor.clearColor; // FIX 23/09
      }
    }
 

@@ -15,8 +15,13 @@ import { BackendService } from "../shared/backend.service";
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  
-  login(user: User) {
+
+    /**
+     * 
+     * login utente
+     * @param user 
+     */
+    login(user: User) {
     return this.http.post(
       BackendService.baseUrl + "beez/user/login",
       JSON.stringify({
@@ -31,13 +36,17 @@ export class UserService {
       }).pipe( 
       tap(response => {
         if( this.checkRole(response , 'pending user')) {
-          throw new Error('pending');
+          //throw new Error('pending');
         }
       }),
       catchError(this.handleErrors)
       )
     }
 
+    /**
+     * 
+     * logout utente
+     */
     logoff() {
       return this.http.post( BackendService.baseUrl + "beez/user/logout",{} ,
       {
@@ -45,6 +54,11 @@ export class UserService {
       });
     }
 
+    /**
+     * 
+     * registrazione utente
+     * @param user 
+     */
     signup(user: User) {
       return this.http.post(
         BackendService.baseUrl + "beez/loool/register",
@@ -89,12 +103,12 @@ export class UserService {
     }
 
     checkRole(response, role){
-      let roles=response['user']['roles']
-      let keys
+      let roles=response['user']['roles'];
+      let keys;
       if (roles) {
-        keys = Object.keys(roles)
+        keys = Object.keys(roles);
       }
-      return !!keys.filter(key=>roles[key] === role).length
+      return !!keys.filter(key=>roles[key] === role).length;
     }
 
     getAnonXCSFRtoken(){

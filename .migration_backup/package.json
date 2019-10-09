@@ -1,11 +1,11 @@
 {
   "nativescript": {
     "id": "io.beez.castinghub",
-    "tns-ios": {
-      "version": "6.1.0"
-    },
     "tns-android": {
       "version": "6.1.1"
+    },
+    "tns-ios": {
+      "version": "6.1.0"
     }
   },
   "description": "Beez Casting Hub",
@@ -33,6 +33,7 @@
     "nativescript-background-http": "^3.4.0",
     "nativescript-blur": "^2.0.0",
     "nativescript-cardview": "^3.1.1",
+    "nativescript-dev-typescript": "^0.10.0",
     "nativescript-imagepicker": "^6.1.2",
     "nativescript-iqkeyboardmanager": "^1.4.0",
     "nativescript-localize": "4.2.0",
@@ -52,12 +53,11 @@
     "@angular/compiler-cli": "~8.2.0",
     "@nativescript/schematics": "~0.3.0",
     "@ngtools/webpack": "~8.2.0",
-    "@types/node": "^12.7.5",
     "codelyzer": "~4.5.0",
     "nativescript-dev-webpack": "^1.2.0",
     "node-sass": "4.12.0",
     "tns-platform-declarations": "6.0.1",
     "tslint": "~5.11.0",
-    "typescript": "3.4.5"
+    "typescript": "~3.5.3"
   }
 }

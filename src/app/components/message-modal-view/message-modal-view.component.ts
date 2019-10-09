@@ -10,30 +10,29 @@ let blur = new Blur(); // pass true to enable limited usage on android (for now)
 @Component({
     selector: 'ns-message-modal',
     templateUrl: './message-modal-view.component.html',
-    styleUrls: ['./message-modal-view.component.css'],
+    styleUrls: ['./message-modal-view.component.scss'],
     moduleId: module.id
 })
 
 export class MessageModalViewComponent implements OnInit{
     private message
-    public buttonText
     private title
     private footer
-    @ViewChild("background") background: ElementRef;
+    public buttonText
+
+    @ViewChild("background", {static: false}) background: ElementRef;
 
     constructor(private _params: ModalDialogParams, page:Page) {
         this.message = _params.context.message;
         this.title = _params.context.title;
         this.footer = _params.context.footer;
         this.buttonText = _params.context.buttonText;
-
-
-
     }
 
-ngOnInit(){
+    ngOnInit(){
         blur.on(this.background.nativeElement, "dimmer", 10, "light", 2)
-}
+    }
+
     onClose() {
         this._params.closeCallback();
     }

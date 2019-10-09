@@ -19,7 +19,7 @@ import { ProfileService } from "./profile.service"
 @Component({
   selector: 'ns-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
+  styleUrls: ['./profile.component.scss'],
   moduleId: module.id,
 })
 
@@ -32,14 +32,14 @@ export class ProfileComponent implements OnInit {
   public isLoading: boolean = false;
   private _profile= {}
 
-  @ViewChild("tabButtons") tabButtons: ElementRef;
-  @ViewChild("polaroid") polaroid: ElementRef;
-  @ViewChild("profileTabs") profileTabs: ElementRef;
-  @ViewChild('tabHighlight') tabHighlight: ElementRef;
-  @ViewChild("tab1") tab1: ElementRef;
-  @ViewChild("tab2") tab2: ElementRef;
-  @ViewChild("tab3") tab3: ElementRef;
-  @ViewChild("tab4") tab4: ElementRef;
+  @ViewChild("tabButtons", {static: false}) tabButtons: ElementRef;
+  @ViewChild("polaroid", {static: false}) polaroid: ElementRef;
+  @ViewChild("profileTabs", {static: false}) profileTabs: ElementRef;
+  @ViewChild('tabHighlight', {static: false}) tabHighlight: ElementRef;
+  @ViewChild("tab1", {static: true}) tab1: ElementRef;
+  @ViewChild("tab2", {static: true}) tab2: ElementRef;
+  @ViewChild("tab3", {static: true}) tab3: ElementRef;
+  @ViewChild("tab4", {static: true}) tab4: ElementRef;
 
   constructor(private routerExtension: RouterExtensions,     private vcRef: ViewContainerRef,
     private modal: ModalDialogService, private profileService: ProfileService,private page: Page) {
@@ -122,8 +122,8 @@ export class ProfileComponent implements OnInit {
     if (this.editable) return
     let previousTab = this.selectedIndex;
     if (index != this.selectedIndex) {
-      this.tabs[index].className = "active";
-      this.tabs[previousTab].className = "not-active";
+      // this.tabs[index].className = "active"; // FIX 23/09
+      // this.tabs[previousTab].className = "not-active"; // FIX 23/09
       this.selectedIndex = index;
       this.tabHighlight.nativeElement.animate({
         translate: { x: index * screen.mainScreen.widthDIPs / 4, y: 0 },

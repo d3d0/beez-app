@@ -8,7 +8,7 @@ import { SelectModalViewComponent } from "../select-modal-view/select-modal-view
 @Component({
     selector: "BeezFloatLabelSelect",
     moduleId: module.id,
-    styleUrls: ['./beez-float-label-select.component.css'],
+    styleUrls: ['./beez-float-label-select.component.scss'],
     template: `
     <GridLayout rows="10, 32" (tap)="openModal()">
     <Label [visibility]="text?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label" [class.dark]="dark"></Label>

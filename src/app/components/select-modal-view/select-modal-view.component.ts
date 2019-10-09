@@ -15,12 +15,12 @@ interface Term {
 @Component({
     selector: 'ns-select-modal',
     templateUrl: './select-modal-view.component.html',
-    styleUrls: ['./select-modal-view.component.css'],
+    styleUrls: ['./select-modal-view.component.scss'],
     moduleId: module.id,
 })
 
 export class SelectModalViewComponent implements OnInit {
-    @ViewChild('picker') picker: ElementRef;
+    @ViewChild('picker', {static: false}) picker: ElementRef;
     private picked:string
     private list
     public vocabolary

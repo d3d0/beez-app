@@ -4,7 +4,7 @@ import { Color } from "tns-core-modules/color";
 @Component({
     selector: "BeezFloatLabelTextfield",
     moduleId: module.id,
-    styleUrls: ['./beez-float-label-textfield.component.css'],
+    styleUrls: ['./beez-float-label-textfield.component.scss'],
     template: `
         <GridLayout rows="10, 32">
             <Label [visibility]="editable?'visible':'hidden'" #label row="1" [text]="placeholder|uppercase" opacity="0" class="label" verticalAlignment="bottom"></Label>
@@ -36,8 +36,8 @@ export class BeezFloatLabelTextfield {
     @Input() keyboardType: string;
     @Output() textfieldEvent = new EventEmitter<string>()
 
-    @ViewChild("label") label: ElementRef;
-    @ViewChild("textField") textField: ElementRef;
+    @ViewChild("label", {static: false}) label: ElementRef;
+    @ViewChild("textField", {static: false}) textField: ElementRef;
     
     constructor() { }
 

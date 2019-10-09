@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:638348566092:android:43d605e47168d318",
+        "mobilesdk_app_id": "1:638348566092:android:482a59ddc453be04c81ee9",
         "android_client_info": {
-          "package_name": "io.beez.casting.app"
+          "package_name": "io.beez.castinghub"
         }
       },
       "oauth_client": [
@@ -25,15 +25,20 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638348566092-39vvn366s03cn9iih3970ttttfefv2ch.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "638348566092-s1ib98mtt0rdv6h4mhbdkm62rdvl09cj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.beez.castinghub"
+              }
+            }
+          ]
         }
       }
     }

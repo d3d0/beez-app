@@ -6,30 +6,35 @@ import { LottieView } from 'nativescript-lottie';
 import { RouterExtensions } from "nativescript-angular/router";
 import { localize } from "nativescript-localize";
 import { messaging, Message } from "nativescript-plugin-firebase/messaging";
-
-import { PushNotificationsService } from "../../shared/pushNotifications.service"
-import { openLink } from "../../shared/utils"
+import { PushNotificationsService } from "../../shared/pushNotifications.service";
+import { openLink } from "../../shared/utils";
 import { alert } from "../../shared/utils";
-import { User } from '../user.model'
+import { User } from '../user.model';
 import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
+import { ActivatedRoute } from "@angular/router";
+import * as dialogsModule from "ui/dialogs";
 
 registerElement('LottieView', () => LottieView);
 
 @Component({
   selector: 'ns-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
   moduleId: module.id
 })
 
 export class LoginComponent implements OnInit {
   user: User;
   private _lottieView: LottieView;
+  private openLink = openLink;
   private isLoading = false;
-  private openLink = openLink
+  private mostraPopup = false;
+  private trovato = false;
 
-  constructor( private userService: UserService,
+  constructor( 
+    private activeRoute: ActivatedRoute,
+    private userService: UserService,
     private pushService: PushNotificationsService,
     private page: Page,
     private routerExtensions: RouterExtensions) {
@@ -40,6 +45,32 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.page.actionBarHidden = true;
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+    console.log('l☯☯☯l > LoginComponent > ngOnInit() > this.isLoading:', this.isLoading);
+    console.log('@@@@@@@@@@@@ 0 > l☯☯☯l > ngOnInit() > BackendService > registeredUser()', BackendService.registeredUser);
+    console.log('@@@@@@@@@@@@ 0 > l☯☯☯l > ngOnInit() > BackendService > XCSFRtoken()', BackendService.XCSFRtoken);
+    console.log('@@@@@@@@@@@@ 0 > l☯☯☯l > ngOnInit() > BackendService > sessid()', BackendService.sessid);
+    console.log('@@@@@@@@@@@@ 0 > l☯☯☯l > ngOnInit() > BackendService > session_name()', BackendService.session_name);
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+  }
+
+  ngAfterViewInit() {
+      if(BackendService.registeredUser) {
+        this.alertSignup(localize("MESSAGES.CONFIRM_EMAIL"));
+        console.log('@@@@@@@@@@@@ 1 > l☯☯☯l > ngAfterViewInit() > BackendService > registeredUser()', BackendService.registeredUser);
+      }
+  }
+
+  alertSignup (message: string) {
+    return dialogsModule.alert({
+      title: "",
+      okButtonText: "OK",
+      message: message
+    }).then(function () {
+      console.log("Dialog closed!");
+      BackendService.registeredUser = false;
+      console.log('@@@@@@@@@@@@ 2 > l☯☯☯l > alertSignup() > BackendService > registeredUser()', BackendService.registeredUser);
+    });
   }
 
   lottieViewLoaded(event) {
@@ -47,6 +78,7 @@ export class LoginComponent implements OnInit {
   }
 
   goToSignup(){
+    // se this.isLoading == false allora puoi andare a registrazione
     if(!this.isLoading) this.routerExtensions.navigate(["/user/signup"]);
   }
 
@@ -63,48 +95,80 @@ export class LoginComponent implements OnInit {
       alert(localize("MESSAGES.ERROR_PASS"));
       return;
     }
+
     this.isLoading = true;
+
+    // --> getAnonXCSFRtoken() function
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
+      
+      // --> token
       BackendService.XCSFRtoken = result;
+      console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.XCSFRtoken: ', BackendService.XCSFRtoken);
+      console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.sessid: ', BackendService.sessid);
+      console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.session_name: ', BackendService.session_name);
+
+      // --> login() function
       this.userService.login(this.user).subscribe((result) => {
-        BackendService.session_name = result['session_name']
-        BackendService.sessid = result['sessid']
-        BackendService.XCSFRtoken = result['token']
-        BackendService.UID = result['user']['uid']
 
-        messaging.addOnPushTokenReceivedCallback(
-          token => {
-            this.pushService.push_token(token).subscribe(
-              result => console.log("resulult form pushservice", result),
-              err => console.log("resulult form pushservice ERR ", err)
-              )
-            console.log("Firebase plugin received a push token: " + token);
+        // --> dati utente
+        console.log('l☯☯☯l > LoginComponent > login() > user roles: ', result['user']['roles']);
+
+        BackendService.session_name = result['session_name'];
+        BackendService.sessid = result['sessid'];
+        BackendService.XCSFRtoken = result['token'];
+        BackendService.UID = result['user']['uid'];
+
+        Object.keys(result['user']['roles']).forEach(key => {
+          console.log('l☯☯☯l > LoginComponent > result user roles: ', result['user']['roles'][key]);
+          // --> USER PENDING --> LOGOUT
+          if (result['user']['roles'][key] == 'pending user') {
+            this.userService.logoff().subscribe((result) => {
+              console.log('logout da pending');
+              this.alertSignup(localize("MESSAGES.CONFIRM_EMAIL"));
+            }, (error) => {
+              console.log('logoff error ',error);
+              this.alertSignup(localize("MESSAGES.ERROR_SERVICE"));
+            });
           }
-          );
-
-        messaging.registerForPushNotifications({
-          onMessageReceivedCallback: (message: Message) => {
-            console.log("Push message received: " + message.title);
-          },
-
-          showNotifications: true,
-          showNotificationsWhenInForeground: true
-        }).then(() => {
-          console.log("Registered for push")
-
-        })
+          // --> USER NOT PENDING --> LOGIN
+          if (result['user']['roles'][key] == 'authenticated user') {
+            messaging.addOnPushTokenReceivedCallback(token => {
+                console.log("l☯☯☯l > LoginComponent > addOnPushTokenReceivedCallback() > Firebase plugin received a push token: " + token);
+                if (token) {
+                  this.pushService.push_token(token).subscribe((result) => {
+                    console.log("l☯☯☯l > pushService > push_token() > result from pushservice", result); // OK > Result getting the data!
+                  }, error => {
+                    console.log("l☯☯☯l > pushService > push_token() > error from pushservice ", error); // NO > Error getting the data!
+                  });
+                }
+              }
+            );
+            messaging.registerForPushNotifications({
+              onMessageReceivedCallback: (message: Message) => {
+                console.log("Push message received: " + message.title);
+              },
+              showNotifications: true,
+              showNotificationsWhenInForeground: true
+            }).then(() => {
+              console.log("Registered for push")
+            })
+            this.routerExtensions.navigate(["../home"], { clearHistory: true });
+          }
+        });
         this.isLoading = false;
-        this.routerExtensions.navigate(["../home"], { clearHistory: true });
       },
       (error) => {
-        BackendService.reset()
         this.isLoading = false;
-        console.log('login user error ', error);
-        if (error.status == 407)
+        console.log('login user error', error);
+        if (error.status == 407) {
           alert(localize("MESSAGES.CONFIRM_EMAIL"));
-        else
+        }
+        else {
           alert(localize("MESSAGES.ERROR_LOGIN"));
+        }
+        BackendService.reset();
       });
+
     },
     (error) => {
       this.isLoading = false;

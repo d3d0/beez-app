@@ -135,7 +135,7 @@
   },
   "MESSAGES": {
     "NO_CONNECTION" : "Sembra che tu non sia connesso a internet.",
-    "CONFIRM_EMAIL" : "Riceverai via e-mail un link per attivare il tuo account, clicca sul link per completare la procedura.",
+    "CONFIRM_EMAIL" : "Ti abbiamo inviato una e-mail con un link per attivare il tuo account, clicca sul link per completare la procedura.",
     "RESET_PASS" : "La tua password è stata resettata!",
     "RESET_MAIL_SENT" : "Riceverai alla tua e-mail il link per resettare la password.",
     "ERROR_TOKEN" : "Ci dispiace ma il token di reset password non è valido.",

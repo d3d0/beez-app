@@ -10,16 +10,16 @@ import { View } from "ui/core/view";
 @Component({
   selector: 'ns-castings',
   templateUrl: './castings.component.html',
-  styleUrls: ['./castings.component.css'],
+  styleUrls: ['./castings.component.scss'],
   moduleId: module.id,
 })
 
 export class CastingsComponent implements OnInit{
 
-  @ViewChild('tabHighlight') tabHighlight: ElementRef;
-  @ViewChild('tab1') tab1: ElementRef;
-  @ViewChild('tab2') tab2: ElementRef;
-  @ViewChild('tab3') tab3: ElementRef;
+  @ViewChild('tabHighlight', {static: true}) tabHighlight: ElementRef;
+  @ViewChild('tab1', {static: true}) tab1: ElementRef;
+  @ViewChild('tab2', {static: true}) tab2: ElementRef;
+  @ViewChild('tab3', {static: true}) tab3: ElementRef;
   @Output() loading = new EventEmitter();
   @Output() loaded = new EventEmitter();
 
@@ -40,15 +40,15 @@ export class CastingsComponent implements OnInit{
     this.tabs[0] = <View>this.tab1.nativeElement;
     this.tabs[1] = <View>this.tab2.nativeElement;
     this.tabs[2] = <View>this.tab3.nativeElement;
-    this.tabs[0].className = "active";
-    // this.tabs[0].style.color = new Color("#00D796");
+    this.tabs[0].className = "active"; // FIX 23/09
+    // this.tabs[0].style.color = new Color("#00D796"); // FIX 23/09
   }
 
   public onSelectedIndexChange(index) {
     let previousTab = this.selectedIndex;
     if (index != this.selectedIndex) {
-      this.tabs[index].className = "active";
-      this.tabs[previousTab].className = "not-active";
+      this.tabs[index].className = "active"; // FIX 23/09
+      this.tabs[previousTab].className = "not-active"; // FIX 23/09
       this.selectedIndex = index;
     }
   }

@@ -6,12 +6,12 @@ import { DatePicker } from "tns-core-modules/ui/date-picker";
 @Component({
     selector: 'ns-select-date-modal',
     templateUrl: './select-date-modal-view.component.html',
-    styleUrls: ['./select-date-modal-view.component.css'],
+    styleUrls: ['./select-date-modal-view.component.scss'],
     moduleId: module.id,
 })
 
 export class SelectDateModalViewComponent {
-    @ViewChild("datepicker") datePickerElement: ElementRef;
+    @ViewChild("datepicker", {static: false}) datePickerElement: ElementRef;
     private picked:string
     private currentdate: Date;
     private title

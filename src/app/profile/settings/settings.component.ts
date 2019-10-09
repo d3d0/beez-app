@@ -10,7 +10,7 @@ import { alert, getIconSource } from "../../shared/utils";
 @Component({
   selector: 'ns-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css'],
+  styleUrls: ['./settings.component.scss'],
   moduleId: module.id,
 })
 

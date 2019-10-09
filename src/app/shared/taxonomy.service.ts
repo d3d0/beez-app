@@ -23,6 +23,7 @@ export class TaxonomyService {
   private allTerms
   private subscription
   private serviceURl = localize('LANG') === 'IT' ? BackendService.term_ita : BackendService.term_eng
+  
   constructor( private http: HttpClient, private zone:NgZone ) {
     this.load().subscribe(()=>{},(err)=>console.log('err TaxonomyService: ', err))
     console.log('hello from TaxonomyService')

@@ -3,7 +3,7 @@ import { Component, ElementRef, Input, Output, ViewContainerRef, EventEmitter, V
 @Component({
     selector: "BeezInlineTextfield",
     moduleId: module.id,
-    styleUrls: ['./beez-inline-textfield.component.css'],
+    styleUrls: ['./beez-inline-textfield.component.scss'],
     template: `
         <StackLayout [borderWidth]="last?0:1" orientation="horizontal">
             <Label class="label-textfield" [text]="placeholder"></Label>
@@ -31,7 +31,7 @@ export class BeezInlineTextfield {
     @Input() returnKeyType: string;
     @Input() keyboardType: string;
     @Output() textfieldEvent = new EventEmitter<string>()
-    @ViewChild("textField") textField: ElementRef;
+    @ViewChild("textField", {static: false}) textField: ElementRef;
 
     constructor() { }
     

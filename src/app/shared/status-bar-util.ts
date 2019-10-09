@@ -10,7 +10,8 @@ export function setStatusBarColors() {
   // Make the iOS status bar transparent with white text.
   if (application.ios) {
     application.on("launch", () => {
-      utils.ios.getter(UIApplication, UIApplication.sharedApplication).statusBarStyle = UIStatusBarStyle.LightContent;
+      // utils.ios.getter(UIApplication, UIApplication.sharedApplication).statusBarStyle = UIStatusBarStyle.LightContent;
+      UIApplication.sharedApplication.statusBarStyle.UIStatusBarStyle.LightContent(true);
     });
   }
 

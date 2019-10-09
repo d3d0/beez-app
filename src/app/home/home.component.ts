@@ -19,7 +19,7 @@ export function onLayoutChanged(args: EventData) {
 @Component({
   selector: 'ns-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
   moduleId: module.id,
 })
 export class HomeComponent implements OnInit {
@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
         this.modal.showModal(MessageModalViewComponent, options)
       })
     }
+    
   }
 
   getIconSource(icon: string): string {
