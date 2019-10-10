@@ -134,6 +134,10 @@
     "PROVINCE": "Provincia"
   },
   "MESSAGES": {
+    "REQUIRED_NAME" : "Il campo nome è obbligatorio!",
+    "REQUIRED_SURNAME" : "Il campo cognome è obbligatorio!",
+    "REQUIRED_DATE" : "Il campo data di nascita è obbligatorio!",
+    "REQUIRED_GENDER" : "Il campo sesso è obbligatorio!",
     "NO_CONNECTION" : "Sembra che tu non sia connesso a internet.",
     "CONFIRM_EMAIL" : "Ti abbiamo inviato una e-mail con un link per attivare il tuo account, clicca sul link per completare la procedura.",
     "RESET_PASS" : "La tua password è stata resettata!",

@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
   public editable = false;
   private tabs = [];
   public isLoading: boolean = false;
-  private _profile= {}
+  private _profile= {};
 
   @ViewChild("tabButtons", {static: false}) tabButtons: ElementRef;
   @ViewChild("polaroid", {static: false}) polaroid: ElementRef;
@@ -41,8 +41,12 @@ export class ProfileComponent implements OnInit {
   @ViewChild("tab3", {static: true}) tab3: ElementRef;
   @ViewChild("tab4", {static: true}) tab4: ElementRef;
 
-  constructor(private routerExtension: RouterExtensions,     private vcRef: ViewContainerRef,
-    private modal: ModalDialogService, private profileService: ProfileService,private page: Page) {
+  constructor(
+    private routerExtension: RouterExtensions,
+    private vcRef: ViewContainerRef,
+    private modal: ModalDialogService, 
+    private profileService: ProfileService,
+    private page: Page) {
     console.log('hello from PROFILE component');
   }
   
@@ -68,18 +72,19 @@ export class ProfileComponent implements OnInit {
   }
 
   get profile(){
-    return  this._profile
+    return this._profile;
   }
 
   textfieldEvent(text, field){
-    if(field)
-      this.profile[field]=text
+    if(field) {
+      this.profile[field]=text;
+    }
   }
 
   selectEvent(text, field){
     if(field){
-      this.profile[field]=text.tid
-      console.log('selectEvent', this.profile[field])
+      this.profile[field]=text.tid;
+      console.log('selectEvent', this.profile[field]);
     }
   }
 
@@ -93,7 +98,10 @@ export class ProfileComponent implements OnInit {
   }
 
   editSave(){
-    this.isLoading = true
+    this.isLoading = true;
+
+    console.log('l☯☯☯l > ProfileComponent > editSave() > this.user: ', this.profile);
+
     this.profileService.edit(this.profile).subscribe(
       (result) => {
         // alert('Profilo aggiornato!')

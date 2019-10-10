@@ -14,6 +14,7 @@ import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
 import { ActivatedRoute } from "@angular/router";
 import * as dialogsModule from "ui/dialogs";
+// import { ListPicker } from "tns-core-modules/ui/list-picker";
 
 registerElement('LottieView', () => LottieView);
 
@@ -31,6 +32,8 @@ export class LoginComponent implements OnInit {
   private isLoading = false;
   private mostraPopup = false;
   private trovato = false;
+
+  // public years: Array<number> = [1980, 1990, 2000, 2010, 2020];
 
   constructor( 
     private activeRoute: ActivatedRoute,
@@ -60,6 +63,11 @@ export class LoginComponent implements OnInit {
         console.log('@@@@@@@@@@@@ 1 > l☯☯☯l > ngAfterViewInit() > BackendService > registeredUser()', BackendService.registeredUser);
       }
   }
+
+  // public onSelectedIndexChanged(event) {
+  //   const picker = <ListPicker>event.object;
+  //   console.log(`index: ${picker.selectedIndex}; item" ${this.years[picker.selectedIndex]}`);
+  // }
 
   alertSignup (message: string) {
     return dialogsModule.alert({

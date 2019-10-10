@@ -30,7 +30,8 @@ export class MessageModalViewComponent implements OnInit{
     }
 
     ngOnInit(){
-        blur.on(this.background.nativeElement, "dimmer", 10, "light", 2)
+        // ERROR TypeError: undefined is not an object (evaluating 'this.background.nativeElement')
+        // blur.on(this.background.nativeElement, "dimmer", 10, "light", 2)
     }
 
     onClose() {

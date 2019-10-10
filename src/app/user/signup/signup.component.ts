@@ -8,7 +8,7 @@ import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
 import { TaxonomyService } from "../../shared/taxonomy.service";
 import { openLink } from "../../shared/utils"
-
+import { ListPicker } from "tns-core-modules/ui/list-picker";
 import * as dialogsModule from "ui/dialogs";
 import { ActivatedRoute, Router } from "@angular/router";
 
@@ -28,6 +28,7 @@ export class SignupComponent implements OnInit{
   private tabs = [];
   private openLink = openLink;
   private registrato = false;
+  public editable: boolean;
 
   // @ViewChild('tabHighlight') tabHighlight: ElementRef;
   @ViewChild('tab1', {static: true}) tab1: ElementRef;
@@ -52,6 +53,8 @@ export class SignupComponent implements OnInit{
     console.log('l☯☯☯l > SignupComponent > ngOnInit() > this.isLoading:', this.isLoading);
     BackendService.registeredUser = false;
     console.log('@@@@@@@@@@@@ > l☯☯☯l > BackendService > registeredUser()', BackendService.registeredUser);
+    this.editable = true;
+    console.log('editable 0 -->', this.editable);
   }
 
   public onSelectedIndexChange(index) {
@@ -60,6 +63,16 @@ export class SignupComponent implements OnInit{
       // this.tabs[this.selectedIndex].className = "not-active"; // FIX 23/09
       this.selectedIndex = index;
     }
+  }
+
+  selectEvent(value, field){
+    if (field) {
+      this.user[field]=value;
+      console.log('selectEvent', this.user[field]);
+    }
+  }
+  textfieldEvent(text, field){
+    if(field) this.user[field]=text;
   }
 
   // d3d0 --> alert spostata in login
@@ -78,6 +91,22 @@ export class SignupComponent implements OnInit{
       alert(localize("MESSAGES.NO_CONNECTION"));
       return;
     }
+    if (!User.isValidName(this.user.name)) {
+      alert(localize("MESSAGES.REQUIRED_NAME"));
+      return;
+    }
+    if (!User.isValidSurname(this.user.surname)) {
+      alert(localize("MESSAGES.REQUIRED_SURNAME"));
+      return;
+    }
+    if (!User.isValidDate(this.user.date_of_birth)) {
+      alert(localize("MESSAGES.REQUIRED_DATE"));
+      return;
+    }
+    if (!User.isValidGender(this.user.gender)) {
+      alert(localize("MESSAGES.REQUIRED_GENDER"));
+      return;
+    }
     if (!User.isValidEmail(this.user.mail)) {
       alert(localize("MESSAGES.ERROR_EMAIL"));
       return;
@@ -86,7 +115,10 @@ export class SignupComponent implements OnInit{
       alert(localize("MESSAGES.ERROR_PASS"));
       return;
     }
+
     this.isLoading = true;
+    this.editable = true;
+    console.log('editable 1 -->', this.editable);
 
     // --> getAnonXCSFRtoken() function
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
@@ -94,11 +126,14 @@ export class SignupComponent implements OnInit{
       // --> token
       BackendService.XCSFRtoken = result;
       //console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.XCSFRtoken: ', BackendService.XCSFRtoken);
+      console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > this.user: ', this.user);
 
       // --> login() function
       this.userService.signup(this.user).subscribe((result) => {
         console.log('l☯☯☯l > UserService > signup() > result:', result);
         this.isLoading = false;
+        this.editable = false;
+        console.log('editable 2 -->', this.editable);
         this.routerExtensions.navigate(["/user/login"], { clearHistory: true }); // OK
         // d3d0 --> imposto registrato a true 
         BackendService.registeredUser = true;
@@ -108,6 +143,8 @@ export class SignupComponent implements OnInit{
       }, (error) => {
         BackendService.reset()
         this.isLoading = false;
+        this.editable = false;
+        console.log('editable 2 -->', this.editable);
         if (error.status == 406) {
           alert(localize("MESSAGES.ERROR_ACCOUNT_DOUBLE"));
         }
@@ -118,19 +155,13 @@ export class SignupComponent implements OnInit{
       });
     }, (error) => {
       this.isLoading = false;
+      this.editable = false;
+      console.log('editable 3 -->', this.editable);
       console.log('getAnonXCSFRtoken error: ',error);
     });
 
     console.log('l☯☯☯l > SignupComponent > signup() > this.isLoading:', this.isLoading);
 
-  }
-
-  selectEvent(value, field){
-    if (field) this.user[field]=value;
-  }
-
-  textfieldEvent(text, field){
-    if (field) this.user[field]=text;
   }
 
   goBack() {

@@ -12,9 +12,9 @@ import { DatePicker } from "tns-core-modules/ui/date-picker";
 
 export class SelectDateModalViewComponent {
     @ViewChild("datepicker", {static: false}) datePickerElement: ElementRef;
-    private picked:string
+    private picked:string;
     private currentdate: Date;
-    private title
+    private title;
 
     constructor( private router: RouterExtensions, private params: ModalDialogParams ) {
         this.currentdate = params.context.currentdate;

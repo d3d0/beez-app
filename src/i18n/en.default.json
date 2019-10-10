@@ -134,6 +134,10 @@
     "PROVINCE": "Province"
   },
   "MESSAGES": {
+    "REQUIRED_NAME" : "Field name is required!",
+    "REQUIRED_SURNAME" : "Field surname is required!",
+    "REQUIRED_DATE" : "Field date of birth is required!",
+    "REQUIRED_GENDER" : "Field gender is required!",
     "NO_CONNECTION" : "Sorry, BEEZ needs an internet connection.",
     "CONFIRM_EMAIL" : "We send you a link by mail to activate your account, please click the link to complete the process.",
     "RESET_PASS" : "Your password has been successfully reset!",

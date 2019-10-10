@@ -50,7 +50,6 @@
       <StackLayout col="3" (tap)="onSelectedIndexChange(3)">
         <Label #tab4 [text]="'PROFILE.CONTACTS'|L|uppercase" [class.disabled]="editable && selectedIndex != 3" ></Label>
       </StackLayout>
-
     </GridLayout>
 
     <StackLayout class="profile-info">
@@ -59,6 +58,7 @@
           <Label [visibility]="editable ? 'visible' : 'collapsed'" class="banner-top-card" [text]="'MODIFICA LE TUE INFO'"></Label>
           <!-- tab -->
           <StackLayout class="wrapper" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
+            <!-- title -->
             <AbsoluteLayout class="edit" [visibility]="!editable ? 'visible' : 'collapsed'" [visibility]="selectedIndex != 2 ? 'visible' : 'collapsed'">
               <StackLayout width="100%" top=0 verticalAlignment="center" horizontalAlignment="right" [visibility]="!editable ? 'visible' : 'collapsed'" orientation="horizontal">
                 <Image src="res://edit" stretch="none" (tap)="toogleEditable()" ></Image>
@@ -66,6 +66,7 @@
               </StackLayout>
               <Label top=0 class="header" [text]="'PROFILE.INFO'|L|titlecase"></Label>
             </AbsoluteLayout>
+            <!-- info -->
             <BeezInlineTextfield [editable]="editable" [editable]="isEditable"  [text]="profile.name"  (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.surname"  (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></BeezInlineTextfield>
             <BeezInlineSelect [editable]="editable" [value]="profile.gender" (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezInlineSelect>
@@ -75,6 +76,7 @@
           </StackLayout>
           <!-- tab -->
           <StackLayout class="wrapper" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'" >
+            <!-- title -->
             <AbsoluteLayout class="edit" [visibility]="!editable ? 'visible' : 'collapsed'" [visibility]="selectedIndex != 2 ? 'visible' : 'collapsed'">
               <StackLayout width="100%" top=0 verticalAlignment="center" horizontalAlignment="right" [visibility]="!editable ? 'visible' : 'collapsed'" orientation="horizontal">
                 <Image src="res://edit" stretch="none" (tap)="toogleEditable()" ></Image>
@@ -82,6 +84,7 @@
               </StackLayout>
               <Label top=0 class="header" [text]="'PROFILE.DETAILS'|L|titlecase"></Label>
             </AbsoluteLayout>
+            <!-- info -->
             <BeezInlineTextfield [editable]="editable" [text]="profile.height"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.HEIGHT'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.breast"  (textfieldEvent)="textfieldEvent($event,'breast')" [placeholder]="'USER.BREAST'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.waist"  (textfieldEvent)="textfieldEvent($event,'waist')" [placeholder]="'USER.WAIST'|L"></BeezInlineTextfield>
@@ -102,6 +105,7 @@
           </StackLayout>
           <!-- tab -->
           <StackLayout class="wrapper" [visibility]="selectedIndex === 3 ? 'visible' : 'collapsed'">
+            <!-- title -->
             <AbsoluteLayout class="edit" [visibility]="!editable ? 'visible' : 'collapsed'" [visibility]="selectedIndex != 2 ? 'visible' : 'collapsed'">
               <StackLayout width="100%" top=0 verticalAlignment="center" horizontalAlignment="right" [visibility]="!editable ? 'visible' : 'collapsed'" orientation="horizontal">
                 <Image src="res://edit" stretch="none" (tap)="toogleEditable()" ></Image>
@@ -109,6 +113,7 @@
               </StackLayout>
               <Label top=0 class="header" [text]="'PROFILE.CONTACTS'|L|titlecase"></Label>
             </AbsoluteLayout>
+            <!-- info -->
             <BeezInlineTextfield [editable]="editable" [text]="profile.phone"  (textfieldEvent)="textfieldEvent($event,'phone')" [placeholder]="'USER.PHONE'|L"></BeezInlineTextfield>
             <BeezInlineSelect [editable]="editable" [value]="profile.agency" (selectEvent)="selectEvent($event,'agency')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezInlineSelect>
             <BeezInlineTextfield [editable]="editable" [text]="profile.website"  (textfieldEvent)="textfieldEvent($event,'website')" [placeholder]="'USER.WEBSITE'|L"></BeezInlineTextfield>
