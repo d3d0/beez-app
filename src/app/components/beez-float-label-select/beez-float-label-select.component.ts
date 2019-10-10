@@ -22,39 +22,34 @@ export class BeezFloatLabelSelect implements OnInit {
     @Input() placeholder: string;
     @Input() type: string;
     @Input() dark: boolean;
+    @Input() tid: string;
     @Output() selectEvent = new EventEmitter<string>();
     @Input() editable: boolean;
-
-    private text: string;
     private list;
+    private text: string;
+    // private tid: string;
     // private isEditable;
+    @Input() set value_name (value:string){ this.text = value; }
+    // @Input() set tid (value:string){ this.tid = value; }
+    // @Input() set editable(value: boolean){ this.isEditable=value; }
 
     constructor(
         private vcRef: ViewContainerRef,
         private modal: ModalDialogService) {}
 
-    @Input() 
-    set value (value:string){
-                 this.text = value 
-    }
-    
-    // @Input()
-    // set editable(value: boolean){
-    //     this.isEditable=value;
-    // }
-
     ngOnInit(){
-        // console.log('value ' , this.value)
+        // console.log('value ' , this.value_name);
+        // console.log('value ' , this.value_tid);
         // if (this.type == "datapicker")
-        //     this.text = formatDate(this.value,'dd MMMM yy','en')
+        //      this.text = formatDate(this.value,'dd MMMM yy','en')
         // else
-        //  this.text = this.value 
+        //      this.text = this.value 
     }
 
     private openModal(){
         // if(!this.isEditable) return;
-        // d3d30 --> bug fix select
-        console.log('editable -->', this.editable);
+        // d3d0 --> bug fix select
+        console.log('****** > l☯☯☯l > BeezFloatLabelSelect > openModal() > editable', this.editable);
         if (!this.editable) return;
 
         if (this.type == "datapicker"){
@@ -69,10 +64,15 @@ export class BeezFloatLabelSelect implements OnInit {
             this.createTaxonomyModelView().then((value)=> {
                 if(value){
                     this.text=value.name;
-                    this.selectEvent.emit(value.tid);
+                    this.tid=value.tid;
+                    // d3d0 --> bug fix tid --> NO!
+                    // this.selectEvent.emit(value.tid);
+                    this.selectEvent.emit(value);
                 }
             })
         }
+        console.log('****** > l☯☯☯l > BeezFloatLabelSelect > openModal() > text', this.text);
+        console.log('****** > l☯☯☯l > BeezFloatLabelSelect > openModal() > tid', this.tid);
     }
 
     // datepicker
@@ -89,7 +89,7 @@ export class BeezFloatLabelSelect implements OnInit {
     // taxonomy
     private createTaxonomyModelView(): Promise<any> {
         const options: ModalDialogOptions = {
-            context: { vocabolary: this.type , title: this.placeholder, tid: ''},
+            context: { vocabolary: this.type , title: this.placeholder, tid: this.tid},
             fullscreen: true,
             viewContainerRef: this.vcRef
         };

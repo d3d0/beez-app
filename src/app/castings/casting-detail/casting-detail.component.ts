@@ -44,6 +44,12 @@ export class CastingDetailComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit()');
+
+    this.selectedAgency.name = 'Abstract Talent'; // TEST
+    this.selectedAgency.tid = '993'; // TEST
+
+    console.log('l☯☯☯l > CastingDetailComponent > ngOnInit() > select tid',this.selectedAgency.tid);
+
     this.activeRoute.params.subscribe((params) => {
       this.casting_id = params.id
       this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
@@ -56,67 +62,72 @@ export class CastingDetailComponent implements OnInit {
   }
 
   private toggleCheckAgency() {
-
-      console.log(this.selectedAgency)
+      console.log('toggleCheckAgency',this.selectedAgency);
       this.noAgency = !this.noAgency
-      if (this.noAgency) this.selectedAgency= new Agency();
+      if (this.noAgency) {
+        this.selectedAgency = new Agency();
+        // this.selectedAgency.tid = '369'; // d3d0 --> bug fix "noagency" tid
+      }
+      console.log('l☯☯☯l > CastingDetailComponent > toggleCheckAgency > select tid',this.selectedAgency.tid);
   }
 
   selectEvent(value, field){
-    console.log(value, field)
-    if (field) this.selectedAgency = value
+    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select value',value);
+    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select field',field);
+    if (field) {
+      // d3d0 --> bug fix tid --> NO!
+      // this.selectedAgency.tid = value;
+      this.selectedAgency = value;
+    }
+    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select tid',this.selectedAgency.tid);
   }
 
-private changeAgency(){
-  if (this.AgencyCheckBox.nativeElement.checked) {
-    this.selectedAgency = new Agency()
+  private changeAgency(){
+    console.log('l☯☯☯l > changeAgency');
+    if (this.AgencyCheckBox.nativeElement.checked) {
+      this.selectedAgency = new Agency(); 
+    }
   }
-}
 
-private candidate(){
-  this.isLoading =true
-  this.castingsService.cadidate(this.user_id,this.casting_id).subscribe(
-    (result)=>{
-      this.isLoading =false
-      this.castingsService.load().subscribe()
-      alert(localize("MESSAGES.CANDIDATE")).then(
-        ()=> this.goBack()
-        )
-    },
-    (error)=> {
-      this.isLoading =false
-      if (error.status === 400) alert(localize(error.error[0]))
-        else alert(localize("ERROR_SERVICE")).then(
-        ()=> this.goBack()
-        )
-    })
-}
-
-private partecipate(action){
-  this.isLoading =true
-  this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe(
-    (result)=>{
-      this.isLoading =false
-      this.castingsService.load().subscribe()
-      alert(localize("MESSAGES.CANDIDATE")).then(
-        ()=> this.goBack()
-        )
-    },
-    (error)=> {
-      this.isLoading =false
-      console.log(error)
-      if (error.status === 400) alert(localize(error.error[0]))
+  private partecipate(action){
+    this.isLoading =true
+    this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe((result)=>{
+        console.log('result',result);
+        this.isLoading = false;
+        this.castingsService.load().subscribe();
+        alert(localize("MESSAGES.CANDIDATE")).then(()=> this.goBack());
+      },
+      (error)=> {
+        this.isLoading =false;
+        console.log(error);
+        if (error.status === 400) alert(localize(error.error[0]))
         else alert(localize("ERROR_SERVICE"));
-    })
-}
+      });
+  }
 
-private goBack(): void{
-  this.routerExtension.back({ relativeTo: this.activeRoute });
-}
+  private candidate(){
+    this.isLoading =true
+    this.castingsService.cadidate(this.user_id, this.casting_id).subscribe((result)=>{
+        console.log('result',result);
+        this.isLoading = false;
+        this.castingsService.load().subscribe();
+        alert(localize("MESSAGES.CANDIDATE")).then(()=> this.goBack());
+      },
+      (error)=> {
+        this.isLoading =false;
+        console.log(error);
+        if (error.status === 400) alert(localize(error.error[0]))
+        else alert(localize("ERROR_SERVICE")).then(()=> this.goBack())
+      });
+  }
 
-private share(){
-  let text = localize('MESSAGES.SHARE_WITH_A_FRIEND')
-  SocialShare.shareText(text);
-}
+  private goBack(): void{
+    this.routerExtension.back({ relativeTo: this.activeRoute });
+  }
+
+  private share(){
+    let text = localize('MESSAGES.SHARE_WITH_A_FRIEND')
+    SocialShare.shareText(text);
+  }
 
 }

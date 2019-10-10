@@ -14,7 +14,6 @@ import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
 import { ActivatedRoute } from "@angular/router";
 import * as dialogsModule from "ui/dialogs";
-// import { ListPicker } from "tns-core-modules/ui/list-picker";
 
 registerElement('LottieView', () => LottieView);
 
@@ -33,8 +32,6 @@ export class LoginComponent implements OnInit {
   private mostraPopup = false;
   private trovato = false;
 
-  // public years: Array<number> = [1980, 1990, 2000, 2010, 2020];
-
   constructor( 
     private activeRoute: ActivatedRoute,
     private userService: UserService,
@@ -50,10 +47,10 @@ export class LoginComponent implements OnInit {
     this.page.actionBarHidden = true;
     console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
     console.log('l☯☯☯l > LoginComponent > ngOnInit() > this.isLoading:', this.isLoading);
-    console.log('@@@@@@@@@@@@ 0 > l☯☯☯l > ngOnInit() > BackendService > registeredUser()', BackendService.registeredUser);
-    console.log('@@@@@@@@@@@@ 0 > l☯☯☯l > ngOnInit() > BackendService > XCSFRtoken()', BackendService.XCSFRtoken);
-    console.log('@@@@@@@@@@@@ 0 > l☯☯☯l > ngOnInit() > BackendService > sessid()', BackendService.sessid);
-    console.log('@@@@@@@@@@@@ 0 > l☯☯☯l > ngOnInit() > BackendService > session_name()', BackendService.session_name);
+    console.log('l☯☯☯l > LoginComponent > ngOnInit() > BackendService.registeredUser', BackendService.registeredUser);
+    console.log('l☯☯☯l > LoginComponent > ngOnInit() > BackendService.XCSFRtoken', BackendService.XCSFRtoken);
+    console.log('l☯☯☯l > LoginComponent > ngOnInit() > BackendService.sessid', BackendService.sessid);
+    console.log('l☯☯☯l > LoginComponent > ngOnInit() > BackendService.session_name', BackendService.session_name);
     console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
   }
 

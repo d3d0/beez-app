@@ -13,10 +13,10 @@
 "_MESSAGES_RESET_PASS_ZK9xkR" = "Your password has been successfully reset!";
 "_MESSAGES_CONFIRM_EMAIL_Z2u90hj" = "We send you a link by mail to activate your account, please click the link to complete the process.";
 "_MESSAGES_NO_CONNECTION_Z1G6ayt" = "Sorry, BEEZ needs an internet connection.";
-"_MESSAGES_REQUIRED_GENDER_nWfC1" = "This field gender is required!";
-"_MESSAGES_REQUIRED_DATE_26Nr2G" = "This field date of birth is required!";
-"_MESSAGES_REQUIRED_SURNAME_Z5OHfu" = "This field surname is required!";
-"_MESSAGES_REQUIRED_NAME_26OK2T" = "This field name is required!";
+"_MESSAGES_REQUIRED_GENDER_nWfC1" = "Field gender is required!";
+"_MESSAGES_REQUIRED_DATE_26Nr2G" = "Field date of birth is required!";
+"_MESSAGES_REQUIRED_SURNAME_Z5OHfu" = "Field surname is required!";
+"_MESSAGES_REQUIRED_NAME_26OK2T" = "Field name is required!";
 "_USER_PROVINCE_Z1HYvx5" = "Province";
 "_USER_COUNTRY_175BwF" = "Country";
 "_USER_POSTAL_CODE_Z1qj31A" = "Postal Code";
@@ -95,8 +95,8 @@
 "_CASTINGS_FEATURES_1dOB1J" = "Features";
 "_CASTINGS_DATE_LOCATION_Z2hcAVE" = "Date and location";
 "_CASTINGS_INFORMATION_hLST1" = "Information";
-"_CASTINGS_ATTEND_1R59MI" = "AUDITION";
-"_CASTINGS_CONCLUDED_1RBVcj" = "SHOOTING";
+"_CASTINGS_CONCLUDED_1RBVcj" = "MY OPTIONS";
+"_CASTINGS_ATTEND_1R59MI" = "MY AUDITIONS";
 "_CASTINGS_ONGOING_1gX41U" = "NEW";
 "_CASTINGS_CASTING_Z1zSgUB" = "CASTING";
 "_CASTINGS_CASTINGS_1BoPqT" = "CASTINGS";
@@ -110,7 +110,8 @@
 "_SIGNUP_REGISTRATION_MINOR_TITLE_Zfpos2" = "Registration of an under-18";
 "_SIGNUP_REGISTRATION_TEXT_VdTRz" = "Please fill up the all fields to correctly complete your registration on BEEZ";
 "_SIGNUP_REGISTRATION_TITLE_Z1q6WJg" = "New User Account Registration";
-"_SIGNUP_REGISTRATION_MINOR_Z1qzsAR" = "Under-18 Account Registration";
+"_SIGNUP_REGISTRATION_TAB_MINOR_Z8sRTp" = "UNDER-18";
+"_SIGNUP_REGISTRATION_TAB_ADULT_Z9hkrL" = "ADULT";
 "_SIGNUP_REGISTRATION_1GSckW" = "REGISTRATION";
 "_SIGNUP_SIGNUP_54hYw" = "Sign Up";
 "WELCOME_BUTTON" = "OK";

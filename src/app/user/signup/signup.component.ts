@@ -50,11 +50,15 @@ export class SignupComponent implements OnInit{
     this.tabs[1] = this.tab2.nativeElement;
     // this.tabs[0].className = "active"; // FIX 23/09
     // this.tabs[0].style.color = new Color("#00D796"); 
-    console.log('l☯☯☯l > SignupComponent > ngOnInit() > this.isLoading:', this.isLoading);
+    console.log('l☯☯☯l > SignupComponent > ngOnInit() > this.isLoading', this.isLoading);
+    
+    // d3d0 --> imposto registrato a false 
     BackendService.registeredUser = false;
-    console.log('@@@@@@@@@@@@ > l☯☯☯l > BackendService > registeredUser()', BackendService.registeredUser);
+    console.log('l☯☯☯l > SignupComponent > ngOnInit() > BackendService.registeredUser', BackendService.registeredUser);
+    
+    // d3d0 --> imposto editable a true 
     this.editable = true;
-    console.log('editable 0 -->', this.editable);
+    console.log('l☯☯☯l > SignupComponent > ngOnInit() > editable', this.editable);
   }
 
   public onSelectedIndexChange(index) {
@@ -66,9 +70,18 @@ export class SignupComponent implements OnInit{
   }
 
   selectEvent(value, field){
+    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select value',value);
+    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select field',field);
     if (field) {
-      this.user[field]=value;
-      console.log('selectEvent', this.user[field]);
+      // d3d0 fix --> se field è gender allora usiamo value.tid
+      if(field === 'gender') {
+        console.log('ok');
+        this.user[field]=value.tid;
+        console.log('selectEvent', this.user[field]);
+      } else {
+        this.user[field]=value;
+        console.log('selectEvent', this.user[field]);
+      }
     }
   }
   textfieldEvent(text, field){
@@ -118,33 +131,35 @@ export class SignupComponent implements OnInit{
 
     this.isLoading = true;
     this.editable = true;
-    console.log('editable 1 -->', this.editable);
 
     // --> getAnonXCSFRtoken() function
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
 
       // --> token
       BackendService.XCSFRtoken = result;
-      //console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.XCSFRtoken: ', BackendService.XCSFRtoken);
-      console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > this.user: ', this.user);
+      // console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.XCSFRtoken: ', BackendService.XCSFRtoken);
+      // console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > this.user: ', this.user);
 
       // --> login() function
       this.userService.signup(this.user).subscribe((result) => {
-        console.log('l☯☯☯l > UserService > signup() > result:', result);
+        console.log('l☯☯☯l > UserService > signup() > result', result);
         this.isLoading = false;
+        
+        // d3d0 fix --> imposto editable a false 
         this.editable = false;
-        console.log('editable 2 -->', this.editable);
-        this.routerExtensions.navigate(["/user/login"], { clearHistory: true }); // OK
-        // d3d0 --> imposto registrato a true 
+        this.routerExtensions.navigate(["/user/login"], { clearHistory: true });
+
+        // d3d0 fix --> imposto registrato a true 
         BackendService.registeredUser = true;
-        console.log('@@@@@@@@@@@@ > l☯☯☯l > BackendService > registeredUser()', BackendService.registeredUser);
-        // d3d0 --> alert spostata in login
+        console.log('l☯☯☯l > UserService > signup() > BackendService.registeredUser', BackendService.registeredUser);
+        
+        // d3d0 --> fix alert spostata in login
         // this.alertSignup(localize("MESSAGES.CONFIRM_EMAIL"));
+
       }, (error) => {
         BackendService.reset()
         this.isLoading = false;
         this.editable = false;
-        console.log('editable 2 -->', this.editable);
         if (error.status == 406) {
           alert(localize("MESSAGES.ERROR_ACCOUNT_DOUBLE"));
         }
@@ -156,12 +171,9 @@ export class SignupComponent implements OnInit{
     }, (error) => {
       this.isLoading = false;
       this.editable = false;
-      console.log('editable 3 -->', this.editable);
       console.log('getAnonXCSFRtoken error: ',error);
     });
-
-    console.log('l☯☯☯l > SignupComponent > signup() > this.isLoading:', this.isLoading);
-
+    console.log('l☯☯☯l > SignupComponent > signup() > this.isLoading', this.isLoading);
   }
 
   goBack() {

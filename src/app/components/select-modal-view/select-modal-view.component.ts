@@ -28,6 +28,7 @@ export class SelectModalViewComponent implements OnInit {
     private tid;
     public index: number = 0;
     private terms: Observable<Term[]>;
+    private termini: Array<Term>;
     
     constructor(
         private _params: ModalDialogParams, 
@@ -37,16 +38,32 @@ export class SelectModalViewComponent implements OnInit {
         this.vocabolary = _params.context.vocabolary;
         this.title = _params.context.title;
         this.tid = _params.context.tid;
+        // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > constructor() > params',this._params);
     }
 
     ngOnInit() {
-        this.terms = this.taxonomyService.getVocabolary(this.vocabolary);
+        // this.terms = this.taxonomyService.getVocabolary(this.vocabolary);
+        // console.log('terms',this.Term);
+
+        this.taxonomyService.getVocabolary(this.vocabolary).subscribe(data=> {
+            this.termini = data;
+        })
+        Object.keys(this.termini).forEach(key => {
+            // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > tax term: ', this.termini[key].tid);
+            if (this.termini[key].tid == this.tid) {
+                // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > TROVATO');
+                // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > tax term: ', this.termini[key].tid);
+                this.index = parseInt(key);
+            }
+        });
     }
 
     onClose() {
         let picker = this.picker.nativeElement;
         this.picked = picker.items[picker.selectedIndex];
         this._params.closeCallback(this.picked);
+        // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > onClose() > picker.selectedIndex',picker.selectedIndex);
+        // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > onClose() > picked',this.picked);
     }
 
     onBack(): void {

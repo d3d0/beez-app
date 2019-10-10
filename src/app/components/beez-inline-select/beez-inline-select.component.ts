@@ -53,7 +53,7 @@ export class BeezInlineSelect {
         }
 
         private openModal(){
-            // d3d30 --> bug fix select
+            // d3d0 --> bug fix select
             console.log('editable -->', this.editable);
             if (!this.editable) return; // se false > return, se true > procede
 
