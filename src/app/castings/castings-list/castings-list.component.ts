@@ -40,15 +40,14 @@
 
    ngOnInit(): void {
      this._templateSelector = this.templateSelectorFunction;
-     this.load()
+     this.load();
    }
 
    load(){
      if (!this._dataSubscription) {
        this._isLoading = true;
-       this._dataSubscription = this.castingsService.load()
-       .pipe(finalize(() => this._isLoading = false))
-       .subscribe((castings: Array<Casting>) => {
+       this._dataSubscription = this.castingsService.load().pipe(finalize(() => this._isLoading = false)).subscribe((castings: Array<Casting>) => {
+         console.log('************ castings', castings);
          this._castings = new ObservableArray(castings);
          this._isLoading = false;
        });
@@ -81,13 +80,11 @@
 
    public onPullToRefreshInitiated(args: ListViewEventData) {
      setTimeout(()=>{
-       this.castingsService.load()
-       .pipe(finalize(() => this._isLoading = false))
-       .subscribe((castings: Array<Casting>) => {
+       this.castingsService.load().pipe(finalize(() => this._isLoading = false)).subscribe((castings: Array<Casting>) => {
+        console.log('************ castings', castings);
          this._castings = new ObservableArray(castings);
          this._isLoading = false;
          args.object.notifyPullToRefreshFinished()
-
        });
      },500)
    }

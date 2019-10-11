@@ -67,10 +67,10 @@
 "_PROFILE_DETAILS_1o2AXX" = "DETAILS";
 "_PROFILE_PROFILE_ZNNot5" = "PROFILE";
 "_NOTIFICATIONS_NOTIFICATIONS_ZneLv7" = "NOTIFICATIONS";
+"_CASTINGS_SHOOTING_NOTE_Z1Y7q7L" = "Sarai contattato telefonicamente o tramite email dove ti verranno comunicate tutte le informazioni necessarie per lo Shooting.";
 "_CASTINGS_SHOOTING_TEXT_Z1Y6FCL" = "Congratulazioni, hai superato casting ed ora è il momento di mettersi in gioco.";
 "_CASTINGS_SHOOTING_TITLE_ZvYTV7" = "Informazioni sullo Shooting";
 "_CASTINGS_START_DATE_2wD7WX" = "STARTING DATE";
-"_CASTINGS_SHOOTING_NOTE_Z1Y7q7L" = "Sarai contattato telefonicamente o tramite email dove ti verranno comunicate tutte le informazioni necessarie per lo Shooting.";
 "_CASTINGS_PARTICIPATION_EDIT_PARTICIPATION_TEXT_Z27gOL6" = "Sei ancora in tempo per modificare la tua partecipazione o meno al casting.";
 "_CASTINGS_PARTICIPATION_EDIT_PARTICIPATION_TITLE_p2zDE" = "Hai cambiato idea?";
 "_CASTINGS_PARTICIPATION_AGENCY_SELECT_TITLE_2sW6tY" = "Seleziona l'agenzia con cui parteciperai";
@@ -83,6 +83,7 @@
 "_CASTINGS_PARTICIPATION_WHITH_ARCHIVE_ju7qF" = "CONFIRM WITH ARCHIVE";
 "_CASTINGS_PARTICIPATION_DECLINED_Z1Hq5kX" = "DECLINED";
 "_CASTINGS_PARTICIPATION_DECLINE_6CTcH" = "I CAN NOT PARTICIPATE";
+"_CASTINGS_CANDIDATED_Z2nX5BX" = "CANDIDATED";
 "_CASTINGS_NO_CLOSE_CASTINGS_TEXT_Z1oTCmv" = "In questa sezione troverai i casting che hai superato con le informazioni sui relativi shooting confermati.";
 "_CASTINGS_NO_CLOSE_CASTINGS_TITLE_26wiRd" = "Nessun prossimo shooting";
 "_CASTINGS_NO_AUDITION_CASTINGS_TEXT_ZRgMB0" = "In questa sezione troverai i casting ai quali sei stato selezionato e potrai partecipare. Controlla sempre i nuovi casting e trova quello giusto per te.";
@@ -136,6 +137,4 @@
 "_app_name_1k3Sbz" = "BEEZ";
 "LANG" = "EN";
 "_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF" = "This will be added to InfoPlist.strings";
-"_CASTINGS_PARTICIPATION_CONFIRM__20OV2J" = "CASTINGS.PARTICIPATION_CONFIRM ";
 "_CASTINGS_PARTICIPATION_WHITH_ARCHIVE__Zg5v4v" = "CASTINGS.PARTICIPATION_WHITH_ARCHIVE ";
-"_CASTINGS_PARTICIPATION_DECLINE__Z1Hq5ly" = "CASTINGS.PARTICIPATION_DECLINE ";

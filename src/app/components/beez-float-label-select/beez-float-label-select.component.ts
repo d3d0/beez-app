@@ -29,15 +29,17 @@ export class BeezFloatLabelSelect implements OnInit {
     private text: string;
     // private tid: string;
     // private isEditable;
-    @Input() set value_name (value:string){ this.text = value; }
+    @Input() set value (value:string){ this.text = value; }
     // @Input() set tid (value:string){ this.tid = value; }
-    // @Input() set editable(value: boolean){ this.isEditable=value; }
+    // @Input() set editable (value: boolean){ this.isEditable=value; }
 
     constructor(
         private vcRef: ViewContainerRef,
         private modal: ModalDialogService) {}
 
     ngOnInit(){
+        // this.text = 'prova';
+        
         // console.log('value ' , this.value_name);
         // console.log('value ' , this.value_tid);
         // if (this.type == "datapicker")
@@ -48,6 +50,7 @@ export class BeezFloatLabelSelect implements OnInit {
 
     private openModal(){
         // if(!this.isEditable) return;
+
         // d3d0 --> bug fix select
         console.log('****** > l☯☯☯l > BeezFloatLabelSelect > openModal() > editable', this.editable);
         if (!this.editable) return;

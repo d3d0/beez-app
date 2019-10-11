@@ -16,11 +16,16 @@
           <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed-archive' " src="res://partecipo_archivio" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
           <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-declined' " src="res://non_partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
 
+          <Image *ngIf="castingType === 'New'  && item.new_action == 'action-candidated' " src="res://partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
+         
           <Label [text]="item.title" class="label-18-NO list-group-item-heading-18 p-t-8" textWrap="true" row="1" col="0" colSpan="4"></Label>
+          
           <Label  *ngIf="castingType == 'New'" [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" col="0" colSpan="4"></Label>
-          <Label text="" class="list-group-item-h-line" row="3"  col="0" colSpan="5"></Label>
+          
+          <Label text="" class="list-group-item-h-line" row="3" col="0" colSpan="5"></Label>
 
-          <StackLayout orientation="horizontal" row="4" col="1" *ngIf="castingType == 'New'" >
+          <!-- ultima riga > new -->
+          <StackLayout *ngIf="castingType == 'New'" orientation="horizontal" row="4" col="1" >
             <Label [text]="'CASTINGS.START_DATE'|L" class="label"></Label>
             <Label textWrap="true" class="title  p-l-8">
               <FormattedString>
@@ -32,22 +37,25 @@
               </FormattedString>
             </Label>
           </StackLayout>
-
+          <!-- ultima riga > audition -->
           <StackLayout *ngIf="castingType === 'Audition'" verticalAlignment="center" orientation="horizontal" row="4" col="1">
             <Image src="res://photo" stretch="none"  class="p-b-16" ></Image>
             <Label [text]="'CASTINGS.AUDITION_INFO'|L|uppercase" class="header-small p-l-8" ></Label>
           </StackLayout>
-          
+          <!-- ultima riga > closed -->
           <StackLayout *ngIf="castingType === 'Close'" verticalAlignment="center" orientation="horizontal" row="4" col="1">
             <Image src="res://video" stretch="none" class="p-b-16" ></Image>
             <Label [text]="'CASTINGS.SHOOTING_INFO'|L|uppercase" class="header-small p-l-8" ></Label>
           </StackLayout>
-          
+          <!-- ultima riga > arrow -->
           <Image src="res://arrow_right" stretch="none" row="4" col="2" ></Image>
 
         </GridLayout>
+
       </StackLayout>
+
     </CardView>
+
   </ng-template>
 
   <ng-template tkTemplateKey="empty"  let-item="item" >

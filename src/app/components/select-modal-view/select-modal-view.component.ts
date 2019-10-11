@@ -49,7 +49,7 @@ export class SelectModalViewComponent implements OnInit {
             this.termini = data;
         })
         Object.keys(this.termini).forEach(key => {
-            // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > tax term: ', this.termini[key].tid);
+            console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > tax term: ', this.termini[key].tid);
             if (this.termini[key].tid == this.tid) {
                 // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > TROVATO');
                 // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > tax term: ', this.termini[key].tid);

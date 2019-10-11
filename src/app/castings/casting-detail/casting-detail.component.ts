@@ -30,24 +30,28 @@ export class CastingDetailComponent implements OnInit {
   private casting = [];
   private casting_id;
   private user_id;
-  getIconSource = getIconSource
+  public getIconSource = getIconSource;
   public edit_actions: boolean = false;
-  public selectedAgency= new Agency();
+  public selectedAgency = new Agency();
+  private agencyName:string;
+  private agencyTid:string;
 
   constructor(
     private activeRoute: ActivatedRoute,
     private castingsService: CastingsService,
     private vcRef: ViewContainerRef,
     private routerExtension: RouterExtensions) {
-    this.user_id = BackendService.UID
+      this.user_id = BackendService.UID;
   }
 
   ngOnInit(): void {
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit()');
 
-    this.selectedAgency.name = 'Abstract Talent'; // TEST
-    this.selectedAgency.tid = '993'; // TEST
+    // TODO
+    // this.selectedAgency.name = 'Abstract Talent'; // TEST
+    // this.selectedAgency.tid = '993'; // TEST
 
+    console.log('l☯☯☯l > CastingDetailComponent > ngOnInit() > select name',this.selectedAgency.name);
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit() > select tid',this.selectedAgency.tid);
 
     this.activeRoute.params.subscribe((params) => {
@@ -55,18 +59,32 @@ export class CastingDetailComponent implements OnInit {
       this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
         this.casting=casting;
         console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
-        console.log('l☯☯☯l > CastingsService > getCastingById() > casting: ', casting);
+        // console.log('l☯☯☯l > CastingsService > getCastingById() > casting: ', casting);
+        console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.tid);
+        console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.name);
         console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+        this.selectedAgency = new Agency();
+        this.agencyName = casting.agency_talent_casting.name;
+        this.agencyTid = casting.agency_talent_casting.tid;
+        this.selectedAgency.name = casting.agency_talent_casting.name;
+        this.selectedAgency.tid = casting.agency_talent_casting.tid;
+        if (this.selectedAgency.tid == '369') {
+          this.noAgency = true;
+        }
       });
     });
   }
 
   private toggleCheckAgency() {
       console.log('toggleCheckAgency',this.selectedAgency);
-      this.noAgency = !this.noAgency
+      this.noAgency = !this.noAgency;
       if (this.noAgency) {
         this.selectedAgency = new Agency();
-        // this.selectedAgency.tid = '369'; // d3d0 --> bug fix "noagency" tid
+      }
+      else {
+        this.selectedAgency = new Agency();
+        this.selectedAgency.name = this.agencyName;
+        this.selectedAgency.tid = this.agencyTid;
       }
       console.log('l☯☯☯l > CastingDetailComponent > toggleCheckAgency > select tid',this.selectedAgency.tid);
   }
@@ -78,6 +96,8 @@ export class CastingDetailComponent implements OnInit {
       // d3d0 --> bug fix tid --> NO!
       // this.selectedAgency.tid = value;
       this.selectedAgency = value;
+      this.agencyName = this.selectedAgency.name;
+      this.agencyTid = this.selectedAgency.tid;
     }
     console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select tid',this.selectedAgency.tid);
   }

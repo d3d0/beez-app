@@ -25,9 +25,10 @@
 			<StackLayout class="list-group-item p-t-0 p-b-12">
 				<StackLayout *ngIf="casting.status != 'Close'" >
 					<!-- Label of status on top only from auditionTab -->
-					<Label *ngIf="casting.audition_action == 'action-confirmed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED'|L" class="banner-top-card cornfirmed"></Label>
-					<Label *ngIf="casting.audition_action == 'action-confirmed-archive'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED_WHITH_ARCHIVE'|L" class="banner-top-card cornfirmed-archive"></Label>
-					<Label *ngIf="casting.audition_action == 'action-declined'" [text]="'CASTINGS.PARTICIPATION_DECLINED'|L" class="banner-top-card declined"></Label>
+					<Label *ngIf="casting.status == 'Audition' && casting.audition_action == 'action-confirmed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED'|L" class="banner-top-card confirmed"></Label>
+					<Label *ngIf="casting.status == 'Audition' && casting.audition_action == 'action-confirmed-archive'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED_WHITH_ARCHIVE'|L" class="banner-top-card confirmed-archive"></Label>
+					<Label *ngIf="casting.status == 'Audition' && casting.audition_action == 'action-declined'" [text]="'CASTINGS.PARTICIPATION_DECLINED'|L" class="banner-top-card declined"></Label>
+					<Label *ngIf="casting.status == 'New' && casting.new_action == 'action-candidated'" [text]="'CASTINGS.CANDIDATED'|L" class="banner-top-card confirmed"></Label>
 
 					<GridLayout columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
 						<!-- lateral line -->
@@ -74,11 +75,11 @@
 						</StackLayout>
 					</GridLayout>
 
-					<!-- NEW tab -->
+					<!-- NEW CASTING TAB > BUTTONS -->
 					<GridLayout  *ngIf="casting.status === 'New'" columns="8,32,*,16" rows="auto,auto">
 						<!-- lateral line -->
 						<Label text="" class="list-group-item-v-line" rowSpan="2" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
-
+						
 						<StackLayout class="icon-container" row="0" col="1">
 							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16></Image>
 						</StackLayout>
@@ -90,8 +91,7 @@
 						<BeezButton  [text]="'SHARE_WITH_A_FRIEND'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="share()" row="1" col="2" ></BeezButton>
 					</GridLayout>
 
-
-					<!-- AUDITION  first partecipation -->
+					<!-- AUDITION TAB > BUTTONS > first partecipation -->
 					<GridLayout  *ngIf="casting.status === 'Audition' && casting.audition_action == ''" columns="8,32,*,16" rows="auto,auto,auto,auto,auto,auto,auto" >
 						<!-- lateral line -->
 						<Label row="0" col="1" class="list-group-item-v-line" rowSpan="7" marginBottom="32" horizontalAlignment="center" ></Label>
@@ -99,15 +99,13 @@
 						
 						<StackLayout row="1" col="2" >
 							<!-- d3d0 fix: select agenzia uguale a modifica -->
-							<!-- 
-							<StackLayout orientation="horizontal" verticalAlignment="center" (tap)="toggleCheckAgency()">
+							<!-- <StackLayout orientation="horizontal" verticalAlignment="center" (tap)="toggleCheckAgency()">
 								<Label [text]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L" class="list-group-item-text" textWrap="true"></Label>
 								<Image *ngIf="noAgency" [src]="getIconSource('chekbox_on')" stretch="none" ></Image>
 								<Image *ngIf="!noAgency" [src]="getIconSource('checkbox_off')" stretch="none" ></Image>
 							</StackLayout>
 							<BeezFloatLabelSelect [editable]="!noAgency" (selectEvent)="selectEvent($event,'AGENCY')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezFloatLabelSelect>
-							<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"></Label>
-							 -->
+							<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text" textWrap="true"></Label> -->
 							<BeezFloatLabelSelect (selectEvent)="selectEvent($event,'AGENCY')" [editable]="!noAgency" dark="true" type="AGENCY" [placeholder]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L"></BeezFloatLabelSelect>
 							<StackLayout orientation="horizontal" verticalAlignment="center" (tap)="toggleCheckAgency()" class="p-t-8">
 								<Image *ngIf="noAgency" [src]="getIconSource('chekbox_on')" stretch="none"></Image>
@@ -121,21 +119,17 @@
 							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16 ></Image>
 						</StackLayout>
 						<!-- d3d0 fix: no casting arichivio -->
-						<!-- 
-						<BeezButton row="5" col="2" [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="partecipate('Confirmed by archive')"></BeezButton>
+						<!-- <BeezButton row="5" col="2" [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="partecipate('Confirmed by archive')"></BeezButton>
 						<StackLayout row="5" col="1" class="icon-container">
 							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16 ></Image>
-						</StackLayout>
-						-->
+						</StackLayout> -->
 						<BeezButton row="5" col="2" [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" [isBusy]="isLoading" buttonColor="black" (buttonClick)="partecipate('Declined')"></BeezButton>
 						<StackLayout row="5" col="1" class="icon-container">
 							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16 ></Image>
 						</StackLayout>
 					</GridLayout>
 
-
-
-					<!-- AUDITION  edit partecipation -->
+					<!-- AUDITION TAB > BUTTONS > edit partecipation -->
 					<GridLayout  *ngIf="casting.status === 'Audition'  && casting.audition_action != ''" columns="8,32,*,16" rows="auto,auto" >
 						<!-- lateral line -->
 						<Label text="" class="list-group-item-v-line" rowSpan="4"  row="0" col="1" marginBottom="32" horizontalAlignment="center" ></Label>

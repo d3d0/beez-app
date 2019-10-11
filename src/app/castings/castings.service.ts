@@ -15,6 +15,19 @@ export class CastingsService {
 
   constructor(private http: HttpClient) { }
 
+  private handleErrors(error: Response): Observable<never> {
+    if (error.status == 407){
+      BackendService.reset()
+      return
+    }
+    return throwError(error);
+  }
+
+  /**
+   * 
+   * load()
+   * lista completa di tutti i casting
+   */
   load(): Observable<any> {
     console.log('casting loading ...');
     return this.http.get( BackendService.baseUrl + "beez/loool_casting", {
@@ -25,15 +38,13 @@ export class CastingsService {
       );
   }
 
-  private handleErrors(error: Response): Observable<never> {
-    if (error.status == 407){
-      BackendService.reset()
-      return
-    }
-    return throwError(error);
-  }
-
+  /**
+   * 
+   * getCastingById()
+   * dettaglio di un singolo casting
+   */
   getCastingById(id: string): Observable<any> {
+    console.log('casting loading ...');
     return this.http.get( BackendService.baseUrl + "beez/loool_casting/"+id, {
         headers: BackendService.getCommonHeaders()
       }).pipe(
