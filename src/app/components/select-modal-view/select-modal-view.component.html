@@ -5,7 +5,7 @@
 			<StackLayout left="0" top="0" class="list-group-item">
 				<Label [text]="title|L" class="list-group-item-heading-18 title"  textWrap="true"></Label>
 				<ListPicker #picker [items]="termini" color="black" [selectedIndex]="index" textField="name"></ListPicker>
-				<BeezButton [text]="'CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="onClose()"></BeezButton>
+				<BeezButton [isSelect]="isSelect" [text]="'CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="onClose()"></BeezButton>
 			</StackLayout>
 			<StackLayout left="0" top="0"  width="100%"  height="32">
 				<Label class="list-group-item-icona-no-nero" horizontalAlignment="right" (tap)="onBack()"></Label>	

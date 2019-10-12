@@ -15,10 +15,12 @@ export class SelectDateModalViewComponent {
     private picked:string;
     private currentdate: Date;
     private title;
+    private isSelect = false;
 
     constructor( private router: RouterExtensions, private params: ModalDialogParams ) {
         this.currentdate = params.context.currentdate;
         this.title = params.context.title;
+        if(params.context.isSelect) this.isSelect = params.context.isSelect;
     }
 
     onBack(): void {

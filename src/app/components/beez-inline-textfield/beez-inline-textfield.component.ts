@@ -50,12 +50,14 @@ export class BeezInlineTextfield {
         console.log('l☯☯☯l > BeezInlineTextfield > onBlur() > type: ', this.type);
         
         // d3d0 fix --> validation
-        let numero = Number(this.text);
-        console.log('l☯☯☯l > BeezInlineTextfield > onBlur() > numero is number: ', isNaN(numero));
-        if(isNaN(numero)){
-            this.text='';
-            alert('Inserire misura in centimetri');
-            return;
+        if(this.type == 'number') {
+            let numero = Number(this.text);
+            console.log('l☯☯☯l > BeezInlineTextfield > onBlur() > numero is number: ', isNaN(numero));
+            if(isNaN(numero)){
+                this.text='';
+                alert('Inserire misura in centimetri');
+                return;
+            }
         }
         // d3d0 fix --> validation
     }

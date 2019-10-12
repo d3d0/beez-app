@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit } from "@angular/core";
+import { Component, ViewChild, ElementRef, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 import { ListPicker } from "tns-core-modules/ui/list-picker";
@@ -26,6 +26,7 @@ export class SelectModalViewComponent implements OnInit {
     private title;
     private vid;
     private tid;
+    private isSelect = false;
     public index: number = 0;
     private terms: Observable<Term[]>;
     private termini: Array<Term>;
@@ -38,7 +39,9 @@ export class SelectModalViewComponent implements OnInit {
         this.vocabolary = _params.context.vocabolary;
         this.title = _params.context.title;
         this.tid = _params.context.tid;
-        // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > constructor() > params',this._params);
+        if(_params.context.isSelect) this.isSelect = _params.context.isSelect;
+        console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > constructor() > params',this._params);
+        console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > constructor() > isSelect',this.isSelect);
     }
 
     ngOnInit() {
@@ -48,14 +51,15 @@ export class SelectModalViewComponent implements OnInit {
         this.taxonomyService.getVocabolary(this.vocabolary).subscribe(data=> {
             this.termini = data;
         })
+        
         Object.keys(this.termini).forEach(key => {
-            console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > tax term: ', this.termini[key].tid);
+            // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > tax term: ', this.termini[key].tid);
             if (this.termini[key].tid == this.tid) {
-                // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > TROVATO');
-                // console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > tax term: ', this.termini[key].tid);
+                console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > TROVATO');
+                console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > ngOnInit() > tax term: ', this.termini[key].tid);
                 this.index = parseInt(key);
             }
-        });
+        });        
     }
 
     onClose() {

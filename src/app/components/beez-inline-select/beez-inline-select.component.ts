@@ -27,10 +27,11 @@ class Term {
 
 export class BeezInlineSelect {
     @Input() placeholder: string;
+    @Input() isSelect: string;
     @Input() type: string;
     @Input() last: boolean;
     @Input() editable: boolean;
-    @Output() selectEvent = new EventEmitter<string>()
+    @Output() selectEvent = new EventEmitter<string>();
     private obj = new Term;
 
     constructor(
@@ -79,7 +80,7 @@ export class BeezInlineSelect {
         private createDatapickerModelView(): Promise<any> {
             const date = new Date();
             const options: ModalDialogOptions = {
-                context: { title: this.placeholder, currentdate: date },
+                context: { title: this.placeholder, currentdate: date, isSelect: this.isSelect },
                 fullscreen: true,
                 viewContainerRef: this.vcRef
             };
@@ -89,7 +90,7 @@ export class BeezInlineSelect {
         // taxonomy
         private createTaxonomyModelView(): Promise<any> {
             const options: ModalDialogOptions = {
-                context: { vocabolary: this.type , title: this.placeholder, tid: this.value},
+                context: { vocabolary: this.type , title: this.placeholder, tid: this.obj.tid, isSelect: this.isSelect},
                 fullscreen: true,
                 viewContainerRef: this.vcRef
             };

@@ -69,10 +69,10 @@
             <!-- info -->
             <BeezInlineTextfield [editable]="editable" [editable]="isEditable"  [text]="profile.name"  (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.surname"  (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></BeezInlineTextfield>
-            <BeezInlineSelect [editable]="editable" [value]="profile.gender" (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezInlineSelect>
-            <BeezInlineSelect [editable]="editable" [value]="profile.date_of_birth" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezInlineSelect>
+            <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.gender" (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezInlineSelect>
+            <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.date_of_birth" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezInlineSelect>
             <BeezInlineTextfield [editable]="editable" [text]="profile.place_of_birth"  (textfieldEvent)="textfieldEvent($event,'place_of_birth')" [placeholder]="'USER.PLACE_OF_BIRTH'|L"></BeezInlineTextfield>
-            <BeezInlineSelect [editable]="editable" [last]='!editable'  [value]="profile.nationality" (selectEvent)="selectEvent($event,'nationality')" type="NATIONALITY" [placeholder]="'USER.NATIONALITY'|L"></BeezInlineSelect>
+            <BeezInlineSelect isSelect="true" [editable]="editable" [last]='!editable'  [value]="profile.nationality" (selectEvent)="selectEvent($event,'nationality')" type="NATIONALITY" [placeholder]="'USER.NATIONALITY'|L"></BeezInlineSelect>
           </StackLayout>
           <!-- tab -->
           <StackLayout class="wrapper" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'" >
@@ -89,13 +89,13 @@
             <BeezInlineTextfield type="number" keyboardType="number" [editable]="editable" [text]="profile.breast"  (textfieldEvent)="textfieldEvent($event,'breast')" [placeholder]="'USER.BREAST'|L"></BeezInlineTextfield>
             <BeezInlineTextfield type="number" keyboardType="number" [editable]="editable" [text]="profile.waist"  (textfieldEvent)="textfieldEvent($event,'waist')" [placeholder]="'USER.WAIST'|L"></BeezInlineTextfield>
             <BeezInlineTextfield type="number" keyboardType="number" [editable]="editable" [text]="profile.hips"  (textfieldEvent)="textfieldEvent($event,'hips')" [placeholder]="'USER.HIPS'|L"></BeezInlineTextfield>
-            <BeezInlineSelect [editable]="editable" [value]="profile.size" (selectEvent)="selectEvent($event,'size')" type="BODY_SIZE" [placeholder]="'USER.BODY_SIZE'|L"></BeezInlineSelect>
-            <BeezInlineSelect [editable]="editable" [value]="profile.eyes" (selectEvent)="selectEvent($event,'eyes')" type="EYES" [placeholder]="'USER.EYES'|L"></BeezInlineSelect>
-            <BeezInlineSelect [editable]="editable" [value]="profile.hair_color" (selectEvent)="selectEvent($event,'hair_color')" type="HAIR_COLOR" [placeholder]="'USER.HAIR_COLOR'|L"></BeezInlineSelect>
-            <BeezInlineSelect [editable]="editable" [value]="profile.hair_lenght" (selectEvent)="selectEvent($event,'hair_lenght')" type="HAIR_LENGHT" [placeholder]="'USER.HAIR_LENGHT'|L"></BeezInlineSelect>
-            <BeezInlineSelect [editable]="editable" [value]="profile.physique" (selectEvent)="selectEvent($event,'physique')" type="PHYSIQUE" [placeholder]="'USER.PHYSIQUE'|L"></BeezInlineSelect>
-            <BeezInlineSelect [editable]="editable" [value]="profile.ethnicity" (selectEvent)="selectEvent($event,'ethnicity')" type="ETHNICITY" [placeholder]="'USER.ETHNICITY'|L"></BeezInlineSelect>
-            <BeezInlineSelect [editable]="editable" [last]='!editable'  [value]="profile.languages" (selectEvent)="selectEvent($event,'languages')" type="LANGUAGES" [placeholder]="'USER.LANGUAGES'|L"></BeezInlineSelect>
+            <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.size" (selectEvent)="selectEvent($event,'size')" type="BODY_SIZE" [placeholder]="'USER.BODY_SIZE'|L"></BeezInlineSelect>
+            <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.eyes" (selectEvent)="selectEvent($event,'eyes')" type="EYES" [placeholder]="'USER.EYES'|L"></BeezInlineSelect>
+            <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.hair_color" (selectEvent)="selectEvent($event,'hair_color')" type="HAIR_COLOR" [placeholder]="'USER.HAIR_COLOR'|L"></BeezInlineSelect>
+            <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.hair_lenght" (selectEvent)="selectEvent($event,'hair_lenght')" type="HAIR_LENGHT" [placeholder]="'USER.HAIR_LENGHT'|L"></BeezInlineSelect>
+            <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.physique" (selectEvent)="selectEvent($event,'physique')" type="PHYSIQUE" [placeholder]="'USER.PHYSIQUE'|L"></BeezInlineSelect>
+            <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.ethnicity" (selectEvent)="selectEvent($event,'ethnicity')" type="ETHNICITY" [placeholder]="'USER.ETHNICITY'|L"></BeezInlineSelect>
+            <BeezInlineSelect isSelect="true" [editable]="editable" [last]='!editable'  [value]="profile.languages" (selectEvent)="selectEvent($event,'languages')" type="LANGUAGES" [placeholder]="'USER.LANGUAGES'|L"></BeezInlineSelect>
           </StackLayout>
           <!-- tab -->
           <StackLayout class="wrapper" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
@@ -115,7 +115,7 @@
             </AbsoluteLayout>
             <!-- info -->
             <BeezInlineTextfield [editable]="editable" [text]="profile.phone"  (textfieldEvent)="textfieldEvent($event,'phone')" [placeholder]="'USER.PHONE'|L"></BeezInlineTextfield>
-            <BeezInlineSelect [editable]="editable" [value]="profile.agency" (selectEvent)="selectEvent($event,'agency')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezInlineSelect>
+            <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.agency" (selectEvent)="selectEvent($event,'agency')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezInlineSelect>
             <BeezInlineTextfield [editable]="editable" [text]="profile.website"  (textfieldEvent)="textfieldEvent($event,'website')" [placeholder]="'USER.WEBSITE'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.facebook"  (textfieldEvent)="textfieldEvent($event,'facebook')" [placeholder]="'Facebook profile'"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.instagram"  (textfieldEvent)="textfieldEvent($event,'instagram')" [placeholder]="'Instagram profile'"></BeezInlineTextfield>

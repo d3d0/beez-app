@@ -20,6 +20,7 @@ import { SelectModalViewComponent } from "../select-modal-view/select-modal-view
 
 export class BeezFloatLabelSelect implements OnInit {
     @Input() placeholder: string;
+    @Input() isSelect: string;
     @Input() type: string;
     @Input() dark: boolean;
     @Input() tid: string;
@@ -82,7 +83,7 @@ export class BeezFloatLabelSelect implements OnInit {
     private createDatapickerModelView(): Promise<any> {
         const date = new Date();
         const options: ModalDialogOptions = {
-            context: { title: this.placeholder, currentdate: date },
+            context: { title: this.placeholder, currentdate: date, isSelect: this.isSelect },
             fullscreen: true,
             viewContainerRef: this.vcRef
         };
@@ -92,7 +93,7 @@ export class BeezFloatLabelSelect implements OnInit {
     // taxonomy
     private createTaxonomyModelView(): Promise<any> {
         const options: ModalDialogOptions = {
-            context: { vocabolary: this.type , title: this.placeholder, tid: this.tid},
+            context: { vocabolary: this.type , title: this.placeholder, tid: this.tid, isSelect: this.isSelect},
             fullscreen: true,
             viewContainerRef: this.vcRef
         };

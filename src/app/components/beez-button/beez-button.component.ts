@@ -31,6 +31,7 @@ export class BeezButton implements OnChanges{
     @Input() visibility: string ='visible';
     @Input() row: number;
     @Input() col: number;
+    @Input() isSelect: boolean;
     @Output() buttonClick = new EventEmitter<Event>()
     @ViewChild("button", {static: true}) button: ElementRef;
     color: any;
@@ -44,15 +45,19 @@ export class BeezButton implements OnChanges{
     }
     
     onClick(args){
+        console.log('****** > l☯☯☯l > BeezButton > onClick() > select', this.isSelect);
         // d3d0 fix --> clearFocus
         let button = args.object;
         let page: Page = button.page;
-        if (isIOS) {
-            page.nativeView.endEditing(true);
-        } else {
-            let field: TextField = page.getViewById("field");
-            field.nativeView.clearFocus();
-            utils.ad.dismissSoftInput();
+        // d3d0 fix --> no select --> IMPORTANT!
+        if(!this.isSelect) {
+            if (isIOS) {
+                page.nativeView.endEditing(true);
+            } else {
+                let field: TextField = page.getViewById("field");
+                field.nativeView.clearFocus();
+                utils.ad.dismissSoftInput();
+            }
         }
         // d3d0 fix --> clearFocus
 
