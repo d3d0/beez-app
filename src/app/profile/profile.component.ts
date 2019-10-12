@@ -10,11 +10,11 @@ import { screen } from 'tns-core-modules/platform';
 import { GestureTypes, SwipeGestureEventData } from "tns-core-modules/ui/gestures";
 import { Observable } from 'rxjs';
 import { localize } from "nativescript-localize";
-
 import { BackendService } from "../shared/backend.service";
 import { MessageModalViewComponent } from "../components/message-modal-view/message-modal-view.component";
 import { alert, getIconSource } from "../shared/utils";
-import { ProfileService } from "./profile.service"
+import { ProfileService } from "./profile.service";
+
 
 @Component({
   selector: 'ns-profile',
@@ -40,6 +40,9 @@ export class ProfileComponent implements OnInit {
   @ViewChild("tab2", {static: true}) tab2: ElementRef;
   @ViewChild("tab3", {static: true}) tab3: ElementRef;
   @ViewChild("tab4", {static: true}) tab4: ElementRef;
+  // @ViewChild("fieldAltezza", {static: true}) fieldAltezza: BeezInlineTextfield;
+  // @ViewChild(BeezInlineTextfield, {static: true}) fieldAltezza: BeezInlineTextfield;
+
 
   constructor(
     private routerExtension: RouterExtensions,
@@ -89,7 +92,7 @@ export class ProfileComponent implements OnInit {
   }
 
   editCancel(){
-    this.isLoading = true
+    this.isLoading = true;
     this.profileService.load().subscribe(profile=> {
       this._profile = profile[0]
       this.isLoading = false
@@ -101,20 +104,19 @@ export class ProfileComponent implements OnInit {
     this.isLoading = true;
 
     console.log('l☯☯☯l > ProfileComponent > editSave() > this.user: ', this.profile);
-
-    this.profileService.edit(this.profile).subscribe(
-      (result) => {
-        // alert('Profilo aggiornato!')
-        this.isLoading = false
-        this.editable = false
-      },
-      (err) => {
-        console.log(err)
-        alert(localize('MESSAGES.ERROR_SERVICE'))
-      }
-      );
-    this.isLoading = false
-    this.editable = false
+    
+    this.profileService.edit(this.profile).subscribe((result) => {
+      // alert('Profilo aggiornato!');
+      console.log('l☯☯☯l > ProfileComponent > edit() > Profilo aggiornato!',result);
+      this.isLoading = false;
+      this.editable = false;
+    },
+    (err) => {
+      console.log(err)
+      alert(localize('MESSAGES.ERROR_SERVICE'))
+    });
+    this.isLoading = false;
+    this.editable = false;
   }
 
   toogleEditable(){
@@ -189,9 +191,7 @@ export class ProfileComponent implements OnInit {
     this.routerExtension.navigate(["/home/profile/settings"]);
   }
 
-
   edit(profile){
     this.profileService.edit(profile).subscribe(result=>console.log(result))
   }
-
 }

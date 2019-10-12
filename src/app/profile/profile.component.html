@@ -85,10 +85,10 @@
               <Label top=0 class="header" [text]="'PROFILE.DETAILS'|L|titlecase"></Label>
             </AbsoluteLayout>
             <!-- info -->
-            <BeezInlineTextfield [editable]="editable" [text]="profile.height"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.HEIGHT'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield [editable]="editable" [text]="profile.breast"  (textfieldEvent)="textfieldEvent($event,'breast')" [placeholder]="'USER.BREAST'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield [editable]="editable" [text]="profile.waist"  (textfieldEvent)="textfieldEvent($event,'waist')" [placeholder]="'USER.WAIST'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield [editable]="editable" [text]="profile.hips"  (textfieldEvent)="textfieldEvent($event,'hips')" [placeholder]="'USER.HIPS'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield type="number" keyboardType="number" [editable]="editable" [text]="profile.height"  (textfieldEvent)="textfieldEvent($event,'height')" [placeholder]="'USER.HEIGHT'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield type="number" keyboardType="number" [editable]="editable" [text]="profile.breast"  (textfieldEvent)="textfieldEvent($event,'breast')" [placeholder]="'USER.BREAST'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield type="number" keyboardType="number" [editable]="editable" [text]="profile.waist"  (textfieldEvent)="textfieldEvent($event,'waist')" [placeholder]="'USER.WAIST'|L"></BeezInlineTextfield>
+            <BeezInlineTextfield type="number" keyboardType="number" [editable]="editable" [text]="profile.hips"  (textfieldEvent)="textfieldEvent($event,'hips')" [placeholder]="'USER.HIPS'|L"></BeezInlineTextfield>
             <BeezInlineSelect [editable]="editable" [value]="profile.size" (selectEvent)="selectEvent($event,'size')" type="BODY_SIZE" [placeholder]="'USER.BODY_SIZE'|L"></BeezInlineSelect>
             <BeezInlineSelect [editable]="editable" [value]="profile.eyes" (selectEvent)="selectEvent($event,'eyes')" type="EYES" [placeholder]="'USER.EYES'|L"></BeezInlineSelect>
             <BeezInlineSelect [editable]="editable" [value]="profile.hair_color" (selectEvent)="selectEvent($event,'hair_color')" type="HAIR_COLOR" [placeholder]="'USER.HAIR_COLOR'|L"></BeezInlineSelect>

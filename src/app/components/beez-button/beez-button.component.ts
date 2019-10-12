@@ -1,5 +1,9 @@
 import { Component, Input, Output, EventEmitter,ViewChild, ElementRef, OnChanges  } from "@angular/core";
 import { Color } from "tns-core-modules/color";
+import { Page } from "tns-core-modules/ui/page";
+import { isIOS } from "tns-core-modules/platform";
+import * as utils from "tns-core-modules/utils/utils";
+import { TextField } from "tns-core-modules/ui/text-field";
 
 @Component({
     selector: "BeezButton",
@@ -14,7 +18,7 @@ import { Color } from "tns-core-modules/color";
             class="label"
             [isEnabled]="!isBusy" 
             [text]="text|uppercase"
-            (tap)="onClick()"></Button>
+            (tap)="onClick($event)"></Button>
         </CardView>
     </StackLayout>        
     `
@@ -27,23 +31,33 @@ export class BeezButton implements OnChanges{
     @Input() visibility: string ='visible';
     @Input() row: number;
     @Input() col: number;
-    @Output() buttonClick = new EventEmitter<string>()
+    @Output() buttonClick = new EventEmitter<Event>()
     @ViewChild("button", {static: true}) button: ElementRef;
-    color
+    color: any;
     constructor() {
-
     }
 
     ngOnChanges(changes) {
-        this.setColor()
-        if(this.isBusy) this.button.nativeElement.text= "Loading ..."
-            else this.button.nativeElement.text= this.text
-        }
+        this.setColor();
+        if (this.isBusy) this.button.nativeElement.text= "Loading ...";
+        else this.button.nativeElement.text= this.text;
+    }
     
-    onClick(){
-        if(!this.isBusy) this.buttonClick.emit()
-            this.setColor()
+    onClick(args){
+        // d3d0 fix --> clearFocus
+        let button = args.object;
+        let page: Page = button.page;
+        if (isIOS) {
+            page.nativeView.endEditing(true);
+        } else {
+            let field: TextField = page.getViewById("field");
+            field.nativeView.clearFocus();
+            utils.ad.dismissSoftInput();
+        }
+        // d3d0 fix --> clearFocus
 
+        if(!this.isBusy) this.buttonClick.emit();
+        this.setColor();
     }
 
     setColor(){
