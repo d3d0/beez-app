@@ -32,8 +32,8 @@ export class MessageModalViewComponent implements OnInit{
     ngOnInit(){
         // d3d0 fix --> su android non funziona!
         if (isIOS) {
-            let blur = new Blur(); // pass true to enable limited usage on android (for now);
-            blur.on(this.background.nativeElement, "dimmer", 10, "light", 2)
+            // let blur = new Blur(); // pass true to enable limited usage on android (for now);
+            // blur.on(this.background.nativeElement, "dimmer", 10, "light", 2)
         }
     }
 
