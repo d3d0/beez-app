@@ -12,8 +12,8 @@
 android {  
   defaultConfig {  
     generatedDensities = []
-    renderscriptTargetApi 25
-		renderscriptSupportModeEnabled true
+    	renderscriptTargetApi 25
+	renderscriptSupportModeEnabled true
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  

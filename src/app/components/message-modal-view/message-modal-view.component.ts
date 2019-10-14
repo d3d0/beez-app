@@ -2,10 +2,9 @@ import { Component, ViewChild, ElementRef, OnInit } from "@angular/core";
 import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 import { Observable } from "rxjs";
 import { Page, ShownModallyData } from "tns-core-modules/ui/page";
-import * as app from "tns-core-modules/application";
-
+import { isIOS } from "tns-core-modules/platform";
 import { Blur } from 'nativescript-blur';
-let blur = new Blur(); // pass true to enable limited usage on android (for now);
+import * as app from "tns-core-modules/application";
 
 @Component({
     selector: 'ns-message-modal',
@@ -27,11 +26,15 @@ export class MessageModalViewComponent implements OnInit{
         this.title = _params.context.title;
         this.footer = _params.context.footer;
         this.buttonText = _params.context.buttonText;
+        
     }
 
     ngOnInit(){
-        // ERROR TypeError: undefined is not an object (evaluating 'this.background.nativeElement')
-        // blur.on(this.background.nativeElement, "dimmer", 10, "light", 2)
+        // d3d0 fix --> su android non funziona!
+        if (isIOS) {
+            let blur = new Blur(); // pass true to enable limited usage on android (for now);
+            blur.on(this.background.nativeElement, "dimmer", 10, "light", 2)
+        }
     }
 
     onClose() {
