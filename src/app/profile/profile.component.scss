@@ -19,6 +19,11 @@
 	.role{
 		color: $lilla;
 	}
+	.pro{
+		color: $white;
+		background: $verde;
+		width: 32;
+	}
 }
 
 .action-items{
@@ -44,7 +49,7 @@
 }
   
   .label {
-	padding-left: 8;
+	padding-left: 4;
 	font-weight: bold;
 	color:$verde;
   }

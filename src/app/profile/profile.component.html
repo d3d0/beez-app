@@ -31,8 +31,11 @@
       <Image [src]="profile.polaroid"></Image>
       <Image src="~/assets/images/rect.png"></Image>
       <StackLayout class="text-wrapper">
+        
+        <Label horizontalAlignment="left" class="label pro" [text]='profile.pro | uppercase'></Label>
         <Label class="name" [text]="profile.name + ' ' + profile.surname"></Label>
-        <Label class="role label" [text]='profile.website | uppercase'></Label>
+        <Label class="label role" [text]='profile.mail | uppercase'></Label>
+
       </StackLayout>
     </GridLayout>
 
@@ -117,9 +120,9 @@
             <BeezInlineTextfield [editable]="editable" [text]="profile.phone"  (textfieldEvent)="textfieldEvent($event,'phone')" [placeholder]="'USER.PHONE'|L"></BeezInlineTextfield>
             <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.agency" (selectEvent)="selectEvent($event,'agency')" type="AGENCY" [placeholder]="'USER.AGENCY'|L"></BeezInlineSelect>
             <BeezInlineTextfield [editable]="editable" [text]="profile.website"  (textfieldEvent)="textfieldEvent($event,'website')" [placeholder]="'USER.WEBSITE'|L"></BeezInlineTextfield>
-            <BeezInlineTextfield [editable]="editable" [text]="profile.facebook"  (textfieldEvent)="textfieldEvent($event,'facebook')" [placeholder]="'Facebook profile'"></BeezInlineTextfield>
-            <BeezInlineTextfield [editable]="editable" [text]="profile.instagram"  (textfieldEvent)="textfieldEvent($event,'instagram')" [placeholder]="'Instagram profile'"></BeezInlineTextfield>
-            <BeezInlineTextfield [editable]="editable" [text]="profile.linkedin"  (textfieldEvent)="textfieldEvent($event,'linkedin')" [placeholder]="'Linkedin profile'"></BeezInlineTextfield>
+            <BeezInlineTextfield isFacebook="true" [hint]="profile.facebook_hint" [editable]="editable" [text]="profile.facebook"  (textfieldEvent)="textfieldEvent($event,'facebook')" [placeholder]="'facebook.com/'"></BeezInlineTextfield>
+            <BeezInlineTextfield isInsta="true" [hint]="profile.instagram_hint" [editable]="editable" [text]="profile.instagram"  (textfieldEvent)="textfieldEvent($event,'instagram')" [placeholder]="'instagram.com/'"></BeezInlineTextfield>
+            <BeezInlineTextfield isLinkedin="true" [hint]="profile.linkedin_hint" [editable]="editable" [text]="profile.linkedin"  (textfieldEvent)="textfieldEvent($event,'linkedin')" [placeholder]="'linkedin.com/in/'"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.address" (textfieldEvent)="textfieldEvent($event,'address')" [placeholder]="'USER.ADDRESS'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.city" (textfieldEvent)="textfieldEvent($event,'city')" [placeholder]="'USER.CITY'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.postal_code" (textfieldEvent)="textfieldEvent($event,'postal_code')" [placeholder]="'USER.POSTAL_CODE'|L"></BeezInlineTextfield>

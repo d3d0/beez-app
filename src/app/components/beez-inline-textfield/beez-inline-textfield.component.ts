@@ -19,26 +19,41 @@ import { TextField } from "tns-core-modules/ui/text-field";
                 autocorrect="false"
                 [returnKeyType]="returnKeyType"
                 autocapitalizationType="none"
-                (blur)="onBlur($event)" 
+                (blur)="onBlur($event)"
+                [hint]="hint"
             ></TextField>
         </StackLayout>
     `
 })
 
 export class BeezInlineTextfield {
+    @Input() hint: string;
     @Input() placeholder: string;
     @Input() secure: boolean;
     @Input() last: boolean;
     @Input() text: string;
     @Input() type: string;
+    @Input() isFacebook: boolean = false;
+    @Input() isInsta: boolean = false;
+    @Input() isLinkedin: boolean = false;
     @Input() editable: boolean = true;
     @Input() returnKeyType: string;
     @Input() keyboardType: string;
     @Output() textfieldEvent = new EventEmitter<string>()
     @ViewChild("textField", {static: false}) textField: ElementRef;
 
-    constructor() { }
-    
+    constructor() {
+        if(this.isFacebook==true && this.text == null) {
+            this.hint = 'username';
+        }
+        if(this.isInsta==true && this.text == null) {
+            this.hint = 'username';
+        }
+        if(this.isLinkedin==true && this.text == null) {
+            this.hint = 'username';
+        }
+    }
+
     changeValue(){
         this.textfieldEvent.emit(this.text)
     }
@@ -47,6 +62,11 @@ export class BeezInlineTextfield {
         // textfield
         // let textField = <TextField>args.object;
 
+        console.log('l☯☯☯l > BeezInlineTextfield > onBlur() > text: ', this.text);
+        console.log('l☯☯☯l > BeezInlineTextfield > onBlur() > hint: ', this.hint);
+        console.log('l☯☯☯l > BeezInlineTextfield > onBlur() > isFacebook: ', this.isFacebook);
+        console.log('l☯☯☯l > BeezInlineTextfield > onBlur() > isInsta: ', this.isInsta);
+        console.log('l☯☯☯l > BeezInlineTextfield > onBlur() > isLinkedin: ', this.isLinkedin);
         console.log('l☯☯☯l > BeezInlineTextfield > onBlur() > type: ', this.type);
         
         // d3d0 fix --> validation
@@ -55,7 +75,7 @@ export class BeezInlineTextfield {
             console.log('l☯☯☯l > BeezInlineTextfield > onBlur() > numero is number: ', isNaN(numero));
             if(isNaN(numero)){
                 this.text='';
-                alert('Inserire misura in centimetri');
+                alert('Inserire la misura in centimetri!');
                 return;
             }
         }

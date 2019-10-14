@@ -5,7 +5,7 @@ import { registerElement } from 'nativescript-angular';
 import { LottieView } from 'nativescript-lottie';
 import { RouterExtensions } from "nativescript-angular/router";
 import { localize } from "nativescript-localize";
-import { messaging, Message } from "nativescript-plugin-firebase/messaging";
+// import { messaging, Message } from "nativescript-plugin-firebase/messaging";
 import { PushNotificationsService } from "../../shared/pushNotifications.service";
 import { openLink } from "../../shared/utils";
 import { alert } from "../../shared/utils";
@@ -137,26 +137,27 @@ export class LoginComponent implements OnInit {
           }
           // --> USER NOT PENDING --> LOGIN
           if (result['user']['roles'][key] == 'authenticated user') {
-            messaging.addOnPushTokenReceivedCallback(token => {
-                console.log("l☯☯☯l > LoginComponent > addOnPushTokenReceivedCallback() > Firebase plugin received a push token: " + token);
-                if (token) {
-                  this.pushService.push_token(token).subscribe((result) => {
-                    console.log("l☯☯☯l > pushService > push_token() > result from pushservice", result); // OK > Result getting the data!
-                  }, error => {
-                    console.log("l☯☯☯l > pushService > push_token() > error from pushservice ", error); // NO > Error getting the data!
-                  });
-                }
-              }
-            );
-            messaging.registerForPushNotifications({
-              onMessageReceivedCallback: (message: Message) => {
-                console.log("Push message received: " + message.title);
-              },
-              showNotifications: true,
-              showNotificationsWhenInForeground: true
-            }).then(() => {
-              console.log("Registered for push")
-            })
+            // FIREBASE
+            // messaging.addOnPushTokenReceivedCallback(token => {
+            //     console.log("l☯☯☯l > LoginComponent > addOnPushTokenReceivedCallback() > Firebase plugin received a push token: " + token);
+            //     if (token) {
+            //       this.pushService.push_token(token).subscribe((result) => {
+            //         console.log("l☯☯☯l > pushService > push_token() > result from pushservice", result); // OK > Result getting the data!
+            //       }, error => {
+            //         console.log("l☯☯☯l > pushService > push_token() > error from pushservice ", error); // NO > Error getting the data!
+            //       });
+            //     }
+            //   }
+            // );
+            // messaging.registerForPushNotifications({
+            //   onMessageReceivedCallback: (message: Message) => {
+            //     console.log("Push message received: " + message.title);
+            //   },
+            //   showNotifications: true,
+            //   showNotificationsWhenInForeground: true
+            // }).then(() => {
+            //   console.log("Registered for push")
+            // })
             this.routerExtensions.navigate(["../home"], { clearHistory: true });
           }
         });

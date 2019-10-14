@@ -32,6 +32,7 @@ export class BeezButton implements OnChanges{
     @Input() row: number;
     @Input() col: number;
     @Input() isSelect: boolean;
+    @Input() isModal: boolean;
     @Output() buttonClick = new EventEmitter<Event>()
     @ViewChild("button", {static: true}) button: ElementRef;
     color: any;
@@ -46,18 +47,26 @@ export class BeezButton implements OnChanges{
     
     onClick(args){
         console.log('****** > l☯☯☯l > BeezButton > onClick() > select', this.isSelect);
+        console.log('****** > l☯☯☯l > BeezButton > onClick() > modal', this.isModal);
         // d3d0 fix --> clearFocus
         let button = args.object;
         let page: Page = button.page;
         // d3d0 fix --> no select --> IMPORTANT!
+        // d3d0 fix --> no modal --> IMPORTANT!
         if(!this.isSelect) {
-            if (isIOS) {
-                page.nativeView.endEditing(true);
-            } else {
-                let field: TextField = page.getViewById("field");
-                field.nativeView.clearFocus();
-                utils.ad.dismissSoftInput();
-            }
+            if(!this.isModal) {
+                if (isIOS) {
+                    // IOS CLEARFOCUS
+                    page.nativeView.endEditing(true);
+                } else {
+                    // ANDROID CLEARFOCUS
+                    // d3d0 fix --> non funziona su android è undefined!
+                    // let field: TextField = page.getViewById("field"); 
+                    // field.nativeView.clearFocus();
+                    // field.dismissSoftInput();
+                    // utils.ad.dismissSoftInput();
+                }
+            }   
         }
         // d3d0 fix --> clearFocus
 

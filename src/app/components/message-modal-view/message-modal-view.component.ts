@@ -2,9 +2,9 @@ import { Component, ViewChild, ElementRef, OnInit } from "@angular/core";
 import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 import { Observable } from "rxjs";
 import { Page, ShownModallyData } from "tns-core-modules/ui/page";
+import * as app from "tns-core-modules/application";
 
 import { Blur } from 'nativescript-blur';
-import * as app from "tns-core-modules/application";
 let blur = new Blur(); // pass true to enable limited usage on android (for now);
 
 @Component({

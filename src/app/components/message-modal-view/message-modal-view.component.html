@@ -6,11 +6,13 @@
 				<Label [text]="title" class="header head"  textWrap="true"></Label>
 				<Label [text]="message" class="message text"  textWrap="true"></Label>
 				<Label [text]="footer" class="footer text"  textWrap="true"></Label>
-				<BeezButton [text]="buttonText" buttonColor="green" (buttonClick)="onClose()"></BeezButton>
+				<BeezButton [text]="buttonText" isModal="true" buttonColor="green" (buttonClick)="onClose()"></BeezButton>
 			</StackLayout>
-<!-- 			<StackLayout left="0" top="0"  width="100%"  height="32">
+			<!-- 
+			<StackLayout left="0" top="0"  width="100%"  height="32">
 				<Label class="list-group-item-icona-no-nero" horizontalAlignment="right" (tap)="onBack()"></Label>	
-			</StackLayout> -->
+			</StackLayout> 
+			-->
 		<!-- </AbsoluteLayout> -->
 	</CardView>
 </GridLayout>

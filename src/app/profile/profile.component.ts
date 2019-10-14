@@ -31,6 +31,7 @@ export class ProfileComponent implements OnInit {
   private tabs = [];
   public isLoading: boolean = false;
   private _profile= {};
+  private hint: string = '';
 
   @ViewChild("tabButtons", {static: false}) tabButtons: ElementRef;
   @ViewChild("polaroid", {static: false}) polaroid: ElementRef;
@@ -54,7 +55,8 @@ export class ProfileComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.loadProfile()
+    this.loadProfile();
+    
     this.tabs[0] = <View>this.tab1.nativeElement;
     this.tabs[1] = <View>this.tab2.nativeElement;
     this.tabs[2] = <View>this.tab3.nativeElement;
@@ -125,7 +127,18 @@ export class ProfileComponent implements OnInit {
 
   loadProfile(){
     this.profileService.load().subscribe(profile=> {
-      this._profile = profile[0]})
+      this._profile = profile[0];
+      console.log('l☯☯☯l > ProfileComponent > loadProfile() > _profile: ', this._profile);
+      if (this._profile['facebook']==null) {
+        this._profile['facebook_hint'] = 'username';
+      }
+      if (this._profile['instagram']==null) {
+        this._profile['instagram_hint'] = 'username';
+      }
+      if (this._profile['linkedin']==null) {
+        this._profile['linkedin_hint'] = 'username';
+      }
+    });
   }
 
   public onSelectedIndexChange(index) {
