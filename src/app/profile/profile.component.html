@@ -59,6 +59,7 @@
       <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >
         <StackLayout  class="list-group-item m-t-0 p-t-0 p-b-8" >
           <Label [visibility]="editable ? 'visible' : 'collapsed'" class="banner-top-card" [text]="'MODIFICA LE TUE INFO'"></Label>
+          
           <!-- tab -->
           <StackLayout class="wrapper" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
             <!-- title -->
@@ -77,6 +78,7 @@
             <BeezInlineTextfield [editable]="editable" [text]="profile.place_of_birth"  (textfieldEvent)="textfieldEvent($event,'place_of_birth')" [placeholder]="'USER.PLACE_OF_BIRTH'|L"></BeezInlineTextfield>
             <BeezInlineSelect isSelect="true" [editable]="editable" [last]='!editable'  [value]="profile.nationality" (selectEvent)="selectEvent($event,'nationality')" type="NATIONALITY" [placeholder]="'USER.NATIONALITY'|L"></BeezInlineSelect>
           </StackLayout>
+          
           <!-- tab -->
           <StackLayout class="wrapper" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'" >
             <!-- title -->
@@ -100,12 +102,14 @@
             <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.ethnicity" (selectEvent)="selectEvent($event,'ethnicity')" type="ETHNICITY" [placeholder]="'USER.ETHNICITY'|L"></BeezInlineSelect>
             <BeezInlineSelect isSelect="true" [editable]="editable" [last]='!editable'  [value]="profile.languages" (selectEvent)="selectEvent($event,'languages')" type="LANGUAGES" [placeholder]="'USER.LANGUAGES'|L"></BeezInlineSelect>
           </StackLayout>
+
           <!-- tab -->
           <StackLayout class="wrapper" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
             <ns-media [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'"
             [profile]="profile"
             (refreshProfile)="loadProfile()"></ns-media>
           </StackLayout>
+
           <!-- tab -->
           <StackLayout class="wrapper" [visibility]="selectedIndex === 3 ? 'visible' : 'collapsed'">
             <!-- title -->

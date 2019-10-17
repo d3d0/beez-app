@@ -6,11 +6,11 @@ import { ObservableArray } from "data/observable-array";
 import * as fs from "file-system";
 import {ImageSource, fromFile,fromNativeSource, fromResource, fromBase64} from "tns-core-modules/image-source";
 import { localize } from "nativescript-localize";
-
-import { Profile } from "../../user/profile.model";
 import { BackendService } from "../../shared/backend.service";
 import { ProfileService } from "../profile.service"
 import { alert, confirm, getIconSource } from "../../shared/utils";
+import { Profile } from "../../user/profile.model";
+
 
 @Component({
     selector: 'ns-media',
@@ -19,15 +19,15 @@ import { alert, confirm, getIconSource } from "../../shared/utils";
     moduleId: module.id,
 })
 export class MediaComponent {
-    @Input() profile
-    @Output() refreshProfile = new EventEmitter<string>()
+    @Input() profile;
+    @Output() refreshProfile = new EventEmitter<string>();
     imageAssets = [];
     imageSrc: any;
     image_base64: any;
     isSingleMode: boolean = false;
     thumbSize: number = 80;
     previewSize: number = 300;
-    getIconSource = getIconSource
+    getIconSource = getIconSource;
     public tasks: bgHttp.Task[] = [];
     public events: { eventTitle: string, eventData: any }[] = [];
     private file: string;
@@ -36,36 +36,40 @@ export class MediaComponent {
     private session: any;
     private images:any = [];
     public isLoading:boolean = false;
+
     constructor( private profileService: ProfileService ) {
-        this.url = BackendService.baseUrl + "beez/loool_talent_images/upload_image_multipart"
+        this.url = BackendService.baseUrl + "beez/loool_talent_images/upload_image_multipart";
         this.session = bgHttp.session("image-upload");
-        this.loadImages()
+        this.loadImages();
     }
+
     loadImages(){
-        this.profileService.getImages().subscribe( result => {
-            this.images = result
-            // console.log(result)
-        })
+        this.profileService.getImages().subscribe((result) => {
+            this.images = result;
+            // console.log(result);
+        });
     }
+    
     deleteImage(image){
         if(image.polaroid) this.profileService.setPolaroidImage(0).subscribe(
                 () => this.refreshProfile.emit(),
                 () => alert(localize("ERROR_SERVICE"))
-                )
-        confirm("DELETE?").then(()=>
+        );
+        confirm("DELETE?").then(() =>
             this.profileService.deleteImage(image.fid).subscribe(
-                ()=> this.loadImages()),
-                ()=> alert(localize("ERROR_SERVICE")
-                )
+                () => this.loadImages(),
+                () => alert(localize("ERROR_SERVICE"))
             )
+        );
     }
+
     setPolaroidImage(image){
-        confirm("Set as cover image?").then(()=>
+        confirm("Set as cover image?").then(() =>
             this.profileService.setPolaroidImage(image.fid).subscribe(
                 () => this.refreshProfile.emit(),
                 () => alert(localize("ERROR_SERVICE"))
-                )
             )
+        );
     }
 
     public onSelectMultipleTap() {
@@ -83,11 +87,13 @@ export class MediaComponent {
             return context.present();
         }).then((selection) => {
             let counter = 0
+            // carico tutte le immagini selezionate
             selection.forEach( (selected_item) => {
                 let source = new ImageSource();
                 source.fromAsset(selected_item).then((image) => {
-                    console.log('image', image)
-                    // this.images.push(image)
+
+                    console.log('l☯☯☯l > MediaComponent > startSelection() > image:', image);
+                    
                     if (!isIOS) {
                         var localPath = null;
                         localPath = image.android.toString();
@@ -98,36 +104,32 @@ export class MediaComponent {
                         let saved = image.saveToFile(path, "jpg");
                         localPath = path;
                     }
-                    localPath = localPath 
-                    console.log(localPath)
+
+                    localPath = localPath;
+                    console.log('l☯☯☯l > MediaComponent > startSelection() > localpath:',localPath);
+
                     var task = this.start_upload("image_" + counter + ".jpg", localPath);
                     this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
-                    counter++
+                    counter++;
                 })
             })
         })
     }
 
-
-
-
-
-
-
-
-
     start_upload(uri, fileUri) {
-        this.isLoading = true
+        this.isLoading = true;
         // console.log('uri ', uri)
         // console.log(fileUri)
-        const name = this.extractImageName(fileUri);
+
+        const name = this.extractImageName(fileUri);;
         const description = `${name} (${++this.counter})`;
-        debugger
-        let headers = []
-        headers["Content-Type"] = "application/octet-stream"
-        headers["Accept"] = 'application/json'
-        headers["x-csrf-token"] = BackendService.XCSFRtoken
-        headers["Cookie"] = BackendService.session_name + "=" + BackendService.sessid
+        debugger;
+
+        let headers = [];
+        headers["Content-Type"] = "application/octet-stream";
+        headers["Accept"] = 'application/json';
+        headers["x-csrf-token"] = BackendService.XCSFRtoken;
+        headers["Cookie"] = BackendService.session_name + "=" + BackendService.sessid;
 
         const request = {
             url: this.url,
@@ -136,22 +138,22 @@ export class MediaComponent {
             androidAutoDeleteAfterUpload: false,
             androidNotificationTitle: 'BEEEZ',
         };
+
         let task: bgHttp.Task;
         let lastEvent = "";
-        const params = [
-        { name: name, filename: fileUri }
-        ];
+        const params = [ { name: name, filename: fileUri } ];
         task = this.session.multipartUpload(params, request);
 
         function onEvent(e) {
-            console.log(e)
-            this.isLoading = false
+            console.log('l☯☯☯l > MediaComponent > start_upload() > onEvent()',e);
+            this.isLoading = false;
+
             if (lastEvent !== e.eventName) {
                 // suppress all repeating progress events and only show the first one
                 lastEvent = e.eventName;
-                if (e.eventName == 'complete') this.isLoading = false
+                if (e.eventName == 'complete') this.isLoading = false;
             } else {
-                this.isLoading = false
+                this.isLoading = false;
                 return;
             }
             this.events.push({

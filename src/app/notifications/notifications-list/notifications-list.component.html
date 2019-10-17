@@ -1,5 +1,4 @@
 <ActionBar class="action-bar" [title]="'NOTIFICATIONS.NOTIFICATIONS'|L" >
-
   <!-- TITOLO > ANDROID -->
   <StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="center" android:horizontalAlignment="left">
     <Image src="res://mark" class="action-image text-left pull-left m-r-10"></Image>
@@ -14,7 +13,6 @@
   <ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left">
     <Label class="action-bar-title text-left pull-left" [text]="'NOTIFICATIONS.NOTIFICATIONS'|L|titlecase"></Label>
   </ActionItem>
-
   <!-- ICONE -->
   <!--
     <NavigationButton text="Go Back" icon="res://arrow_left" text="" (tap)="goBack()"></NavigationButton>
@@ -26,72 +24,65 @@
   -->
 </ActionBar>
 
-<!-- https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
-<!-- (itemSwipeProgressEnded)="onSwipeCellFinished($event)"  (itemSwipeProgressChanged)="onCellSwiping($event)" -->
+<!-- DOCS: https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
+<!-- DOCS: (itemSwipeProgressEnded)="onSwipeCellFinished($event)"  (itemSwipeProgressChanged)="onCellSwiping($event)" -->
 
-<RadListView class="notifications" [items]="notifications" (itemLoading)="onItemLoading($event, notifications)"
+<RadListView class="notifications" [items]="notifications" 
 
-
+(itemLoading)="onItemLoading($event, notifications)"
 (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
 selectionBehavior="None" swipeActions="true"
- pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" >
+pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" >
 
+    <ListViewLinearLayout tkListViewLayout scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default"></ListViewLinearLayout>
 
-
-
-  <ListViewLinearLayout tkListViewLayout scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default"></ListViewLinearLayout>
-
-  <ng-template #cardTemplate tkListItemTemplate let-item="item" let-index="index" >
-    <!-- <CardView class="card-group" elevation="15" radius="10" ios:shadowRadius="4" shadowOpacity="0.1" shadowColor="#000" shadowOffsetHeight="6" [class.list-group-first]="index===0" (tap)="goToCasting(item)"> -->
-    <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="15" [class.list-group-first]="index===0" (tap)="goToCasting(item)">
-      <StackLayout  class="list-group-item">
-        <GridLayout columns="80, *" rows="80, auto" >
-          <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
-          <AbsoluteLayout row="0" col="1">
-            <GridLayout left="0" top="0" width="100%" columns="41, *, 65" rows="44, 35, 1" backgroundColor="" >
-              <Label *ngIf="item.private==1;" text="" class="list-group-item-icon-lock" row="0" col="0" backgroundColor="" ></Label>
-              <Label *ngIf="item.private==1;" [text]="item.title" class="list-group-item-heading-10 text-uppercase" textWrap="true" row="0" col="1" colSpan="2" backgroundColor=""></Label>
-              <Label *ngIf="item.private==0;" [text]="item.title" class="list-group-item-heading-10 list-group-item-heading-m-l-15 text-uppercase" textWrap="true" row="0" col="0" colSpan="3" backgroundColor=""></Label>
-              <Label [text]="item.subtitle" class="list-group-item-heading-14" textWrap="true" row="1" col="0" colSpan="2" backgroundColor=""></Label>
-              <Label [text]="item.date" class="text-right list-group-item-date" textWrap="true" row="1" col="2" backgroundColor=""></Label>
-              <Label *ngIf="item.message_type=='audition_talent_was_selected';" text="" class="list-group-item-h-line" row="2" col="0" colSpan="3"></Label>
+    <ng-template #cardTemplate tkListItemTemplate let-item="item" let-index="index" >
+      <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="15" [class.list-group-first]="index===0" (tap)="goToCasting(item)">
+        
+          <GridLayout class="list-group-item" columns="80, *" rows="80, auto" >
+            <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
+            <AbsoluteLayout row="0" col="1">
+              <GridLayout left="0" top="0" width="100%" columns="41, *, 65" rows="44, 35, 1">
+                <Label *ngIf="item.private==1;" text="" class="list-group-item-icon-lock" row="0" col="0"></Label>
+                <Label *ngIf="item.private==1;" [text]="item.title" class="list-group-item-heading-10 text-uppercase" textWrap="true" row="0" col="1" colSpan="2"></Label>
+                <Label *ngIf="item.private==0;" [text]="item.title" class="list-group-item-heading-10 list-group-item-heading-m-l-15 text-uppercase" textWrap="true" row="0" col="0" colSpan="3"></Label>
+                <Label [text]="item.subtitle" class="list-group-item-heading-14" textWrap="true" row="1" col="0" colSpan="2"  ></Label>
+                <Label [text]="item.date" class="text-right list-group-item-date" textWrap="true" row="1" col="2"  ></Label>
+                <Label *ngIf="item.message_type=='audition_talent_was_selected';" text="" class="list-group-item-h-line" row="2" col="0" colSpan="3"></Label>
+              </GridLayout>
+              <StackLayout left="0" top="0" width="100%" height="32" *ngIf="item.read==0;">
+                  <Label class="list-group-item-icon-partecipate" horizontalAlignment="right"></Label>
+              </StackLayout>
+            </AbsoluteLayout>
+            <GridLayout row="1" col="0" colSpan="2" columns="41, *, 50" rows="auto" *ngIf="item.message_type=='audition_talent_was_selected';">
+              <Label text="" [ngClass]="'list-group-item-icon-' + item.type" row="0" col="0"></Label>
+              <Label [text]="item.message" class="list-group-item-text text-left text-uppercase" row="0" col="1"></Label>
+              <Label text="" class="list-group-item-icon-arrow" row="0" col="2"></Label>
             </GridLayout>
-            <StackLayout left="0" top="0" width="100%" height="32" *ngIf="item.read==0;">
-                <Label class="list-group-item-icon-partecipate" horizontalAlignment="right"></Label>
-            </StackLayout>
-          </AbsoluteLayout>
-          <GridLayout row="1" col="0" colSpan="2" columns="41, *, 50" rows="auto" backgroundColor="" *ngIf="item.message_type=='audition_talent_was_selected';">
-            <Label text="" [ngClass]="'list-group-item-icon-' + item.type" row="0" col="0"></Label>
-            <Label [text]="item.message" class="list-group-item-text text-left text-uppercase" row="0" col="1"></Label>
-            <Label text="" class="list-group-item-icon-arrow" row="0" col="2"></Label>
           </GridLayout>
+      </CardView>
+    </ng-template>
+
+    <!--
+    <ng-template tkTemplateKey="empty"  let-item="item" >
+      <CardView class="card-group" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="true">
+        <StackLayout class="list-group-item">
+          <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TITLE' | L" class="list-group-item-heading-18 list-group-item-heading-18-empty" textWrap="true"></Label>
+          <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
+        </StackLayout>
+      </CardView>
+    </ng-template> 
+    -->
+
+    <StackLayout *tkListItemSwipeTemplate class="card-group card-group-delete" >
+      <StackLayout class="list-group-item list-group-item-delete" id="delete-stack">
+        <GridLayout  columns="auto, *, auto" class="gridLayoutLayout">
+          <StackLayout id="delete-view" col="2" class="deleteViewStackLayout" (tap)="onRightSwipeClick($event)" verticalAlignment="center" horizontalAlignment="center">
+              <!-- <Label text="counter" class="" verticalAlignment="center" horizontalAlignment="center" backgroundColor="white"></Label> -->
+              <Label text="" class="list-group-item-icona-bin" verticalAlignment="center" horizontalAlignment="center"></Label>
+          </StackLayout>
         </GridLayout>
       </StackLayout>
-    </CardView>
-
-  </ng-template>
-
-<!--   <ng-template tkTemplateKey="empty"  let-item="item" >
-    <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="true">
-
-      <StackLayout class="list-group-item">
-        <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TITLE' | L" class="list-group-item-heading-18 list-group-item-heading-18-empty" textWrap="true"></Label>
-        <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
-      </StackLayout>
-
-    </CardView>
-  </ng-template> -->
-
-  <StackLayout *tkListItemSwipeTemplate class="card-group card-group-delete" >
-    <StackLayout class="list-group-item list-group-item-delete" id="delete-stack">
-      <GridLayout  columns="auto, *, auto" class="gridLayoutLayout">
-         <StackLayout id="delete-view" col="2" class="deleteViewStackLayout" (tap)="onRightSwipeClick($event)" verticalAlignment="center" horizontalAlignment="center">
-             <!-- <Label text="counter" class="" verticalAlignment="center" horizontalAlignment="center" backgroundColor="white"></Label> -->
-             <Label text="" class="list-group-item-icona-bin" verticalAlignment="center" horizontalAlignment="center"></Label>
-         </StackLayout>
-      </GridLayout>
     </StackLayout>
-  </StackLayout>
-
 
 </RadListView>
