@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input,} from '@angular/core';
 import * as imagepicker from "nativescript-imagepicker";
 import * as bgHttp from "nativescript-background-http";
 import { isIOS } from "platform";
@@ -12,13 +12,14 @@ import { alert, confirm, getIconSource } from "../../shared/utils";
 import { Profile } from "../../user/profile.model";
 
 
+
 @Component({
     selector: 'ns-media',
     templateUrl: './media.component.html',
     styleUrls: ['./media.component.scss'],
     moduleId: module.id,
 })
-export class MediaComponent {
+export class MediaComponent implements OnInit {
     @Input() profile;
     @Output() refreshProfile = new EventEmitter<string>();
     imageAssets = [];
@@ -41,35 +42,83 @@ export class MediaComponent {
         this.url = BackendService.baseUrl + "beez/loool_talent_images/upload_image_multipart";
         this.session = bgHttp.session("image-upload");
         this.loadImages();
+        
     }
+
+    ngOnInit() {
+        console.log('PROOOOOOVA INITTTTT');
+    }
+
+
+    ngChange(){
+        console.log('change',this.images); 
+    }
+
 
     loadImages(){
         this.profileService.getImages().subscribe((result) => {
             this.images = result;
-            // console.log(result);
+            console.log('reeeeesults',this.images);
         });
     }
     
     deleteImage(image){
-        if(image.polaroid) this.profileService.setPolaroidImage(0).subscribe(
-                () => this.refreshProfile.emit(),
-                () => alert(localize("ERROR_SERVICE"))
-        );
-        confirm("DELETE?").then(() =>
-            this.profileService.deleteImage(image.fid).subscribe(
-                () => this.loadImages(),
-                () => alert(localize("ERROR_SERVICE"))
-            )
-        );
+        if(image.polaroid) {
+            confirm("DELETE?").then(result => {
+                if(result){
+                    this.profileService.deleteImage(image.fid).subscribe( data => {
+                        this.loadImages()
+                        this.refreshProfile.emit()
+                    },error => {
+                        alert(localize("ERROR_SERVICE_Elimina_foto"))
+                    });
+                }
+            },
+            error => {}
+            );
+
+        }else{           
+            confirm("DELETE?").then(result => {
+                console.log('image cancella', image)
+                if(result){
+                    this.profileService.deleteImage(image.fid).subscribe(data => {
+                        this.loadImages()
+                        //alert(localize("eliminata"));
+                    },error => {
+                        alert(localize("ERROR_SERVICE_Elimina_foto"))
+                    });
+                }
+            },
+            error => {}
+            );
+        }
+
+        
+
     }
 
     setPolaroidImage(image){
-        confirm("Set as cover image?").then(() =>
-            this.profileService.setPolaroidImage(image.fid).subscribe(
-                () => this.refreshProfile.emit(),
-                () => alert(localize("ERROR_SERVICE"))
-            )
-        );
+        if(!image.fid){
+            this.refreshProfile.emit()
+            this.loadImages(); 
+        }else{
+            confirm("Set as cover image?").then(result => {
+                console.log('image appena inserita',image);
+                if(result){
+                    this.profileService.setPolaroidImage(image.fid).subscribe(data => {
+                        this.refreshProfile.emit()
+                        //this.loadImages();
+                        alert(localize("inserita"));
+                    },error => {
+                        alert(localize("ERROR_SERVICE_polaroid_inserita"))
+                    });
+                }
+            },
+            error => {
+            });
+        }
+        
+
     }
 
     public onSelectMultipleTap() {
@@ -78,6 +127,7 @@ export class MediaComponent {
             mode: "multiple"
         });
         this.startSelection(context);
+
     }
 
     private startSelection(context) {
@@ -113,6 +163,7 @@ export class MediaComponent {
                     counter++;
                 })
             })
+
         })
     }
 
@@ -128,6 +179,7 @@ export class MediaComponent {
         let headers = [];
         headers["Content-Type"] = "application/octet-stream";
         headers["Accept"] = 'application/json';
+        headers["observe"] = "response";
         headers["x-csrf-token"] = BackendService.XCSFRtoken;
         headers["Cookie"] = BackendService.session_name + "=" + BackendService.sessid;
 
@@ -145,13 +197,16 @@ export class MediaComponent {
         task = this.session.multipartUpload(params, request);
 
         function onEvent(e) {
-            console.log('l☯☯☯l > MediaComponent > start_upload() > onEvent()',e);
+            //console.log('l☯☯☯l > MediaComponent > start_upload() > onEvent()',e);
             this.isLoading = false;
 
             if (lastEvent !== e.eventName) {
                 // suppress all repeating progress events and only show the first one
                 lastEvent = e.eventName;
-                if (e.eventName == 'complete') this.isLoading = false;
+                if (e.eventName == 'complete'){
+                    this.isLoading = false;  
+        
+                }
             } else {
                 this.isLoading = false;
                 return;
@@ -164,21 +219,25 @@ export class MediaComponent {
                     totalBytes: e.totalBytes,
                     body: e.data
                 })
-            });
+            })
         }
-
         task.on("progress", onEvent.bind(this));
         task.on("error", onEvent.bind(this));
         task.on("responded", onEvent.bind(this));
         task.on("complete", onEvent.bind(this));
         lastEvent = "";
         this.tasks.push(task);
+
     }
+
+
 
     extractImageName(fileUri) {
         var pattern = /[^/]*$/;
         var imageName = fileUri.match(pattern);
         return imageName;
     }
+
+
 
 }

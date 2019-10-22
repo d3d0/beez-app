@@ -27,12 +27,7 @@
 <!-- DOCS: https://play.nativescript.org/?template=play-ng&id=bMb4PO&v=3 -->
 <!-- DOCS: (itemSwipeProgressEnded)="onSwipeCellFinished($event)"  (itemSwipeProgressChanged)="onCellSwiping($event)" -->
 
-<RadListView class="notifications" [items]="notifications" 
-
-(itemLoading)="onItemLoading($event, notifications)"
-(itemSwipeProgressStarted)="onSwipeCellStarted($event)"
-selectionBehavior="None" swipeActions="true"
-pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" >
+<RadListView class="notifications" [items]="notifications" (itemLoading)="onItemLoading($event, notifications)" (itemSwipeProgressStarted)="onSwipeCellStarted($event)" selectionBehavior="None" swipeActions="true" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
 
     <ListViewLinearLayout tkListViewLayout scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default"></ListViewLinearLayout>
 

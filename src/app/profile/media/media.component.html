@@ -1,4 +1,6 @@
-<GridLayout margin=0 columns="16,8,*" rows="auto,auto,auto" class="p-t-16">
+
+
+<GridLayout  margin=0 columns="16,8,*" rows="auto,auto,auto" class="p-t-16">
 	<Label text="" class="list-group-item-v-line" rowSpan="3" col="0" row="0" marginBottom="32" horizontalAlignment="center" ></Label>
 	<!-- TITLE -->
 	<StackLayout class="icon-container" row="0" col="0" >
@@ -6,16 +8,20 @@
 	</StackLayout>
 	<Label text="FOTO" class="header" textWrap="true" row="0" col="2"></Label>
 	<!-- IMAGES -->
-	<WrapLayout orientation="horizontal" row="1" col="2">
-		<CardView *ngFor="let image of images" margin=8 elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
-			<AbsoluteLayout>
-				<Image [src]="image.filepath" left="0" top="0" width="120" height="120" stretch="aspectFill" (tap)="setPolaroidImage(image)" ></Image>
-				<StackLayout left="0" top="0" height="32"  width="120" >
-					<Label class="list-group-item-icona-no-nero" [text]="index" (tap)="deleteImage(image)"horizontalAlignment="right"></Label>
-				</StackLayout>
-			</AbsoluteLayout>
-		</CardView>
-	</WrapLayout>
+
+
+		<WrapLayout orientation="horizontal" row="1" col="2">
+			<CardView *ngFor="let image of images" margin=8 elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
+				<AbsoluteLayout>
+					<Image [src]="image.filepath" left="0" top="0" width="120" height="120" stretch="aspectFill" (tap)="setPolaroidImage(image)" ></Image>
+					<StackLayout left="0" top="0" height="32"  width="120" >
+						<Label class="list-group-item-icona-no-nero" [text]="index" (tap)="deleteImage(image)"horizontalAlignment="right"></Label>
+					</StackLayout>
+				</AbsoluteLayout>
+			</CardView>
+		</WrapLayout>
+
+
 	<StackLayout class="icon-container" row="2" col="0" verticalAlignment="center" horizontalAlignment="center">
 		<Image [src]="getIconSource('add')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
 	</StackLayout>

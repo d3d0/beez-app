@@ -38,18 +38,18 @@ export class ProfileService {
       });
   }
 
-  drupal_upload(filename,file){
-      return this.http.post( BackendService.baseUrl + "beez/loool_talent_profile/media_images_upload",
-          {
-              "filename":filename,
-              "file":file,
-              'mimeType': 'image/jpeg',
-              "uid":BackendService.UID
-          } ,
-          {
-              headers: BackendService.getCommonHeaders()
-          });
-  }
+  // drupal_upload(filename,file){
+  //     return this.http.post( BackendService.baseUrl + "beez/loool_talent_profile/media_images_upload",
+  //         {
+  //             "filename":filename,
+  //             "file":file,
+  //             'mimeType': 'image/jpeg',
+  //             "uid":BackendService.UID
+  //         } ,
+  //         {
+  //             headers: BackendService.getCommonHeaders()
+  //         });
+  // }
 
   getImages() {
     return this.http.get(BackendService.baseUrl + 'beez/loool_talent_images/'+ BackendService.UID,
