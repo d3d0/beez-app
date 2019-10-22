@@ -41,8 +41,8 @@ export class SettingsComponent implements OnInit {
     this.routerExtension.back({ relativeTo: this.activeRoute });
   }
 
-  onPwdTap($event) {
-    console.log('stocaz');
-    //this.router.navigate([""], { relativeTo: this.activeRoute })
-  }
+  // onPwdTap($event) {
+  //   console.log('stocaz');
+  //   this.router.navigate(["/password"], { relativeTo: this.activeRoute })
+  // }
 }
