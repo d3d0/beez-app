@@ -129,12 +129,15 @@ export class MediaComponent implements OnInit {
     }
 
     public onSelectMultipleTap() {
-        this.isSingleMode = false;
-        let context = imagepicker.create({
-            mode: "multiple"
-        });
-        this.startSelection(context);
-
+        if(this.images.length < 3){
+            this.isSingleMode = false;
+            let context = imagepicker.create({
+                mode: "single"
+            });
+            this.startSelection(context);
+        }else{
+            alert(localize("Hai raggiunto il massimo di media caricabili."));
+        }
     }
 
     private startSelection(context) {
