@@ -207,4 +207,6 @@ export class ProfileComponent implements OnInit {
   edit(profile){
     this.profileService.edit(profile).subscribe(result=>console.log(result))
   }
+
+
 }
