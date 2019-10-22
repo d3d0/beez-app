@@ -6,7 +6,7 @@
 	<string>development	</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)io.beez.casting.app</string>
+		<string>$(AppIdentifierPrefix)io.beez.app</string>
 	</array>
 </dict>
 </plist>

@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "io.beez.castinghub",
+    "id": "io.beez.app",
     "tns-ios": {
       "version": "6.1.0"
     },
@@ -11,8 +11,8 @@
   "description": "Beez Casting Hub",
   "repository": "bitbucket.org:looolsrl/beez_app.git",
   "author": {
-    "name": "Mirko Sacchetti",
-    "email": "mirko@loool.com",
+    "name": "LOOOL srl",
+    "email": "mail@loool.com",
     "url": "https://loool.com"
   },
   "scripts": {
@@ -36,7 +36,7 @@
     "nativescript-iqkeyboardmanager": "^1.4.0",
     "nativescript-localize": "4.2.0",
     "nativescript-lottie": "^2.1.2",
-    "nativescript-plugin-firebase": "9.0.2",
+    "nativescript-plugin-firebase": "^10.1.0",
     "nativescript-social-share": "^1.5.1",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-listview": "^7.0.5",
