@@ -20,7 +20,8 @@ export class SettingsComponent implements OnInit {
   constructor(
     private activeRoute: ActivatedRoute,
     private routerExtension: RouterExtensions,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
     ) {}
 
   ngOnInit() {}
@@ -38,5 +39,10 @@ export class SettingsComponent implements OnInit {
   
   public goBack() {
     this.routerExtension.back({ relativeTo: this.activeRoute });
+  }
+
+  onPwdTap($event) {
+    console.log('stocaz');
+    //this.router.navigate([""], { relativeTo: this.activeRoute })
   }
 }
