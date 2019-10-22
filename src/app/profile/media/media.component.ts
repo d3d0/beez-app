@@ -63,62 +63,69 @@ export class MediaComponent implements OnInit {
     }
     
     deleteImage(image){
-        if(image.polaroid) {
-            confirm("DELETE?").then(result => {
-                if(result){
-                    this.profileService.deleteImage(image.fid).subscribe( data => {
-                        this.loadImages()
-                        this.refreshProfile.emit()
-                    },error => {
-                        alert(localize("ERROR_SERVICE_Elimina_foto"))
-                    });
-                }
-            },
-            error => {}
-            );
-
-        }else{           
-            confirm("DELETE?").then(result => {
-                console.log('image cancella', image)
-                if(result){
-                    this.profileService.deleteImage(image.fid).subscribe(data => {
-                        this.loadImages()
-                        //alert(localize("eliminata"));
-                    },error => {
-                        alert(localize("ERROR_SERVICE_Elimina_foto"))
-                    });
-                }
-            },
-            error => {}
-            );
-        }
-
+        if(!this.isLoading){
+            if(!image.fid){
+                this.refreshProfile.emit()
+                this.loadImages(); 
+            }else{
+                if(image.polaroid) {
+                    confirm("DELETE?").then(result => {
+                        if(result){
+                            this.profileService.deleteImage(image.fid).subscribe( data => {
+                                this.loadImages()
+                                this.refreshProfile.emit()
+                            },error => {
+                                alert(localize("ERROR_SERVICE_Elimina_foto"))
+                            });
+                        }
+                    },
+                    error => {}
+                    );
         
+                }else{           
+                    confirm("DELETE?").then(result => {
+                        console.log('image cancella', image)
+                        if(result){
+                            this.profileService.deleteImage(image.fid).subscribe(data => {
+                                this.refreshProfile.emit();
+                                this.loadImages(); 
+                                //alert(localize("eliminata"));
+                            },error => {
+                                alert(localize("ERROR_SERVICE_Elimina_foto"))
+                            });
+                        }
+                    },
+                    error => {}
+                    );
+                }
+            }
+        }
 
     }
 
     setPolaroidImage(image){
-        if(!image.fid){
-            this.refreshProfile.emit()
-            this.loadImages(); 
-        }else{
-            confirm("Set as cover image?").then(result => {
-                console.log('image appena inserita',image);
-                if(result){
-                    this.profileService.setPolaroidImage(image.fid).subscribe(data => {
-                        this.refreshProfile.emit()
-                        //this.loadImages();
-                        alert(localize("inserita"));
-                    },error => {
-                        alert(localize("ERROR_SERVICE_polaroid_inserita"))
-                    });
-                }
-            },
-            error => {
-            });
+        if(!this.isLoading){
+            if(!image.fid){
+                this.refreshProfile.emit()
+                this.loadImages(); 
+            }else{
+                confirm("Set as cover image?").then(result => {
+                    console.log('image appena inserita',image);
+                    if(result){
+                        this.profileService.setPolaroidImage(image.fid).subscribe(data => {
+                            this.refreshProfile.emit()
+                            //this.loadImages();
+                            alert(localize("inserita"));
+                        },error => {
+                            alert(localize("ERROR_SERVICE_polaroid_inserita"))
+                        });
+                    }
+                },
+                error => {
+                });
+            }
         }
         
-
     }
 
     public onSelectMultipleTap() {
