@@ -1,13 +1,14 @@
-<RadListView height="100%" class="casting" [items]="castings|castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" (itemLoading)="makeBackgroundTransparent($event)" [itemTemplateSelector]="templateSelector">
+<RadListView #radlist (loaded)="onLoadedRad($event)" (unloaded)="onUnloadedRad($event)" height="100%" class="casting" [items]="castings|castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" (itemLoading)="makeBackgroundTransparent($event)" [itemTemplateSelector]="templateSelector">
 
   <ng-template tkTemplateKey="default" let-item="item" let-index="index">
+
     <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="index===0">
 
       <StackLayout class="list-group-item" >
 
         <Label *ngIf="castingType == 'Audition' && item.audition_action == ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="banner-top-card" textWrap="true"></Label>
 
-        <GridLayout columns="16, *, 20, 16" rows="auto, auto, auto, auto, auto" class="m-b-20">
+        <GridLayout columns="16, *, 20, 16" rows="auto, auto, auto, auto, auto, auto" class="m-b-20">
 
           <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
           <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
@@ -49,6 +50,9 @@
           </StackLayout>
           <!-- ultima riga > arrow -->
           <Image src="res://arrow_right" stretch="none" row="4" col="2" ></Image>
+          
+          <!-- <Button row="5" col="0" colSpan="5" #ciao text="TAP" loaded="onLoaded" class="btn btn-primary btn-active"></Button> -->
+
 
         </GridLayout>
 
