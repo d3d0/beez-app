@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 // https://docs.nativescript.org/ns-framework-modules/application-settings
-import { getString, setString, setBoolean, getBoolean, hasKey } from "application-settings"; 
+import { getString, setString, setBoolean, getBoolean, hasKey, getNumber } from "application-settings"; 
 import { HttpHeaders } from "@angular/common/http";
 
 @Injectable({
@@ -79,6 +79,15 @@ export class BackendService {
     // console.log('SET UID TO: ' + newToken);
   }
 
+  static get email_notify() {
+    console.log('l☯☯☯l > BackendService > email_notify() > Get email_notify from storage: ', getString('email_notify'));
+    return getString('email_notify');
+  }
+  static set email_notify(newToken) {
+    setString('email_notify', newToken);
+    // console.log('SET UID TO: ' + newToken);
+  }
+
   static validateCode(response) {
     return new Promise((resolve, reject) => {
       if (response.statusCode >= 200 && response.statusCode < 300) {
@@ -102,6 +111,7 @@ export class BackendService {
     BackendService.session_name = '';
     BackendService.sessid = '';
     BackendService.XCSFRtoken = '';
+    BackendService.email_notify = '';
     //console.log('l☯☯☯l > BackendService > reset()');
   }
 

@@ -117,13 +117,15 @@ export class LoginComponent implements OnInit {
       this.userService.login(this.user).subscribe((result) => {
 
         // --> dati utente
-        console.log('l☯☯☯l > LoginComponent > login() > user NAME: ', result['user']['name']);
 
         BackendService.session_name = result['session_name'];
         BackendService.sessid = result['sessid'];
         BackendService.XCSFRtoken = result['token'];
         BackendService.UID = result['user']['uid'];
         BackendService.user_name = result['user']['name'];
+        BackendService.email_notify = result['user']['field_ricevi_notifiche_email']['und'][0]['value'];
+  
+        
 
         Object.keys(result['user']['roles']).forEach(key => {
           //console.log('l☯☯☯l > LoginComponent > result user roles: ', result['user']['roles'][key]);

@@ -24,7 +24,6 @@ export class PasswordService {
 
 
   updatePwd(form){
-    console.log('chiamo service');
 
     return this.http.post( BackendService.baseUrl + "beez/loool_talent_profile/passupdate",
       JSON.stringify({
@@ -34,6 +33,17 @@ export class PasswordService {
       }),
       { headers: BackendService.getCommonHeaders() })
   }
+  
+  updateMail(form){
+    return this.http.post( BackendService.baseUrl + "beez/loool_talent_profile/email_notify_update",
+      JSON.stringify({
+        uid: form.uid,
+        email_notify: form.email_notify
+      }),
+      { headers: BackendService.getCommonHeaders() })
+  }
+
+
   
   
 

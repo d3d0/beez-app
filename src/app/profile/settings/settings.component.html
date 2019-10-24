@@ -51,7 +51,7 @@
 					<Label [text]="'Notifiche'" class="header" textWrap="true" row="2" col="2" ></Label>
 					<GridLayout  row="3" col="2" columns="*,auto" rows="auto,auto">
 						<Label class="list-group-item-text" text="Ricevi notifiche e-mail" textWrap="true" row="0" col="0"></Label>
-						<Switch class="list-group-item-switch" checked="false" row="0" col="1" horizontalAlignment="right"></Switch>
+						<Switch #sw class="list-group-item-switch" (checkedChange)="onCheckedChange(sw.checked)"  [checked]="isChecked" row="0" col="1" horizontalAlignment="right"></Switch>
 						<!-- <Label class="list-group-item-text" text="Ricevi notifiche di sistema" textWrap="true" row="1" col="0"></Label>
 						<Switch class="list-group-item-switch" checked="false" row="1" col="1" horizontalAlignment="right"></Switch> -->
 					</GridLayout>
