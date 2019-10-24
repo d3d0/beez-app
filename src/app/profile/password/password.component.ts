@@ -62,19 +62,24 @@ export class PasswordComponent implements OnInit {
     if (this.signUpForm.invalid) {
       return;
     }else{
-      if(this.signUpForm.value.newPwd == this.signUpForm.value.confirmPwd){
-        
-        this.formValue = {
-          "uid": BackendService.UID,
-          "pwd":this.signUpForm.value.newPwd,
-          "currentpwd":this.signUpForm.value.oldPwd
-        }
-
-        this.pushRequest();
-        console.log(JSON.stringify(this.signUpForm.value));
+      if(this.signUpForm.value.newPwd.length < 5){
+        alert(localize("la password deve essere di almeno 6 caratteri"));
       }else{
-        alert(localize("le password non coincidono"));
+        if(this.signUpForm.value.newPwd == this.signUpForm.value.confirmPwd){
+        
+          this.formValue = {
+            "uid": BackendService.UID,
+            "pwd":this.signUpForm.value.newPwd,
+            "currentpwd":this.signUpForm.value.oldPwd
+          }
+  
+          this.pushRequest();
+          console.log(JSON.stringify(this.signUpForm.value));
+        }else{
+          alert(localize("le password non coincidono"));
+        }
       }
+      
     }
   }
 

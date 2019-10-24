@@ -16,6 +16,7 @@ import { alert, getIconSource } from "../../shared/utils";
 
 export class SettingsComponent implements OnInit {
   getIconSource = getIconSource
+  userName:string;
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -24,7 +25,10 @@ export class SettingsComponent implements OnInit {
     private router: Router
     ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userName = BackendService.user_name;
+    console.log('SETTINGS --->',this.userName );
+  }
 
   logout() {
     this.userService.logoff().subscribe((result) => {

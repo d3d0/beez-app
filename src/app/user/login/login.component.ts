@@ -51,13 +51,14 @@ export class LoginComponent implements OnInit {
     console.log('l☯☯☯l > LoginComponent > ngOnInit() > BackendService.XCSFRtoken', BackendService.XCSFRtoken);
     console.log('l☯☯☯l > LoginComponent > ngOnInit() > BackendService.sessid', BackendService.sessid);
     console.log('l☯☯☯l > LoginComponent > ngOnInit() > BackendService.session_name', BackendService.session_name);
+    console.log('l☯☯☯l > LoginComponent > ngOnInit() > BackendService.user_name', BackendService.user_name);
     console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
   }
 
   ngAfterViewInit() {
       if(BackendService.registeredUser) {
         this.alertSignup(localize("MESSAGES.CONFIRM_EMAIL"));
-        console.log('@@@@@@@@@@@@ 1 > l☯☯☯l > ngAfterViewInit() > BackendService > registeredUser()', BackendService.registeredUser);
+        //console.log('@@@@@@@@@@@@ 1 > l☯☯☯l > ngAfterViewInit() > BackendService > registeredUser()', BackendService.registeredUser);
       }
   }
 
@@ -74,7 +75,7 @@ export class LoginComponent implements OnInit {
     }).then(function () {
       console.log("Dialog closed!");
       BackendService.registeredUser = false;
-      console.log('@@@@@@@@@@@@ 2 > l☯☯☯l > alertSignup() > BackendService > registeredUser()', BackendService.registeredUser);
+      //console.log('@@@@@@@@@@@@ 2 > l☯☯☯l > alertSignup() > BackendService > registeredUser()', BackendService.registeredUser);
     });
   }
 
@@ -108,23 +109,24 @@ export class LoginComponent implements OnInit {
       
       // --> token
       BackendService.XCSFRtoken = result;
-      console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.XCSFRtoken: ', BackendService.XCSFRtoken);
-      console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.sessid: ', BackendService.sessid);
-      console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.session_name: ', BackendService.session_name);
+      //console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.XCSFRtoken: ', BackendService.XCSFRtoken);
+      //console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.sessid: ', BackendService.sessid);
+      //console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > BackendService.session_name: ', BackendService.session_name);
 
       // --> login() function
       this.userService.login(this.user).subscribe((result) => {
 
         // --> dati utente
-        console.log('l☯☯☯l > LoginComponent > login() > user roles: ', result['user']['roles']);
+        console.log('l☯☯☯l > LoginComponent > login() > user NAME: ', result['user']['name']);
 
         BackendService.session_name = result['session_name'];
         BackendService.sessid = result['sessid'];
         BackendService.XCSFRtoken = result['token'];
         BackendService.UID = result['user']['uid'];
+        BackendService.user_name = result['user']['name'];
 
         Object.keys(result['user']['roles']).forEach(key => {
-          console.log('l☯☯☯l > LoginComponent > result user roles: ', result['user']['roles'][key]);
+          //console.log('l☯☯☯l > LoginComponent > result user roles: ', result['user']['roles'][key]);
           // --> USER PENDING --> LOGOUT
           if (result['user']['roles'][key] == 'pending user') {
             this.userService.logoff().subscribe((result) => {
@@ -139,12 +141,12 @@ export class LoginComponent implements OnInit {
           if (result['user']['roles'][key] == 'authenticated user') {
             // FIREBASE
             messaging.addOnPushTokenReceivedCallback(token => {
-                console.log("l☯☯☯l > LoginComponent > addOnPushTokenReceivedCallback() > Firebase plugin received a push token: " + token);
+                //console.log("l☯☯☯l > LoginComponent > addOnPushTokenReceivedCallback() > Firebase plugin received a push token: " + token);
                 if (token) {
                   this.pushService.push_token(token).subscribe((result) => {
-                    console.log("l☯☯☯l > pushService > push_token() > result from pushservice", result); // OK > Result getting the data!
+                    //console.log("l☯☯☯l > pushService > push_token() > result from pushservice", result); // OK > Result getting the data!
                   }, error => {
-                    console.log("l☯☯☯l > pushService > push_token() > error from pushservice ", error); // NO > Error getting the data!
+                    //console.log("l☯☯☯l > pushService > push_token() > error from pushservice ", error); // NO > Error getting the data!
                   });
                 }
               }

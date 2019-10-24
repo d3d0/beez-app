@@ -89,7 +89,7 @@ export class ProfileComponent implements OnInit {
   selectEvent(text, field){
     if(field){
       this.profile[field]=text.tid;
-      console.log('selectEvent', this.profile[field]);
+      //console.log('selectEvent', this.profile[field]);
     }
   }
 
@@ -105,7 +105,7 @@ export class ProfileComponent implements OnInit {
   editSave(){
     this.isLoading = true;
 
-    console.log('l☯☯☯l > ProfileComponent > editSave() > this.user: ', this.profile);
+    //console.log('l☯☯☯l > ProfileComponent > editSave() > this.user: ', this.profile);
     
     this.profileService.edit(this.profile).subscribe((result) => {
       // alert('Profilo aggiornato!');
@@ -114,7 +114,7 @@ export class ProfileComponent implements OnInit {
       this.editable = false;
     },
     (err) => {
-      console.log(err)
+      //console.log(err)
       alert(localize('MESSAGES.ERROR_SERVICE'))
     });
     this.isLoading = false;
@@ -128,7 +128,7 @@ export class ProfileComponent implements OnInit {
   loadProfile(){
     this.profileService.load().subscribe(profile=> {
       this._profile = profile[0];
-      console.log('l☯☯☯l > ProfileComponent > loadProfile() > _profile: ', this._profile);
+      //console.log('l☯☯☯l > ProfileComponent > loadProfile() > _profile: ', this._profile);
       if (this._profile['facebook']==null) {
         this._profile['facebook_hint'] = 'username';
       }
