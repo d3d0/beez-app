@@ -18,7 +18,7 @@
 
 	<StackLayout>
 
-		<CardView class="card-group" elevation="40" radius="10" ios:shadowRadius="15">
+		<!-- <CardView class="card-group" elevation="0" radius="0" ios:shadowRadius="15"> -->
 			<StackLayout class="list-group-item p-t-8">
 
 				<GridLayout columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto">
@@ -36,11 +36,11 @@
 						</GridLayout> -->
 						<GridLayout columns="*,auto" rows="auto">
 							<Label class="list-group-item-text" text="Username" textWrap="true" row="0" col="0"></Label>
-							<Label class="list-group-item-text" text=" ... " textWrap="true" row="0" col="1" horizontalAlignment="right"></Label>
+							<Label class="list-group-item-text" color="black" [text]="userName " textWrap="true" row="0" col="1" horizontalAlignment="right"></Label>
 						</GridLayout>
-						<GridLayout columns="*,auto" rows="auto">
+						<GridLayout columns="*,auto" rows="auto" [nsRouterLink]="['../password']">
 							<Label class="list-group-item-text" text="Password" textWrap="true" row="0" col="0"></Label>
-							<Label class="list-group-item-text" text=" ... " textWrap="true" row="0" col="1" horizontalAlignment="right"></Label>
+							<Label class="list-group-item-text" color="#5A82FF" text="Modifica Password" textWrap="true" row="0" col="1" horizontalAlignment="right"></Label>
 						</GridLayout>
 						<!-- <Label class="list-group-item-text" text="Elimina account" textWrap="true" row="11" col="1"></Label> -->
 					</StackLayout>
@@ -52,8 +52,8 @@
 					<GridLayout  row="3" col="2" columns="*,auto" rows="auto,auto">
 						<Label class="list-group-item-text" text="Ricevi notifiche e-mail" textWrap="true" row="0" col="0"></Label>
 						<Switch class="list-group-item-switch" checked="false" row="0" col="1" horizontalAlignment="right"></Switch>
-						<Label class="list-group-item-text" text="Ricevi notifiche di sistema" textWrap="true" row="1" col="0"></Label>
-						<Switch class="list-group-item-switch" checked="false" row="1" col="1" horizontalAlignment="right"></Switch>
+						<!-- <Label class="list-group-item-text" text="Ricevi notifiche di sistema" textWrap="true" row="1" col="0"></Label>
+						<Switch class="list-group-item-switch" checked="false" row="1" col="1" horizontalAlignment="right"></Switch> -->
 					</GridLayout>
 
 					<StackLayout class="icon-container" row="4" col="1" >
@@ -73,6 +73,6 @@
 
 				</GridLayout>
 			</StackLayout>
-		</CardView>
-	</StackLayout>\
+		<!-- </CardView> -->
+	</StackLayout>
 </ScrollView>

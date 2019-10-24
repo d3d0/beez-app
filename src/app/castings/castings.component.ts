@@ -57,14 +57,14 @@ export class CastingsComponent implements AfterViewInit, OnInit{
   }
 
   ngAfterViewInit() {
-      console.log('############################################ > ngAfterViewInit');
-      console.log('############################################ > ngAfterViewInit');
+      //console.log('############################################ > ngAfterViewInit');
+      //console.log('############################################ > ngAfterViewInit');
 
       // this.castingNew[0] = <StackLayout>this.tabNew.nativeElement;
       // console.log('############################################',this.castingNew[0]);
 
-      console.log('############################################ > ngAfterViewInit');
-      console.log('############################################ > ngAfterViewInit');
+      //console.log('############################################ > ngAfterViewInit');
+      //console.log('############################################ > ngAfterViewInit');
   }
 
   // STACKLAYOUT

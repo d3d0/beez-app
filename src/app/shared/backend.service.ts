@@ -36,7 +36,7 @@ export class BackendService {
   }
 
   static get XCSFRtoken() {
-    console.log('l☯☯☯l > BackendService > XCSFRtoken() > Get XCSFRtoken from storage: ', getString('XCSFRtoken'));
+    //console.log('l☯☯☯l > BackendService > XCSFRtoken() > Get XCSFRtoken from storage: ', getString('XCSFRtoken'));
     return getString('XCSFRtoken');
   }
   static set XCSFRtoken(newToken) {
@@ -45,7 +45,7 @@ export class BackendService {
   }
 
   static get sessid() {
-    console.log('l☯☯☯l > BackendService > sessid() > Get sessid from storage: ', getString('sessid'));
+    //console.log('l☯☯☯l > BackendService > sessid() > Get sessid from storage: ', getString('sessid'));
     return getString('sessid');
   }
   static set sessid(newToken) {
@@ -54,7 +54,7 @@ export class BackendService {
   }
 
   static get session_name() {
-    console.log('l☯☯☯l > BackendService > session_name() > Get session_name from storage: ', getString('session_name'));
+    //console.log('l☯☯☯l > BackendService > session_name() > Get session_name from storage: ', getString('session_name'));
     return getString('session_name');
   }
   static set session_name(newToken) {
@@ -63,11 +63,19 @@ export class BackendService {
   }
 
   static get UID() {
-    console.log('l☯☯☯l > BackendService > session_name() > Get UID from storage: ', getString('UID'));
+    //console.log('l☯☯☯l > BackendService > session_name() > Get UID from storage: ', getString('UID'));
     return getString('UID');
   }
   static set UID(newToken) {
     setString('UID', newToken);
+    // console.log('SET UID TO: ' + newToken);
+  }
+  static get user_name() {
+    console.log('l☯☯☯l > BackendService > user_name() > Get user_name from storage: ', getString('user_name'));
+    return getString('user_name');
+  }
+  static set user_name(newToken) {
+    setString('user_name', newToken);
     // console.log('SET UID TO: ' + newToken);
   }
 
@@ -94,12 +102,13 @@ export class BackendService {
     BackendService.session_name = '';
     BackendService.sessid = '';
     BackendService.XCSFRtoken = '';
-    console.log('l☯☯☯l > BackendService > reset()');
+    //console.log('l☯☯☯l > BackendService > reset()');
   }
 
   static printAll(){
     console.log(
       'BackendService.UID',BackendService.UID,
+      'BackendService.user_name',BackendService.user_name,
       'BackendService.session_name: ',BackendService.session_name,
       'BackendService.sessid: ', BackendService.sessid,
       'BackendService.XCSFRtoken: ', BackendService.XCSFRtoken)
