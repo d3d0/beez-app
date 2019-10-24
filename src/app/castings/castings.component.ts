@@ -26,8 +26,6 @@ export class CastingsComponent implements AfterViewInit, OnInit{
   @ViewChild('tab2', {static: true}) tab2: ElementRef;
   @ViewChild('tab3', {static: true}) tab3: ElementRef;
   @ViewChild('tabNew',{static: true}) tabNew: ElementRef;
-  // @ViewChild('ciao',{static: true}) ciao: ElementRef;
-  // @ViewChild('ciao1',{static: true}) ciao1: ElementRef;
 
   @Output() loading = new EventEmitter();
   @Output() loaded = new EventEmitter();
@@ -35,10 +33,9 @@ export class CastingsComponent implements AfterViewInit, OnInit{
   selectedIndex = 0;
   listLoaded = false;
   castingNew = [];
-  refresh: boolean = true;
   casting0: boolean = true;
-  casting1: boolean;
-  casting2: boolean;
+  casting1: boolean = false;
+  casting2: boolean = false;
 
   private castings= [];
   private castingsTabNew= [];
@@ -83,15 +80,6 @@ export class CastingsComponent implements AfterViewInit, OnInit{
     let page: Page = stack.page;
     // console.log('LOADED STACK ############################################', page);
   }
-  // CASTING
-  onLoadedCasting(args: EventData) {
-    let cast = args.object;
-    // console.log('LOADED CASTING ############################################', cast);
-  };
-  onUnloadedCasting(args: EventData) {
-    let cast = args.object;
-    // console.log('UNLOADED CASTING ############################################', cast);
-  };
   // BUTTON
   onTap(args: EventData) {
       let button = args.object as Button;
@@ -112,8 +100,8 @@ export class CastingsComponent implements AfterViewInit, OnInit{
   };
 
   public onSelectedIndexChange(index, args: EventData) {
-    console.log('STO SWITCHANDO!', this.refresh);
-    console.log(args.object);
+    // console.log('STO SWITCHANDO!');
+    // console.log(args.object);
 
     let grid = <GridLayout>args.object;
     let page: Page = grid.page;
@@ -124,6 +112,7 @@ export class CastingsComponent implements AfterViewInit, OnInit{
       this.tabs[index].className = "active"; // FIX 23/09
       this.tabs[previousTab].className = "not-active"; // FIX 23/09
       this.selectedIndex = index;
+      // d3d0 fix --> loading casting on index change
       console.log('STO SWITCHANDO!', index);
       if(index == 0) {
         this.casting0 = true;

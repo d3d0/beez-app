@@ -41,7 +41,7 @@
 
   <!-- CASTING LIST -->
   <StackLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
-    <ns-castings-list *ngIf="casting0" [refresh]="selectedIndex" (loaded)="onLoadedCasting($event)" (unloaded)="onUnloadedCasting($event)" [castingType]="'New'" ></ns-castings-list>
+    <ns-castings-list *ngIf="casting0" [refresh]="selectedIndex" [castingType]="'New'" ></ns-castings-list>
   </StackLayout>
 
   <StackLayout [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
@@ -52,8 +52,10 @@
     <ns-castings-list *ngIf="casting2" [refresh]="selectedIndex" [castingType]="'Close'" > </ns-castings-list>
   </StackLayout>
 
-  <!-- <StackLayout (loaded)="onLoadedStack($event)" (unloaded)="onUnloadedStack($event)" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
+  <!-- 
+  <StackLayout (loaded)="onLoadedStack($event)" (unloaded)="onUnloadedStack($event)" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
       <Button text="Tap me!" (unloaded)="onUnloaded($event)" (loaded)="onLoaded($event)" (tap)="onTap($event)" class="btn btn-primary btn-active"></Button>
-  </StackLayout> -->
+  </StackLayout>
+  -->
 
 </StackLayout>

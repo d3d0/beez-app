@@ -46,11 +46,6 @@ export class CastingDetailComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit()');
-
-    // TODO
-    // this.selectedAgency.name = 'Abstract Talent'; // TEST
-    // this.selectedAgency.tid = '993'; // TEST
-
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit() > select name',this.selectedAgency.name);
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit() > select tid',this.selectedAgency.tid);
 
@@ -66,6 +61,7 @@ export class CastingDetailComponent implements OnInit {
         }
         console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
         this.selectedAgency = new Agency();
+        // d3d0 fix --> default agency tid and name
         if (casting.agency_talent_casting) {
           this.agencyName = casting.agency_talent_casting.name;
           this.agencyTid = casting.agency_talent_casting.tid;
@@ -84,19 +80,17 @@ export class CastingDetailComponent implements OnInit {
    * checkbox no agenzia, serve per disattivare la select
    */
   private toggleCheckAgency() {
-      console.log('l☯☯☯l > CastingDetailComponent > toggleCheckAgency',this.selectedAgency);
-
-      this.noAgency = !this.noAgency;
-      if (this.noAgency) {
-        this.selectedAgency = new Agency();
-      }
-      else {
-        this.selectedAgency = new Agency();
-        this.selectedAgency.name = this.agencyName;
-        this.selectedAgency.tid = this.agencyTid;
-      }
-      
-      console.log('l☯☯☯l > CastingDetailComponent > toggleCheckAgency > select tid',this.selectedAgency.tid);
+    console.log('l☯☯☯l > CastingDetailComponent > toggleCheckAgency',this.selectedAgency);
+    this.noAgency = !this.noAgency;
+    if (this.noAgency) {
+      this.selectedAgency = new Agency();
+    }
+    else {
+      this.selectedAgency = new Agency();
+      this.selectedAgency.name = this.agencyName;
+      this.selectedAgency.tid = this.agencyTid;
+    }
+    console.log('l☯☯☯l > CastingDetailComponent > toggleCheckAgency > select tid',this.selectedAgency.tid);
   }
 
   /**

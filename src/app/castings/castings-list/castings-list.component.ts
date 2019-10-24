@@ -1,4 +1,4 @@
- import { Component, ChangeDetectionStrategy, EventEmitter, OnDestroy, Input, Output, OnInit } from "@angular/core";
+ import { Component, ViewChild, ElementRef, ChangeDetectionStrategy, EventEmitter, OnDestroy, Input, Output, OnInit } from "@angular/core";
  import { RouterExtensions } from "nativescript-angular/router";
  import { ActivatedRoute } from "@angular/router";
  import { TabView } from "tns-core-modules/ui/tab-view";
@@ -27,6 +27,9 @@
 
  export class CastingsListComponent implements OnInit, OnDestroy {
 
+   @ViewChild('loader', {static: true}) loader: ElementRef;
+   private _loader;
+   private _defaultIsVisible = false;
    private _isLoading = true;
    private _castings: ObservableArray<Casting> = new ObservableArray<Casting>([]);
    private _dataSubscription: Subscription;
@@ -43,13 +46,15 @@
    }
 
    ngOnInit(): void {
-      console.log('CastingsListComponent ngOnInit ############################################');
+      // console.log('CastingsListComponent ngOnInit!');
       this._templateSelector = this.templateSelectorFunction;
+      this._loader = this.loader.nativeElement;
+      console.log('Loading loader', this._loader);
       this.load();
    }
 
    ngOnDestroy() {
-      console.log('CastingsListComponent ngOnDestroy ############################################');
+      // console.log('CastingsListComponent ngOnDestroy!');
       if (this._dataSubscription) {
         this._dataSubscription.unsubscribe();
         this._dataSubscription = null;
@@ -60,9 +65,11 @@
       if (!this._dataSubscription) {
         this._isLoading = true;
         this._dataSubscription = this.castingsService.load().pipe(finalize(() => this._isLoading = false)).subscribe((castings: Array<Casting>) => {
-          // console.log('############################################ castings', castings);
+          // console.log('Loading castings', castings);
           this._castings = new ObservableArray(castings);
           this._isLoading = false;
+          this._defaultIsVisible = true;
+          // this._loader.visibility = 'collapse';
         });
       }
     }
@@ -74,7 +81,7 @@
       // let page: Page = radlist.page;
       // console.log('LOADED RadListView ############################################', page);
       // console.log('LOADED RadListView ############################################', radlist);
-      console.log('LOADED RadListView ############################################', this.refresh);
+      console.log('LOADED RadListView!', this.refresh);
     }
     onUnloadedRad(args: EventData) {
       if (this._dataSubscription) {
@@ -85,7 +92,7 @@
       // let page: Page = radlist.page;
       // console.log('UNLOADED RadListView ############################################', page);
       // console.log('UNLOADED RadListView ############################################', radlist);
-      console.log('LOADED RadListView ############################################', this.refresh);
+      console.log('UNLOADED RadListView!', this.refresh);
     }
   
 
