@@ -95,7 +95,6 @@
       // console.log('UNLOADED RadListView ############################################', radlist);
       console.log('UNLOADED RadListView!', this.refresh);
     }
-  
 
    get castings(): ObservableArray<Casting> {
      return this._castings

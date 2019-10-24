@@ -1,11 +1,15 @@
-import { Component, OnInit, ViewContainerRef, ViewChild, ElementRef} from "@angular/core";
+import { Component, OnInit, OnDestroy, ViewContainerRef, ViewChild, ElementRef} from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import { localize } from "nativescript-localize";
 import { ActivatedRoute } from "@angular/router";
 import * as SocialShare from "nativescript-social-share";
+import { EventData } from "tns-core-modules/data/observable";
+import { Subscription } from "rxjs";
+
 
 import { CastingsService} from "../castings.service";
 import { Casting } from "../casting.model";
+
 import { BackendService } from "../../shared/backend.service";
 import { alert, getIconSource } from "../../shared/utils";
 
@@ -22,7 +26,7 @@ class Agency  {
   moduleId: module.id,
 })
 
-export class CastingDetailComponent implements OnInit {
+export class CastingDetailComponent implements OnInit, OnDestroy {
 
   @ViewChild("CBAgency", {static: false}) AgencyCheckBox: ElementRef;
   public isLoading: boolean = false;
@@ -30,11 +34,16 @@ export class CastingDetailComponent implements OnInit {
   private casting = [];
   private casting_id;
   private user_id;
+  
   public getIconSource = getIconSource;
   public edit_actions: boolean = false;
   public selectedAgency = new Agency();
   private agencyName:string;
   private agencyTid:string;
+
+  private _isLoadingService = true;
+  private _isLoadedService = false;
+  private _dataSubscription: Subscription;
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -45,21 +54,59 @@ export class CastingDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit()');
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit() > select name',this.selectedAgency.name);
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit() > select tid',this.selectedAgency.tid);
-
-    this.activeRoute.params.subscribe((params) => {
+    this._dataSubscription = this.activeRoute.params.subscribe((params) => {
       this.casting_id = params.id
+      this.load();
+    });
+  }
+
+  load() {
+    if (!this._dataSubscription) {
+
+        this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
+          this.casting=casting;
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          // console.log('l☯☯☯l > CastingsService > getCastingById() > casting: ', casting);
+          if (casting.agency_talent_casting) {
+            console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.tid);
+            console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.name);
+          }
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+
+          this._isLoadingService = false;
+          this._isLoadedService = true;
+
+          this.selectedAgency = new Agency();
+          // d3d0 fix --> default agency tid and name
+          if (casting.agency_talent_casting) {
+            this.agencyName = casting.agency_talent_casting.name;
+            this.agencyTid = casting.agency_talent_casting.tid;
+            this.selectedAgency.name = casting.agency_talent_casting.name;
+            this.selectedAgency.tid = casting.agency_talent_casting.tid;
+            this.noAgency = false;
+          }
+          if (casting.agency_talent_casting.tid == '369') {
+            this.noAgency = true;
+          }
+        });
+      
+    }
+  } 
+
+  verificaCasting() {
+    if (!this._dataSubscription) {
+
       this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
-        this.casting=casting;
-        console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
-        // console.log('l☯☯☯l > CastingsService > getCastingById() > casting: ', casting);
-        if (casting.agency_talent_casting) {
-          console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.tid);
-          console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.name);
-        }
-        console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+        console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯',casting.status);
+
+        this._isLoadingService = false;
+        this._isLoadedService = true;
+
         this.selectedAgency = new Agency();
         // d3d0 fix --> default agency tid and name
         if (casting.agency_talent_casting) {
@@ -67,12 +114,53 @@ export class CastingDetailComponent implements OnInit {
           this.agencyTid = casting.agency_talent_casting.tid;
           this.selectedAgency.name = casting.agency_talent_casting.name;
           this.selectedAgency.tid = casting.agency_talent_casting.tid;
+          this.noAgency = false;
         }
-        if (this.selectedAgency.tid == '369') {
+        if(casting.agency_talent_casting.tid == '369') {
           this.noAgency = true;
         }
+
+        // d3d0 fix --> cambio di stato se visualizzo il casting dalle notifiche
+        if(casting.status!='New') {
+          this.casting['status']='Audition';
+          if(casting.audition_action != '') {
+            this.casting['audition_action'] = casting.audition_action;
+          }
+        }
+        if(casting.status!='New' && casting.status!='Audition') {
+          this.casting['status']='Close';
+        }
       });
-    });
+
+    }
+  }
+
+  ngOnDestroy() {
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+    console.log('CastingDetailComponent ngOnDestroy!');
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+    if (this._dataSubscription) {
+      this._dataSubscription.unsubscribe();
+      this._dataSubscription = null;
+    }
+  }
+
+  // d3d0 fix --> refresh RadListView component
+  onLoadedStack(args: EventData) {
+    if (!this._dataSubscription) {
+      this.verificaCasting();
+    }
+    console.log('LOADED ScrollView ############################################');
+  }
+  onUnloadedStack(args: EventData) {
+    this._isLoadingService = true;
+    this._isLoadedService = false;
+
+    if (this._dataSubscription) {
+      this._dataSubscription.unsubscribe();
+      this._dataSubscription = null;
+    }
+    console.log('UNLOADED ScrollView ############################################');
   }
 
   /**
