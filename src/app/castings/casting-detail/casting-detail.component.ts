@@ -46,11 +46,6 @@ export class CastingDetailComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit()');
-
-    // TODO
-    // this.selectedAgency.name = 'Abstract Talent'; // TEST
-    // this.selectedAgency.tid = '993'; // TEST
-
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit() > select name',this.selectedAgency.name);
     console.log('l☯☯☯l > CastingDetailComponent > ngOnInit() > select tid',this.selectedAgency.tid);
 
@@ -60,14 +55,19 @@ export class CastingDetailComponent implements OnInit {
         this.casting=casting;
         console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
         // console.log('l☯☯☯l > CastingsService > getCastingById() > casting: ', casting);
-        console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.tid);
-        console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.name);
+        if (casting.agency_talent_casting) {
+          console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.tid);
+          console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.name);
+        }
         console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
         this.selectedAgency = new Agency();
-        this.agencyName = casting.agency_talent_casting.name;
-        this.agencyTid = casting.agency_talent_casting.tid;
-        this.selectedAgency.name = casting.agency_talent_casting.name;
-        this.selectedAgency.tid = casting.agency_talent_casting.tid;
+        // d3d0 fix --> default agency tid and name
+        if (casting.agency_talent_casting) {
+          this.agencyName = casting.agency_talent_casting.name;
+          this.agencyTid = casting.agency_talent_casting.tid;
+          this.selectedAgency.name = casting.agency_talent_casting.name;
+          this.selectedAgency.tid = casting.agency_talent_casting.tid;
+        }
         if (this.selectedAgency.tid == '369') {
           this.noAgency = true;
         }
@@ -75,20 +75,30 @@ export class CastingDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * toggleCheckAgency()
+   * checkbox no agenzia, serve per disattivare la select
+   */
   private toggleCheckAgency() {
-      console.log('toggleCheckAgency',this.selectedAgency);
-      this.noAgency = !this.noAgency;
-      if (this.noAgency) {
-        this.selectedAgency = new Agency();
-      }
-      else {
-        this.selectedAgency = new Agency();
-        this.selectedAgency.name = this.agencyName;
-        this.selectedAgency.tid = this.agencyTid;
-      }
-      console.log('l☯☯☯l > CastingDetailComponent > toggleCheckAgency > select tid',this.selectedAgency.tid);
+    console.log('l☯☯☯l > CastingDetailComponent > toggleCheckAgency',this.selectedAgency);
+    this.noAgency = !this.noAgency;
+    if (this.noAgency) {
+      this.selectedAgency = new Agency();
+    }
+    else {
+      this.selectedAgency = new Agency();
+      this.selectedAgency.name = this.agencyName;
+      this.selectedAgency.tid = this.agencyTid;
+    }
+    console.log('l☯☯☯l > CastingDetailComponent > toggleCheckAgency > select tid',this.selectedAgency.tid);
   }
 
+  /**
+   * selectEvent()
+   * evento relativo a select agenzia, mi torna l'oggetto selezionato (value)
+   * @param value 
+   * @param field 
+   */
   selectEvent(value, field){
     console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select value',value);
     console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select field',field);
@@ -102,6 +112,9 @@ export class CastingDetailComponent implements OnInit {
     console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select tid',this.selectedAgency.tid);
   }
 
+  /**
+   * changeAgency() > eliminare?
+   */
   private changeAgency(){
     console.log('l☯☯☯l > changeAgency');
     if (this.AgencyCheckBox.nativeElement.checked) {
@@ -109,6 +122,10 @@ export class CastingDetailComponent implements OnInit {
     }
   }
 
+  /**
+   * partecipate()
+   * @param action 
+   */
   private partecipate(action){
     this.isLoading =true
     this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe((result)=>{
@@ -124,7 +141,10 @@ export class CastingDetailComponent implements OnInit {
         else alert(localize("ERROR_SERVICE"));
       });
   }
-
+  
+  /**
+   * candidate()
+   */
   private candidate(){
     this.isLoading =true
     this.castingsService.cadidate(this.user_id, this.casting_id).subscribe((result)=>{
@@ -141,10 +161,16 @@ export class CastingDetailComponent implements OnInit {
       });
   }
 
+  /**
+   * goBack()
+   */
   private goBack(): void{
     this.routerExtension.back({ relativeTo: this.activeRoute });
   }
 
+  /**
+   * share()
+   */
   private share(){
     let text = localize('MESSAGES.SHARE_WITH_A_FRIEND')
     SocialShare.shareText(text);

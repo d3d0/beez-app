@@ -1,10 +1,13 @@
- import { Component, ChangeDetectionStrategy, EventEmitter, OnDestroy, Input, Output, OnInit } from "@angular/core";
+ import { Component, ViewChild, ElementRef, ChangeDetectionStrategy, EventEmitter, OnDestroy, Input, Output, OnInit } from "@angular/core";
  import { RouterExtensions } from "nativescript-angular/router";
  import { ActivatedRoute } from "@angular/router";
  import { TabView } from "tns-core-modules/ui/tab-view";
  import { localize } from "nativescript-localize";
- import { ListViewEventData } from "nativescript-ui-listview";
+ import { ListViewEventData, RadListView } from "nativescript-ui-listview";
  import { ObservableArray } from "tns-core-modules/data/observable-array";
+ import { EventData } from "tns-core-modules/data/observable";
+ import { Page } from "tns-core-modules/ui/page";
+
  import { Subscription } from "rxjs";
  import { finalize } from "rxjs/operators";
  import { Router } from "@angular/router";
@@ -24,12 +27,16 @@
 
  export class CastingsListComponent implements OnInit, OnDestroy {
 
+   @ViewChild('loader', {static: true}) loader: ElementRef;
+   private _loader;
+   private _defaultIsVisible = false;
    private _isLoading = true;
    private _castings: ObservableArray<Casting> = new ObservableArray<Casting>([]);
    private _dataSubscription: Subscription;
    private _templateSelector: (item, index: number, items: any) => string;
 
    @Input() castingType: string;
+   @Input() refresh: number;
 
    constructor(
      private router: Router,
@@ -39,30 +46,56 @@
    }
 
    ngOnInit(): void {
-     this._templateSelector = this.templateSelectorFunction;
-     this.load();
-     console.log('COOOOOOOOOOONSOOOOOOLLLLLLLEEEEEEE----------------------------------------->init castin list');
-   }
-
-   load(){
-     if (!this._dataSubscription) {
-       this._isLoading = true;
-       this._dataSubscription = this.castingsService.load().pipe(finalize(() => this._isLoading = false)).subscribe((castings: Array<Casting>) => {
-         console.log('************ castings', castings);
-         this._castings = new ObservableArray(castings);
-         this._isLoading = false;
-       });
-     }
+      // console.log('CastingsListComponent ngOnInit!');
+      this._templateSelector = this.templateSelectorFunction;
+      this._loader = this.loader.nativeElement;
+      console.log('Loading loader', this._loader);
+      this.load();
    }
 
    ngOnDestroy() {
-     if (this._dataSubscription) {
-       this._dataSubscription.unsubscribe();
-       this._dataSubscription = null;
-     }
-     console.log('COOOOOOOOOOONSOOOOOOLLLLLLLEEEEEEE----------------------------------------->destroy castin list');
+      // console.log('CastingsListComponent ngOnDestroy!');
+      if (this._dataSubscription) {
+        this._dataSubscription.unsubscribe();
+        this._dataSubscription = null;
+      }
    }
    
+
+   load(){
+      if (!this._dataSubscription) {
+        this._isLoading = true;
+        this._dataSubscription = this.castingsService.load().pipe(finalize(() => this._isLoading = false)).subscribe((castings: Array<Casting>) => {
+          // console.log('Loading castings', castings);
+          this._castings = new ObservableArray(castings);
+          this._isLoading = false;
+          this._defaultIsVisible = true;
+          // this._loader.visibility = 'collapse';
+        });
+      }
+    }
+
+    // d3d0 fix --> refresh RadListView component
+    onLoadedRad(args: EventData) {
+      this.load();
+      // let radlist = <RadListView>args.object;
+      // let page: Page = radlist.page;
+      // console.log('LOADED RadListView ############################################', page);
+      // console.log('LOADED RadListView ############################################', radlist);
+      console.log('LOADED RadListView!', this.refresh);
+    }
+    onUnloadedRad(args: EventData) {
+      if (this._dataSubscription) {
+        this._dataSubscription.unsubscribe();
+        this._dataSubscription = null;
+      }
+      // let radlist = <RadListView>args.object;
+      // let page: Page = radlist.page;
+      // console.log('UNLOADED RadListView ############################################', page);
+      // console.log('UNLOADED RadListView ############################################', radlist);
+      console.log('UNLOADED RadListView!', this.refresh);
+    }
+  
 
    get castings(): ObservableArray<Casting> {
      return this._castings

@@ -25,30 +25,37 @@
     <GridLayout left="0" top="0" width="100%" columns="auto" rows="auto" class="tab-border-d3d0" backgroundColor="transparent">
       <Label text=""></Label>
     </GridLayout>
-    <!-- d3d0 TABS -->
+    <!-- CASTING TABS -->
     <GridLayout left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto" class="tab-buttons-d3d0" backgroundColor="transparent">
-      <GridLayout class="tab-container" col="0" (tap)="onSelectedIndexChange(0)" >
+      <GridLayout class="tab-container" col="0" (tap)="onSelectedIndexChange(0,$event)" >
         <Label #tab1 [text]="'CASTINGS.ONGOING'|L|uppercase" class="label-16" textWrap="false" backgroundColor=""></Label>
       </GridLayout>
-      <GridLayout class="tab-container" col="1" (tap)="onSelectedIndexChange(1)">
+      <GridLayout class="tab-container" col="1" (tap)="onSelectedIndexChange(1,$event)">
         <Label #tab2 [text]="'CASTINGS.ATTEND'|L|uppercase" class="label-16" textWrap="false" backgroundColor=""></Label>
       </GridLayout>
-      <GridLayout class="tab-container" col="2" (tap)="onSelectedIndexChange(2)">
+      <GridLayout class="tab-container" col="2" (tap)="onSelectedIndexChange(2,$event)">
         <Label #tab3 [text]="'CASTINGS.CONCLUDED'|L|uppercase" class="label-16"  textWrap="false" backgroundColor=""></Label>
       </GridLayout>
     </GridLayout>
   </AbsoluteLayout>
 
+  <!-- CASTING LIST -->
   <StackLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
-    <ns-castings-list  [castingType]="'New'" ></ns-castings-list>
+    <ns-castings-list *ngIf="casting0" [refresh]="selectedIndex" [castingType]="'New'" ></ns-castings-list>
   </StackLayout>
 
   <StackLayout [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
-    <ns-castings-list [castingType]="'Audition'" > </ns-castings-list>
+    <ns-castings-list *ngIf="casting1" [refresh]="selectedIndex" [castingType]="'Audition'" > </ns-castings-list>
   </StackLayout>
 
   <StackLayout [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
-    <ns-castings-list [castingType]="'Close'" > </ns-castings-list>
+    <ns-castings-list *ngIf="casting2" [refresh]="selectedIndex" [castingType]="'Close'" > </ns-castings-list>
   </StackLayout>
+
+  <!-- 
+  <StackLayout (loaded)="onLoadedStack($event)" (unloaded)="onUnloadedStack($event)" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
+      <Button text="Tap me!" (unloaded)="onUnloaded($event)" (loaded)="onLoaded($event)" (tap)="onTap($event)" class="btn btn-primary btn-active"></Button>
+  </StackLayout>
+  -->
 
 </StackLayout>
