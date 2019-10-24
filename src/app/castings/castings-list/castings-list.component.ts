@@ -41,6 +41,7 @@
    ngOnInit(): void {
      this._templateSelector = this.templateSelectorFunction;
      this.load();
+     console.log('COOOOOOOOOOONSOOOOOOLLLLLLLEEEEEEE----------------------------------------->init castin list');
    }
 
    load(){
@@ -59,7 +60,9 @@
        this._dataSubscription.unsubscribe();
        this._dataSubscription = null;
      }
+     console.log('COOOOOOOOOOONSOOOOOOLLLLLLLEEEEEEE----------------------------------------->destroy castin list');
    }
+   
 
    get castings(): ObservableArray<Casting> {
      return this._castings
