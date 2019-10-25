@@ -70,8 +70,10 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
 
         this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
           this.casting=casting;
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯',casting.status);
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯',casting.casting_denied);
+
           console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
-          // console.log('l☯☯☯l > CastingsService > getCastingById() > casting: ', casting);
           if (casting.agency_talent_casting) {
             console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.tid);
             console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.name);
@@ -83,52 +85,70 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
 
           this.selectedAgency = new Agency();
           // d3d0 fix --> default agency tid and name
+          this.noAgency = true;
           if (casting.agency_talent_casting) {
             this.agencyName = casting.agency_talent_casting.name;
             this.agencyTid = casting.agency_talent_casting.tid;
             this.selectedAgency.name = casting.agency_talent_casting.name;
             this.selectedAgency.tid = casting.agency_talent_casting.tid;
             this.noAgency = false;
+            if (casting.agency_talent_casting.tid == '369') {
+              this.noAgency = true;
+            }
           }
-          if (casting.agency_talent_casting.tid == '369') {
-            this.noAgency = true;
+
+          if(casting.casting_denied) {
           }
+
         });
       
     }
   } 
 
+  /**
+   * verificaCasting()
+   * ricarica casting detail se modificato
+   */
   verificaCasting() {
     if (!this._dataSubscription) {
 
       this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
         console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯',casting.status);
+        console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯',casting.casting_denied);
+
 
         this._isLoadingService = false;
         this._isLoadedService = true;
 
         this.selectedAgency = new Agency();
         // d3d0 fix --> default agency tid and name
+        this.noAgency = true;
         if (casting.agency_talent_casting) {
           this.agencyName = casting.agency_talent_casting.name;
           this.agencyTid = casting.agency_talent_casting.tid;
           this.selectedAgency.name = casting.agency_talent_casting.name;
           this.selectedAgency.tid = casting.agency_talent_casting.tid;
           this.noAgency = false;
-        }
-        if(casting.agency_talent_casting.tid == '369') {
-          this.noAgency = true;
+          if (casting.agency_talent_casting.tid == '369') {
+            this.noAgency = true;
+          }
         }
 
         // d3d0 fix --> cambio di stato se visualizzo il casting dalle notifiche
         if(casting.status!='New') {
           this.casting['status']='Audition';
+          if(casting.casting_denied != null) {
+            this.casting['casting_denied'] = casting.casting_denied;
+          }
           if(casting.audition_action != '') {
             this.casting['audition_action'] = casting.audition_action;
           }
         }
         if(casting.status!='New' && casting.status!='Audition') {
           this.casting['status']='Close';
+          if(casting.casting_denied != null) {
+            this.casting['casting_denied'] = casting.casting_denied;
+          }
         }
       });
 

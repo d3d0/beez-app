@@ -37,7 +37,7 @@
 						<Label *ngIf="casting.status == 'Audition' && casting.audition_action == 'action-declined'" [text]="'CASTINGS.PARTICIPATION_DECLINED'|L" class="banner-top-card declined"></Label>
 						<Label *ngIf="casting.status == 'New' && casting.new_action == 'action-candidated'" [text]="'CASTINGS.CANDIDATED'|L" class="banner-top-card confirmed"></Label>
 
-						<GridLayout columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
+						<GridLayout *ngIf="casting.casting_denied == null" columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
 							<!-- lateral line -->
 							<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center"></Label>
 
@@ -99,7 +99,7 @@
 						</GridLayout>
 
 						<!-- AUDITION TAB > BUTTONS > first partecipation -->
-						<GridLayout  *ngIf="casting.status === 'Audition' && casting.audition_action == ''" columns="8,32,*,16" rows="auto,auto,auto,auto,auto,auto,auto" >
+						<GridLayout  *ngIf="casting.status === 'Audition' && casting.audition_action == '' && casting.casting_denied == null" columns="8,32,*,16" rows="auto,auto,auto,auto,auto,auto,auto" >
 							<!-- lateral line -->
 							<Label row="0" col="1" class="list-group-item-v-line" rowSpan="7" marginBottom="32" horizontalAlignment="center" ></Label>
 							<Label row="0" col="2" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE'|L" class="list-group-item-heading-18" textWrap="true"></Label>
@@ -137,7 +137,7 @@
 						</GridLayout>
 
 						<!-- AUDITION TAB > BUTTONS > edit partecipation -->
-						<GridLayout  *ngIf="casting.status === 'Audition'  && casting.audition_action != ''" columns="8,32,*,16" rows="auto,auto" >
+						<GridLayout  *ngIf="casting.status === 'Audition'  && casting.audition_action != '' && casting.casting_denied == null" columns="8,32,*,16" rows="auto,auto" >
 							<!-- lateral line -->
 							<Label text="" class="list-group-item-v-line" rowSpan="4"  row="0" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
 							<StackLayout row="0" col="2"  *ngIf="casting.audition_action != ''"  >
@@ -169,18 +169,39 @@
 								</StackLayout>
 							</AbsoluteLayout>
 						</GridLayout>
+
+						<!-- AUDITION TAB > NON SELEZIONATO / NON OPZIONATO -->
+						<GridLayout  *ngIf="casting.status === 'Audition' && casting.casting_denied != ''" class="p-t-16" columns="8,32,*,16" rows="auto,auto" >
+							<!-- LINE -->
+							<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center"></Label>
+
+							<!-- INFORMATION -->
+							<StackLayout class="icon-container" row="0" col="1" >
+								<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
+							</StackLayout>
+							<Label [text]="'CASTINGS.SHOOTING_TITLE'|L" class="header" textWrap="true" row="0" col="2" ></Label>
+							<Label class="list-group-item-text" [text]="casting.casting_denied" textWrap="true" row="1" col="2"></Label>
+						</GridLayout>
+
 					</StackLayout>
 
-					<!-- shooting tab -->
+					<!-- OPTION TAB -->
 					<StackLayout *ngIf="casting.status === 'Close'" class="shooting">
 						<Label [text]="'CASTINGS.SHOOTING_TITLE'|L" class="header" textWrap="true"></Label>
-						<Label [text]="'CASTINGS.SHOOTING_TEXT'|L" class="text " textWrap="true"></Label>
-						<Label class="p-t-8"  textWrap="true">
-							<FormattedString >
-								<Span text="N. B. " class="label" ></Span>
-								<Span [text]="'CASTINGS.SHOOTING_NOTE'|L" class="note"></Span>
-							</FormattedString>
-						</Label>
+						<!-- OPTION TAB > SELEZIONATO / OPZIONATO -->
+						<ng-temnplate *ngIf="casting.casting_denied == null">
+							<Label [text]="'CASTINGS.SHOOTING_TEXT'|L" class="text " textWrap="true"></Label>
+							<Label class="p-t-8"  textWrap="true">
+								<FormattedString >
+									<Span text="N. B. " class="label" ></Span>
+									<Span [text]="'CASTINGS.SHOOTING_NOTE'|L" class="note"></Span>
+								</FormattedString>
+							</Label>
+						</ng-temnplate>
+						<!-- OPTION TAB > NON SELEZIONATO / NON OPZIONATO -->
+						<ng-temnplate *ngIf="casting.casting_denied != ''">
+							<Label [text]="casting.casting_denied" class="text " textWrap="true"></Label>
+						</ng-temnplate>
 					</StackLayout>
 				</StackLayout>
 			</CardView>
