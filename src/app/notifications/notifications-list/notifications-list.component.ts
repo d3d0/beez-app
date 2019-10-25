@@ -1,8 +1,10 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { RadListView, SwipeActionsEventData, ListViewEventData } from "nativescript-ui-listview";
 import { RouterExtensions } from "nativescript-angular/router"; import { ActivatedRoute } from "@angular/router";
 import { NotificationsService} from "../notifications.service";
 import { Notification} from "../notification.model";
+import { EventData } from "tns-core-modules/data/observable";
+import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { View } from "ui/core/view";
 import { Color } from "color";
@@ -16,11 +18,14 @@ import { Label } from "tns-core-modules/ui/label";
   styleUrls: ['./notifications-list.component.scss'],
   moduleId: module.id,
 })
-export class NotificationsListComponent implements OnInit {
+export class NotificationsListComponent implements OnInit, OnDestroy {
 
   private counter: number;
-  notifications: any;
+  private _cardIsVisible = false;
+  private _isLoading = true;
+  private _dataSubscription: Subscription;
   private _templateSelector: (item, index: number, items: any) => string;
+  notifications: any;
 
   @ViewChild("delete-view", {static: false}) deleteView: View;
 
@@ -30,16 +35,51 @@ export class NotificationsListComponent implements OnInit {
     private router: Router,
     private notificationService: NotificationsService) {
     this.counter = 0;
-    notificationService.load().subscribe( notifications => {
-      this.notifications = notifications;
-    }
-    )
+    this.load();
+    
   }
 
   ngOnInit() {
     this._templateSelector = this.templateSelectorFunction;
     console.log('hello from Notifications component');
   }
+
+  ngOnDestroy() {
+    // console.log('CastingsListComponent ngOnDestroy!');
+    if (this._dataSubscription) {
+      this._dataSubscription.unsubscribe();
+      this._dataSubscription = null;
+    }
+  }
+
+  load(){
+    if (!this._dataSubscription) {
+      this._isLoading = true;
+      this._cardIsVisible = false;
+
+      this._dataSubscription = this.notificationService.load().subscribe( notifications => {
+        this.notifications = notifications;
+        
+        this._isLoading = false;
+        this._cardIsVisible = true;
+        
+      });
+    }
+  }
+
+  // d3d0 fix --> refresh RadListView component
+  onLoadedRad(args: EventData) {
+    this.load();
+    console.log('LOADED NotificationsListComponent RadListView ############################################');
+  }
+  onUnloadedRad(args: EventData) {
+    if (this._dataSubscription) {
+      this._dataSubscription.unsubscribe();
+      this._dataSubscription = null;
+    }
+    console.log('UNLOADED NotificationsListComponent RadListView ############################################');
+  }
+  // d3d0 fix --> refresh RadListView component
 
   goToCasting(notification){
     if(!notification.read){

@@ -78,7 +78,6 @@ export class CastingsListComponent implements OnInit, OnDestroy {
 
   // d3d0 fix --> refresh RadListView component
   // docs --> https://stackoverflow.com/questions/45855673/angular2-destroy-current-component-completely
-
   onLoadedRad(args: EventData) {
     this.load();
     // let radlist = <RadListView>args.object;

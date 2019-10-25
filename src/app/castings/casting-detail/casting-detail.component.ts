@@ -134,7 +134,9 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
           }
         }
 
-        // d3d0 fix --> cambio di stato se visualizzo il casting dalle notifiche
+        // d3d0 fix --> cambio di stato + controllo permessi  
+        // casting.status --> cambio di stato se visualizzo in tab notifiche e torno in tab casting
+        // casting.casting_denied --> controllo se posso visualizzare il casting
         if(casting.status!='New') {
           this.casting['status']='Audition';
           if(casting.casting_denied != null) {
