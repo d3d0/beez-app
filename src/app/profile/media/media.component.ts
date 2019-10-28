@@ -152,32 +152,42 @@ export class MediaComponent implements OnInit {
                 let source = new ImageSource();
                 source.fromAsset(selected_item).then((image) => {
 
-                    console.log('l☯☯☯l > MediaComponent > startSelection() > image:', image);
+                    //console.log('l☯☯☯l > MediaComponent > startSelection() > image:', image);
                     
-                    if (!isIOS) {
-                        var localPath = null;
-                        localPath = image.android.toString();
-                    } else {
-                        let name = new Date().toISOString() +'__'+ counter + ".jpg"
-                        let folder = fs.knownFolders.documents();
-                        let path = fs.path.join(folder.path, name );
-                        let saved = image.saveToFile(path, "jpg");
-                        localPath = path;
-                    }
+                    // if (!isIOS) {
+                    //     var localPath = null;
+                    //     localPath = image.android.toString();
+                    // } else {
+                    //     let name = new Date().toISOString() +'__'+ counter + ".jpg"
+                    //     let folder = fs.knownFolders.documents();
+                    //     let path = fs.path.join(folder.path, name );
+                    //     let saved = image.saveToFile(path, "jpg");
+                    //     localPath = path;
+                    // }
 
-                    localPath = localPath;
-                    console.log('l☯☯☯l > MediaComponent > startSelection() > localpath:',localPath);
+                    let name = new Date().toISOString() +'__'+ counter + ".jpg"
+                    let folder = fs.knownFolders.documents();
+                    let path = fs.path.join(folder.path, name );
+                    let saved = image.saveToFile(path, "jpg");
+                    var localPath = path;
+                    //localPath = localPath;
 
-                    var task = this.start_upload("image_" + counter + ".jpg", localPath);
+                    //console.log('l☯☯☯l > MediaComponent > startSelection() > localpath:',localPath);
+
+                    // var task = this.start_upload("image_" + counter + ".jpg", localPath);
+                    var task = this.start_upload(localPath);
                     this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
-                    counter++;
+                    //counter++;
                 })
             })
 
         })
     }
 
-    start_upload(uri, fileUri) {
+
+
+    start_upload(fileUri) {
+
         this.isLoading = true;
         // console.log('uri ', uri)
         // console.log(fileUri)
@@ -192,7 +202,7 @@ export class MediaComponent implements OnInit {
         headers["observe"] = "response";
         headers["x-csrf-token"] = BackendService.XCSFRtoken;
         headers["Cookie"] = BackendService.session_name + "=" + BackendService.sessid;
-
+        
         const request = {
             url: this.url,
             method: "POST",
@@ -203,12 +213,15 @@ export class MediaComponent implements OnInit {
 
         let task: bgHttp.Task;
         let lastEvent = "";
-        const params = [ { name: name, filename: fileUri } ];
+        const params = { name: name, filename: fileUri };
+        //const params = { name: name, filename: fileUri };
+        //task = this.session.multipartUpload(params, request);
         task = this.session.multipartUpload(params, request);
 
         function onEvent(e) {
             //console.log('l☯☯☯l > MediaComponent > start_upload() > onEvent()',e);
             this.isLoading = false;
+            console.log("received " + JSON.stringify(e.responseCode ) + " code");
 
             if (lastEvent !== e.eventName) {
                 // suppress all repeating progress events and only show the first one
@@ -239,7 +252,11 @@ export class MediaComponent implements OnInit {
         this.tasks.push(task);
 
     }
-
+    completeHandler(e) {
+        console.log("received " + JSON.stringify(e.responseCode ) + " code");
+        var serverResponse = e.response;
+        this.isLoading = true;
+    }
 
 
     extractImageName(fileUri) {
