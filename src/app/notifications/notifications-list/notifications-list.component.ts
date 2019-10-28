@@ -92,6 +92,8 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   goToCasting(notification){
     if(!notification.read){
       this.notificationService.setRead(notification.mid).subscribe(result=>console.log("notification.read OK ",result))
+      console.log(notification.read);
+      console.log(JSON.stringify(notification));
     }
     if(notification.message_type == "audition_talent_was_not_selected") {
       return
