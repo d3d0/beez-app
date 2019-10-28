@@ -84,15 +84,17 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
 
         this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
           this.casting=casting;
-          console.log('l☯☯☯l > CastingDetailComponent > getCastingById() > casting.status',casting.status);
-          console.log('l☯☯☯l > CastingDetailComponent > getCastingById() > casting.casting_denied',casting.casting_denied);
+          console.log('l☯☯☯l > CastingsService > getCastingById() > casting.status',casting.status);
 
-          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          if(casting.casting_denied) {
+            console.log('l☯☯☯l > CastingsService > getCastingById() > casting.casting_denied',casting.casting_denied);
+          }
           if (casting.agency_talent_casting) {
             console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.tid);
             console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.name);
           }
-          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
 
           this._isLoadingService = false;
           this._isLoadedService = true;
@@ -109,9 +111,6 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
             if (casting.agency_talent_casting.tid == '369') {
               this.noAgency = true;
             }
-          }
-
-          if(casting.casting_denied) {
           }
 
         });

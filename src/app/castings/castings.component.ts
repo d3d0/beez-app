@@ -109,7 +109,7 @@ export class CastingsComponent implements AfterViewInit, OnInit{
       this.tabs[previousTab].className = "not-active"; // FIX 23/09
       this.selectedIndex = index;
       // d3d0 fix --> loading casting on index change
-      console.log('STO SWITCHANDO!', index);
+      console.log('l☯☯☯l > STO SWITCHANDO!', index);
       if(index == 0) {
         this.casting0 = true;
         this.casting1 = false;

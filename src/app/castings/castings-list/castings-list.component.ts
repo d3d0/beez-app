@@ -83,7 +83,7 @@ export class CastingsListComponent implements OnInit, OnDestroy {
     // let radlist = <RadListView>args.object;
     // let page: Page = radlist.page;
     // console.log('LOADED RadListView ############################################', radlist);
-    console.log('LOADED RadListView!', this.refresh);
+    console.log('l☯☯☯l > LOADED RadListView!', this.refresh);
   }
   onUnloadedRad(args: EventData) {
     if (this._dataSubscription) {
@@ -93,7 +93,7 @@ export class CastingsListComponent implements OnInit, OnDestroy {
     // let radlist = <RadListView>args.object;
     // let page: Page = radlist.page;
     // console.log('UNLOADED RadListView ############################################', radlist);
-    console.log('UNLOADED RadListView!', this.refresh);
+    console.log('l☯☯☯l > UNLOADED RadListView!', this.refresh);
   }
   // d3d0 fix --> refresh RadListView component
 
