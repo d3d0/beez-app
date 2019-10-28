@@ -7,7 +7,7 @@ import { TextField } from "tns-core-modules/ui/text-field";
     moduleId: module.id,
     styleUrls: ['./beez-inline-textfield.component.scss'],
     template: `
-        <StackLayout [borderWidth]="last?0:1" orientation="horizontal">
+        <StackLayout orientation="horizontal">
             <Label class="label-textfield" [text]="placeholder"></Label>
             <TextField #textField ios:paddingBottom="8" class="title"
                 width="100%"

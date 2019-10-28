@@ -65,13 +65,29 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngOnDestroy() {
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+    console.log('CastingDetailComponent ngOnDestroy!');
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+    if (this._dataSubscription) {
+      this._dataSubscription.unsubscribe();
+      this._dataSubscription = null;
+    }
+  }
+
+  /**
+   * load()
+   * carica i casting all'ngOnInit()
+   */
   load() {
     if (!this._dataSubscription) {
 
         this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
           this.casting=casting;
+          console.log('l☯☯☯l > CastingDetailComponent > getCastingById() > casting.status',casting.status);
+          console.log('l☯☯☯l > CastingDetailComponent > getCastingById() > casting.casting_denied',casting.casting_denied);
+
           console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
-          // console.log('l☯☯☯l > CastingsService > getCastingById() > casting: ', casting);
           if (casting.agency_talent_casting) {
             console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.tid);
             console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.name);
@@ -83,74 +99,88 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
 
           this.selectedAgency = new Agency();
           // d3d0 fix --> default agency tid and name
+          this.noAgency = true;
           if (casting.agency_talent_casting) {
             this.agencyName = casting.agency_talent_casting.name;
             this.agencyTid = casting.agency_talent_casting.tid;
             this.selectedAgency.name = casting.agency_talent_casting.name;
             this.selectedAgency.tid = casting.agency_talent_casting.tid;
             this.noAgency = false;
+            if (casting.agency_talent_casting.tid == '369') {
+              this.noAgency = true;
+            }
           }
-          if (casting.agency_talent_casting.tid == '369') {
-            this.noAgency = true;
+
+          if(casting.casting_denied) {
           }
+
         });
       
     }
   } 
 
+  /**
+   * verificaCasting()
+   * ricarica casting detail se modificato
+   */
   verificaCasting() {
     if (!this._dataSubscription) {
 
       this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
-        console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯',casting.status);
+
+        console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > casting.status',casting.status);
+        console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > casting.casting_denied',casting.casting_denied);
 
         this._isLoadingService = false;
         this._isLoadedService = true;
 
         this.selectedAgency = new Agency();
         // d3d0 fix --> default agency tid and name
+        this.noAgency = true;
         if (casting.agency_talent_casting) {
           this.agencyName = casting.agency_talent_casting.name;
           this.agencyTid = casting.agency_talent_casting.tid;
           this.selectedAgency.name = casting.agency_talent_casting.name;
           this.selectedAgency.tid = casting.agency_talent_casting.tid;
           this.noAgency = false;
-        }
-        if(casting.agency_talent_casting.tid == '369') {
-          this.noAgency = true;
+          if (casting.agency_talent_casting.tid == '369') {
+            this.noAgency = true;
+          }
         }
 
-        // d3d0 fix --> cambio di stato se visualizzo il casting dalle notifiche
+        // d3d0 fix --> cambio di stato + controllo permessi  
+        // casting.status --> cambio di stato se visualizzo in tab notifiche e torno in tab casting
+        // casting.casting_denied --> controllo se posso visualizzare il casting
         if(casting.status!='New') {
           this.casting['status']='Audition';
+          if(casting.casting_denied != null) {
+            this.casting['casting_denied'] = casting.casting_denied;
+          }
           if(casting.audition_action != '') {
             this.casting['audition_action'] = casting.audition_action;
           }
         }
         if(casting.status!='New' && casting.status!='Audition') {
           this.casting['status']='Close';
+          if(casting.casting_denied != null) {
+            this.casting['casting_denied'] = casting.casting_denied;
+          }
         }
       });
 
     }
   }
 
-  ngOnDestroy() {
-    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
-    console.log('CastingDetailComponent ngOnDestroy!');
-    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
-    if (this._dataSubscription) {
-      this._dataSubscription.unsubscribe();
-      this._dataSubscription = null;
-    }
-  }
-
-  // d3d0 fix --> refresh RadListView component
+  /**
+   * onLoadedStack() / onUnloadedStack()
+   * refresh CastingDetailComponent ScrollView component
+   */
+  // d3d0 fix --> refresh CastingDetailComponent ScrollView component
   onLoadedStack(args: EventData) {
     if (!this._dataSubscription) {
       this.verificaCasting();
     }
-    console.log('LOADED ScrollView ############################################');
+    console.log('l☯☯☯l > onLoadedRad() > LOADED CastingDetailComponent ScrollView!');
   }
   onUnloadedStack(args: EventData) {
     this._isLoadingService = true;
@@ -160,8 +190,9 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
       this._dataSubscription.unsubscribe();
       this._dataSubscription = null;
     }
-    console.log('UNLOADED ScrollView ############################################');
+    console.log('l☯☯☯l > onUnloadedRad() > UNLOADED CastingDetailComponent ScrollView!');
   }
+  // d3d0 fix --> refresh CastingDetailComponent ScrollView component
 
   /**
    * toggleCheckAgency()

@@ -85,27 +85,23 @@ export class CastingsComponent implements AfterViewInit, OnInit{
       let button = args.object as Button;
       let native: Page = button.nativeView;
       let page: Page = button.page;
-      console.log('TAP NATIVE ############################################',native);
-      console.log('TAP PAGE ############################################',page);
+      // console.log('TAP ############################################',page);
   }
   onLoaded(args: EventData) {
       // let button = args.object;
-      // console.log('############################################',button);
-      // console.log('LOADED ############################################');
+      // console.log('LOADED ############################################',button);
   };
   onUnloaded(args: EventData) {
       // let button = args.object;
-      // console.log('############################################',button);
-      // console.log('UNLOADED ############################################');
+      // console.log('UNLOADED ############################################',button);
   };
 
   public onSelectedIndexChange(index, args: EventData) {
     // console.log('STO SWITCHANDO!');
     // console.log(args.object);
-
-    let grid = <GridLayout>args.object;
-    let page: Page = grid.page;
-    let listView = page.getViewById("id");
+    // let grid = <GridLayout>args.object;
+    // let page: Page = grid.page;
+    // let listView = page.getViewById("id");
 
     let previousTab = this.selectedIndex;
     if (index != this.selectedIndex) {
