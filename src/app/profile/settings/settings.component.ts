@@ -8,6 +8,7 @@ import { BackendService } from "../../shared/backend.service";
 import { alert, getIconSource } from "../../shared/utils";
 import { AnyTxtRecord } from 'dns';
 import { PasswordService } from '../password/password.service';
+import * as utils from "tns-core-modules/utils/utils";
 
 
 @Component({
@@ -91,6 +92,10 @@ export class SettingsComponent implements OnInit {
     error => {
         alert(localize(error));
     });
+  }
+
+  openUrl(arg){
+    utils.openUrl(arg)
   }
 
   // onPwdTap($event) {
