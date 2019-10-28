@@ -1,7 +1,7 @@
 @import '../../app-variables';
 
 #container{
-			background-color: $grigiobackground;
+	background-color: $grigiobackground;
 }
 .wrapper{
 	padding: 0 16;
@@ -48,17 +48,18 @@
 	border-color: $verde;
 }
   
-  .label {
+.label {
 	padding-left: 4;
 	font-weight: bold;
 	color:$verde;
-  }
+}
   
 .disabled{
 	color: $grigiochiaro;
 }
+
 .edit{
-  	margin: 20 0 8 0;
-  	border-bottom-width: 1;
+	margin: 20 0 8 0;
+	border-bottom-width: 1;
 	border-color: $grigiochiaro;
-  }
+}

@@ -65,13 +65,27 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngOnDestroy() {
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+    console.log('CastingDetailComponent ngOnDestroy!');
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+    if (this._dataSubscription) {
+      this._dataSubscription.unsubscribe();
+      this._dataSubscription = null;
+    }
+  }
+
+  /**
+   * load()
+   * carica i casting all'ngOnInit()
+   */
   load() {
     if (!this._dataSubscription) {
 
         this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
           this.casting=casting;
-          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯',casting.status);
-          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯',casting.casting_denied);
+          console.log('l☯☯☯l > CastingDetailComponent > getCastingById() > casting.status',casting.status);
+          console.log('l☯☯☯l > CastingDetailComponent > getCastingById() > casting.casting_denied',casting.casting_denied);
 
           console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
           if (casting.agency_talent_casting) {
@@ -113,9 +127,9 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
     if (!this._dataSubscription) {
 
       this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
-        console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯',casting.status);
-        console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯',casting.casting_denied);
 
+        console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > casting.status',casting.status);
+        console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > casting.casting_denied',casting.casting_denied);
 
         this._isLoadingService = false;
         this._isLoadedService = true;
@@ -157,22 +171,16 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
-    console.log('CastingDetailComponent ngOnDestroy!');
-    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
-    if (this._dataSubscription) {
-      this._dataSubscription.unsubscribe();
-      this._dataSubscription = null;
-    }
-  }
-
-  // d3d0 fix --> refresh RadListView component
+  /**
+   * onLoadedStack() / onUnloadedStack()
+   * refresh CastingDetailComponent ScrollView component
+   */
+  // d3d0 fix --> refresh CastingDetailComponent ScrollView component
   onLoadedStack(args: EventData) {
     if (!this._dataSubscription) {
       this.verificaCasting();
     }
-    console.log('LOADED ScrollView ############################################');
+    console.log('l☯☯☯l > onLoadedRad() > LOADED CastingDetailComponent ScrollView!');
   }
   onUnloadedStack(args: EventData) {
     this._isLoadingService = true;
@@ -182,8 +190,9 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
       this._dataSubscription.unsubscribe();
       this._dataSubscription = null;
     }
-    console.log('UNLOADED ScrollView ############################################');
+    console.log('l☯☯☯l > onUnloadedRad() > UNLOADED CastingDetailComponent ScrollView!');
   }
+  // d3d0 fix --> refresh CastingDetailComponent ScrollView component
 
   /**
    * toggleCheckAgency()

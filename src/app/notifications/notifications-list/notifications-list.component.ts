@@ -40,18 +40,26 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+    console.log('l☯☯☯l > NotificationsListComponent > ngOnInit()');
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
     this._templateSelector = this.templateSelectorFunction;
-    console.log('hello from Notifications component');
   }
 
   ngOnDestroy() {
-    // console.log('CastingsListComponent ngOnDestroy!');
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+    console.log('l☯☯☯l > NotificationsListComponent > ngOnDestroy()');
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
     if (this._dataSubscription) {
       this._dataSubscription.unsubscribe();
       this._dataSubscription = null;
     }
   }
 
+  /**
+   * load()
+   * carica le notifiche
+   */
   load(){
     if (!this._dataSubscription) {
       this._isLoading = true;
@@ -67,19 +75,19 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
     }
   }
 
-  // d3d0 fix --> refresh RadListView component
+  // d3d0 fix --> refresh NotificationsListComponent RadListView component
   onLoadedRad(args: EventData) {
     this.load();
-    console.log('LOADED NotificationsListComponent RadListView ############################################');
+    console.log('l☯☯☯l > onLoadedRad() > LOADED NotificationsListComponent RadListView!');
   }
   onUnloadedRad(args: EventData) {
     if (this._dataSubscription) {
       this._dataSubscription.unsubscribe();
       this._dataSubscription = null;
     }
-    console.log('UNLOADED NotificationsListComponent RadListView ############################################');
+    console.log('l☯☯☯l > onUnloadedRad() > UNLOADED NotificationsListComponent RadListView!');
   }
-  // d3d0 fix --> refresh RadListView component
+  // d3d0 fix --> refresh NotificationsListComponent RadListView component
 
   goToCasting(notification){
     if(!notification.read){
