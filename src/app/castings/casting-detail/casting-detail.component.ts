@@ -275,7 +275,9 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
         console.log('result',result);
         this.isLoading = false;
         this.castingsService.load().subscribe();
-        alert(localize("MESSAGES.CANDIDATE")).then(()=> this.goBack());
+        alert(localize("MESSAGES.CANDIDATE")).then(()=>{
+          this.edit_actions = false;
+        });
       },
       (error)=> {
         this.isLoading =false;

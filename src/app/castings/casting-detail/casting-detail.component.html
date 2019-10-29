@@ -59,6 +59,7 @@
 									<Span text=";" ></Span>
 								</FormattedString>
 							</Label>
+							
 							<!-- DATE_LOCATION -->
 							<StackLayout class="icon-container" row="4" col="1">
 								<Image [src]="getIconSource('calendar')" stretch="none" width=16 height=16></Image>
@@ -170,7 +171,7 @@
 						</GridLayout>
 
 						<!-- AUDITION TAB > NON SELEZIONATO / NON OPZIONATO -->
-						<GridLayout  *ngIf="casting.status === 'Audition' && casting.casting_denied != ''" class="p-t-16" columns="8,32,*,16" rows="auto,auto" >
+						<GridLayout  *ngIf="casting.status === 'Audition' && casting.casting_denied != 'null'" class="p-t-16" columns="8,32,*,16" rows="auto,auto" >
 							<!-- LINE -->
 							<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center"></Label>
 
@@ -198,7 +199,7 @@
 							</Label>
 						</ng-temnplate>
 						<!-- OPTION TAB > NON SELEZIONATO / NON OPZIONATO -->
-						<ng-temnplate *ngIf="casting.casting_denied != ''">
+						<ng-temnplate *ngIf="casting.casting_denied != 'null'">
 							<Label [text]="casting.casting_denied" class="text " textWrap="true"></Label>
 						</ng-temnplate>
 					</StackLayout>
