@@ -45,7 +45,7 @@ export class BeezFloatLabelTextfield {
         const label = this.label.nativeElement;
         const textField = this.textField.nativeElement;
         label.animate({
-            translate: { x: 0, y: - 25 },
+            translate: { x: 0, y: -25 },
             opacity: 1,
         }).then(() => {}, () => { });
         textField.style.placeholderColor= new Color("transparent");

@@ -14,6 +14,21 @@ import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
 import { ActivatedRoute } from "@angular/router";
 import * as dialogsModule from "ui/dialogs";
+import { EventData } from "tns-core-modules/data/observable";
+import * as app from "tns-core-modules/application";
+import { displayedEvent, exitEvent, launchEvent, lowMemoryEvent, 
+  orientationChangedEvent, resumeEvent, suspendEvent, uncaughtErrorEvent, 
+  ApplicationEventData, LaunchEventData, OrientationChangedEventData, UnhandledErrorEventData,
+  on as applicationOn, run as applicationRun } from "tns-core-modules/application";
+// import { 
+//   android, 
+//   AndroidApplication, 
+//   AndroidActivityEventData, 
+//   AndroidActivityResultEventData, 
+//   AndroidActivityBackPressedEventData, 
+//   AndroidActivityBundleEventData } from "tns-core-modules/application";
+
+declare var android: any; // <- important! avoids namespace issues
 
 registerElement('LottieView', () => LottieView);
 
@@ -41,6 +56,29 @@ export class LoginComponent implements OnInit {
     this.user = new User();
     this.user.mail = "";
     this.user.pass = "";
+    
+    // Stop keyboard overlay when interacting with TextField in a NativeScript application
+    // https://stackoverflow.com/questions/53980913/stop-keyboard-overlay-when-interacting-with-textfield-in-a-nativescript-applicat
+    app.on(suspendEvent, (args: ApplicationEventData) => {
+      if (args.android) {
+        console.log("SUSPEND ? Activity: " + args.android);
+      }
+    });
+    app.on(app.resumeEvent, (args: app.ApplicationEventData) => {
+      if (args.android) {
+        console.log("RESUME ? Activity: " + args.android);
+        app.android.startActivity.getWindow().setSoftInputMode(
+            android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
+        );
+      }
+    });
+
+    // Android activity events
+    // https://docs.nativescript.org/core-concepts/application-lifecycle
+    // app.android.on(app.AndroidApplication.activityCreatedEvent, (args: app.AndroidActivityBundleEventData) => {
+    //     console.log("l☯☯☯l > Event: " + args.eventName + ", Activity: " + args.activity);
+    // });
+
   }
 
   ngOnInit() {
@@ -60,6 +98,29 @@ export class LoginComponent implements OnInit {
         this.alertSignup(localize("MESSAGES.CONFIRM_EMAIL"));
         //console.log('@@@@@@@@@@@@ 1 > l☯☯☯l > ngAfterViewInit() > BackendService > registeredUser()', BackendService.registeredUser);
       }
+  }
+
+  /**
+   * onLoadedStack() / onUnloadedStack()
+   * refresh LoginComponent ScrollView component
+   */
+  onLoadedStack(args: EventData) {
+    console.log('l☯☯☯l > onLoadedRad() > LOADED LoginComponent Stack!');
+    if(app.android) {
+      console.log('l☯☯☯l > onLoadedRad() > LOADED > Android!');
+      app.android.startActivity.getWindow().setSoftInputMode(
+          android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
+      );
+    }
+  }
+  onUnloadedStack(args: EventData) {
+    console.log('l☯☯☯l > onUnloadedRad() > UNLOADED LoginComponent Stack!');
+    if(app.android) {
+      console.log('l☯☯☯l > onLoadedRad() > UNLOADED > Android!');
+      app.android.startActivity.getWindow().setSoftInputMode(
+          android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
+      );
+    }
   }
 
   // public onSelectedIndexChanged(event) {
@@ -117,7 +178,6 @@ export class LoginComponent implements OnInit {
       this.userService.login(this.user).subscribe((result) => {
 
         // --> dati utente
-
         BackendService.session_name = result['session_name'];
         BackendService.sessid = result['sessid'];
         BackendService.XCSFRtoken = result['token'];
@@ -125,8 +185,6 @@ export class LoginComponent implements OnInit {
         BackendService.user_name = result['user']['name'];
         BackendService.email_notify = result['user']['field_ricevi_notifiche_email']['und'][0]['value'];
   
-        
-
         Object.keys(result['user']['roles']).forEach(key => {
           //console.log('l☯☯☯l > LoginComponent > result user roles: ', result['user']['roles'][key]);
           // --> USER PENDING --> LOGOUT
@@ -188,8 +246,9 @@ export class LoginComponent implements OnInit {
   }
 
   textfieldEvent(text, field){
-    if(field)
-      this.user[field]=text
+    if(field) {
+      this.user[field]=text;
+    } 
   }
 
 }
