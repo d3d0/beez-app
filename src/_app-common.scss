@@ -273,6 +273,7 @@ CardView {
   // background-color: transparent;
   margin: 0 20 20 20;
 }
+// used in "casting-list.component.ts" & in "notification-list.component.ts"
 .list-group-first {
   margin-top: 20;
 }
@@ -290,8 +291,8 @@ WrapLayout {
 // generico > list-group-item!
 // ------------------------------------------------------------------
 .list-group-item {
-  background: white; // IMPORTANTE > definisce lo sfondo delle CardView in IOS e Android
-  border-radius: 4;  // IMPORTANTE > definisce il radius delle CardView in IOS
+  background: white; // IMPORTANTE > definisce lo sfondo delle CardView in IOS e Android !
+  border-radius: 4;  // IMPORTANTE > definisce il radius delle CardView in IOS !
   width:100%;
   &-heading { // item > titoli
     &-18 {
@@ -694,6 +695,7 @@ WrapLayout {
 .card-group {
   margin: 0 20 25 20; // IMPORTANTE > la prima card non ha margin top in IOS e Android
   background: transparent; // IMPORTANTE > definisce lo sfondo delle CardView in Android
+  
   &-item {
     background: white; // IMPORTANTE
     border-radius: 4;  // IMPORTANTE

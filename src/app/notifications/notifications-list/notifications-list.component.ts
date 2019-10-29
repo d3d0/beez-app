@@ -8,9 +8,11 @@ import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { View } from "ui/core/view";
 import { Color } from "color";
-import { isIOS } from "platform" ;
+import { isIOS, isAndroid } from "platform" ;
 import { topmost } from "tns-core-modules/ui/frame";
 import { Label } from "tns-core-modules/ui/label";
+
+declare var android: any; // <- important! avoids namespace issues
 
 @Component({
   selector: 'ns-notifications',
@@ -125,18 +127,41 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
     public onItemLoading(args: ListViewEventData, items) {
       this.counter++;
       // console.log("onItemLoading");
+
+      let cardview = args.view;
+      let nativecard = cardview.nativeView;
+      console.log('cardview ############################################', cardview);
+      console.log('nativecard ############################################', nativecard);
+
       if(isIOS){
+        // support XCode 8
         var newcolor = new Color(0,0,0,0);
         args.ios.backgroundView.backgroundColor = newcolor.ios;
+        // support XCode 11
+        args.ios.backgroundColor = UIColor.clearColor; // d3d0fix
+        args.ios.opaque=false; // d3d0fix
       }
+      if(isAndroid){
+          // DOCS:
+          // https://stackoverflow.com/questions/39379394/how-to-set-the-background-transparent-to-a-nativescript-webview
+          // https://stackoverflow.com/questions/54634717/cannot-set-modal-background-to-transparent-in-android
+          // https://github.com/nstudio/nativescript-cardview/issues/11
+          var c = new Color("#FF0000");
+          nativecard.setCardBackgroundColor(c.android);
+          // nativecard.setCardBackgroundColor(0x00FF00);
+          // nativecard.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.parseColor("#FFFF0004")));
+          // nativecard.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.CYAN));
+          // nativecard.setCardBackgroundColor(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+      }
+
       const vista = args.object; // the object that fires the event
       if (vista) {
         let stack = vista.getViewById<View>("delete-stack"); // gets a child view by id
         if (stack) {
           if(this.counter == 1){
-            //stack.text =  this.counter.toString() ;
+            //stack.text =  this.counter.toString();
             //stack.className = 'list-group-item-first';
-            stack.style.marginTop = 20;
+            // stack.style.marginTop = 20; // d3d0fix
           }
         }
       }

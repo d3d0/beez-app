@@ -29,16 +29,18 @@
 
 <ActivityIndicator [visibility]="_isLoading === true ? 'visible' : 'collapsed'" busy="true" color="#00D796" width="70" height="100%"></ActivityIndicator>
 
-<RadListView [visibility]="_cardIsVisible === true ? 'visible' : 'collapsed'" (loaded)="onLoadedRad($event)" (unloaded)="onUnloadedRad($event)" class="notifications" [items]="notifications" (itemLoading)="onItemLoading($event, notifications)" (itemSwipeProgressStarted)="onSwipeCellStarted($event)" selectionBehavior="None" swipeActions="true" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
+<RadListView backgroundColor="" [visibility]="_cardIsVisible === true ? 'visible' : 'collapsed'" (loaded)="onLoadedRad($event)" (unloaded)="onUnloadedRad($event)" class="notifications" [items]="notifications" (itemLoading)="onItemLoading($event, notifications)" (itemSwipeProgressStarted)="onSwipeCellStarted($event)" selectionBehavior="None" swipeActions="true" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
 
     <ListViewLinearLayout tkListViewLayout scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default"></ListViewLinearLayout>
     
     <ng-template #cardTemplate tkListItemTemplate let-item="item" let-index="index" >
-      <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="15" [class.list-group-first]="index===0" (tap)="goToCasting(item)">
-        <StackLayout  class="list-group-item">
 
+      <!-- <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="15" [class.list-group-first]="index===0" (tap)="goToCasting(item)"> -->
+      <CardView class="card-group" elevation="0" radius="0" ios:shadowRadius="0" shadowOpacity="0" shadowColor="#000" shadowOffsetHeight="0" (tap)="goToCasting(item)">
 
-          <GridLayout class="list-group-item" columns="80, *" rows="80, auto" >
+        <StackLayout backgroundColor="" class="list-group-item">
+
+          <GridLayout backgroundColor="" class="list-group-item" columns="80, *" rows="80, auto" >
             <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
             <AbsoluteLayout row="0" col="1">
               <GridLayout left="0" top="0" width="100%" columns="41, *, 65" rows="44, 35, 1">
@@ -59,8 +61,11 @@
               <Label text="" class="list-group-item-icon-arrow" row="0" col="2"></Label>
             </GridLayout>
           </GridLayout>
+
         </StackLayout>
+
       </CardView>
+
     </ng-template>
 
     <!--

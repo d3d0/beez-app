@@ -18,6 +18,10 @@ import { Color } from "color";
 import { CastingsService } from "../castings.service";
 import { Casting } from "../casting.model";
 
+import {isIOS, isAndroid} from "tns-core-modules/platform";
+
+declare var android: any; // <- important! avoids namespace issues
+
 @Component({
   selector: 'ns-castings-list',
   templateUrl: './castings-list.component.html',
@@ -134,13 +138,18 @@ export class CastingsListComponent implements OnInit, OnDestroy {
   // The following trick makes the background color of each cell
   // in the UITableView transparent as it’s created.
   makeBackgroundTransparent(args) {
-    let cell = args.ios;
-    if (cell) {
+    if (args.ios) {
       // support XCode 8
       var newcolor = new Color(0,0,0,0);
       args.ios.backgroundView.backgroundColor = newcolor.ios;
-      // cell.backgroundColor = utils.ios.getter(UIColor, UIColor.clearColor); // FIX 23/09
-      cell.backgroundColor = UIColor.clearColor; // FIX 23/09
+      // support XCode 11
+      args.ios.backgroundView.backgroundColor = UIColor.clearColor; // d3d0fix
+      args.ios.opaque=false; // d3d0fix
+      // FIX 23/09
+      // cell.backgroundColor = utils.ios.getter(UIColor, UIColor.clearColor);
+    }
+    if(args.android){
+        // non funziona ...
     }
   }
 
