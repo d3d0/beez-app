@@ -30,6 +30,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
 
   @ViewChild("CBAgency", {static: false}) AgencyCheckBox: ElementRef;
   public isLoading: boolean = false;
+  public isLoadingSecond: boolean = false;
   public noAgency: boolean = false;
   private casting = [];
   private casting_id;
@@ -311,13 +312,18 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
    * @param action 
    */
   private partecipate(action){
-    this.isLoading =true
+    if(action == 'Confirmed'){
+      this.isLoading =true;
+    }else{
+      this.isLoadingSecond =true;
+    }
     this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe((result)=>{
         console.log('result',result);
         alert(localize("MESSAGES.CANDIDATE")).then(()=>{
           //chiudo la modale absolute
           this.edit_actions = false;
           this.isLoading = false;
+          this.isLoadingSecond = false;
           if(action == 'Confirmed'){
             this.showTitleConfirmed = true;
             this.showTitleDeclined = false;

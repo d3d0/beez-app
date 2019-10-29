@@ -97,11 +97,11 @@
 							<StackLayout [visibility]="showButton ? 'visible' : 'collapsed'" class="icon-container" row="0" col="1">
 								<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16></Image>
 							</StackLayout>
-							<BeezButton [visibility]="showButton ? 'visible' : 'collapsed'"  [text]="'PARTICIPATE'|L" [isBusy]="isLoading" (buttonClick)="candidate()" row="0" col="2" ></BeezButton>
+							<BeezButton  [visibility]="showButton ? 'visible' : 'collapsed'"  [text]="'PARTICIPATE'|L" [isBusy]="isLoading" (buttonClick)="candidate()" row="0" col="2" ></BeezButton>
 							<StackLayout class="icon-container" row="1" col="1">
 								<Image [src]="getIconSource('send')" stretch="none" width=16 height=16></Image>
 							</StackLayout>
-							<BeezButton  [text]="'SHARE_WITH_A_FRIEND'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="share()" row="1" col="2" ></BeezButton>
+							<BeezButton  [text]="'SHARE_WITH_A_FRIEND'|L"  buttonColor="blue" (buttonClick)="share()" row="1" col="2" ></BeezButton>
 						</GridLayout>
 
 						<!-- AUDITION TAB > BUTTONS > first partecipation -->
@@ -165,10 +165,10 @@
 										<Image  *ngIf="!noAgency" [src]="getIconSource('checkbox_off')" stretch="none" ></Image>
 										<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text p-l-8 " textWrap="true"></Label>
 									</StackLayout>
-									<BeezButton  [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="partecipate('Confirmed')"></BeezButton>
+									<BeezButton [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="partecipate('Confirmed')"></BeezButton>
 									<!-- d3d0 fix: no casting archivio -->
 									<!-- <BeezButton  [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="partecipate('Confirmed by archive')"></BeezButton> -->
-									<BeezButton  [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" [isBusy]="isLoading" buttonColor="black" (buttonClick)="partecipate('Declined')"></BeezButton>
+									<BeezButton  [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" [isBusy]="isLoadingSecond" buttonColor="black" (buttonClick)="partecipate('Declined')"></BeezButton>
 								</StackLayout>
 								<StackLayout top="0" width="100%">
 									<Image [src]="getIconSource('no_nero')" class="icon" stretch="none" horizontalAlignment="right" (tap)="edit_actions=!edit_actions" ></Image>
