@@ -42,8 +42,6 @@
             <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
             <AbsoluteLayout row="0" col="1">
               <GridLayout left="0" top="0" width="100%" columns="41, *, 65" rows="44, 35, 1">
-                  <Label [text]="item.read" row="0" col="0"></Label>
-
                 <Label *ngIf="item.private==1;" text="" class="list-group-item-icon-lock" row="0" col="0"></Label>
                 <Label *ngIf="item.private==1;" [text]="item.title" class="list-group-item-heading-10 text-uppercase" textWrap="true" row="0" col="1" colSpan="2"></Label>
                 <Label *ngIf="item.private==0;" [text]="item.title" class="list-group-item-heading-10 list-group-item-heading-m-l-15 text-uppercase" textWrap="true" row="0" col="0" colSpan="3"></Label>
