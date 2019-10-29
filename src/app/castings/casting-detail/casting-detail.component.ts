@@ -45,7 +45,12 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
   private _isLoadedService = false;
   private _dataSubscription: Subscription;
 
+  //Show hide component con visibility
   public showButton = true;
+  public showTitleConfirmed = false;
+  public showTitleDeclined = false;
+  public showTitleArchive = false;
+  public showTitleCandidate = false;
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -91,9 +96,31 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
         this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
           this.casting=casting;
 
+          this.casting['audition_action'] = casting.audition_action;
+
           if(casting.status =='New') {
             if(casting.new_action == 'action-candidated'){
               this.showButton = false;
+              this.showTitleCandidate = true;
+            }
+          }else if(casting.status == 'Audition'){
+
+            console.log(JSON.stringify(this.casting));
+            
+            if(casting.audition_action != '') {
+              if(casting.audition_action == 'action-confirmed'){
+                this.showTitleConfirmed = true;
+                this.showTitleDeclined = false;
+                this.showTitleArchive = false;
+              }else if(casting.audition_action == 'action-declined'){
+                this.showTitleConfirmed = false;
+                this.showTitleDeclined = true;
+                this.showTitleArchive = false;
+              }else if(casting.audition_action == 'action-confirmed-archive'){
+                this.showTitleConfirmed = false;
+                this.showTitleDeclined = false;
+                this.showTitleArchive = true;
+              }
             }
           }
 
@@ -178,10 +205,24 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
           }
           if(casting.audition_action != '') {
             this.casting['audition_action'] = casting.audition_action;
+            if(casting.audition_action == 'action-confirmed'){
+              this.showTitleConfirmed = true;
+              this.showTitleDeclined = false;
+              this.showTitleArchive = false;
+            }else if(casting.audition_action == 'action-declined'){
+              this.showTitleConfirmed = false;
+              this.showTitleDeclined = true;
+              this.showTitleArchive = false;
+            }else if(casting.audition_action == 'action-confirmed-archive'){
+              this.showTitleConfirmed = false;
+              this.showTitleDeclined = false;
+              this.showTitleArchive = true;
+            }
           }
         }else{
           if(casting.new_action == 'action-candidated'){
             this.showButton = false;
+            this.showTitleCandidate = true;
           }
         }
         if(casting.status!='New' && casting.status!='Audition') {
@@ -273,10 +314,24 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
     this.isLoading =true
     this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe((result)=>{
         console.log('result',result);
-        this.isLoading = false;
-        this.castingsService.load().subscribe();
         alert(localize("MESSAGES.CANDIDATE")).then(()=>{
+          //chiudo la modale absolute
           this.edit_actions = false;
+          this.isLoading = false;
+          if(action == 'Confirmed'){
+            this.showTitleConfirmed = true;
+            this.showTitleDeclined = false;
+            this.showTitleArchive = false;
+          }else if(action == 'Declined'){
+            this.showTitleConfirmed = false;
+            this.showTitleDeclined = true;
+            this.showTitleArchive = false;
+          }else if(action == 'Confirmed by archive'){
+            this.showTitleConfirmed = false;
+            this.showTitleDeclined = false;
+            this.showTitleArchive = true;
+          }
+          //this.castingsService.load().subscribe();
         });
       },
       (error)=> {
@@ -299,6 +354,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
         alert(localize("MESSAGES.CANDIDATE")).then(()=>{
           this.isLoading = false;
           this.showButton = false;
+          this.showTitleCandidate = true;
         });
       },
       (error)=> {

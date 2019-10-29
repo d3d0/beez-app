@@ -32,10 +32,16 @@
 				<StackLayout class="list-group-item p-t-0 p-b-12">
 					<StackLayout *ngIf="casting.status != 'Close'" >
 						<!-- Label of status on top only from auditionTab -->
-						<Label *ngIf="casting.status == 'Audition' && casting.audition_action == 'action-confirmed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED'|L" class="banner-top-card confirmed"></Label>
+						
+						<Label *ngIf="casting.status == 'Audition'" [visibility]="showTitleConfirmed ? 'visible' : 'collapsed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED'|L" class="banner-top-card confirmed"></Label>
+						<Label *ngIf="casting.status == 'Audition'" [visibility]="showTitleDeclined ? 'visible' : 'collapsed'" [text]="'CASTINGS.PARTICIPATION_DECLINED'|L" class="banner-top-card declined"></Label>
+						<Label *ngIf="casting.status == 'Audition'" [visibility]="showTitleArchive ? 'visible' : 'collapsed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED_WHITH_ARCHIVE'|L" class="banner-top-card confirmed-archive"></Label>
+						<Label *ngIf="casting.status == 'New'" [visibility]="showTitleCandidate ? 'visible' : 'collapsed'" [text]="'CASTINGS.CANDIDATED'|L" class="banner-top-card confirmed"></Label> -->
+
+						<!-- <Label *ngIf="casting.status == 'Audition' && casting.audition_action == 'action-confirmed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED'|L" class="banner-top-card confirmed"></Label>
 						<Label *ngIf="casting.status == 'Audition' && casting.audition_action == 'action-confirmed-archive'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED_WHITH_ARCHIVE'|L" class="banner-top-card confirmed-archive"></Label>
 						<Label *ngIf="casting.status == 'Audition' && casting.audition_action == 'action-declined'" [text]="'CASTINGS.PARTICIPATION_DECLINED'|L" class="banner-top-card declined"></Label>
-						<Label *ngIf="casting.status == 'New' && casting.new_action == 'action-candidated'" [text]="'CASTINGS.CANDIDATED'|L" class="banner-top-card confirmed"></Label>
+						<Label *ngIf="casting.status == 'New' && casting.new_action == 'action-candidated'" [text]="'CASTINGS.CANDIDATED'|L" class="banner-top-card confirmed"></Label> -->
 
 						<GridLayout *ngIf="casting.casting_denied == null" columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
 							<!-- lateral line -->
@@ -171,7 +177,7 @@
 						</GridLayout>
 
 						<!-- AUDITION TAB > NON SELEZIONATO / NON OPZIONATO -->
-						<GridLayout  *ngIf="casting.status === 'Audition' && casting.casting_denied != 'null'" class="p-t-16" columns="8,32,*,16" rows="auto,auto" >
+						<GridLayout  *ngIf="casting.status === 'Audition' && casting.casting_denied != null" class="p-t-16" columns="8,32,*,16" rows="auto,auto" >
 							<!-- LINE -->
 							<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center"></Label>
 
@@ -199,7 +205,7 @@
 							</Label>
 						</ng-temnplate>
 						<!-- OPTION TAB > NON SELEZIONATO / NON OPZIONATO -->
-						<ng-temnplate *ngIf="casting.casting_denied != 'null'">
+						<ng-temnplate *ngIf="casting.casting_denied != null">
 							<Label [text]="casting.casting_denied" class="text " textWrap="true"></Label>
 						</ng-temnplate>
 					</StackLayout>
