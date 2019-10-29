@@ -45,6 +45,8 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
   private _isLoadedService = false;
   private _dataSubscription: Subscription;
 
+  public showButton = true;
+
   constructor(
     private activeRoute: ActivatedRoute,
     private castingsService: CastingsService,
@@ -63,6 +65,8 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
       this.casting_id = params.id
       this.load();
     });
+
+
   }
 
   ngOnDestroy() {
@@ -82,19 +86,31 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
   load() {
     if (!this._dataSubscription) {
 
+
+
         this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
           this.casting=casting;
-          console.log('l☯☯☯l > CastingsService > getCastingById() > casting.status',casting.status);
+
+          if(casting.status =='New') {
+            if(casting.new_action == 'action-candidated'){
+              this.showButton = false;
+            }
+          }
 
           console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
-          if(casting.casting_denied) {
-            console.log('l☯☯☯l > CastingsService > getCastingById() > casting.casting_denied',casting.casting_denied);
-          }
-          if (casting.agency_talent_casting) {
-            console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.tid);
-            console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.name);
-          }
+          console.log('l☯☯☯l > CastingDetailComponent > load() > voglio vedere se sono iscritto a sto cazzo di casting di merda',casting.new_action);
           console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          // console.log('l☯☯☯l > CastingsService > getCastingById() > casting.status',casting.status);
+
+          // console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          // if(casting.casting_denied) {
+          //   console.log('l☯☯☯l > CastingsService > getCastingById() > casting.casting_denied',casting.casting_denied);
+          // }
+          // if (casting.agency_talent_casting) {
+          //   console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.tid);
+          //   console.log('l☯☯☯l > CastingsService > getCastingById() > casting.agency_talent_casting.tid: ', casting.agency_talent_casting.name);
+          // }
+          // console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
 
           this._isLoadingService = false;
           this._isLoadedService = true;
@@ -114,6 +130,8 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
           }
 
         });
+
+
       
     }
   } 
@@ -127,9 +145,11 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
 
       this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
 
-        console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > casting.status',casting.status);
-        console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > casting.casting_denied',casting.casting_denied);
-
+        // console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > casting.status',casting.status);
+        // console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > casting.casting_denied',casting.casting_denied);
+        console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+        console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > voglio vedere se sono iscritto a sto cazzo di casting di merda',casting.new_action);
+        console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
         this._isLoadingService = false;
         this._isLoadedService = true;
 
@@ -150,6 +170,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
         // d3d0 fix --> cambio di stato + controllo permessi  
         // casting.status --> cambio di stato se visualizzo in tab notifiche e torno in tab casting
         // casting.casting_denied --> controllo se posso visualizzare il casting
+
         if(casting.status!='New') {
           this.casting['status']='Audition';
           if(casting.casting_denied != null) {
@@ -157,6 +178,10 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
           }
           if(casting.audition_action != '') {
             this.casting['audition_action'] = casting.audition_action;
+          }
+        }else{
+          if(casting.new_action == 'action-candidated'){
+            this.showButton = false;
           }
         }
         if(casting.status!='New' && casting.status!='Audition') {
@@ -262,20 +287,24 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
   
   /**
    * candidate()
+   * mi iscrivo ad un casting
    */
   private candidate(){
-    this.isLoading =true
+    this.isLoading = true;
+    
     this.castingsService.cadidate(this.user_id, this.casting_id).subscribe((result)=>{
         console.log('result',result);
-        this.isLoading = false;
-        this.castingsService.load().subscribe();
-        alert(localize("MESSAGES.CANDIDATE")).then(()=> this.goBack());
+        alert(localize("MESSAGES.CANDIDATE")).then(()=>{
+          this.isLoading = false;
+          this.showButton = false;
+        });
       },
       (error)=> {
         this.isLoading =false;
         console.log(error);
         if (error.status === 400) alert(localize(error.error[0]))
-        else alert(localize("ERROR_SERVICE")).then(()=> this.goBack())
+        // else alert(localize("ERROR_SERVICE")).then(()=> this.goBack())
+        else alert(localize("ERROR_SERVICE"));
       });
   }
 

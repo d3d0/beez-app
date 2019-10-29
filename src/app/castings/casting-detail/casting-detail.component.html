@@ -87,11 +87,10 @@
 							<!-- lateral line -->
 							<Label text="" class="list-group-item-v-line" rowSpan="2" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
 							
-							<StackLayout class="icon-container" row="0" col="1">
+							<StackLayout [visibility]="showButton ? 'visible' : 'collapsed'" class="icon-container" row="0" col="1">
 								<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16></Image>
 							</StackLayout>
-							<BeezButton  [text]="'PARTICIPATE'|L" [isBusy]="isLoading" (buttonClick)="candidate()" row="0" col="2" ></BeezButton>
-
+							<BeezButton [visibility]="showButton ? 'visible' : 'collapsed'"  [text]="'PARTICIPATE'|L" [isBusy]="isLoading" (buttonClick)="candidate()" row="0" col="2" ></BeezButton>
 							<StackLayout class="icon-container" row="1" col="1">
 								<Image [src]="getIconSource('send')" stretch="none" width=16 height=16></Image>
 							</StackLayout>
