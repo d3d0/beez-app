@@ -319,26 +319,44 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
     }
     this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe((result)=>{
         console.log('result',result);
-        alert(localize("MESSAGES.CANDIDATE")).then(()=>{
-          //chiudo la modale absolute
-          this.edit_actions = false;
-          this.isLoading = false;
-          this.isLoadingSecond = false;
-          if(action == 'Confirmed'){
-            this.showTitleConfirmed = true;
-            this.showTitleDeclined = false;
-            this.showTitleArchive = false;
-          }else if(action == 'Declined'){
+        if(action == 'Declined'){
+          alert(localize("MESSAGES.DECLINED")).then(()=>{
+            //chiudo la modale absolute
+            this.edit_actions = false;
+            this.isLoading = false;
+            this.isLoadingSecond = false;
             this.showTitleConfirmed = false;
             this.showTitleDeclined = true;
             this.showTitleArchive = false;
-          }else if(action == 'Confirmed by archive'){
+            //this.castingsService.load().subscribe();
+          });
+        }else if(action == 'Confirmed'){
+          alert(localize("MESSAGES.CANDIDATE")).then(()=>{
+            //chiudo la modale absolute
+            this.edit_actions = false;
+            this.isLoading = false;
+            this.isLoadingSecond = false;
+            this.showTitleConfirmed = true;
+            this.showTitleDeclined = false;
+            this.showTitleArchive = false;
+
+            //this.castingsService.load().subscribe();
+          });
+        }else if(action == 'Confirmed by archive'){
+          alert(localize("MESSAGES.CANDIDATE")).then(()=>{
+            //chiudo la modale absolute
+            this.edit_actions = false;
+            this.isLoading = false;
+            this.isLoadingSecond = false;
             this.showTitleConfirmed = false;
             this.showTitleDeclined = false;
             this.showTitleArchive = true;
-          }
-          //this.castingsService.load().subscribe();
-        });
+            //this.castingsService.load().subscribe();
+          });
+
+        }
+        
+
       },
       (error)=> {
         this.isLoading =false;
