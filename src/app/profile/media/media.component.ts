@@ -144,14 +144,12 @@ export class MediaComponent implements OnInit {
             selection.forEach( (selected_item) => {
                 let source = new ImageSource();
                 source.fromAsset(selected_item).then((image) => {
-                    console.log('$IMAGE -> ', image);
                     let name = new Date().toISOString() +'__'+ counter + ".jpg"
                     let folder = fs.knownFolders.documents();
                     let path = fs.path.join(folder.path, name );
                     let saved = image.saveToFile(path, "jpg");
                     var localPath = path;
                     var task = this.start_upload(localPath);
-                    console.log('$LOCAL_PATH -> ', localPath)
                     this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
                 })
             })
@@ -162,18 +160,14 @@ export class MediaComponent implements OnInit {
 
 
     start_upload(fileUri) {
-        console.log('$file_uri -> ', fileUri)
         this.isLoading = true;
-
         const name = this.extractImageName(fileUri);
-
         let headers = [];
         headers["Content-Type"] = "application/octet-stream";
         headers["Accept"] = 'application/json';
         headers["observe"] = "response";
         headers["x-csrf-token"] = BackendService.XCSFRtoken;
-        headers["Cookie"] = BackendService.session_name + "=" + BackendService.sessid;
-        
+        headers["Cookie"] = BackendService.session_name + "=" + BackendService.sessid;   
         const request = {
             url: this.url,
             method: "POST",
@@ -181,12 +175,10 @@ export class MediaComponent implements OnInit {
             androidAutoDeleteAfterUpload: false,
             androidNotificationTitle: 'BEEEZ',
         };
-
         let task: bgHttp.Task;
         let lastEvent = "";
         const params = [{ name: `${name}`, filename: `${fileUri}`, mimeType: 'image/jpeg'}];
         task = this.session.multipartUpload(params, request);
-        console.log('+++-----$TASK-----+++', task);
         function onEvent(e) {
             this.isLoading = false;
             console.log("received " + JSON.stringify(e.responseCode ) + " code");
@@ -195,7 +187,6 @@ export class MediaComponent implements OnInit {
                 lastEvent = e.eventName;
                 if (e.eventName == 'complete'){
                     this.isLoading = false;  
-        
                 }
             } else {
                 this.isLoading = false;
@@ -224,14 +215,9 @@ export class MediaComponent implements OnInit {
         var serverResponse = e.response;
         this.isLoading = true;
     }
-
-
     extractImageName(fileUri) {
         var pattern = /[^/]*$/;
         var imageName = fileUri.match(pattern);
         return imageName;
     }
-
-
-
 }
