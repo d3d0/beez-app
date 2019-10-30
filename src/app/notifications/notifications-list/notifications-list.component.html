@@ -40,7 +40,7 @@
 
         <StackLayout backgroundColor="" class="list-group-item">
 
-          <GridLayout backgroundColor="" class="list-group-item" columns="80, *" rows="80, auto" >
+          <GridLayout backgroundColor="" class="list-group-item" [class.list-group-item-read]="item.read===0" columns="80, *" rows="80, auto" >
             <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
             <AbsoluteLayout row="0" col="1">
               <GridLayout left="0" top="0" width="100%" columns="41, *, 65" rows="44, 35, 1">
@@ -49,17 +49,23 @@
                 <Label *ngIf="item.private==0;" [text]="item.title" class="list-group-item-heading-10 list-group-item-heading-m-l-15 text-uppercase" textWrap="true" row="0" col="0" colSpan="3"></Label>
                 <Label [text]="item.subtitle" class="list-group-item-heading-14" textWrap="true" row="1" col="0" colSpan="2"  ></Label>
                 <Label [text]="item.date" class="text-right list-group-item-date" textWrap="true" row="1" col="2"  ></Label>
-                <Label *ngIf="item.message_type=='audition_talent_was_selected';" text="" class="list-group-item-h-line" row="2" col="0" colSpan="3"></Label>
+                <!-- <Label *ngIf="item.message_type=='audition_talent_was_selected';" text="" class="list-group-item-h-line" row="2" col="0" colSpan="3"></Label> -->
+                <!-- <Label text="" class="list-group-item-h-line" row="2" col="0" colSpan="3"></Label> -->
               </GridLayout>
+              <!-- 
               <StackLayout left="0" top="0" width="100%" height="32" *ngIf="item.read==0;">
                   <Label class="list-group-item-icon-partecipate" horizontalAlignment="right"></Label>
-              </StackLayout>
+              </StackLayout> 
+              -->
             </AbsoluteLayout>
+            <!-- INFO CASTING -->
+            <!--
             <GridLayout row="1" col="0" colSpan="2" columns="41, *, 50" rows="auto" *ngIf="item.message_type=='audition_talent_was_selected';">
               <Label text="" [ngClass]="'list-group-item-icon-' + item.type" row="0" col="0"></Label>
               <Label [text]="item.message" class="list-group-item-text text-left text-uppercase" row="0" col="1"></Label>
               <Label text="" class="list-group-item-icon-arrow" row="0" col="2"></Label>
             </GridLayout>
+            -->
           </GridLayout>
 
         </StackLayout>
