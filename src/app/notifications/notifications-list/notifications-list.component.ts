@@ -140,7 +140,7 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
         var newcolor = new Color(0,0,0,0);
         args.ios.backgroundView.backgroundColor = newcolor.ios;
         // support XCode 11
-        args.ios.backgroundColor = UIColor.clearColor; // d3d0fix
+        args.ios.backgroundView.backgroundColor = UIColor.clearColor; // d3d0fix
         args.ios.opaque=false; // d3d0fix
       }
       if(isAndroid){
@@ -148,8 +148,11 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
           // https://stackoverflow.com/questions/39379394/how-to-set-the-background-transparent-to-a-nativescript-webview
           // https://stackoverflow.com/questions/54634717/cannot-set-modal-background-to-transparent-in-android
           // https://github.com/nstudio/nativescript-cardview/issues/11
-          var c = new Color("#FF0000");
-          nativecard.setCardBackgroundColor(c.android);
+          // https://stackoverflow.com/questions/2173936/how-to-set-background-color-of-a-view
+
+          // TEST:
+          // var c = new Color("#FF0000");
+          // nativecard.setCardBackgroundColor(c.android);
           // nativecard.setCardBackgroundColor(0x00FF00);
           // nativecard.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.parseColor("#FFFF0004")));
           // nativecard.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.CYAN));
