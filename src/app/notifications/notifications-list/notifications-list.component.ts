@@ -97,10 +97,12 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
       //console.log(notification.read);
       //console.log(JSON.stringify(notification));
     }
-    if(notification.message_type == "audition_talent_was_not_selected") {
+    console.log('type-message',notification.message_type);
+    if(notification.message_type == "audition_talent_was_not_selected" || notification.message_type == 'shooting_talent_was_not_selected') {
       return
+    }else{
+      this.router.navigate(["../casting", notification.nid], { relativeTo: this.activeRoute })
     }
-    this.router.navigate(["../casting", notification.nid], { relativeTo: this.activeRoute })
   }
 
   public onPullToRefreshInitiated(args: ListViewEventData) {
