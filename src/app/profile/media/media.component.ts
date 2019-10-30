@@ -3,8 +3,8 @@ import * as imagepicker from "nativescript-imagepicker";
 import * as bgHttp from "nativescript-background-http";
 import { isIOS } from "platform";
 import { ObservableArray } from "data/observable-array";
-import * as fs from "file-system";
-import {ImageSource, fromFile,fromNativeSource, fromResource, fromBase64} from "tns-core-modules/image-source";
+
+
 import { localize } from "nativescript-localize";
 import { BackendService } from "../../shared/backend.service";
 import { ProfileService } from "../profile.service"
@@ -12,6 +12,9 @@ import { alert, confirm, getIconSource } from "../../shared/utils";
 import { Profile } from "../../user/profile.model";
 
 
+import {ImageSource, fromFile,fromNativeSource, fromResource, fromBase64} from "tns-core-modules/image-source";
+import * as fs from "file-system";
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ns-media',
@@ -44,24 +47,15 @@ export class MediaComponent implements OnInit {
         this.loadImages();
         
     }
-
-    ngOnInit() {
-        console.log('PROOOOOOVA INITTTTT');
-    }
-
-
-    ngChange(){
-        console.log('change',this.images); 
-    }
-
-
-    loadImages(){
-        this.profileService.getImages().subscribe((result) => {
+    ngOnInit() {}
+    ngChange() {console.log('change',this.images); }
+    loadImages() {
+        this.profileService.getImages()
+        .subscribe((result) => {
             this.images = result;
             console.log('reeeeesults',this.images);
         });
     }
-    
     deleteImage(image){
         if(!this.isLoading){
             if(!image.fid){
@@ -102,7 +96,6 @@ export class MediaComponent implements OnInit {
         }
 
     }
-
     setPolaroidImage(image){
         if(!this.isLoading){
             if(!image.fid){
@@ -151,33 +144,15 @@ export class MediaComponent implements OnInit {
             selection.forEach( (selected_item) => {
                 let source = new ImageSource();
                 source.fromAsset(selected_item).then((image) => {
-
-                    //console.log('l☯☯☯l > MediaComponent > startSelection() > image:', image);
-                    
-                    // if (!isIOS) {
-                    //     var localPath = null;
-                    //     localPath = image.android.toString();
-                    // } else {
-                    //     let name = new Date().toISOString() +'__'+ counter + ".jpg"
-                    //     let folder = fs.knownFolders.documents();
-                    //     let path = fs.path.join(folder.path, name );
-                    //     let saved = image.saveToFile(path, "jpg");
-                    //     localPath = path;
-                    // }
-
+                    console.log('$IMAGE -> ', image);
                     let name = new Date().toISOString() +'__'+ counter + ".jpg"
                     let folder = fs.knownFolders.documents();
                     let path = fs.path.join(folder.path, name );
                     let saved = image.saveToFile(path, "jpg");
                     var localPath = path;
-                    //localPath = localPath;
-
-                    //console.log('l☯☯☯l > MediaComponent > startSelection() > localpath:',localPath);
-
-                    // var task = this.start_upload("image_" + counter + ".jpg", localPath);
                     var task = this.start_upload(localPath);
+                    console.log('$LOCAL_PATH -> ', localPath)
                     this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
-                    //counter++;
                 })
             })
 
@@ -187,14 +162,10 @@ export class MediaComponent implements OnInit {
 
 
     start_upload(fileUri) {
-
+        console.log('$file_uri -> ', fileUri)
         this.isLoading = true;
-        // console.log('uri ', uri)
-        // console.log(fileUri)
 
-        const name = this.extractImageName(fileUri);;
-        const description = `${name} (${++this.counter})`;
-        debugger;
+        const name = this.extractImageName(fileUri);
 
         let headers = [];
         headers["Content-Type"] = "application/octet-stream";
@@ -213,16 +184,12 @@ export class MediaComponent implements OnInit {
 
         let task: bgHttp.Task;
         let lastEvent = "";
-        const params = { name: name, filename: fileUri };
-        //const params = { name: name, filename: fileUri };
-        //task = this.session.multipartUpload(params, request);
+        const params = [{ name: `${name}`, filename: `${fileUri}`, mimeType: 'image/jpeg'}];
         task = this.session.multipartUpload(params, request);
-
+        console.log('+++-----$TASK-----+++', task);
         function onEvent(e) {
-            //console.log('l☯☯☯l > MediaComponent > start_upload() > onEvent()',e);
             this.isLoading = false;
             console.log("received " + JSON.stringify(e.responseCode ) + " code");
-
             if (lastEvent !== e.eventName) {
                 // suppress all repeating progress events and only show the first one
                 lastEvent = e.eventName;
