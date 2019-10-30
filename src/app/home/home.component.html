@@ -1,16 +1,15 @@
-<TabView  #homeTabs androidTabsPosition="bottom">
-    <page-router-outlet
-        *tabItem="{title: '', iconSource: getIconSource('casting_on')}"
-        name="castingsTab">
-    </page-router-outlet>
+<TabView #homeTabs androidTabsPosition="bottom">
 
-    <page-router-outlet
-        *tabItem="{title: '', iconSource: getIconSource('notification_on')}"
-        name="notificationsTab">
-    </page-router-outlet>
+    <StackLayout *tabItem="{title: '', iconSource: getIconSource('casting_on'), bageValue: '1'}">
+        <page-router-outlet name="castingsTab"></page-router-outlet>
+    </StackLayout>
 
-    <page-router-outlet
-        *tabItem="{title: '', iconSource: getIconSource('profile_on')}"
-        name="profileTab">
-    </page-router-outlet>
+    <StackLayout *tabItem="{title: '', iconSource: getIconSource('notification_on')}">
+        <page-router-outlet name="notificationsTab"></page-router-outlet>
+    </StackLayout>
+    
+    <StackLayout *tabItem="{title: '', iconSource: getIconSource('profile_on')}">
+        <page-router-outlet name="profileTab"></page-router-outlet>
+    </StackLayout>
+    
 </TabView>
