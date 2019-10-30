@@ -33,7 +33,7 @@
       <Image src="~/assets/images/rect.png"></Image>
       <StackLayout class="text-wrapper">
         
-        <Label horizontalAlignment="left" class="label pro" [text]='profile.pro | uppercase'></Label>
+        <Label horizontalAlignment="left" *ngIf="profile.pro" class="label pro" [text]='profile.pro | uppercase'></Label>
         <Label class="name" [text]="profile.name + ' ' + profile.surname"></Label>
         <Label class="label role" [text]='profile.mail | uppercase'></Label>
 
