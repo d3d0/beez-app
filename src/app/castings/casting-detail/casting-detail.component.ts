@@ -331,7 +331,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
             //this.castingsService.load().subscribe();
           });
         }else if(action == 'Confirmed'){
-          alert(localize("MESSAGES.CANDIDATE")).then(()=>{
+          alert(localize("MESSAGES.PARTECIPATE")).then(()=>{
             //chiudo la modale absolute
             this.edit_actions = false;
             this.isLoading = false;
@@ -343,7 +343,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
             //this.castingsService.load().subscribe();
           });
         }else if(action == 'Confirmed by archive'){
-          alert(localize("MESSAGES.CANDIDATE")).then(()=>{
+          alert(localize("MESSAGES.PARTECIPATE")).then(()=>{
             //chiudo la modale absolute
             this.edit_actions = false;
             this.isLoading = false;

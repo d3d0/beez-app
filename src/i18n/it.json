@@ -151,6 +151,7 @@
     "ERROR_LOGIN" : "Sfortunatamente non abbiamo trovato il tuo account, password o e-mail errati.",
     "ERROR_SERVICE" : "Il server non risponde, prova più tardi.",
     "SHARE_WITH_A_FRIEND": "Ciao! Partecipa al casting! @BEEZ CASTING HUB https://beez.io",
+    "PARTECIPATE": "Grazie! Ti aspettiamo!",
     "CANDIDATE": "Grazie per esserti iscritto al casting! Riceverai prossimamente una notifica di accettazione per le Audizioni.",
     "DECLINED":"Ci dispiace che tu non possa partecipare!Ricordati che puoi modificare la partecipazione prima che si chiudano le audizioni.",
     "ERROR_CASTING_CANDIDATE_ALREADY": "Sei già iscritto a questo casting, riceverai prossimamente una notifica di accettazione per le Audizioni."
