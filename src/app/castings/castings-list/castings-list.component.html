@@ -7,13 +7,13 @@
     <StackLayout class="list-group-item" elevation="30">
       
     <CardView class="card-group"  elevation="30" android:radius="10" ios:radius="4"  [class.list-group-first]="index===0" background="white" ios:shadowRadius="8" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10">
-      <Label *ngIf="castingType == 'Audition' && item.audition_action == ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="banner-top-card" textWrap="true"></Label>
-        <GridLayout  columns="16, *, 20, 16" rows="auto, auto, auto, auto, auto, auto" class="m-b-20" radius="10">
-
+      <GridLayout  columns="16, *, 20, 16" rows="auto, auto, auto, auto, auto, auto" class="m-b-20" android:radius="10" ios:radius="4">
+          
           <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
           <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" ></Image>
           </StackLayout> 
           <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
+            <Label *ngIf="castingType == 'Audition' && item.audition_action == ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="banner-top-card" textWrap="true"></Label>  
             <Image  [src]="item.image" class="list-group-item-img" stretch="aspectFill"></Image>
           </StackLayout> 
           <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed' " src="res://partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
@@ -60,7 +60,7 @@
   </ng-template>
 
   <ng-template tkTemplateKey="empty"  let-item="item" >
-    <CardView [visibility]="_defaultIsVisible === true ? 'visible' : 'collapsed'" class="card-group" elevation="30" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="true">
+    <CardView [visibility]="_defaultIsVisible === true ? 'visible' : 'collapsed'" class="card-group" elevation="30" android:radius="10" ios:radius="4" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="true">
 
       <StackLayout class="list-group-item">
         <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TITLE' | L" class="list-group-item-heading-18 list-group-item-heading-18-empty" textWrap="true"></Label>
