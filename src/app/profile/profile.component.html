@@ -40,7 +40,33 @@
       </StackLayout>
     </GridLayout>
 
-    <GridLayout  columns="*,*,*,*" rows="auto" class="tab-buttons" #profileTab >
+
+    <AbsoluteLayout>
+      <!-- BORDO -->
+      <GridLayout left="0" top="0" width="100%" columns="auto" rows="auto" class="tab-border-d3d0" backgroundColor="transparent">
+        <Label text=""></Label>
+      </GridLayout>
+      <!-- CASTING TABS -->
+      <StackLayout #tabHighlight col="0" class="tabActiveIndex"></StackLayout>
+
+      <GridLayout #profileTab left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto" class="tab-buttons-d3d0" backgroundColor="transparent">
+        <GridLayout class="tab-container" col="0" (tap)="onSelectedIndexChange(0)" >
+          <Label #tab1 [text]="'PROFILE.INFO'|L|uppercase" [class.disabled]="editable && selectedIndex != 0" class="label-16" textWrap="false" backgroundColor=""></Label>
+        </GridLayout>
+        <GridLayout class="tab-container" col="1" (tap)="onSelectedIndexChange(1)">
+          <Label #tab2 [text]="'PROFILE.DETAILS'|L|uppercase" [class.disabled]="editable && selectedIndex != 1" class="label-16" textWrap="false" backgroundColor=""></Label>
+        </GridLayout>
+        <GridLayout class="tab-container" col="2" (tap)="onSelectedIndexChange(2)">
+          <Label #tab3 [text]="'PROFILE.MEDIA'|L|uppercase" [class.disabled]="editable && selectedIndex != 2" class="label-16" textWrap="false" backgroundColor=""></Label>
+        </GridLayout>
+        <GridLayout class="tab-container" col="3" (tap)="onSelectedIndexChange(3)">
+          <Label #tab4 [text]="'PROFILE.CONTACTS'|L|uppercase" [class.disabled]="editable && selectedIndex != 3" class="label-16" textWrap="false" backgroundColor=""></Label>
+        </GridLayout>
+      </GridLayout>
+    </AbsoluteLayout>
+      
+    
+  <!-- <GridLayout  columns="*,*,*,*" rows="auto" class="tab-buttons" #profileTab >
       <StackLayout #tabHighlight col="0" class="tabActiveIndex"></StackLayout>
       <StackLayout col="0" (tap)="onSelectedIndexChange(0)">
         <Label #tab1 [text]="'PROFILE.INFO'|L|uppercase" [class.disabled]="editable && selectedIndex != 0" ></Label>
@@ -54,7 +80,8 @@
       <StackLayout col="3" (tap)="onSelectedIndexChange(3)">
         <Label #tab4 [text]="'PROFILE.CONTACTS'|L|uppercase" [class.disabled]="editable && selectedIndex != 3" ></Label>
       </StackLayout>
-    </GridLayout>
+    </GridLayout>  -->
+
 
     <StackLayout class="profile-info">
       <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10" >

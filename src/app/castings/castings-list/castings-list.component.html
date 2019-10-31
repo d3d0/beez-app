@@ -4,17 +4,18 @@
 
   <ng-template tkTemplateKey="default" let-item="item" let-index="index">
 
-    <CardView class="card-group" elevation="30" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="index===0">
+    <StackLayout class="list-group-item" elevation="30">
+      
+    <CardView class="card-group"  elevation="30" android:radius="30" ios:radius="6"  [class.list-group-first]="index===0" background="white" ios:shadowRadius="8" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10">
+      <Label *ngIf="castingType == 'Audition' && item.audition_action == ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="banner-top-card" textWrap="true"></Label>
+        <GridLayout  columns="16, *, 20, 16" rows="auto, auto, auto, auto, auto, auto" class="m-b-20" radius="10">
 
-      <StackLayout class="list-group-item" >
-
-        <Label *ngIf="castingType == 'Audition' && item.audition_action == ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="banner-top-card" textWrap="true"></Label>
-
-        <GridLayout columns="16, *, 20, 16" rows="auto, auto, auto, auto, auto, auto" class="m-b-20">
-
-          <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
-          <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" colSpan="5" ></Image>
-
+          <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
+          <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" ></Image>
+          </StackLayout> 
+          <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
+            <Image  [src]="item.image" class="list-group-item-img" stretch="aspectFill"></Image>
+          </StackLayout> 
           <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed' " src="res://partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
           <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed-archive' " src="res://partecipo_archivio" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
           <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-declined' " src="res://non_partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
@@ -52,12 +53,9 @@
           </StackLayout>
           <!-- ultima riga > arrow -->
           <Image src="res://arrow_right" stretch="none" row="4" col="2" ></Image>
-          
         </GridLayout>
-
-      </StackLayout>
-
     </CardView>
+  </StackLayout>
 
   </ng-template>
 

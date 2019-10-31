@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
 import { View } from "ui/core/view";
 import { Page } from "tns-core-modules/ui/page";
@@ -23,7 +23,7 @@ import { ProfileService } from "./profile.service";
   moduleId: module.id,
 })
 
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements AfterViewInit, OnInit{
 
   static IMAGE_MIN_HEIGHT = 48;
   public selectedIndex = 0;
@@ -52,6 +52,7 @@ export class ProfileComponent implements OnInit {
     private profileService: ProfileService,
     private page: Page) {
     console.log('hello from PROFILE component');
+    
   }
   
   ngOnInit(): void {
@@ -61,7 +62,9 @@ export class ProfileComponent implements OnInit {
     this.tabs[1] = <View>this.tab2.nativeElement;
     this.tabs[2] = <View>this.tab3.nativeElement;
     this.tabs[3] = <View>this.tab4.nativeElement;
-    this.tabs[0].className = "active";
+    this.tabs[1].className = "active";
+
+    //console.log(this.tabs[0].className);
 
     // if (BackendService.showProfilePopup()) {  
     //   setTimeout(() => {
@@ -74,6 +77,10 @@ export class ProfileComponent implements OnInit {
     //       this.modal.showModal(MessageModalViewComponent, options)
     //           })
     //     }
+  }
+
+  ngAfterViewInit() {
+    this.tabs[0].className = "active";
   }
 
   get profile(){
@@ -142,17 +149,20 @@ export class ProfileComponent implements OnInit {
   }
 
   public onSelectedIndexChange(index) {
-    if (this.editable) return
+    console.log(index);
+    if (this.editable){
+      return
+    } 
     let previousTab = this.selectedIndex;
     if (index != this.selectedIndex) {
-      // this.tabs[index].className = "active"; // FIX 23/09
-      // this.tabs[previousTab].className = "not-active"; // FIX 23/09
+      this.tabs[index].className = "active"; // FIX 23/09
+      this.tabs[previousTab].className = "not-active"; // FIX 23/09
       this.selectedIndex = index;
-      this.tabHighlight.nativeElement.animate({
-        translate: { x: index * screen.mainScreen.widthDIPs / 4, y: 0 },
-        curve: AnimationCurve.cubicBezier(1, .02, .45, .93),
-        duration: 300
-      })
+      // this.tabHighlight.nativeElement.animate({
+      //     translate: { x: index * screen.mainScreen.widthDIPs / 4, y: 0 },
+      //     curve: AnimationCurve.cubicBezier(1, .02, .45, .93),
+      //     duration: 300
+      //   });
     }
   }
 
@@ -190,10 +200,8 @@ export class ProfileComponent implements OnInit {
   showPolaroid(){
     let animations = [];
     let tabsEl = <View>this.profileTabs.nativeElement;
-
     if (this.editable){
       animations.push({ target: tabsEl, translate: { x: 0, y:  -300 },curve: AnimationCurve.linear,  delay: 0, duration: 900 });
-
     } else {
       animations.push({ target: tabsEl, translate: { x: 0, y: 0 },curve: AnimationCurve.linear, delay: 0, duration: 900 });
     }

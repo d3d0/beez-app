@@ -1,0 +1,16 @@
+@import '../../../app-variables';
+.casting{
+    .list-group-item{
+        overflow: hidden;
+        background: white;
+        border-radius: 6;
+        .card-group{
+            overflow: hidden;
+            background: white;
+        }
+    }
+    .list-group-item-img-group{
+        overflow: hidden;
+        border-radius: 6;
+    }
+}
