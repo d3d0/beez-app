@@ -6,7 +6,7 @@
 
     <StackLayout class="list-group-item" elevation="30">
       
-    <CardView class="card-group"  elevation="30" android:radius="30" ios:radius="6"  [class.list-group-first]="index===0" background="white" ios:shadowRadius="8" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10">
+    <CardView class="card-group"  elevation="30" android:radius="20" ios:radius="6"  [class.list-group-first]="index===0" background="white" ios:shadowRadius="8" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10">
       <Label *ngIf="castingType == 'Audition' && item.audition_action == ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="banner-top-card" textWrap="true"></Label>
         <GridLayout  columns="16, *, 20, 16" rows="auto, auto, auto, auto, auto, auto" class="m-b-20" radius="10">
 
