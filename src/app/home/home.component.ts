@@ -13,6 +13,8 @@ import { MessageModalViewComponent } from "../components/message-modal-view/mess
 
 import * as app from "tns-core-modules/application";
 import {isIOS, isAndroid} from "tns-core-modules/platform";
+import { BottomNavigationBar, BottomNavigationTab, TabSelectedEventData } from 'nativescript-material-bottomnavigationbar';
+
 
 
 
@@ -20,6 +22,7 @@ export function onLayoutChanged(args: EventData) {
   console.log(args.eventName);
   console.log(args.object);
 }
+
 @Component({
   selector: 'ns-home',
   templateUrl: './home.component.html',
@@ -28,7 +31,7 @@ export function onLayoutChanged(args: EventData) {
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  @ViewChild("homeTabs", { static: false }) homeTabs: ElementRef;
+  tabs: any;
 
   constructor(
     private routerExtension: RouterExtensions,
@@ -38,20 +41,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private vcRef: ViewContainerRef,
     private modal: ModalDialogService,
     private page: Page) {
-    // warmup taxonomyService
     this.taxonomyService.load();
   }
 
   ngOnInit(): void {
 
     // this.homeTabs = this.homeTabs.nativeElement;
-    console.log('Loading homeTabs', this.homeTabs);
-
+    // console.log('Loading homeTabs', this.homeTabs);
     // var myTabView = page.getViewById("myTabView");
     // var tabItem = myTabView.ios.tabBar.items[0];
     // tabItem.badgeValue = "5";
 
-    this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
+    // this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
     this.page.actionBarHidden = true;
 
     if (BackendService.firstLogin()) {
@@ -64,18 +65,56 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.modal.showModal(MessageModalViewComponent, options)
       })
     }
+   
+    /**
+     * BottomNavigationBar > showBadge()
+     */
+    // this.tabs.showBadge(0,1);
+    // this.tabs.showBadge(1,1);
+    // this.tabs.showBadge(2,1);
+    // this.tabs.selectTab(1);
+    // this.tabs = [
+    //   new BottomNavigationTab(),
+    //   new BottomNavigationTab()
+    // ];
     
   }
 
+
   ngAfterViewInit() {
-    console.log("ngAfterViewInit homeTabs: " + this.homeTabs.nativeElement);
-    if (isIOS) {
+    // DOCS:
+    // https://stackoverflow.com/questions/36305114/add-a-badge-in-a-tabview
+
+    // console.log("ngAfterViewInit homeTabs: " + this.homeTabs.nativeElement);
+    // if (isIOS) {
       // var tabItem = this.homeTabs.nativeElement.ios.tabBar.items[0];
       // var tabItem = this.homeTabs.nativeElement.ios.tabBar.items;
       // var tabItem = this.homeTabs.nativeElement.ios.tabBar;
       // console.log("ngAfterViewInit homeTabs tabItem: " + tabItem);
       // tabItem.badgeValue = "1";
-    }
+    // }
+  }
+
+  /**
+   * BottomNavigationBar > onBottomNavigationBarLoaded()
+   */
+  onBottomNavigationBarLoaded(args: EventData) { 
+    console.log('tab loaded ' + args.object);
+    const bar = args.object as BottomNavigationBar; 
+    bar.selectTab(2); // works!
+    // bar.showBadge(0,1,); // bug!
+  }
+
+  /**
+   * BottomNavigationBar > onBottomNavigationTabSelected()
+   */
+  onBottomNavigationTabSelected(args: TabSelectedEventData) {
+    console.log('tab selected ' + args.newIndex);
+    // routing
+    if(args.newIndex == 0) { this.router.navigate(["/home/default/castings"]);} 
+    if(args.newIndex == 1) { this.router.navigate(["/home/default/notifications"]);} 
+    if(args.newIndex == 2) { this.router.navigate(["/home/default/profile"]);} 
+    // this.router.navigate(['/home/default', { outlets: { castingsTab: ['castings'] } }])
   }
 
   getIconSource(icon: string): string {

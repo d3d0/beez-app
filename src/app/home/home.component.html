@@ -1,3 +1,4 @@
+<!-- 
 <TabView #homeTabs androidTabsPosition="bottom">
 
     <StackLayout *tabItem="{title: '', iconSource: getIconSource('casting_on'), bageValue: '1'}">
@@ -10,6 +11,37 @@
     
     <StackLayout *tabItem="{title: '', iconSource: getIconSource('profile_on')}">
         <page-router-outlet name="profileTab"></page-router-outlet>
-    </StackLayout>
-    
-</TabView>
+    </StackLayout>   
+
+</TabView> 
+-->
+
+<GridLayout rows="*, 100" >
+        
+        <!-- <GridLayout row="0"  rows="200" columns="*, *">
+                <Button text="First" [nsRouterLink]="['/home/default/castings']" class="btn btn-primary btn-active" col="0"></Button>
+                <Button text="Second" [nsRouterLink]="['/home/default/notifications']" class="btn btn-primary btn-active" col="1"></Button> 
+        </GridLayout> -->
+
+        <StackLayout row="0" >
+                <page-router-outlet></page-router-outlet>
+        </StackLayout>
+
+        <BottomNavigationBar (loaded) = "onBottomNavigationBarLoaded($event)"
+            [tabs]="tabs"
+            activeColor="red"
+            inactiveColor="black"
+            backgroundColor="white"
+            (tabSelected)="onBottomNavigationTabSelected($event)"
+            (tabPressed)="onBottomNavigationTabPressed($event)"
+            row="1"
+        >
+            <BottomNavigationTab title="First" >
+            </BottomNavigationTab>
+            <BottomNavigationTab title="Second">
+            </BottomNavigationTab>
+            <BottomNavigationTab title="Third">
+            </BottomNavigationTab>
+        </BottomNavigationBar>
+        
+    </GridLayout>

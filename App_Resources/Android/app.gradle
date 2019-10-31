@@ -10,7 +10,8 @@
 // create a file named before-plugins.gradle in the current directory and place it there
 
 android {  
-  defaultConfig {  
+  defaultConfig {
+    
     generatedDensities = []
     // renderscriptTargetApi 25
 	  // renderscriptSupportModeEnabled true

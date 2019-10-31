@@ -5,7 +5,7 @@
       "version": "6.1.0"
     },
     "tns-android": {
-      "version": "6.1.2"
+      "version": "6.2.0-rc-2019-10-23-094316-01"
     }
   },
   "description": "Beez Casting Hub",
@@ -36,6 +36,7 @@
     "nativescript-iqkeyboardmanager": "^1.4.0",
     "nativescript-localize": "4.2.0",
     "nativescript-lottie": "^2.1.2",
+    "nativescript-material-bottomnavigationbar": "^2.5.4",
     "nativescript-plugin-firebase": "^10.1.0",
     "nativescript-social-share": "^1.5.1",
     "nativescript-theme-core": "~1.0.4",

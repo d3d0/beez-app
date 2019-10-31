@@ -5,11 +5,17 @@ import { HomeComponent } from "./home.component";
 
 const homeRoutes: Routes = [
     { path: "", redirectTo: "default" },
-    { path: "default", component: HomeComponent , children: [
-        { path: "castings", component: NSEmptyOutletComponent,  loadChildren: "~/app/castings/castings.module#CastingsModule", outlet: "castingsTab"},
-        { path: "notifications", component: NSEmptyOutletComponent, loadChildren: "~/app/notifications/notifications.module#NotificationsModule", outlet: "notificationsTab"},
-        { path: "profile", component: NSEmptyOutletComponent, loadChildren: "~/app/profile/profile.module#ProfileModule", outlet: "profileTab"}
-    ]}
+    // { path: "default", component: HomeComponent , children: [
+    //     { path: "castings", component: NSEmptyOutletComponent,  loadChildren: "~/app/castings/castings.module#CastingsModule", outlet: "castingsTab"},
+    //     { path: "notifications", component: NSEmptyOutletComponent, loadChildren: "~/app/notifications/notifications.module#NotificationsModule", outlet: "notificationsTab"},
+    //     { path: "profile", component: NSEmptyOutletComponent, loadChildren: "~/app/profile/profile.module#ProfileModule", outlet: "profileTab"}
+    // ]},
+    { path: 'default', component: HomeComponent, children: [
+            {   path: 'castings', loadChildren: "~/app/castings/castings.module#CastingsModule" },
+            {   path: 'notifications', loadChildren: "~/app/notifications/notifications.module#NotificationsModule" },
+            {   path: 'profile', loadChildren: "~/app/profile/profile.module#ProfileModule" },
+        ]
+    }
 ];
 
 @NgModule({
