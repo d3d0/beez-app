@@ -85,7 +85,7 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   onLoadedRad(args: EventData) {
     this.load();
     console.log('l☯☯☯l > onLoadedRad() > LOADED NotificationsListComponent RadListView!');
-    // update contatore
+    // DOCS > update contatore
     this.notificationService.getCount().subscribe(data => {
       console.log('l☯☯☯l > onLoadedRad() > NotificationService > getCount() > data[] ', data[0]);
       this.notificationService.counterSubject.next(data[0]);
@@ -128,7 +128,7 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
         args.object.notifyPullToRefreshFinished()
       })},
     500);
-    // update contatore
+    // DOCS > update contatore
     this.notificationService.getCount().subscribe(data => {
       console.log('l☯☯☯l > onLoadedRad() > NotificationService > getCount() > data[] ', data[0]);
       this.notificationService.counterSubject.next(data[0]);

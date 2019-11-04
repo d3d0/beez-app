@@ -97,12 +97,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     this.initializeTabBar();
 
-    // inizializzo contatore
+    // DOCS > inizializzo contatore
     this.notificationService.getCount().subscribe(data => {
-      console.log('l☯☯☯l > onBottomNavTap() > NotificationService > getCount() > data ', data);
       console.log('l☯☯☯l > ngAfterViewInit() > NotificationService > getCount() > data[0] ', data[0]);
-      this.contatore = data[0];
-      this.notificationService.counterSubject.next(this.contatore);
+      this.notificationService.counterSubject.next(data[0]);
     },
     error => {
       console.log('error', error);
@@ -111,6 +109,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
       console.log('l☯☯☯l > ngAfterViewInit() > NotificationService > Subscriber got NOTIFICATIONS count >>>>>> '+ data);
       this.contatore = data;
     });
+  }
+
+  onLoadedNav(args: EventData) {
+    console.log ('l☯☯☯l > HomeComponent > onLoadedNav()', this.defaultSelected);
   }
 
   // --------------------------------------------------------------------
@@ -140,11 +142,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
       if (this.tabs.nativeElement.selectedIndex !== index) {
           this.tabs.nativeElement.selectedIndex = index;
 
-          // update contatore
+          // DOCS > update contatore
           this.notificationService.getCount().subscribe(data => {
-            console.log('l☯☯☯l > onBottomNavTap() > NotificationService > getCount() > data ', data);
             console.log('l☯☯☯l > onBottomNavTap() > NotificationService > getCount() > data[0] ', data[0]);
-            // this.contatore = data[0];
             this.notificationService.counterSubject.next(data[0]);
           },
           error => {

@@ -1,7 +1,7 @@
 <GridLayout rows="*, auto">
 
         <GridLayout>
-            <BottomNavigation #tabs [selectedIndex]="defaultSelected" (selectedIndexChanged)="onSelectedIndexChanged($event)">
+            <BottomNavigation #tabs selectedIndex="0" (loaded)="onLoadedNav($event)" (selectedIndexChanged)="onSelectedIndexChanged($event)">
                 <TabContentItem [backgroundColor]="tabList[0].backgroundColor">
                     <StackLayout>
                         <page-router-outlet name="castingsTab"></page-router-outlet>
