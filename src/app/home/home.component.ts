@@ -4,13 +4,13 @@ import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/dir
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
 import { localize } from "nativescript-localize";
-import { EventData } from "tns-core-modules/data/observable";
+import { EventData, Observable } from "tns-core-modules/data/observable";
 import { AppModule } from "../app.module";
 import { BackendService } from "../shared/backend.service";
 import { TaxonomyService } from "../shared/taxonomy.service";
 import { MessageModalViewComponent } from "../components/message-modal-view/message-modal-view.component";
 import * as app from "tns-core-modules/application";
-import {isIOS, isAndroid} from "tns-core-modules/platform";
+import { isIOS, isAndroid } from "tns-core-modules/platform";
 import { screen } from 'platform';
 import { AnimationCurve } from "ui/enums";
 import { GridLayout } from "ui/layouts/grid-layout";
@@ -18,12 +18,14 @@ import { SelectedIndexChangedEventData } from "tns-core-modules/ui/tab-view";
 import { PanGestureEventData, GestureStateTypes, GestureEventData } from "ui/gestures";
 import { Label } from "tns-core-modules/ui/label";
 import { Color } from "color";
+import { NotificationsService} from "../notifications/notifications.service";
 
 
 export function onLayoutChanged(args: EventData) {
   console.log(args.eventName);
   console.log(args.object);
 }
+
 @Component({
   selector: 'ns-home',
   templateUrl: './home.component.html',
@@ -43,16 +45,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
       focusColor: '#fff'
   };
   tabList: { text: string, icon: string, color?: string, backgroundColor: string, fadeColor?: string }[] = [
-      { text: String.fromCharCode(0xf080), icon: 'res://casting_on', backgroundColor: '#5B37B7', color: '#000' },
-      { text: String.fromCharCode(0xf075), icon: 'res://notification_on', backgroundColor: '#E6A938', color: '#000' },
-      { text: String.fromCharCode(0xf259), icon: 'res://profile_on', backgroundColor: '#C9449D', color: '#000' }
+      { text: String.fromCharCode(0xf080), icon: 'res://casting_on', backgroundColor: '#000000', color: '#000' },
+      { text: String.fromCharCode(0xf075), icon: 'res://notification_on', backgroundColor: '#FFFFFF', color: '#000' },
+      { text: String.fromCharCode(0xf259), icon: 'res://profile_on', backgroundColor: '#FFFFFF', color: '#000' }
   ];
   currentTabIndex: number = 0;
   defaultSelected: number = 0;
   prevDeltaX: number = 0;
   animationCurve = AnimationCurve.cubicBezier(.38, .47, 0, 1);
+  public contatore: string = '';
 
   constructor(
+    private notificationService: NotificationsService,
     private routerExtension: RouterExtensions,
     private activeRoute: ActivatedRoute,
     private router: Router,
@@ -64,6 +68,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+    console.log('l☯☯☯l > HomeComponent > ngOnInit()');
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
 
     this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
     this.page.actionBarHidden = true;
@@ -77,15 +84,33 @@ export class HomeComponent implements OnInit, AfterViewInit {
         };
         this.modal.showModal(MessageModalViewComponent, options)
       })
-    }
-    
+    } 
   }
 
   // --------------------------------------------------------------------
   // Hooks
 
   ngAfterViewInit() {
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+    console.log('l☯☯☯l > HomeComponent > ngAfterViewInit()');
+    console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+
     this.initializeTabBar();
+
+    // inizializzo contatore
+    this.notificationService.getCount().subscribe(data => {
+      console.log('l☯☯☯l > onBottomNavTap() > NotificationService > getCount() > data ', data);
+      console.log('l☯☯☯l > ngAfterViewInit() > NotificationService > getCount() > data[0] ', data[0]);
+      this.contatore = data[0];
+      this.notificationService.counterSubject.next(this.contatore);
+    },
+    error => {
+      console.log('error', error);
+    });
+    this.notificationService._counter.subscribe((data) => {
+      console.log('l☯☯☯l > ngAfterViewInit() > NotificationService > Subscriber got NOTIFICATIONS count >>>>>> '+ data);
+      this.contatore = data;
+    });
   }
 
   // --------------------------------------------------------------------
@@ -100,6 +125,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   // Tap on a one of the tabs
   onBottomNavTap(index: number, duration: number = 300): void {
+    
       if (this.currentTabIndex !== index) {
           const tabContentsArr = this.tabContents.toArray();
 
@@ -113,6 +139,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
       // MY: Change the selected index of Tabs when tap on tab strip
       if (this.tabs.nativeElement.selectedIndex !== index) {
           this.tabs.nativeElement.selectedIndex = index;
+
+          // update contatore
+          this.notificationService.getCount().subscribe(data => {
+            console.log('l☯☯☯l > onBottomNavTap() > NotificationService > getCount() > data ', data);
+            console.log('l☯☯☯l > onBottomNavTap() > NotificationService > getCount() > data[0] ', data[0]);
+            // this.contatore = data[0];
+            this.notificationService.counterSubject.next(data[0]);
+          },
+          error => {
+            console.log('error', error);
+          });
       }
 
       // set current index to new index
@@ -136,12 +173,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
       layer.shadowOpacity = 0.3;
       layer.shadowRadius = 7;
       layer.cornerRadius = 8;
-      /*
-      You can also specify the shadow colour;
-      (i.e. layer.shadowColor = UIColor.yellowColor.CGColor)
-
-      But it will default to black if not set.
-      */
+      
+      // You can also specify the shadow colour;
+      // (i.e. layer.shadowColor = UIColor.yellowColor.CGColor)
+      // But it will default to black if not set.
+      
     }
   }
 

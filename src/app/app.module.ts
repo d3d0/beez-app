@@ -9,6 +9,8 @@ import { AppRoutingModule, authProviders } from "./app.routing";
 import { BackendService } from "./shared/backend.service";
 import { TaxonomyService } from "./shared/taxonomy.service";
 import { SharedModule } from "./shared/shared.module";
+import { NotificationsService} from "./notifications/notifications.service";
+
 
 import { CardView } from "nativescript-cardview";
 import { registerElement } from "nativescript-angular";
@@ -23,6 +25,7 @@ registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanage
     providers: [
         authProviders,
         ModalDialogService,
+        NotificationsService,
         BackendService
     ],
     imports: [

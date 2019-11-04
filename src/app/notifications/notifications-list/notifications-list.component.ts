@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { RadListView, SwipeActionsEventData, ListViewEventData } from "nativescript-ui-listview";
 import { RouterExtensions } from "nativescript-angular/router"; import { ActivatedRoute } from "@angular/router";
 import { NotificationsService} from "../notifications.service";
@@ -11,6 +11,8 @@ import { Color } from "color";
 import { isIOS, isAndroid } from "platform" ;
 import { topmost } from "tns-core-modules/ui/frame";
 import { Label } from "tns-core-modules/ui/label";
+import { HomeComponent} from "../../home/home.component";
+
 
 declare var android: any; // <- important! avoids namespace issues
 
@@ -35,7 +37,9 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
     private activeRoute: ActivatedRoute,
     private routerExtensions: RouterExtensions,
     private router: Router,
-    private notificationService: NotificationsService) {
+    private notificationService: NotificationsService,
+    private homecomponent: HomeComponent,
+    private _ngZone: NgZone) {
     this.counter = 0;
     this.load();
     
@@ -81,6 +85,18 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
   onLoadedRad(args: EventData) {
     this.load();
     console.log('l☯☯☯l > onLoadedRad() > LOADED NotificationsListComponent RadListView!');
+    // update contatore
+    this.notificationService.getCount().subscribe(data => {
+      console.log('l☯☯☯l > onLoadedRad() > NotificationService > getCount() > data[] ', data[0]);
+      this.notificationService.counterSubject.next(data[0]);
+    },
+    error => {
+      console.log('error', error);
+    });
+    this.notificationService._counter.subscribe((data) => {
+      console.log('l☯☯☯l > ngAfterViewInit() > NotificationService > Subscriber got NOTIFICATIONS count >>>>>> '+ data);
+      this.homecomponent.contatore = data;
+    });
   }
   onUnloadedRad(args: EventData) {
     if (this._dataSubscription) {
@@ -111,82 +127,100 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
         this.notifications = notifications;
         args.object.notifyPullToRefreshFinished()
       })},
-    500)
+    500);
+    // update contatore
+    this.notificationService.getCount().subscribe(data => {
+      console.log('l☯☯☯l > onLoadedRad() > NotificationService > getCount() > data[] ', data[0]);
+      this.notificationService.counterSubject.next(data[0]);
+    },
+    error => {
+      console.log('error', error);
+    });
+  }
+
+  public templateSelectorFunction = (item:any, index: number, items: any) => {
+    if( item == "empty" ) return "empty"
+      else return "default";
+  }
+  get templateSelector(): (item: any, index: number, items: any) => string {
+    return this._templateSelector;
+  }
+  set templateSelector(value: (item: any, index: number, items: any) => string) {
+    this._templateSelector = value;
+  }
+
+  // DOCS > eliminiamo il background solo in IOS RadListView
+  public onItemLoading(args: ListViewEventData, items) {
+    this.counter++;
+    // console.log("onItemLoading");
+
+    let cardview = args.view;
+    let nativecard = cardview.nativeView;
+    // console.log('cardview ############################################', cardview);
+    // console.log('nativecard ############################################', nativecard);
+
+    if(isIOS){
+      // support XCode 8
+      var newcolor = new Color(0,0,0,0);
+      args.ios.backgroundView.backgroundColor = newcolor.ios;
+      // support XCode 11
+      args.ios.backgroundView.backgroundColor = UIColor.clearColor; // d3d0fix
+      args.ios.opaque=false; // d3d0fix
+    }
+    if(isAndroid){
+        // DOCS:
+        // https://stackoverflow.com/questions/39379394/how-to-set-the-background-transparent-to-a-nativescript-webview
+        // https://stackoverflow.com/questions/54634717/cannot-set-modal-background-to-transparent-in-android
+        // https://github.com/nstudio/nativescript-cardview/issues/11
+        // https://stackoverflow.com/questions/2173936/how-to-set-background-color-of-a-view
+
+        // TEST:
+        // var c = new Color("#FF0000");
+        // nativecard.setCardBackgroundColor(c.android);
+        // nativecard.setCardBackgroundColor(0x00FF00);
+        // nativecard.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.parseColor("#FFFF0004")));
+        // nativecard.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.CYAN));
+        // nativecard.setCardBackgroundColor(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
     }
 
-    public templateSelectorFunction = (item:any, index: number, items: any) => {
-      if( item == "empty" ) return "empty"
-        else return "default";
-    }
-    get templateSelector(): (item: any, index: number, items: any) => string {
-      return this._templateSelector;
-    }
-    set templateSelector(value: (item: any, index: number, items: any) => string) {
-      this._templateSelector = value;
-    }
-
-    // DOCS > eliminiamo il background solo in IOS RadListView
-    public onItemLoading(args: ListViewEventData, items) {
-      this.counter++;
-      // console.log("onItemLoading");
-
-      let cardview = args.view;
-      let nativecard = cardview.nativeView;
-      console.log('cardview ############################################', cardview);
-      console.log('nativecard ############################################', nativecard);
-
-      if(isIOS){
-        // support XCode 8
-        var newcolor = new Color(0,0,0,0);
-        args.ios.backgroundView.backgroundColor = newcolor.ios;
-        // support XCode 11
-        args.ios.backgroundView.backgroundColor = UIColor.clearColor; // d3d0fix
-        args.ios.opaque=false; // d3d0fix
-      }
-      if(isAndroid){
-          // DOCS:
-          // https://stackoverflow.com/questions/39379394/how-to-set-the-background-transparent-to-a-nativescript-webview
-          // https://stackoverflow.com/questions/54634717/cannot-set-modal-background-to-transparent-in-android
-          // https://github.com/nstudio/nativescript-cardview/issues/11
-          // https://stackoverflow.com/questions/2173936/how-to-set-background-color-of-a-view
-
-          // TEST:
-          // var c = new Color("#FF0000");
-          // nativecard.setCardBackgroundColor(c.android);
-          // nativecard.setCardBackgroundColor(0x00FF00);
-          // nativecard.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.parseColor("#FFFF0004")));
-          // nativecard.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.CYAN));
-          // nativecard.setCardBackgroundColor(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
-      }
-
-      const vista = args.object; // the object that fires the event
-      if (vista) {
-        let stack = vista.getViewById<View>("delete-stack"); // gets a child view by id
-        if (stack) {
-          if(this.counter == 1){
-            //stack.text =  this.counter.toString();
-            //stack.className = 'list-group-item-first';
-            // stack.style.marginTop = 20; // d3d0fix
-          }
+    const vista = args.object; // the object that fires the event
+    if (vista) {
+      let stack = vista.getViewById<View>("delete-stack"); // gets a child view by id
+      if (stack) {
+        if(this.counter == 1){
+          //stack.text =  this.counter.toString();
+          //stack.className = 'list-group-item-first';
+          // stack.style.marginTop = 20; // d3d0fix
         }
       }
     }
-
-    // DOCS > implementazione swipe in base a larghezza di swipe template
-    public onSwipeCellStarted(args: ListViewEventData) {
-      const swipeLimits = args.data.swipeLimits;
-      const swipeView = args['object'];
-      const rightItem = swipeView.getViewById<View>('delete-view');
-      swipeLimits.left = 0;
-      swipeLimits.right = rightItem.getMeasuredWidth();
-      swipeLimits.threshold = rightItem.getMeasuredWidth() / 2;
-    }
-
-    // DOCS > funzione per eliminare la notifica
-    public onRightSwipeClick(args) {
-      // console.log("args.object.bindingContext",args.object.bindingContext)
-      let data = this.notifications.splice(this.notifications.indexOf(args.object.bindingContext), 1)
-      this.notificationService.delete(data[0].mid).subscribe(result=>console.log(result))
-    }
-
   }
+
+  // DOCS > implementazione swipe in base a larghezza di swipe template
+  public onSwipeCellStarted(args: ListViewEventData) {
+    const swipeLimits = args.data.swipeLimits;
+    const swipeView = args['object'];
+    const rightItem = swipeView.getViewById<View>('delete-view');
+    swipeLimits.left = 0;
+    swipeLimits.right = rightItem.getMeasuredWidth();
+    swipeLimits.threshold = rightItem.getMeasuredWidth() / 2;
+  }
+
+  // DOCS > funzione per eliminare la notifica
+  public onRightSwipeClick(args) {
+    // console.log("args.object.bindingContext",args.object.bindingContext)
+    let data = this.notifications.splice(this.notifications.indexOf(args.object.bindingContext), 1)
+    this.notificationService.delete(data[0].mid).subscribe( result => {
+      console.log(result);
+      // update contatore
+      this.notificationService.getCount().subscribe(data => {
+        console.log('l☯☯☯l > onLoadedRad() > NotificationService > getCount() > data[] ', data[0]);
+        this.notificationService.counterSubject.next(data[0]);
+      },
+      error => {
+        console.log('error', error);
+      });
+    });
+  }
+
+}

@@ -1,63 +1,37 @@
-<!-- 
-<TabView #homeTabs androidTabsPosition="bottom">
-    <StackLayout *tabItem="{title: '', iconSource: getIconSource('casting_on')}">
-        <page-router-outlet name="castingsTab"></page-router-outlet>
-    </StackLayout>
-
-    <StackLayout *tabItem="{title: '', iconSource: getIconSource('notification_on')}">
-        <page-router-outlet name="notificationsTab"></page-router-outlet>
-    </StackLayout>
-    
-    <StackLayout *tabItem="{title: '', iconSource: getIconSource('profile_on')}">
-        <page-router-outlet name="profileTab"></page-router-outlet>
-    </StackLayout>
-</TabView>
--->
-
-<!-- home.component.html -->
 <GridLayout rows="*, auto">
 
-        <!-- contents -->
         <GridLayout>
-            <Tabs #tabs [selectedIndex]="defaultSelected" (selectedIndexChanged)="onSelectedIndexChanged($event)">
+            <BottomNavigation #tabs [selectedIndex]="defaultSelected" (selectedIndexChanged)="onSelectedIndexChanged($event)">
                 <TabContentItem [backgroundColor]="tabList[0].backgroundColor">
                     <StackLayout>
                         <page-router-outlet name="castingsTab"></page-router-outlet>
                     </StackLayout>
                 </TabContentItem>
-    
                 <TabContentItem [backgroundColor]="tabList[1].backgroundColor">
                     <StackLayout>
                         <page-router-outlet name="notificationsTab"></page-router-outlet>
                     </StackLayout>
                 </TabContentItem>
-    
                 <TabContentItem [backgroundColor]="tabList[2].backgroundColor">
                     <StackLayout>
                         <page-router-outlet name="profileTab"></page-router-outlet>
                     </StackLayout>
                 </TabContentItem>
-            </Tabs>
+            </BottomNavigation>
         </GridLayout>
-    
-        <!-- tabs -->
-        <GridLayout height="auto" verticalAlignment="bottom" columns="*, *, *">
 
-            <!-- base layer -->
+        <GridLayout height="auto" verticalAlignment="bottom" columns="*, *, *">
             <AbsoluteLayout col="0" colSpan="5" verticalAlignment="bottom">
                 <GridLayout class="container" backgroundColor="white" #tabBGContainer height="60" columns="auto">
                 </GridLayout>
             </AbsoluteLayout>
-    
-            <!-- tab contents -->
             <GridLayout #tabContents *ngFor="let item of tabList; let i = index" backgroundColor="" height="60"
                 [col]="i" marginTop="5" (tap)="onBottomNavTap(i)" verticalAlignment="middle">
                 <AbsoluteLayout width="50" height="50" backgroundColor="">
                         <Image left="10" top="15" [src]="item.icon" stretch="none" verticalAlignment="middle" horizontalAlignment="center"></Image>
-                        <Label android:borderRadius="100" android:backgroundColor="#5A82FF" (loaded)="badgeLoaded($event)" left="25" top="5" text="3" class="badge"></Label>
+                        <Label *ngIf="i == 1" [visibility]="contatore == '0' ? 'collapsed' : 'visible'" android:borderRadius="100" android:backgroundColor="#5A82FF" (loaded)="badgeLoaded($event)" left="25" top="5" [text]="contatore"  class="badge"></Label>
                 </AbsoluteLayout>
             </GridLayout>
-            
         </GridLayout>
     
 </GridLayout>

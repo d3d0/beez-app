@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
-import {HttpClient  } from "@angular/common/http";
+import { HttpClient  } from "@angular/common/http";
 import { localize } from "nativescript-localize";
 import { retry } from "rxjs/operators";
 import { isAndroid } from "tns-core-modules/platform";
-
 import { BackendService } from "../shared/backend.service";
 
 @Injectable({
