@@ -1,6 +1,6 @@
 <ActivityIndicator #loader busy="true" color="#00D796" width="70" height="100%" [visibility]="_isLoading === true ? 'visible' : 'collapsed'"></ActivityIndicator>
 
-<RadListView (loaded)="onLoadedRad($event)" (unloaded)="onUnloadedRad($event)" height="100%" class="casting" [items]="castings|castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" (itemLoading)="makeBackgroundTransparent($event)" [itemTemplateSelector]="templateSelector">
+<RadListView class="casting" (loaded)="onLoadedRad($event)" (unloaded)="onUnloadedRad($event)" height="100%" [items]="castings|castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" (itemLoading)="makeBackgroundTransparent($event)" [itemTemplateSelector]="templateSelector">
 
   <ng-template tkTemplateKey="default" let-item="item" let-index="index">
 

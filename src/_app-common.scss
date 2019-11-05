@@ -256,18 +256,21 @@ TabView {
   tab-text-color: $nero;
   selected-tab-text-color: $verde;
   android-selected-tab-highlight-color: $verde;
-  label {
+  Label {
     color: $nero;
   }
 }
 ScrollView, ListView {
   background-color: transparent;
-  label {
+  Label {
     color: $nero;
   }
 }
 RadListView {
   background-color: $grigiobackground;
+  Label {
+    color: $nero;
+  }
 }
 CardView {
   // background-color: transparent;
@@ -582,7 +585,6 @@ WrapLayout {
       height: 100%;
       width: 100%;
       >*{
-        color:white;
         font-size: 16;
         color: $bianco;
         letter-spacing: 0.2;

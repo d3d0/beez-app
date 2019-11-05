@@ -28,7 +28,8 @@
 				<Image src="~/assets/images/boys.jpg" height="240" stretch="aspectFill"></Image>
 				<Image [src]="casting.image" height="240" stretch="aspectFill"></Image>
 			</GridLayout>
-			<CardView class="card-group" elevation="40" radius="20" ios:shadowRadius="15">
+			<CardView class="card-group" elevation="30" android:radius="10" ios:radius="4" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10">
+
 				<StackLayout class="list-group-item p-t-0 p-b-12">
 					<StackLayout *ngIf="casting.status != 'Close'" >
 						<!-- Label of status on top only from auditionTab -->
@@ -44,15 +45,17 @@
 						<Label *ngIf="casting.status == 'New' && casting.new_action == 'action-candidated'" [text]="'CASTINGS.CANDIDATED'|L" class="banner-top-card confirmed"></Label> -->
 
 						<GridLayout *ngIf="casting.casting_denied == null" columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
-							<!-- lateral line -->
+							
+							<!-- LATERAL LINE -->
 							<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center"></Label>
 
 							<!-- INFORMATION -->
 							<StackLayout class="icon-container" row="0" col="1" >
 								<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
 							</StackLayout>
-							<Label [text]="'CASTINGS.INFORMATION'|L" class="header" textWrap="true" row="0" col="2" ></Label>
+							<Label class="header" [text]="'CASTINGS.INFORMATION'|L" textWrap="true" row="0" col="2" ></Label>
 							<Label class="list-group-item-text" [text]="casting.info" textWrap="true" row="1" col="2"></Label>
+							
 							<!-- FEATURES -->
 							<StackLayout class="icon-container" row="2" col="1">
 								<Image [src]="getIconSource('characteristics')" stretch="none" width=16 height=16></Image>
@@ -87,6 +90,7 @@
 								<Label class="list-group-item-text" [text]="casting.shooting|titlecase" textWrap="true" ></Label>
 								<Label class="list-group-item-text italic" [text]="'CASTINGS.SHOOTING_NOTE'|L" textWrap="true"></Label>
 							</StackLayout>
+
 						</GridLayout>
 
 						<!-- NEW CASTING TAB > BUTTONS -->

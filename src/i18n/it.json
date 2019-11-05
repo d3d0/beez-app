@@ -21,7 +21,7 @@
   "SAVE":"CONFERMA",
   "WELCOME_TITLE":"Benvenuto in BEEZ!",
   "WELCOME_TEXT":"",
-  "WELCOME_FOOTER":"Compleata tutte le informazioni del tuo profilo per aumentare le possibilità di essere selezionato per i casting.",
+  "WELCOME_FOOTER":"Completa tutte le informazioni del tuo profilo per aumentare le possibilità di essere selezionato per i casting.",
   "WELCOME_BUTTON":"OK",
   "LOGIN":{
     "LOGIN" : "ACCEDI"
@@ -38,7 +38,7 @@
     "REGISTRATION_FOOTER" : "TITOLO DELLA REGISTRAZIONE",
     "REGISTRATION_SUBMIT" : "REGISTRATI",
     "MINOR_REGISTRATION_SUBMIT" : "REGISTRA UN MINORE",
-    "REGISTRATION_CONDITIONS" : "Cliccando il pulsante di registazione dichiaro di aver preso visione e accettato i nostri temini ",
+    "REGISTRATION_CONDITIONS" : "Cliccando il pulsante di registazione dichiaro di aver preso visione e accettato i nostri temini.",
     "REGISTRATION_TERMS" : "temini di utilizzo",
     "REGISTRATION_POLICY" : "privacy policy"
   },

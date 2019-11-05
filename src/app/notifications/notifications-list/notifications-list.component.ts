@@ -109,7 +109,11 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
 
   goToCasting(notification){
     if(!notification.read){
-      this.notificationService.setRead(notification.mid).subscribe(result=>console.log("notification.read OK ",result))
+      this.notificationService.setRead(notification.mid).subscribe(result => {
+        console.log("notification.read OK ",result);
+        // TODO: cambiare background al click
+        // this.router.navigate(["notifications"], { relativeTo: this.activeRoute });
+      });
       //console.log(notification.read);
       //console.log(JSON.stringify(notification));
     }
