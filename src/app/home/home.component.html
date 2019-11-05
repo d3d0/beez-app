@@ -1,26 +1,24 @@
-<GridLayout rows="*, auto">
+<GridLayout rows="*, 60">
 
-        <GridLayout>
-            <BottomNavigation #tabs selectedIndex="0" (loaded)="onLoadedNav($event)" (selectedIndexChanged)="onSelectedIndexChanged($event)">
-                <TabContentItem [backgroundColor]="tabList[0].backgroundColor">
-                    <StackLayout>
-                        <page-router-outlet name="castingsTab"></page-router-outlet>
-                    </StackLayout>
-                </TabContentItem>
-                <TabContentItem [backgroundColor]="tabList[1].backgroundColor">
-                    <StackLayout>
-                        <page-router-outlet name="notificationsTab"></page-router-outlet>
-                    </StackLayout>
-                </TabContentItem>
-                <TabContentItem [backgroundColor]="tabList[2].backgroundColor">
-                    <StackLayout>
-                        <page-router-outlet name="profileTab"></page-router-outlet>
-                    </StackLayout>
-                </TabContentItem>
-            </BottomNavigation>
-        </GridLayout>
+        <BottomNavigation row="0" #tabs selectedIndex="0" (loaded)="onLoadedNav($event)" (selectedIndexChanged)="onSelectedIndexChanged($event)">
+            <TabContentItem>
+                <GridLayout>
+                    <page-router-outlet name="castingsTab"></page-router-outlet>
+                </GridLayout>
+            </TabContentItem>
+            <TabContentItem>
+                <GridLayout>
+                    <page-router-outlet name="notificationsTab"></page-router-outlet>
+                </GridLayout>
+            </TabContentItem>
+            <TabContentItem>
+                <GridLayout>
+                    <page-router-outlet name="profileTab"></page-router-outlet>
+                </GridLayout>
+            </TabContentItem>
+        </BottomNavigation>
 
-        <GridLayout height="auto" verticalAlignment="bottom" columns="*, *, *">
+        <GridLayout row="1" height="60" verticalAlignment="bottom" columns="*, *, *">
             <AbsoluteLayout col="0" colSpan="5" verticalAlignment="bottom">
                 <GridLayout class="container" backgroundColor="white" #tabBGContainer height="60" columns="auto">
                 </GridLayout>
@@ -28,10 +26,42 @@
             <GridLayout #tabContents *ngFor="let item of tabList; let i = index" backgroundColor="" height="60"
                 [col]="i" marginTop="5" (tap)="onBottomNavTap(i)" verticalAlignment="middle">
                 <AbsoluteLayout width="50" height="50" backgroundColor="">
-                        <Image left="10" top="15" [src]="item.icon" stretch="none" verticalAlignment="middle" horizontalAlignment="center"></Image>
-                        <Label *ngIf="i == 1" [visibility]="contatore == '0' ? 'collapsed' : 'visible'" android:borderRadius="100" android:backgroundColor="#5A82FF" (loaded)="badgeLoaded($event)" left="25" top="5" [text]="contatore"  class="badge"></Label>
+                        <Image left="10" top="10" [src]="item.icon" stretch="none" verticalAlignment="middle" horizontalAlignment="center"></Image>
+                        <Label left="25" top="0"  *ngIf="i == 1" [visibility]="contatore == '0' ? 'collapsed' : 'visible'" android:borderRadius="100" android:backgroundColor="#5A82FF" (loaded)="badgeLoaded($event)" [text]="contatore"  class="badge"></Label>
                 </AbsoluteLayout>
             </GridLayout>
         </GridLayout>
     
 </GridLayout>
+
+<!-- <BottomNavigation selectedIndex="1">
+    <TabStrip>
+        <TabStripItem>
+            <Label text="Home"></Label>
+            <Image src="font://&#xf015;" class="fas t-36"></Image>
+        </TabStripItem>
+        <TabStripItem class="special">
+            <Label text="Account"></Label>
+            <Image src="font://&#xf007;" class="fas t-36"></Image>
+        </TabStripItem>
+        <TabStripItem class="special">
+            <Label text="Search"></Label>
+            <Image src="font://&#xf00e;" class="fas t-36"></Image>
+        </TabStripItem>
+    </TabStrip>
+    <TabContentItem>
+        <GridLayout>
+            <page-router-outlet name="castingsTab"></page-router-outlet>
+        </GridLayout>
+    </TabContentItem>
+    <TabContentItem>
+        <GridLayout>
+            <page-router-outlet name="notificationsTab"></page-router-outlet>
+        </GridLayout>
+    </TabContentItem>
+    <TabContentItem>
+        <GridLayout>
+            <page-router-outlet name="profileTab"></page-router-outlet>
+        </GridLayout>
+    </TabContentItem>
+</BottomNavigation> -->

@@ -40,15 +40,15 @@
   </AbsoluteLayout>
 
   <!-- CASTING LIST -->
-  <StackLayout [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
+  <StackLayout ios:marginBottom="60" [visibility]="selectedIndex === 0 ? 'visible' : 'collapsed'">
     <ns-castings-list *ngIf="casting0" [refresh]="selectedIndex" [castingType]="'New'" ></ns-castings-list>
   </StackLayout>
 
-  <StackLayout [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
+  <StackLayout ios:marginBottom="60" [visibility]="selectedIndex === 1 ? 'visible' : 'collapsed'">
     <ns-castings-list *ngIf="casting1" [refresh]="selectedIndex" [castingType]="'Audition'" > </ns-castings-list>
   </StackLayout>
 
-  <StackLayout [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
+  <StackLayout ios:marginBottom="60" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
     <ns-castings-list *ngIf="casting2" [refresh]="selectedIndex" [castingType]="'Close'" > </ns-castings-list>
   </StackLayout>
 
