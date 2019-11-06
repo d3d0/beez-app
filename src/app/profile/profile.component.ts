@@ -136,6 +136,9 @@ export class ProfileComponent implements AfterViewInit, OnInit{
     this.profileService.load().subscribe(profile=> {
       this._profile = profile[0];
       //console.log('l☯☯☯l > ProfileComponent > loadProfile() > _profile: ', this._profile);
+      // if (this._profile['height']!=null) {
+      //   this._profile['height'] = this._profile['height'];
+      // }
       if (this._profile['facebook']==null) {
         this._profile['facebook_hint'] = 'username';
       }
