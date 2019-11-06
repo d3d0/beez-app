@@ -5,10 +5,11 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { SharedModule } from "../shared/shared.module"
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { UserRoutingModule} from "./user.routing";
 import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from "./signup/signup.component";
+import { RecoveryComponent } from "./recovery/recovery.component";
 
 @NgModule({
   imports: [
@@ -18,11 +19,13 @@ import { SignupComponent } from "./signup/signup.component";
     NativeScriptHttpClientModule,
     NativeScriptRouterModule,
     NativeScriptLocalizeModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   declarations: [
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    RecoveryComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

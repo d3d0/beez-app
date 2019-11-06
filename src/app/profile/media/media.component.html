@@ -14,6 +14,7 @@
 			<CardView *ngFor="let image of images" background="#ccc" margin=8 elevation="15" android:radius="10" ios:radius="4" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
 				<AbsoluteLayout>
 					<StackLayout class="border-radius" left="0" top="0" height="120"  width="120" android:radius="10" ios:radius="4">
+						
 						<Image [src]="image.filepath" left="0" top="0" width="120" height="120" stretch="aspectFill" (tap)="setPolaroidImage(image)" ></Image>
 					</StackLayout>
 					<StackLayout left="0" top="0" height="32"  width="120" >

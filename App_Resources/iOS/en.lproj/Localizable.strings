@@ -75,8 +75,8 @@
 "_CASTINGS_START_DATE_2wD7WX" = "STARTING DATE";
 "_CASTINGS_PARTICIPATION_EDIT_PARTICIPATION_TEXT_Z27gOL6" = "Sei ancora in tempo per modificare la tua partecipazione o meno al casting.";
 "_CASTINGS_PARTICIPATION_EDIT_PARTICIPATION_TITLE_p2zDE" = "Hai cambiato idea?";
-"_CASTINGS_PARTICIPATION_AGENCY_SELECT_TITLE_2sW6tY" = "Seleziona l'agenzia con cui parteciperai";
-"_CASTINGS_PARTICIPATION_AUDITION_EDIT_2gADpe" = "Modifica la tua partecipazione";
+"_CASTINGS_PARTICIPATION_AGENCY_SELECT_TITLE_2sW6tY" = "Select the agency";
+"_CASTINGS_PARTICIPATION_AUDITION_EDIT_2gADpe" = "Modify your partecipation";
 "_CASTINGS_PARTICIPATION_AUDITION_TITLE_ZJ9fVo" = "Confirm your partecipation";
 "_CASTINGS_PARTICIPATION_NO_AGENCY_CUh8E" = "Participate with no agency";
 "_CASTINGS_PARTICIPATION_CONFIRMED_1oufSz" = "CONFIRMED";
@@ -103,6 +103,7 @@
 "_CASTINGS_ONGOING_1gX41U" = "NEW";
 "_CASTINGS_CASTING_Z1zSgUB" = "CASTING";
 "_CASTINGS_CASTINGS_1BoPqT" = "CASTINGS";
+"_SIGNUP_RECOVERY_2hoHhE" = "Password recovery";
 "_SIGNUP_REGISTRATION_POLICY_1mmgVc" = "privacy policy";
 "_SIGNUP_REGISTRATION_TERMS_Z1q7ugx" = "temini di utilizzo";
 "_SIGNUP_REGISTRATION_CONDITIONS_1xEHjo" = "Cliccando il pulsante di registazione dichiaro di aver preso visione e accettato i nostri temini ";

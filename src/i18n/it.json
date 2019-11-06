@@ -40,7 +40,8 @@
     "MINOR_REGISTRATION_SUBMIT" : "REGISTRA UN MINORE",
     "REGISTRATION_CONDITIONS" : "Cliccando il pulsante di registazione dichiaro di aver preso visione e accettato i nostri temini.",
     "REGISTRATION_TERMS" : "temini di utilizzo",
-    "REGISTRATION_POLICY" : "privacy policy"
+    "REGISTRATION_POLICY" : "privacy policy",
+    "RECOVERY":"Recupero password"
   },
   "CASTINGS": {
     "CASTINGS": "CASTINGS",

@@ -48,6 +48,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
 
   //Show hide component con visibility
   public showButton = true;
+  public showEditPartecipate = false;
   public showTitleConfirmed = false;
   public showTitleDeclined = false;
   public showTitleArchive = false;
@@ -109,18 +110,22 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
             console.log(JSON.stringify(this.casting));
             
             if(casting.audition_action != '') {
+              this.showEditPartecipate = true;
               if(casting.audition_action == 'action-confirmed'){
                 this.showTitleConfirmed = true;
                 this.showTitleDeclined = false;
                 this.showTitleArchive = false;
+                this.showEditPartecipate = true;
               }else if(casting.audition_action == 'action-declined'){
                 this.showTitleConfirmed = false;
                 this.showTitleDeclined = true;
                 this.showTitleArchive = false;
+                this.showEditPartecipate = true;
               }else if(casting.audition_action == 'action-confirmed-archive'){
                 this.showTitleConfirmed = false;
                 this.showTitleDeclined = false;
                 this.showTitleArchive = true;
+                this.showEditPartecipate = true;
               }
             }
           }
@@ -205,6 +210,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
             this.casting['casting_denied'] = casting.casting_denied;
           }
           if(casting.audition_action != '') {
+            this.showEditPartecipate = true;
             this.casting['audition_action'] = casting.audition_action;
             if(casting.audition_action == 'action-confirmed'){
               this.showTitleConfirmed = true;
@@ -322,6 +328,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
         if(action == 'Declined'){
           alert(localize("MESSAGES.DECLINED")).then(()=>{
             //chiudo la modale absolute
+            this.showEditPartecipate = true;
             this.edit_actions = false;
             this.isLoading = false;
             this.isLoadingSecond = false;
@@ -333,6 +340,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
         }else if(action == 'Confirmed'){
           alert(localize("MESSAGES.PARTECIPATE")).then(()=>{
             //chiudo la modale absolute
+            this.showEditPartecipate = true;
             this.edit_actions = false;
             this.isLoading = false;
             this.isLoadingSecond = false;
@@ -345,6 +353,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
         }else if(action == 'Confirmed by archive'){
           alert(localize("MESSAGES.PARTECIPATE")).then(()=>{
             //chiudo la modale absolute
+            this.showEditPartecipate = true;
             this.edit_actions = false;
             this.isLoading = false;
             this.isLoadingSecond = false;

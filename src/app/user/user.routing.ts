@@ -5,12 +5,15 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from "./signup/signup.component";
+import { RecoveryComponent } from "./recovery/recovery.component";
+
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
   // { path: "user", redirectTo: "login", pathMatch: 'full'},
   { path: "signup", component: SignupComponent },
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  { path: "password", component: RecoveryComponent }
 ];
 
 @NgModule({
