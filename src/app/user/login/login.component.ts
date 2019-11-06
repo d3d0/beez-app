@@ -149,6 +149,11 @@ export class LoginComponent implements OnInit {
     if(!this.isLoading) this.routerExtensions.navigate(["/user/signup"]);
   }
 
+  goToRecovery(){
+     // se this.isLoading == false allora puoi recovery password
+    if(!this.isLoading) this.routerExtensions.navigate(["/user/password"]);
+  }
+
   login(){
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
