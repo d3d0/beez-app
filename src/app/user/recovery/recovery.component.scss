@@ -1,0 +1,10 @@
+@import '../../../app-variables';
+
+.password{
+    padding: 20 20 20 20;
+    .input{
+        margin: 10 0 20 0;
+        border-color: $grey;
+        border-width: 0 0 1 0;
+    }
+}

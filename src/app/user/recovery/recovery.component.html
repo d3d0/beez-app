@@ -1,0 +1,23 @@
+<ActionBar class="action-bar">
+	<!-- android icon > android.systemIcon="ic_menu_back" -->
+	<NavigationButton text="" (tap)="goBack()" icon="res://arrow_left" class="action-back" ></NavigationButton>
+	<!-- <Label class="action-label text-left pull-left" [text]="casting.title"></Label> -->
+	<!-- TITOLO > ANDROID -->
+	<StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="left" android:horizontalAlignment="left">
+		<Label class="action-label text-left pull-left" [text]="'SIGNUP.RECOVERY'|L|titlecase"></Label>
+	</StackLayout>
+
+	<!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
+	<ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left">
+		<Label class="action-label text-left pull-left" [text]="'SIGNUP.RECOVERY'|L"></Label>
+	</ActionItem>
+</ActionBar>
+<ScrollView >
+    <StackLayout class="password">
+        <StackLayout class="input-field" [formGroup]="recoveryForm">
+                <Label text="Inserisci la tua mail"></Label>
+                <TextField class="input" returnKeyType="done" autocapitalizationType="none" formControlName="username"></TextField>
+                <BeezButton text="save" [isBusy]="false" buttonColor="#5A82FF" (buttonClick)="save()"></BeezButton>
+            </StackLayout>
+    </StackLayout>
+</ScrollView>
