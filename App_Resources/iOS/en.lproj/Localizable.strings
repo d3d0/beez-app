@@ -29,9 +29,9 @@
 "_USER_WEBSITE_1qkJg8" = "Website";
 "_USER_GENDER_ZEf69e" = "Gender";
 "_USER_EYES_Z1ozAw3" = "Eyes";
-"_USER_HIPS_Z1ozgxo" = "Hips";
-"_USER_WAIST_2hPPqC" = "Waist";
-"_USER_BREAST_ZNJ34v" = "Breast";
+"_USER_HIPS_Z1ozgxo" = "Hips (cm)";
+"_USER_WAIST_2hPPqC" = "Waist (cm)";
+"_USER_BREAST_ZNJ34v" = "Breast (cm)";
 "_USER_LANGUAGES_Z3zeYs" = "Languages";
 "_USER_DRIVING_LICENSE_Z2qQx2v" = "Driving License";
 "_USER_ETHNICITY_2h4W5O" = "Ethnicity";
@@ -42,7 +42,7 @@
 "_USER_ACTIVITIES_NMjY8" = "Activities";
 "_USER_SHOE_SIZE_ooYuw" = "Shoe Size";
 "_USER_BODY_SIZE_ZkB2Ai" = "Size";
-"_USER_HEIGHT_ZCbBqW" = "Height";
+"_USER_HEIGHT_ZCbBqW" = "Height (cm)";
 "_USER_AGE_RANGE_1M9dtO" = "Age Range";
 "_USER_PLACE_OF_BIRTH_Z2viBOQ" = "Place of Birth";
 "_USER_MINOR_GENDER_Z1yrRm1" = "Under-18's Gender";
