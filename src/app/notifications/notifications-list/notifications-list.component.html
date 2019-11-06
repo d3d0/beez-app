@@ -29,7 +29,7 @@
 
 <ActivityIndicator [visibility]="_isLoading === true ? 'visible' : 'collapsed'" busy="true" color="#00D796" width="70" height="100%"></ActivityIndicator>
 
-<RadListView ios:marginBottom="60" [visibility]="_cardIsVisible === true ? 'visible' : 'collapsed'" (loaded)="onLoadedRad($event)" (unloaded)="onUnloadedRad($event)" class="notifications" [items]="notifications" (itemLoading)="onItemLoading($event, notifications)" (itemSwipeProgressStarted)="onSwipeCellStarted($event)" selectionBehavior="None" swipeActions="true" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
+<RadListView ios:marginBottom="50" [visibility]="_cardIsVisible === true ? 'visible' : 'collapsed'" (loaded)="onLoadedRad($event)" (unloaded)="onUnloadedRad($event)" class="notifications" [items]="notifications" (itemLoading)="onItemLoading($event, notifications)" (itemSwipeProgressStarted)="onSwipeCellStarted($event)" selectionBehavior="None" swipeActions="true" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)">
 
     <ListViewLinearLayout tkListViewLayout scrollDirection="Vertical" itemInsertAnimation="Default" itemDeleteAnimation="Default"></ListViewLinearLayout>
     

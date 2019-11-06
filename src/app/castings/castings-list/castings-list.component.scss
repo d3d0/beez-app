@@ -1,9 +1,9 @@
 @import '../../../app-variables';
 .casting{
-    .list-group-item{
+    .card-group-container{
         overflow: hidden;
-        background: white;
-        border-radius: 4;
+        background-color: transparent;
+        border-radius: 0;
         .card-group{
             overflow: hidden;
             background: white;

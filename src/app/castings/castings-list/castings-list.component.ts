@@ -143,10 +143,9 @@ export class CastingsListComponent implements OnInit, OnDestroy {
       var newcolor = new Color(0,0,0,0);
       args.ios.backgroundView.backgroundColor = newcolor.ios;
       // support XCode 11
-      args.ios.backgroundView.backgroundColor = UIColor.clearColor; // d3d0fix
-      args.ios.opaque=false; // d3d0fix
-      // FIX 23/09
-      // cell.backgroundColor = utils.ios.getter(UIColor, UIColor.clearColor);
+      args.ios.backgroundView.backgroundColor = UIColor.clearColor; // d3d0fix - FIX 23/09
+      args.ios.opaque=false; // d3d0fix - FIX 23/09
+      // cell.backgroundColor = utils.ios.getter(UIColor, UIColor.clearColor); // d3d0fix - FIX 23/09
     }
     if(args.android){
         // non funziona ...

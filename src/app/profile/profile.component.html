@@ -23,7 +23,7 @@
 </ActionBar>
 
   
-<ScrollView ios:marginBottom="60" class="profile" #scrollView (scroll)="onScroll($event, scrollView, topView)" (swipe)="onSwipe($event)">
+<ScrollView ios:marginBottom="50" class="profile" #scrollView (scroll)="onScroll($event, scrollView, topView)" (swipe)="onSwipe($event)">
   <StackLayout id="container" #container>
 
     <GridLayout [visibility]="!editable? 'visible' : 'collapsed'" #polaroid >

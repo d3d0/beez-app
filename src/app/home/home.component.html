@@ -1,4 +1,4 @@
-<GridLayout rows="*, 60">
+<GridLayout rows="*, 50">
 
         <BottomNavigation row="0" #tabs selectedIndex="0" (loaded)="onLoadedNav($event)" (selectedIndexChanged)="onSelectedIndexChanged($event)">
             <TabContentItem>
@@ -18,16 +18,16 @@
             </TabContentItem>
         </BottomNavigation>
 
-        <GridLayout row="1" height="60" verticalAlignment="bottom" columns="*, *, *">
+        <GridLayout row="1" height="50" verticalAlignment="bottom" columns="*, *, *" >
             <AbsoluteLayout col="0" colSpan="5" verticalAlignment="bottom">
-                <GridLayout class="container" backgroundColor="white" #tabBGContainer height="60" columns="auto">
+                <GridLayout class="container" backgroundColor="white" #tabBGContainer height="50" columns="auto">
                 </GridLayout>
             </AbsoluteLayout>
-            <GridLayout #tabContents *ngFor="let item of tabList; let i = index" backgroundColor="" height="60"
+            <GridLayout #tabContents *ngFor="let item of tabList; let i = index" backgroundColor="" height="50"
                 [col]="i" marginTop="5" (tap)="onBottomNavTap(i)" verticalAlignment="middle">
                 <AbsoluteLayout width="50" height="50" backgroundColor="">
                         <Image left="10" top="10" [src]="item.icon" stretch="none" verticalAlignment="middle" horizontalAlignment="center"></Image>
-                        <Label left="25" top="0"  *ngIf="i == 1" [visibility]="contatore == '0' ? 'collapsed' : 'visible'" android:borderRadius="100" android:backgroundColor="#5A82FF" (loaded)="badgeLoaded($event)" [text]="contatore"  class="badge"></Label>
+                        <Label left="25" top="5"  *ngIf="i == 1" [visibility]="contatore == '0' ? 'collapsed' : 'visible'" android:borderRadius="100" android:backgroundColor="#5A82FF" (loaded)="badgeLoaded($event)" [text]="contatore" class="badge"></Label>
                 </AbsoluteLayout>
             </GridLayout>
         </GridLayout>

@@ -131,11 +131,33 @@ export class HomeComponent implements OnInit, AfterViewInit {
       if (this.currentTabIndex !== index) {
           const tabContentsArr = this.tabContents.toArray();
 
+          console.log('tabContentsArr[this.currentTabIndex]',tabContentsArr[this.currentTabIndex].nativeElement );
+          console.log('this.tabList[this.currentTabIndex][icon]',this.tabList[this.currentTabIndex]['icon']);
+          console.log('this.currentTabIndex',this.currentTabIndex);
+
           // set unfocus to previous index
           tabContentsArr[this.currentTabIndex].nativeElement.animate(this.getUnfocusAnimation(this.currentTabIndex, duration));
-
+          if(this.currentTabIndex == 0) {
+            this.tabList[this.currentTabIndex]['icon'] = 'res://casting_off';
+          }
+          if(this.currentTabIndex == 1) {
+            this.tabList[this.currentTabIndex]['icon'] = 'res://notification_off';
+          }
+          if(this.currentTabIndex == 2) {
+            this.tabList[this.currentTabIndex]['icon'] = 'res://profile_off';
+          }
+          
           // set focus to current index
           tabContentsArr[index].nativeElement.animate(this.getFocusAnimation(index, duration));
+          if(index == 0) {
+            this.tabList[index]['icon'] = 'res://casting_on';
+          }
+          if(index == 1) {
+            this.tabList[index]['icon'] = 'res://notification_on';
+          }
+          if(index == 2) {
+            this.tabList[index]['icon'] = 'res://profile_on';
+          }
       }
 
       // MY: Change the selected index of Tabs when tap on tab strip
@@ -167,7 +189,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     if(isIOS) {
       const layer = label.ios.layer;
-      // layer.backgroundColor = UIColor.blueColor.CGColor; // works!
+      layer.backgroundColor = UIColor.yellowColor.CGColor; // works!
       layer.backgroundColor = new Color('#5A82FF').ios.CGColor; // works!
       layer.shadowOffset = CGSizeMake(0, 1);
       layer.shadowOpacity = 0.3;
@@ -187,9 +209,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       // set default selected tab
       const tabContentsArr = this.tabContents.toArray();
-      tabContentsArr[this.defaultSelected].nativeElement.scaleX = 1.2;
-      tabContentsArr[this.defaultSelected].nativeElement.scaleY = 1.2;
-      tabContentsArr[this.defaultSelected].nativeElement.translateY = 0;
+      tabContentsArr[this.defaultSelected].nativeElement.scaleX = 1.1;
+      tabContentsArr[this.defaultSelected].nativeElement.scaleY = 1.1;
+      tabContentsArr[this.defaultSelected].nativeElement.translateY = 1;
       this.currentTabIndex = this.defaultSelected;
   }
 
@@ -203,8 +225,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   getFocusAnimation(index: number, duration: number) {
       return {
-          scale: { x: 1.2, y: 1.2 },
-          translate: { x: 0, y: 0 },
+          scale: { x: 1.1, y: 1.1 },
+          translate: { x: 0, y: 1 },
           duration: duration
       };
   }

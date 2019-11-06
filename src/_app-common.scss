@@ -267,7 +267,7 @@ ScrollView, ListView {
   }
 }
 RadListView {
-  background-color: $grigiobackground;
+  background-color: $grigiobackground; // usato in casting-list
   Label {
     color: $nero;
   }
