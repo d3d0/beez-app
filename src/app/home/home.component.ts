@@ -44,10 +44,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
       backgroundColor: '#fff',
       focusColor: '#fff'
   };
-  tabList: { text: string, icon: string, color?: string, backgroundColor: string, fadeColor?: string }[] = [
-      { text: String.fromCharCode(0xf080), icon: 'res://casting_on', backgroundColor: '#000000', color: '#000' },
-      { text: String.fromCharCode(0xf075), icon: 'res://notification_on', backgroundColor: '#FFFFFF', color: '#000' },
-      { text: String.fromCharCode(0xf259), icon: 'res://profile_on', backgroundColor: '#FFFFFF', color: '#000' }
+  tabList: { text: string, icon: string, color?: string, backgroundColor: string, fadeColor?: string, paddingLeft: number, paddingRight: number }[] = [
+      { text: String.fromCharCode(0xf080), icon: 'res://casting_on', backgroundColor: '#000000', color: '#000', paddingLeft: 42, paddingRight: 0 },
+      { text: String.fromCharCode(0xf075), icon: 'res://notification_off', backgroundColor: '#FFFFFF', color: '#000', paddingLeft: 0, paddingRight: 0 },
+      { text: String.fromCharCode(0xf259), icon: 'res://profile_off', backgroundColor: '#FFFFFF', color: '#000', paddingLeft: 0, paddingRight: 42 }
   ];
   currentTabIndex: number = 0;
   defaultSelected: number = 0;
