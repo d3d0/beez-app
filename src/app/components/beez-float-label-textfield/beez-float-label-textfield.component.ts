@@ -35,9 +35,12 @@ export class BeezFloatLabelTextfield {
     @Input() returnKeyType: string;
     @Input() keyboardType: string;
     @Output() textfieldEvent = new EventEmitter<string>()
+    etichetta:any;
 
     @ViewChild("label", {static: false}) label: ElementRef;
     @ViewChild("textField", {static: false}) textField: ElementRef;
+
+    
     
     constructor() { }
 
@@ -45,7 +48,7 @@ export class BeezFloatLabelTextfield {
         const label = this.label.nativeElement;
         const textField = this.textField.nativeElement;
         label.animate({
-            translate: { x: 0, y: -25 },
+            translate: { x: 0, y: -30 },
             opacity: 1,
         }).then(() => {}, () => { });
         textField.style.placeholderColor= new Color("transparent");
