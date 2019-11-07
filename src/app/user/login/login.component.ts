@@ -94,9 +94,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-      if(BackendService.registeredUser) {
+      if(BackendService.registeredUser && !BackendService.isMinor) {
         this.alertSignup(localize("MESSAGES.CONFIRM_EMAIL"));
         //console.log('@@@@@@@@@@@@ 1 > l☯☯☯l > ngAfterViewInit() > BackendService > registeredUser()', BackendService.registeredUser);
+      }
+      if(BackendService.registeredUser && BackendService.isMinor) {
+        this.alertSignup(localize("MESSAGES.CONFIRM_EMAIL_MINOR"));
       }
   }
 

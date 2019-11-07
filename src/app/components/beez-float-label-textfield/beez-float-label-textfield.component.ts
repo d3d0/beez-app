@@ -28,13 +28,15 @@ import { Color } from "tns-core-modules/color";
 })
 
 export class BeezFloatLabelTextfield {
+    @Input() isUsername: boolean;
     @Input() placeholder: string;
     @Input() secure: boolean;
     @Input() text: string;
     @Input() editable: boolean = true;
     @Input() returnKeyType: string;
     @Input() keyboardType: string;
-    @Output() textfieldEvent = new EventEmitter<string>()
+    @Output() textfieldEvent = new EventEmitter<string>();
+    @Output() textfieldBlurEvent = new EventEmitter<string>();
 
     @ViewChild("label", {static: false}) label: ElementRef;
     @ViewChild("textField", {static: false}) textField: ElementRef;
@@ -50,6 +52,9 @@ export class BeezFloatLabelTextfield {
         }).then(() => {}, () => { });
         textField.style.placeholderColor= new Color("transparent");
         textField.borderBottomColor = new Color('#5A82FF');
+        if (this.isUsername) {
+            console.log('username',textField.text);
+        }
     }
 
     onBlur($event) {
@@ -65,10 +70,21 @@ export class BeezFloatLabelTextfield {
                 textField.borderBottomColor = new Color('#DDDDDD'); 
             }, () => { });
         }
+        this.textfieldBlurEvent.emit(this.text)
     }
     
     changeValue(){
-        this.textfieldEvent.emit(this.text)
+        const label = this.label.nativeElement;
+        const textField = this.textField.nativeElement;
+        if (this.isUsername) {
+            label.animate({
+                translate: { x: 0, y: -25 },
+                opacity: 1,
+            }).then(() => {}, () => { });
+            textField.style.placeholderColor= new Color("transparent");
+            textField.borderBottomColor = new Color('#5A82FF');
+        }
+        this.textfieldEvent.emit(this.text);
     }
 
 }

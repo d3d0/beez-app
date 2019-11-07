@@ -4,6 +4,7 @@ export class User {
   id: string;
   mail: string = '';
   pass: string = '';
+  username : string = '';
   name: string = '';
   surname: string = '';
   gender: string = '';
@@ -19,6 +20,21 @@ export class User {
   agency: string;
   field_registrato_da_app:{"und":[{"value":1}]};
 
+  // minore
+  static isValidTutorName(name) {
+    if ( name ) return true;
+  	return false;
+  };
+  static isValidTutorSurname(surname) {
+    if ( surname ) return true;
+  	return false;
+  };
+  static isValidTutorDate(date) {
+    if ( date ) return true;
+  	return false;
+  };
+
+  // adulto
   static isValidName(name) {
     if ( name ) return true;
   	return false;

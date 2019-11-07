@@ -20,12 +20,12 @@
 		<StackLayout left="0" top="0" width="100%" class="tab-border-d3d0" backgroundColor="transparent">
 			<Label text=""></Label>
 		</StackLayout>
-		<GridLayout left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto, auto" class="tab-buttons-d3d0" backgroundColor="transparent">
+		<GridLayout class="tab-buttons-d3d0" left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto, auto" backgroundColor="transparent">
 			<StackLayout class="tab-container" col="0" (tap)="onSelectedIndexChange(0)" >
-				<Label #tab1 [text]="'SIGNUP.REGISTRATION_TAB_ADULT'|L|uppercase" class="text" textWrap="false" ></Label>
+				<Label #tab1 [text]="'SIGNUP.REGISTRATION_TAB_ADULT'|L|uppercase" textWrap="false" ></Label>
 			</StackLayout>
 			<StackLayout class="tab-container" col="1" (tap)="onSelectedIndexChange(1)">
-				<Label #tab2 [text]="'SIGNUP.REGISTRATION_TAB_MINOR'|L|uppercase" class="text" textWrap="false" ></Label>
+				<Label #tab2 [text]="'SIGNUP.REGISTRATION_TAB_MINOR'|L|uppercase" textWrap="false" ></Label>
 			</StackLayout>
 		</GridLayout>
 	</AbsoluteLayout>
@@ -69,15 +69,17 @@
 					<StackLayout class="list-group-item">
 						<Label class="list-group-item-heading header" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TITLE'|L" fontWeight="bold" ></Label>
 						<Label class="list-group-item-info-signup text" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_TEXT'|L"></Label>
-						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'tutor_name')" [placeholder]="'USER.NAME'|L" ></BeezFloatLabelTextfield>
-						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'tutor_surname')" [placeholder]="'USER.SURNAME'|L"></BeezFloatLabelTextfield>
-						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'tutor_date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
-						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.MINOR_NAME'|L" ></BeezFloatLabelTextfield>
-						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.MINOR_SURNAME'|L"></BeezFloatLabelTextfield>
+						<BeezFloatLabelTextfield  (textfieldBlurEvent)="textfieldBlurEvent($event,'tutor_name')"  (textfieldEvent)="textfieldEvent($event,'tutor_name')" [placeholder]="'USER.NAME_PARENT'|L" ></BeezFloatLabelTextfield>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'tutor_surname')" [placeholder]="'USER.SURNAME_PARENT'|L"></BeezFloatLabelTextfield>
+						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'tutor_date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH_PARENT'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'name')" (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.MINOR_NAME'|L" ></BeezFloatLabelTextfield>
+						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'surname')" (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.MINOR_SURNAME'|L"></BeezFloatLabelTextfield>
 						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.MINOR_DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
 						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.MINOR_GENDER'|L"></BeezFloatLabelSelect>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'mail')" keyboardType="email" [placeholder]="'USER.EMAIL'|L" ></BeezFloatLabelTextfield>
-    					<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" secure="true" ></BeezFloatLabelTextfield>
+						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" secure="true" ></BeezFloatLabelTextfield>
+						
+						<BeezFloatLabelTextfield [text]="username" isUsername="true" [username]="username" (textfieldEvent)="textfieldEvent($event,'username')" placeholder="Username" ></BeezFloatLabelTextfield>
 						
 						<Label class="list-group-item-info-signup text" textWrap="true" >
 							<FormattedString>
