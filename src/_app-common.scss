@@ -2,7 +2,7 @@
 // TIPOGRAPHY
 // ------------------------------------------------------------------
 *{
-  font-family: "Sofia Pro Light";
+  font-family: "Sofia Pro","Sofia Pro Light";
 }
 
 .fa {
@@ -10,7 +10,7 @@
 }
 
 .header{
-  font-family: "Sofia Pro Semi Bold";
+  font-family: "Sofia Pro","Sofia Pro Semi Bold";
   font-size: 20;
   font-weight: bold;
   letter-spacing:0.028;
@@ -19,7 +19,7 @@
 }
 
 .header-small{
-  font-family: "Sofia Pro Semi Bold";
+  font-family: "Sofia Pro","Sofia Pro Semi Bold";
   font-size: 10;
   letter-spacing:0.028;
   font-weight: bold;
@@ -30,7 +30,7 @@
 }
 
 .title{
-  font-family: "Sofia Pro Light";
+  font-family: "Sofia Pro","Sofia Pro Light";
   font-size: 14;
   font-weight: $normal;
   letter-spacing:0.02;
@@ -41,7 +41,7 @@
 }
 
 .text{
-  font-family: "Sofia Pro Semi Bold";
+  font-family: "Sofia Pro","Sofia Pro Semi Bold";
   font-size: 14;
   letter-spacing:0.02;
   color: $grigioscuro;
@@ -56,7 +56,7 @@
 }
 
 .label{
-  font-family: "Sofia Pro Semi Bold";
+  font-family: "Sofia Pro","Sofia Pro Semi Bold";
   color: $lilla;
   font-size: 10;
   font-weight: bold;
@@ -64,7 +64,7 @@
 }
 
 .label-gray {
-  font-family: "Sofia Pro Semi Bold";
+  font-family: "Sofia Pro","Sofia Pro Semi Bold";
   color: $grigioscuro;
   font-size: 10;
   font-weight: bold;
@@ -72,7 +72,7 @@
 }
 
 .label-textfield {
-  font-family: "Sofia Pro Semi Bold";
+  font-family: "Sofia Pro","Sofia Pro Semi Bold";
   color: $grigioscuro;
   font-size: 12;
 }
@@ -158,12 +158,15 @@
     border-bottom-color: $grigiochiaro;
     border-bottom-width:1;
     height: 51;
-    color:$grigioscuro;
+    color:$nero;
     &.active {
       border-bottom-color: $verde;
       border-bottom-width:1;
       color:$verde;
       transition: 1s ease;
+    }
+    &.not-active {
+      color:$nero;
     }
   }
 }
@@ -176,7 +179,7 @@
 }
 
 .header{
-  font-family: "Sofia Pro Semi Bold";
+  font-family:"Sofia Pro","Sofia Pro Semi Bold";
   font-size: 18;
   font-weight: bold;
   letter-spacing:0.028;
@@ -184,7 +187,7 @@
   margin: 0 0 10 0;
 }
 .title{
-  font-family: "Sofia Pro Light";
+  font-family: "Sofia Pro","Sofia Pro Light";
   font-size: 14;
   font-weight: normal;
   letter-spacing:0.02;
@@ -194,20 +197,20 @@
   }
 }
 .text{
-  font-family: "Sofia Pro Semi Bold";
+  font-family: "Sofia Pro","Sofia Pro Semi Bold";
   font-size: 14;
   letter-spacing:0.028;
   color: $grigioscuro;
 }
 .label{
-  font-family: "Sofia Pro Semi Bold";
+  font-family: "Sofia Pro","Sofia Pro Semi Bold";
   font-weight: bold;
   font-size: 10;
   letter-spacing:0.15;
   color: $lilla;
 }
 .body {
-  font-family: "Sofia Pro Semi Bold";
+  font-family: "Sofia Pro","Sofia Pro Semi Bold";
   font-weight: normal;
   color: $grigioscuro;
 }
@@ -234,6 +237,7 @@
     horizontal-align: left;
     vertical-align: center;
   }
+  
   .action-image {
     width: auto;
     height: 24;

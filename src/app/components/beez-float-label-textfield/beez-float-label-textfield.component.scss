@@ -10,11 +10,14 @@ TextField{
 	padding: 8 0;
 	border-bottom-width: 1;
     border-bottom-color: $grigiochiaro;
-    placeholder-color : $grigioscuro;
-    } 
+	placeholder-color : $grigioscuro;
+	font-family: "Sofia Pro","Sofia Pro Light";
+} 
 
 Label{
-	transform: translate(0, -25);
-	padding: 16 0 16 0;
+	position: relative;
+	display: block;
+	opacity: 1;
+	font-family:"Sofia Pro" , "Sofia Pro Semi Bold";
 }
 
