@@ -53,6 +53,10 @@ export class UserService {
         headers: this.getCommonHeader()
       });
     }
+    
+    // PATTERN: nomefiglio + tutormail
+    // marcolorenzo.dedonato@gmail.com
+    // francescalorenzo@loool.com
 
     /**
      * 
@@ -63,8 +67,10 @@ export class UserService {
       let username = '';
       let tutor_mail = '';
       let mail = '';
+
       if(user.tutor_name != '' && user.tutor_surname != '') {
         username = user.username;
+        mail = user.username;
         tutor_mail = user.mail;
       } else {
         username = user.mail;

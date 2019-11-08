@@ -91,55 +91,51 @@ export class SignupComponent implements OnInit{
         this.user[field]=value;
         console.log('selectEvent', this.user[field]);
       }
+
+      // PATTERN: calcolo username minore
+      // nomefiglio + cognomefiglio + annonascitafiglio @ beez.io
+      if(field == 'date_of_birth') {
+        let date = new Date(value);
+        let year = date.getFullYear().toString().substr(-2);
+        console.log('anno', year);
+        this.username2 = year;
+        this.username = this.username0+this.username1+this.username2+'@beez.io';
+        console.log('selectEvent username >',this.username);
+      }
     }
   }
+
   textfieldEvent(text, field){
     if(field) this.user[field]=text;
-
     if(field=='username') {
       console.log('textfieldEvent username');
     }
   }
 
   textfieldBlurEvent(text, field){
-    // DOCS: Algoritmo calcolo username minore
-    // nometutor + nomeminore + cognomeminore @ beez.io
-    if(field=='tutor_name') {
+    // PATTERN: calcolo username minore
+    // nomefiglio + cognomefiglio + annonascitafiglio @ beez.io
+    if(field=='name') {
         if(text) {
-          this.username0 = text;
+          let cleantext = text; 
+          cleantext = cleantext.replace(/\s/g,'');  
+          this.username0 = cleantext.toLowerCase();
         }
         console.log('textfieldEvent tutor_name >',this.username0);
         this.username = this.username0+this.username1+this.username2+'@beez.io';
         console.log('textfieldEvent username >',this.username);
     }
-    if(field=='name') {
+    if(field=='surname') {
         if(text) {
-          this.username1 = text;
+          let cleantext = text; 
+          cleantext = cleantext.replace(/\s/g,'');  
+          this.username1 = cleantext.toLowerCase();
         } 
         console.log('textfieldEvent name >',this.username1);
         this.username = this.username0+this.username1+this.username2+'@beez.io';
         console.log('textfieldEvent username >',this.username);
     }
-    if(field=='surname') {
-        if(text) {
-          this.username2 = text;
-        }
-        console.log('textfieldEvent surname >',this.username2);
-        this.username = this.username0+this.username1+this.username2+'@beez.io';
-        console.log('textfieldEvent username >',this.username);
-    }
   }
-
-  // d3d0 --> alert spostata in login
-  // alertSignup (message: string) {
-  //   return dialogsModule.alert({
-  //     title: "",
-  //     okButtonText: "OK",
-  //     message: message
-  //   }).then(function () {
-  //     console.log("Dialog closed!");
-  //   });
-  // }
 
   signup(){
     if (getConnectionType() === connectionType.none) {

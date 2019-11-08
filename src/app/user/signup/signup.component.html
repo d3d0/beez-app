@@ -76,9 +76,8 @@
 						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'surname')" (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.MINOR_SURNAME'|L"></BeezFloatLabelTextfield>
 						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.MINOR_DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
 						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.MINOR_GENDER'|L"></BeezFloatLabelSelect>
-						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'mail')" keyboardType="email" [placeholder]="'USER.EMAIL'|L" ></BeezFloatLabelTextfield>
+						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'mail')" (textfieldEvent)="textfieldEvent($event,'mail')" keyboardType="email" [placeholder]="'USER.EMAIL_PARENT'|L" ></BeezFloatLabelTextfield>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" secure="true" ></BeezFloatLabelTextfield>
-						
 						<BeezFloatLabelTextfield [text]="username" isUsername="true" [username]="username" (textfieldEvent)="textfieldEvent($event,'username')" placeholder="Username" ></BeezFloatLabelTextfield>
 						
 						<Label class="list-group-item-info-signup text" textWrap="true" >

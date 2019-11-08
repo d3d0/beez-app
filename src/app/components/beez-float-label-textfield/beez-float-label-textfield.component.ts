@@ -40,8 +40,6 @@ export class BeezFloatLabelTextfield {
 
     @ViewChild("label", {static: false}) label: ElementRef;
     @ViewChild("textField", {static: false}) textField: ElementRef;
-
-    
     
     constructor() { }
 

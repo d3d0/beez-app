@@ -22,15 +22,8 @@ export class RecoveryService {
     return throwError(error);
   }
 
-
   recoveryPwd(name){
-    return this.http.post( BackendService.baseUrl + "beez/user/request_new_password",{'name': name },{});
+    return this.http.post( BackendService.baseUrl + "beez/loool/request_new_password",{'name': name },{});
   }
-
-
-
-  
-  
-
 
 }
