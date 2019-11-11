@@ -113,16 +113,18 @@
 							<Label row="0" col="1" class="list-group-item-v-line" rowSpan="7" marginBottom="32" horizontalAlignment="center" ></Label>
 							<Label row="0" col="2" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE'|L" class="list-group-item-heading-18" textWrap="true"></Label>
 							
-							<StackLayout row="1" col="2" >
-								<!-- d3d0 fix: select agenzia uguale a modifica -->
-								
+
+
+							<StackLayout row="1" col="2" >								
 								<BeezFloatLabelSelect *ngIf="!noAgency" isSelect="true" (selectEvent)="selectEvent($event,'AGENCY')" [editable]="true" dark="true" type="AGENCY" [placeholder]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L"></BeezFloatLabelSelect>
 								<StackLayout orientation="horizontal" verticalAlignment="center" (tap)="toggleCheckAgency()" class="p-t-8">
-									<Image *ngIf="noAgency" [src]="getIconSource('chekbox_on')" stretch="none"></Image>
-									<Image *ngIf="!noAgency" [src]="getIconSource('checkbox_off')" stretch="none"></Image>
+									<Image *ngIf="!noAgency" [src]="getIconSource('chekbox_on')" stretch="none"></Image>
+									<Image *ngIf="noAgency" [src]="getIconSource('checkbox_off')" stretch="none"></Image>
 									<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text p-l-8" textWrap="true"></Label>
 								</StackLayout> 
 							</StackLayout>
+
+							
 
 							<BeezButton row="4" col="2" [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="partecipate('Confirmed')"></BeezButton>
 							<StackLayout row="4" col="1" class="icon-container">
@@ -155,14 +157,16 @@
 							<BeezButton row="1" col="2" [visibility]="edit_actions ? 'collapsed' : 'visible'"  buttonColor="blue" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L|uppercase" [isBusy]="isLoading" (buttonClick)="edit_actions=!edit_actions"></BeezButton>
 
 							<AbsoluteLayout row="1" col="0" colSpan="4" [visibility]="edit_actions != '' ? 'visible' : 'collapsed'" class="accordion" >
+
+
 								<StackLayout top=0 class="content">
 									<Label [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" class="list-group-item-heading-18 p-b-16" textWrap="true"></Label>
 									<StackLayout *ngIf="!noAgency">
 										<BeezFloatLabelSelect isSelect="true" (selectEvent)="selectEvent($event,'AGENCY')" dark="true" [editable]="true" [value]="selectedAgency.name" [tid]="selectedAgency.tid" type="AGENCY" [placeholder]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L"></BeezFloatLabelSelect>
 									</StackLayout>
 									<StackLayout orientation="horizontal" verticalAlignment="center" (tap)="toggleCheckAgency()" class="p-t-8">
-										<Image *ngIf="noAgency" [src]="getIconSource('chekbox_on')" stretch="none"></Image>
-										<Image *ngIf="!noAgency" [src]="getIconSource('checkbox_off')" stretch="none"></Image>
+										<Image *ngIf="!noAgency" [src]="getIconSource('chekbox_on')" stretch="none"></Image>
+										<Image *ngIf="noAgency" [src]="getIconSource('checkbox_off')" stretch="none"></Image>
 										<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text p-l-8" textWrap="true"></Label>
 									</StackLayout> 
 									<BeezButton [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="partecipate('Confirmed')"></BeezButton>
@@ -170,6 +174,8 @@
 									<!-- <BeezButton  [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="partecipate('Confirmed by archive')"></BeezButton> -->
 									<BeezButton  [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" [isBusy]="isLoadingSecond" buttonColor="black" (buttonClick)="partecipate('Declined')"></BeezButton>
 								</StackLayout>
+
+
 								<StackLayout top="0" width="100%">
 									<Image [src]="getIconSource('no_nero')" class="icon" stretch="none" horizontalAlignment="right" (tap)="edit_actions=!edit_actions" ></Image>
 								</StackLayout>

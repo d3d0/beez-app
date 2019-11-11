@@ -318,54 +318,45 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
    * @param action 
    */
   private partecipate(action){
+
     if(action == 'Confirmed'){
-      this.isLoading =true;
-    }else{
-      this.isLoadingSecond =true;
-    }
-    this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe((result)=>{
-        console.log('result',result);
-        if(action == 'Declined'){
-          alert(localize("MESSAGES.DECLINED")).then(()=>{
-            //chiudo la modale absolute
-            this.showEditPartecipate = true;
-            this.edit_actions = false;
-            this.isLoading = false;
-            this.isLoadingSecond = false;
-            this.showTitleConfirmed = false;
-            this.showTitleDeclined = true;
-            this.showTitleArchive = false;
-            //this.castingsService.load().subscribe();
+      if(!this.noAgency && this.selectedAgency.name == 'no agenzia'){
+        alert(localize("Seleziona un'agenzia dall'elenco"));
+      }else{
+        this.isLoading = true;
+        this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe((result)=>{
+            alert(localize("MESSAGES.PARTECIPATE")).then(()=>{
+              //chiudo la modale absolute
+              this.showEditPartecipate = true;
+              this.edit_actions = false;
+              this.isLoading = false;
+              this.isLoadingSecond = false;
+              this.showTitleConfirmed = true;
+              this.showTitleDeclined = false;
+              this.showTitleArchive = false;
           });
-        }else if(action == 'Confirmed'){
-          alert(localize("MESSAGES.PARTECIPATE")).then(()=>{
-            //chiudo la modale absolute
-            this.showEditPartecipate = true;
-            this.edit_actions = false;
-            this.isLoading = false;
-            this.isLoadingSecond = false;
-            this.showTitleConfirmed = true;
-            this.showTitleDeclined = false;
-            this.showTitleArchive = false;
-
-            //this.castingsService.load().subscribe();
-          });
-        }else if(action == 'Confirmed by archive'){
-          alert(localize("MESSAGES.PARTECIPATE")).then(()=>{
-            //chiudo la modale absolute
-            this.showEditPartecipate = true;
-            this.edit_actions = false;
-            this.isLoading = false;
-            this.isLoadingSecond = false;
-            this.showTitleConfirmed = false;
-            this.showTitleDeclined = false;
-            this.showTitleArchive = true;
-            //this.castingsService.load().subscribe();
-          });
-
-        }
-        
-
+        },
+        (error)=> {
+          this.isLoading =false;
+          console.log(error);
+          if (error.status === 400) alert(localize(error.error[0]))
+          else alert(localize("ERROR_SERVICE"));
+        });
+      }
+    }else if (action == 'Declined'){
+      this.isLoadingSecond = true;
+      this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe((result)=>{
+        alert(localize("MESSAGES.DECLINED")).then(()=>{
+          //chiudo la modale absolute
+          this.showEditPartecipate = true;
+          this.edit_actions = false;
+          this.isLoading = false;
+          this.isLoadingSecond = false;
+          this.showTitleConfirmed = false;
+          this.showTitleDeclined = true;
+          this.showTitleArchive = false;
+          //this.castingsService.load().subscribe();
+        });
       },
       (error)=> {
         this.isLoading =false;
@@ -373,6 +364,30 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
         if (error.status === 400) alert(localize(error.error[0]))
         else alert(localize("ERROR_SERVICE"));
       });
+    }else if (action == 'Confirmed by archive'){
+      this.isLoading = true;
+      this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe((result)=>{
+        alert(localize("MESSAGES.PARTECIPATE")).then(()=>{
+          //chiudo la modale absolute
+          this.showEditPartecipate = true;
+          this.edit_actions = false;
+          this.isLoading = false;
+          this.isLoadingSecond = false;
+          this.showTitleConfirmed = false;
+          this.showTitleDeclined = false;
+          this.showTitleArchive = true;
+          //this.castingsService.load().subscribe();
+        });
+      },
+      (error)=> {
+        this.isLoading =false;
+        console.log(error);
+        if (error.status === 400) alert(localize(error.error[0]))
+        else alert(localize("ERROR_SERVICE"));
+      });
+
+    }
+  
   }
   
   /**
