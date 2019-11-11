@@ -23,37 +23,29 @@ export class BeezFloatLabelSelect implements OnInit {
     @Input() isSelect: string;
     @Input() type: string;
     @Input() dark: boolean;
-    @Input() tid: string;
-    @Output() selectEvent = new EventEmitter<string>();
+    @Input() tid: string; // casting-detail.component.html
     @Input() editable: boolean;
+    @Output() selectEvent = new EventEmitter<string>();
     private list;
     private text: string;
-    // private tid: string;
-    // private isEditable;
-    @Input() set value (value:string){ this.text = value; }
-    // @Input() set tid (value:string){ this.tid = value; }
-    // @Input() set editable (value: boolean){ this.isEditable=value; }
+
+    @Input() set value (value: string){ 
+        this.text = value;
+        console.log('l☯☯☯l > BeezFloatLabelSelect > @Input() set value',value);
+    }
 
     constructor(
         private vcRef: ViewContainerRef,
         private modal: ModalDialogService) {}
 
     ngOnInit(){
-        // this.text = 'prova';
-        
-        // console.log('value ' , this.value_name);
-        // console.log('value ' , this.value_tid);
-        // if (this.type == "datapicker")
-        //      this.text = formatDate(this.value,'dd MMMM yy','en')
-        // else
-        //      this.text = this.value 
     }
 
     private openModal(){
         // if(!this.isEditable) return;
 
         // d3d0 --> bug fix select
-        console.log('****** > l☯☯☯l > BeezFloatLabelSelect > openModal() > editable', this.editable);
+        console.log('l☯☯☯l > BeezFloatLabelSelect > openModal() > editable', this.editable);
         if (!this.editable) return;
 
         if (this.type == "datapicker"){
@@ -75,8 +67,8 @@ export class BeezFloatLabelSelect implements OnInit {
                 }
             })
         }
-        console.log('****** > l☯☯☯l > BeezFloatLabelSelect > openModal() > text', this.text);
-        console.log('****** > l☯☯☯l > BeezFloatLabelSelect > openModal() > tid', this.tid);
+        console.log('l☯☯☯l > BeezFloatLabelSelect > openModal() > text', this.text);
+        console.log('l☯☯☯l > BeezFloatLabelSelect > openModal() > tid', this.tid);
     }
 
     // datepicker

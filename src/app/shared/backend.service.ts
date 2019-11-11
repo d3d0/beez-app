@@ -23,6 +23,14 @@ export class BackendService {
     setBoolean("isRegistered",value);
   }
 
+  // d3d0 --> boolean per minorenne
+  static get isMinor() {
+    return getBoolean("isMinor", false);
+  }
+  static set isMinor(value) {
+    setBoolean("isMinor",value);
+  }
+
   static firstLogin(): boolean {
     if (hasKey('firstLogin')) return false
     setString('firstLogin', 'true')

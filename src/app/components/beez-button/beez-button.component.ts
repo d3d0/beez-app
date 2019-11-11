@@ -11,7 +11,7 @@ import { TextField } from "tns-core-modules/ui/text-field";
     styleUrls: ['./beez-button.component.scss'],
     template: `
     <StackLayout class="container" [row]="row" [col]="col" android:marginBottom="13">
-        <CardView width="100%" radius="15" elevation="0" ripple="false" shadowOpacity="0.2" ios:shadowRadius="5">
+        <CardView width="100%" elevation="0" ripple="false" android:radius="10" ios:radius="4" ios:shadowRadius="5" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="0">
             <Button #button
             [backgroundColor]="color"
             [visibility]="visibility"

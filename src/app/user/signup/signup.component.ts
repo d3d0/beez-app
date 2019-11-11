@@ -12,6 +12,8 @@ import { ListPicker } from "tns-core-modules/ui/list-picker";
 import * as dialogsModule from "ui/dialogs";
 import { ActivatedRoute, Router } from "@angular/router";
 
+import { EventData } from "tns-core-modules/data/observable";
+
 
 @Component({
   selector: 'ns-signup',
@@ -29,6 +31,10 @@ export class SignupComponent implements OnInit{
   private openLink = openLink;
   private registrato = false;
   public editable: boolean;
+  public username: string = '';
+  public username0: string = '';
+  public username1: string = '';
+  public username2: string = '';
 
   // @ViewChild('tabHighlight') tabHighlight: ElementRef;
   @ViewChild('tab1', {static: true}) tab1: ElementRef;
@@ -48,7 +54,7 @@ export class SignupComponent implements OnInit{
   ngOnInit() {
     this.tabs[0] = this.tab1.nativeElement;
     this.tabs[1] = this.tab2.nativeElement;
-    // this.tabs[0].className = "active"; // FIX 23/09
+    this.tabs[0].className = "active"; // FIX 23/09
     // this.tabs[0].style.color = new Color("#00D796"); 
     console.log('l☯☯☯l > SignupComponent > ngOnInit() > this.isLoading', this.isLoading);
     
@@ -61,49 +67,101 @@ export class SignupComponent implements OnInit{
     console.log('l☯☯☯l > SignupComponent > ngOnInit() > editable', this.editable);
   }
 
-  public onSelectedIndexChange(index) {
+  public onSelectedIndexChange(index, args: EventData) {
+    let previousTab = this.selectedIndex;
     if (index != this.selectedIndex) {
       // this.tabs[index].className = "active"; // FIX 23/09
       // this.tabs[this.selectedIndex].className = "not-active"; // FIX 23/09
+      this.tabs[index].className = "active"; // FIX 23/09
+      this.tabs[previousTab].className = "not-active"; // FIX 23/09
       this.selectedIndex = index;
     }
   }
 
   selectEvent(value, field){
-    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select value',value);
-    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select field',field);
+    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select value:',value);
+    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select field:',field);
     if (field) {
       // d3d0 fix --> se field è gender allora usiamo value.tid
       if(field === 'gender') {
         console.log('ok');
         this.user[field]=value.tid;
         console.log('selectEvent', this.user[field]);
+        console.log('selectEvent > name', value.name);
+        console.log('selectEvent > tid', value.tid);
       } else {
         this.user[field]=value;
         console.log('selectEvent', this.user[field]);
+        console.log('selectEvent > name', value.name);
+        console.log('selectEvent > tid', value.tid);
+      }
+
+      // PATTERN: calcolo username minore
+      // nomefiglio + cognomefiglio + annonascitafiglio @ beez.io
+      if(field == 'date_of_birth') {
+        let date = new Date(value);
+        let year = date.getFullYear().toString().substr(-2);
+        console.log('anno', year);
+        this.username2 = year;
+        this.username = this.username0+this.username1+this.username2+'@beez.io';
+        console.log('selectEvent username >',this.username);
       }
     }
   }
+
   textfieldEvent(text, field){
     if(field) this.user[field]=text;
+    if(field=='username') {
+      console.log('textfieldEvent username');
+    }
   }
 
-  // d3d0 --> alert spostata in login
-  // alertSignup (message: string) {
-  //   return dialogsModule.alert({
-  //     title: "",
-  //     okButtonText: "OK",
-  //     message: message
-  //   }).then(function () {
-  //     console.log("Dialog closed!");
-  //   });
-  // }
+  textfieldBlurEvent(text, field){
+    // PATTERN: calcolo username minore
+    // nomefiglio + cognomefiglio + annonascitafiglio @ beez.io
+    if(field=='name') {
+        if(text) {
+          let cleantext = text; 
+          cleantext = cleantext.replace(/\s/g,'');  
+          this.username0 = cleantext.toLowerCase();
+        }
+        console.log('textfieldEvent tutor_name >',this.username0);
+        this.username = this.username0+this.username1+this.username2+'@beez.io';
+        console.log('textfieldEvent username >',this.username);
+    }
+    if(field=='surname') {
+        if(text) {
+          let cleantext = text; 
+          cleantext = cleantext.replace(/\s/g,'');  
+          this.username1 = cleantext.toLowerCase();
+        } 
+        console.log('textfieldEvent name >',this.username1);
+        this.username = this.username0+this.username1+this.username2+'@beez.io';
+        console.log('textfieldEvent username >',this.username);
+    }
+  }
 
   signup(){
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
       return;
     }
+
+    // minore
+    if (!User.isValidTutorName(this.user.tutor_name)) {
+      alert(localize("MESSAGES.REQUIRED_TUTOR_NAME"));
+      return;
+    }
+    if (!User.isValidTutorSurname(this.user.tutor_surname)) {
+      alert(localize("MESSAGES.REQUIRED_TUTOR_SURNAME"));
+      return;
+    }
+    if (!User.isValidTutorDate(this.user.tutor_date_of_birth)) {
+      alert(localize("MESSAGES.REQUIRED_TUTOR_DATE"));
+      return;
+    }
+
+    // adulti
     if (!User.isValidName(this.user.name)) {
       alert(localize("MESSAGES.REQUIRED_NAME"));
       return;
@@ -153,6 +211,12 @@ export class SignupComponent implements OnInit{
         BackendService.registeredUser = true;
         console.log('l☯☯☯l > UserService > signup() > BackendService.registeredUser', BackendService.registeredUser);
         
+        // se è un minore la mail principale è vuota
+        if(this.user.tutor_name != '' && this.user.tutor_surname != '') {
+          BackendService.isMinor = true;
+          console.log('l☯☯☯l > UserService > signup() > BackendService.isMinor', BackendService.isMinor);
+        }
+
         // d3d0 --> fix alert spostata in login
         // this.alertSignup(localize("MESSAGES.CONFIRM_EMAIL"));
 

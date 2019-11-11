@@ -94,9 +94,23 @@ export class ProfileComponent implements AfterViewInit, OnInit{
   }
 
   selectEvent(text, field){
+    console.log('l☯☯☯l > ProfileComponent > selectEvent > select value:',text);
+    console.log('l☯☯☯l > ProfileComponent > selectEvent > select field:',field);
     if(field){
-      this.profile[field]=text.tid;
-      //console.log('selectEvent', this.profile[field]);
+      if(text.tid) { // select > taxonomy !!!
+        this.profile[field]=text.tid;
+        console.log('selectEvent taxonomy > this.profile[field]', this.profile[field]);
+        console.log('selectEvent taxonomy > text', text);
+        console.log('selectEvent taxonomy > tid', text.tid);
+        console.log('selectEvent taxonomy > name', text.name);
+      }
+      else { // select > datepicker !!!
+        this.profile[field]=text;
+        console.log('selectEvent datepicker > this.profile[field]', this.profile[field]);
+        console.log('selectEvent datepicker > text', text);
+        console.log('selectEvent datepicker > tid', text.tid);
+        console.log('selectEvent datepicker > name', text.name);
+      }
     }
   }
 
@@ -112,16 +126,17 @@ export class ProfileComponent implements AfterViewInit, OnInit{
   editSave(){
     this.isLoading = true;
 
-    //console.log('l☯☯☯l > ProfileComponent > editSave() > this.user: ', this.profile);
+    console.log('l☯☯☯l > ProfileComponent > editSave() > this.user: ', this.profile);
     
     this.profileService.edit(this.profile).subscribe((result) => {
       // alert('Profilo aggiornato!');
       console.log('l☯☯☯l > ProfileComponent > edit() > Profilo aggiornato!',result);
+      console.log('l☯☯☯l > ProfileComponent > edit() > Profilo aggiornato!',this.profile);
       this.isLoading = false;
       this.editable = false;
     },
     (err) => {
-      //console.log(err)
+      console.log(err);
       alert(localize('MESSAGES.ERROR_SERVICE'))
     });
     this.isLoading = false;
@@ -135,9 +150,10 @@ export class ProfileComponent implements AfterViewInit, OnInit{
   loadProfile(){
     this.profileService.load().subscribe(profile=> {
       this._profile = profile[0];
-      //console.log('l☯☯☯l > ProfileComponent > loadProfile() > _profile: ', this._profile);
-      // if (this._profile['height']!=null) {
-      //   this._profile['height'] = this._profile['height'];
+      console.log('l☯☯☯l > ProfileComponent > loadProfile() > _profile: ', this._profile);
+      
+      // if(this._profile['date_of_birth']!=null) {
+      //   this._profile['date_of_birth'] = new Date(this._profile['date_of_birth']).toISOString();
       // }
       if (this._profile['facebook']==null) {
         this._profile['facebook_hint'] = 'username';

@@ -3,7 +3,7 @@
     <LottieView height="280" src="data.json" autoplay="true"  (loaded)="lottieViewLoaded($event)"></LottieView>
   </StackLayout>
   <GridLayout row=1 rows="auto,auto">
-    <CardView  row=0 class="card-group" elevation="30" radius="10" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" >
+    <CardView  row=0 class="card-group" elevation="30" android:radius="10" ios:radius="4" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" >
       <StackLayout class="list-group-item" (loaded)="onLoadedStack($event)" (unloaded)="onUnloadedStack($event)">
         <BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'mail')" [placeholder]="'EMAIL'|L" type="email" returnKeyType="next"></BeezFloatLabelTextfield>
         <BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" secure="true" returnKeyType="done"></BeezFloatLabelTextfield>

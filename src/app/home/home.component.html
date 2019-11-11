@@ -24,7 +24,7 @@
                 </GridLayout>
             </AbsoluteLayout>
             <GridLayout #tabContents *ngFor="let item of tabList; let i = index" backgroundColor="" height="50"
-                [col]="i"  marginTop="5" (tap)="onBottomNavTap(i)" verticalAlignment="middle" borderTopWidth="0" borderTopColor="red"
+                [col]="i"  marginTop="5" (tap)="onBottomNavTap(i)" verticalAlignment="middle" borderTopWidth="0" borderTopColor=""
                 [marginLeft]="item.paddingLeft" [marginRight]="item.paddingRight">
                 <AbsoluteLayout width="50" height="50" backgroundColor="" >
                         <Image left="10" top="10" [src]="item.icon" stretch="none" verticalAlignment="middle" horizontalAlignment="center"></Image>

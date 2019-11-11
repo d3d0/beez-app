@@ -21,8 +21,8 @@ export class SelectDateModalViewComponent {
         this.currentdate = params.context.currentdate;
         this.title = params.context.title;
         if(params.context.isSelect) this.isSelect = params.context.isSelect;
-        console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > constructor() > params',this.params);
-        console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > constructor() > isSelect',this.isSelect);
+        console.log('l☯☯☯l > SelectModalViewComponent > constructor() > params',this.params);
+        // console.log('l☯☯☯l > SelectModalViewComponent > constructor() > isSelect',this.isSelect);
     }
 
     onBack(): void {

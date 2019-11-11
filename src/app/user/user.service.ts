@@ -53,6 +53,10 @@ export class UserService {
         headers: this.getCommonHeader()
       });
     }
+    
+    // PATTERN: nomefiglio + tutormail
+    // marcolorenzo.dedonato@gmail.com
+    // francescalorenzo@loool.com
 
     /**
      * 
@@ -60,21 +64,39 @@ export class UserService {
      * @param user 
      */
     signup(user: User) {
+      let username = '';
+      let tutor_mail = '';
+      let mail = '';
+
+      if(user.tutor_name != '' && user.tutor_surname != '') {
+        username = user.username;
+        mail = user.username;
+        tutor_mail = user.mail;
+      } else {
+        username = user.mail;
+        mail = user.mail;
+      }
+
+      console.log('USERNAME ------------>',username);
+      console.log('MAIL ------------>',mail);
+      console.log('TUTOR MAIL ------------>',tutor_mail);
+
       return this.http.post(
         BackendService.baseUrl + "beez/loool/register",
         JSON.stringify({
-          "mail": user.mail,
+          "mail": mail,
           "pass": user.pass,
-          "name": user.mail,
+          "name": username,
           "field_registrato_da_app":{"und":[{"value":1}]},
-          "profile":{
+          "profile": {
             "field_name":user.name,
             "field_gender":user.gender,
             "field_surname":user.surname,
             "field_date_of_birth":user.date_of_birth,
             "field_tutor_name":user.tutor_name,
             "field_tutor_surname":user.tutor_surname,
-            "field_tutor_date_of_birth":user.tutor_date_of_birth
+            "field_tutor_date_of_birth":user.tutor_date_of_birth,
+            "field_tutor_email":tutor_mail,
           }
         }),
         {
