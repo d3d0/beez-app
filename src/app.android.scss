@@ -63,8 +63,9 @@ NSSegmentView{
 // ------------------------------------------------------------------
 .tab-buttons, .tab-buttons-d3d0 {
   label {
-    font-size:10;
+    font-size:11;
     letter-spacing: 0.15;
+    font-family: "Sofia Pro","Sofia Pro Semi Bold";
   }
 }
 
@@ -73,12 +74,10 @@ NSSegmentView{
 // ------------------------------------------------------------------
 .action-bar {
   .action-bar-title {
-    font-family: "Sofia Pro Semi Bold";
-    font-weight: bold;
+    font-family: "Sofia Pro","Sofia Pro Semi Bold";
   }
   .action-label {
-    font-family: "Sofia Pro Semi Bold";
-    font-weight: bold;
+    font-family: "Sofia Pro","Sofia Pro Semi Bold";
   }
 }
 
