@@ -23,14 +23,18 @@ export class BeezFloatLabelSelect implements OnInit {
     @Input() isSelect: string;
     @Input() type: string;
     @Input() dark: boolean;
-    @Input() tid: string;
-    @Output() selectEvent = new EventEmitter<string>();
+    @Input() tid: string; // casting-detail.component.html
     @Input() editable: boolean;
+    @Output() selectEvent = new EventEmitter<string>();
+    
     private list;
     private text: string;
     // private tid: string;
     // private isEditable;
-    @Input() set value (value:string){ this.text = value; }
+    @Input() set value (value: string){ 
+        this.text = value;
+        console.log('000000000000000000000000 > l☯☯☯l > BeezFloatLabelSelect > @Input() set value',value);
+    }
     // @Input() set tid (value:string){ this.tid = value; }
     // @Input() set editable (value: boolean){ this.isEditable=value; }
 
@@ -53,7 +57,7 @@ export class BeezFloatLabelSelect implements OnInit {
         // if(!this.isEditable) return;
 
         // d3d0 --> bug fix select
-        console.log('****** > l☯☯☯l > BeezFloatLabelSelect > openModal() > editable', this.editable);
+        console.log('000 > l☯☯☯l > BeezFloatLabelSelect > openModal() > editable', this.editable);
         if (!this.editable) return;
 
         if (this.type == "datapicker"){
@@ -75,8 +79,8 @@ export class BeezFloatLabelSelect implements OnInit {
                 }
             })
         }
-        console.log('****** > l☯☯☯l > BeezFloatLabelSelect > openModal() > text', this.text);
-        console.log('****** > l☯☯☯l > BeezFloatLabelSelect > openModal() > tid', this.tid);
+        console.log('000 > l☯☯☯l > BeezFloatLabelSelect > openModal() > text', this.text);
+        console.log('000 > l☯☯☯l > BeezFloatLabelSelect > openModal() > tid', this.tid);
     }
 
     // datepicker

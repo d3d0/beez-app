@@ -79,17 +79,21 @@ export class SignupComponent implements OnInit{
   }
 
   selectEvent(value, field){
-    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select value',value);
-    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select field',field);
+    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select value:',value);
+    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select field:',field);
     if (field) {
       // d3d0 fix --> se field è gender allora usiamo value.tid
       if(field === 'gender') {
         console.log('ok');
         this.user[field]=value.tid;
         console.log('selectEvent', this.user[field]);
+        console.log('selectEvent > name', value.name);
+        console.log('selectEvent > tid', value.tid);
       } else {
         this.user[field]=value;
         console.log('selectEvent', this.user[field]);
+        console.log('selectEvent > name', value.name);
+        console.log('selectEvent > tid', value.tid);
       }
 
       // PATTERN: calcolo username minore

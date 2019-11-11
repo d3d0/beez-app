@@ -102,7 +102,11 @@
             <BeezInlineTextfield [editable]="editable" [editable]="isEditable"  [text]="profile.name"  (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.surname"  (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></BeezInlineTextfield>
             <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.gender" (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezInlineSelect>
+            
+            <!-- TEST -->
             <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.date_of_birth" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezInlineSelect>
+            <!-- TEST -->
+            
             <BeezInlineTextfield [editable]="editable" [text]="profile.place_of_birth"  (textfieldEvent)="textfieldEvent($event,'place_of_birth')" [placeholder]="'USER.PLACE_OF_BIRTH'|L"></BeezInlineTextfield>
             <BeezInlineSelect isSelect="true" [editable]="editable" [last]='!editable'  [value]="profile.nationality" (selectEvent)="selectEvent($event,'nationality')" type="NATIONALITY" [placeholder]="'USER.NATIONALITY'|L"></BeezInlineSelect>
           </StackLayout>
