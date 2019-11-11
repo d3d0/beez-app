@@ -9,15 +9,15 @@ export class User {
   surname: string = '';
   gender: string = '';
   date_of_birth: Date;
-  tutor_name: string;
-  tutor_surname: string;
+  tutor_name: string = '';
+  tutor_surname: string = '';
   tutor_date_of_birth: Date;
-  place_of_birth: string;
-  age_range: string;
-  height: string;
-  body_size: string;
-  shoe_size: string;
-  agency: string;
+  place_of_birth: string = '';
+  age_range: string = '';
+  height: string = '';
+  body_size: string = '';
+  shoe_size: string = '';
+  agency: string = '';
   field_registrato_da_app:{"und":[{"value":1}]};
 
   // minore

@@ -50,10 +50,9 @@ export class MediaComponent implements OnInit {
     ngOnInit() {}
     ngChange() {console.log('change',this.images); }
     loadImages() {
-        this.profileService.getImages()
-        .subscribe((result) => {
+        this.profileService.getImages().subscribe((result) => {
             this.images = result;
-            console.log('reeeeesults',this.images);
+            console.log('l☯☯☯l > MediaComponent > getImages() > this.images',this.images);
         });
     }
     deleteImage(image){
