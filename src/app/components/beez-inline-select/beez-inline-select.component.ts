@@ -45,13 +45,14 @@ export class BeezInlineSelect {
             if (this.type == "datapicker"){
                 console.log('IS DATEPICKER ?',this.type);
                 console.log('IS DATEPICKER VALUE >',value);
-                // let valoreData = (new Date(value)).getTime();
+
                 // if(valoreData > 0) { // se arriva in TIMESTAMP trasformo in ISO
                 //     this.obj.name = formatDate(parseInt(value) * 1000 ,'dd MMMM yy','en'); // FIX!
                 // }
                 // else { // se arriva in DATEPICKER trasformo in TIMESTAMP
                 //     this.obj.name = formatDate(value ,'dd MMMM yy','en'); // FIX!
                 // }
+
                 this.obj.name = formatDate(value ,'dd MMMM yy','en'); // FIX!
                 console.log('IS DATEPICKER this.obj.name >',this.obj.name);
             } 
@@ -60,12 +61,6 @@ export class BeezInlineSelect {
                 this.taxonomyService.getTerm(value).subscribe( obj => this.obj = obj[0] );
             }
     }
-
-    // isIsoDate(str) {
-    //     if (!/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/.test(str)) return false;
-    //     var d = new Date(str); 
-    //     return d.toISOString()===str;
-    // }
     
     private openModal(){
         // d3d0 --> bug fix select
@@ -75,16 +70,16 @@ export class BeezInlineSelect {
         if (this.type == "datapicker"){
             this.createDatapickerModelView().then((value)=> {
                 if(value){
-                    console.log('123123123123123123123123 > l☯☯☯l > value:',value);
-                    this.obj.name = formatDate(value ,'dd MMMM yy','en'); // testo visualizzato nella label del componente
-                    this.selectEvent.emit(value); // valore passato a this.profile[field]
+                    console.log('l☯☯☯l > BeezInlineSelect > openModal() > datapicker value:',value);
+                    this.obj.name = formatDate(value ,'dd MMMM yy','en'); // DOCS: testo visualizzato nella label del componente !!
+                    this.selectEvent.emit(value); // DOCS: valore passato a this.profile[field] !!
                 }
             }).catch(error => console.log(error.message));
         }
         else {
             this.createTaxonomyModelView().then((value)=> {
                 if(value){
-                    console.log('123123123123123123123123 > l☯☯☯l > value:',value);
+                    console.log('l☯☯☯l > BeezInlineSelect > openModal() > taxonomy value:',value);
                     this.obj=value;
                     this.selectEvent.emit(value);
                 }
