@@ -97,6 +97,20 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
 
         this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
           this.casting=casting;
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          casting.casting_date.forEach(date => {
+            // let stringa = date.split(",");
+            console.log('primo',date[0]);
+            console.log('secondo',date[1]);
+          });
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
+          
 
           this.casting['audition_action'] = casting.audition_action;
 
