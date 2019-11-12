@@ -11,7 +11,7 @@
   "LOGOUT": "ESCI",
   "FEATURES": "CARATTERISTICHE",
   "DATE_AND_LOCATION": "DATA E LUOGO",
-  "PARTICIPATE": "ISCRIVITI",
+  "PARTICIPATE": "Proponiti",
   "HELP": "Hai bisogno di aiuto?",
   "SHARE_WITH_A_FRIEND": "Condividi con un amico!",
   "CONFIRM":"CONFERMA",
@@ -21,7 +21,7 @@
   "SAVE":"CONFERMA",
   "WELCOME_TITLE":"Benvenuto in BEEZ!",
   "WELCOME_TEXT":"",
-  "WELCOME_FOOTER":"Completa tutte le informazioni del tuo profilo per aumentare le possibilità di essere selezionato per i casting.",
+  "WELCOME_FOOTER":"Completa tutte le informazioni del tuo profilo, aumenterà la possibilità di essere selezionato ai casting.",
   "WELCOME_BUTTON":"OK",
   "LOGIN":{
     "LOGIN" : "ACCEDI"
@@ -55,12 +55,12 @@
     "SHOOTING": "Shooting",
     "SHOOTING_INFO": "Informazioni sullo shooting",
     "AUDITION_INFO": "Informazioni sul casting",
-    "NO_NEW_CASTINGS_TITLE": "Nessun nuovo casting",
-    "NO_NEW_CASTINGS_TEXT": "Siamo spiacenti, al momento non ci sono nuovi castings a cui candidarsi.",
-    "NO_AUDITION_CASTINGS_TITLE": "Nessun casting a cui parteciperai",
-    "NO_AUDITION_CASTINGS_TEXT": "In questa sezione troverai i casting ai quali sei stato selezionato e potrai partecipare. Controlla sempre i nuovi casting e trova quello giusto per te.",
-    "NO_CLOSE_CASTINGS_TITLE": "Nessun prossimo shooting",
-    "NO_CLOSE_CASTINGS_TEXT": "In questa sezione troverai i casting che hai superato con le informazioni sui relativi shooting confermati.",
+    "NO_NEW_CASTINGS_TITLE": "Nuovi",
+    "NO_NEW_CASTINGS_TEXT": "Al momento non ci sono nuovi casting a cui candidarsi.",
+    "NO_AUDITION_CASTINGS_TITLE": "Mie audizioni",
+    "NO_AUDITION_CASTINGS_TEXT": "In questa sezione troverai i casting ai quali potrai partecipare. Controlla sempre i nuovi casting e candidati a quello che fa per te. \n Come funziona? \n Dopo essere stato selezionato, vieni al casting nel luogo e negli orari che trovi nella descrizione del progetto. Se non puoi venire, chiedi di proporti di archivio o invia un selftape in tempo reale.",
+    "NO_CLOSE_CASTINGS_TITLE": "Mie opzioni",
+    "NO_CLOSE_CASTINGS_TEXT": "In questa sezione troverai i progetti per i quali sei stato opzionato* dal regista.\nVerifica il tuo calendario, alla conferma dell’opzione, sei considerato disponibile per le date di shooting.\n *l’opzione, non è la scelta definitiva bensì il superamento della prima selezione.",
     "CANDIDATED":"CANDIDATO",
     "PARTICIPATION_DECLINE":"NON POSSO PARTECIPARE",
     "PARTICIPATION_DECLINED":"NON PARTECIPO",
@@ -76,8 +76,8 @@
     "PARTICIPATION_EDIT_PARTICIPATION_TEXT":"Sei ancora in tempo per modificare la tua partecipazione o meno al casting.",
     "START_DATE": "INIZIO CASTING",
     "SHOOTING_TITLE":"Informazioni sullo Shooting",
-    "SHOOTING_TEXT":"Congratulazioni, hai superato casting ed ora è il momento di mettersi in gioco.",
-    "SHOOTING_NOTE":"Sarai contattato telefonicamente o tramite email dove ti verranno comunicate tutte le informazioni necessarie per lo Shooting."
+    "SHOOTING_TEXT":"Congratulazioni, hai superato la prima selezione. Rimani in attesa per la conferma definitiva del regista e del cliente.",
+    "SHOOTING_NOTE":"Ricordati di verificare il tuo calendario, sei considerato disponibile per questo progetto. Se hai altre opzioni in corso, non dimenticare di comunicarcele è molto importante per noi."
   },
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "NOTIFICHE"
@@ -148,7 +148,7 @@
     "REQUIRED_DATE" : "Il campo data di nascita è obbligatorio!",
     "REQUIRED_GENDER" : "Il campo sesso è obbligatorio!",
     "NO_CONNECTION" : "Sembra che tu non sia connesso a internet.",
-    "CONFIRM_EMAIL" : "Ti abbiamo inviato una e-mail con un link per attivare il tuo account, clicca sul link per completare la procedura.",
+    "CONFIRM_EMAIL" : "Controlla la tua e-mail e clicca sul link per attivare il tuo account.",
     "CONFIRM_EMAIL_MINOR" : "Registrazione completata. Puoi accedere usando username e password.",
     "RESET_PASS" : "La tua password è stata resettata!",
     "RESET_MAIL_SENT" : "Riceverai alla tua e-mail il link per resettare la password.",

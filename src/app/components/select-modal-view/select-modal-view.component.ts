@@ -1,9 +1,17 @@
-import { Component, ViewChild, ElementRef, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, ViewChild, ElementRef, OnInit, Input, Output, EventEmitter,ViewContainerRef } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 import { ListPicker } from "tns-core-modules/ui/list-picker";
 import { TaxonomyService} from "../../shared/taxonomy.service";
 import { Observable } from "rxjs";
+import { Page } from "tns-core-modules/ui/page";
+import { EventData } from "tns-core-modules/data/observable";
+import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout";
+import { Color } from "tns-core-modules/color";
+import { Frame } from "tns-core-modules/ui/frame";
+
+// import { Color } from 'color';
+import * as utils from 'utils/utils';
 
 interface Term {
     vid:string;
@@ -34,7 +42,10 @@ export class SelectModalViewComponent implements OnInit {
     constructor(
         private _params: ModalDialogParams, 
         private taxonomyService: TaxonomyService, 
-        private routerExtensions: RouterExtensions
+        private routerExtensions: RouterExtensions,
+        private page:Page,
+        private frame:Frame,
+        private _vcRef: ViewContainerRef
     ) {
         this.vocabolary = _params.context.vocabolary;
         this.title = _params.context.title;
@@ -42,6 +53,7 @@ export class SelectModalViewComponent implements OnInit {
         if(_params.context.isSelect) this.isSelect = _params.context.isSelect;
         console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > constructor() > params',this._params);
         console.log('°°°°°° > l☯☯☯l > SelectModalViewComponent > constructor() > isSelect',this.isSelect);
+        
     }
 
     ngOnInit() {
@@ -61,6 +73,8 @@ export class SelectModalViewComponent implements OnInit {
             }
         });        
     }
+
+    onLoadedRad(args: EventData) { }
 
     onClose() {
         let picker = this.picker.nativeElement;

@@ -77,7 +77,7 @@
 "_PROFILE_DETAILS_1o2AXX" = "DETAILS";
 "_PROFILE_PROFILE_ZNNot5" = "PROFILE";
 "_NOTIFICATIONS_NOTIFICATIONS_ZneLv7" = "NOTIFICATIONS";
-"_CASTINGS_SHOOTING_NOTE_Z1Y7q7L" = "Sarai contattato telefonicamente o tramite email dove ti verranno comunicate tutte le informazioni necessarie per lo Shooting.";
+"_CASTINGS_SHOOTING_NOTE_Z1Y7q7L" = "Ricordati di verificare il tuo calendario, sei considerato disponibile per questo progetto. Se hai altre opzioni in corso, non dimenticare di comunicarcele è molto importante per noi.";
 "_CASTINGS_SHOOTING_TEXT_Z1Y6FCL" = "Congratulazioni, hai superato casting ed ora è il momento di mettersi in gioco.";
 "_CASTINGS_SHOOTING_TITLE_ZvYTV7" = "Informazioni sullo Shooting";
 "_CASTINGS_START_DATE_2wD7WX" = "STARTING DATE";
@@ -96,10 +96,10 @@
 "_CASTINGS_CANDIDATED_Z2nX5BX" = "CANDIDATED";
 "_CASTINGS_NO_CLOSE_CASTINGS_TEXT_Z1oTCmv" = "In questa sezione troverai i casting che hai superato con le informazioni sui relativi shooting confermati.";
 "_CASTINGS_NO_CLOSE_CASTINGS_TITLE_26wiRd" = "Nessun prossimo shooting";
-"_CASTINGS_NO_AUDITION_CASTINGS_TEXT_ZRgMB0" = "In questa sezione troverai i casting ai quali sei stato selezionato e potrai partecipare. Controlla sempre i nuovi casting e trova quello giusto per te.";
-"_CASTINGS_NO_AUDITION_CASTINGS_TITLE_Z1DwsKL" = "Nessun casting a cui parteciperai";
-"_CASTINGS_NO_NEW_CASTINGS_TEXT_Z16OlfC" = "Siamo spiacenti, al momento non ci sono nuovi castings a cui candidarsi.";
-"_CASTINGS_NO_NEW_CASTINGS_TITLE_17NHIM" = "Nessun nuovo casting";
+"_CASTINGS_NO_AUDITION_CASTINGS_TEXT_ZRgMB0" = "In questa sezione troverai i casting ai quali potrai partecipare. Controlla sempre i nuovi casting e candidati a quello che fa per te. \n Come funziona? \n Dopo essere stato selezionato, vieni al casting nel luogo e negli orari che trovi nella descrizione del progetto. Se non puoi venire, chiedi di proporti di archivio o invia un selftape in tempo reale.";
+"_CASTINGS_NO_AUDITION_CASTINGS_TITLE_Z1DwsKL" = "My auditions";
+"_CASTINGS_NO_NEW_CASTINGS_TEXT_Z16OlfC" = "Al momento non ci sono nuovi casting a cui candidarsi.";
+"_CASTINGS_NO_NEW_CASTINGS_TITLE_17NHIM" = "Nuovi";
 "_CASTINGS_AUDITION_INFO_1ODeVJ" = "Information on the casting";
 "_CASTINGS_SHOOTING_INFO_Z1Y85wm" = "Information on the shooting";
 "_CASTINGS_SHOOTING_19S1UI" = "Shooting";

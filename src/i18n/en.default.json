@@ -55,10 +55,10 @@
     "SHOOTING": "Shooting",
     "SHOOTING_INFO": "Information on the shooting",
     "AUDITION_INFO": "Information on the casting",
-    "NO_NEW_CASTINGS_TITLE": "Nessun nuovo casting",
-    "NO_NEW_CASTINGS_TEXT": "Siamo spiacenti, al momento non ci sono nuovi castings a cui candidarsi.",
-    "NO_AUDITION_CASTINGS_TITLE": "Nessun casting a cui parteciperai",
-    "NO_AUDITION_CASTINGS_TEXT": "In questa sezione troverai i casting ai quali sei stato selezionato e potrai partecipare. Controlla sempre i nuovi casting e trova quello giusto per te.",
+    "NO_NEW_CASTINGS_TITLE": "Nuovi",
+    "NO_NEW_CASTINGS_TEXT": "Al momento non ci sono nuovi casting a cui candidarsi.",
+    "NO_AUDITION_CASTINGS_TITLE": "My auditions",
+    "NO_AUDITION_CASTINGS_TEXT": "In questa sezione troverai i casting ai quali potrai partecipare. Controlla sempre i nuovi casting e candidati a quello che fa per te. \n Come funziona? \n Dopo essere stato selezionato, vieni al casting nel luogo e negli orari che trovi nella descrizione del progetto. Se non puoi venire, chiedi di proporti di archivio o invia un selftape in tempo reale.",
     "NO_CLOSE_CASTINGS_TITLE": "Nessun prossimo shooting",
     "NO_CLOSE_CASTINGS_TEXT": "In questa sezione troverai i casting che hai superato con le informazioni sui relativi shooting confermati.",
     "CANDIDATED":"CANDIDATED",
@@ -77,7 +77,7 @@
     "START_DATE": "STARTING DATE",
     "SHOOTING_TITLE":"Informazioni sullo Shooting",
     "SHOOTING_TEXT":"Congratulazioni, hai superato casting ed ora è il momento di mettersi in gioco.",
-    "SHOOTING_NOTE":"Sarai contattato telefonicamente o tramite email dove ti verranno comunicate tutte le informazioni necessarie per lo Shooting."
+    "SHOOTING_NOTE":"Ricordati di verificare il tuo calendario, sei considerato disponibile per questo progetto. Se hai altre opzioni in corso, non dimenticare di comunicarcele è molto importante per noi."
   },
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "NOTIFICATIONS"

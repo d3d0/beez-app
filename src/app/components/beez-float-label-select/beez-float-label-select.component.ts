@@ -10,10 +10,10 @@ import { SelectModalViewComponent } from "../select-modal-view/select-modal-view
     moduleId: module.id,
     styleUrls: ['./beez-float-label-select.component.scss'],
     template: `
-    <GridLayout rows="10, 32" (tap)="openModal()" backgroundColor="">
-        <Label [visibility]="text?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label" [class.dark]="dark"></Label>
-        <Label [visibility]="!text?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder" class="title"  [class.dark]="dark" ios:paddingBottom="8" ></Label>
-        <Label [visibility]="text?'visible':'hidden'" id="text" row="1" class="title" [text]="text" class="title"  [class.dark]="dark" ios:paddingBottom="8" ></Label>
+    <GridLayout rows="15, 32" (tap)="openModal()" backgroundColor="">
+        <Label [visibility]="text?'visible':'hidden'" id="label" row="1" [text]="placeholder|uppercase" class="label" ios:paddingBottom="25" android:paddingBottom="15" [class.dark]="dark"></Label>
+        <Label [visibility]="!text?'visible':'hidden'" id="placeholder" row="1" [text]="placeholder" class="title"  [class.dark]="dark" ios:paddingBottom="8"  android:paddingBottom="4"></Label>
+        <Label [visibility]="text?'visible':'hidden'" id="text" row="1" class="title" [text]="text" class="title"  [class.dark]="dark" ios:paddingBottom="8" android:paddingBottom="4"></Label>
     </GridLayout>
     `
 })
