@@ -17,6 +17,18 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
     /**
+     * checkToken: https://dev.beez.io/services/beez/system/connect
+     * @param user
+     */
+    checkToken() {
+    return this.http.post(
+      BackendService.baseUrl + "beez/system/connect", {},
+      {
+        headers: this.getCommonHeader()
+      });
+    }
+
+    /**
      * 
      * login utente
      * @param user 

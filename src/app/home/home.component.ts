@@ -19,6 +19,7 @@ import { PanGestureEventData, GestureStateTypes, GestureEventData } from "ui/ges
 import { Label } from "tns-core-modules/ui/label";
 import { Color } from "color";
 import { NotificationsService} from "../notifications/notifications.service";
+import { UserService } from "../user/user.service";
 
 
 export function onLayoutChanged(args: EventData) {
@@ -63,7 +64,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private taxonomyService: TaxonomyService,
     private vcRef: ViewContainerRef,
     private modal: ModalDialogService,
-    private page: Page) {
+    private page: Page,
+    private userService: UserService,) {
     this.taxonomyService.load();
   }
 
@@ -89,15 +91,34 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   // --------------------------------------------------------------------
   // Hooks
-
+  
   ngAfterViewInit() {
     console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
     console.log('l☯☯☯l > HomeComponent > ngAfterViewInit()');
     console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
 
+    /**
+     * checkToken service request
+     */
+    this.userService.checkToken().subscribe((result) => {
+      if(result['user']['uid']>0) { // OK > User authenticated!
+        console.log('user logged in!'); 
+      }
+      else {
+        BackendService.reset(); // NO > User not authenticated!
+        this.routerExtension.navigate(["/user/login"], { clearHistory: true });
+      }
+    }, (error) => {
+      BackendService.reset();
+      this.routerExtension.navigate(["/user/login"], { clearHistory: true });
+      console.log('logoff error ',error);
+    });
+
     this.initializeTabBar();
 
-    // DOCS > inizializzo contatore
+    /**
+     * inizializzo il contatore
+     */
     this.notificationService.getCount().subscribe(data => {
       console.log('l☯☯☯l > ngAfterViewInit() > NotificationService > getCount() > data[0] ', data[0]);
       this.notificationService.counterSubject.next(data[0]);

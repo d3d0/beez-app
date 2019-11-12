@@ -41,7 +41,7 @@
 						
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L" ></BeezFloatLabelTextfield>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></BeezFloatLabelTextfield>
-						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'date_of_birth','adulto')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
 						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezFloatLabelSelect>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'mail')" keyboardType="email" [placeholder]="'USER.EMAIL'|L" ></BeezFloatLabelTextfield>
     					<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" secure="true" ></BeezFloatLabelTextfield>
@@ -54,7 +54,7 @@
 								<Span class="accent note" [text]="'SIGNUP.REGISTRATION_POLICY'|L" (tap)="openLink('https://beez.io')" ></Span>
 							</FormattedString>
 						</Label>
-						<BeezButton [text]="'SIGNUP.REGISTRATION_SUBMIT'|L" [isBusy]="isLoading" (buttonClick)="signup($event)"></BeezButton>
+						<BeezButton [text]="'SIGNUP.REGISTRATION_SUBMIT'|L" [isBusy]="isLoading" (buttonClick)="signup($event,'adulto')"></BeezButton>
 					</StackLayout>
 				</PreviousNextView>
 				</CardView>
@@ -74,7 +74,7 @@
 						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'tutor_date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH_PARENT'|L"></BeezFloatLabelSelect>
 						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'name')" (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.MINOR_NAME'|L" ></BeezFloatLabelTextfield>
 						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'surname')" (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.MINOR_SURNAME'|L"></BeezFloatLabelTextfield>
-						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.MINOR_DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'date_of_birth','minore')" type="datapicker" [placeholder]="'USER.MINOR_DATE_OF_BIRTH'|L"></BeezFloatLabelSelect>
 						<BeezFloatLabelSelect isSelect="true" [editable]="editable" (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.MINOR_GENDER'|L"></BeezFloatLabelSelect>
 						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'mail')" (textfieldEvent)="textfieldEvent($event,'mail')" keyboardType="email" [placeholder]="'USER.EMAIL_PARENT'|L" ></BeezFloatLabelTextfield>
 						<BeezFloatLabelTextfield (textfieldEvent)="textfieldEvent($event,'pass')" [placeholder]="'PASSWORD'|L" secure="true" ></BeezFloatLabelTextfield>
@@ -88,7 +88,7 @@
 								<Span class="accent note" [text]="'SIGNUP.REGISTRATION_POLICY'|L" (tap)="openLink('https://beez.io')" ></Span>
 							</FormattedString>
 						</Label>
-						<BeezButton [text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L" [isBusy]="isLoading" (buttonClick)="signup($event)"></BeezButton>
+						<BeezButton [text]="'SIGNUP.MINOR_REGISTRATION_SUBMIT'|L" [isBusy]="isLoading" (buttonClick)="signup($event,'minore')"></BeezButton>
 					</StackLayout>
 				</CardView>
 			</StackLayout>

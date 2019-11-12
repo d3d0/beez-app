@@ -78,13 +78,13 @@ export class SignupComponent implements OnInit{
     }
   }
 
-  selectEvent(value, field){
+  selectEvent(value, field, tipo=null){
     console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select value:',value);
     console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select field:',field);
+    console.log('l☯☯☯l > CastingDetailComponent > selectEvent > select tipo:',tipo);
     if (field) {
       // d3d0 fix --> se field è gender allora usiamo value.tid
       if(field === 'gender') {
-        console.log('ok');
         this.user[field]=value.tid;
         console.log('selectEvent', this.user[field]);
         console.log('selectEvent > name', value.name);
@@ -98,7 +98,7 @@ export class SignupComponent implements OnInit{
 
       // PATTERN: calcolo username minore
       // nomefiglio + cognomefiglio + annonascitafiglio @ beez.io
-      if(field == 'date_of_birth') {
+      if(field == 'date_of_birth' && tipo == 'minore') {
         let date = new Date(value);
         let year = date.getFullYear().toString().substr(-2);
         console.log('anno', year);
@@ -141,27 +141,31 @@ export class SignupComponent implements OnInit{
     }
   }
 
-  signup(){
+  signup(evento, tipo){
     if (getConnectionType() === connectionType.none) {
       alert(localize("MESSAGES.NO_CONNECTION"));
       return;
     }
 
-    // minore
-    if (!User.isValidTutorName(this.user.tutor_name)) {
-      alert(localize("MESSAGES.REQUIRED_TUTOR_NAME"));
-      return;
-    }
-    if (!User.isValidTutorSurname(this.user.tutor_surname)) {
-      alert(localize("MESSAGES.REQUIRED_TUTOR_SURNAME"));
-      return;
-    }
-    if (!User.isValidTutorDate(this.user.tutor_date_of_birth)) {
-      alert(localize("MESSAGES.REQUIRED_TUTOR_DATE"));
-      return;
+    console.log('tipo',tipo);
+
+    // validazione del minore
+    if(tipo=="minore") {
+      if (!User.isValidTutorName(this.user.tutor_name)) {
+        alert(localize("MESSAGES.REQUIRED_TUTOR_NAME"));
+        return;
+      }
+      if (!User.isValidTutorSurname(this.user.tutor_surname)) {
+        alert(localize("MESSAGES.REQUIRED_TUTOR_SURNAME"));
+        return;
+      }
+      if (!User.isValidTutorDate(this.user.tutor_date_of_birth)) {
+        alert(localize("MESSAGES.REQUIRED_TUTOR_DATE"));
+        return;
+      }
     }
 
-    // adulti
+    // validazione degli adulti
     if (!User.isValidName(this.user.name)) {
       alert(localize("MESSAGES.REQUIRED_NAME"));
       return;
@@ -214,8 +218,10 @@ export class SignupComponent implements OnInit{
         // se è un minore la mail principale è vuota
         if(this.user.tutor_name != '' && this.user.tutor_surname != '') {
           BackendService.isMinor = true;
-          console.log('l☯☯☯l > UserService > signup() > BackendService.isMinor', BackendService.isMinor);
+        } else {
+          BackendService.isMinor = false;
         }
+        console.log('l☯☯☯l > UserService > signup() > BackendService.isMinor', BackendService.isMinor);
 
         // d3d0 --> fix alert spostata in login
         // this.alertSignup(localize("MESSAGES.CONFIRM_EMAIL"));
