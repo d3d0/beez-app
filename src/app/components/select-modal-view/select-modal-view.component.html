@@ -1,7 +1,7 @@
 <GridLayout rows="*,auto" (loaded)="onLoadedRad($event)">
-    <StackLayout  background="transparent"row=0 rowSpan=2 height="100%" width="100%"></StackLayout>
-	<CardView background="transparent" row="1" elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
-		<AbsoluteLayout background="transparent">
+    <StackLayout row=0 rowSpan=2 height="100%" width="100%"></StackLayout>
+	<CardView row="1" elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
+		<AbsoluteLayout>
 			<StackLayout left="0" top="0" class="list-group-item">
 				<Label [text]="title|L" class="list-group-item-heading-18 title"  textWrap="true"></Label>
 				<ListPicker #picker [items]="termini" color="black" [selectedIndex]="index" textField="name"></ListPicker>
