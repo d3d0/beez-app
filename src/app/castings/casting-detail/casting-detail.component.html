@@ -116,8 +116,8 @@
 							<StackLayout row="1" col="2" >								
 								<BeezFloatLabelSelect *ngIf="!noAgency" isSelect="true" (selectEvent)="selectEvent($event,'AGENCY')" [editable]="true" dark="true" type="AGENCY" [placeholder]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L"></BeezFloatLabelSelect>
 								<StackLayout orientation="horizontal" verticalAlignment="center" (tap)="toggleCheckAgency()" class="p-t-8">
-									<Image *ngIf="!noAgency" [src]="getIconSource('chekbox_on')" stretch="none"></Image>
-									<Image *ngIf="noAgency" [src]="getIconSource('checkbox_off')" stretch="none"></Image>
+									<Image class="check-image" *ngIf="!noAgency" [src]="getIconSource('chekbox_on')" stretch="none"></Image>
+									<Image class="check-image" *ngIf="noAgency" [src]="getIconSource('checkbox_off')" stretch="none"></Image>
 									<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text p-l-8" textWrap="true"></Label>
 								</StackLayout> 
 							</StackLayout>
@@ -142,7 +142,7 @@
 						<!-- ////////////////////////////////////////////////////////////////////////// -->
 
 						<!-- AUDITION TAB > BUTTONS > edit partecipation -->
-						<GridLayout  *ngIf="casting.status === 'Audition' && casting.casting_denied == null" [visibility]="showEditPartecipate ? 'visible' : 'collapsed'" columns="8,32,*,16" rows="auto,auto" >
+						<GridLayout  *ngIf="casting.status === 'Audition' && casting.casting_denied == null && casting.visionato == 0" [visibility]="showEditPartecipate ? 'visible' : 'collapsed'" columns="8,32,*,16" rows="auto,auto" >
 							<Label text="" class="list-group-item-v-line" rowSpan="4"  row="0" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
 							<StackLayout row="0" col="2" >
 								<Label textWrap="true" class="list-group-item-heading-18" [text]="'CASTINGS.PARTICIPATION_EDIT_PARTICIPATION_TITLE'|L"></Label>
@@ -178,6 +178,14 @@
 									<Image [src]="getIconSource('no_nero')" class="icon" stretch="none" horizontalAlignment="right" (tap)="edit_actions=!edit_actions" ></Image>
 								</StackLayout>
 							</AbsoluteLayout>
+						</GridLayout>
+
+						<GridLayout *ngIf="casting.visionato == 1" columns="8,32,*,16" rows="auto,auto" >
+								<StackLayout class="icon-container" row="0" col="1">
+										<Image [src]="getIconSource('send')" stretch="none" width=16 height=16 ></Image>
+								</StackLayout>
+								<Label text="Complimenti!" class="header" textWrap="true" row="0" col="2" ></Label>
+								<Label textWrap="true" row="1" col="2"  class="list-group-item-text" text="hai partecipato all'audizione, attendi la conclusione delle audizioni per sapere se sarai Opzionato"></Label>
 						</GridLayout>
 
 						<!-- ////////////////////////////////////////////////////////////////////////// -->
