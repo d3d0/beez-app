@@ -100,19 +100,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
     /**
      * checkToken service request
      */
-    this.userService.checkToken().subscribe((result) => {
-      if(result['user']['uid']>0) { // OK > User authenticated!
-        console.log('user logged in!'); 
-      }
-      else {
-        BackendService.reset(); // NO > User not authenticated!
-        this.routerExtension.navigate(["/user/login"], { clearHistory: true });
-      }
-    }, (error) => {
-      BackendService.reset();
-      this.routerExtension.navigate(["/user/login"], { clearHistory: true });
-      console.log('logoff error ',error);
-    });
+    // this.userService.checkToken().subscribe((result) => {
+    //   if(result['user']['uid']>0) { // OK > User authenticated!
+    //     console.log('user logged in!'); 
+    //   }
+    //   else {
+    //     BackendService.reset(); // NO > User not authenticated!
+    //     this.routerExtension.navigate(["/user/login"], { clearHistory: true });
+    //   }
+    // }, (error) => {
+    //   BackendService.reset();
+    //   this.routerExtension.navigate(["/user/login"], { clearHistory: true });
+    //   console.log('logoff error ',error);
+    // });
 
     this.initializeTabBar();
 

@@ -43,6 +43,15 @@ export class BackendService {
     return false
   }
 
+  static get loggato() {
+    console.log('l☯☯☯l > BackendService > XCSFRtoken() > Get loggato from storage: ', getString('loggato'));
+    return getString('loggato');
+  }
+  static set loggato(parametro) {
+    setString('loggato', parametro);
+    console.log('SET loggato TO: ' + parametro);
+  }
+
   static get XCSFRtoken() {
     //console.log('l☯☯☯l > BackendService > XCSFRtoken() > Get XCSFRtoken from storage: ', getString('XCSFRtoken'));
     return getString('XCSFRtoken');
@@ -120,6 +129,7 @@ export class BackendService {
     BackendService.sessid = '';
     BackendService.XCSFRtoken = '';
     BackendService.email_notify = '';
+    BackendService.loggato = '';
     //console.log('l☯☯☯l > BackendService > reset()');
   }
 
