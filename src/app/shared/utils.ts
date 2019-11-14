@@ -10,6 +10,13 @@ export function alert(message: string) {
 	});
 }
 
+export function action(option1: string,option2: string){
+	return dialogsModule.action({
+		cancelButtonText: "Cancel",
+		actions: [option1,option2]
+	});
+}
+
 export function confirm (message: string) {
 	return dialogsModule.confirm({
 		title: "",

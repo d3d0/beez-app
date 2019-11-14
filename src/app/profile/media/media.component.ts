@@ -8,7 +8,7 @@ import { ObservableArray } from "data/observable-array";
 import { localize } from "nativescript-localize";
 import { BackendService } from "../../shared/backend.service";
 import { ProfileService } from "../profile.service"
-import { alert, confirm, getIconSource } from "../../shared/utils";
+import { alert, confirm, getIconSource, action } from "../../shared/utils";
 import { Profile } from "../../user/profile.model";
 
 
@@ -55,6 +55,16 @@ export class MediaComponent implements OnInit {
         this.profileService.getImages().subscribe((result) => {
             this.images = result;
             console.log('l☯☯☯l > MediaComponent > getImages() > this.images',this.images);
+        });
+    }
+    optionMenu(image){
+        action("Imposta come foto profilo", "Elimina foto").then(result => {
+            console.log(result);
+            if(result == "Imposta come foto profilo"){
+                this.setPolaroidImage(image);
+            }else if(result == "Elimina foto"){
+                this.deleteImage(image);
+            }
         });
     }
     deleteImage(image){
@@ -105,7 +115,7 @@ export class MediaComponent implements OnInit {
             if(!image.fid){
                 this.refreshProfile.emit()
                 this.loadImages(); 
-            }else{
+            }else{                
                 confirm("Set as cover image?").then(result => {
                     console.log('image appena inserita',image);
                     if(result){
