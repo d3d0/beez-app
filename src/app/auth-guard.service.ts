@@ -12,9 +12,9 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router,private http: HttpClient) { }
 
   canActivate(): Observable<boolean> {
+    console.log("☯☯☯ guard");
 
-    console.log("------------> guard");
-
+    // headers
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     headers = headers.set('Accept', 'application/json');
@@ -24,20 +24,21 @@ export class AuthGuard implements CanActivate {
     if(isIOS) headers = headers.set('Cookie', BackendService.session_name + "=" + BackendService.sessid); // funziona su ios!
     if(isAndroid) {
       if(BackendService.loggato == 'ok') {
-        console.log('☯☯☯ ------------> seconda login!', BackendService.loggato);
+        console.log('☯☯☯ successive login!', BackendService.loggato);
         
         headers = headers.set('Cookie', BackendService.session_name + "=" + BackendService.sessid); // funziona su android DOPO primo login!
       } 
       if(BackendService.loggato != 'ok') {
-        console.log('☯☯☯ ------------> prima login!', BackendService.loggato);
+        console.log('☯☯☯ prima login!', BackendService.loggato);
         headers = headers.set('Session', BackendService.session_name + "=" + BackendService.sessid); // funziona su android AL primo login!
       }
     }
+    
+    // console.log("☯☯☯ guard XCSFRtoken >", BackendService.XCSFRtoken);
+    // console.log("☯☯☯ guard session_name >", BackendService.session_name);
+    // console.log("☯☯☯ guard sessid >", BackendService.sessid);
 
-    // console.log("☯☯☯ ------------> guard XCSFRtoken >", BackendService.XCSFRtoken);
-    // console.log("☯☯☯ ------------> guard session_name >", BackendService.session_name);
-    // console.log("☯☯☯ ------------> guard sessid >", BackendService.sessid);
-
+    // request
     return this.http.post(BackendService.baseUrl + "beez/system/connect", {}, {headers: headers}).pipe(
       map(res => {
         if(res['user']['uid']>0) { // OK > User authenticated!
@@ -61,7 +62,6 @@ export class AuthGuard implements CanActivate {
         return of(false);
       })
     );
-    
   }
 
 }
