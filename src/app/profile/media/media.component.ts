@@ -48,7 +48,9 @@ export class MediaComponent implements OnInit {
         
     }
     ngOnInit() {}
-    ngChange() {console.log('change',this.images); }
+    ngChange() {
+        console.log('change',this.images); 
+    }
     loadImages() {
         this.profileService.getImages().subscribe((result) => {
             this.images = result;
@@ -94,6 +96,9 @@ export class MediaComponent implements OnInit {
             }
         }
 
+    }
+    onLoadedComponent(){
+        this.loadImages();
     }
     setPolaroidImage(image){
         if(!this.isLoading){
