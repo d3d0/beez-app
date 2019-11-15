@@ -72,6 +72,7 @@ export class NotificationsListComponent implements OnInit, OnDestroy {
       this._cardIsVisible = false;
 
       this._dataSubscription = this.notificationService.load().subscribe( notifications => {
+        console.log('notifications notifications notifications notifications notifications notifications notifications', notifications);
         this.notifications = notifications;
         
         this._isLoading = false;
