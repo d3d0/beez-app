@@ -441,6 +441,14 @@ WrapLayout {
       background-position: center;
       background-size: cover;
     }
+    &-menu {
+      margin: 0;
+      width: 48;
+      height: 48;
+      background-image: url("res://menu") no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
   }
 }
 // ---------------------------------

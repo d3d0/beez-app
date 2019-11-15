@@ -24,6 +24,10 @@
   "WELCOME_FOOTER":"Please complete all the information in your profile to increase the chances of being selected for castings.",
   "WELCOME_BUTTON":"OK",
   "MEDIA_BUTTON":"AGGIUNGI FOTO",
+  "DELETE":"Are you sure you want to delete?",
+  "DELETEBUTTON":"Delete",
+  "COVER":"Do you want to use this photo as profile picture?",
+  "COVERBUTTON":"Set as profile picture",
   "LOGIN":{
     "LOGIN" : "LOGIN"
   },

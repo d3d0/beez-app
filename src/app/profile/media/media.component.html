@@ -15,10 +15,10 @@
 				<AbsoluteLayout>
 					<StackLayout class="border-radius" left="0" top="0"   width="100%" android:radius="10" ios:radius="4">
 						
-						<Image [src]="image.filepath" left="0" top="0"width="100%" stretch="aspectFill" (tap)="setPolaroidImage(image)" ></Image>
+						<Image [src]="image.filepath" left="0" top="0"width="100%" stretch="aspectFill"></Image>
 					</StackLayout>
-					<StackLayout left="0" top="0" height="32" width="100%">
-						<Label class="list-group-item-icona-no-nero" [text]="index" (tap)="optionMenu(image)"horizontalAlignment="right"></Label>
+					<StackLayout left="0" top="0" height="48" width="100%">
+						<Label class="list-group-item-icona-menu" [text]="index" (tap)="optionMenu(image)"horizontalAlignment="right"></Label>
 					</StackLayout>
 				</AbsoluteLayout>
 			</CardView>
