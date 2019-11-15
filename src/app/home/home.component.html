@@ -28,7 +28,7 @@
                 [marginLeft]="item.paddingLeft" [marginRight]="item.paddingRight">
                 <AbsoluteLayout width="50" height="50" backgroundColor="" >
                         <Image left="10" top="10" [src]="item.icon" stretch="none" verticalAlignment="middle" horizontalAlignment="center"></Image>
-                        <Label left="25" top="5"  *ngIf="i == 1" [visibility]="contatore == '0' ? 'collapsed' : 'visible'" android:borderRadius="100" android:backgroundColor="#5A82FF" (loaded)="badgeLoaded($event)" [text]="contatore" class="badge"></Label>
+                        <Label left="25" top="5"  *ngIf="i == 1" [visibility]="contatore == '0' ? 'collapsed' : 'visible'" android:borderRadius="100" android:backgroundColor="#151515" (loaded)="badgeLoaded($event)" [text]="contatore" class="badge"></Label>
                 </AbsoluteLayout>
             </GridLayout>
         </GridLayout>
