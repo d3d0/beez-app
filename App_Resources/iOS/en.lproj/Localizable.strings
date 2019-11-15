@@ -126,6 +126,10 @@
 "_SIGNUP_REGISTRATION_TAB_ADULT_Z9hkrL" = "ADULT";
 "_SIGNUP_REGISTRATION_1GSckW" = "Registration";
 "_SIGNUP_SIGNUP_54hYw" = "Sign Up";
+"COVERBUTTON" = "Set profile image";
+"COVER" = "Do you want to set the profile image?";
+"DELETEBUTTON" = "Delete";
+"DELETE" = "Are you sure you want to delete?";
 "WELCOME_BUTTON" = "OK";
 "WELCOME_FOOTER" = "Please complete all the information in your profile to increase the chances of being selected for castings.";
 "WELCOME_TEXT" = "";

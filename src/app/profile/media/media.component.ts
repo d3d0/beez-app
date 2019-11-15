@@ -58,11 +58,13 @@ export class MediaComponent implements OnInit {
         });
     }
     optionMenu(image){
-        action("Imposta come foto profilo", "Elimina foto").then(result => {
+        let coverbutton = localize("COVERBUTTON");
+        let deletebutton = localize("DELETEBUTTON");
+        action(coverbutton, deletebutton).then(result => {
             console.log(result);
-            if(result == "Imposta come foto profilo"){
+            if(result == coverbutton){
                 this.setPolaroidImage(image);
-            }else if(result == "Elimina foto"){
+            }else if(result == deletebutton){
                 this.deleteImage(image);
             }
         });
@@ -74,7 +76,7 @@ export class MediaComponent implements OnInit {
                 this.loadImages(); 
             }else{
                 if(image.polaroid) {
-                    confirm("DELETE?").then(result => {
+                    confirm(localize("DELETE")).then(result => {
                         if(result){
                             this.profileService.deleteImage(image.fid).subscribe( data => {
                                 this.loadImages()
@@ -88,7 +90,7 @@ export class MediaComponent implements OnInit {
                     );
         
                 }else{           
-                    confirm("DELETE?").then(result => {
+                    confirm(localize("DELETE")).then(result => {
                         console.log('image cancella', image)
                         if(result){
                             this.profileService.deleteImage(image.fid).subscribe(data => {
@@ -116,13 +118,13 @@ export class MediaComponent implements OnInit {
                 this.refreshProfile.emit()
                 this.loadImages(); 
             }else{                
-                confirm("Set as cover image?").then(result => {
+                confirm(localize("COVER")).then(result => {
                     console.log('image appena inserita',image);
                     if(result){
                         this.profileService.setPolaroidImage(image.fid).subscribe(data => {
                             this.refreshProfile.emit()
                             //this.loadImages();
-                            alert(localize("inserita"));
+                            //alert(localize("inserita"));
                         },error => {
                             alert(localize("ERROR_SERVICE_polaroid_inserita"))
                         });

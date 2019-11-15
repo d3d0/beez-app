@@ -10,7 +10,7 @@ export function alert(message: string) {
 	});
 }
 
-export function action(option1: string,option2: string){
+export function action(option1,option2){
 	return dialogsModule.action({
 		cancelButtonText: "Cancel",
 		actions: [option1,option2]
