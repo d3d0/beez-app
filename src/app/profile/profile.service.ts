@@ -5,6 +5,8 @@ import { tap, retry } from "rxjs/operators";
 
 import { Profile } from "../user/profile.model";
 import { BackendService } from "../shared/backend.service";
+import { device } from "tns-core-modules/platform";
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +15,26 @@ import { BackendService } from "../shared/backend.service";
 export class ProfileService {
 
   constructor(private http: HttpClient) {
-    // console.log('BackendService.UID ',BackendService.UID)
+    // console.log('BackendService.UID ',BackendService.UID);
+  }
+
+  setLanguage(lang,uid) { 
+    // console.log('lang',lang);
+    // console.log('uid',uid);
+    return this.http.post(BackendService.baseUrl + 'beez/loool_talent_profile/setlanguage',
+    {
+      "uid": uid,
+      "lang": lang
+    },
+    {
+      headers: BackendService.getCommonHeaders()
+    });
   }
 
   load() {
     return this.http.get(BackendService.baseUrl + 'beez/loool_talent_profile/'+ BackendService.UID, {
       headers: BackendService.getCommonHeaders()
-    }).pipe(
-        retry(3)
-        );
+    }).pipe(retry(3));
   }
 
   edit(profile_data) {
@@ -67,7 +80,7 @@ export class ProfileService {
     },
     {
       headers: BackendService.getCommonHeaders()
-    })
+    });
   }
   setPolaroidImage(fid) {
     return this.http.post(BackendService.baseUrl + 'beez/loool_talent_images/setpolaroid',
@@ -77,6 +90,6 @@ export class ProfileService {
     },
     {
       headers: BackendService.getCommonHeaders()
-    })
+    });
   }
 }

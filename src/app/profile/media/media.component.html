@@ -29,5 +29,5 @@
 		<Image [src]="getIconSource('add')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
 	</StackLayout>
 	<!-- BUTTON -->
-	<BeezButton text="ADD NEW PHOTOS" [isBusy]="isLoading" (buttonClick)="onSelectMultipleTap()" row="2" col="2"></BeezButton>
+	<BeezButton [text]="'MEDIA_BUTTON'|L" [isBusy]="isLoading" (buttonClick)="onSelectMultipleTap()" row="2" col="2"></BeezButton>
 </GridLayout>

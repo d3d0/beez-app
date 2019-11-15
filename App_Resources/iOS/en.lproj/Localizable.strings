@@ -1,7 +1,7 @@
 "_MODAL_test_Z19nFfM" = "test";
 "_MESSAGES_ERROR_CASTING_CANDIDATE_ALREADY_Z1rRJFu" = "You are already enrolled in this Casting, you will soon receive a notification for the auditions.";
 "_MESSAGES_DECLINED_24k4nL" = "We are sorry that you cannot participate!Remember that you can change your participation before the auditions close.";
-"_MESSAGES_CANDIDATE_Z1O0CXX" = "Thank you for signing up for the casting! You will receive an acceptance notification for the auditions.";
+"_MESSAGES_CANDIDATE_Z1O0CXX" = "Thank you! Look forward to the convocation.";
 "_MESSAGES_PARTECIPATE_Z1SGLTN" = "Thank you! We are waiting for you!";
 "_MESSAGES_SHARE_WITH_A_FRIEND_ZmGTkO" = "Hi! Check this casting! @BEEZ CASTING HUB https://beez.io";
 "_MESSAGES_ERROR_SERVICE_Zkeuaq" = "Unfortunately we couldn't reach the server, please try again later.";
@@ -86,10 +86,10 @@
 "_CASTINGS_PARTICIPATION_AGENCY_SELECT_TITLE_2sW6tY" = "Select the agency";
 "_CASTINGS_PARTICIPATION_AUDITION_EDIT_2gADpe" = "Modify your partecipation";
 "_CASTINGS_PARTICIPATION_AUDITION_TITLE_ZJ9fVo" = "Confirm your partecipation";
-"_CASTINGS_PARTICIPATION_NO_AGENCY_CUh8E" = "Participate with my agency";
-"_CASTINGS_PARTICIPATION_CONFIRMED_1oufSz" = "CONFIRMED";
+"_CASTINGS_PARTICIPATION_NO_AGENCY_CUh8E" = "Confirm your agency";
+"_CASTINGS_PARTICIPATION_CONFIRMED_1oufSz" = "PARTICIPATE";
 "_CASTINGS_PARTICIPATION_CONFIRM_ZA3Qq3" = "CONFIRM";
-"_CASTINGS_PARTICIPATION_CONFIRMED_WHITH_ARCHIVE_yPUB9" = "CONFIRMED WITH ARCHIVE";
+"_CASTINGS_PARTICIPATION_CONFIRMED_WHITH_ARCHIVE_yPUB9" = "PARTICIPATE WITH ARCHIVE";
 "_CASTINGS_PARTICIPATION_WHITH_ARCHIVE_ju7qF" = "CONFIRM WITH ARCHIVE";
 "_CASTINGS_PARTICIPATION_DECLINED_Z1Hq5kX" = "DECLINED";
 "_CASTINGS_PARTICIPATION_DECLINE_6CTcH" = "I CAN NOT PARTICIPATE";
@@ -126,6 +126,7 @@
 "_SIGNUP_REGISTRATION_TAB_ADULT_Z9hkrL" = "ADULT";
 "_SIGNUP_REGISTRATION_1GSckW" = "Registration";
 "_SIGNUP_SIGNUP_54hYw" = "Sign Up";
+"MEDIA_BUTTON" = "AGGIUNGI FOTO";
 "WELCOME_BUTTON" = "OK";
 "WELCOME_FOOTER" = "Please complete all the information in your profile to increase the chances of being selected for castings.";
 "WELCOME_TEXT" = "";

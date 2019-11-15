@@ -12,5 +12,5 @@
     "DRIVER_LICENCE": 12,
     "ACTIVITIES": 4,
     "AGENCY": 5,
-    "GENDERS": [{"tid":"M", "name":"MALE","vid":"GENDERS"},{"tid":"F", "name":"FEMALE","vid":"GENDERS"}]
+    "GENDERS": [{"tid":"M", "name":"M","vid":"GENDERS"},{"tid":"F", "name":"F","vid":"GENDERS"}]
 }

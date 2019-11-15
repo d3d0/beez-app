@@ -4,12 +4,19 @@ import { Observable, of } from "rxjs";
 import { map, catchError, retry } from 'rxjs/operators';
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { BackendService } from "./shared/backend.service";
-import {isIOS, isAndroid} from "tns-core-modules/platform";
+import { ProfileService } from "./profile/profile.service";
+import { isIOS, isAndroid, device } from "tns-core-modules/platform";
 
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router,private http: HttpClient) { }
+
+  private lingua: string;
+
+  constructor(private router: Router,private http: HttpClient, private profile:ProfileService) {
+    // console.log(`device.language > ${device.language.substring(0,2).toLowerCase()}`); // For example "en" or "en-US".
+    this.lingua = device.language.substring(0,2).toLowerCase();
+  }
 
   canActivate(): Observable<boolean> {
     console.log("☯☯☯ guard");
@@ -25,7 +32,6 @@ export class AuthGuard implements CanActivate {
     if(isAndroid) {
       if(BackendService.loggato == 'ok') {
         console.log('☯☯☯ successive login!', BackendService.loggato);
-        
         headers = headers.set('Cookie', BackendService.session_name + "=" + BackendService.sessid); // funziona su android DOPO primo login!
       } 
       if(BackendService.loggato != 'ok') {
@@ -38,6 +44,8 @@ export class AuthGuard implements CanActivate {
     // console.log("☯☯☯ guard session_name >", BackendService.session_name);
     // console.log("☯☯☯ guard sessid >", BackendService.sessid);
 
+    
+
     // request
     return this.http.post(BackendService.baseUrl + "beez/system/connect", {}, {headers: headers}).pipe(
       map(res => {
@@ -45,6 +53,13 @@ export class AuthGuard implements CanActivate {
           BackendService.loggato = 'ok';
           console.log('☯☯☯ res', res);
           console.log('☯☯☯ user logged in!'); 
+          // language
+          this.profile.setLanguage(this.lingua,res['user']['uid']).subscribe((data) => {
+            console.log('************************ setLanguage data ',data);
+          },
+          (error)=> {
+            console.log('************************ setLanguage error ',error);
+          });
           return true;
         }
         else { // NO > User not authenticated!

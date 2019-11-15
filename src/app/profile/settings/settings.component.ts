@@ -44,10 +44,9 @@ export class SettingsComponent implements OnInit {
     }else{
       this.isChecked = false;
     }
-
-
     console.log('SETTINGS --->',this.userEmailNotify );
   }
+
   logout() {
     this.userService.logoff().subscribe((result) => {
       BackendService.reset();
@@ -58,6 +57,7 @@ export class SettingsComponent implements OnInit {
       console.log('logoff error ',error);
     });
   }
+  
   onCheckedChange(checked) {
     
     this.isChecked = checked;
