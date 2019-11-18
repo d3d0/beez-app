@@ -14,6 +14,7 @@ export class AuthGuard implements CanActivate {
   private lingua: string;
 
   constructor(private router: Router,private http: HttpClient, private profile:ProfileService) {
+    // https://stackoverflow.com/questions/48752830/platform-device-language-is-returning-the-wrong-language-when-i-change-my-phone
     // console.log(`device.language > ${device.language.substring(0,2).toLowerCase()}`); // For example "en" or "en-US".
     this.lingua = device.language.substring(0,2).toLowerCase();
   }
