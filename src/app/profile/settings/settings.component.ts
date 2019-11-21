@@ -30,8 +30,8 @@ import * as utils from "tns-core-modules/utils/utils";
 
 export class SettingsComponent implements OnInit {
 
-  @ViewChild("container", {static: false}) container: ElementRef<GridLayout>;
-  @ViewChild("vline", {static: false}) vline: ElementRef<StackLayout>;
+  @ViewChild("container", {static: false}) container: ElementRef;
+  @ViewChild("vline", {static: false}) vline: ElementRef;
 
   getIconSource = getIconSource
   userName:string;

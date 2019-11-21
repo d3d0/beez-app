@@ -5,13 +5,15 @@ import { ActivatedRoute } from "@angular/router";
 import * as SocialShare from "nativescript-social-share";
 import { EventData } from "tns-core-modules/data/observable";
 import { Subscription } from "rxjs";
-
-
 import { CastingsService} from "../castings.service";
 import { Casting } from "../casting.model";
-
 import { BackendService } from "../../shared/backend.service";
 import { alert, getIconSource } from "../../shared/utils";
+
+import {NavigatedData, Page} from "tns-core-modules/ui/page";
+import { isIOS, isAndroid } from "tns-core-modules/platform";
+
+import { StackLayout } from 'tns-core-modules/ui/layouts/stack-layout/stack-layout';
 
 class Agency  {
   vid=""
@@ -54,12 +56,24 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
   public showTitleArchive = false;
   public showTitleCandidate = false;
 
+  @ViewChild("containerOpen", {static: false}) containerOpen: ElementRef<StackLayout>;
+  @ViewChild("containerClose", {static: false}) containerClose: ElementRef<StackLayout>;
+  @ViewChild("vline", {static: false}) vline: ElementRef;
+  @ViewChild("vlineNew", {static: false}) vlineNew: ElementRef;
+  @ViewChild("vlineAudition", {static: false}) vlineAudition: ElementRef;
+
+  private page: Page;
+
   constructor(
     private activeRoute: ActivatedRoute,
     private castingsService: CastingsService,
     private vcRef: ViewContainerRef,
-    private routerExtension: RouterExtensions) {
+    private routerExtension: RouterExtensions,
+    page: Page) {
       this.user_id = BackendService.UID;
+      this.page = page;
+      this.page.on("navigatingTo", this.onNavigatingTo.bind(this));
+      this.page.on("navigatedTo", this.onNavigatedTo.bind(this));
   }
 
   ngOnInit(): void {
@@ -72,8 +86,6 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
       this.casting_id = params.id
       this.load();
     });
-
-
   }
 
   ngOnDestroy() {
@@ -86,14 +98,55 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
     }
   }
 
+  protected onNavigatingTo(arg?: NavigatedData): void {
+      console.log("l☯☯☯l > onNavigatingTo");
+  }
+
+  protected onNavigatedTo(arg?: NavigatedData): void {
+      console.log("l☯☯☯l > onNavigatedTo", arg.object);
+
+      // page
+      let height = this.page.getActualSize().height;
+      console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Page Height:', height);
+
+      // stack
+      /*
+      if(this.casting['status'] == 'New') {
+        let stack = this.containerOpen.nativeElement;
+        console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Stack Height:', stack.getActualSize().height);
+        let vline= this.vline.nativeElement;
+        let vlineNew = this.vlineNew.nativeElement;
+        console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Label Height:', vline.getActualSize().height);
+        console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Label Height:', vlineNew.getActualSize().height);
+        if (isAndroid) {
+          vline.height = -5; // (24x3)
+          vlineNew.height = -5; // (24x3)
+          console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Android Label Height:', vline.height);
+          console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Android Label Height:', vlineNew.height);
+        }
+      } else if(this.casting['status'] == 'Audition'){
+        let stack = this.containerOpen.nativeElement;
+        console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Stack Height:', stack.getActualSize().height);
+        let vline= this.vline.nativeElement;
+        let vlineAud = this.vlineAudition.nativeElement;
+        console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Label Height:', vline.getActualSize().height);
+        console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Label Height:', vlineAud.getActualSize().height);
+        if (isAndroid) {
+          vline.height = -10; // (24x3)
+          vlineAud.height = -10; // (24x3)
+          console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Android Label Height:', vline.height);
+          console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Android Label Height:', vlineAud.height);
+        }
+      }
+      */
+  }
+
   /**
    * load()
    * carica i casting all'ngOnInit()
    */
   load() {
     if (!this._dataSubscription) {
-
-
 
         this.castingsService.getCastingById(this.casting_id).subscribe((casting) => {
           this.casting=casting;

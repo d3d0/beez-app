@@ -31,27 +31,31 @@
 			<CardView class="card-group" elevation="30" android:radius="10" ios:radius="4" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10">
 
 				<StackLayout class="list-group-item p-t-0 p-b-12">
-					<StackLayout *ngIf="casting.status != 'Close'" >
-						<!-- Label of status on top only from auditionTab -->
-						
+
+					<StackLayout #containerOpen *ngIf="casting.status != 'Close'" >
+
+						<!-- Label of status on top -->
 						<Label *ngIf="casting.status == 'Audition'" [visibility]="showTitleConfirmed ? 'visible' : 'collapsed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED'|L" class="banner-top-card confirmed"></Label>
 						<Label *ngIf="casting.status == 'Audition'" [visibility]="showTitleDeclined ? 'visible' : 'collapsed'" [text]="'CASTINGS.PARTICIPATION_DECLINED'|L" class="banner-top-card declined"></Label>
 						<Label *ngIf="casting.status == 'Audition'" [visibility]="showTitleArchive ? 'visible' : 'collapsed'" [text]="'CASTINGS.PARTICIPATION_CONFIRMED_WHITH_ARCHIVE'|L" class="banner-top-card confirmed-archive"></Label>
 						<Label *ngIf="casting.status == 'New'" [visibility]="showTitleCandidate ? 'visible' : 'collapsed'" [text]="'CASTINGS.CANDIDATED'|L" class="banner-top-card confirmed"></Label> 
 
-						<GridLayout *ngIf="casting.casting_denied == null" columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
-							
-							<!-- LATERAL LINE -->
-							<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center"></Label>
+						<!-- ////////////////////////////////////////////////////////////////////////// -->
 
-							<!-- INFORMATION -->
+						<!-- INFO CASTING -->
+						<GridLayout #containerInfo *ngIf="casting.casting_denied == null" columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto,auto">
+							
+							<!-- lateral line -->
+							<Label #vline marginTop="0" text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center"></Label>
+
+							<!-- info -->
 							<StackLayout class="icon-container" row="0" col="1" >
 								<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
 							</StackLayout>
 							<Label class="header" [text]="'CASTINGS.INFORMATION'|L" textWrap="true" row="0" col="2" ></Label>
 							<Label class="list-group-item-text" [text]="casting.info" textWrap="true" row="1" col="2"></Label>
 							
-							<!-- FEATURES -->
+							<!-- features -->
 							<StackLayout class="icon-container" row="2" col="1">
 								<Image [src]="getIconSource('characteristics')" stretch="none" width=16 height=16></Image>
 							</StackLayout>
@@ -64,7 +68,7 @@
 								</FormattedString>
 							</Label>
 							
-							<!-- DATE_LOCATION -->
+							<!-- date & location -->
 							<StackLayout class="icon-container" row="4" col="1">
 								<Image [src]="getIconSource('calendar')" stretch="none" width=16 height=16></Image>
 							</StackLayout>
@@ -88,10 +92,10 @@
 
 						<!-- ////////////////////////////////////////////////////////////////////////// -->
 
-						<!-- NEW CASTING > partecipate to a new casting -->
-						<GridLayout  *ngIf="casting.status === 'New'" columns="8,32,*,16" rows="auto,auto">
+						<!-- BUTTONS > NEW CASTING > partecipate to a new casting -->
+						<GridLayout *ngIf="casting.status === 'New'" columns="8,32,*,16" rows="auto,auto">
 							<!-- lateral line -->
-							<Label text="" class="list-group-item-v-line" rowSpan="2" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
+							<Label #vlineNew text="" class="list-group-item-v-line" rowSpan="2" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
 							
 							<StackLayout [visibility]="showButton ? 'visible' : 'collapsed'" class="icon-container" row="0" col="1">
 								<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16></Image>
@@ -105,14 +109,13 @@
 
 						<!-- ////////////////////////////////////////////////////////////////////////// -->
 
-						<!-- AUDITION TAB > BUTTONS > confirm partecipation for audition -->
-						<GridLayout  *ngIf="casting.status === 'Audition'  && casting.casting_denied == null" [visibility]="showEditPartecipate ? 'collapsed' : 'visible'" columns="8,32,*,16" rows="auto,auto,auto,auto,auto,auto,auto" >
+						<!-- BUTTONS > AUDITION TAB > confirm partecipation for audition -->
+						<GridLayout *ngIf="casting.status === 'Audition'  && casting.casting_denied == null" [visibility]="showEditPartecipate ? 'collapsed' : 'visible'" columns="8,32,*,16" rows="auto,auto,auto,auto,auto,auto,auto" >
 							<!-- lateral line -->
-							<Label row="0" col="1" class="list-group-item-v-line" rowSpan="7" marginBottom="32" horizontalAlignment="center" ></Label>
+							<Label #vlineAudition text="" rowSpan="7" row="0" col="1" class="list-group-item-v-line" marginBottom="32" horizontalAlignment="center" ></Label>
+							
 							<Label row="0" col="2" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE'|L" class="list-group-item-heading-18" textWrap="true"></Label>
 							
-
-
 							<StackLayout row="1" col="2" >								
 								<BeezFloatLabelSelect *ngIf="!noAgency" isSelect="true" (selectEvent)="selectEvent($event,'AGENCY')" [editable]="true" dark="true" type="AGENCY" [placeholder]="'CASTINGS.PARTICIPATION_AGENCY_SELECT_TITLE'|L"></BeezFloatLabelSelect>
 								<StackLayout orientation="horizontal" verticalAlignment="center" (tap)="toggleCheckAgency()" class="p-t-8">
@@ -121,14 +124,12 @@
 									<Label [text]="'CASTINGS.PARTICIPATION_NO_AGENCY'|L" class="list-group-item-text p-l-8" textWrap="true"></Label>
 								</StackLayout> 
 							</StackLayout>
-
 							
-
 							<BeezButton row="4" col="2" [text]="'CASTINGS.PARTICIPATION_CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="partecipate('Confirmed')"></BeezButton>
 							<StackLayout row="4" col="1" class="icon-container">
 								<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16 ></Image>
 							</StackLayout>
-							<!-- d3d0 fix: no casting arichivio -->
+							<!-- d3d0 fix: no casting archivio -->
 							<!-- <BeezButton row="5" col="2" [text]="'CASTINGS.PARTICIPATION_WHITH_ARCHIVE'|L" [isBusy]="isLoading" buttonColor="blue" (buttonClick)="partecipate('Confirmed by archive')"></BeezButton>
 							<StackLayout row="5" col="1" class="icon-container">
 								<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16 ></Image>
@@ -141,9 +142,11 @@
 
 						<!-- ////////////////////////////////////////////////////////////////////////// -->
 
-						<!-- AUDITION TAB > BUTTONS > edit partecipation -->
-						<GridLayout  *ngIf="casting.status === 'Audition' && casting.casting_denied == null && casting.visionato == 0" [visibility]="showEditPartecipate ? 'visible' : 'collapsed'" columns="8,32,*,16" rows="auto,auto" >
-							<Label text="" class="list-group-item-v-line" rowSpan="4"  row="0" col="1" marginBottom="32" horizontalAlignment="center" ></Label>
+						<!-- BUTTONS > AUDITION TAB > edit partecipation -->
+						<GridLayout *ngIf="casting.status === 'Audition' && casting.casting_denied == null && casting.visionato == 0" [visibility]="showEditPartecipate ? 'visible' : 'collapsed'" columns="8,32,*,16" rows="auto,auto" >
+							<!-- lateral line -->
+							<Label #vlineAudition text="" rowSpan="4" row="0" col="1" class="list-group-item-v-line" marginBottom="32" horizontalAlignment="center" ></Label>
+							
 							<StackLayout row="0" col="2" >
 								<Label textWrap="true" class="list-group-item-heading-18" [text]="'CASTINGS.PARTICIPATION_EDIT_PARTICIPATION_TITLE'|L"></Label>
 								<Label textWrap="true" class="list-group-item-text" [text]="'CASTINGS.PARTICIPATION_EDIT_PARTICIPATION_TEXT'|L"></Label>
@@ -155,7 +158,6 @@
 							<BeezButton row="1" col="2" [visibility]="edit_actions ? 'collapsed' : 'visible'"  buttonColor="blue" [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L|uppercase" [isBusy]="isLoading" (buttonClick)="edit_actions=!edit_actions"></BeezButton>
 
 							<AbsoluteLayout row="1" col="0" colSpan="4" [visibility]="edit_actions != '' ? 'visible' : 'collapsed'" class="accordion" >
-
 
 								<StackLayout top=0 class="content">
 									<Label [text]="'CASTINGS.PARTICIPATION_AUDITION_EDIT'|L" class="list-group-item-heading-18 p-b-16" textWrap="true"></Label>
@@ -173,7 +175,6 @@
 									<BeezButton  [text]="'CASTINGS.PARTICIPATION_DECLINE'|L" [isBusy]="isLoadingSecond" buttonColor="black" (buttonClick)="partecipate('Declined')"></BeezButton>
 								</StackLayout>
 
-
 								<StackLayout top="0" width="100%">
 									<Image [src]="getIconSource('no_nero')" class="icon" stretch="none" horizontalAlignment="right" (tap)="edit_actions=!edit_actions" ></Image>
 								</StackLayout>
@@ -190,12 +191,12 @@
 
 						<!-- ////////////////////////////////////////////////////////////////////////// -->
 
-						<!-- AUDITION TAB > NON SELEZIONATO / NON OPZIONATO -->
-						<GridLayout  *ngIf="casting.status === 'Audition' && casting.casting_denied != null" class="p-t-16" columns="8,32,*,16" rows="auto,auto" >
-							<!-- LINE -->
-							<Label text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center"></Label>
+						<!-- BUTTONS > AUDITION TAB > NON SELEZIONATO / NON OPZIONATO -->
+						<GridLayout *ngIf="casting.status === 'Audition' && casting.casting_denied != null" class="p-t-16" columns="8,32,*,16" rows="auto,auto" >
+							<!-- lateral line -->
+							<Label #vlineAudition text="" class="list-group-item-v-line" rowSpan="12" col="1" horizontalAlignment="center"></Label>
 
-							<!-- INFORMATION -->
+							<!-- info -->
 							<StackLayout class="icon-container" row="0" col="1" >
 								<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
 							</StackLayout>
@@ -206,8 +207,9 @@
 					</StackLayout>
 
 					<!-- OPTION TAB -->
-					<StackLayout *ngIf="casting.status === 'Close'" class="shooting">
-						<Label [text]="'CASTINGS.SHOOTING_TITLE'|L" class="header" textWrap="true"></Label>
+					<StackLayout #containerClose *ngIf="casting.status === 'Close'" class="shooting">
+						<!-- lateral line -->
+						<Label #vlineClose [text]="'CASTINGS.SHOOTING_TITLE'|L" class="header" textWrap="true"></Label>
 						<!-- OPTION TAB > SELEZIONATO / OPZIONATO -->
 						<ng-temnplate *ngIf="casting.casting_denied == null">
 							<Label [text]="'CASTINGS.SHOOTING_TEXT'|L" class="text " textWrap="true"></Label>
@@ -223,6 +225,7 @@
 							<Label [text]="casting.casting_denied" class="text " textWrap="true"></Label>
 						</ng-temnplate>
 					</StackLayout>
+
 				</StackLayout>
 			</CardView>
 		</StackLayout>
