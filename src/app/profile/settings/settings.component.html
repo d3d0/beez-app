@@ -1,78 +1,86 @@
 <ActionBar class="action-bar">
-	<!-- android icon > android.systemIcon="ic_menu_back" -->
-	<NavigationButton text="" (tap)="goBack()" icon="res://arrow_left" class="action-back" ></NavigationButton>
-	<!-- <Label class="action-label text-left pull-left" [text]="casting.title"></Label> -->
+		<!-- android icon > android.systemIcon="ic_menu_back" -->
+		<NavigationButton text="" (tap)="goBack()" icon="res://arrow_left" class="action-back" ></NavigationButton>
+		<!-- <Label class="action-label text-left pull-left" [text]="casting.title"></Label> -->
+	
+		<!-- TITOLO > ANDROID -->
+		<StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="left" android:horizontalAlignment="left">
+			<Label class="action-label text-left pull-left" [text]="'PROFILE.SETTINGS'|L"></Label>
+		</StackLayout>
+	
+		<!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
+		<ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left" backgroundColor="red">
+			<Label class="action-label text-left pull-left" [text]="'PROFILE.SETTINGS'|L"></Label>
+		</ActionItem>
+	
+	</ActionBar>
+	<ScrollView class="settings">
+	
+		<StackLayout>
+	
+			<!-- <CardView class="card-group" elevation="0" radius="0" ios:shadowRadius="15"> -->
+				<StackLayout class="list-group-item p-t-8">
+	
+					<GridLayout #container (loaded)="onLoadedGrid($event)" columns="8,32,*,16" class="p-t-16" rows="32,72,32,44,32,auto,auto" backgroundColor="">
+						
+						<!-- old version -->
+						<!-- 
+						<GridLayout columns="45, *, auto" rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" backgroundColor="red">
+							<Label text="" class="list-group-item-icona-plane list-group-item-icona-plane-first" row="0" col="0"></Label>
+							<Label text="Invita" class="text-uppercase list-group-item-heading-10 list-group-item-heading-10-first " textWrap="true" row="0" col="1" ></Label>
+							<Label text="" class="list-group-item-v-line2" row="1" col="0"></Label>
+							<Label class="list-group-item-text" text="Invita i tuoi contatti" textWrap="true" row="1" col="1"></Label>
+							<Label text="" class="list-group-item-v-line2" row="2" col="0"></Label>
+							<Label class="list-group-item-text" text="Invita i tuoi amici" textWrap="true" row="2" col="1"></Label>
+						</GridLayout> 
+						-->
 
-	<!-- TITOLO > ANDROID -->
-	<StackLayout ios:visibility="collapsed" orientation="horizontal" ios:horizontalAlignment="left" android:horizontalAlignment="left">
-		<Label class="action-label text-left pull-left" [text]="'PROFILE.SETTINGS'|L"></Label>
-	</StackLayout>
+						<!-- lateral line -->
+						<Label #vline marginTop="0" marginBottom="32" class="list-group-item-v-line" row="0" rowSpan="7" col="1" horizontalAlignment="center"></Label>
+						<!-- lateral line -->
 
-	<!-- TITOLO > IOS (hack per allineare a sinistra il titolo) -->
-	<ActionItem android:visibility="collapsed" text="" ios.position="left" android.position="left" backgroundColor="red">
-		<Label class="action-label text-left pull-left" [text]="'PROFILE.SETTINGS'|L"></Label>
-	</ActionItem>
-
-</ActionBar>
-<ScrollView class="settings">
-
-	<StackLayout>
-
-		<!-- <CardView class="card-group" elevation="0" radius="0" ios:shadowRadius="15"> -->
-			<StackLayout class="list-group-item p-t-8">
-
-				<GridLayout columns="8,32,*,16" class="p-t-16" rows="auto,auto,auto,auto,auto,auto,auto">
-					<!-- lateral line -->
-					<Label  marginBottom="32" class="list-group-item-v-line" rowSpan="7" col="1" horizontalAlignment="center"></Label>
-
-					<StackLayout class="icon-container" row="0" col="1" >
-						<Image [src]="getIconSource('account')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
-					</StackLayout>
-					<Label [text]="'Account'" class="header" textWrap="true" row="0" col="2" ></Label>
-					<StackLayout  row="1" col="2">
-						<!-- <GridLayout columns="*,auto" rows="auto">
-							<Label class="list-group-item-text" text="Lingua" textWrap="true" row="0" col="0"></Label>
-							<Label class="list-group-item-text" text=" ... " textWrap="true" row="0" col="1" horizontalAlignment="right"></Label>
-						</GridLayout> -->
-						<GridLayout columns="*,auto" rows="auto">
-							<Label class="list-group-item-text" text="Username" textWrap="true" row="0" col="0"></Label>
-							<Label class="list-group-item-text" color="black" [text]="userName " textWrap="true" row="0" col="1" horizontalAlignment="right"></Label>
+						<StackLayout class="icon-container" row="0" col="1" >
+							<Image [src]="getIconSource('account')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
+						</StackLayout>
+						<Label [text]="'Account'" class="header" textWrap="true" row="0" col="2" verticalAlignment="center" backgroundColor=""></Label>
+						<StackLayout  row="1" col="2" backgroundColor="" class="m-b-8">
+							<GridLayout columns="*,auto" rows="auto" >
+								<Label class="list-group-item-text" text="Username" textWrap="true" row="0" col="0" verticalAlignment="center" backgroundColor=""></Label>
+								<Label class="list-group-item-text" color="black" [text]="userName " textWrap="true" row="0" col="1" horizontalAlignment="right" verticalAlignment="center" backgroundColor=""></Label>
+							</GridLayout>
+							<GridLayout columns="*,auto" rows="auto" [nsRouterLink]="['../password']">
+								<Label class="list-group-item-text" text="Password" textWrap="true" row="0" col="0" verticalAlignment="center" backgroundColor=""></Label>
+								<Label class="list-group-item-text" color="#5A82FF" text="Modifica Password" textWrap="true" row="0" col="1" horizontalAlignment="right" verticalAlignment="center" backgroundColor=""></Label>
+							</GridLayout>
+						</StackLayout>
+	
+						<StackLayout class="icon-container" row="2" col="1" >
+							<Image [src]="getIconSource('message')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
+						</StackLayout>
+						<Label [text]="'Notifiche'" class="header" textWrap="true" row="2" col="2" verticalAlignment="center" verticalAlignment="center" backgroundColor=""></Label>
+						<GridLayout  row="3" col="2" columns="*,auto" rows="auto,auto" backgroundColor="" class="m-b-8">
+							<Label class="list-group-item-text" text="Ricevi notifiche e-mail" textWrap="true" row="0" col="0" verticalAlignment="center"></Label>
+							<Switch #sw class="list-group-item-switch" (checkedChange)="onCheckedChange(sw.checked)"  [checked]="isChecked" row="0" col="1" horizontalAlignment="right" verticalAlignment="center"></Switch>
 						</GridLayout>
-						<GridLayout columns="*,auto" rows="auto" [nsRouterLink]="['../password']">
-							<Label class="list-group-item-text" text="Password" textWrap="true" row="0" col="0"></Label>
-							<Label class="list-group-item-text" color="#5A82FF" text="Modifica Password" textWrap="true" row="0" col="1" horizontalAlignment="right"></Label>
-						</GridLayout>
-						<!-- <Label class="list-group-item-text" text="Elimina account" textWrap="true" row="11" col="1"></Label> -->
-					</StackLayout>
-
-					<StackLayout class="icon-container" row="2" col="1" >
-						<Image [src]="getIconSource('message')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
-					</StackLayout>
-					<Label [text]="'Notifiche'" class="header" textWrap="true" row="2" col="2" ></Label>
-					<GridLayout  row="3" col="2" columns="*,auto" rows="auto,auto">
-						<Label class="list-group-item-text" text="Ricevi notifiche e-mail" textWrap="true" row="0" col="0"></Label>
-						<Switch #sw class="list-group-item-switch" (checkedChange)="onCheckedChange(sw.checked)"  [checked]="isChecked" row="0" col="1" horizontalAlignment="right"></Switch>
-						<!-- <Label class="list-group-item-text" text="Ricevi notifiche di sistema" textWrap="true" row="1" col="0"></Label>
-						<Switch class="list-group-item-switch" checked="false" row="1" col="1" horizontalAlignment="right"></Switch> -->
+	
+						<StackLayout class="icon-container" row="4" col="1" >
+							<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
+						</StackLayout>
+						<Label [text]="'Informazioni'" class="header" textWrap="true" row="4" col="2" verticalAlignment="center" backgroundColor=""></Label>
+						<StackLayout  row="5" col="2" backgroundColor="">
+							<Label class="list-group-item-text" text="Sito web sviluppatore" textWrap="true" row="16" col="1" (tap)="openUrl('https://loool.com')" verticalAlignment="center"></Label>
+							<Label class="list-group-item-text" text="Termini di utilizzo" textWrap="true" row="17" col="1" (tap)="openUrl('https://loool.com')" verticalAlignment="center"></Label>
+							<Label class="list-group-item-text list-group-item-text-last" text="Privacy policy" textWrap="true" row="18" col="1" (tap)="openUrl('https://loool.com')" verticalAlignment="center"></Label>
+						</StackLayout>
+	
+						<StackLayout class="icon-container" row="6" col="1" >
+							<Image [src]="getIconSource('confirm')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
+						</StackLayout>
+						<BeezButton  [text]="'log out'" [isBusy]="isLoading" buttonColor="black" (buttonClick)="logout()" row="6" col="2"></BeezButton>
+	
 					</GridLayout>
-
-					<StackLayout class="icon-container" row="4" col="1" >
-						<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
-					</StackLayout>
-					<Label [text]="'Informazioni'" class="header" textWrap="true" row="4" col="2" ></Label>
-					<StackLayout  row="5" col="2">
-						<Label class="list-group-item-text" text="Sito web sviluppatore" textWrap="true" row="16" col="1" (tap)="openUrl('https://loool.com')"></Label>
-						<Label class="list-group-item-text" text="Termini di utilizzo" textWrap="true" row="17" col="1" (tap)="openUrl('https://loool.com')"></Label>
-						<Label class="list-group-item-text list-group-item-text-last" text="Privacy policy" textWrap="true" row="18" col="1" (tap)="openUrl('https://loool.com')"></Label>
-					</StackLayout>
-
-					<StackLayout class="icon-container" row="6" col="1" >
-						<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
-					</StackLayout>
-					<BeezButton  [text]="'log out'" [isBusy]="isLoading" buttonColor="black" (buttonClick)="logout()" row="6" col="2"></BeezButton>
-
-				</GridLayout>
-			</StackLayout>
-		<!-- </CardView> -->
-	</StackLayout>
-</ScrollView>
+				</StackLayout>
+			<!-- </CardView> -->
+		</StackLayout>
+	</ScrollView>
+	

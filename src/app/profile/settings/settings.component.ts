@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from "@angular/router";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ActivatedRoute } from "@angular/router";
@@ -8,8 +8,18 @@ import { BackendService } from "../../shared/backend.service";
 import { alert, getIconSource } from "../../shared/utils";
 import { AnyTxtRecord } from 'dns';
 import { PasswordService } from '../password/password.service';
-import * as utils from "tns-core-modules/utils/utils";
+import { EventData } from "tns-core-modules/data/observable";
+import { GridLayout } from 'tns-core-modules/ui/layouts/grid-layout/grid-layout';
+import { StackLayout } from 'tns-core-modules/ui/layouts/stack-layout/stack-layout';
+import { ScrollView, ScrollEventData } from "tns-core-modules/ui/scroll-view";
+import {NavigatedData, Page} from "tns-core-modules/ui/page";
+import { isIOS, isAndroid } from "tns-core-modules/platform";
 
+import {
+  ApplicationEventData, exitEvent, launchEvent, on, resumeEvent,
+  suspendEvent
+} from "tns-core-modules/application";
+import * as utils from "tns-core-modules/utils/utils";
 
 @Component({
   selector: 'ns-settings',
@@ -19,20 +29,29 @@ import * as utils from "tns-core-modules/utils/utils";
 })
 
 export class SettingsComponent implements OnInit {
+
+  @ViewChild("container", {static: false}) container: ElementRef<GridLayout>;
+  @ViewChild("vline", {static: false}) vline: ElementRef<StackLayout>;
+
   getIconSource = getIconSource
   userName:string;
   userEmailNotify:any;
   isChecked:boolean;
   formValue:any;
 
+  private page: Page;
+
   constructor(
     private activeRoute: ActivatedRoute,
     private routerExtension: RouterExtensions,
     private userService: UserService,
     private router: Router,
-    private passwordService:PasswordService
+    private passwordService:PasswordService,
+    page: Page
     ) {
-      
+      this.page = page;
+      this.page.on("navigatingTo", this.onNavigatingTo.bind(this));
+      this.page.on("navigatedTo", this.onNavigatedTo.bind(this));
     }
 
   ngOnInit() {
@@ -45,6 +64,42 @@ export class SettingsComponent implements OnInit {
       this.isChecked = false;
     }
     console.log('SETTINGS --->',this.userEmailNotify );
+  }
+
+  protected onNavigatingTo(arg?: NavigatedData): void {
+      console.log("l☯☯☯l > onNavigatingTo");
+  }
+
+  protected onNavigatedTo(arg?: NavigatedData): void {
+      console.log("l☯☯☯l > onNavigatedTo", arg.object);
+      // page
+      let height = this.page.getActualSize().height;
+      console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Page Height:', height);
+      // grid
+      let griglia = this.container.nativeElement;
+      console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Grid Height:', griglia.getActualSize().height);
+      // console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Grid Height:', griglia.getMeasuredHeight());
+      let vline = this.vline.nativeElement;
+      console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Label Height:', vline.getActualSize().height);
+      // console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Label Height:', vline.getMeasuredHeight());
+      if (isAndroid) {
+        vline.height = griglia.getActualSize().height - 96; // (24x3)
+        console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Android Label Height:', vline.height);
+      }
+      
+  }
+
+  onLoadedGrid(args: EventData) {
+    console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Scroll!');
+    let grid = args.object as ScrollView;
+    let height = grid.getMeasuredHeight();
+    console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Scroll!',height);
+  }
+  onLoadedScroll(args: EventData) {
+    console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Grid!');
+    let grid = args.object as GridLayout;
+    let height = grid.getMeasuredHeight();
+    console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Grid!',height);
   }
 
   logout() {
