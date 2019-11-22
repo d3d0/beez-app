@@ -54,6 +54,10 @@
 		color: $grigioscuro;
 		margin: 0 0 16 0;
 	  }
+	  &-location {
+		text-transform: capitalize;
+		color: #5A82FF;
+	  }
 	  &-v-line {
 		height:-1; // ATTENZIONE > FIX BORDINI ANDROID!
 		width:1;

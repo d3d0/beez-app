@@ -74,9 +74,18 @@
 							</StackLayout>
 							<Label [text]="'CASTINGS.DATE_LOCATION'|L" class="header" textWrap="true" row="4" col="2" ></Label>
 							<StackLayout row="5" col="2">
-								<Label [text]="'CASTINGS.CASTING'|L" class="header-small p-b-8" textWrap="true"></Label>
-								<Label color="#5A82FF" class="list-group-item-text" [text]="casting.location" textWrap="true"></Label>
-									<FlexboxLayout class="flex-wrap" flexWrap="wrap" alignContent="flex-start" *ngFor="let date of casting.casting_date">
+								<Label [text]="'CASTINGS.CASTING'|L|uppercase" class="header-small p-b-8" textWrap="true"></Label>
+								<Label class="list-group-item-text list-group-item-location" [text]="casting.location|titlecase" textWrap="true"></Label>
+									<FlexboxLayout [visibility]="castingStatusNew ? 'visible' : 'collapsed'" class="flex-wrap" flexWrap="wrap" alignContent="flex-start" *ngFor="let date of casting.casting_date">
+										<Label color="#1E1E1E" class="span"  [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Label>
+										<!-- 
+										<Label class="span"  text=" • " ></Label>
+										<Label class="span"	 [text]="date[0] * 1000 | date:'HH:mm'" ></Label>
+										<Label class="span" text=" - " ></Label>
+										<Label class="span" [text]="date[1] * 1000 | date:'HH:mm'" ></Label> 
+										-->
+									</FlexboxLayout>
+									<FlexboxLayout [visibility]="castingStatusAud ? 'visible' : 'collapsed'" class="flex-wrap" flexWrap="wrap" alignContent="flex-start" *ngFor="let date of casting.casting_date">
 										<Label color="#1E1E1E" class="span"  [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Label>
 										<Label class="span"  text=" • " ></Label>
 										<Label class="span"	 [text]="date[0] * 1000 | date:'HH:mm'" ></Label>
@@ -84,7 +93,7 @@
 										<Label class="span" [text]="date[1] * 1000 | date:'HH:mm'" ></Label>
 									</FlexboxLayout>
 								<Label [text]="'CASTINGS.SHOOTING'|L|uppercase" class="header-small p-b-8" textWrap="true"></Label>
-								<Label color="#5A82FF" class="list-group-item-text" [text]="casting.shooting|titlecase" textWrap="true" ></Label>
+								<Label class="list-group-item-text list-group-item-location" [text]="casting.shooting|titlecase" textWrap="true" ></Label>
 								<Label class="list-group-item-text italic" [text]="'CASTINGS.SHOOTING_NOTE'|L" textWrap="true"></Label>
 							</StackLayout>
 

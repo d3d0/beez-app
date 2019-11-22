@@ -56,6 +56,10 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
   public showTitleArchive = false;
   public showTitleCandidate = false;
 
+  public castingStatusNew = false;
+  public castingStatusAudition = false;
+
+
   @ViewChild("containerOpen", {static: false}) containerOpen: ElementRef<StackLayout>;
   @ViewChild("containerClose", {static: false}) containerClose: ElementRef<StackLayout>;
   @ViewChild("vline", {static: false}) vline: ElementRef;
@@ -153,6 +157,10 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
           this.casting['audition_action'] = casting.audition_action;
 
           if(casting.status =='New') {
+
+            this.castingStatusNew = true;
+            this.castingStatusAudition = false;
+
             if(casting.new_action == 'action-candidated'){
               this.showButton = false;
               this.showTitleCandidate = true;
@@ -160,6 +168,9 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
           }else if(casting.status == 'Audition'){
 
             console.log(JSON.stringify(this.casting));
+
+            this.castingStatusNew = false;
+            this.castingStatusAudition = true;
             
             if(casting.audition_action != '') {
               this.showEditPartecipate = true;
