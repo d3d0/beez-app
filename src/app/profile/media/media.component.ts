@@ -1,18 +1,17 @@
-import { Component, OnInit, Output, EventEmitter, Input,} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ViewChild, ElementRef} from '@angular/core';
 import * as imagepicker from "nativescript-imagepicker";
 import * as bgHttp from "nativescript-background-http";
-import { isIOS } from "platform";
 import { ObservableArray } from "data/observable-array";
-
-
 import { localize } from "nativescript-localize";
 import { BackendService } from "../../shared/backend.service";
 import { ProfileService } from "../profile.service"
 import { alert, confirm, getIconSource, action } from "../../shared/utils";
 import { Profile } from "../../user/profile.model";
-
-
 import {ImageSource, fromFile,fromNativeSource, fromResource, fromBase64} from "tns-core-modules/image-source";
+import {NavigatedData, Page} from "tns-core-modules/ui/page";
+import { StackLayout } from 'tns-core-modules/ui/layouts/stack-layout/stack-layout';
+import { isIOS, isAndroid } from "tns-core-modules/platform";
+
 import * as fs from "file-system";
 import { tap } from 'rxjs/operators';
 
@@ -23,6 +22,9 @@ import { tap } from 'rxjs/operators';
     moduleId: module.id,
 })
 export class MediaComponent implements OnInit {
+    @ViewChild("container", {static: false}) container: ElementRef<StackLayout>;
+    @ViewChild("vline", {static: false}) vline: ElementRef;
+
     @Input() profile;
     @Output() refreshProfile = new EventEmitter<string>();
     imageAssets = [];
@@ -41,16 +43,43 @@ export class MediaComponent implements OnInit {
     private images:any = [];
     public isLoading:boolean = false;
 
-    constructor( private profileService: ProfileService ) {
+    private page: Page;
+
+    constructor( private profileService: ProfileService, page: Page ) {
         this.url = BackendService.baseUrl + "beez/loool_talent_images/upload_image_multipart";
         this.session = bgHttp.session("image-upload");
         this.loadImages();
-        
+
+        this.page = page;
+        this.page.on("navigatingTo", this.onNavigatingTo.bind(this));
+        this.page.on("navigatedTo", this.onNavigatedTo.bind(this));
     }
     ngOnInit() {}
     ngChange() {
         console.log('change',this.images); 
     }
+
+    protected onNavigatingTo(arg?: NavigatedData): void {
+        console.log("l☯☯☯l > onNavigatingTo");
+    }
+  
+    protected onNavigatedTo(arg?: NavigatedData): void {
+        console.log("l☯☯☯l > onNavigatedTo", arg.object);
+  
+        // page
+        let height = this.page.getActualSize().height;
+        console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Page Height:', height);
+        // layout
+        let stack = this.container.nativeElement;
+        console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Stack Height:', stack.getActualSize().height);
+        let vline= this.vline.nativeElement;
+        console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Label Height:', vline.getActualSize().height);
+        if (isAndroid) {
+            vline.height = -1; // ATTENZIONE > FIX BORDINI ANDROID!
+            console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Android Label Height:', vline.height);
+        }
+    }
+
     loadImages() {
         this.profileService.getImages().subscribe((result) => {
             this.images = result;

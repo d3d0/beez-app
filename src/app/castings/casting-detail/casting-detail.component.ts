@@ -109,7 +109,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
       let height = this.page.getActualSize().height;
       console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Page Height:', height);
 
-      // stack
+      // layout
       /*
       if(this.casting['status'] == 'New') {
         let stack = this.containerOpen.nativeElement;

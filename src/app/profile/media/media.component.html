@@ -1,7 +1,10 @@
 
 
-<GridLayout  margin=0 columns="16,8,*" rows="auto,auto,auto" class="p-t-16" (loaded)="onLoadedComponent($event)">
-	<Label text="" class="list-group-item-v-line" rowSpan="3" col="0" row="0" marginBottom="32" horizontalAlignment="center" ></Label>
+<GridLayout #container class="media" margin=0 columns="16,8,*" rows="auto,auto,auto" class="p-t-16" (loaded)="onLoadedComponent($event)">
+
+	<!-- lateral line -->
+	<Label #vline text="" class="list-group-item-v-line" rowSpan="3" col="0" row="0" marginBottom="32" horizontalAlignment="center" ></Label>
+
 	<!-- TITLE -->
 	<StackLayout class="icon-container" row="0" col="0" >
 		<Image [src]="getIconSource('photo')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
@@ -14,7 +17,6 @@
 			<CardView *ngFor="let image of images" background="#ccc" margin=8 elevation="15" android:radius="10" ios:radius="4" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
 				<AbsoluteLayout>
 					<StackLayout class="border-radius" left="0" top="0"   width="100%" android:radius="10" ios:radius="4">
-						
 						<Image [src]="image.filepath" left="0" top="0"width="100%" stretch="aspectFill"></Image>
 					</StackLayout>
 					<StackLayout left="0" top="0" height="48" width="100%">
