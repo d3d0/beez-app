@@ -23,10 +23,6 @@
 .confirmed{
 	background-color: $verde;
 }
-
-.shooting{
-	padding: 20 16;
-}
 .note{
 	line-height: 0.5;
 }
@@ -45,28 +41,38 @@
 .casting-detail {
 	.card-group {
 	  margin: 20;
+	  .list-group-item {
+			.shooting{
+				padding: 20 16;
+				&-text {
+					font-size: 14;
+					font-weight: normal;
+					letter-spacing:0.028;
+					color: $grigioscuro;
+					margin: 0 0 16 0;
+				}
+			}
+			&-text { // item > testi
+				font-size: 14;
+				font-weight: normal;
+				letter-spacing:0.028;
+				color: $grigioscuro;
+				margin: 0 0 16 0;
+			}
+			&-location {
+				text-transform: capitalize;
+				color: #5A82FF;
+				margin: 0 0 5 0;
+			}
+			&-v-line {
+				height:-1; // ATTENZIONE > FIX BORDINI ANDROID!
+				width:1;
+				margin: 0;
+				padding: 0;
+				border-left-width: 1;
+				transform: none;
+				border-left-color: #DDD;
+			}
+		}
 	}
-	.list-group-item {
-	  &-text { // item > testi
-		font-size: 14;
-		font-weight: normal;
-		letter-spacing:0.028;
-		color: $grigioscuro;
-		margin: 0 0 16 0;
-	  }
-	  &-location {
-		text-transform: capitalize;
-		color: #5A82FF;
-		margin: 0 0 5 0;
-	  }
-	  &-v-line {
-		height:-1; // ATTENZIONE > FIX BORDINI ANDROID!
-		width:1;
-		margin: 0;
-		padding: 0;
-		border-left-width: 1;
-		transform: none;
-		border-left-color: #DDD;
-	  }
-	}
-  }
+}
