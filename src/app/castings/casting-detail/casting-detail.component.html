@@ -85,7 +85,7 @@
 										<Label class="span" [text]="date[1] * 1000 | date:'HH:mm'" ></Label> 
 										-->
 									</FlexboxLayout>
-									<FlexboxLayout [visibility]="castingStatusAud ? 'visible' : 'collapsed'" class="flex-wrap" flexWrap="wrap" alignContent="flex-start" *ngFor="let date of casting.casting_date">
+									<FlexboxLayout [visibility]="castingStatusAudition ? 'visible' : 'collapsed'" class="flex-wrap" flexWrap="wrap" alignContent="flex-start" *ngFor="let date of casting.casting_date">
 										<Label color="#1E1E1E" class="span"  [text]="date[0] * 1000 | date:'dd.MM.yy'" ></Label>
 										<Label class="span"  text=" • " ></Label>
 										<Label class="span"	 [text]="date[0] * 1000 | date:'HH:mm'" ></Label>

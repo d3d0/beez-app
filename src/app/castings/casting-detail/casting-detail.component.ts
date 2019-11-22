@@ -227,8 +227,6 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
 
         });
 
-
-      
     }
   } 
 
