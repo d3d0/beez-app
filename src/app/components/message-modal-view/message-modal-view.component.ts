@@ -26,7 +26,6 @@ export class MessageModalViewComponent implements OnInit{
         this.title = _params.context.title;
         this.footer = _params.context.footer;
         this.buttonText = _params.context.buttonText;
-        
     }
 
     ngOnInit(){

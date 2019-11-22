@@ -10,15 +10,15 @@ GridLayout{
 	width:100%;
 }
 .header{
-	padding: 12 0;
+	padding: 0 0 12 0;
 	border-bottom-width: 1;
 	border-bottom-color: $grigiochiaro;
 }
 .message{
-
+	padding: 0 0 8 0;
 }
 .footer{
-	padding: 8 0;
+	padding: 0 0 8 0;
 }
 
 .modal {

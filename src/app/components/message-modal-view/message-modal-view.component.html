@@ -3,9 +3,9 @@
 	<CardView row="1" elevation="15" radius="10" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
 		<!-- <AbsoluteLayout> -->
 			<StackLayout class="wrapper">
-				<Label [text]="title" class="header head"  textWrap="true"></Label>
-				<Label [text]="message" class="message text"  textWrap="true"></Label>
-				<Label [text]="footer" class="footer text"  textWrap="true"></Label>
+				<Label *ngIf="title != null" [text]="title" class="header head" textWrap="true"></Label>
+				<Label *ngIf="messagge != null" [text]="message" class="message text" textWrap="true"></Label>
+				<Label *ngIf="footer != null" [text]="footer" class="footer text" textWrap="true"></Label>
 				<BeezButton [text]="buttonText" isModal="true" buttonColor="green" (buttonClick)="onClose()"></BeezButton>
 			</StackLayout>
 			<!-- 
