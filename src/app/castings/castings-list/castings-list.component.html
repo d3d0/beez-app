@@ -10,7 +10,7 @@
         <GridLayout  columns="16, *, 20, 16" rows="auto, auto, auto, auto, auto, auto" class="m-b-20" android:radius="10" ios:radius="4">
             
             <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
-            <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" ></Image>
+              <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" ></Image>
             </StackLayout> 
             <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
               <Label *ngIf="castingType == 'Audition' && item.audition_action == ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="banner-top-card" textWrap="true"></Label>  
@@ -30,7 +30,7 @@
 
             <!-- ultima riga > new -->
             <StackLayout *ngIf="castingType == 'New'" orientation="horizontal" row="4" col="1" >
-              <Label [text]="'CASTINGS.START_DATE'|L" class="label"></Label>
+              <Label [text]="'CASTINGS.START_DATE'|L" class="label" android:marginTop="3"></Label>
               <Label textWrap="true" class="title  p-l-8">
                 <FormattedString>
                   <Span [text]="item.casting_date[0][0] * 1000 | date:'dd.MM.yy'" ></Span>
