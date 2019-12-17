@@ -119,7 +119,6 @@
 "_SIGNUP_REGISTRATION_SUBMIT_1sVLUz" = "REGISTER";
 "_SIGNUP_REGISTRATION_FOOTER_11Gpp5" = "REGISTRATION_TITLE";
 "_SIGNUP_REGISTRATION_MINOR_TEXT_Z1txRx0" = "Please fill up the all fields to correctly complete the under-18 registration on BEEZ.\n\nIMPORTANT The usename will be created as: [jonhdoe02@beez.io] where [johndoe] is the minore while [02] is the minor date of birth.";
-"_SIGNUP_REGISTRATION_MINOR_TEXT_WAIT_Z1rASDm" = "Registration of an under-18 is temporary unavailable.";
 "_SIGNUP_REGISTRATION_MINOR_TITLE_Zfpos2" = "Registration of an under-18";
 "_SIGNUP_REGISTRATION_TEXT_VdTRz" = "Please fill up the all fields to correctly complete your registration on BEEZ";
 "_SIGNUP_REGISTRATION_TITLE_Z1q6WJg" = "New User Account Registration";
@@ -159,4 +158,3 @@
 "LANG" = "EN";
 "_ios_info_plist_NSLocationWhenInUseUsageDescription_ZpKiIF" = "This will be added to InfoPlist.strings";
 "_CASTINGS_PARTICIPATION_WHITH_ARCHIVE__Zg5v4v" = "CASTINGS.PARTICIPATION_WHITH_ARCHIVE ";
-"_SIGNUP_REGISTRATION_MINOR_TITLE_WAIT_4p1j5" = "SIGNUP.REGISTRATION_MINOR_TITLE_WAIT";

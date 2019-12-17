@@ -4,7 +4,7 @@
 		<AbsoluteLayout>
 			<StackLayout left="0" top="0" class="list-group-item">
 				<Label [text]="title|L" class="list-group-item-heading-18 title"  textWrap="true"></Label>
-				<DatePicker #datepicker [date]="currentdate"></DatePicker>
+				<DatePicker #datepicker [date]="currentdate" [maxDate]="maxDate"></DatePicker>
 				<BeezButton [isSelect]="isSelect" isModal="true" [text]="'CONFIRM'|L" [isBusy]="isLoading" buttonColor="green" (buttonClick)="onClose()"></BeezButton>
 			</StackLayout>
 			<StackLayout left="0" top="0"  width="100%"  height="32">

@@ -11,18 +11,32 @@ import { DatePicker } from "tns-core-modules/ui/date-picker";
 })
 
 export class SelectDateModalViewComponent {
+    
+
     @ViewChild("datepicker", {static: false}) datePickerElement: ElementRef;
     private picked:string;
     private currentdate: Date;
+    private maxDate: Date;
     private title;
     private isSelect = false;
+    private isMajor = false;
 
     constructor( private router: RouterExtensions, private params: ModalDialogParams ) {
         this.currentdate = params.context.currentdate;
         this.title = params.context.title;
         if(params.context.isSelect) this.isSelect = params.context.isSelect;
+        if(params.context.isMajor) this.isMajor = params.context.isMajor;
         console.log('l☯☯☯l > SelectModalViewComponent > constructor() > params',this.params);
         // console.log('l☯☯☯l > SelectModalViewComponent > constructor() > isSelect',this.isSelect);
+        console.log('l☯☯☯l > SelectModalViewComponent > constructor() > isMajor',this.isMajor);
+        this.getMaxDate();
+    }
+
+    getMaxDate() :void {
+        const now = new Date();
+        now.setFullYear(now.getFullYear() - 18);
+        this.maxDate = now;
+        console.log('data: '+now);
     }
 
     onBack(): void {

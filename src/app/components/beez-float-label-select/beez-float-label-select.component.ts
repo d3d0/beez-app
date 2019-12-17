@@ -21,6 +21,7 @@ import { SelectModalViewComponent } from "../select-modal-view/select-modal-view
 export class BeezFloatLabelSelect implements OnInit {
     @Input() placeholder: string;
     @Input() isSelect: string;
+    @Input() isMajor: string;
     @Input() type: string;
     @Input() dark: boolean;
     @Input() tid: string; // casting-detail.component.html
