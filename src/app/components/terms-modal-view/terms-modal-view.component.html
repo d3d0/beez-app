@@ -1,0 +1,18 @@
+<GridLayout columns="*" rows="auto,*,auto" backgroundColor="white" > 
+    <GridLayout row="0" col="0" columns="*" rows="auto" class="wrapper-terms-label" android:marginTop="35" backgroundColor="white" > 
+        <Label *ngIf="title != null" [text]="title" class="header head" textWrap="true" row="0" col="0" ></Label>
+    </GridLayout>
+    <GridLayout row="1" col="0" columns="*" rows="*" class="wrapper-terms-text" backgroundColor="white"> 
+        <!-- 
+        <ScrollView orientation="vertical" row="0" col="0" height="100%" width="100%" backgroundColor="white">
+            <StackLayout orientation="vertical" class="scroll-menu">
+                <TextView [text]="message" editable="false" class="text-terms"></TextView>
+            </StackLayout>
+        </ScrollView>
+        -->
+        <TextView row="0" col="0" [text]="message" editable="false" class="text-terms"></TextView>
+    </GridLayout>
+    <GridLayout row="2" col="0" columns="*" rows="*" class="wrapper-terms-button" backgroundColor="white" > 
+        <BeezButton [text]="buttonText" isModal="true" buttonColor="green" (buttonClick)="onClose()" row="0" col="0" ></BeezButton>
+    </GridLayout>
+</GridLayout>

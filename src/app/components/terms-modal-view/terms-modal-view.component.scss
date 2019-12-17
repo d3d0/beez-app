@@ -1,0 +1,24 @@
+@import '../../../app-variables';
+
+GridLayout{
+	width: 100%;
+	background: #fff;
+}
+.header{
+	padding: 0 0 12 0;
+	border-bottom-width: 1;
+	border-bottom-color: $grigiochiaro;
+}
+.text-terms{
+	font-size:10;
+	padding: 0 20;
+	background: #fff; // IMPORTANTE > definisce lo sfondo delle CardView in IOS e Android
+	border-radius: 4;  // IMPORTANTE > definisce il radius delle CardView in IOS
+	width:100%;
+}
+.wrapper-terms-label {
+	padding: 5 20;
+}
+.wrapper-terms-button {
+	padding: 5 20;
+}

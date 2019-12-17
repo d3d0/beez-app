@@ -90,7 +90,7 @@ export class MediaComponent implements OnInit {
         let coverbutton = localize("COVERBUTTON");
         let deletebutton = localize("DELETEBUTTON");
         action(coverbutton, deletebutton).then(result => {
-            console.log(result);
+            console.log("Dialog result: " + result);
             if(result == coverbutton){
                 this.setPolaroidImage(image);
             }else if(result == deletebutton){

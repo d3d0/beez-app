@@ -14,14 +14,16 @@ import { isIOS } from "tns-core-modules/platform";
 })
 
 export class MessageModalViewComponent implements OnInit{
-    private message
-    private title
-    private footer
-    public buttonText
+    private terms = false;
+    private message;
+    private title;
+    private footer;
+    public buttonText;
 
     @ViewChild("background", {static: false}) background: ElementRef;
 
     constructor(private _params: ModalDialogParams, page:Page) {
+        this.terms = _params.context.terms;
         this.message = _params.context.message;
         this.title = _params.context.title;
         this.footer = _params.context.footer;

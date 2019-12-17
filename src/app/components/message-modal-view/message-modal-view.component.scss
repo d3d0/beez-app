@@ -1,4 +1,5 @@
 @import '../../../app-variables';
+
 GridLayout{
 	width: 100%;
 	background: #f1f1f1;
@@ -20,7 +21,6 @@ GridLayout{
 .footer{
 	padding: 0 0 8 0;
 }
-
 .modal {
   margin: 20;
   margin-top: 35;
@@ -29,7 +29,6 @@ GridLayout{
   vertical-align: middle;
   background-color: white;
 }
- 
 .modal-container {
   padding: 25;
   padding-bottom: 10;

@@ -11,6 +11,7 @@ import { CastingDetailComponent } from '../castings/casting-detail/casting-detai
 import { SelectDateModalViewComponent } from "../components/select-date-modal-view/select-date-modal-view.component";
 import { SelectModalViewComponent } from "../components/select-modal-view/select-modal-view.component";
 import { MessageModalViewComponent } from "../components/message-modal-view/message-modal-view.component";
+import { TermsModalViewComponent } from "../components/terms-modal-view/terms-modal-view.component";
 import { BeezFloatLabelSelect } from '../components/beez-float-label-select/beez-float-label-select.component'
 import { BeezFloatLabelTextfield } from '../components/beez-float-label-textfield/beez-float-label-textfield.component'
 import { BeezInlineSelect } from '../components/beez-inline-select/beez-inline-select.component'
@@ -18,6 +19,7 @@ import { BeezInlineTextfield } from '../components/beez-inline-textfield/beez-in
 import { BeezButton } from '../components/beez-button/beez-button.component'
 
 const sharedRoutes: Routes = [
+    { path: "terms-message-view", component: TermsModalViewComponent },
     { path: "modal-message-view", component: MessageModalViewComponent },
     { path: "modal-date-view", component: SelectDateModalViewComponent },
     { path: "modal-view", component: SelectModalViewComponent }
@@ -41,6 +43,7 @@ const sharedRoutes: Routes = [
     BeezInlineTextfield,
     BeezButton,
     MessageModalViewComponent,
+    TermsModalViewComponent,
     SelectDateModalViewComponent,
     SelectModalViewComponent
     ],

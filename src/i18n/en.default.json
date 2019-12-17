@@ -28,6 +28,10 @@
   "DELETEBUTTON":"Delete",
   "COVER":"Do you want to use this photo as profile picture?",
   "COVERBUTTON":"Set as profile picture",
+  "TERMS_TITLE":"Terms and conditions",
+  "TERMS_TEXT":"text",
+  "TERMS_FOOTER":"text",
+  "TERMS_BUTTON":"AGREE",
   "LOGIN":{
     "LOGIN" : "LOGIN"
   },
@@ -43,15 +47,15 @@
     "REGISTRATION_FOOTER" : "REGISTRATION_TITLE",
     "REGISTRATION_SUBMIT" : "REGISTER",
     "MINOR_REGISTRATION_SUBMIT" : "UNDER-18 REGISTRATION",
-    "REGISTRATION_CONDITIONS" : "Cliccando il pulsante di registazione dichiaro di aver preso visione e accettato i nostri temini ",
-    "REGISTRATION_TERMS" : "temini di utilizzo",
-    "REGISTRATION_POLICY" : "privacy policy",
+    "REGISTRATION_CONDITIONS" : "By clicking the registration button I declare that I have read and accepted our:",
+    "REGISTRATION_TERMS" : "Terms of use",
+    "REGISTRATION_POLICY" : "Privacy policy",
     "RECOVERY":"Password recovery"
   },
   "CASTINGS": {
     "CASTINGS": "CASTINGS",
     "CASTING": "CASTING",
-    "ONGOING": "NEW",
+    "ONGOING": "HOME",
     "ATTEND": "MY AUDITIONS",
     "CONCLUDED": "MY OPTIONS",
     "INFORMATION": "Information",

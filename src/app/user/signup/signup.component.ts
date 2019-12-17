@@ -14,6 +14,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 import { EventData } from "tns-core-modules/data/observable";
 
+import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/directives/dialogs";
+import { MessageModalViewComponent } from "../../components/message-modal-view/message-modal-view.component";
+import { TermsModalViewComponent } from "../../components/terms-modal-view/terms-modal-view.component";
 
 @Component({
   selector: 'ns-signup',
@@ -45,7 +48,9 @@ export class SignupComponent implements OnInit{
     private activeRoute: ActivatedRoute,
     private routerExtensions: RouterExtensions,
     private userService: UserService,
-    private taxonomyService: TaxonomyService ) {
+    private taxonomyService: TaxonomyService,
+    private vcRef: ViewContainerRef,
+    private modal: ModalDialogService, ) {
       this.user = new User();
       this.signupMinorTitle = localize("SIGNUP.REGISTRATION_MINOR");
       this.signupTitle = localize("SIGNUP.REGISTRATION");
@@ -65,6 +70,10 @@ export class SignupComponent implements OnInit{
     // d3d0 --> imposto editable a true 
     this.editable = true;
     console.log('l☯☯☯l > SignupComponent > ngOnInit() > editable', this.editable);
+
+    setTimeout(() => {
+      this.terminiModal();
+    });
   }
 
   public onSelectedIndexChange(index, args: EventData) {
@@ -76,6 +85,20 @@ export class SignupComponent implements OnInit{
       this.tabs[previousTab].className = "not-active"; // FIX 23/09
       this.selectedIndex = index;
     }
+  }
+
+  termini() {
+    console.log('ok');
+  }
+
+  terminiModal() {
+    console.log('ok');
+    const options: ModalDialogOptions = {
+      context: { title: localize('TERMS_TITLE'), buttonText: localize('TERMS_BUTTON')},
+      fullscreen: true,
+      viewContainerRef: this.vcRef
+    };
+    this.modal.showModal(TermsModalViewComponent, options);
   }
 
   selectEvent(value, field, tipo=null){
