@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest android:hardwareAccelerated="true" xmlns:android="http://schemas.android.com/apk/res/android"
 	package="__PACKAGE__"
-	android:versionCode="101059"
+	android:versionCode="101060"
 	android:versionName="1.1">
 
 	<supports-screens

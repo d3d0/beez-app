@@ -7,7 +7,7 @@ import { HttpHeaders } from "@angular/common/http";
   providedIn: "root"
 })
 export class BackendService {
-  static baseUrl = "https://dev.beez.io/services/";
+  static baseUrl = "https://castinghub.beez.io/services/";
   static term_ita = "beez/elenco-terms-it";
   static term_eng = "beez/elenco-terms-en";
   
