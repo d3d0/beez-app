@@ -94,7 +94,7 @@ Mediante il Servizio “HOME” l’Utente ha la possibilità di accedere alle s
 
 Sezione “HOME -> ISCRIVITI” (partecipazione al casting)
 Mediante il Servizio “ISCRIVITI” l’Utente ha la possibilità di richiedere l’iscrizione al casting selezionato. 
-A tal fine l’Utente dovrà caricare sulla piattaforma materiale fotografico e/o video (Contenuti) con le caratteristiche specificate dalla Casa di Produzione e riportate nella Sezione “NUOVI”.
+A tal fine l’Utente dovrà caricare sulla piattaforma materiale fotografico e/o video (Contenuti) con le caratteristiche specificate dalla Casa di Produzione e riportate nella Sezione “HOME”.
 L’Utente è consapevole che nel caso in cui fornisca Contenuti che non rispettino le caratteristiche specificate dalla Casa di Produzione, la sua richiesta di iscrizione al casting selezionato potrà essere respinta. 
 L’Utente è altresì consapevole che la richiesta di iscrizione ai casting comporta necessariamente l’invio dei Contenuti alla Casa di Produzione che richiede il casting e presta specifico consenso alla loro trasmissione ai sensi e per gli effetti di cui all’art. 3.11. 
 L’Utente è, parimenti, consapevole e presta specifico consenso ai sensi e per gli effetti di cui all’art. 3.11 a che, in caso di sua scelta da parte della Casa di Produzione ai fini della realizzazione del servizio fotografico e/o video, Face And Place Srl trasmetta alla stessa Casa di Produzione anche la scheda personale con i suoi dati personali comunicati al momento della registrazione. 
