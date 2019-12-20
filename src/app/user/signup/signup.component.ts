@@ -201,10 +201,10 @@ export class SignupComponent implements OnInit{
       alert(localize("MESSAGES.REQUIRED_DATE"));
       return;
     }
-    if (!User.isValidGender(this.user.gender)) {
-      alert(localize("MESSAGES.REQUIRED_GENDER"));
-      return;
-    }
+    // if (!User.isValidGender(this.user.gender)) {
+    //   alert(localize("MESSAGES.REQUIRED_GENDER"));
+    //   return;
+    // }
     if (!User.isValidEmail(this.user.mail)) {
       alert(localize("MESSAGES.ERROR_EMAIL"));
       return;
