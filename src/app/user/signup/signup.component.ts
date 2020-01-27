@@ -2,7 +2,7 @@ import { Component, ViewChild, EventEmitter, ElementRef, OnInit, ViewContainerRe
 import { localize } from "nativescript-localize";
 import { RouterExtensions } from "nativescript-angular/router";
 import { connectionType, getConnectionType } from "connectivity";
-
+import { alert } from "../../shared/utils";
 import { User } from '../user.model'
 import { UserService } from "../user.service";
 import { BackendService } from "../../shared/backend.service";
@@ -211,10 +211,14 @@ export class SignupComponent implements OnInit{
     }
 
 
-    if (!User.isValidDate(this.user.date_of_birth)) {
+    if (this.user.date_of_birth == '0-0-0') {
+      alert("Per registrati devi essere maggiorenne, modifica la data di nascita.");
+      return;
+    }else if(!User.isValidDate(this.user.date_of_birth)){
       alert(localize("MESSAGES.REQUIRED_DATE"));
       return;
     }
+
     // if (!User.isValidGender(this.user.gender)) {
     //   alert(localize("MESSAGES.REQUIRED_GENDER"));
     //   return;

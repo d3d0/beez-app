@@ -33,33 +33,35 @@ export class BeezInlineSelect {
     @Input() editable: boolean;
     @Output() selectEvent = new EventEmitter<string>();
     private obj = new Term;
-    private text: string;
+    private text: any;
 
     constructor(
         private vcRef: ViewContainerRef,
         private taxonomyService: TaxonomyService,
         private modal: ModalDialogService) {}
 
-    @Input() set value (value:string){
+    @Input() set value (value:any){
         if( value )
-            if (this.type == "datapicker"){
-                console.log('IS DATEPICKER ?',this.type);
-                console.log('IS DATEPICKER VALUE >',value);
+        this.text = value;
+        console.log('--------------////////FRA//////////----------->', this.text);
+        if (this.type == "datapicker"){
+            console.log('IS DATEPICKER ?',this.type);
+            console.log('IS DATEPICKER VALUE >',value);
 
-                // if(valoreData > 0) { // se arriva in TIMESTAMP trasformo in ISO
-                //     this.obj.name = formatDate(parseInt(value) * 1000 ,'dd MMMM yy','en'); // FIX!
-                // }
-                // else { // se arriva in DATEPICKER trasformo in TIMESTAMP
-                //     this.obj.name = formatDate(value ,'dd MMMM yy','en'); // FIX!
-                // }
-
-                this.obj.name = formatDate(value ,'dd MMMM yy','en'); // FIX!
-                console.log('IS DATEPICKER this.obj.name >',this.obj.name);
-            } 
-            else {
-                console.log('IS DATEPICKER ?',this.type);
-                this.taxonomyService.getTerm(value).subscribe( obj => this.obj = obj[0] );
-            }
+            // if(valoreData > 0) { // se arriva in TIMESTAMP trasformo in ISO
+            //     this.obj.name = formatDate(parseInt(value) * 1000 ,'dd MMMM yy','en'); // FIX!
+            // }
+            // else { // se arriva in DATEPICKER trasformo in TIMESTAMP
+            //     this.obj.name = formatDate(value ,'dd MMMM yy','en'); // FIX!
+            // }
+            
+            this.obj.name = formatDate(value ,'dd MMMM yy','en'); // FIX!
+            console.log('IS DATEPICKER this.obj.name >',this.obj.name);
+        } 
+        else {
+            console.log('IS DATEPICKER ?',this.type);
+            this.taxonomyService.getTerm(value).subscribe( obj => this.obj = obj[0] );
+        }
     }
     
     private openModal(){
@@ -93,14 +95,20 @@ export class BeezInlineSelect {
         // DOCS: orario corrente
         const date = new Date();
         console.log(">>> normal date " + date);
+        console.log(">>> normal date " + this.text);
 
         // DOCS: aggiungere un'ora all'orario corrente
-        const now = new Date();
-        const nowDate = new Date(now.getTime() - (now.getTimezoneOffset() * 60000));
-        console.log(">>> modified nowDate " + nowDate);
+        // const now = new Date();
+        // const nowDate = new Date(now.getTime() - (now.getTimezoneOffset() * 60000));
+        // console.log(">>> modified nowDate " + nowDate);
 
         const options: ModalDialogOptions = {
-            context: { title: this.placeholder, currentdate: date, isSelect: this.isSelect },
+            context: { 
+                title: this.placeholder,
+                currentdate: date,
+                isSelect: this.isSelect,
+                selectedDate:this.obj.name
+            },
             fullscreen: true,
             viewContainerRef: this.vcRef
         };

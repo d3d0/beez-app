@@ -28,9 +28,9 @@ export class BeezFloatLabelSelect implements OnInit {
     @Input() editable: boolean;
     @Output() selectEvent = new EventEmitter<string>();
     private list;
-    private text: string;
+    private text: any;
 
-    @Input() set value (value: string){ 
+    @Input() set value (value: any){ 
         this.text = value;
         console.log('l☯☯☯l > BeezFloatLabelSelect > @Input() set value',value);
     }
@@ -52,7 +52,7 @@ export class BeezFloatLabelSelect implements OnInit {
         if (this.type == "datapicker"){
             this.createDatapickerModelView().then((value)=> {
                 if(value){
-                    this.text=formatDate(value,'dd MMMM yy','en')
+                    this.text=formatDate(value,'dd MMMM yy','en');
                     this.selectEvent.emit(value);
                 }
             })
@@ -75,8 +75,15 @@ export class BeezFloatLabelSelect implements OnInit {
     // datepicker
     private createDatapickerModelView(): Promise<any> {
         const date = new Date();
+        console.log('--------------////////FRA//////////----------->', this.text);
+
         const options: ModalDialogOptions = {
-            context: { title: this.placeholder, currentdate: date, isSelect: this.isSelect },
+            context: { 
+                title: this.placeholder,
+                currentdate: date,
+                isSelect: this.isSelect,
+                selectedDate:this.text
+            },
             fullscreen: true,
             viewContainerRef: this.vcRef
         };

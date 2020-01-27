@@ -2,7 +2,7 @@ export class  Profile {
 	id: string
 	name: string
 	surname: string
-	date_of_birth: Date
+	date_of_birth: any
 	tutor_name: string
 	tutor_surname: string
 	tutor_date_of_birth: Date
