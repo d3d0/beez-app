@@ -36,7 +36,6 @@ export class SelectDateModalViewComponent {
         const now = new Date();
         now.setFullYear(now.getFullYear() - 18);
         this.maxDate = now;
-        console.log('data: '+now);
     }
 
     onBack(): void {
