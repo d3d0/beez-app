@@ -119,6 +119,9 @@ export class SignupComponent implements OnInit{
         console.log('selectEvent > tid', value.tid);
       }
 
+
+      
+
       // PATTERN: calcolo username minore
       // nomefiglio + cognomefiglio + annonascitafiglio @ beez.io
       if(field == 'date_of_birth' && tipo == 'minore') {
@@ -129,6 +132,13 @@ export class SignupComponent implements OnInit{
         this.username = this.username0+this.username1+this.username2+'@beez.io';
         console.log('selectEvent username >',this.username);
       }
+
+      if(field === 'date_of_birth') {
+        this.user[field] = value.getFullYear() + "-" + (value.getMonth() + 1) + "-" + value.getDate();
+      }
+      // if(field === 'tutor_date_of_birth'){
+      //   this.user[field] = value.getFullYear() + "-" + (value.getMonth() + 1) + "-" + value.getDate();
+      // }
     }
   }
 
@@ -193,10 +203,14 @@ export class SignupComponent implements OnInit{
       alert(localize("MESSAGES.REQUIRED_NAME"));
       return;
     }
+
+
     if (!User.isValidSurname(this.user.surname)) {
       alert(localize("MESSAGES.REQUIRED_SURNAME"));
       return;
     }
+
+
     if (!User.isValidDate(this.user.date_of_birth)) {
       alert(localize("MESSAGES.REQUIRED_DATE"));
       return;
@@ -213,9 +227,10 @@ export class SignupComponent implements OnInit{
       alert(localize("MESSAGES.ERROR_PASS"));
       return;
     }
-
     this.isLoading = true;
     this.editable = true;
+
+    console.log('THIS.USER', this.user);
 
     // --> getAnonXCSFRtoken() function
     this.userService.getAnonXCSFRtoken().subscribe((result) => {
@@ -226,7 +241,10 @@ export class SignupComponent implements OnInit{
       // console.log('l☯☯☯l > LoginComponent > getAnonXCSFRtoken() > this.user: ', this.user);
 
       // --> login() function
+      console.log('l☯☯☯l > UserService > signup() > THIS.USER', this.user);
+
       this.userService.signup(this.user).subscribe((result) => {
+
         console.log('l☯☯☯l > UserService > signup() > result', result);
         this.isLoading = false;
         
