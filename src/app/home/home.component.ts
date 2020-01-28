@@ -157,7 +157,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           console.log('this.currentTabIndex',this.currentTabIndex);
 
           // set unfocus to previous index
-          tabContentsArr[this.currentTabIndex].nativeElement.animate(this.getUnfocusAnimation(this.currentTabIndex, duration));
+          //tabContentsArr[this.currentTabIndex].nativeElement.animate(this.getUnfocusAnimation(this.currentTabIndex, duration));
           if(this.currentTabIndex == 0) {
             this.tabList[this.currentTabIndex]['icon'] = 'res://casting_off';
           }
@@ -169,7 +169,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           }
           
           // set focus to current index
-          tabContentsArr[index].nativeElement.animate(this.getFocusAnimation(index, duration));
+          //tabContentsArr[index].nativeElement.animate(this.getFocusAnimation(index, duration));
           if(index == 0) {
             this.tabList[index]['icon'] = 'res://casting_on';
           }
@@ -230,8 +230,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       // set default selected tab
       const tabContentsArr = this.tabContents.toArray();
-      tabContentsArr[this.defaultSelected].nativeElement.scaleX = 1.1;
-      tabContentsArr[this.defaultSelected].nativeElement.scaleY = 1.1;
+      tabContentsArr[this.defaultSelected].nativeElement.scaleX = 1;
+      tabContentsArr[this.defaultSelected].nativeElement.scaleY = 1;
       tabContentsArr[this.defaultSelected].nativeElement.translateY = 1;
       this.currentTabIndex = this.defaultSelected;
   }
