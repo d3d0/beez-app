@@ -57,6 +57,7 @@ export class MediaComponent implements OnInit {
     ngOnInit() {}
     ngChange() {
         console.log('change',this.images); 
+        //this.loadImages();
     }
 
     protected onNavigatingTo(arg?: NavigatedData): void {
@@ -173,6 +174,7 @@ export class MediaComponent implements OnInit {
                 mode: "single"
             });
             this.startSelection(context);
+            //this.loadImages();
         }else{
             alert(localize("Hai raggiunto il massimo di media caricabili."));
         }
@@ -231,7 +233,7 @@ export class MediaComponent implements OnInit {
                 // suppress all repeating progress events and only show the first one
                 lastEvent = e.eventName;
                 if (e.eventName == 'complete'){
-                    this.isLoading = false;  
+                    this.isLoading = false; 
                 }
             } else {
                 this.isLoading = false;
@@ -247,13 +249,16 @@ export class MediaComponent implements OnInit {
                 })
             })
         }
+        task.on("complete", (event) => {
+            console.log('prova media');
+            this.loadImages();
+        });
         task.on("progress", onEvent.bind(this));
         task.on("error", onEvent.bind(this));
         task.on("responded", onEvent.bind(this));
-        task.on("complete", onEvent.bind(this));
+        // task.on("complete", onEvent.bind(this));
         lastEvent = "";
         this.tasks.push(task);
-
     }
     completeHandler(e) {
         console.log("received " + JSON.stringify(e.responseCode ) + " code");
