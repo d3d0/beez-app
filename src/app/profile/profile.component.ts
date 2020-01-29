@@ -111,10 +111,10 @@ export class ProfileComponent implements AfterViewInit, OnInit{
         console.log('selectEvent datepicker > tid', text.tid);
         console.log('selectEvent datepicker > name', text.name);
       }
-      if(field === 'date_of_birth') {
-        this.profile[field] = text.getFullYear() + "-" + (text.getMonth() + 1) + "-" + text.getDate();
-        console.log(this.profile[field]);
-      }
+      // if(field === 'date_of_birth') {
+      //   this.profile[field] = text.getFullYear() + "-" + (text.getMonth() + 1) + "-" + text.getDate();
+      //   console.log(this.profile[field]);
+      // }
     }
   }
 

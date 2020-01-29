@@ -13,7 +13,7 @@
 	<!-- IMAGES -->
 
 		<WrapLayout orientation="horizontal" row="1" col="2">
-			<CardView *ngFor="let image of images" background="#ccc" margin=8 elevation="15" android:radius="10" ios:radius="4" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8" >
+			<CardView *ngFor="let image of images" background="#ccc" margin=8 elevation="15" android:radius="10" ios:radius="4" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8">
 				<AbsoluteLayout>
 					<StackLayout class="border-radius" left="0" top="0"   width="100%" android:radius="10" ios:radius="4">
 						<Image [src]="image.filepath" left="0" top="0"width="100%" stretch="aspectFill"></Image>

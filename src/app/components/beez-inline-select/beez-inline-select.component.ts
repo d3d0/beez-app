@@ -33,7 +33,7 @@ export class BeezInlineSelect {
     @Input() editable: boolean;
     @Output() selectEvent = new EventEmitter<string>();
     private obj = new Term;
-    private text: any;
+    //private text: any;
 
     constructor(
         private vcRef: ViewContainerRef,
@@ -42,8 +42,8 @@ export class BeezInlineSelect {
 
     @Input() set value (value:any){
         if( value )
-        this.text = value;
-        console.log('--------------////////FRA//////////----------->', this.text);
+        //this.text = value;
+        //console.log('--------------////////FRA//////////----------->', this.text);
         if (this.type == "datapicker"){
             console.log('IS DATEPICKER ?',this.type);
             console.log('IS DATEPICKER VALUE >',value);
@@ -79,7 +79,10 @@ export class BeezInlineSelect {
             }).catch(error => console.log(error.message));
         }
         else {
+
+            console.log('passo di qui');
             this.createTaxonomyModelView().then((value)=> {
+                console.log('passo di qui----------->',value);
                 if(value){
                     console.log('l☯☯☯l > BeezInlineSelect > openModal() > taxonomy value:',value);
                     this.obj=value;
@@ -95,7 +98,7 @@ export class BeezInlineSelect {
         // DOCS: orario corrente
         const date = new Date();
         console.log(">>> normal date " + date);
-        console.log(">>> normal date " + this.text);
+        //console.log(">>> normal date " + this.text);
 
         // DOCS: aggiungere un'ora all'orario corrente
         // const now = new Date();
@@ -118,7 +121,11 @@ export class BeezInlineSelect {
     // taxonomy
     private createTaxonomyModelView(): Promise<any> {
         const options: ModalDialogOptions = {
-            context: { vocabolary: this.type , title: this.placeholder, tid: this.obj.tid, isSelect: this.isSelect},
+            context: {
+                vocabolary: this.type,
+                title: this.placeholder,
+                tid: this.obj.tid,
+                isSelect: this.isSelect},
             fullscreen: true,
             viewContainerRef: this.vcRef
         };
