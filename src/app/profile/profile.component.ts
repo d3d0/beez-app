@@ -1,5 +1,6 @@
 import { Component, ViewChild, ViewContainerRef, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { View } from "ui/core/view";
 import { Page } from "tns-core-modules/ui/page";
 import { Animation } from "ui/animation";
@@ -47,6 +48,8 @@ export class ProfileComponent implements AfterViewInit, OnInit{
 
   constructor(
     private routerExtension: RouterExtensions,
+    private activeRoute: ActivatedRoute,
+    private router: Router,
     private vcRef: ViewContainerRef,
     private modal: ModalDialogService, 
     private profileService: ProfileService,
@@ -63,6 +66,8 @@ export class ProfileComponent implements AfterViewInit, OnInit{
     this.tabs[2] = <View>this.tab3.nativeElement;
     this.tabs[3] = <View>this.tab4.nativeElement;
     this.tabs[1].className = "active";
+
+
 
     //console.log(this.tabs[0].className);
 
@@ -81,6 +86,7 @@ export class ProfileComponent implements AfterViewInit, OnInit{
 
   ngAfterViewInit() {
     this.tabs[0].className = "active";
+
   }
 
   get profile(){

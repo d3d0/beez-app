@@ -12,7 +12,7 @@ import { MessageModalViewComponent } from "../components/message-modal-view/mess
 import * as app from "tns-core-modules/application";
 import { isIOS, isAndroid } from "tns-core-modules/platform";
 import { screen } from 'platform';
-import { AnimationCurve } from "ui/enums";
+// import { AnimationCurve } from "ui/enums";
 import { GridLayout } from "ui/layouts/grid-layout";
 import { SelectedIndexChangedEventData } from "tns-core-modules/ui/tab-view";
 import { PanGestureEventData, GestureStateTypes, GestureEventData } from "ui/gestures";
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild("homeTabs", { static: false }) homeTabs: ElementRef;
   @ViewChild('tabs', { static: true }) tabs: ElementRef;
   @ViewChild('tabBGContainer', { static: true }) tabBGContainer: ElementRef;
-  @ViewChildren('tabContents', { read: ElementRef }) tabContents: QueryList<ElementRef>;
+  // @ViewChildren('tabContents', { read: ElementRef }) tabContents: QueryList<ElementRef>;
   
   // Tab Contents and Properties
   tabContainer = {
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   currentTabIndex: number = 0;
   defaultSelected: number = 0;
   prevDeltaX: number = 0;
-  animationCurve = AnimationCurve.cubicBezier(.38, .47, 0, 1);
+  // animationCurve = AnimationCurve.cubicBezier(.38, .47, 0, 1);
   public contatore: string = '';
 
   constructor(
@@ -74,7 +74,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     console.log('l☯☯☯l > HomeComponent > ngOnInit()');
     console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
 
-    this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], { relativeTo: this.activeRoute });
+    this.routerExtension.navigate([{ outlets: { castingsTab: ["castings"], notificationsTab: ["notifications"], profileTab: ["profile"] } }], {relativeTo: this.activeRoute});
+    
     this.page.actionBarHidden = true;
 
     if (BackendService.firstLogin()) {
@@ -145,16 +146,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
           this.onBottomNavTap(args.newIndex);
       }
   }
-
   // Tap on a one of the tabs
   onBottomNavTap(index: number, duration: number = 300): void {
+
+
     
       if (this.currentTabIndex !== index) {
-          const tabContentsArr = this.tabContents.toArray();
 
-          console.log('tabContentsArr[this.currentTabIndex]',tabContentsArr[this.currentTabIndex].nativeElement );
-          console.log('this.tabList[this.currentTabIndex][icon]',this.tabList[this.currentTabIndex]['icon']);
-          console.log('this.currentTabIndex',this.currentTabIndex);
+          //const tabContentsArr = this.tabContents.toArray();
+
+          //console.log('tabContentsArr[this.currentTabIndex]',tabContentsArr[this.currentTabIndex].nativeElement );
+          //console.log('this.tabList[this.currentTabIndex][icon]',this.tabList[this.currentTabIndex]['icon']);
+          // console.log('this.currentTabIndex',this.currentTabIndex);
 
           // set unfocus to previous index
           //tabContentsArr[this.currentTabIndex].nativeElement.animate(this.getUnfocusAnimation(this.currentTabIndex, duration));
@@ -183,6 +186,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
       // MY: Change the selected index of Tabs when tap on tab strip
       if (this.tabs.nativeElement.selectedIndex !== index) {
+          
           this.tabs.nativeElement.selectedIndex = index;
 
           // DOCS > update contatore
@@ -227,42 +231,43 @@ export class HomeComponent implements OnInit, AfterViewInit {
   initializeTabBar(): void {
 
       this.tabBGContainer.nativeElement.width = screen.mainScreen.widthDIPs; // d3d0 add!
-
       // set default selected tab
-      const tabContentsArr = this.tabContents.toArray();
-      tabContentsArr[this.defaultSelected].nativeElement.scaleX = 1;
-      tabContentsArr[this.defaultSelected].nativeElement.scaleY = 1;
-      tabContentsArr[this.defaultSelected].nativeElement.translateY = 1;
+      //const tabContentsArr = this.tabContents.toArray();
+      // tabContentsArr[this.defaultSelected].nativeElement.scaleX = 1;
+      // tabContentsArr[this.defaultSelected].nativeElement.scaleY = 1;
+      // tabContentsArr[this.defaultSelected].nativeElement.translateY = 1;
       this.currentTabIndex = this.defaultSelected;
   }
 
-  getSlideAnimation(index: number, duration: number) {
-      return {
-          translate: { x: this.getTabTranslateX(index), y: 0 },
-          curve: this.animationCurve,
-          duration: duration
-      };
-  }
 
-  getFocusAnimation(index: number, duration: number) {
-      return {
-          scale: { x: 1.1, y: 1.1 },
-          translate: { x: 0, y: 1 },
-          duration: duration
-      };
-  }
+  
+  // getSlideAnimation(index: number, duration: number) {
+  //     return {
+  //         translate: { x: this.getTabTranslateX(index), y: 0 },
+  //         curve: this.animationCurve,
+  //         duration: duration
+  //     };
+  // }
 
-  getUnfocusAnimation(index: number, duration: number) {
-      return {
-          scale: { x: 1, y: 1 },
-          translate: { x: 0, y: 0 },
-          duration: duration
-      };
-  }
+  // getFocusAnimation(index: number, duration: number) {
+  //     return {
+  //         scale: { x: 1.1, y: 1.1 },
+  //         translate: { x: 0, y: 1 },
+  //         duration: duration
+  //     };
+  // }
 
-  getTabTranslateX(index: number): number {
-      return index * screen.mainScreen.widthDIPs / this.tabList.length - (screen.mainScreen.widthDIPs / 2) + (80 / 2)
-  }
+  // getUnfocusAnimation(index: number, duration: number) {
+  //     return {
+  //         scale: { x: 1, y: 1 },
+  //         translate: { x: 0, y: 0 },
+  //         duration: duration
+  //     };
+  // }
+
+  // getTabTranslateX(index: number): number {
+  //     return index * screen.mainScreen.widthDIPs / this.tabList.length - (screen.mainScreen.widthDIPs / 2) + (80 / 2)
+  // }
 
   getIconSource(icon: string): string {
     const iconPrefix = isAndroid ? "res://" : "res://tabIcons/";

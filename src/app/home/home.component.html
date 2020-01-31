@@ -1,20 +1,14 @@
 <GridLayout rows="*, 50">
+    <BottomNavigation row="0" #tabs selectedIndex="0"  (loaded)="onLoadedNav($event)" (selectedIndexChanged)="onSelectedIndexChanged($event)">
 
-        <BottomNavigation row="0" #tabs selectedIndex="0" (loaded)="onLoadedNav($event)" (selectedIndexChanged)="onSelectedIndexChanged($event)">
             <TabContentItem>
-                <GridLayout>
-                    <page-router-outlet name="castingsTab"></page-router-outlet>
-                </GridLayout>
+                <page-router-outlet name="castingsTab"></page-router-outlet>
             </TabContentItem>
             <TabContentItem>
-                <GridLayout>
-                    <page-router-outlet name="notificationsTab"></page-router-outlet>
-                </GridLayout>
+                <page-router-outlet name="notificationsTab"></page-router-outlet>
             </TabContentItem>
             <TabContentItem>
-                <GridLayout>
-                    <page-router-outlet name="profileTab"></page-router-outlet>
-                </GridLayout>
+                <page-router-outlet name="profileTab"></page-router-outlet>
             </TabContentItem>
         </BottomNavigation>
 
@@ -32,8 +26,14 @@
                 </AbsoluteLayout>
             </GridLayout>
         </GridLayout>
-    
+
 </GridLayout>
+<!-- 
+<TabView  #homeTabs androidTabsPosition="bottom">
+    <page-router-outlet  *tabItem="{title: '', iconSource: getIconSource('casting_on')}"  name="castingsTab">  </page-router-outlet>
+    <page-router-outlet  *tabItem="{title: '', iconSource: getIconSource('notification_on')}" name="notificationsTab"> </page-router-outlet>
+    <page-router-outlet *tabItem="{title: '', iconSource: getIconSource('profile_on')}" name="profileTab"> </page-router-outlet>
+</TabView> -->
 
 <!-- <BottomNavigation selectedIndex="1">
     <TabStrip>
