@@ -242,7 +242,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
         // console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > casting.status',casting.status);
         // console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > casting.casting_denied',casting.casting_denied);
         console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
-        console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > voglio vedere se sono iscritto a sto cazzo di casting di merda',casting.new_action);
+        console.log('l☯☯☯l > CastingDetailComponent > verificaCasting() > voglio vedere se sono iscritto al casting',casting.new_action);
         console.log('☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯');
         this._isLoadingService = false;
         this._isLoadedService = true;
