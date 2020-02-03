@@ -86,7 +86,9 @@
     "START_DATE": "STARTING DATE",
     "SHOOTING_TITLE":"Shooting Information",
     "SHOOTING_TEXT":"Congratulations, you have passed casting and now it's time to get involved.",
-    "SHOOTING_NOTE":"Remember to check your calendar, you are considered available for this project. If you have other options, don't forget to let us know, it's very important for us."
+    "SHOOTING_NOTE":"Remember to check your calendar, you are considered available for this project. If you have other options, don't forget to let us know, it's very important for us.",
+    "INSERISCI_AGENZIA":"Select an agency from the list"
+
   },
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "NOTIFICATIONS"
@@ -104,7 +106,8 @@
     "POPUP_TITLE":"",
     "POPUP_TEXT":"",
     "POPUP_FOOTER":"Please fill in all the information and keep your profile updated to increase the chances of being selected for castings.",
-    "POPUP_BUTTON":"OK"
+    "POPUP_BUTTON":"OK",
+    "ERRORE_CM":"Enter the measurement in centimeters!"
   },
   "USER": {
     "NAME" : "Name",

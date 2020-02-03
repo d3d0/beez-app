@@ -382,7 +382,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
 
     if(action == 'Confirmed'){
       if(!this.noAgency && this.selectedAgency.name == 'no agenzia'){
-        alert(localize("Seleziona un'agenzia dall'elenco"));
+        alert(localize("CASTINGS.INSERISCI_AGENZIA"));
       }else{
         this.isLoading = true;
         this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe((result)=>{

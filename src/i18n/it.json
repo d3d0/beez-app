@@ -86,7 +86,8 @@
     "START_DATE": "INIZIO CASTING",
     "SHOOTING_TITLE":"Informazioni sullo Shooting",
     "SHOOTING_TEXT":"Congratulazioni, hai superato la prima selezione. Rimani in attesa per la conferma definitiva del regista e del cliente.",
-    "SHOOTING_NOTE":"Ricordati di verificare il tuo calendario, sei considerato disponibile per questo progetto. Se hai altre opzioni in corso, non dimenticare di comunicarcele è molto importante per noi."
+    "SHOOTING_NOTE":"Ricordati di verificare il tuo calendario, sei considerato disponibile per questo progetto. Se hai altre opzioni in corso, non dimenticare di comunicarcele è molto importante per noi.",
+    "INSERISCI_AGENZIA":"Seleziona un'agenzia dall'elenco"
   },
   "NOTIFICATIONS": {
     "NOTIFICATIONS": "NOTIFICHE"
@@ -104,7 +105,8 @@
     "POPUP_TITLE":"Questa é la sezione PROFILO",
     "POPUP_TEXT":"Completa tutti i campi e aggiungi nuovi MEDIA al tuo profilo prima di candidarti a un casting.",
     "POPUP_FOOTER":"..e buona fortuna!",
-    "POPUP_BUTTON":"VAI Al PROFILO"
+    "POPUP_BUTTON":"VAI Al PROFILO",
+    "ERRORE_CM":"Inserire la misura in centimetri!"
   },
   "USER": {
     "NAME" : "Nome",

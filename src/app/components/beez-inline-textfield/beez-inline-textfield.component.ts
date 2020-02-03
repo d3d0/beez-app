@@ -1,5 +1,8 @@
 import { Component, ElementRef, Input, Output, ViewContainerRef, EventEmitter, ViewChild } from "@angular/core";
 import { TextField } from "tns-core-modules/ui/text-field";
+import { localize } from "nativescript-localize";
+import { alert } from "../../shared/utils";
+
 
 
 @Component({
@@ -75,7 +78,7 @@ export class BeezInlineTextfield {
             console.log('l☯☯☯l > BeezInlineTextfield > onBlur() > numero is number: ', isNaN(numero));
             if(isNaN(numero)){
                 this.text='';
-                alert('Inserire la misura in centimetri!');
+                alert(localize("PROFILE.ERRORE_CM"));
                 return;
             }
         }
