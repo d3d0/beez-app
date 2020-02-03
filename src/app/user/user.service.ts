@@ -37,7 +37,7 @@ export class UserService {
     return this.http.post(
       BackendService.baseUrl + "beez/user/login",
       JSON.stringify({
-        username: user.mail,
+        username: user.mail.trim(),
         password: user.pass
       }),
       {

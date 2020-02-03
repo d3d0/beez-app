@@ -54,9 +54,11 @@ export class User {
   static isValidEmail(mail) {
     if ( mail ) {
       if ( mail.length > 0 ) {
-        return validator.validate(mail);
+        // return validator.validate(mail);
+        return true;
       }
     }
+    return false;
   };
   static isValidPassword(pass) {
     if ( pass ) {

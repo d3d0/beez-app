@@ -190,7 +190,7 @@ export class LoginComponent implements OnInit {
         BackendService.sessid = result['sessid'];
         BackendService.XCSFRtoken = result['token'];
         BackendService.UID = result['user']['uid'];
-        BackendService.user_name = result['user']['name'];
+        BackendService.user_name = result['user']['name'].trim();
         BackendService.email_notify = result['user']['field_ricevi_notifiche_email']['und'][0]['value'];
   
         Object.keys(result['user']['roles']).forEach(key => {
