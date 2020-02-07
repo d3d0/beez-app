@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest android:hardwareAccelerated="true" xmlns:android="http://schemas.android.com/apk/res/android"
 	package="__PACKAGE__"
-	android:versionCode="10200101"
+	android:versionCode="10200102"
 	android:versionName="1.2.1">
 
 	<supports-screens
@@ -19,6 +19,7 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	
 	<application
+		android:requestLegacyExternalStorage="true"
 		android:usesCleartextTraffic="true"
 		android:name="com.tns.NativeScriptApplication"
 		android:allowBackup="true"
