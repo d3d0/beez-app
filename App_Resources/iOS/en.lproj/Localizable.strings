@@ -100,6 +100,8 @@
 "_CASTINGS_NO_CLOSE_CASTINGS_TITLE_26wiRd" = "No next shooting";
 "_CASTINGS_NO_AUDITION_CASTINGS_TEXT_ZRgMB0" = "In this section you will find the castings which you can participate. Always check the new castings and candidates for what's right for you. How does it work? \n After being selected, come to the casting in the place and times you find in the project description. If you can't come, ask for an archive or send a selftape in real time. ";
 "_CASTINGS_NO_AUDITION_CASTINGS_TITLE_Z1DwsKL" = "My auditions";
+"_CASTINGS_NO_EMPTY_CASTINGS_TEXT_1AnS8U" = "At the moment there are no new castings to apply for.";
+"_CASTINGS_NO_EMPTY_CASTINGS_TITLE_Z1lPpHk" = "Welcome in BEEZ!";
 "_CASTINGS_NO_NEW_CASTINGS_TEXT_Z16OlfC" = "At the moment there are no new castings to apply for.";
 "_CASTINGS_NO_NEW_CASTINGS_TITLE_17NHIM" = "Welcome in BEEZ!";
 "_CASTINGS_AUDITION_INFO_1ODeVJ" = "Information on the casting";
@@ -113,6 +115,9 @@
 "_CASTINGS_ONGOING_1gX41U" = "HOME";
 "_CASTINGS_CASTING_Z1zSgUB" = "CASTING";
 "_CASTINGS_CASTINGS_1BoPqT" = "CASTINGS";
+"_CASTINGS_PROGRESS_nvJvh" = "IN PROGRESS";
+"_CASTINGS_CLOSE_HO7zf" = "CLOSED";
+"_CASTINGS_ARCHIVE_1Wakvk" = "CASTINGS ARCHIVE";
 "_SIGNUP_RECOVERY_2hoHhE" = "Password recovery";
 "_SIGNUP_REGISTRATION_POLICY_1mmgVc" = "Privacy policy";
 "_SIGNUP_REGISTRATION_TERMS_Z1q7ugx" = "Terms of use";

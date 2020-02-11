@@ -37,7 +37,12 @@ export class CastingsListComponent implements OnInit, OnDestroy {
   private _isLoading = true;
   private _castings: ObservableArray<Casting> = new ObservableArray<Casting>([]);
   private _dataSubscription: Subscription;
-  private _templateSelector: (item, index: number, items: any) => string;
+  // docs:
+  // https://medium.com/@alexander.vakrilov/faster-nativescript-listview-with-multiple-item-templates-8f903a32e48f
+  // https://docs.nativescript.org/angular/ui/ng-components/ng-RadListView/multiple-templates
+  // in base alla proprietà di item (es. status) la funzione templateSelectorFunction
+  // ci tornerà un valore in formato stringa che corrisponde ad un template di RadListView
+  private _templateSelector: (item: Casting, index: number, items: any) => string;
 
   @Input() castingType: string;
   @Input() refresh: number;
@@ -106,7 +111,9 @@ export class CastingsListComponent implements OnInit, OnDestroy {
   }
 
   public templateSelectorFunction = (item: Casting, index: number, items: any) => {
-    if( !item.id ) return "empty";
+    if ( !item.id ) return "empty";
+    if ( item.status == "empty" ) return "empty";
+    if ( item.status == "Archivio" ) return "archivio";
     return "default";
   }
 
@@ -131,7 +138,7 @@ export class CastingsListComponent implements OnInit, OnDestroy {
 
   onCastingTap(args: ListViewEventData): void {
     const tappedCasting = args.view.bindingContext;
-    if(tappedCasting.id)
+    if(tappedCasting.id && tappedCasting.id > 1)
       this.router.navigate(["../casting", tappedCasting.id], { relativeTo: this.activeRoute })
   }
 

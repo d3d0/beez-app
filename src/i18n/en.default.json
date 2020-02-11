@@ -53,6 +53,9 @@
     "RECOVERY":"Password recovery"
   },
   "CASTINGS": {
+    "ARCHIVE": "CASTINGS ARCHIVE",
+    "CLOSE": "CLOSED",
+    "PROGRESS": "IN PROGRESS",
     "CASTINGS": "CASTINGS",
     "CASTING": "CASTING",
     "ONGOING": "HOME",
@@ -66,6 +69,8 @@
     "AUDITION_INFO": "Information on the casting",
     "NO_NEW_CASTINGS_TITLE": "Welcome in BEEZ!",
     "NO_NEW_CASTINGS_TEXT": "At the moment there are no new castings to apply for.",
+    "NO_EMPTY_CASTINGS_TITLE": "Welcome in BEEZ!",
+    "NO_EMPTY_CASTINGS_TEXT": "At the moment there are no new castings to apply for.",
     "NO_AUDITION_CASTINGS_TITLE": "My auditions",
     "NO_AUDITION_CASTINGS_TEXT": "In this section you will find the castings which you can participate. Always check the new castings and candidates for what's right for you. How does it work? \n After being selected, come to the casting in the place and times you find in the project description. If you can't come, ask for an archive or send a selftape in real time. ",
     "NO_CLOSE_CASTINGS_TITLE": "No next shooting",

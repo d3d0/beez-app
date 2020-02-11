@@ -40,6 +40,21 @@ export class CastingsService {
 
   /**
    * 
+   * loadAll()
+   * lista completa di tutti i casting
+   */
+  loadAll(): Observable<any> {
+    console.log('casting loading ...');
+    return this.http.get( BackendService.baseUrl + "beez/loool_all_casting", {
+        headers: BackendService.getCommonHeaders()
+      }).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleErrors) // then handle the error
+      );
+  }
+
+  /**
+   * 
    * getCastingById()
    * dettaglio di un singolo casting
    */

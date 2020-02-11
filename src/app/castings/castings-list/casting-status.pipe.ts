@@ -13,9 +13,10 @@ export class CastingStatusPipe implements PipeTransform {
       switch(castingType) {
         case "New":
         this.value = items.filter((casting: Casting) => {
-          return casting.status === "New";
+          return (casting.status === "New" || casting.status === "Archivio" || casting.status === "empty" );
         });
         break
+
         case "Audition":
         this.value = items.filter((casting: Casting) => {
           return casting.status === "Audition";
@@ -27,6 +28,7 @@ export class CastingStatusPipe implements PipeTransform {
           return casting.status === "Close";
         });
         break
+
       }
     }
     // se vuoto ritorno lista vuota con un elemento per il layout di default
