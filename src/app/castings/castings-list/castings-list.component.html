@@ -75,11 +75,11 @@
           <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
           <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
           <AbsoluteLayout row="0" col="1">
-            <GridLayout left="0" top="0" width="100%" columns="20, *, 65" rows="25, 30, 30">
-              <Label *ngIf="item.status_casting === 'Audition'" class="list-group-item-heading-10 list-group-item-heading-orange text-uppercase" [text]="'CASTINGS.PROGRESS' | L" textWrap="true" row="0" col="0" colSpan="3"></Label>
-              <Label *ngIf="item.status_casting === 'Close'" class="list-group-item-heading-10 list-group-item-heading-red text-uppercase" [text]="'CASTINGS.CLOSE' | L" textWrap="true" row="0" col="0" colSpan="3"></Label>
-              <Label backgroundColor="" [text]="item.title" class="list-group-item-heading-14 text-uppercase" textWrap="true" row="1" col="0" colSpan="3"></Label>
-              <Label backgroundColor="" [text]="item.subtitle" class="list-group-item-heading-10" textWrap="true" row="2" col="0" colSpan="3" ></Label>
+            <GridLayout left="0" top="0" width="100%" columns="20, *, 65" rows="40, 30">
+              <!-- <Label *ngIf="item.status_casting === 'Audition'" class="list-group-item-heading-10 list-group-item-heading-orange text-uppercase" [text]="'CASTINGS.PROGRESS' | L" textWrap="true" row="0" col="0" colSpan="3"></Label> -->
+              <!-- <Label *ngIf="item.status_casting === 'Close'" class="list-group-item-heading-10 list-group-item-heading-red text-uppercase" [text]="'CASTINGS.CLOSE' | L" textWrap="true" row="0" col="0" colSpan="3"></Label> -->
+              <Label backgroundColor="" [text]="item.title" class="list-group-item-heading-14 text-uppercase" textWrap="true" row="0" col="0" colSpan="3"></Label>
+              <Label backgroundColor="" [text]="item.subtitle" class="list-group-item-heading-10" textWrap="true" row="1" col="0" colSpan="3" ></Label>
             </GridLayout>
           </AbsoluteLayout>
 

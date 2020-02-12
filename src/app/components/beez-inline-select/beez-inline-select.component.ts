@@ -6,6 +6,10 @@ import { localize } from "nativescript-localize";
 import { SelectDateModalViewComponent } from "../select-date-modal-view/select-date-modal-view.component";
 import { SelectModalViewComponent } from "../select-modal-view/select-modal-view.component";
 import { TaxonomyService} from "../../shared/taxonomy.service";
+import localeIt from '@angular/common/locales/it';
+import { registerLocaleData } from '@angular/common';
+import { device } from "tns-core-modules/platform";
+
 
 class Term {
     vid:string;
@@ -33,12 +37,17 @@ export class BeezInlineSelect {
     @Input() editable: boolean;
     @Output() selectEvent = new EventEmitter<string>();
     private obj = new Term;
+    private lingua: string;
     //private text: any;
 
     constructor(
         private vcRef: ViewContainerRef,
         private taxonomyService: TaxonomyService,
-        private modal: ModalDialogService) {}
+        private modal: ModalDialogService) {
+            registerLocaleData(localeIt, 'it-IT');
+            this.lingua = device.language.substring(0,2).toLowerCase();
+            console.log('l☯☯☯l > lingua > ',this.lingua);
+        }
 
     @Input() set value (value:any){
         if( value )
@@ -55,7 +64,13 @@ export class BeezInlineSelect {
             //     this.obj.name = formatDate(value ,'dd MMMM yy','en'); // FIX!
             // }
             
-            this.obj.name = formatDate(value ,'dd MMMM yy','en'); // FIX!
+            // DOCS: testo visualizzato nel campo di testo !!
+            if( this.lingua == 'it') {
+                this.obj.name = formatDate(value ,'dd MMMM yyyy','it-IT'); // FIX!
+            } 
+            else {
+                this.obj.name = formatDate(value ,'MMMM dd yyyy','en-EN'); // FIX!
+            }
             console.log('IS DATEPICKER this.obj.name >',this.obj.name);
         } 
         else {
@@ -73,7 +88,14 @@ export class BeezInlineSelect {
             this.createDatapickerModelView().then((value)=> {
                 if(value){
                     console.log('l☯☯☯l > BeezInlineSelect > openModal() > datapicker value:',value);
-                    this.obj.name = formatDate(value ,'dd MMMM yy','en'); // DOCS: testo visualizzato nella label del componente !!
+
+                    // DOCS: testo visualizzato nella select !!
+                    if( this.lingua == 'it') {
+                        this.obj.name = formatDate(value ,'dd MMMM yyyy','it-IT'); // FIX!
+                    } 
+                    else {
+                        this.obj.name = formatDate(value ,'MMMM dd yyyy','en-EN'); // FIX!
+                    }
                     this.selectEvent.emit(value); // DOCS: valore passato a this.profile[field] !!
                 }
             }).catch(error => console.log(error.message));
