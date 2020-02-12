@@ -17,7 +17,7 @@
   <!-- <ActionItem  class="action-items "ios.position="right" android.position="right">
     <Label class="m-5" class="action-items credits-value" text="98" ></Label>
   </ActionItem> -->
-  <ActionItem class="action-items " ios.position="right" android.position="right" [nsRouterLink]="['../settings']">
+  <ActionItem class="action-items " ios.position="right" android.position="right" android.marginRight="20" [nsRouterLink]="['../settings']">
     <Image class="m-5" src="res://settings" stretch="none"></Image>
   </ActionItem>
 </ActionBar>
@@ -165,13 +165,17 @@
             <BeezInlineTextfield [editable]="editable" [last]='!editable' [text]="profile.country" (textfieldEvent)="textfieldEvent($event,'country')" [placeholder]="'USER.COUNTRY'|L"></BeezInlineTextfield>
           </StackLayout>
           <!-- edit -->
-          <GridLayout class="wrapper m-t-16" columns="*, 16, *" rows="auto" [visibility]="editable ? 'visible' : 'collapsed'">
+          <GridLayout class="wrapper m-t-16" columns="*, 16, *" rows="auto" [visibility]="editable ? 'visible' : 'collapsed'" >
             <BeezButton [text]="'CANCEL'|L|titlecase" [isBusy]="isLoading" buttonColor="black" (buttonClick)="editCancel()" row=0 col="0"></BeezButton>
             <BeezButton [text]="'SAVE'|L|titlecase" [isBusy]="isLoading" (buttonClick)="editSave()" row=0 col="2"></BeezButton>
           </GridLayout>
 
         </StackLayout>
       </CardView>
+
+      <GridLayout class="wrapper" columns="*" rows="*" height="230" [visibility]="editable ? 'visible' : 'collapsed'" >
+      </GridLayout>
+      
     </StackLayout>
   </StackLayout>
 </ScrollView>
