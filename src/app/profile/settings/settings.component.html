@@ -57,20 +57,24 @@
 						<StackLayout class="icon-container" row="2" col="1" >
 							<Image [src]="getIconSource('message')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
 						</StackLayout>
-						<Label [text]="'Notifiche'" class="header" textWrap="true" row="2" col="2" verticalAlignment="center" verticalAlignment="center" backgroundColor=""></Label>
+						<Label [text]="'PROFILE.SETTINGS_NOTIFICATION'|L" class="header" textWrap="true" row="2" col="2" verticalAlignment="center" verticalAlignment="center" backgroundColor=""></Label>
 						<GridLayout  row="3" col="2" columns="*,auto" rows="auto,auto" backgroundColor="" class="m-b-8">
-							<Label class="list-group-item-text" text="Ricevi notifiche e-mail" textWrap="true" row="0" col="0" verticalAlignment="center"></Label>
+							<Label class="list-group-item-text" [text]="'PROFILE.SETTINGS_NOTIFICATION_TOGGLE'|L" textWrap="true" row="0" col="0" verticalAlignment="center"></Label>
 							<Switch #sw class="list-group-item-switch" (checkedChange)="onCheckedChange(sw.checked)"  [checked]="isChecked" row="0" col="1" horizontalAlignment="right" verticalAlignment="center"></Switch>
 						</GridLayout>
 	
 						<StackLayout class="icon-container" row="4" col="1" >
 							<Image [src]="getIconSource('info')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
 						</StackLayout>
-						<Label [text]="'Informazioni'" class="header" textWrap="true" row="4" col="2" verticalAlignment="center" backgroundColor=""></Label>
+						<Label [text]="'PROFILE.SETTINGS_INFO'|L" class="header" textWrap="true" row="4" col="2" verticalAlignment="center" backgroundColor=""></Label>
 						<StackLayout  row="5" col="2" backgroundColor="">
-							<Label class="list-group-item-text" text="Sito web sviluppatore" textWrap="true" row="16" col="1" (tap)="openUrl('https://loool.com')" verticalAlignment="center"></Label>
-							<Label class="list-group-item-text" text="Termini di utilizzo" textWrap="true" row="17" col="1" (tap)="openUrl('https://loool.com')" verticalAlignment="center"></Label>
-							<Label class="list-group-item-text list-group-item-text-last" text="Privacy policy" textWrap="true" row="18" col="1" (tap)="openUrl('https://loool.com')" verticalAlignment="center"></Label>
+							<Label class="list-group-item-text" [text]="'PROFILE.SETTINGS_INFO_SITE'|L" textWrap="true" row="16" col="1" (tap)="openUrl('https://loool.com')" verticalAlignment="center"></Label>
+							<!-- <Label class="list-group-item-text" text="Termini di utilizzo" textWrap="true" row="17" col="1" (tap)="openUrl('https://loool.com')" verticalAlignment="center"></Label> -->
+							<Label *ngIf="lingua=='it'"class="list-group-item-text list-group-item-text-last" text="Privacy policy" textWrap="true" row="17" col="1" (tap)="openUrl('https://www.faceandplace.com/it/privacy-e-copyright')" verticalAlignment="center"></Label>
+							<Label *ngIf="lingua=='en'"class="list-group-item-text list-group-item-text-last" text="Privacy policy" textWrap="true" row="17" col="1" (tap)="openUrl('https://www.faceandplace.com/en/privacy-e-copyright')" verticalAlignment="center"></Label>
+
+							<Label class="list-group-item-text" text="© 2020 Face and Place srl - PI 03597300965" textWrap="true" row="18" col="1" verticalAlignment="center"></Label> -->
+
 						</StackLayout>
 	
 						<StackLayout class="icon-container" row="6" col="1" >

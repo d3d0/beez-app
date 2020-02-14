@@ -14,6 +14,8 @@ import { StackLayout } from 'tns-core-modules/ui/layouts/stack-layout/stack-layo
 import { ScrollView, ScrollEventData } from "tns-core-modules/ui/scroll-view";
 import {NavigatedData, Page} from "tns-core-modules/ui/page";
 import { isIOS, isAndroid } from "tns-core-modules/platform";
+import { device } from "tns-core-modules/platform";
+
 
 import {
   ApplicationEventData, exitEvent, launchEvent, on, resumeEvent,
@@ -40,6 +42,7 @@ export class SettingsComponent implements OnInit {
   formValue:any;
 
   private page: Page;
+  private lingua: string;
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -52,6 +55,8 @@ export class SettingsComponent implements OnInit {
       this.page = page;
       this.page.on("navigatingTo", this.onNavigatingTo.bind(this));
       this.page.on("navigatedTo", this.onNavigatedTo.bind(this));
+      this.lingua = device.language.substring(0,2).toLowerCase();
+      console.log('l☯☯☯l > lingua > ',this.lingua);
     }
 
   ngOnInit() {

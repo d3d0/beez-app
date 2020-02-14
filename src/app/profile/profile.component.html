@@ -17,8 +17,10 @@
   <!-- <ActionItem  class="action-items "ios.position="right" android.position="right">
     <Label class="m-5" class="action-items credits-value" text="98" ></Label>
   </ActionItem> -->
-  <ActionItem class="action-items " ios.position="right" android.position="right" android.marginRight="20" [nsRouterLink]="['../settings']">
-    <Image class="m-5" src="res://settings" stretch="none"></Image>
+  <ActionItem class="action-items " ios.position="right" android.position="right" [nsRouterLink]="['../settings']">
+    <StackLayout class="action-items__padding-right " >
+      <Image class="m-5" src="res://settings" stretch="none" ></Image>
+    </StackLayout>
   </ActionItem>
 </ActionBar>
 

@@ -58,16 +58,18 @@ export class BeezInlineSelect {
             console.log('l☯☯☯l > IS DATEPICKER ?',this.type);
             console.log('l☯☯☯l > IS DATEPICKER VALUE >',value);
             
-            // DOCS: testo visualizzato nel campo di testo !!
-            if( this.lingua == 'it') {
-                this.obj.name = formatDate(value ,'dd MMMM yyyy','it-IT'); // FIX!
-            } 
-            else {
-                this.obj.name = formatDate(value ,'MMMM dd yyyy','en-EN'); // FIX!
+            if( value ) {
+                // DOCS: testo visualizzato nel campo di testo !!
+                if( this.lingua == 'it') {
+                    this.obj.name = formatDate(value ,'dd MMMM yyyy','it-IT'); // FIX!
+                } 
+                else {
+                    this.obj.name = formatDate(value ,'MMMM dd yyyy','en-EN'); // FIX!
+                }
+                // DOCS: valore passato alla select date nella modale !!
+                this.text = formatDate(value ,'dd MMMM yyyy','en-EN'); // FIX!
+                console.log('l☯☯☯l > IS DATEPICKER this.obj.name >',this.obj.name);
             }
-            // DOCS: valore passato alla select date nella modale !!
-            this.text = formatDate(value ,'dd MMMM yyyy','en-EN'); // FIX!
-            console.log('l☯☯☯l > IS DATEPICKER this.obj.name >',this.obj.name);
         } 
         else {
             console.log('l☯☯☯l > IS DATEPICKER ?',this.type);
