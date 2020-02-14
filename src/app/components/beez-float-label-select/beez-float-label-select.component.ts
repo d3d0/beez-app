@@ -4,6 +4,8 @@ import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/mod
 import { localize } from "nativescript-localize";
 import { SelectDateModalViewComponent } from "../select-date-modal-view/select-date-modal-view.component";
 import { SelectModalViewComponent } from "../select-modal-view/select-modal-view.component";
+import { device } from "tns-core-modules/platform";
+
 
 @Component({
     selector: "BeezFloatLabelSelect",
@@ -28,18 +30,23 @@ export class BeezFloatLabelSelect implements OnInit {
     @Input() editable: boolean;
     @Output() selectEvent = new EventEmitter<string>();
     private list;
+    private lingua: string;
     private text: any;
+    private data: any;
+
+    constructor(
+        private vcRef: ViewContainerRef,
+        private modal: ModalDialogService) {
+            this.lingua = device.language.substring(0,2).toLowerCase();
+            console.log('l☯☯☯l > lingua > ',this.lingua);
+    }
+
+    ngOnInit(){
+    }
 
     @Input() set value (value: any){ 
         this.text = value;
         console.log('l☯☯☯l > BeezFloatLabelSelect > @Input() set value',value);
-    }
-
-    constructor(
-        private vcRef: ViewContainerRef,
-        private modal: ModalDialogService) {}
-
-    ngOnInit(){
     }
 
     private openModal(){
@@ -52,7 +59,13 @@ export class BeezFloatLabelSelect implements OnInit {
         if (this.type == "datapicker"){
             this.createDatapickerModelView().then((value)=> {
                 if(value){
-                    this.text=formatDate(value,'dd MMMM yy','en');
+                    if( this.lingua == 'it') {
+                        this.text = formatDate(value ,'dd MMMM yyyy','it-IT'); // FIX!
+                    } 
+                    else {
+                        this.text = formatDate(value ,'MMMM dd yyyy','en-EN'); // FIX!
+                    }
+                    this.data=formatDate(value,'dd MMMM yy','en');
                     this.selectEvent.emit(value);
                 }
             })
@@ -75,14 +88,14 @@ export class BeezFloatLabelSelect implements OnInit {
     // datepicker
     private createDatapickerModelView(): Promise<any> {
         const date = new Date();
-        console.log('--------------////////FRA//////////----------->', this.text);
+        console.log('--------------////////FRA//////////----------->', this.data);
 
         const options: ModalDialogOptions = {
             context: { 
                 title: this.placeholder,
                 currentdate: date,
                 isSelect: this.isSelect,
-                selectedDate:this.text
+                selectedDate:this.data
             },
             fullscreen: true,
             viewContainerRef: this.vcRef

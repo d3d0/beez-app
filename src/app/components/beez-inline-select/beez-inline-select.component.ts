@@ -14,7 +14,7 @@ import { device } from "tns-core-modules/platform";
 class Term {
     vid:string;
     tid:string;
-    name:string;
+    name:any;
 }
 
 @Component({
@@ -38,7 +38,7 @@ export class BeezInlineSelect {
     @Output() selectEvent = new EventEmitter<string>();
     private obj = new Term;
     private lingua: string;
-    //private text: any;
+    private text: any;
 
     constructor(
         private vcRef: ViewContainerRef,
@@ -50,19 +50,13 @@ export class BeezInlineSelect {
         }
 
     @Input() set value (value:any){
-        if( value )
-        //this.text = value;
-        //console.log('--------------////////FRA//////////----------->', this.text);
+        // if( value ) {
+        //     console.log('--------------////////FRA//////////----------->', value);
+        // }
+        
         if (this.type == "datapicker"){
-            console.log('IS DATEPICKER ?',this.type);
-            console.log('IS DATEPICKER VALUE >',value);
-
-            // if(valoreData > 0) { // se arriva in TIMESTAMP trasformo in ISO
-            //     this.obj.name = formatDate(parseInt(value) * 1000 ,'dd MMMM yy','en'); // FIX!
-            // }
-            // else { // se arriva in DATEPICKER trasformo in TIMESTAMP
-            //     this.obj.name = formatDate(value ,'dd MMMM yy','en'); // FIX!
-            // }
+            console.log('l☯☯☯l > IS DATEPICKER ?',this.type);
+            console.log('l☯☯☯l > IS DATEPICKER VALUE >',value);
             
             // DOCS: testo visualizzato nel campo di testo !!
             if( this.lingua == 'it') {
@@ -71,11 +65,13 @@ export class BeezInlineSelect {
             else {
                 this.obj.name = formatDate(value ,'MMMM dd yyyy','en-EN'); // FIX!
             }
-            console.log('IS DATEPICKER this.obj.name >',this.obj.name);
+            // DOCS: valore passato alla select date nella modale !!
+            this.text = formatDate(value ,'dd MMMM yyyy','en-EN'); // FIX!
+            console.log('l☯☯☯l > IS DATEPICKER this.obj.name >',this.obj.name);
         } 
         else {
-            console.log('IS DATEPICKER ?',this.type);
-            this.taxonomyService.getTerm(value).subscribe( obj => this.obj = obj[0] );
+            console.log('l☯☯☯l > IS DATEPICKER ?',this.type);
+            this.taxonomyService.getTerm(value).subscribe( obj => this.obj = obj[0] );  
         }
     }
     
@@ -96,15 +92,13 @@ export class BeezInlineSelect {
                     else {
                         this.obj.name = formatDate(value ,'MMMM dd yyyy','en-EN'); // FIX!
                     }
-                    this.selectEvent.emit(value); // DOCS: valore passato a this.profile[field] !!
+                    // DOCS: valore che la select passa a this.profile[field] !!
+                    this.selectEvent.emit(value); 
                 }
             }).catch(error => console.log(error.message));
         }
         else {
-
-            console.log('passo di qui');
             this.createTaxonomyModelView().then((value)=> {
-                console.log('passo di qui----------->',value);
                 if(value){
                     console.log('l☯☯☯l > BeezInlineSelect > openModal() > taxonomy value:',value);
                     this.obj=value;
@@ -132,7 +126,7 @@ export class BeezInlineSelect {
                 title: this.placeholder,
                 currentdate: date,
                 isSelect: this.isSelect,
-                selectedDate:this.obj.name
+                selectedDate:this.text
             },
             fullscreen: true,
             viewContainerRef: this.vcRef

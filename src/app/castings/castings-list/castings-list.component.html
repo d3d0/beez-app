@@ -13,11 +13,11 @@
             
             <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
               <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" ></Image>
-            </StackLayout> 
+            </StackLayout>
             <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
               <Label *ngIf="castingType == 'Audition' && item.audition_action == ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="banner-top-card" textWrap="true"></Label>  
               <Image  [src]="item.image" class="list-group-item-img" stretch="aspectFill"></Image>
-            </StackLayout> 
+            </StackLayout>
             <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed' " src="res://partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
             <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed-archive' " src="res://partecipo_archivio" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
             <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-declined' " src="res://non_partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
@@ -75,7 +75,7 @@
           <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
           <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
           <AbsoluteLayout row="0" col="1">
-            <GridLayout left="0" top="0" width="100%" columns="20, *, 65" rows="40, 30">
+            <GridLayout left="0" top="0" width="100%" columns="20, *, 65" rows="45, 30">
               <!-- <Label *ngIf="item.status_casting === 'Audition'" class="list-group-item-heading-10 list-group-item-heading-orange text-uppercase" [text]="'CASTINGS.PROGRESS' | L" textWrap="true" row="0" col="0" colSpan="3"></Label> -->
               <!-- <Label *ngIf="item.status_casting === 'Close'" class="list-group-item-heading-10 list-group-item-heading-red text-uppercase" [text]="'CASTINGS.CLOSE' | L" textWrap="true" row="0" col="0" colSpan="3"></Label> -->
               <Label backgroundColor="" [text]="item.title" class="list-group-item-heading-14 text-uppercase" textWrap="true" row="0" col="0" colSpan="3"></Label>
