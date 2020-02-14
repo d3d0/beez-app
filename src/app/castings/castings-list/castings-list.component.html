@@ -21,13 +21,10 @@
             <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed' " src="res://partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
             <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-confirmed-archive' " src="res://partecipo_archivio" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
             <Image *ngIf="castingType === 'Audition'  && item.audition_action == 'action-declined' " src="res://non_partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
+            <Image *ngIf="castingType === 'New' && item.new_action == 'action-candidated' " src="res://partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
 
-            <Image *ngIf="castingType === 'New'  && item.new_action == 'action-candidated' " src="res://partecipo" stretch="none" row="0" col="0" colspan="4" horizontalAlignment="right"></Image>
-          
             <Label [text]="item.title" class="label-18-NO list-group-item-heading-18 p-t-8" textWrap="true" row="1" col="0" colSpan="4"></Label>
-            
             <Label  *ngIf="castingType == 'New'" [text]="item.subtitle" class="list-group-item-text" textWrap="true" row="2" col="0" colSpan="4"></Label>
-            
             <Label text="" class="list-group-item-h-line" row="3" col="0" colSpan="5"></Label>
 
             <!-- ultima riga > new -->
@@ -36,6 +33,7 @@
               <Label textWrap="true" class="title  p-l-8">
                 <FormattedString>
                   <Span [text]="item.casting_date[0][0] * 1000 | date:'dd.MM.yy'" ></Span>
+                  
                   <!-- <Span text=" • " ></Span>
                   <Span [text]="item.casting_date[0][0] * 1000 | date:'HH:mm'" ></Span>
                   <Span text=" - " ></Span>
@@ -72,8 +70,8 @@
 
         <GridLayout backgroundColor="" class="list-group-item" android:radius="10" ios:radius="4" columns="80, *" rows="80, auto" >
 
-          <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
-          <Image [src]="item.image" class="list-group-item-img" stretch="aspectFill" row="0" col="0"></Image>
+          <Image src="~/assets/images/boys.jpg" class="list-group-item-img-small" stretch="aspectFill" row="0" col="0"></Image>
+          <Image [src]="item.image" class="list-group-item-img-small" stretch="aspectFill" row="0" col="0"></Image>
           <AbsoluteLayout row="0" col="1">
             <GridLayout left="0" top="0" width="100%" columns="20, *, 65" rows="45, 30">
               <!-- <Label *ngIf="item.status_casting === 'Audition'" class="list-group-item-heading-10 list-group-item-heading-orange text-uppercase" [text]="'CASTINGS.PROGRESS' | L" textWrap="true" row="0" col="0" colSpan="3"></Label> -->
