@@ -72,8 +72,13 @@ export class BeezInlineSelect {
             }
         } 
         else {
-            console.log('l☯☯☯l > IS DATEPICKER ?',this.type);
-            this.taxonomyService.getTerm(value).subscribe( obj => this.obj = obj[0] );  
+            console.log('l☯☯☯l > IS TAXONOMY ?',this.type);
+            console.log('l☯☯☯l > IS TAXONOMY > VALUE >',value);
+            if( value ) {
+                this.taxonomyService.getTerm(value).subscribe( (obj) => {
+                    this.obj = obj[0];
+                });
+            }
         }
     }
     
@@ -101,6 +106,7 @@ export class BeezInlineSelect {
         }
         else {
             this.createTaxonomyModelView().then((value)=> {
+                console.log('l☯☯☯l > BeezInlineSelect > openModal() > taxonomy value:',value);
                 if(value){
                     console.log('l☯☯☯l > BeezInlineSelect > openModal() > taxonomy value:',value);
                     this.obj=value;
