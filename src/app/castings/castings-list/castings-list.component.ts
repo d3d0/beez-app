@@ -37,6 +37,7 @@ export class CastingsListComponent implements OnInit, OnDestroy {
   private _isLoading = true;
   private _castings: ObservableArray<Casting> = new ObservableArray<Casting>([]);
   private _dataSubscription: Subscription;
+  private castingImage: false;
   // docs:
   // https://medium.com/@alexander.vakrilov/faster-nativescript-listview-with-multiple-item-templates-8f903a32e48f
   // https://docs.nativescript.org/angular/ui/ng-components/ng-RadListView/multiple-templates
@@ -75,7 +76,9 @@ export class CastingsListComponent implements OnInit, OnDestroy {
     if (!this._dataSubscription) {
       this._isLoading = true;
       this._dataSubscription = this.castingsService.load().pipe(finalize(() => this._isLoading = false)).subscribe((castings: Array<Casting>) => {
-        // console.log('Loading castings', castings);
+        
+        console.log('#################################################################################################################################### Loading castings', castings);
+        
         this._castings = new ObservableArray(castings);
         this._isLoading = false;
         this._defaultIsVisible = true;

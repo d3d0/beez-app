@@ -25,8 +25,8 @@
 
 		<StackLayout [visibility]="_isLoadedService === true ? 'visible' : 'collapsed'" orientation="vertical" backgroundColor="">
 			<GridLayout rows="auto, auto">
-				<Image src="~/assets/images/boys.jpg" height="240" stretch="aspectFill"></Image>
-				<Image [src]="casting.image" height="240" stretch="aspectFill"></Image>
+				<Image src="~/assets/images/boys.jpg" height="240" stretch="aspectFill" [visibility]="casting.image == '' ? 'visible' : 'collapsed'"></Image>
+				<Image [src]="casting.image" height="240" stretch="aspectFill" [visibility]="casting.image != '' ? 'visible' : 'collapsed'"></Image>
 			</GridLayout>
 			<CardView class="card-group" elevation="30" android:radius="10" ios:radius="4" ios:shadowRadius="10" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="10">
 

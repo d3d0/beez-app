@@ -11,10 +11,10 @@
       <CardView class="card-group" elevation="30" android:radius="10" ios:radius="4"  [class.list-group-first]="index===0" background="white" ios:shadowRadius="8" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10">
         <GridLayout  columns="16, *, 20, 16" rows="auto, auto, auto, auto, auto, auto" class="m-b-20" android:radius="10" ios:radius="4">
             
-            <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
+            <StackLayout row="0" colSpan="5" class="list-group-item-img-group" [visibility]="item.image == '' ? 'visible' : 'collapsed'">
               <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" ></Image>
             </StackLayout>
-            <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
+            <StackLayout row="0" colSpan="5" class="list-group-item-img-group" [visibility]="item.image != '' ? 'visible' : 'collapsed'">
               <Label *ngIf="castingType == 'Audition' && item.audition_action == ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="banner-top-card" textWrap="true"></Label>  
               <Image  [src]="item.image" class="list-group-item-img" stretch="aspectFill"></Image>
             </StackLayout>
@@ -70,8 +70,8 @@
 
         <GridLayout backgroundColor="" class="list-group-item" android:radius="10" ios:radius="4" columns="80, *" rows="80, auto" >
 
-          <Image src="~/assets/images/boys.jpg" class="list-group-item-img-small" stretch="aspectFill" row="0" col="0"></Image>
-          <Image [src]="item.image" class="list-group-item-img-small" stretch="aspectFill" row="0" col="0"></Image>
+          <Image src="~/assets/images/boys.jpg" class="list-group-item-img-small" stretch="aspectFill" row="0" col="0" [visibility]="item.image == '' ? 'visible' : 'collapsed'"></Image>
+          <Image [src]="item.image" class="list-group-item-img-small" stretch="aspectFill" row="0" col="0" [visibility]="item.image != '' ? 'visible' : 'collapsed'"></Image>
           <AbsoluteLayout row="0" col="1">
             <GridLayout left="0" top="0" width="100%" columns="20, *, 65" rows="45, 30">
               <!-- <Label *ngIf="item.status_casting === 'Audition'" class="list-group-item-heading-10 list-group-item-heading-orange text-uppercase" [text]="'CASTINGS.PROGRESS' | L" textWrap="true" row="0" col="0" colSpan="3"></Label> -->
