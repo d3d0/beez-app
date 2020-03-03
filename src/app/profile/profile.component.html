@@ -51,7 +51,7 @@
       <!-- CASTING TABS -->
       <StackLayout #tabHighlight col="0" class="tabActiveIndex"></StackLayout>
 
-      <GridLayout #profileTab left="0" top="0" width="100%" columns="auto,auto,auto,auto" rows="auto" class="tab-buttons-d3d0" backgroundColor="transparent">
+      <GridLayout #profileTab left="0" top="0" width="100%" columns="auto,auto,auto,auto,auto" rows="auto" class="tab-buttons-d3d0" backgroundColor="transparent">
         <GridLayout class="tab-container" col="0" (tap)="onSelectedIndexChange(0)" >
           <Label #tab1 [text]="'PROFILE.INFO'|L|uppercase" [class.disabled]="editable && selectedIndex != 0" class="label-16" textWrap="false" backgroundColor=""></Label>
         </GridLayout>
@@ -142,6 +142,7 @@
             [profile]="profile"
             (refreshProfile)="loadProfile()"></ns-media>
           </StackLayout>
+
 
           <!-- tab -->
           <StackLayout class="wrapper" [visibility]="selectedIndex === 3 ? 'visible' : 'collapsed'">

@@ -72,6 +72,14 @@ export class ProfileService {
         retry(3)
         );
   }
+  getVideos() {
+    return this.http.get(BackendService.baseUrl + 'beez/loool_talent_videos/'+ BackendService.UID,
+    {
+      headers: BackendService.getCommonHeaders()
+    }).pipe(
+        retry(3)
+        );
+  }
   deleteImage(fid) {
     return this.http.post(BackendService.baseUrl + 'beez/loool_talent_images/deleteimage',
     {
@@ -82,6 +90,17 @@ export class ProfileService {
       headers: BackendService.getCommonHeaders()
     });
   }
+  deleteVideo(fid) {
+    return this.http.post(BackendService.baseUrl + 'beez/loool_talent_videos/deletevideo',
+    {
+      "uid": BackendService.UID,
+      "fid": fid
+    },
+    {
+      headers: BackendService.getCommonHeaders()
+    });
+  }
+  
   setPolaroidImage(fid) {
     return this.http.post(BackendService.baseUrl + 'beez/loool_talent_images/setpolaroid',
     {

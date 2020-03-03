@@ -1,16 +1,12 @@
-
+<!-- 
 
 <GridLayout #container class="media" margin=0 columns="16,8,*" rows="auto,auto,auto" class="p-t-16" (loaded)="onLoadedComponent($event)">
-
-	<!-- lateral line -->
 	<Label #vline text="" class="list-group-item-v-line" rowSpan="3" col="0" row="0" marginBottom="32" horizontalAlignment="center" ></Label>
 
-	<!-- TITLE -->
 	<StackLayout class="icon-container" row="0" col="0" >
 		<Image [src]="getIconSource('photo')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
 	</StackLayout>
 	<Label text="Immagini" class="header" textWrap="true" row="0" col="2"></Label>
-	<!-- IMAGES -->
 
 		<WrapLayout orientation="horizontal" row="1" col="2">
 			<CardView *ngFor="let image of images" background="#ccc" margin=8 elevation="15" android:radius="10" ios:radius="4" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8">
@@ -24,10 +20,92 @@
 				</AbsoluteLayout>
 			</CardView>
 		</WrapLayout>
+		<Label #vline text="" class="list-group-item-v-line" rowSpan="3" col="0" row="0" marginBottom="32" horizontalAlignment="center" ></Label>		<StackLayout class="icon-container" row="0" col="0" >
+			<Image [src]="getIconSource('video')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
+		</StackLayout>
 
-	<StackLayout class="icon-container" row="2" col="0" verticalAlignment="center" horizontalAlignment="center">
+		<WrapLayout orientation="horizontal" row="2" col="2">
+
+			<Label text="video" class="header" textWrap="true" row="0" col="2"></Label>
+			<CardView *ngFor="let video of videos" background="#ccc" margin=8 elevation="15" android:radius="10" ios:radius="4" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8">
+				<AbsoluteLayout>
+					<StackLayout class="border-radius" left="0" top="0"   width="100%" android:radius="10" ios:radius="4">
+						<Image [src]="video.thumb" left="0" top="0"width="100%" stretch="aspectFill"></Image>
+					</StackLayout>
+					<StackLayout left="0" top="0" height="48" width="100%">
+						<Label class="list-group-item-icona-menu" [text]="index" (tap)="optionMenu(image)" horizontalAlignment="right"></Label>
+					</StackLayout>
+				</AbsoluteLayout>
+			</CardView>
+			
+		</WrapLayout>
+
+	<StackLayout class="icon-container" row="3" col="0" verticalAlignment="center" horizontalAlignment="center">
 		<Image [src]="getIconSource('add')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
 	</StackLayout>
-	<!-- BUTTON -->
-	<BeezButton [text]="'MEDIA_BUTTON'|L" [isBusy]="isLoading" (buttonClick)="onSelectMultipleTap()" row="2" col="2"></BeezButton>
+	<BeezButton [text]="'MEDIA_BUTTON'|L" [isBusy]="isLoading" (buttonClick)="onSelectMultipleTap()" row="3" col="2"></BeezButton>
+
 </GridLayout>
+ -->
+
+	<StackLayout class="card-group-container">
+		<GridLayout #container class="media" margin=0 columns="16,8,*" rows="auto,auto,auto" class="p-t-16" (loaded)="onLoadedComponent($event)">
+			
+			<Label #vline text="" class="list-group-item-v-line" rowSpan="3" col="0" row="0" marginBottom="32" horizontalAlignment="center" ></Label>
+		
+			<StackLayout class="icon-container" row="0" col="0" >
+				<Image [src]="getIconSource('photo')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
+			</StackLayout>
+			<Label text="Immagini" class="header" textWrap="true" row="0" col="2"></Label>
+		
+				<WrapLayout orientation="horizontal" row="1" col="2">
+					<CardView *ngFor="let image of images" background="#ccc" margin=8 elevation="15" android:radius="10" ios:radius="4" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8">
+						<AbsoluteLayout>
+							<StackLayout class="border-radius" left="0" top="0"   height="120"  width="120" android:radius="10" ios:radius="4">
+								<Image [src]="image.filepath" left="0" top="0"  height="120"  width="120" stretch="aspectFill"></Image>
+							</StackLayout>
+							<StackLayout left="0" top="0" height="48" width="120">
+								<Label class="list-group-item-icona-menu" [text]="index" (tap)="optionMenu(image)" horizontalAlignment="right"></Label>
+							</StackLayout>
+						</AbsoluteLayout>
+					</CardView>
+				</WrapLayout>
+		</GridLayout>
+	</StackLayout>
+
+	<StackLayout class="card-group-container">
+		<GridLayout #container class="video" margin=0 columns="16,8,*" rows="auto,auto,auto" class="p-t-16" (loaded)="onLoadedComponent($event)">
+			
+			<Label #vline text="" class="list-group-item-v-line" rowSpan="3" col="0" row="0" marginBottom="32" horizontalAlignment="center" ></Label>		
+			
+			<StackLayout class="icon-container" row="0" col="0" >
+				<Image [src]="getIconSource('video')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
+			</StackLayout>
+
+			<Label text="video" class="header" textWrap="true" row="0" col="2"></Label>
+
+	
+			<WrapLayout orientation="horizontal" row="1" col="2">
+	
+				<CardView *ngFor="let video of videos" background="#ccc" margin=8 elevation="15" android:radius="10" ios:radius="4" ios:shadowRadius="8" shadowOpacity="0.2" shadowColor="#000" shadowOffsetHeight="8">
+					<AbsoluteLayout>
+						<StackLayout class="border-radius" left="0" top="0"   height="120"  width="120" android:radius="10" ios:radius="4">
+							<Image [src]="video.thumb" left="0" top="0" width="120" height="120" stretch="aspectFill"></Image>
+						</StackLayout>
+						<StackLayout left="0" top="0" height="48" width="120">
+							<Label class="list-group-item-icona-menu" [text]="index" (tap)="deleteVideo(video)" horizontalAlignment="right"></Label>
+						</StackLayout>
+					</AbsoluteLayout>
+				</CardView>
+				
+			</WrapLayout>
+			<StackLayout class="icon-container" row="3" col="0" verticalAlignment="center" horizontalAlignment="center">
+				<Image [src]="getIconSource('add')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+			</StackLayout>
+		
+			<BeezButton [text]="'MEDIA_BUTTON'|L" [isBusy]="isLoading" (buttonClick)="onSelectMultipleTap()" row="3" col="2"></BeezButton>
+		</GridLayout>
+
+	</StackLayout>
+
+	

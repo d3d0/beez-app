@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input, ViewChild, ElementRef} from '@angular/core';
 import * as imagepicker from "nativescript-imagepicker";
 import * as bgHttp from "nativescript-background-http";
+import * as mime from 'mime-types';
 import { ObservableArray } from "data/observable-array";
 import { localize } from "nativescript-localize";
 import { BackendService } from "../../shared/backend.service";
@@ -11,6 +12,8 @@ import {ImageSource, fromFile,fromNativeSource, fromResource, fromBase64} from "
 import {NavigatedData, Page} from "tns-core-modules/ui/page";
 import { StackLayout } from 'tns-core-modules/ui/layouts/stack-layout/stack-layout';
 import { isIOS, isAndroid } from "tns-core-modules/platform";
+import { getFile } from "tns-core-modules/http";
+import { File } from "tns-core-modules/file-system";
 
 import * as fs from "file-system";
 import { tap } from 'rxjs/operators';
@@ -38,17 +41,23 @@ export class MediaComponent implements OnInit {
     public events: { eventTitle: string, eventData: any }[] = [];
     private file: string;
     private url: string;
+    private url_video: string;
     private counter: number = 0;
     private session: any;
+    private session_video: any;
     private images:any = [];
+    private videos:any = [];
     public isLoading:boolean = false;
 
     private page: Page;
 
     constructor( private profileService: ProfileService, page: Page ) {
         this.url = BackendService.baseUrl + "beez/loool_talent_images/upload_image_multipart";
+        this.url_video = BackendService.baseUrl + "beez/loool_talent_videos/upload_video_multipart";
         this.session = bgHttp.session("image-upload");
+        this.session_video = bgHttp.session("video-upload");
         this.loadImages();
+        this.loadVideos();
 
         this.page = page;
         this.page.on("navigatingTo", this.onNavigatingTo.bind(this));
@@ -87,6 +96,12 @@ export class MediaComponent implements OnInit {
             console.log('l☯☯☯l > MediaComponent > getImages() > this.images',this.images);
         });
     }
+    loadVideos() {
+        this.profileService.getVideos().subscribe((result) => {
+            this.videos = result;
+            console.log('l☯☯☯l > MediaComponent > getImages() > this.videos',this.videos);
+        });
+    }
     optionMenu(image){
         let coverbutton = localize("COVERBUTTON");
         let deletebutton = localize("DELETEBUTTON");
@@ -98,6 +113,20 @@ export class MediaComponent implements OnInit {
                 this.deleteImage(image);
             }
         });
+    }
+    deleteVideo(video){
+        confirm(localize("DELETE")).then(result => {
+            if(result){
+                this.profileService.deleteVideo(video.fid).subscribe( data => {
+                    this.loadVideos();
+                    this.refreshProfile.emit();
+                },error => {
+                    alert(localize("ERROR_SERVICE_Elimina_foto"))
+                });
+            }
+        },
+        error => {}
+        );
     }
     deleteImage(image){
         if(!this.isLoading){
@@ -141,6 +170,7 @@ export class MediaComponent implements OnInit {
     }
     onLoadedComponent(){
         this.loadImages();
+        this.loadVideos();
     }
     setPolaroidImage(image){
         if(!this.isLoading){
@@ -168,16 +198,12 @@ export class MediaComponent implements OnInit {
     }
 
     public onSelectMultipleTap() {
-        if(this.images.length < 3){
             this.isSingleMode = false;
             let context = imagepicker.create({
                 mode: "single"
             });
             this.startSelection(context);
             //this.loadImages();
-        }else{
-            alert(localize("Hai raggiunto il massimo di media caricabili."));
-        }
     }
 
     private startSelection(context) {
@@ -185,36 +211,130 @@ export class MediaComponent implements OnInit {
         .authorize()
         .then(() => {
             return context.present();
-        }).then((selection) => {
+        }).then(selection => {
             let counter = 0
+            // let new_path = fs.path.join(fs.knownFolders.documents().path, "my_folder");
+            // let folder = fs.Folder.fromPath(new_path);
+            // for (let i = 0; i < selection.length; i++) {
+
+            //     const selected = selection[i];
+            //     const ios = selected.ios;
+
+            //     if (ios) {
+            //         const opt = PHVideoRequestOptions.new();
+            //         opt.version = PHVideoRequestOptionsVersion.Current;
+
+            //         PHImageManager.defaultManager().requestAVAssetForVideoOptionsResultHandler(
+            //             ios, opt, (asset: AVAsset, audioMix: AVAudioMix, info: NSDictionary<any, any>) => {
+            //                 let regex = /(file[^>]*)/g
+            //                 let file = asset.toString().match(regex)[0];
+            //                 let filename = (new Date).getTime().toString() + ".mp4";
+            //                 let new_path = fs.path.join(fs.knownFolders.documents().path, "PDI");
+            //                 let folder = fs.Folder.fromPath(new_path);
+            //                 let path = fs.path.join(folder.path, filename);
+            //                 getFile(file, path).then((resultFile: File) => {
+
+            //                 }, (e) => {
+            //                 });
+            //                 // slike.push(path);
+            //                 // if (i == selection.length - 1) {
+            //                 //     //resolve(slike);
+            //                 // }
+
+            //             });
+            //     }
+            // }
             // carico tutte le immagini selezionate
-            selection.forEach( (selected_item) => {
-                let source = new ImageSource();
-                source.fromAsset(selected_item).then((image) => {
-                    let name = new Date().toISOString() +'__'+ counter + ".jpg"
-                    let folder = fs.knownFolders.documents();
-                    let path = fs.path.join(folder.path, name );
-                    let saved = image.saveToFile(path, "jpg");
-                    var localPath = path;
-                    var task = this.start_upload(localPath);
-                    this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
-                })
+            selection.forEach( selected_item => {
+
+                const ios = selected_item.ios;
+
+                console.log('mediatypeeeee******************* IOS ',ios);
+                
+                if (ios.mediaType === PHAssetMediaType.Image) {
+
+                    let source = new ImageSource();
+
+                    source.fromAsset(selected_item).then(image => {
+                    
+                        let name = new Date().toISOString() +'__'+ counter + ".jpg"
+                        let folder = fs.knownFolders.documents();
+                        let path = fs.path.join(folder.path, name );
+                        let saved = image.saveToFile(path, "jpg");
+                        var localPath = path;
+
+                        if(this.images.length < 3){
+                            var task = this.start_upload(localPath, 'foto');
+                            this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
+                            console.log('mediatypeeeee******************* SONO IMMAGINE ');
+                        }else{
+                            alert(localize("Hai raggiunto il massimo di foto caricabili."));
+                        }
+                        
+
+                    })
+                }else{
+
+                    const opt = PHVideoRequestOptions.new();
+                    opt.version = PHVideoRequestOptionsVersion.Current;
+
+                    PHImageManager.defaultManager().requestAVAssetForVideoOptionsResultHandler(
+                        ios, opt, (asset: AVAsset, audioMix: AVAudioMix, info: NSDictionary<any, any>) => {
+                            let regex = /(file[^>]*)/g
+                            let file = asset.toString().match(regex)[0];
+                            let filename = (new Date).getTime().toString() + ".mov";
+                            let new_path = fs.path.join(fs.knownFolders.documents().path, "PDI");
+                            let video_folder = fs.Folder.fromPath(new_path);
+                            let video_path = fs.path.join(video_folder.path, filename);
+                            getFile(file, video_path).then((resultFile: File) => {
+                                var task = this.start_upload(video_path, 'video');
+                            }, (e) => {
+                            });
+
+                        });
+
+                    let source = new ImageSource();
+                    source.fromAsset(selected_item).then(video => {
+
+                        let name = new Date().toISOString() +'__'+ counter + ".jpg"
+                        let folder = fs.knownFolders.documents();
+                        let path = fs.path.join(folder.path, name );
+                        let saved = video.saveToFile(path, "jpg");
+
+                        var localPath = path;
+                        
+                        console.log('mediatypeeeee******************* SONO VIDEO FILE ',localPath);
+
+                        if(this.videos.length < 1){
+                            
+                            this.videos.push(({ thumb: localPath, filepath:path, uploadTask: 'task' }));
+                            
+                        }else{
+                            alert(localize("Hai raggiunto il massimo di video caricabili."));
+                        }
+
+                    })
+                    
+                }
+                
             })
 
-        })
+        });
     }
 
 
 
-    start_upload(fileUri) {
+    start_upload(fileUri,type) {
         this.isLoading = true;
         const name = this.extractImageName(fileUri);
+
         let headers = [];
         headers["Content-Type"] = "application/octet-stream";
         headers["Accept"] = 'application/json';
         headers["observe"] = "response";
         headers["x-csrf-token"] = BackendService.XCSFRtoken;
         headers["Cookie"] = BackendService.session_name + "=" + BackendService.sessid;   
+        
         const request = {
             url: this.url,
             method: "POST",
@@ -222,10 +342,26 @@ export class MediaComponent implements OnInit {
             androidAutoDeleteAfterUpload: false,
             androidNotificationTitle: 'BEEEZ',
         };
+
+        const request_video = {
+            url: this.url_video,
+            method: "POST",
+            headers: headers,
+            androidAutoDeleteAfterUpload: false,
+            androidNotificationTitle: 'BEEEZ',
+        };
+
         let task: bgHttp.Task;
         let lastEvent = "";
-        const params = [{ name: `${name}`, filename: `${fileUri}`, mimeType: 'image/jpeg'}];
-        task = this.session.multipartUpload(params, request);
+
+        if(type == 'foto'){
+            const params = [{ name: `${name}`, filename: `${fileUri}`, mimeType: 'image/jpeg'}];
+            task = this.session.multipartUpload(params, request);
+        }else{
+            const params = [{ name: `${name}`, filename: `${fileUri}`, mimeType: 'video/quicktime'}];
+            task = this.session_video.multipartUpload(params, request_video);
+        }
+        
         function onEvent(e) {
             this.isLoading = false;
             console.log("received " + JSON.stringify(e.responseCode ) + " code");
@@ -252,6 +388,7 @@ export class MediaComponent implements OnInit {
         task.on("complete", (event) => {
             console.log('prova media');
             this.loadImages();
+            this.loadVideos();
         });
         task.on("progress", onEvent.bind(this));
         task.on("error", onEvent.bind(this));
