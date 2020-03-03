@@ -5,6 +5,8 @@ import { localize } from "nativescript-localize";
 import { SelectDateModalViewComponent } from "../select-date-modal-view/select-date-modal-view.component";
 import { SelectModalViewComponent } from "../select-modal-view/select-modal-view.component";
 import { device } from "tns-core-modules/platform";
+import localeIt from '@angular/common/locales/it';
+import { registerLocaleData } from '@angular/common';
 
 
 @Component({
@@ -37,6 +39,7 @@ export class BeezFloatLabelSelect implements OnInit {
     constructor(
         private vcRef: ViewContainerRef,
         private modal: ModalDialogService) {
+            registerLocaleData(localeIt, 'it-IT');
             this.lingua = device.language.substring(0,2).toLowerCase();
             console.log('l☯☯☯l > lingua > ',this.lingua);
     }

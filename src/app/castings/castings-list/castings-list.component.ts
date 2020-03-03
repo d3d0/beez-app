@@ -37,6 +37,7 @@ export class CastingsListComponent implements OnInit, OnDestroy {
   private _isLoading = true;
   private _castings: ObservableArray<Casting> = new ObservableArray<Casting>([]);
   private _dataSubscription: Subscription;
+  private castingImage: false;
   // docs:
   // https://medium.com/@alexander.vakrilov/faster-nativescript-listview-with-multiple-item-templates-8f903a32e48f
   // https://docs.nativescript.org/angular/ui/ng-components/ng-RadListView/multiple-templates
@@ -75,7 +76,9 @@ export class CastingsListComponent implements OnInit, OnDestroy {
     if (!this._dataSubscription) {
       this._isLoading = true;
       this._dataSubscription = this.castingsService.load().pipe(finalize(() => this._isLoading = false)).subscribe((castings: Array<Casting>) => {
-        // console.log('Loading castings', castings);
+        
+        console.log('#################################################################################################################################### Loading castings', castings);
+        
         this._castings = new ObservableArray(castings);
         this._isLoading = false;
         this._defaultIsVisible = true;
@@ -111,8 +114,11 @@ export class CastingsListComponent implements OnInit, OnDestroy {
   }
 
   public templateSelectorFunction = (item: Casting, index: number, items: any) => {
+    // l☯☯☯l > MODIFICA PER ARCHIVIO
+    // if ( item.id == 1 ) return "empty"; // l☯☯☯l > NON FUNZIONA!
+
     if ( !item.id ) return "empty";
-    if ( item.status == "empty" ) return "empty";
+    if ( item.id == 1 ) return "vuoto";
     if ( item.status == "Archivio" ) return "archivio";
     return "default";
   }
@@ -128,7 +134,7 @@ export class CastingsListComponent implements OnInit, OnDestroy {
   public onPullToRefreshInitiated(args: ListViewEventData) {
     setTimeout(()=>{
       this.castingsService.load().pipe(finalize(() => this._isLoading = false)).subscribe((castings: Array<Casting>) => {
-      console.log('************ castings', castings);
+        console.log('l☯☯☯l > castings', castings);
         this._castings = new ObservableArray(castings);
         this._isLoading = false;
         args.object.notifyPullToRefreshFinished()
@@ -137,9 +143,29 @@ export class CastingsListComponent implements OnInit, OnDestroy {
   }
 
   onCastingTap(args: ListViewEventData): void {
+    // l☯☯☯l > MODIFICA PER ARCHIVIO
     const tappedCasting = args.view.bindingContext;
-    if(tappedCasting.id && tappedCasting.id > 1)
+    if(tappedCasting.id && tappedCasting.id > 1) {
+      console.log('l☯☯☯l > tappedCasting > ☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯', tappedCasting.id);
       this.router.navigate(["../casting", tappedCasting.id], { relativeTo: this.activeRoute })
+      this.router.navigate(["../casting", tappedCasting.id], { relativeTo: this.activeRoute }).then(nav => {
+        console.log('l☯☯☯l > °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°', nav); // true if navigation is successful
+      }, err => {
+        console.log('l☯☯☯l > °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°',err) // when there's an error
+      });
+    }
+  }
+
+  onCastingTap2(id): void {
+    // l☯☯☯l > MODIFICA PER ARCHIVIO
+    if(id && id > 1) {
+      console.log('l☯☯☯l > tappedCasting > ☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯', id);
+      this.router.navigate(["../casting", id], { relativeTo: this.activeRoute }).then(nav => {
+        console.log('l☯☯☯l > °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°', nav); // true if navigation is successful
+      }, err => {
+        console.log('l☯☯☯l > °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°',err) // when there's an error
+      });
+    }
   }
 
   // The following trick makes the background color of each cell

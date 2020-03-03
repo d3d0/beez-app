@@ -41,7 +41,7 @@ export class CastingsService {
   /**
    * 
    * loadAll()
-   * lista completa di tutti i casting
+   * lista completa di tutti i casting > NON VIENE USATA!
    */
   loadAll(): Observable<any> {
     console.log('casting loading ...');

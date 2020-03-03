@@ -3,7 +3,6 @@
 <RadListView android:backgroundColor="white" class="casting" (loaded)="onLoadedRad($event)" (unloaded)="onUnloadedRad($event)" height="100%" [items]="castings|castingStatus:castingType" (itemTap)="onCastingTap($event)" pullToRefresh="true" (pullToRefreshInitiated)="onPullToRefreshInitiated($event)" (itemLoading)="makeBackgroundTransparent($event)" [itemTemplateSelector]="templateSelector">
 
   <ng-template tkTemplateKey="default" let-item="item" let-index="index">
-
     <StackLayout class="card-group-container">
 
       <!-- <Label *ngIf="index === 0"  class="list-group-item-heading-16 text-uppercase" text="Nuovi" textWrap="true" ></Label> -->
@@ -11,10 +10,10 @@
       <CardView class="card-group" elevation="30" android:radius="10" ios:radius="4"  [class.list-group-first]="index===0" background="white" ios:shadowRadius="8" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10">
         <GridLayout  columns="16, *, 20, 16" rows="auto, auto, auto, auto, auto, auto" class="m-b-20" android:radius="10" ios:radius="4">
             
-            <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
+            <StackLayout row="0" colSpan="5" class="list-group-item-img-group" [visibility]="item.image == '' ? 'visible' : 'collapsed'">
               <Image src="~/assets/images/boys.jpg" class="list-group-item-img" stretch="aspectFill" ></Image>
             </StackLayout>
-            <StackLayout row="0" colSpan="5" class="list-group-item-img-group">
+            <StackLayout row="0" colSpan="5" class="list-group-item-img-group" [visibility]="item.image != '' ? 'visible' : 'collapsed'">
               <Label *ngIf="castingType == 'Audition' && item.audition_action == ''" [text]="'CASTINGS.PARTICIPATION_AUDITION_TITLE' | L" class="banner-top-card" textWrap="true"></Label>  
               <Image  [src]="item.image" class="list-group-item-img" stretch="aspectFill"></Image>
             </StackLayout>
@@ -33,11 +32,12 @@
               <Label textWrap="true" class="title  p-l-8">
                 <FormattedString>
                   <Span [text]="item.casting_date[0][0] * 1000 | date:'dd.MM.yy'" ></Span>
-                  
-                  <!-- <Span text=" • " ></Span>
-                  <Span [text]="item.casting_date[0][0] * 1000 | date:'HH:mm'" ></Span>
-                  <Span text=" - " ></Span>
-                  <Span [text]="item.casting_date[0][1]  * 1000 | date:'HH:mm'" ></Span> -->
+                  <!-- 
+                    <Span text=" • " ></Span>
+                    <Span [text]="item.casting_date[0][0] * 1000 | date:'HH:mm'" ></Span>
+                    <Span text=" - " ></Span>
+                    <Span [text]="item.casting_date[0][1]  * 1000 | date:'HH:mm'" ></Span> 
+                  -->
                 </FormattedString>
               </Label>
             </StackLayout>
@@ -55,23 +55,22 @@
             <!-- ultima riga > arrow -->
             <Image src="res://arrow_right" stretch="none" row="4" col="2" ></Image>
           </GridLayout>
+          <!-- <a [routerLink]="['/article', article.id]" class="btn btn-success btn-lg">Show Details</a> -->
+
       </CardView>
 
     </StackLayout>
-
   </ng-template>
 
-  <ng-template tkTemplateKey="archivio" let-item="item" let-index="index">
+  <ng-template tkTemplateKey="archivio" let-item="item">
     <StackLayout class="card-group-container">
       
-      <Label *ngIf="item.first === 1"  class="card-group-title text-uppercase" [text]="'CASTINGS.ARCHIVE' | L" textWrap="true" ></Label>
-
-      <CardView class="card-group" elevation="30" android:radius="10" ios:radius="4"  [class.list-group-first]="index===0" background="white" ios:shadowRadius="8" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10">
-
+      <Label [visibility]="item.first == 1 ? 'visible' : 'collapsed'" class="card-group-title text-uppercase" [text]="'CASTINGS.ARCHIVE' | L" textWrap="true" ></Label>
+      
+      <CardView class="card-group" elevation="30" android:radius="10" ios:radius="4" background="white" ios:shadowRadius="8" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10">
         <GridLayout backgroundColor="" class="list-group-item" android:radius="10" ios:radius="4" columns="80, *" rows="80, auto" >
-
-          <Image src="~/assets/images/boys.jpg" class="list-group-item-img-small" stretch="aspectFill" row="0" col="0"></Image>
-          <Image [src]="item.image" class="list-group-item-img-small" stretch="aspectFill" row="0" col="0"></Image>
+          <Image src="~/assets/images/boys.jpg" class="list-group-item-img-small" stretch="aspectFill" row="0" col="0" [visibility]="item.image == '' ? 'visible' : 'collapsed'"></Image>
+          <Image [src]="item.image" class="list-group-item-img-small" stretch="aspectFill" row="0" col="0" [visibility]="item.image != '' ? 'visible' : 'collapsed'"></Image>
           <AbsoluteLayout row="0" col="1">
             <GridLayout left="0" top="0" width="100%" columns="20, *, 65" rows="45, 30">
               <!-- <Label *ngIf="item.status_casting === 'Audition'" class="list-group-item-heading-10 list-group-item-heading-orange text-uppercase" [text]="'CASTINGS.PROGRESS' | L" textWrap="true" row="0" col="0" colSpan="3"></Label> -->
@@ -80,19 +79,38 @@
               <Label backgroundColor="" [text]="item.subtitle" class="list-group-item-heading-10" textWrap="true" row="1" col="0" colSpan="3" ></Label>
             </GridLayout>
           </AbsoluteLayout>
-
         </GridLayout>
+      </CardView>
 
+    </StackLayout>
+  </ng-template>
+
+  <ng-template tkTemplateKey="empty" let-item="item" >
+    <StackLayout class="card-group-container">
+
+      <CardView [visibility]="_defaultIsVisible === true ? 'visible' : 'collapsed'" class="card-group" elevation="30" android:radius="10" ios:radius="4" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="true">
+        <StackLayout class="list-group-item">
+          <!-- 
+            <Label class="" [text]="item.id" textWrap="true" ></Label>
+          <Label class="" text="prova" textWrap="true" ></Label> 
+          -->
+          <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TITLE' | L" class="list-group-item-heading-18 list-group-item-heading-18-empty" textWrap="true"></Label>
+          <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
+        </StackLayout>
       </CardView>
     </StackLayout>
   </ng-template>
 
-  <ng-template tkTemplateKey="empty"  let-item="item" >
+  <ng-template tkTemplateKey="vuoto" let-item="item" >
     <StackLayout class="card-group-container">
+
       <CardView [visibility]="_defaultIsVisible === true ? 'visible' : 'collapsed'" class="card-group" elevation="30" android:radius="10" ios:radius="4" ios:shadowRadius="10" ios:shadowOpacity="0.2" ios:shadowColor="#000" ios:shadowOffsetHeight="10" [class.list-group-first]="true">
         <StackLayout class="list-group-item">
-          <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TITLE' | L" class="list-group-item-heading-18 list-group-item-heading-18-empty" textWrap="true"></Label>
-          <Label [text]="'CASTINGS.NO_'+item.status.toUpperCase()+'_CASTINGS_TEXT' | L" class="list-group-item-text" textWrap="true"></Label>
+          <!-- 
+            <Label class="" [text]="item.id" textWrap="true" ></Label>
+            <Label class="" text="prova" textWrap="true" ></Label>
+          -->
+          <Label text="VUOTO" class="list-group-item-heading-18 list-group-item-heading-18-empty" textWrap="true"></Label>
         </StackLayout>
       </CardView>
     </StackLayout>
