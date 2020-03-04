@@ -421,22 +421,24 @@ WrapLayout {
     }
     &-no-nero {
       margin: 0;
-      width: 32;
-      height: 32;
+      width: 38;
+      height: 38;
       background-image: url("res://no_nero") no-repeat;
       background-position: center;
       background-size: cover;
     }
+
     &-menu {
       margin: 0;
-      width: 48;
-      height: 48;
+      width: 38;
+      height: 38;
       background-image: url("res://menu") no-repeat;
       background-position: center;
       background-size: cover;
     }
   }
 }
+
 // ---------------------------------
 // profile > list-group-item!
 // ---------------------------------
@@ -504,8 +506,8 @@ WrapLayout {
         }
         &-no-nero {
           margin: 0;
-          width: 32;
-          height: 32;
+          width: 38;
+          height: 38;
           background-image: url("res://no_nero") no-repeat;
           background-position: center;
           background-size: cover;
