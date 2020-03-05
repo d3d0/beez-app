@@ -24,6 +24,8 @@
   "WELCOME_FOOTER":"Completa tutte le informazioni del tuo profilo, aumenterà la possibilità di essere selezionato ai casting.",
   "WELCOME_BUTTON":"OK",
   "MEDIA_BUTTON":"AGGIUNGI MEDIA",
+  "MEDIA_BUTTON_VIDEO":"AGGIUNGI VIDEO",
+  "MEDIA_BUTTON_IMAGE":"AGGIUNGI FOTO",
   "DELETE":"Vuoi davvero eliminare la foto?",
   "DELETEBUTTON":"Elimina foto",
   "COVER":"Vuoi impostastare la foto come immagine del profilo?",

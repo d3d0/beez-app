@@ -14,7 +14,7 @@ import { StackLayout } from 'tns-core-modules/ui/layouts/stack-layout/stack-layo
 import { isIOS, isAndroid } from "tns-core-modules/platform";
 import { getFile } from "tns-core-modules/http";
 import { File } from "tns-core-modules/file-system";
-
+import * as app from "tns-core-modules/application";
 import * as fs from "file-system";
 import { tap } from 'rxjs/operators';
 import { android } from 'tns-core-modules/application/application';
@@ -28,6 +28,8 @@ import { android } from 'tns-core-modules/application/application';
 export class MediaComponent implements OnInit {
     @ViewChild("container", {static: false}) container: ElementRef<StackLayout>;
     @ViewChild("vline", {static: false}) vline: ElementRef;
+    @ViewChild("container2", {static: false}) container2: ElementRef<StackLayout>;
+    @ViewChild("vline2", {static: false}) vline2: ElementRef;
 
     @Input() profile;
     @Output() refreshProfile = new EventEmitter<string>();
@@ -38,6 +40,7 @@ export class MediaComponent implements OnInit {
     thumbSize: number = 80;
     previewSize: number = 300;
     getIconSource = getIconSource;
+    device:any;
     public tasks: bgHttp.Task[] = [];
     public events: { eventTitle: string, eventData: any }[] = [];
     private file: string;
@@ -49,6 +52,7 @@ export class MediaComponent implements OnInit {
     private images:any = [];
     private videos:any = [];
     public isLoading:boolean = false;
+
 
     private page: Page;
 
@@ -63,6 +67,11 @@ export class MediaComponent implements OnInit {
         this.page = page;
         this.page.on("navigatingTo", this.onNavigatingTo.bind(this));
         this.page.on("navigatedTo", this.onNavigatedTo.bind(this));
+        if(app.android){
+            this.device = 'adevice';
+        }else if(app.ios){
+            this.device = 'iosdevice';
+        }
     }
     ngOnInit() {}
     ngChange() {
@@ -82,11 +91,14 @@ export class MediaComponent implements OnInit {
         console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Page Height:', height);
         // layout
         let stack = this.container.nativeElement;
+        let stack2 = this.container2.nativeElement;
         console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Stack Height:', stack.getActualSize().height);
         let vline= this.vline.nativeElement;
+        let vline2= this.vline2.nativeElement;
         console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Label Height:', vline.getActualSize().height);
         if (isAndroid) {
             vline.height = -1; // ATTENZIONE > FIX BORDINI ANDROID!
+            vline2.height = -1;
             console.log('l☯☯☯l > onLoadedGrid() > LOADED SettingsComponent Android Label Height:', vline.height);
         }
     }
@@ -198,17 +210,94 @@ export class MediaComponent implements OnInit {
         
     }
 
-    public onSelectMultipleTap() {
+    public onSelectMultipleTap(arg) {
+
+        if(arg == 'image'){
             this.isSingleMode = false;
             let context = imagepicker.create({
                 mode: "single",
-                mediaType: imagepicker.ImagePickerMediaType.Any
+                mediaType: imagepicker.ImagePickerMediaType.Image
             });
-            this.startSelection(context);
-            //this.loadImages();
+            this.startSelectionImage(context);
+        }
+
+        if(arg == 'video'){
+            this.isSingleMode = false;
+            let context = imagepicker.create({
+                mode: "single",
+                mediaType: imagepicker.ImagePickerMediaType.Video
+            });
+            this.startSelectionVideo(context);
+        }
+
+            
     }
 
-    private startSelection(context) {
+    private startSelectionImage(context) {
+        context
+        .authorize()
+        .then(() => {
+            return context.present();
+        }).then(selection => {
+            let counter = 0
+            selection.forEach( selected_item => {
+            // carico tutte le immagini selezionate
+            if(app.ios){
+                const ios = selected_item.ios;
+
+                let source = new ImageSource();
+                source.fromAsset(selected_item).then(image => {
+                
+                    let name = new Date().toISOString() +'__'+ counter + ".jpg"
+                    let folder = fs.knownFolders.documents();
+                    let path = fs.path.join(folder.path, name );
+                    let saved = image.saveToFile(path, "jpg");
+                    var localPath = path;
+
+                    if(this.images.length < 3){
+                        var task = this.start_upload(localPath, 'foto');
+                        this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
+                        console.log('mediatypeeeee******************* SONO IMMAGINE ');
+                    }else{
+                        alert(localize("Hai raggiunto il massimo di foto caricabili."));
+                    }
+
+                })
+            }
+
+            if(app.android){
+
+                const android = selected_item.android;
+
+                console.log('mediatypeeeee*******************',selected_item);
+                let source = new ImageSource();
+
+                    source.fromAsset(selected_item).then(image => {
+                    
+                        let name = new Date().toISOString() +'__'+ counter + ".jpg"
+                        let folder = fs.knownFolders.documents();
+                        let path = fs.path.join(folder.path, name );
+                        let saved = image.saveToFile(path, "jpg");
+                        var localPath = path;
+
+                        if(this.images.length < 3){
+                            var task = this.start_upload(localPath, 'foto');
+                            this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
+                            console.log('SONO IMMAGINE ANDROID',localPath);
+                        }else{
+                            alert(localize("Hai raggiunto il massimo di foto caricabili."));
+                        }
+
+                    })
+                console.log('mediatypeeeee IMAGE *******************',imagepicker.ImagePickerMediaType.Image);
+                    
+            }
+        }); 
+
+        });
+    }
+
+    private startSelectionVideo(context) {
         context
         .authorize()
         .then(() => {
@@ -218,32 +307,20 @@ export class MediaComponent implements OnInit {
             // carico tutte le immagini selezionate
             selection.forEach( selected_item => {
 
-                const ios = selected_item.ios;
+            if(app.android){
                 const android = selected_item.android;
 
-                if(ios){
-                    if (ios.mediaType === PHAssetMediaType.Image) {
-                        let source = new ImageSource();
-                        source.fromAsset(selected_item).then(image => {
-                        
-                            let name = new Date().toISOString() +'__'+ counter + ".jpg"
-                            let folder = fs.knownFolders.documents();
-                            let path = fs.path.join(folder.path, name );
-                            let saved = image.saveToFile(path, "jpg");
-                            var localPath = path;
-    
-                            if(this.images.length < 3){
-                                var task = this.start_upload(localPath, 'foto');
-                                this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
-                                console.log('mediatypeeeee******************* SONO IMMAGINE ');
-                            }else{
-                                alert(localize("Hai raggiunto il massimo di foto caricabili."));
-                            }
+                if(this.videos.length < 1){
+                    var task = this.start_upload(android, 'video');
+                    this.videos.push(({ thumb: android, filepath:android, uploadTask: 'task' }));
+                }else{
+                    alert(localize("Hai raggiunto il massimo di video caricabili."));
+                }
+            }
 
-                        })
-                    }else{
-    
-                        const opt = PHVideoRequestOptions.new();
+            if(app.ios){
+                const ios = selected_item.ios;
+                const opt = PHVideoRequestOptions.new();
                         opt.version = PHVideoRequestOptionsVersion.Current;
     
                         PHImageManager.defaultManager().requestAVAssetForVideoOptionsResultHandler(
@@ -256,8 +333,7 @@ export class MediaComponent implements OnInit {
                                 let video_path = fs.path.join(video_folder.path, filename);
                                 getFile(file, video_path).then((resultFile: File) => {
                                     if(resultFile.size <= 134217728){
-                                        var task = this.start_upload(video_path, 'video');
-    
+                                        
                                         let source = new ImageSource();
                                         source.fromAsset(selected_item).then(video => {
     
@@ -271,7 +347,8 @@ export class MediaComponent implements OnInit {
                                             console.log('mediatypeeeee******************* SONO VIDEO FILE ',localPath);
     
                                             if(this.videos.length < 1){
-                                                this.videos.push(({ thumb: localPath, filepath:path, uploadTask: 'task' }));
+                                                var task = this.start_upload(video_path, 'video');
+                                                this.videos.push(({ thumb: '', filepath:'', uploadTask: 'task' }));
                                                 
                                             }else{
                                                 alert(localize("Hai raggiunto il massimo di video caricabili."));
@@ -286,51 +363,147 @@ export class MediaComponent implements OnInit {
                                     console.log('SIZE********',resultFile.size);
                                 }, (e) => {
                                 });
-    
-                            
-                            
-                            
+
                             });
-    
-                        
-                        
-                    }
+            }
 
-                }else{
-
-                    if(imagepicker.ImagePickerMediaType.Image){
-                        console.log('mediatypeeeee*******************',selected_item);
-                        let source = new ImageSource();
-        
-                            source.fromAsset(selected_item).then(image => {
-                            
-                                let name = new Date().toISOString() +'__'+ counter + ".jpg"
-                                let folder = fs.knownFolders.documents();
-                                let path = fs.path.join(folder.path, name );
-                                let saved = image.saveToFile(path, "jpg");
-                                var localPath = path;
-        
-                                if(this.images.length < 3){
-                                    var task = this.start_upload(localPath, 'foto');
-                                    this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
-                                    console.log('SONO IMMAGINE ANDROID',localPath);
-                                }else{
-                                    alert(localize("Hai raggiunto il massimo di foto caricabili."));
-                                }
-        
-                            })
-                    }else{
-                        alert(localize("video"));
-                    }
-                    
-                }
-                
-
-                
             })
+
 
         });
     }
+
+
+    // private startSelection(context) {
+    //     context
+    //     .authorize()
+    //     .then(() => {
+    //         return context.present();
+    //     }).then(selection => {
+    //         let counter = 0
+    //         // carico tutte le immagini selezionate
+    //         selection.forEach( selected_item => {
+
+    //             const ios = selected_item.ios;
+    //             const android = selected_item.android;
+
+    //             console.log('PATH************************************************',android);
+    //             if(app.ios){
+    //                 if (ios.mediaType === PHAssetMediaType.Image) {
+    //                     let source = new ImageSource();
+    //                     source.fromAsset(selected_item).then(image => {
+                        
+    //                         let name = new Date().toISOString() +'__'+ counter + ".jpg"
+    //                         let folder = fs.knownFolders.documents();
+    //                         let path = fs.path.join(folder.path, name );
+    //                         let saved = image.saveToFile(path, "jpg");
+    //                         var localPath = path;
+    
+    //                         if(this.images.length < 3){
+    //                             var task = this.start_upload(localPath, 'foto');
+    //                             this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
+    //                             console.log('mediatypeeeee******************* SONO IMMAGINE ');
+    //                         }else{
+    //                             alert(localize("Hai raggiunto il massimo di foto caricabili."));
+    //                         }
+
+    //                     })
+    //                 }else{
+    
+    //                     const opt = PHVideoRequestOptions.new();
+    //                     opt.version = PHVideoRequestOptionsVersion.Current;
+    
+    //                     PHImageManager.defaultManager().requestAVAssetForVideoOptionsResultHandler(
+    //                         ios, opt, (asset: AVAsset, audioMix: AVAudioMix, info: NSDictionary<any, any>) => {
+    //                             let regex = /(file[^>]*)/g
+    //                             let file = asset.toString().match(regex)[0];
+    //                             let filename = (new Date).getTime().toString() + ".mov";
+    //                             let new_path = fs.path.join(fs.knownFolders.documents().path, "PDI");
+    //                             let video_folder = fs.Folder.fromPath(new_path);
+    //                             let video_path = fs.path.join(video_folder.path, filename);
+    //                             getFile(file, video_path).then((resultFile: File) => {
+    //                                 if(resultFile.size <= 134217728){
+                                        
+    //                                     let source = new ImageSource();
+    //                                     source.fromAsset(selected_item).then(video => {
+    
+    //                                         let name = new Date().toISOString() +'__'+ counter + ".jpg"
+    //                                         let folder = fs.knownFolders.documents();
+    //                                         let path = fs.path.join(folder.path, name );
+    //                                         let saved = video.saveToFile(path, "jpg");
+    
+    //                                         var localPath = path;
+                                            
+    //                                         console.log('mediatypeeeee******************* SONO VIDEO FILE ',localPath);
+    
+    //                                         if(this.videos.length < 1){
+    //                                             var task = this.start_upload(video_path, 'video');
+    //                                             this.videos.push(({ thumb: localPath, filepath:path, uploadTask: 'task' }));
+                                                
+    //                                         }else{
+    //                                             alert(localize("Hai raggiunto il massimo di video caricabili."));
+    //                                         }
+    
+    //                                     })
+    
+    //                                 }else{
+    //                                     alert(localize("Non è possibile caricare il video. Dimensione massima 128Mb"));
+    //                                 }
+                                    
+    //                                 console.log('SIZE********',resultFile.size);
+    //                             }, (e) => {
+    //                             });
+
+    //                         });
+    
+                        
+                        
+    //                 }
+
+    //             }
+    //             if(app.android){
+
+                
+    //                 var task = this.start_upload(android, 'video');
+
+
+
+    //                 // if(){
+    //                 //     console.log('mediatypeeeee*******************',selected_item);
+    //                 //     let source = new ImageSource();
+        
+    //                 //         source.fromAsset(selected_item).then(image => {
+                            
+    //                 //             let name = new Date().toISOString() +'__'+ counter + ".jpg"
+    //                 //             let folder = fs.knownFolders.documents();
+    //                 //             let path = fs.path.join(folder.path, name );
+    //                 //             let saved = image.saveToFile(path, "jpg");
+    //                 //             var localPath = path;
+        
+    //                 //             if(this.images.length < 3){
+    //                 //                 var task = this.start_upload(localPath, 'foto');
+    //                 //                 this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
+    //                 //                 console.log('SONO IMMAGINE ANDROID',localPath);
+    //                 //             }else{
+    //                 //                 alert(localize("Hai raggiunto il massimo di foto caricabili."));
+    //                 //             }
+        
+    //                 //         })
+    //                 //     console.log('mediatypeeeee IMAGE *******************',imagepicker.ImagePickerMediaType.Image);
+    //                 // }else{
+    //                 //     alert(localize("video"));
+    //                 //     console.log('mediatypeeeee VIDEO *******************',imagepicker.ImagePickerMediaType.Image);
+
+    //                 // }
+                    
+    //             }
+                
+
+                
+    //         })
+
+    //     });
+    // }
 
 
 
