@@ -70,13 +70,18 @@
 						</AbsoluteLayout>
 					</CardView>
 				</WrapLayout>
+				<StackLayout  class="icon-container" row="2" col="0" verticalAlignment="center" horizontalAlignment="center">
+					<Image [src]="getIconSource('add')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
+				</StackLayout>
+				<BeezButton  [text]="'MEDIA_BUTTON_IMAGE'|L" [isBusy]="isLoading" (buttonClick)="onSelectMultipleTap('image')" row="2" col="2"></BeezButton>
+
 		</GridLayout>
 	</StackLayout>
 
 	<StackLayout class="card-group-container">
-		<GridLayout #container class="video" margin=0 columns="16,8,*" rows="auto,auto,auto" class="p-t-16" (loaded)="onLoadedComponent($event)">
+		<GridLayout #container2 class="video" margin=0 columns="16,8,*" rows="auto,auto,auto" class="p-t-16" (loaded)="onLoadedComponent($event)">
 			
-			<Label #vline text="" class="list-group-item-v-line" rowSpan="3" col="0" row="0" marginBottom="32" horizontalAlignment="center" ></Label>		
+			<Label #vline2 text="" class="list-group-item-v-line" rowSpan="3" col="0" row="0" marginBottom="32" horizontalAlignment="center" ></Label>		
 			
 			<StackLayout class="icon-container" row="0" col="0" >
 				<Image [src]="getIconSource('video')" stretch="none" width=16 height=16 verticalAlignment="center"></Image>
@@ -99,11 +104,11 @@
 				</CardView>
 				
 			</WrapLayout>
-			<StackLayout class="icon-container" row="3" col="0" verticalAlignment="center" horizontalAlignment="center">
+			<StackLayout class="icon-container" row="2" col="0" verticalAlignment="center" horizontalAlignment="center">
 				<Image [src]="getIconSource('add')" stretch="none" width=16 height=16 verticalAlignment="center" horizontalAlignment="center"></Image>
 			</StackLayout>
-		
-			<BeezButton [text]="'MEDIA_BUTTON'|L" [isBusy]="isLoading" (buttonClick)="onSelectMultipleTap()" row="3" col="2"></BeezButton>
+
+			<BeezButton  [text]="'MEDIA_BUTTON_VIDEO'|L" [isBusy]="isLoading" (buttonClick)="onSelectMultipleTap('video')" row="2" col="2"></BeezButton>
 		</GridLayout>
 	</StackLayout>
 
