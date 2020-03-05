@@ -118,7 +118,7 @@ export class CastingsListComponent implements OnInit, OnDestroy {
     // if ( item.id == 1 ) return "empty"; // l☯☯☯l > NON FUNZIONA!
 
     if ( !item.id ) return "empty";
-    if ( item.id == 1 ) return "vuoto";
+    if ( item.id == 1 ) return "empty";
     if ( item.status == "Archivio" ) return "archivio";
     return "default";
   }
