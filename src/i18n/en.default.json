@@ -184,11 +184,20 @@
     "ERROR_SERVICE" : "Unfortunately we couldn't reach the server, please try again later.",
     "SHARE_WITH_A_FRIEND": "Hi! Check this casting! @BEEZ CASTING HUB https://beez.io",
     "PARTECIPATE": "Thank you! We are waiting for you!",
+    "PARTECIPATE_ARCHIVE": "Thank you! We will evaluate your video.",
     "CANDIDATE": "Thank you! Look forward to the convocation.",
     "DECLINED":"We are sorry that you cannot participate!Remember that you can change your participation before the auditions close.",
-    "ERROR_CASTING_CANDIDATE_ALREADY": "You are already enrolled in this Casting, you will soon receive a notification for the auditions."
+    "ERROR_CASTING_CANDIDATE_ALREADY": "You are already enrolled in this Casting, you will soon receive a notification for the auditions.",
+    "NO_VIDEO_FOUND":"WARNING! To participate with archival material you must have a video in your media."
   },
   "MODAL": {
     "test": "test"
+  },
+  "MEDIA":{
+    "MAX_UPLOADS_VIDEO":"You have reached the maximum number of videos that can be uploaded.",
+    "MAX_UPLOADS_IMG":"You have reached the maximum number of photos that can be uploaded.",
+    "MAX_UPLOADS_SIZE":"The video cannot be uploaded. Maximum size 128Mb",
+    "VIDEO_UPLOADED":"Thank you! We are uploading your video. It will be available soon.",
+    "COMPLETED":"Upload complete."
   }
 }

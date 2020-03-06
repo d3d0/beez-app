@@ -257,40 +257,29 @@ export class MediaComponent implements OnInit {
                     if(this.images.length < 3){
                         var task = this.start_upload(localPath, 'foto');
                         this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
-                        console.log('mediatypeeeee******************* SONO IMMAGINE ');
                     }else{
-                        alert(localize("Hai raggiunto il massimo di foto caricabili."));
+                        alert(localize("MEDIA.MAX_UPLOADS_IMG"));
                     }
 
                 })
             }
 
             if(app.android){
-
                 const android = selected_item.android;
-
-                console.log('mediatypeeeee*******************',selected_item);
                 let source = new ImageSource();
-
                     source.fromAsset(selected_item).then(image => {
-                    
                         let name = new Date().toISOString() +'__'+ counter + ".jpg"
                         let folder = fs.knownFolders.documents();
                         let path = fs.path.join(folder.path, name );
                         let saved = image.saveToFile(path, "jpg");
                         var localPath = path;
-
                         if(this.images.length < 3){
                             var task = this.start_upload(localPath, 'foto');
                             this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
-                            console.log('SONO IMMAGINE ANDROID',localPath);
                         }else{
-                            alert(localize("Hai raggiunto il massimo di foto caricabili."));
+                            alert(localize("MEDIA.MAX_UPLOADS_IMG"));
                         }
-
                     })
-                console.log('mediatypeeeee IMAGE *******************',imagepicker.ImagePickerMediaType.Image);
-                    
             }
         }); 
 
@@ -314,57 +303,50 @@ export class MediaComponent implements OnInit {
                     var task = this.start_upload(android, 'video');
                     this.videos.push(({ thumb: android, filepath:android, uploadTask: 'task' }));
                 }else{
-                    alert(localize("Hai raggiunto il massimo di video caricabili."));
+                    alert(localize("MEDIA.MAX_UPLOADS_VIDEO"));
                 }
             }
 
             if(app.ios){
                 const ios = selected_item.ios;
                 const opt = PHVideoRequestOptions.new();
-                        opt.version = PHVideoRequestOptionsVersion.Current;
-    
-                        PHImageManager.defaultManager().requestAVAssetForVideoOptionsResultHandler(
-                            ios, opt, (asset: AVAsset, audioMix: AVAudioMix, info: NSDictionary<any, any>) => {
-                                let regex = /(file[^>]*)/g
-                                let file = asset.toString().match(regex)[0];
-                                let filename = (new Date).getTime().toString() + ".mov";
-                                let new_path = fs.path.join(fs.knownFolders.documents().path, "PDI");
-                                let video_folder = fs.Folder.fromPath(new_path);
-                                let video_path = fs.path.join(video_folder.path, filename);
-                                getFile(file, video_path).then((resultFile: File) => {
-                                    if(resultFile.size <= 134217728){
-                                        
-                                        let source = new ImageSource();
-                                        source.fromAsset(selected_item).then(video => {
-    
-                                            let name = new Date().toISOString() +'__'+ counter + ".jpg"
-                                            let folder = fs.knownFolders.documents();
-                                            let path = fs.path.join(folder.path, name );
-                                            let saved = video.saveToFile(path, "jpg");
-    
-                                            var localPath = path;
-                                            
-                                            console.log('mediatypeeeee******************* SONO VIDEO FILE ',localPath);
-    
-                                            if(this.videos.length < 1){
-                                                var task = this.start_upload(video_path, 'video');
-                                                this.videos.push(({ thumb: '', filepath:'', uploadTask: 'task' }));
-                                                
-                                            }else{
-                                                alert(localize("Hai raggiunto il massimo di video caricabili."));
-                                            }
-    
-                                        })
-    
-                                    }else{
-                                        alert(localize("Non è possibile caricare il video. Dimensione massima 128Mb"));
-                                    }
-                                    
-                                    console.log('SIZE********',resultFile.size);
-                                }, (e) => {
-                                });
+                opt.version = PHVideoRequestOptionsVersion.Current;
 
-                            });
+                PHImageManager.defaultManager().requestAVAssetForVideoOptionsResultHandler(
+                    ios, opt, (asset: AVAsset, audioMix: AVAudioMix, info: NSDictionary<any, any>) => {
+                        let regex = /(file[^>]*)/g
+                        let file = asset.toString().match(regex)[0];
+                        let filename = (new Date).getTime().toString() + ".mov";
+                        let new_path = fs.path.join(fs.knownFolders.documents().path, "PDI");
+                        let video_folder = fs.Folder.fromPath(new_path);
+                        let video_path = fs.path.join(video_folder.path, filename);
+                        getFile(file, video_path).then((resultFile: File) => {
+                            if(resultFile.size <= 134217728){
+                                
+                                let source = new ImageSource();
+                                source.fromAsset(selected_item).then(video => {
+
+                                    let name = new Date().toISOString() +'__'+ counter + ".jpg"
+                                    let folder = fs.knownFolders.documents();
+                                    let path = fs.path.join(folder.path, name );
+                                    let saved = video.saveToFile(path, "jpg");
+                                    var localPath = path;
+                                    if(this.videos.length < 1){
+                                        var task = this.start_upload(video_path, 'video');
+                                        this.videos.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
+                                        console.log('VIDEOOOOOOOOOOOOOOO ********************',this.videos);
+                                    }else{
+                                        alert(localize("MEDIA.MAX_UPLOADS_VIDEO"));
+                                    }
+                                })
+                            }else{
+                                alert(localize("MEDIA.MAX_UPLOADS_SIZE"));
+                            }
+                            
+                        }, (e) => {
+                    });
+
+                });
             }
 
             })
@@ -372,138 +354,6 @@ export class MediaComponent implements OnInit {
 
         });
     }
-
-
-    // private startSelection(context) {
-    //     context
-    //     .authorize()
-    //     .then(() => {
-    //         return context.present();
-    //     }).then(selection => {
-    //         let counter = 0
-    //         // carico tutte le immagini selezionate
-    //         selection.forEach( selected_item => {
-
-    //             const ios = selected_item.ios;
-    //             const android = selected_item.android;
-
-    //             console.log('PATH************************************************',android);
-    //             if(app.ios){
-    //                 if (ios.mediaType === PHAssetMediaType.Image) {
-    //                     let source = new ImageSource();
-    //                     source.fromAsset(selected_item).then(image => {
-                        
-    //                         let name = new Date().toISOString() +'__'+ counter + ".jpg"
-    //                         let folder = fs.knownFolders.documents();
-    //                         let path = fs.path.join(folder.path, name );
-    //                         let saved = image.saveToFile(path, "jpg");
-    //                         var localPath = path;
-    
-    //                         if(this.images.length < 3){
-    //                             var task = this.start_upload(localPath, 'foto');
-    //                             this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
-    //                             console.log('mediatypeeeee******************* SONO IMMAGINE ');
-    //                         }else{
-    //                             alert(localize("Hai raggiunto il massimo di foto caricabili."));
-    //                         }
-
-    //                     })
-    //                 }else{
-    
-    //                     const opt = PHVideoRequestOptions.new();
-    //                     opt.version = PHVideoRequestOptionsVersion.Current;
-    
-    //                     PHImageManager.defaultManager().requestAVAssetForVideoOptionsResultHandler(
-    //                         ios, opt, (asset: AVAsset, audioMix: AVAudioMix, info: NSDictionary<any, any>) => {
-    //                             let regex = /(file[^>]*)/g
-    //                             let file = asset.toString().match(regex)[0];
-    //                             let filename = (new Date).getTime().toString() + ".mov";
-    //                             let new_path = fs.path.join(fs.knownFolders.documents().path, "PDI");
-    //                             let video_folder = fs.Folder.fromPath(new_path);
-    //                             let video_path = fs.path.join(video_folder.path, filename);
-    //                             getFile(file, video_path).then((resultFile: File) => {
-    //                                 if(resultFile.size <= 134217728){
-                                        
-    //                                     let source = new ImageSource();
-    //                                     source.fromAsset(selected_item).then(video => {
-    
-    //                                         let name = new Date().toISOString() +'__'+ counter + ".jpg"
-    //                                         let folder = fs.knownFolders.documents();
-    //                                         let path = fs.path.join(folder.path, name );
-    //                                         let saved = video.saveToFile(path, "jpg");
-    
-    //                                         var localPath = path;
-                                            
-    //                                         console.log('mediatypeeeee******************* SONO VIDEO FILE ',localPath);
-    
-    //                                         if(this.videos.length < 1){
-    //                                             var task = this.start_upload(video_path, 'video');
-    //                                             this.videos.push(({ thumb: localPath, filepath:path, uploadTask: 'task' }));
-                                                
-    //                                         }else{
-    //                                             alert(localize("Hai raggiunto il massimo di video caricabili."));
-    //                                         }
-    
-    //                                     })
-    
-    //                                 }else{
-    //                                     alert(localize("Non è possibile caricare il video. Dimensione massima 128Mb"));
-    //                                 }
-                                    
-    //                                 console.log('SIZE********',resultFile.size);
-    //                             }, (e) => {
-    //                             });
-
-    //                         });
-    
-                        
-                        
-    //                 }
-
-    //             }
-    //             if(app.android){
-
-                
-    //                 var task = this.start_upload(android, 'video');
-
-
-
-    //                 // if(){
-    //                 //     console.log('mediatypeeeee*******************',selected_item);
-    //                 //     let source = new ImageSource();
-        
-    //                 //         source.fromAsset(selected_item).then(image => {
-                            
-    //                 //             let name = new Date().toISOString() +'__'+ counter + ".jpg"
-    //                 //             let folder = fs.knownFolders.documents();
-    //                 //             let path = fs.path.join(folder.path, name );
-    //                 //             let saved = image.saveToFile(path, "jpg");
-    //                 //             var localPath = path;
-        
-    //                 //             if(this.images.length < 3){
-    //                 //                 var task = this.start_upload(localPath, 'foto');
-    //                 //                 this.images.push(({ thumb: localPath, filepath:localPath, uploadTask: 'task' }));
-    //                 //                 console.log('SONO IMMAGINE ANDROID',localPath);
-    //                 //             }else{
-    //                 //                 alert(localize("Hai raggiunto il massimo di foto caricabili."));
-    //                 //             }
-        
-    //                 //         })
-    //                 //     console.log('mediatypeeeee IMAGE *******************',imagepicker.ImagePickerMediaType.Image);
-    //                 // }else{
-    //                 //     alert(localize("video"));
-    //                 //     console.log('mediatypeeeee VIDEO *******************',imagepicker.ImagePickerMediaType.Image);
-
-    //                 // }
-                    
-    //             }
-                
-
-                
-    //         })
-
-    //     });
-    // }
 
 
 
@@ -543,6 +393,7 @@ export class MediaComponent implements OnInit {
         }else{
             const params = [{ name: `${name}`, filename: `${fileUri}`, mimeType: 'video/quicktime'}];
             task = this.session_video.multipartUpload(params, request_video);
+            alert(localize("MEDIA.VIDEO_UPLOADED"));
         }
         
         function onEvent(e) {
@@ -570,6 +421,7 @@ export class MediaComponent implements OnInit {
         }
         task.on("complete", (event) => {
             console.log('prova media');
+            alert(localize("MEDIA.COMPLETED"));
             this.loadImages();
             this.loadVideos();
         });

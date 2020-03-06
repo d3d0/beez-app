@@ -33,6 +33,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
   @ViewChild("CBAgency", {static: false}) AgencyCheckBox: ElementRef;
   public isLoading: boolean = false;
   public isLoadingSecond: boolean = false;
+  public isLoadingThird: boolean = false;
   public noAgency: boolean = false;
   private casting = [];
   private casting_id;
@@ -392,6 +393,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
               this.edit_actions = false;
               this.isLoading = false;
               this.isLoadingSecond = false;
+              this.isLoadingThird = false;
               this.showTitleConfirmed = true;
               this.showTitleDeclined = false;
               this.showTitleArchive = false;
@@ -413,6 +415,7 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
           this.edit_actions = false;
           this.isLoading = false;
           this.isLoadingSecond = false;
+          this.isLoadingThird = false;
           this.showTitleConfirmed = false;
           this.showTitleDeclined = true;
           this.showTitleArchive = false;
@@ -426,14 +429,15 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
         else alert(localize("ERROR_SERVICE"));
       });
     }else if (action == 'Confirmed by archive'){
-      this.isLoading = true;
+      this.isLoadingThird = true;
       this.castingsService.partecipate(this.user_id, this.casting_id, this.selectedAgency.tid, action).subscribe((result)=>{
-        alert(localize("MESSAGES.PARTECIPATE")).then(()=>{
+        alert(localize("MESSAGES.PARTECIPATE_ARCHIVE")).then(()=>{
           //chiudo la modale absolute
           this.showEditPartecipate = true;
           this.edit_actions = false;
           this.isLoading = false;
           this.isLoadingSecond = false;
+          this.isLoadingThird = false;
           this.showTitleConfirmed = false;
           this.showTitleDeclined = false;
           this.showTitleArchive = true;
@@ -443,8 +447,16 @@ export class CastingDetailComponent implements OnInit, OnDestroy {
       (error)=> {
         this.isLoading =false;
         console.log(error);
-        if (error.status === 400) alert(localize(error.error[0]))
-        else alert(localize("ERROR_SERVICE"));
+        if (error.status === 400){
+          alert(localize(error.error[0]));
+          this.isLoadingThird = false;
+        } else if (error.status === 408){
+          alert(localize("MESSAGES.NO_VIDEO_FOUND"));
+          this.isLoadingThird = false;
+        }else{
+          alert(localize("ERROR_SERVICE"));
+          this.isLoadingThird = false;
+        };
       });
 
     }

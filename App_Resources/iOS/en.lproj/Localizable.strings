@@ -1,7 +1,14 @@
+"_MEDIA_COMPLETED_2pMx1E" = "Upload complete.";
+"_MEDIA_VIDEO_UPLOADED_Z1egEz8" = "Thank you! We are uploading your video. It will be available soon.";
+"_MEDIA_MAX_UPLOADS_SIZE_Z1XfTCJ" = "The video cannot be uploaded. Maximum size 128Mb";
+"_MEDIA_MAX_UPLOADS_IMG_ZxSQqa" = "You have reached the maximum number of photos that can be uploaded.";
+"_MEDIA_MAX_UPLOADS_VIDEO_Z5upVS" = "You have reached the maximum number of videos that can be uploaded.";
 "_MODAL_test_Z19nFfM" = "test";
+"_MESSAGES_NO_VIDEO_FOUND_ZRkHYC" = "WARNING! To participate with archival material you must have a video in your media.";
 "_MESSAGES_ERROR_CASTING_CANDIDATE_ALREADY_Z1rRJFu" = "You are already enrolled in this Casting, you will soon receive a notification for the auditions.";
 "_MESSAGES_DECLINED_24k4nL" = "We are sorry that you cannot participate!Remember that you can change your participation before the auditions close.";
 "_MESSAGES_CANDIDATE_Z1O0CXX" = "Thank you! Look forward to the convocation.";
+"_MESSAGES_PARTECIPATE_ARCHIVE_zYOBF" = "Thank you! We will evaluate your video.";
 "_MESSAGES_PARTECIPATE_Z1SGLTN" = "Thank you! We are waiting for you!";
 "_MESSAGES_SHARE_WITH_A_FRIEND_ZmGTkO" = "Hi! Check this casting! @BEEZ CASTING HUB https://beez.io";
 "_MESSAGES_ERROR_SERVICE_Zkeuaq" = "Unfortunately we couldn't reach the server, please try again later.";

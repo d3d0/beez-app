@@ -32,7 +32,7 @@
                 }
                 &-heading { // item > titoli
                     &-14 {
-                        font-size: 14; // ios +1
+                        font-size: 13; // ios +1
                         font-weight: bold;
                         letter-spacing:0;
                         margin: 15 0 9 15;
@@ -40,9 +40,10 @@
                         color: $nero;
                     }
                     &-10 {
-                        font-size: 10; // ios +1
-                        font-weight: bold;
-                        letter-spacing:0.15;
+                        font-size: 12; // ios +1
+                        font-weight: normal;
+                        text-transform: lowercase;
+                        letter-spacing:0;
                         margin: 1 0 15 15;
                         padding: 0;
                         color: $grigioscuro;
