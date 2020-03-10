@@ -27,6 +27,7 @@
   "MEDIA_BUTTON_VIDEO":"AGGIUNGI VIDEO",
   "MEDIA_BUTTON_IMAGE":"AGGIUNGI FOTO",
   "DELETE":"Vuoi davvero eliminare la foto?",
+  "DELETE_VIDEO":"Vuoi davvero eliminare il video?",
   "DELETEBUTTON":"Elimina foto",
   "COVER":"Vuoi impostastare la foto come immagine del profilo?",
   "COVERBUTTON":"Imposta come foto profilo",

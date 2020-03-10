@@ -128,7 +128,7 @@ export class MediaComponent implements OnInit {
         });
     }
     deleteVideo(video){
-        confirm(localize("DELETE")).then(result => {
+        confirm(localize("DELETE_VIDEO")).then(result => {
             if(result){
                 this.profileService.deleteVideo(video.fid).subscribe( data => {
                     this.loadVideos();

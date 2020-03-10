@@ -27,6 +27,7 @@
   "MEDIA_BUTTON_VIDEO":"ADD VIDEO",
   "MEDIA_BUTTON_IMAGE":"ADD PHOTO",
   "DELETE":"Are you sure you want to delete?",
+  "DELETE_VIDEO":"Are you sure you want to delete this video?",
   "DELETEBUTTON":"Delete",
   "COVER":"Do you want to use this photo as profile picture?",
   "COVERBUTTON":"Set as profile picture",
