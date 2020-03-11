@@ -188,7 +188,7 @@
     "CANDIDATE": "Grazie! Rimani in attesa della convocazione.",
     "DECLINED":"Ci dispiace che tu non possa partecipare!Ricordati che puoi modificare la partecipazione prima che si chiudano le audizioni.",
     "ERROR_CASTING_CANDIDATE_ALREADY": "Sei già iscritto a questo casting, riceverai prossimamente una notifica di accettazione per le Audizioni.",
-    "NO_VIDEO_FOUND":"ATTENZIONE! Per partecipare con materiale d'archivio devi avere un video nei tuoi media."
+    "NO_VIDEO_FOUND":"ATTENZIONE! Per partecipare con materiale d'archivio devi aver caricato un video nella sezione media dell'app."
 
   },
   "MODAL": {

@@ -189,7 +189,7 @@
     "CANDIDATE": "Thank you! Look forward to the convocation.",
     "DECLINED":"We are sorry that you cannot participate!Remember that you can change your participation before the auditions close.",
     "ERROR_CASTING_CANDIDATE_ALREADY": "You are already enrolled in this Casting, you will soon receive a notification for the auditions.",
-    "NO_VIDEO_FOUND":"WARNING! To participate with archival material you must have a video in your media."
+    "NO_VIDEO_FOUND":"WARNING! To participate with archive you must have uploaded a video in the media section of the app."
   },
   "MODAL": {
     "test": "test"
