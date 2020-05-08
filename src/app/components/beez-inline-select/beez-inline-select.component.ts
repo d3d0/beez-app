@@ -32,6 +32,7 @@ class Term {
 export class BeezInlineSelect {
     @Input() placeholder: string;
     @Input() isSelect: string;
+    @Input() isMajor: string;
     @Input() type: string;
     @Input() last: boolean;
     @Input() editable: boolean;
@@ -134,6 +135,7 @@ export class BeezInlineSelect {
                 title: this.placeholder,
                 currentdate: date,
                 isSelect: this.isSelect,
+                isMajor: this.isMajor,
                 selectedDate:this.text
             },
             fullscreen: true,

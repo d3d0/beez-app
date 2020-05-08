@@ -68,21 +68,23 @@
     </AbsoluteLayout>
       
     
-  <!-- <GridLayout  columns="*,*,*,*" rows="auto" class="tab-buttons" #profileTab >
-      <StackLayout #tabHighlight col="0" class="tabActiveIndex"></StackLayout>
-      <StackLayout col="0" (tap)="onSelectedIndexChange(0)">
-        <Label #tab1 [text]="'PROFILE.INFO'|L|uppercase" [class.disabled]="editable && selectedIndex != 0" ></Label>
-      </StackLayout>
-      <StackLayout col="1" (tap)="onSelectedIndexChange(1)">
-        <Label #tab2 [text]="'PROFILE.DETAILS'|L|uppercase" [class.disabled]="editable && selectedIndex != 1" ></Label>
-      </StackLayout>
-      <StackLayout col="2" (tap)="onSelectedIndexChange(2)">
-        <Label #tab3 [text]="'PROFILE.MEDIA'|L|uppercase" [class.disabled]="editable && selectedIndex != 2" ></Label>
-      </StackLayout>
-      <StackLayout col="3" (tap)="onSelectedIndexChange(3)">
-        <Label #tab4 [text]="'PROFILE.CONTACTS'|L|uppercase" [class.disabled]="editable && selectedIndex != 3" ></Label>
-      </StackLayout>
-    </GridLayout>  -->
+    <!--
+      <GridLayout  columns="*,*,*,*" rows="auto" class="tab-buttons" #profileTab >
+        <StackLayout #tabHighlight col="0" class="tabActiveIndex"></StackLayout>
+        <StackLayout col="0" (tap)="onSelectedIndexChange(0)">
+          <Label #tab1 [text]="'PROFILE.INFO'|L|uppercase" [class.disabled]="editable && selectedIndex != 0" ></Label>
+        </StackLayout>
+        <StackLayout col="1" (tap)="onSelectedIndexChange(1)">
+          <Label #tab2 [text]="'PROFILE.DETAILS'|L|uppercase" [class.disabled]="editable && selectedIndex != 1" ></Label>
+        </StackLayout>
+        <StackLayout col="2" (tap)="onSelectedIndexChange(2)">
+          <Label #tab3 [text]="'PROFILE.MEDIA'|L|uppercase" [class.disabled]="editable && selectedIndex != 2" ></Label>
+        </StackLayout>
+        <StackLayout col="3" (tap)="onSelectedIndexChange(3)">
+          <Label #tab4 [text]="'PROFILE.CONTACTS'|L|uppercase" [class.disabled]="editable && selectedIndex != 3" ></Label>
+        </StackLayout>
+      </GridLayout>
+    -->
 
 
     <StackLayout class="profile-info">
@@ -104,9 +106,15 @@
             <BeezInlineTextfield [editable]="editable" [editable]="isEditable"  [text]="profile.name"  (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.NAME'|L"></BeezInlineTextfield>
             <BeezInlineTextfield [editable]="editable" [text]="profile.surname"  (textfieldEvent)="textfieldEvent($event,'surname')" [placeholder]="'USER.SURNAME'|L"></BeezInlineTextfield>
             <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.gender" (selectEvent)="selectEvent($event,'gender')" type="GENDERS" [placeholder]="'USER.GENDER'|L"></BeezInlineSelect>
-            <!-- OK -->
-            <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.date_of_birth" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezInlineSelect>
-            <!-- OK -->
+            
+            <!-- major or minor date -->
+            <ng-container *ngIf="profile.minor == 0">
+              <BeezInlineSelect isSelect="true" [editable]="editable" [value]="profile.date_of_birth" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezInlineSelect>
+            </ng-container>
+            <ng-container *ngIf="profile.minor == 1">
+              <BeezInlineSelect isSelect="true" isMajor="false" [editable]="editable" [value]="profile.date_of_birth" (selectEvent)="selectEvent($event,'date_of_birth')" type="datapicker" [placeholder]="'USER.DATE_OF_BIRTH'|L"></BeezInlineSelect>
+            </ng-container>
+
             <BeezInlineTextfield [editable]="editable" [text]="profile.place_of_birth"  (textfieldEvent)="textfieldEvent($event,'place_of_birth')" [placeholder]="'USER.PLACE_OF_BIRTH'|L"></BeezInlineTextfield>
             <BeezInlineSelect isSelect="true" [editable]="editable" [last]='!editable'  [value]="profile.nationality" (selectEvent)="selectEvent($event,'nationality')" type="NATIONALITY" [placeholder]="'USER.NATIONALITY'|L"></BeezInlineSelect>
           </StackLayout>
@@ -138,9 +146,7 @@
 
           <!-- tab -->
           <StackLayout class="wrapper" [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'">
-            <ns-media [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'"
-            [profile]="profile"
-            (refreshProfile)="loadProfile()"></ns-media>
+            <ns-media [visibility]="selectedIndex === 2 ? 'visible' : 'collapsed'" [profile]="profile" (refreshProfile)="loadProfile()"></ns-media>
           </StackLayout>
 
 

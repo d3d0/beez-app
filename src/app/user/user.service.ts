@@ -78,12 +78,16 @@ export class UserService {
     signup(user: User) {
       let username = '';
       let tutor_mail = '';
+      let tutor1_mail = '';
       let mail = '';
+
 
       if(user.tutor_name != '' && user.tutor_surname != '') {
         username = user.username;
         mail = user.username;
-        tutor_mail = user.mail;
+        // tutor_mail = user.mail;
+        tutor_mail = user.tutor_email;
+        tutor1_mail = user.tutor1_email;
       } else {
         username = user.mail;
         mail = user.mail;
@@ -92,6 +96,7 @@ export class UserService {
       console.log('USERNAME ------------>',username);
       console.log('MAIL ------------>',mail);
       console.log('TUTOR MAIL ------------>',tutor_mail);
+      console.log('TUTOR 1 MAIL ------------>',tutor1_mail);
 
       return this.http.post(
         BackendService.baseUrl + "beez/loool/register",
@@ -105,10 +110,35 @@ export class UserService {
             "field_gender":user.gender,
             "field_surname":user.surname,
             "field_date_of_birth":user.date_of_birth,
+            "field_place_of_birth":user.place_of_birth,
+            "field_minor_address":user.minor_address,
+            
             "field_tutor_name":user.tutor_name,
             "field_tutor_surname":user.tutor_surname,
             "field_tutor_date_of_birth":user.tutor_date_of_birth,
-            "field_tutor_email":tutor_mail,
+            "field_tutor_email":user.tutor_email,
+            "field_tutor_place_of_birth": user.tutor_place_of_birth,
+            "field_tutor_address": user.tutor_address,
+            "field_tutor_phone": user.tutor_phone,
+            "field_tutor_id_card_type": user.tutor_id_card_type,
+            "field_tutor_id_card_number": user.tutor_id_card_number,
+            "field_tutor_id_card_released_by": user.tutor_id_card_released_by,
+            "field_tutor_id_card_date": user.tutor_id_card_date,
+            "field_tutor_id_card_expiry": user.tutor_id_card_expiry,
+
+            "field_tutor1_name":user.tutor1_name,
+            "field_tutor1_surname":user.tutor1_surname,
+            "field_tutor1_date_of_birth":user.tutor1_date_of_birth,
+            "field_tutor1_email":user.tutor1_email,
+            "field_tutor1_place_of_birth": user.tutor1_place_of_birth,
+            "field_tutor1_address": user.tutor1_address,
+            "field_tutor1_phone": user.tutor1_phone,
+            "field_tutor1_id_card_type": user.tutor1_id_card_type,
+            "field_tutor1_id_card_number": user.tutor1_id_card_number,
+            "field_tutor1_id_card_released_by": user.tutor1_id_card_released_by,
+            "field_tutor1_id_card_date": user.tutor1_id_card_date,
+            "field_tutor1_id_card_expiry": user.tutor1_id_card_expiry,
+            
           }
         }),
         {

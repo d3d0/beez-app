@@ -21,7 +21,7 @@ export class SelectDateModalViewComponent {
     private minDate: Date;
     private title;
     private isSelect = false;
-    private isMajor = false;
+    private isMajor = true;
     private yearDate:Number;
     private dayDate:Number;
     private monthDate:Number;
@@ -35,9 +35,9 @@ export class SelectDateModalViewComponent {
         this.currentdate = params.context.currentdate;
         if(params.context.selectedDate){
             this.selectedDate = params.context.selectedDate;
-           
         }
         
+        console.log('l☯☯☯l > SelectModalViewComponent > constructor() > selectedDate',this.selectedDate);
         console.log('l☯☯☯l > SelectModalViewComponent > constructor() > currentdate',this.currentdate);
         console.log('l☯☯☯l > SelectModalViewComponent > constructor() > currentdate year',this.yearDate);
         console.log('l☯☯☯l > SelectModalViewComponent > constructor() > currentdate month',this.monthDate);
@@ -54,18 +54,37 @@ export class SelectDateModalViewComponent {
     }
 
     getMaxDate() :void {
-        if(this.selectedDate){
-            this.displayDate = this.selectedDate
-        }else{
+
+        if (this.selectedDate) {
+            this.displayDate = this.selectedDate;
+        }
+        else {
             const now_old = new Date();
-            now_old.setFullYear(now_old.getFullYear() - 28);
+            now_old.setFullYear(now_old.getFullYear() - 30);
             this.displayDate = now_old;
         }
+        console.log('l☯☯☯l > displayDate', this.displayDate);
 
-        console.log(this.displayDate);
-        const now = new Date();
-        now.setFullYear(now.getFullYear() - 18);
-        this.maxDate = now;
+        if (this.isMajor === true) { 
+            /**
+             * è MAGGIORENNE > max data impostata a -18 anni
+             */
+            console.log('l☯☯☯l > MAGGIORENNE!');
+            const now = new Date();
+            now.setFullYear(now.getFullYear() - 18);
+            this.maxDate = now;
+        } 
+        else {
+            /**
+             * è MINORENNE > max data impostata a oggi
+             */
+            console.log('l☯☯☯l > MINORENNE!');
+            const now = new Date();
+            now.setFullYear(now.getFullYear() - 0);
+            this.maxDate = now;
+        }
+        console.log('l☯☯☯l > maxDate', this.maxDate);
+        
     }
 
 

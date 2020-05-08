@@ -119,9 +119,6 @@ export class SignupComponent implements OnInit{
         console.log('selectEvent > tid', value.tid);
       }
 
-
-      
-
       // PATTERN: calcolo username minore
       // nomefiglio + cognomefiglio + annonascitafiglio @ beez.io
       if(field == 'date_of_birth' && tipo == 'minore') {
@@ -136,9 +133,6 @@ export class SignupComponent implements OnInit{
       if(field === 'date_of_birth') {
         this.user[field] = value.getFullYear() + "-" + (value.getMonth() + 1) + "-" + value.getDate();
       }
-      // if(field === 'tutor_date_of_birth'){
-      //   this.user[field] = value.getFullYear() + "-" + (value.getMonth() + 1) + "-" + value.getDate();
-      // }
     }
   }
 
@@ -184,6 +178,7 @@ export class SignupComponent implements OnInit{
 
     // validazione del minore
     if(tipo=="minore") {
+      // tutor0
       if (!User.isValidTutorName(this.user.tutor_name)) {
         alert(localize("MESSAGES.REQUIRED_TUTOR_NAME"));
         return;
@@ -196,21 +191,103 @@ export class SignupComponent implements OnInit{
         alert(localize("MESSAGES.REQUIRED_TUTOR_DATE"));
         return;
       }
+      if (!User.isValidEmail(this.user.tutor_email)) {
+        alert(localize("MESSAGES.ERROR_EMAIL"));
+        return;
+      }
+      if (!User.isValidTutorString(this.user.tutor_place_of_birth)) {
+        alert(localize("MESSAGES.REQUIRED_TUTOR_POB"));
+        return;
+      }
+      if (!User.isValidTutorString(this.user.tutor_address)) {
+        alert(localize("MESSAGES.REQUIRED_TUTOR_ADDRESS"));
+        return;
+      }
+      if (!User.isValidTutorString(this.user.tutor_phone)) {
+        alert(localize("MESSAGES.REQUIRED_TUTOR_PHONE"));
+        return;
+      }
+      if (!User.isValidTutorString(this.user.tutor_id_card_type)) {
+        alert(localize("MESSAGES.REQUIRED_TUTOR_CARD_TYPE"));
+        return;
+      }
+      if (!User.isValidTutorString(this.user.tutor_id_card_number)) {
+        alert(localize("MESSAGES.REQUIRED_TUTOR_CARD_NUMBER"));
+        return;
+      }
+      if (!User.isValidTutorString(this.user.tutor_id_card_released_by)) {
+        alert(localize("MESSAGES.REQUIRED_TUTOR_CARD_RELEASED_BY"));
+        return;
+      }
+      if (!User.isValidTutorDate(this.user.tutor_id_card_date)) {
+        alert(localize("MESSAGES.REQUIRED_TUTOR_CARD_DATE"));
+        return;
+      }
+      if (!User.isValidTutorDate(this.user.tutor_id_card_expiry)) {
+        alert(localize("MESSAGES.REQUIRED_TUTOR_CARD_EXPIRY"));
+        return;
+      }
+      
+      // tutor1
+      // if (!User.isValidTutorName(this.user.tutor1_name)) {
+      //   alert(localize("MESSAGES.REQUIRED_TUTOR_NAME"));
+      //   return;
+      // }
+      // if (!User.isValidTutorSurname(this.user.tutor1_surname)) {
+      //   alert(localize("MESSAGES.REQUIRED_TUTOR_SURNAME"));
+      //   return;
+      // }
+      // if (!User.isValidTutorDate(this.user.tutor1_date_of_birth)) {
+      //   alert(localize("MESSAGES.REQUIRED_TUTOR_DATE"));
+      //   return;
+      // }
+      // if (!User.isValidEmail(this.user.tutor1_email)) {
+      //   alert(localize("MESSAGES.ERROR_EMAIL"));
+      //   return;
+      // }
+      // if (!User.isValidTutorString(this.user.tutor1_place_of_birth)) {
+      //   alert(localize("MESSAGES.REQUIRED_TUTOR"));
+      //   return;
+      // }
+      // if (!User.isValidTutorString(this.user.tutor1_address)) {
+      //   alert(localize("MESSAGES.REQUIRED_TUTOR"));
+      //   return;
+      // }
+      // if (!User.isValidTutorString(this.user.tutor1_phone)) {
+      //   alert(localize("MESSAGES.REQUIRED_TUTOR"));
+      //   return;
+      // }
+      // if (!User.isValidTutorString(this.user.tutor1_id_card_type)) {
+      //   alert(localize("MESSAGES.REQUIRED_TUTOR"));
+      //   return;
+      // }
+      // if (!User.isValidTutorString(this.user.tutor1_id_card_number)) {
+      //   alert(localize("MESSAGES.REQUIRED_TUTOR"));
+      //   return;
+      // }
+      // if (!User.isValidTutorString(this.user.tutor1_id_card_released_by)) {
+      //   alert(localize("MESSAGES.REQUIRED_TUTOR"));
+      //   return;
+      // }
+      // if (!User.isValidTutorDate(this.user.tutor1_id_card_date)) {
+      //   alert(localize("MESSAGES.REQUIRED_TUTOR"));
+      //   return;
+      // }
+      // if (!User.isValidTutorDate(this.user.tutor1_id_card_expiry)) {
+      //   alert(localize("MESSAGES.REQUIRED_TUTOR"));
+      //   return;
+      // }
     }
 
-    // validazione degli adulti
+    // validazione generale
     if (!User.isValidName(this.user.name)) {
       alert(localize("MESSAGES.REQUIRED_NAME"));
       return;
     }
-
-
     if (!User.isValidSurname(this.user.surname)) {
       alert(localize("MESSAGES.REQUIRED_SURNAME"));
       return;
     }
-
-
     if (this.user.date_of_birth == '0-0-0') {
       alert("Per registrati devi essere maggiorenne, modifica la data di nascita.");
       return;
@@ -218,19 +295,17 @@ export class SignupComponent implements OnInit{
       alert(localize("MESSAGES.REQUIRED_DATE"));
       return;
     }
-
-    // if (!User.isValidGender(this.user.gender)) {
-    //   alert(localize("MESSAGES.REQUIRED_GENDER"));
-    //   return;
-    // }
-    if (!User.isValidEmail(this.user.mail)) {
-      alert(localize("MESSAGES.ERROR_EMAIL"));
-      return;
+    if(tipo=="adulto") {
+      if (!User.isValidEmail(this.user.mail)) {
+        alert(localize("MESSAGES.ERROR_EMAIL"));
+        return;
+      }
     }
     if (!User.isValidPassword(this.user.pass)) {
       alert(localize("MESSAGES.ERROR_PASS"));
       return;
     }
+
     this.isLoading = true;
     this.editable = true;
 

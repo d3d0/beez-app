@@ -59,7 +59,7 @@ export class BeezFloatLabelSelect implements OnInit {
         console.log('l☯☯☯l > BeezFloatLabelSelect > openModal() > editable', this.editable);
         if (!this.editable) return;
 
-        if (this.type == "datapicker"){
+        if (this.type == "datapicker"){ // DATA
             this.createDatapickerModelView().then((value)=> {
                 if(value){
                     if( this.lingua == 'it') {
@@ -73,7 +73,7 @@ export class BeezFloatLabelSelect implements OnInit {
                 }
             })
         }
-        else {
+        else { // TAXONOMY
             this.createTaxonomyModelView().then((value)=> {
                 if(value){
                     this.text=value.name;
@@ -92,12 +92,15 @@ export class BeezFloatLabelSelect implements OnInit {
     private createDatapickerModelView(): Promise<any> {
         const date = new Date();
         console.log('--------------////////FRA//////////----------->', this.data);
+        console.log('--------------////////FRA//////////----------->', this.data);
+        console.log('--------------////////FRA//////////----------->', this.data);
 
         const options: ModalDialogOptions = {
             context: { 
                 title: this.placeholder,
                 currentdate: date,
                 isSelect: this.isSelect,
+                isMajor: this.isMajor,
                 selectedDate:this.data
             },
             fullscreen: true,
@@ -108,6 +111,9 @@ export class BeezFloatLabelSelect implements OnInit {
 
     // taxonomy
     private createTaxonomyModelView(): Promise<any> {
+        console.log('--------------////////d3d0//////////----------->', this.data);
+        console.log('--------------////////d3d0//////////----------->', this.data);
+        console.log('--------------////////d3d0//////////----------->', this.data);
         const options: ModalDialogOptions = {
             context: { vocabolary: this.type , title: this.placeholder, tid: this.tid, isSelect: this.isSelect},
             fullscreen: true,

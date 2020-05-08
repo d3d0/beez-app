@@ -161,8 +161,12 @@ export class ProfileComponent implements AfterViewInit, OnInit{
     this.profileService.load().subscribe(profile=> {
       this._profile = profile[0];
 
+      // this._profile['minor'];
+
       // stampa dati profilo
-      // console.log('l☯☯☯l > ProfileComponent > loadProfile() > _profile: ', this._profile);
+      console.log('l☯☯☯l > ############################################################');
+      console.log('l☯☯☯l > ProfileComponent > loadProfile() > _profile: ', this._profile);
+      console.log('l☯☯☯l > ############################################################');
       
       // if(this._profile['date_of_birth']!=null) {
       //   this._profile['date_of_birth'] = new Date(this._profile['date_of_birth']).toISOString();
