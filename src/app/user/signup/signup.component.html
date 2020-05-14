@@ -87,7 +87,7 @@
 						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'tutor_id_card_number')" (textfieldEvent)="textfieldEvent($event,'tutor_id_card_number')" keyboardType="email" [placeholder]="'USER.ID_CARD_NUMBER_PARENT'|L" ></BeezFloatLabelTextfield>
 						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'tutor_id_card_released_by')" (textfieldEvent)="textfieldEvent($event,'tutor_id_card_released_by')" keyboardType="email" [placeholder]="'USER.ID_CARD_RELEASED_BY'|L" ></BeezFloatLabelTextfield>
 						<BeezFloatLabelSelect isSelect="true" [editable]="editable" isMajor="false" (selectEvent)="selectEvent($event,'tutor_id_card_date')" type="datapicker" [placeholder]="'USER.ID_CARD_DATE'|L"></BeezFloatLabelSelect>
-						<BeezFloatLabelSelect isSelect="true" [editable]="editable" isMajor="false" (selectEvent)="selectEvent($event,'tutor_id_card_expiry')" type="datapicker" [placeholder]="'USER.ID_CARD_EXPIRY'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelSelect isSelect="true" [editable]="editable" isMajor="false" isExpiry="true" (selectEvent)="selectEvent($event,'tutor_id_card_expiry')" type="datapicker" [placeholder]="'USER.ID_CARD_EXPIRY'|L"></BeezFloatLabelSelect>
 
 						<Label class="list-group-item-heading header" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_PARENT_2'|L" fontWeight="bold" ></Label>
 						<BeezFloatLabelTextfield  (textfieldBlurEvent)="textfieldBlurEvent($event,'tutor1_name')"  (textfieldEvent)="textfieldEvent($event,'tutor1_name')" [placeholder]="'USER.NAME_PARENT'|L" ></BeezFloatLabelTextfield>
@@ -101,7 +101,7 @@
 						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'tutor1_id_card_number')" (textfieldEvent)="textfieldEvent($event,'tutor1_id_card_number')" keyboardType="email" [placeholder]="'USER.ID_CARD_NUMBER_PARENT'|L" ></BeezFloatLabelTextfield>
 						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'tutor1_id_card_released_by')" (textfieldEvent)="textfieldEvent($event,'tutor1_id_card_released_by')" keyboardType="email" [placeholder]="'USER.ID_CARD_RELEASED_BY'|L" ></BeezFloatLabelTextfield>
 						<BeezFloatLabelSelect isSelect="true" [editable]="editable" isMajor="false" (selectEvent)="selectEvent($event,'tutor1_id_card_date')" type="datapicker" [placeholder]="'USER.ID_CARD_DATE'|L"></BeezFloatLabelSelect>
-						<BeezFloatLabelSelect isSelect="true" [editable]="editable" isMajor="false" (selectEvent)="selectEvent($event,'tutor1_id_card_expiry')" type="datapicker" [placeholder]="'USER.ID_CARD_EXPIRY'|L"></BeezFloatLabelSelect>
+						<BeezFloatLabelSelect isSelect="true" [editable]="editable" isMajor="false" isExpiry="true" (selectEvent)="selectEvent($event,'tutor1_id_card_expiry')" type="datapicker" [placeholder]="'USER.ID_CARD_EXPIRY'|L"></BeezFloatLabelSelect>
 
 						<Label class="list-group-item-heading header" textWrap="true" [text]="'SIGNUP.REGISTRATION_MINOR_PARENT_3'|L" fontWeight="bold" ></Label>
 						<BeezFloatLabelTextfield (textfieldBlurEvent)="textfieldBlurEvent($event,'name')" (textfieldEvent)="textfieldEvent($event,'name')" [placeholder]="'USER.MINOR_NAME'|L" ></BeezFloatLabelTextfield>

@@ -26,6 +26,7 @@ export class BeezFloatLabelSelect implements OnInit {
     @Input() placeholder: string;
     @Input() isSelect: string;
     @Input() isMajor: string;
+    @Input() isExpiry: string;
     @Input() type: string;
     @Input() dark: boolean;
     @Input() tid: string; // casting-detail.component.html
@@ -101,6 +102,7 @@ export class BeezFloatLabelSelect implements OnInit {
                 currentdate: date,
                 isSelect: this.isSelect,
                 isMajor: this.isMajor,
+                isExpiry: this.isExpiry,
                 selectedDate:this.data
             },
             fullscreen: true,

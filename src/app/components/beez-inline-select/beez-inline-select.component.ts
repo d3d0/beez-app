@@ -33,6 +33,7 @@ export class BeezInlineSelect {
     @Input() placeholder: string;
     @Input() isSelect: string;
     @Input() isMajor: string;
+    @Input() isExpiry: string;
     @Input() type: string;
     @Input() last: boolean;
     @Input() editable: boolean;
@@ -136,6 +137,7 @@ export class BeezInlineSelect {
                 currentdate: date,
                 isSelect: this.isSelect,
                 isMajor: this.isMajor,
+                isExpiry: this.isExpiry,
                 selectedDate:this.text
             },
             fullscreen: true,

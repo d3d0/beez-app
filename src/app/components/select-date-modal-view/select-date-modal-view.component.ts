@@ -21,7 +21,8 @@ export class SelectDateModalViewComponent {
     private minDate: Date;
     private title;
     private isSelect = false;
-    private isMajor = true;
+    private isMajor = 'true';
+    private isExpiry = 'false';
     private yearDate:Number;
     private dayDate:Number;
     private monthDate:Number;
@@ -47,9 +48,12 @@ export class SelectDateModalViewComponent {
         this.title = params.context.title;
         if(params.context.isSelect) this.isSelect = params.context.isSelect;
         if(params.context.isMajor) this.isMajor = params.context.isMajor;
+        if(params.context.isExpiry) this.isExpiry = params.context.isExpiry;
+        
         console.log('l☯☯☯l > SelectModalViewComponent > constructor() > params',this.params);
-        // console.log('l☯☯☯l > SelectModalViewComponent > constructor() > isSelect',this.isSelect);
+        console.log('l☯☯☯l > SelectModalViewComponent > constructor() > isSelect',this.isSelect);
         console.log('l☯☯☯l > SelectModalViewComponent > constructor() > isMajor',this.isMajor);
+        console.log('l☯☯☯l > SelectModalViewComponent > constructor() > isExpiry',this.isExpiry);
         this.getMaxDate();
     }
 
@@ -65,7 +69,7 @@ export class SelectDateModalViewComponent {
         }
         console.log('l☯☯☯l > displayDate', this.displayDate);
 
-        if (this.isMajor === true) { 
+        if (this.isMajor == 'true') { 
             /**
              * è MAGGIORENNE > max data impostata a -18 anni
              */
@@ -75,13 +79,27 @@ export class SelectDateModalViewComponent {
             this.maxDate = now;
         } 
         else {
-            /**
-             * è MINORENNE > max data impostata a oggi
-             */
-            console.log('l☯☯☯l > MINORENNE!');
-            const now = new Date();
-            now.setFullYear(now.getFullYear() - 0);
-            this.maxDate = now;
+            console.log('l☯☯☯l > SelectModalViewComponent > constructor() > isExpiry',this.isExpiry);
+
+            if (this.isExpiry == 'true') { 
+                /**
+                 * è DATA DI SCADENZA > max data impostata a +10 anni
+                 */
+                console.log('l☯☯☯l > DATA di SCADENZA!');
+                const now = new Date();
+                now.setFullYear(now.getFullYear() + 20);
+                this.maxDate = now;
+            } 
+            if (this.isExpiry == 'false') { 
+                /**
+                 * è MINORENNE > max data impostata a oggi
+                 */
+                console.log('l☯☯☯l > MINORENNE!');
+                const now = new Date();
+                now.setFullYear(now.getFullYear() - 0);
+                this.maxDate = now;
+            }
+
         }
         console.log('l☯☯☯l > maxDate', this.maxDate);
         
